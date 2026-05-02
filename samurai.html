@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Самурай · Герои · Legend of Worlds</title>
+    <meta property="og:title" content="Самурай — Legend of Worlds">
+    <meta property="og:description" content="Самурай — герой Арены Миров. Способности, статы, тактика.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+</head>
+<body class="agility">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Самурай</span></div>
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"><i class="fas fa-torii-gate"></i></div>
+                <div class="detail-title">Самурай <span class="detail-badge">Ловкость</span></div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><i class="fas fa-crosshairs"></i> Ближний бой (150)</div>
+                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:#55ff55;">Ловкость</span></div>
+                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: 310</div>
+                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="role-damager">Дамагер</span></div>
+            </div>
+            <table class="hero-stats-table">
+                <tr><th>Характеристика</th><th>Значение</th><th>Прирост</th></tr>
+                <tr><td><span class="stat-strength">Сила</span></td><td>17</td><td>+1.8</td></tr>
+                <tr><td><span class="stat-agility">Ловкость</span></td><td>26</td><td>+3.2</td></tr>
+                <tr><td><span class="stat-intelligence">Разум</span></td><td>15</td><td>+1.5</td></tr>
+            </table>
+            <div class="detail-description">
+                <p>Самурай — странствующий мастер меча, следующий кодексу чести. Его молниеносные удары разят точно в сердце, а несгибаемый дух позволяет выстоять против любого врага.</p>
+            </div>
+            <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
+            <div class="abilities-grid">
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/samurai_slash.png" alt="Стремительный удар" onerror="this.parentElement.innerHTML='<i class=\'fas fa-bolt\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">Q</span>
+                            <div class="ability-name">Стремительный удар</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Мгновенно сокращает дистанцию и наносит мощный удар мечом.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">50/55/60/65/70</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">8/7/6/5/4</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">80/120/160/200/240</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">600</span></div>
+                    </div>
+                </div>
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/samurai_counter.png" alt="Контрудар" onerror="this.parentElement.innerHTML='<i class=\'fas fa-exchange-alt\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Контрудар</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Пассивно: при уклонении наносит ответный удар с увеличенным уроном.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">10%/15%/20%/25%/30%</span></div>
+                        <div class="param-row"><span class="param-label">Множитель</span><span class="param-values">1.5/2/2.5/3/3.5</span></div>
+                    </div>
+                </div>
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/samurai_kiai.png" alt="Киай" onerror="this.parentElement.innerHTML='<i class=\'fas fa-fire-alt\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Киай</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Вопль духа, временно увеличивающий скорость атаки и передвижения.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">70/80/90/100/110</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15/14/13/12/11</span></div>
+                        <div class="param-row"><span class="param-label">Доп. урон</span><span class="param-values">20/35/50/65/80</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">8</span></div>
+                    </div>
+                </div>
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/samurai_iai.png" alt="Иайдзюцу" onerror="this.parentElement.innerHTML='<i class=\'fas fa-angle-double-right\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Иайдзюцу</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Ультимейт: мгновенное извлечение меча из ножен, критический урон всем врагам перед героем.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/170/190/210/230</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">90/80/70/60/50</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">250/350/450/550/650</span></div>
+                        <div class="param-row"><span class="param-label">Ширина</span><span class="param-values">300</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="back-button" onclick="window.location.href='heroes.html'"><i class="fas fa-arrow-left"></i> Вернуться к героям</div>
+        </div>
+    </div>
+</body>
+</html>

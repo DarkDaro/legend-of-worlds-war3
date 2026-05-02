@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пожиратель душ · Герои · Legend of Worlds</title>
+    <meta property="og:title" content="Пожиратель душ — Legend of Worlds">
+    <meta property="og:description" content="Пожиратель душ — герой Арены Миров. Способности, статы, тактика.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+</head>
+<body class="strength">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Пожиратель душ</span></div>
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"><i class="fas fa-ghost"></i></div>
+                <div class="detail-title">Пожиратель душ <span class="detail-badge">Сила</span></div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><i class="fas fa-crosshairs"></i> Ближний бой (150)</div>
+                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:#ff5555;">Сила</span></div>
+                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: 295</div>
+                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="role-tank">Танк</span></div>
+            </div>
+            <table class="hero-stats-table">
+                <tr><th>Характеристика</th><th>Значение</th><th>Прирост</th></tr>
+                <tr><td><span class="stat-strength">Сила</span></td><td>26</td><td>+3.4</td></tr>
+                <tr><td><span class="stat-agility">Ловкость</span></td><td>12</td><td>+1.2</td></tr>
+                <tr><td><span class="stat-intelligence">Разум</span></td><td>14</td><td>+1.4</td></tr>
+            </table>
+            <div class="detail-description">
+                <p>Пожиратель душ — порождение Пустоты, голодный дух, заключённый в броню из костей павших. Каждая убитая им жертва питает его силу, делая всё могущественнее и неуязвимее. Там, где он проходит, остаётся лишь тишина и пустые оболочки.</p>
+            </div>
+            <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
+            <div class="abilities-grid">
+
+                <!-- Q: Поглощение души -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/souleater_consume.png" alt="Поглощение души" onerror="this.parentElement.innerHTML='<i class=\'fas fa-hand-holding-magic\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">Q</span>
+                            <div class="ability-name">Поглощение души</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Вытягивает жизненную силу из цели, нанося урон и исцеляя себя.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">70/80/90/100/110</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10/9/8/7/6</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">75/125/175/225/275</span></div>
+                        <div class="param-row"><span class="param-label">Исцеление</span><span class="param-values">50%/60%/70%/80%/90% от урона</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">400</span></div>
+                    </div>
+                </div>
+
+                <!-- W: Аура смерти -->
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/souleater_aura.png" alt="Аура смерти" onerror="this.parentElement.innerHTML='<i class=\'fas fa-skull\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Аура смерти</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Пассивно: враги поблизости теряют здоровье каждую секунду. При смерти юнита рядом Пожиратель получает заряд силы.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон в сек</span><span class="param-values">5/10/15/20/25</span></div>
+                        <div class="param-row"><span class="param-label">Заряд за смерть</span><span class="param-values">+1/+2/+3/+4/+5 к урону</span></div>
+                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">600</span></div>
+                    </div>
+                </div>
+
+                <!-- E: Костяной щит -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/souleater_shield.png" alt="Костяной щит" onerror="this.parentElement.innerHTML='<i class=\'fas fa-shield-alt\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Костяной щит</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Окружает себя щитом из костей, поглощающим урон и отражающим часть атакующих.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">90/95/100/105/110</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20/18/16/14/12</span></div>
+                        <div class="param-row"><span class="param-label">Поглощение</span><span class="param-values">100/200/300/400/500</span></div>
+                        <div class="param-row"><span class="param-label">Возврат урона</span><span class="param-values">10%/15%/20%/25%/30%</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">10/12/14/16/18</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Врата Пустоты -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/souleater_void.png" alt="Врата Пустоты" onerror="this.parentElement.innerHTML='<i class=\'fas fa-dungeon\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Врата Пустоты</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Открывает врата Пустоты, затягивая врагов внутрь и нанося огромный урон. Выжившие теряют часть максимального здоровья.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/200/225/250/275</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100/90/80/70/60</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">250/350/450/550/650</span></div>
+                        <div class="param-row"><span class="param-label">Потеря макс. HP</span><span class="param-values">5%/8%/11%/14%/17%</span></div>
+                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">400</span></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="back-button" onclick="window.location.href='heroes.html'"><i class="fas fa-arrow-left"></i> Вернуться к героям</div>
+        </div>
+    </div>
+</body>
+</html>

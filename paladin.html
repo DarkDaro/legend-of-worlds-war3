@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Паладин · Герои · Legend of Worlds</title>
+    <meta property="og:title" content="Паладин — Legend of Worlds">
+    <meta property="og:description" content="Паладин — герой Арены Миров. Способности, статы, тактика.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+</head>
+<body class="strength">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Паладин</span></div>
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="detail-title">Паладин <span class="detail-badge">Сила</span></div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><i class="fas fa-crosshairs"></i> Ближний бой (150)</div>
+                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:#ff5555;">Сила</span></div>
+                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: 280</div>
+                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="role-tank">Танк</span></div>
+            </div>
+            <table class="hero-stats-table">
+                <tr><th>Характеристика</th><th>Значение</th><th>Прирост</th></tr>
+                <tr><td><span class="stat-strength">Сила</span></td><td>24</td><td>+3</td></tr>
+                <tr><td><span class="stat-intelligence">Разум</span></td><td>23</td><td>+2</td></tr>
+                <tr><td><span class="stat-agility">Ловкость</span></td><td>13</td><td>+2</td></tr>
+            </table>
+            <div class="detail-description">
+                <p>Светозар — паладин, чья вера выдержала испытание тьмой. Когда миры рушились, а боги молчали, он один продолжал нести свет. Даро увидел в нём не воина, а якорь — того, кто держит союзников на ногах, когда всё идёт прахом. Его щит не просто защищает — он возвращает удар.</p>
+            </div>
+            <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
+            <div class="abilities-grid">
+
+                <!-- Q: Исцеляющая Сфера -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/paladin_holy_light.png" alt="Исцеляющая Сфера" onerror="this.parentElement.innerHTML='<i class=\'fas fa-sun\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">Q</span>
+                            <div class="ability-name">Исцеляющая Сфера</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Посылает исцеляющую сферу в указанную точку. При попадании восстанавливает здоровье союзникам, а также наносит урон противникам.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Исцеление</span><span class="param-values">12%/14%/16%/18%/20%</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">STR×3 + 250/400/550/700/850</span></div>
+                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">325</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1300</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">75/80/85/90/95</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- W: Дары света -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/paladin_shield.png" alt="Дары света" onerror="this.parentElement.innerHTML='<i class=\'fas fa-hand-holding-heart\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Дары света</div>
+                            <div class="ability-type-badge">Активная</div>
+                            <span class="ability-tag dispellable">⚠ Развеивается</span>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Получив множество ранений в бою, Светозар научился использовать магию света для регенерации здоровья в секунду. Восстанавливает на 25% больше здоровья. Может быть развеян полностью!</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Исцеление</span><span class="param-values">2% + 45/70/95/120/145 ед/сек</span></div>
+                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">600</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">10 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">90/95/100/105/110</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">26/25/24/23/22 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- E: Молитва свету -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/paladin_prayer.png" alt="Молитва свету" onerror="this.parentElement.innerHTML='<i class=\'fas fa-pray\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Молитва свету</div>
+                            <div class="ability-type-badge">Активная</div>
+                            <span class="ability-tag dispellable">⚠ Развеивается</span>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Паладин произносит священную молитву 3 сек, после чего на расстоянии 450 от героя появляются вспышки света. Может быть развеян полностью!</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">200/300/400/500/600 + STR×1.25/1.5/1.75/2/2.25</span></div>
+                        <div class="param-row"><span class="param-label">Количество</span><span class="param-values">11/14/17/20/23 вспышек</span></div>
+                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">200</span></div>
+                        <div class="param-row"><span class="param-label">Задержка</span><span class="param-values">3 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">100/110/120/130/140</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Святой Щит -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/paladin_resurrect.png" alt="Святой Щит" onerror="this.parentElement.innerHTML='<i class=\'fas fa-shield-alt\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Святой Щит</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Паладин накладывает на себя магический щит, который поглощает весь урон. Щит рассеивается, когда теряет всю прочность. После рассеивания всем врагам вокруг героя наносится урон, равный потерянной прочности щита.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Прочность</span><span class="param-values">1000/2000/3000/4000/5000 + STR×5/10/15/20/25</span></div>
+                        <div class="param-row"><span class="param-label">Радиус урона</span><span class="param-values">375/450/525/600/675</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">4/5/6/7/8 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/175/200/225/250</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">120 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Аура защиты -->
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/paladin_defense.png" alt="Аура защиты" onerror="this.parentElement.innerHTML='<i class=\'fas fa-heart\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Аура защиты</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Повышает защиту дружественных войск поблизости. Возвращает небольшой физический урон обидчику при каждой атаке по Паладину.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Доп. броня</span><span class="param-values">10</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">25 + Уровень × 2</span></div>
+                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">800</span></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="back-button" onclick="window.location.href='heroes.html'"><i class="fas fa-arrow-left"></i> Вернуться к героям</div>
+        </div>
+    </div>
+</body>
+</html>

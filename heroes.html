@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Герои Legend of Worlds</title>
+    <meta property="og:title" content="Герои — Legend of Worlds">
+    <meta property="og:description" content="Более 70 героев с уникальными способностями. Сила, ловкость, разум — выбери свой путь.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+</head>
+<body>
+
+    <!-- Адаптивная шапка с логотипом -->
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+
+        </nav>
+    </header>
+
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><span class="current">Герои</span></div>
+        <h1><i class="fas fa-shield-alt"></i> Выбери героя</h1>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all"><i class="fas fa-users"></i> Все</button>
+            <button class="filter-btn" data-filter="strength"><i class="fas fa-shield-alt"></i> Сила</button>
+            <button class="filter-btn" data-filter="agility"><i class="fas fa-running"></i> Ловкость</button>
+            <button class="filter-btn" data-filter="intelligence"><i class="fas fa-brain"></i> Интеллект</button>
+            <button class="filter-btn" data-filter="unique"><i class="fas fa-star"></i> Уникальные</button>
+        </div>
+
+        <!-- Сетка героев будет сгенерирована JS -->
+        <div class="hero-grid" id="heroGrid"></div>
+
+        <p style="text-align:right; color:#7a8faa; margin-top:10px;">
+            <i class="fas fa-mouse-pointer"></i> кликни на героя — откроется подробная страница
+        </p>
+    </div>
+
+    <script>
+        (function() {
+            // ========== БАЗА ГЕРОЕВ ==========
+            // Просто добавляй новых героев в этот массив!
+            const heroesData = [
+                // Сила
+                { name: 'Адмирал', title: 'Морской воин', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'admiral', image: 'admiral' },
+                { name: 'Друид', title: 'Хранитель природы', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'druid', image: 'druid' },
+                { name: 'Киборг', title: 'Механический воин', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'cyborg', image: 'cyborg' },
+                { name: 'Паладин', title: 'Святой рыцарь', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'paladin', image: 'paladin' },
+                { name: 'Король гор', title: 'Тан', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'mountainking', image: 'mountainking' },
+                { name: 'Пожиратель душ', title: 'Голод Пустоты', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'souleater', image: 'souleater', unique: true },
+                { name: 'Огненный страж', title: 'Элементаль пламени', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'flamewarden', image: 'flamewarden', unique: true },
+                // Ловкость
+                { name: 'Жрица Луны', title: 'Лучница ночи', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'priestess', image: 'priestess' },
+                { name: 'Иллюзионист', title: 'Мастер обмана', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'illusionist', image: 'illusionist' },
+                { name: 'Мурлок', title: 'Подводный охотник', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'murloc', image: 'murloc' },
+                { name: 'Самурай', title: 'Мастер меча', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'samurai', image: 'samurai' },
+                { name: 'Мастер клинка', title: 'Элитный мечник', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'blademaster', image: 'blademaster' },
+                { name: 'Охотник на демонов', title: 'Мститель', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'demonhunter', image: 'demonhunter' },
+                { name: 'Лучница', title: 'Ледяная охотница', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'drowranger', image: 'DarkRanger' },
+                { name: 'Теневой клинок', title: 'Убийца из тени', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'shadowblade', image: 'shadowblade', unique: true },
+                // Интеллект
+                { name: 'Громовержец', title: 'Повелитель молний', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'thunderer', image: 'thunderer' },
+                { name: 'Повелитель Льдов', title: 'Маг холода', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'icelord', image: 'icelord' },
+                { name: 'Архимаг', title: 'Маг воды', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'archmage', image: 'Archmage' },
+                { name: 'Лич', title: 'Маг льда', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'lich', image: 'lich' },
+                { name: 'Провидец', title: 'Шаман', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'farseer', image: 'FarSeer' },
+                { name: 'Хранитель рощи', title: 'Друид', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'keeper', image: 'keeper' },
+                { name: 'Хромомант', title: 'Повелитель времени', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'chronomancer', image: 'chronomancer', unique: true },
+                { name: 'Шаман крови', title: 'Запретная магия', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'bloodshaman', image: 'bloodshaman', unique: true },
+            ];
+
+            const heroGrid = document.getElementById('heroGrid');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            let currentFilter = 'all';
+
+            // Роли и их иконки
+            const roleIcons = {
+                tank: '<i class="fas fa-shield-alt"></i>',
+                damager: '<i class="fas fa-crosshairs"></i>',
+                support: '<i class="fas fa-bolt"></i>'
+            };
+
+            // Функция создания карточки героя
+            function createHeroCard(hero) {
+                const card = document.createElement('div');
+                card.className = `hero-card ${hero.attr}`;
+                card.dataset.hero = hero.heroId;
+                card.dataset.attr = hero.attr;
+
+                const pngSrc = `images/heroes/${hero.image}.png`;
+                const jpgSrc = `images/heroes/${hero.image}.jpg`;
+                const iconHtml = `<img src="${pngSrc}" alt="${hero.name}" style="max-width:100%;max-height:100%;object-fit:contain;image-rendering:pixelated;" onerror="if(this.src.endsWith('.png')){this.src='${jpgSrc}';}else{this.style.display='none';this.parentElement.classList.add('no-icon');}">`;
+
+                card.innerHTML = `
+                    <div class="hero-image">${iconHtml}</div>
+                    ${hero.unique ? '<span class="unique-badge"><i class="fas fa-star"></i></span>' : ''}
+                    <div class="hero-name">${hero.name}</div>
+                    <div class="hero-title">${hero.title}</div>
+                    <div class="hero-role role-${hero.role}">${roleIcons[hero.role]} ${hero.roleName}</div>
+                    <span class="hero-attr-badge">${getAttrName(hero.attr)}</span>
+                `;
+
+                card.addEventListener('click', () => {
+                    window.location.href = hero.heroId + '.html';
+                });
+
+                return card;
+            }
+
+            function getAttrName(attr) {
+                const names = { strength: 'Сила', agility: 'Ловкость', intelligence: 'Разум' };
+                return names[attr] || attr;
+            }
+
+            // Рендер всех героев
+            function renderHeroes() {
+                heroGrid.innerHTML = '';
+                heroesData.forEach(hero => {
+                    const card = createHeroCard(hero);
+                    const show = currentFilter === 'all'
+                        || (currentFilter === 'unique' && hero.unique)
+                        || (hero.attr === currentFilter);
+                    card.style.display = show ? '' : 'none';
+                    heroGrid.appendChild(card);
+                });
+            }
+
+            // Фильтрация
+            function filterHeroes(filterValue) {
+                currentFilter = filterValue;
+                const cards = document.querySelectorAll('.hero-card');
+                cards.forEach((card, i) => {
+                    const hero = heroesData[i];
+                    const show = filterValue === 'all'
+                        || (filterValue === 'unique' && hero.unique)
+                        || (hero.attr === filterValue);
+                    card.style.display = show ? '' : 'none';
+                });
+                filterBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.filter === filterValue) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
+            // Обработчики фильтров
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => filterHeroes(btn.dataset.filter));
+            });
+
+            // Первоначальный рендер
+            renderHeroes();
+
+            // Функция для добавления нового героя (можно вызывать из консоли)
+            window.addHero = function(heroData) {
+                heroesData.push(heroData);
+                renderHeroes();
+                console.log(`Герой ${heroData.name} добавлен!`);
+            };
+        })();
+    </script>
+</body>
+</html>

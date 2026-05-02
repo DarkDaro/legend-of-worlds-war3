@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Предметы · Legend of Worlds</title>
+    <meta property="og:title" content="Предметы — Legend of Worlds">
+    <meta property="og:description" content="120+ артефактов: оружие, доспехи, магические предметы. Рецепты, сборки, тактика.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="icon-loader.js" defer></script>
+  <script src="analytics.js" defer></script>
+</head>
+<body>
+
+  <!-- Шапка (как на главной) -->
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+      <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+      <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
+      <a href="items.html" class="nav-link active"><i class="fas fa-flask"></i> Предметы</a>
+      <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+      <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+      <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+      <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+      <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+      <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+
+    </nav>
+  </header>
+
+  <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><span class="current">Предметы</span></div>
+    <!-- Кнопка возврата (стиль back-link) -->
+    <a href="heroes.html" class="back-link"><i class="fas fa-arrow-left"></i> Назад к героям</a>
+
+    <h1><i class="fas fa-flask"></i> Лавки предметов</h1>
+    <p style="margin-bottom:20px; color:#b0b9d0;">Кликните по предмету — увидите полное дерево компонентов, включая стоимость свитков.</p>
+
+    <!-- Основной блок каталога (как в предметном index.html) -->
+    <div class="app-container">
+      <div class="catalog">
+        <div class="category-tabs">
+          <button class="tab-btn active" data-cat="all">Все</button>
+          <button class="tab-btn" data-cat="armory">Оружейная</button>
+          <button class="tab-btn" data-cat="elements">Элементы стихии</button>
+          <button class="tab-btn" data-cat="equip">Экипировка</button>
+          <button class="tab-btn" data-cat="overseas">Заморские товары</button>
+          <button class="tab-btn" data-cat="boots">Обувь</button>
+          <button class="tab-btn" data-cat="jewels">Драгоценности</button>
+          <button class="tab-btn" data-cat="armor">Броня и доспехи</button>
+          <button class="tab-btn" data-cat="shields">Боевые щиты</button>
+          <button class="tab-btn" data-cat="weapon">Вооружение</button>
+          <button class="tab-btn" data-cat="weapon2">Вооружение 2</button>
+          <button class="tab-btn" data-cat="magic_art">Магические артефакты</button>
+          <button class="tab-btn" data-cat="magic_equip">Магическая экипировка</button>
+          <button class="tab-btn" data-cat="situational">Ситуативные</button>
+          <button class="tab-btn" data-cat="str_element">Элемент силы</button>
+          <button class="tab-btn" data-cat="int_element">Элемент разума</button>
+          <button class="tab-btn" data-cat="agi_element">Элемент ловкости</button>
+          <button class="tab-btn" data-cat="agi_element2">Элемент ловкости 2</button>
+          <button class="tab-btn" data-cat="dark_telec">Темный телец</button>
+          <button class="tab-btn" data-cat="boss">С боссов</button>
+          <button class="tab-btn" data-cat="boost">Книги и руны</button>
+        </div>
+
+        <!-- Секции с сетками предметов (id сеток должны совпадать с items-db.js) -->
+        <section class="category-section" id="cat-armory"><h2><i class="fas fa-shield-alt"></i> Оружейная</h2><div class="items-grid" id="grid-armory"></div></section>
+        <section class="category-section" id="cat-elements"><h2><i class="fas fa-fire"></i> Элементы стихии</h2><div class="items-grid" id="grid-elements"></div></section>
+        <section class="category-section" id="cat-equip"><h2><i class="fas fa-ring"></i> Экипировка и ценности</h2><div class="items-grid" id="grid-equip"></div></section>
+        <section class="category-section" id="cat-overseas"><h2><i class="fas fa-globe-americas"></i> Заморские товары</h2><div class="items-grid" id="grid-overseas"></div></section>
+        <section class="category-section" id="cat-boots"><h2><i class="fas fa-shoe-prints"></i> Обувь</h2><div class="items-grid" id="grid-boots"></div></section>
+        <section class="category-section" id="cat-jewels"><h2><i class="fas fa-gem"></i> Драгоценности</h2><div class="items-grid" id="grid-jewels"></div></section>
+        <section class="category-section" id="cat-armor"><h2><i class="fas fa-shield-alt"></i> Броня и доспехи</h2><div class="items-grid" id="grid-armor"></div></section>
+        <section class="category-section" id="cat-shields"><h2><i class="fas fa-shield-alt"></i> Боевые щиты</h2><div class="items-grid" id="grid-shields"></div></section>
+        <section class="category-section" id="cat-weapon"><h2><i class="fas fa-khanda"></i> Вооружение</h2><div class="items-grid" id="grid-weapon"></div></section>
+        <section class="category-section" id="cat-weapon2"><h2><i class="fas fa-khanda"></i> Вооружение 2</h2><div class="items-grid" id="grid-weapon2"></div></section>
+        <section class="category-section" id="cat-magic_art"><h2><i class="fas fa-hat-wizard"></i> Магические артефакты</h2><div class="items-grid" id="grid-magic_art"></div></section>
+        <section class="category-section" id="cat-magic_equip"><h2><i class="fas fa-hat-wizard"></i> Магическая экипировка</h2><div class="items-grid" id="grid-magic_equip"></div></section>
+        <section class="category-section" id="cat-situational"><h2><i class="fas fa-exclamation-triangle"></i> Ситуативные предметы</h2><div class="items-grid" id="grid-situational"></div></section>
+        <section class="category-section" id="cat-str_element"><h2><i class="fas fa-fist-raised"></i> Элемент силы</h2><div class="items-grid" id="grid-str_element"></div></section>
+        <section class="category-section" id="cat-int_element"><h2><i class="fas fa-brain"></i> Элемент разума</h2><div class="items-grid" id="grid-int_element"></div></section>
+        <section class="category-section" id="cat-agi_element"><h2><i class="fas fa-running"></i> Элемент ловкости</h2><div class="items-grid" id="grid-agi_element"></div></section>
+        <section class="category-section" id="cat-agi_element2"><h2><i class="fas fa-running"></i> Элемент ловкости 2</h2><div class="items-grid" id="grid-agi_element2"></div></section>
+        <section class="category-section" id="cat-dark_telec"><h2><i class="fas fa-moon"></i> Темный телец</h2><div class="items-grid" id="grid-dark_telec"></div></section>
+        <section class="category-section" id="cat-boss"><h2><i class="fas fa-crown"></i> Выпадает с боссов</h2><div class="items-grid" id="grid-boss"></div></section>
+        <section class="category-section" id="cat-boost"><h2><i class="fas fa-chart-line"></i> Книги и руны</h2><div class="items-grid" id="grid-boost"></div></section>
+      </div>
+
+      <!-- Панель деталей предмета -->
+      <div class="item-detail-panel" id="itemDetailPanel">
+        <div id="detailContent">
+          <div class="empty-detail">
+            <div style="font-size:48px;"><i class="fas fa-clipboard-list"></i></div>
+            <p>Выберите предмет</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Подключаем базу предметов и логику -->
+  <script src="items-db.js"></script>
+  <script>
+  (function() {
+    document.querySelectorAll('.category-section h2').forEach(function(h2) {
+      var chevron = document.createElement('i');
+      chevron.className = 'fas fa-chevron-down collapse-chevron';
+      h2.appendChild(chevron);
+
+      h2.addEventListener('click', function() {
+        var grid = h2.parentElement.querySelector('.items-grid');
+        if (!grid) return;
+        grid.classList.toggle('collapsed');
+        h2.classList.toggle('collapsed-header');
+        if (!grid.classList.contains('collapsed')) {
+          grid.style.maxHeight = grid.scrollHeight + 'px';
+          setTimeout(function() { grid.style.maxHeight = ''; }, 350);
+        }
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

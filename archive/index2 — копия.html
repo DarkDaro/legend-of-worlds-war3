@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Герои Legend of Worlds</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Адаптивная шапка с логотипом -->
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+        </nav>
+    </header>
+
+    <div class="wiki-container">
+        <h1><i class="fas fa-helmet-battle"></i> Выбери героя</h1>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all"><i class="fas fa-users"></i> Все</button>
+            <button class="filter-btn" data-filter="strength"><i class="fas fa-shield-alt"></i> Сила</button>
+            <button class="filter-btn" data-filter="agility"><i class="fas fa-running"></i> Ловкость</button>
+            <button class="filter-btn" data-filter="intelligence"><i class="fas fa-brain"></i> Интеллект</button>
+        </div>
+
+        <div class="hero-grid" id="heroGrid">
+            <!-- Сила -->
+            <!-- Адмирал (Сила, Танк) -->
+        <div class="hero-card strength" data-hero="admiral" data-attr="strength">
+            <div class="hero-image" style="background-image: url('images/heroes/admiral.jpg');"></div>
+            <div class="hero-name">Адмирал</div>
+            <div class="hero-title">Морской воин</div>
+            <div class="hero-role role-tank"><i class="fas fa-shield-alt"></i> Танк</div>
+            <span class="hero-attr-badge">Сила</span>
+        </div>
+
+        <!-- Жрица Луны (Ловкость, Дамагер) -->
+        <div class="hero-card agility" data-hero="priestess" data-attr="agility">
+            <div class="hero-image" style="background-image: url('images/heroes/priestess.jpg');"></div>
+            <div class="hero-name">Жрица Луны</div>
+            <div class="hero-title">Лучница ночи</div>
+            <div class="hero-role role-damager"><i class="fas fa-crosshairs"></i> Дамагер</div>
+            <span class="hero-attr-badge">Ловкость</span>
+        </div>
+
+        <!-- Громовержец (Разум, Помощник) -->
+        <div class="hero-card intelligence" data-hero="thunderer" data-attr="intelligence">
+            <div class="hero-image" style="background-image: url('images/heroes/thunderer.jpg');"></div>
+            <div class="hero-name">Громовержец</div>
+            <div class="hero-title">Повелитель молний</div>
+            <div class="hero-role role-support"><i class="fas fa-bolt"></i> Помощник</div>
+            <span class="hero-attr-badge">Разум</span>
+        </div>
+
+            <!-- Ловкость -->
+            <div class="hero-card agility" data-hero="blademaster" data-attr="agility">
+                <div class="hero-image" style="background-image: url('https://www.hiveworkshop.com/data/ratory-images/units/blademaster-icon.png');"></div>
+                <div class="hero-name">Мастер клинка</div>
+                <div class="hero-title">Элитный мечник</div>
+                <span class="hero-attr-badge">Ловкость</span>
+            </div>
+            <div class="hero-card agility" data-hero="priestess" data-attr="agility">
+                <div class="hero-image" style="background-image: url('https://via.placeholder.com/240x140/1e2a1e/ffffff?text=🌙+PotM');"></div>
+                <div class="hero-name">Жрица Луны</div>
+                <div class="hero-title">Лучница</div>
+                <span class="hero-attr-badge">Ловкость</span>
+            </div>
+            <div class="hero-card agility" data-hero="warden" data-attr="agility">
+                <div class="hero-image" style="background-image: url('https://via.placeholder.com/240x140/1e2a1e/ffffff?text=🗡️+Warden');"></div>
+                <div class="hero-name">Стражница</div>
+                <div class="hero-title">Ассасин</div>
+                <span class="hero-attr-badge">Ловкость</span>
+            </div>
+            <div class="hero-card agility" data-hero="demonhunter" data-attr="agility">
+                <div class="hero-image" style="background-image: url('https://via.placeholder.com/240x140/1e2a1e/ffffff?text=🔥+DH');"></div>
+                <div class="hero-name">Охотник на демонов</div>
+                <div class="hero-title">Мститель</div>
+                <span class="hero-attr-badge">Ловкость</span>
+            </div>
+
+            <!-- Интеллект -->
+            <div class="hero-card intelligence" data-hero="archmage" data-attr="intelligence">
+                <div class="hero-image" style="background-image: url('https://www.hiveworkshop.com/data/ratory-images/units/archmage-icon.png');"></div>
+                <div class="hero-name">Архимаг</div>
+                <div class="hero-title">Маг воды</div>
+                <span class="hero-attr-badge">Интеллект</span>
+            </div>
+            <div class="hero-card intelligence" data-hero="lich" data-attr="intelligence">
+                <div class="hero-image" style="background-image: url('https://via.placeholder.com/240x140/1e1e2a/ffffff?text=❄️+Lich');"></div>
+                <div class="hero-name">Лич</div>
+                <div class="hero-title">Маг льда</div>
+                <span class="hero-attr-badge">Интеллект</span>
+            </div>
+            <div class="hero-card intelligence" data-hero="farseer" data-attr="intelligence">
+                <div class="hero-image" style="background-image: url('https://via.placeholder.com/240x140/1e1e2a/ffffff?text=🐺+FS');"></div>
+                <div class="hero-name">Провидец</div>
+                <div class="hero-title">Шаман</div>
+                <span class="hero-attr-badge">Интеллект</span>
+            </div>
+            <div class="hero-card intelligence" data-hero="keeper" data-attr="intelligence">
+                <div class="hero-image" style="background-image: url('https://via.placeholder.com/240x140/1e1e2a/ffffff?text=🌳+KotG');"></div>
+                <div class="hero-name">Хранитель рощи</div>
+                <div class="hero-title">Друид</div>
+                <span class="hero-attr-badge">Интеллект</span>
+            </div>
+        </div>
+        <p style="text-align:right; color:#7a8faa; margin-top:10px;">
+            <i class="fas fa-mouse-pointer"></i> кликни на героя — откроется подробная страница
+        </p>
+    </div>
+
+    <script>
+        (function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.hero-card');
+
+            function filterHeroes(filterValue) {
+                cards.forEach(card => {
+                    if (filterValue === 'all' || card.dataset.attr === filterValue) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                filterBtns.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.filter === filterValue) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => filterHeroes(btn.dataset.filter));
+            });
+
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const hero = card.dataset.hero;
+                    if (hero) window.location.href = hero + '.html';
+                });
+            });
+
+            filterHeroes('all');
+        })();
+    </script>
+</body>
+</html>

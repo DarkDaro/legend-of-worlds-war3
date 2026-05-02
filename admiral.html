@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адмирал · Герои · Legend of Worlds</title>
+    <meta property="og:title" content="Прохор — Legend of Worlds">
+    <meta property="og:description" content="Прохор — герой Арены Миров. Способности, статы, тактика.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+</head>
+<body class="strength">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Прохор</span></div>
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"><i class="fas fa-anchor"></i></div>
+                <div class="detail-title">Прохор <span class="detail-badge">Сила</span></div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><i class="fas fa-crosshairs"></i> Ближний бой (150)</div>
+                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:#ff5555;">Сила</span></div>
+                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: 290</div>
+                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="role-tank">Танк</span></div>
+            </div>
+            <table class="hero-stats-table">
+                <tr><th>Характеристика</th><th>Значение</th><th>Прирост</th></tr>
+                <tr><td><span class="stat-strength">Сила</span></td><td>28</td><td>+3</td></tr>
+                <tr><td><span class="stat-intelligence">Разум</span></td><td>18</td><td>+2</td></tr>
+                <tr><td><span class="stat-agility">Ловкость</span></td><td>14</td><td>+2</td></tr>
+            </table>
+            <div class="detail-description">
+                <p>Прохор — легендарный адмирал, чей призрачный флот наводит ужас на врагов. Непоколебимый в бою, он способен переломить ход сражения, призывая на помощь духи погибших кораблей.</p>
+            </div>
+            <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
+            <div class="abilities-grid">
+
+                <!-- Q: Гейзер -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/admiral_geyser.png" alt="Гейзер" onerror="this.parentElement.innerHTML='<i class=\'fas fa-water\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">Q</span>
+                            <div class="ability-name">Гейзер</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Вызывает гейзер в указанной области. Через 1.2 сек потоки воды вырываются из земли, подкидывают врагов и сбрасывают вниз, нанося урон при падении и замедляя их.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">175/350/525/700/875 + STR×2</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">450</span></div>
+                        <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">30% на 2/3/4/5/6 сек</span></div>
+                        <div class="param-row"><span class="param-label">Задержка</span><span class="param-values">1.2 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">80/90/100/110/120</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- W: Меч прилива -->
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/admiral_tide.png" alt="Меч прилива" onerror="this.parentElement.innerHTML='<i class=\'fas fa-wave-square\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Меч прилива</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Каждая 5-я атака наносит дополнительный урон и накладывает эффект очищения, который сильно замедляет врага, затем ослабевает.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">150/225/300/375/450 + STR×0.7</span></div>
+                        <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">100% → 50% (очищение)</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">2 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- E: Призрачный корабль -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/admiral_ship.png" alt="Призрачный корабль" onerror="this.parentElement.innerHTML='<i class=\'fas fa-ship\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Призрачный корабль</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Вызывает призрачный корабль, который плывёт вперёд и ведёт обстрел врагов из всех орудий, оглушая их.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">STR×4 + 200/400/600/800/1000</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">400</span></div>
+                        <div class="param-row"><span class="param-label">Дистанция</span><span class="param-values">1400</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">0.5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">100/110/120/130/140</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Призрачная Флотилия -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/admiral_fleet.png" alt="Призрачная Флотилия" onerror="this.parentElement.innerHTML='<i class=\'fas fa-skull\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Призрачная Флотилия</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Вызывает грозную призрачную флотилию, обстреливающую врагов из всех орудий. Главный корабль распространяет ауру, снижающую броню врагам и добавляющую броню союзникам.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон за залп</span><span class="param-values">400/600/800/1000/1200 + STR</span></div>
+                        <div class="param-row"><span class="param-label">Залп</span><span class="param-values">1 раз в сек</span></div>
+                        <div class="param-row"><span class="param-label">Снижение брони врагам</span><span class="param-values">12/18/24/30/36</span></div>
+                        <div class="param-row"><span class="param-label">Бонусная броня союзникам</span><span class="param-values">12/18/24/30/36</span></div>
+                        <div class="param-row"><span class="param-label">Область ауры</span><span class="param-values">1500</span></div>
+                        <div class="param-row"><span class="param-label">Дистанция</span><span class="param-values">3000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/175/200/225/250</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">120 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Волны -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/admiral_waves.png" alt="Волны" onerror="this.parentElement.innerHTML='<i class=\'fas fa-tint\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Волны</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Выпускает 7 волн в указанном направлении и взмахивает мечом им вслед.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон волн</span><span class="param-values">70 + STR×0.5</span></div>
+                        <div class="param-row"><span class="param-label">Дистанция волн</span><span class="param-values">600–900</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">60/65/70/75/80</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">14 сек</span></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="back-button" onclick="window.location.href='heroes.html'"><i class="fas fa-arrow-left"></i> Вернуться к героям</div>
+        </div>
+    </div>
+</body>
+</html>

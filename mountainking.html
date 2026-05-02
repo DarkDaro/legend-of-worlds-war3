@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Король гор · Герои · Legend of Worlds</title>
+    <meta property="og:title" content="Король гор — Legend of Worlds">
+    <meta property="og:description" content="Король гор — герой Арены Миров. Способности, статы, тактика.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+</head>
+<body class="strength">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Король гор</span></div>
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"><i class="fas fa-mountain"></i></div>
+                <div class="detail-title">Король гор <span class="detail-badge">Сила</span></div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><i class="fas fa-crosshairs"></i> Ближний бой (150)</div>
+                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:#ff5555;">Сила</span></div>
+                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: 290</div>
+                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="role-tank">Танк</span></div>
+            </div>
+            <table class="hero-stats-table">
+                <tr><th>Характеристика</th><th>Значение</th><th>Прирост</th></tr>
+                <tr><td><span class="stat-strength">Сила</span></td><td>24</td><td>+3.0</td></tr>
+                <tr><td><span class="stat-agility">Ловкость</span></td><td>11</td><td>+1.2</td></tr>
+                <tr><td><span class="stat-intelligence">Разум</span></td><td>15</td><td>+1.5</td></tr>
+            </table>
+            <div class="detail-description">
+                <p>Король гор — могучий воин дворфов, владеющий молотом и топором. Его ярость в бою способна сокрушить целые армии. Легенды гласят, что он был выкован из самой горы и несёт в себе силу земли.</p>
+            </div>
+            <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
+            <div class="abilities-grid">
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/mk_storm_bolt.png" alt="Громовой удар" onerror="this.parentElement.innerHTML='<i class=\'fas fa-hammer\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">Q</span>
+                            <div class="ability-name">Громовой удар</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Бросает молот, оглушающий врага и наносящий урон.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">75/80/85/90/95</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">9/8/7/6/5</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">100/175/250/325/400</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">3/4/5/6/7</span></div>
+                    </div>
+                </div>
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/mk_thunder_clap.png" alt="Громовая поступь" onerror="this.parentElement.innerHTML='<i class=\'fas fa-fist-raised\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Громовая поступь</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Удар по земле, замедляющий и наносящий урон врагам вокруг.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">90/95/100/105/110</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">8/7/6/5/4</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">60/100/140/180/220</span></div>
+                        <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">25%/35%/45%/55%/65%</span></div>
+                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">300</span></div>
+                    </div>
+                </div>
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/mk_bash.png" alt="Оглушающий удар" onerror="this.parentElement.innerHTML='<i class=\'fas fa-bolt\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Оглушающий удар</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Даёт шанс оглушить цель и нанести дополнительный урон при каждой атаке.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">10%/15%/20%/25%/30%</span></div>
+                        <div class="param-row"><span class="param-label">Доп. урон</span><span class="param-values">25/40/55/70/85</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">1.25 сек</span></div>
+                    </div>
+                </div>
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/mk_avatar.png" alt="Аватара" onerror="this.parentElement.innerHTML='<i class=\'fas fa-user-shield\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Аватара</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Превращается в огромного каменного гиганта, получая бонус к здоровью, урону и невосприимчивость к магии.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/160/170/180/190</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">120/110/100/90/80</span></div>
+                        <div class="param-row"><span class="param-label">Доп. HP</span><span class="param-values">200/350/500/650/800</span></div>
+                        <div class="param-row"><span class="param-label">Доп. урон</span><span class="param-values">20/30/40/50/60</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">15/18/21/24/27</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="back-button" onclick="window.location.href='heroes.html'"><i class="fas fa-arrow-left"></i> Вернуться к героям</div>
+        </div>
+    </div>
+</body>
+</html>
