@@ -42,6 +42,10 @@
     <!-- Кнопка возврата (стиль back-link) -->
     <h1><i class="fas fa-flask"></i> Лавки предметов</h1>
     <p style="margin-bottom:20px; color:#b0b9d0;">Кликните по предмету — увидите полное дерево компонентов, включая стоимость свитков.</p>
+    <div class="item-search">
+      <i class="fas fa-search"></i>
+      <input type="text" id="itemSearch" placeholder="Найти предмет...">
+    </div>
 
     <!-- Основной блок каталога (как в предметном index.html) -->
     <div class="app-container">
@@ -126,6 +130,30 @@
       });
     });
   })();
+
+  // Поиск предметов
+  const searchInput = document.getElementById('itemSearch');
+  const itemCards = document.querySelectorAll('.item-card');
+
+  searchInput.addEventListener('input', function() {
+    const query = this.value.toLowerCase().trim();
+
+    document.querySelectorAll('.category-section').forEach(function(section) {
+      const items = section.querySelectorAll('.item-card');
+      let hasVisible = false;
+
+      items.forEach(function(card) {
+        const name = card.querySelector('.item-name')?.textContent.toLowerCase() || '';
+        const tags = card.querySelector('.item-tags')?.textContent.toLowerCase() || '';
+        const match = name.includes(query) || tags.includes(query);
+
+        card.style.display = match ? '' : 'none';
+        if (match) hasVisible = true;
+      });
+
+      section.style.display = hasVisible || !query ? '' : 'none';
+    });
+  });
   </script>
   <a href="index.html" class="back-button" style="margin: 30px 0 30px 80px;"><i class="fas fa-home"></i> Вернуться на главную</a>
 </body>
