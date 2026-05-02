@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жрица Луны · Герои · Legend of Worlds</title>
+    <meta property="og:title" content="Жрица Луны — Legend of Worlds">
+    <meta property="og:description" content="Жрица Луны — герой Арены Миров. Способности, статы, тактика.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+</head>
+<body class="agility">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Жрица Луны</span></div>
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"><i class="fas fa-moon"></i></div>
+                <div class="detail-title">Жрица Луны <span class="detail-badge">Ловкость</span></div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><i class="fas fa-crosshairs"></i> Дальний бой (700)</div>
+                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:#55ff55;">Ловкость</span></div>
+                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: 320</div>
+                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="role-damager">Дамагер</span></div>
+            </div>
+            <table class="hero-stats-table">
+                <tr><th>Характеристика</th><th>Значение</th><th>Прирост</th></tr>
+                <tr><td><span class="stat-strength">Сила</span></td><td>18</td><td>+2</td></tr>
+                <tr><td><span class="stat-agility">Ловкость</span></td><td>27</td><td>+3</td></tr>
+                <tr><td><span class="stat-intelligence">Разум</span></td><td>16</td><td>+2</td></tr>
+            </table>
+            <div class="detail-description">
+                <p>Жрица Луны — эльфийская лучница, черпающая силу ночного светила. Её стрелы разят без промаха, а верная рысь всегда готова унести хозяйку от опасности.</p>
+            </div>
+            <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
+            <div class="abilities-grid">
+
+                <!-- Q: Цикл стрел -->
+                <div class="ability-cycle-group">
+                    <div class="cycle-label">
+                        <span class="cycle-key">Q</span> Цикл стрел — переключается клавишей F
+                        <span class="cycle-hint">🔄 по кругу</span>
+                    </div>
+
+                    <div class="ability-card active">
+                        <div class="ability-header">
+                            <div class="ability-icon"><img src="images/abilities/priestess_arcane.png" alt="Чародейская стрела" onerror="this.parentElement.innerHTML='<i class=\'fas fa-hat-wizard\'></i>'"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">Q</span>
+                                <div class="ability-name">Чародейская стрела</div>
+                                <div class="ability-type-badge">Активная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Выпускает магическую стрелу, наносящую чистый урон и снижающую сопротивление цели.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">40/45/50/55/60</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">8/7/6/5/4</span></div>
+                            <div class="param-row"><span class="param-label">Урон</span><span class="param-values">60/90/120/150/180</span></div>
+                            <div class="param-row"><span class="param-label">Снижение резиста</span><span class="param-values">5%/7%/9%/11%/13%</span></div>
+                        </div>
+                    </div>
+
+                    <div class="ability-card active">
+                        <div class="ability-header">
+                            <div class="ability-icon"><img src="images/abilities/priestess_fire.png" alt="Огненная стрела" onerror="this.parentElement.innerHTML='<i class=\'fas fa-fire\'></i>'"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">Q</span>
+                                <div class="ability-name">Огненная стрела</div>
+                                <div class="ability-type-badge">Активная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Поджигает цель, нанося урон от горения и снижая лечение.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">40/45/50/55/60</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">8/7/6/5/4</span></div>
+                            <div class="param-row"><span class="param-label">Урон</span><span class="param-values">40/60/80/100/120</span></div>
+                            <div class="param-row"><span class="param-label">Горение</span><span class="param-values">15/20/25/30/35 урона/сек (3 сек)</span></div>
+                            <div class="param-row"><span class="param-label">Снижение лечения</span><span class="param-values">30%/35%/40%/45%/50%</span></div>
+                        </div>
+                    </div>
+
+                    <div class="ability-card active">
+                        <div class="ability-header">
+                            <div class="ability-icon"><img src="images/abilities/priestess_ice.png" alt="Ледяная стрела" onerror="this.parentElement.innerHTML='<i class=\'fas fa-snowflake\'></i>'"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">Q</span>
+                                <div class="ability-name">Ледяная стрела</div>
+                                <div class="ability-type-badge">Активная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Замораживает цель, замедляя её скорость бега и атаки.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">40/45/50/55/60</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">8/7/6/5/4</span></div>
+                            <div class="param-row"><span class="param-label">Урон</span><span class="param-values">40/60/80/100/120</span></div>
+                            <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">25%/30%/35%/40%/45%</span></div>
+                            <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">3/3.5/4/4.5/5 сек</span></div>
+                        </div>
+                    </div>
+
+                    <div class="ability-card active">
+                        <div class="ability-header">
+                            <div class="ability-icon"><img src="images/abilities/priestess_dark.png" alt="Тёмная стрела" onerror="this.parentElement.innerHTML='<i class=\'fas fa-skull\'></i>'"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">Q</span>
+                                <div class="ability-name">Тёмная стрела</div>
+                                <div class="ability-type-badge">Активная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Выпускает тёмную стрелу, которая наносит урон и немоту цели.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">40/45/50/55/60</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">8/7/6/5/4</span></div>
+                            <div class="param-row"><span class="param-label">Урон</span><span class="param-values">50/75/100/125/150</span></div>
+                            <div class="param-row"><span class="param-label">Немота</span><span class="param-values">1/1.5/2/2.5/3 сек</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- W: Прыжок рысью -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/priestess_leap.png" alt="Прыжок рысью" onerror="this.parentElement.innerHTML='<i class=\'fas fa-paw\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Прыжок рысью</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Совершает быстрый прыжок вперёд, увеличивая скорость атаки себе и союзникам рядом.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">60/65/70/75/80</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20/18/16/14/12</span></div>
+                        <div class="param-row"><span class="param-label">Доп. скорость атаки</span><span class="param-values">15%/20%/25%/30%/35%</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">8/10/12/14/16</span></div>
+                    </div>
+                </div>
+
+                <!-- E: Меткость -->
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/priestess_precision.png" alt="Меткость" onerror="this.parentElement.innerHTML='<i class=\'fas fa-bullseye\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Меткость</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Пассивно увеличивает шанс критического удара при атаках.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Шанс крита</span><span class="param-values">10%/15%/20%/25%/30%</span></div>
+                        <div class="param-row"><span class="param-label">Множитель</span><span class="param-values">1.5/1.8/2.1/2.4/2.7</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Боевые совы -->
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/priestess_owls.png" alt="Боевые совы" onerror="this.parentElement.innerHTML='<i class=\'fas fa-dove\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Боевые совы</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Периодически призывает сову, которая атакует врагов и даёт обзор.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон совы</span><span class="param-values">15/25/35/45/55</span></div>
+                        <div class="param-row"><span class="param-label">Интервал</span><span class="param-values">5/4.5/4/3.5/3 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Смена стрелы -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/priestess_switch.png" alt="Смена стрелы" onerror="this.parentElement.innerHTML='<i class=\'fas fa-sync-alt\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Смена стрелы</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Переключает текущую стрелу на следующую по кругу: Чародейская → Огненная → Ледяная → Тёмная → Чародейская...</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">1 сек</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="back-button" onclick="window.location.href='heroes.html'"><i class="fas fa-arrow-left"></i> Вернуться к героям</div>
+        </div>
+    </div>
+</body>
+</html>

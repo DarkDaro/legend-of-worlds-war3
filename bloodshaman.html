@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шаман крови · Герои · Legend of Worlds</title>
+    <meta property="og:title" content="Шаман крови — Legend of Worlds">
+    <meta property="og:description" content="Шаман крови — герой Арены Миров. Способности, статы, тактика.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+</head>
+<body class="intelligence">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Шаман крови</span></div>
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"><i class="fas fa-tint"></i></div>
+                <div class="detail-title">Шаман крови <span class="detail-badge">Разум</span></div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><i class="fas fa-crosshairs"></i> Дальний бой (500)</div>
+                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:#55aaff;">Разум</span></div>
+                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: 275</div>
+                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="role-support">Помощник</span></div>
+            </div>
+            <table class="hero-stats-table">
+                <tr><th>Характеристика</th><th>Значение</th><th>Прирост</th></tr>
+                <tr><td><span class="stat-strength">Сила</span></td><td>20</td><td>+2.2</td></tr>
+                <tr><td><span class="stat-agility">Ловкость</span></td><td>13</td><td>+1.3</td></tr>
+                <tr><td><span class="stat-intelligence">Разум</span></td><td>22</td><td>+3.0</td></tr>
+            </table>
+            <div class="detail-description">
+                <p>Шаман крови — отступник, отвергший заветы предков ради запретной магии жизненной силы. Он черпает мощь из собственной крови и крови врагов, превращая боль в исцеление, а раны — в оружие. Каждый его ритуал — сделка: жизнь за силу, сила за жизнь.</p>
+            </div>
+            <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
+            <div class="abilities-grid">
+
+                <!-- Q: Кровавый ритуал -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/blood_ritual.png" alt="Кровавый ритуал" onerror="this.parentElement.innerHTML='<i class=\'fas fa-hand-holding-droplet\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">Q</span>
+                            <div class="ability-name">Кровавый ритуал</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Жертвует часть собственного здоровья, нанося урон врагу и восстанавливая ману.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Стоимость HP</span><span class="param-values">8%/10%/12%/14%/16% макс. HP</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">6/5/4/3/2</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">75/125/175/225/275</span></div>
+                        <div class="param-row"><span class="param-label">Восст. маны</span><span class="param-values">30/45/60/75/90</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">700</span></div>
+                    </div>
+                </div>
+
+                <!-- W: Кровавая связь -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/blood_bond.png" alt="Кровавая связь" onerror="this.parentElement.innerHTML='<i class=\'fas fa-link\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Кровавая связь</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Связывает себя с союзником: часть урона, полученного союзником, перенаправляется на шамана. Шаман регенерирует быстрее.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">60/70/80/90/100</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20/18/16/14/12</span></div>
+                        <div class="param-row"><span class="param-label">Перенаправление</span><span class="param-values">20%/30%/40%/50%/60%</span></div>
+                        <div class="param-row"><span class="param-label">Реген HP</span><span class="param-values">10/18/26/34/42 в сек</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">8/10/12/14/16</span></div>
+                    </div>
+                </div>
+
+                <!-- E: Проклятие крови -->
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/blood_curse.png" alt="Проклятие крови" onerror="this.parentElement.innerHTML='<i class=\'fas fa-vial\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Проклятие крови</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Пассивно: атаки шамана накладывают проклятие, снижающее регенерацию здоровья цели. При максимальных стаках цель начинает терять HP.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Снижение регена</span><span class="param-values">10%/15%/20%/25%/30% за стак</span></div>
+                        <div class="param-row"><span class="param-label">Макс. стаков</span><span class="param-values">3</span></div>
+                        <div class="param-row"><span class="param-label">Урон на 3 стаках</span><span class="param-values">8/14/20/26/32 в сек</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Кровавый дождь -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/blood_rain.png" alt="Кровавый дождь" onerror="this.parentElement.innerHTML='<i class=\'fas fa-cloud-rain\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Кровавый дождь</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Накрывает область кровавым ливнем: враги теряют здоровье, а союзники исцеляются на часть нанесённого урона.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">160/185/210/235/260</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100/90/80/70/60</span></div>
+                        <div class="param-row"><span class="param-label">Урон в сек</span><span class="param-values">40/55/70/85/100</span></div>
+                        <div class="param-row"><span class="param-label">Исцеление союзникам</span><span class="param-values">25%/30%/35%/40%/45% от урона</span></div>
+                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">500</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">6/7/8/9/10</span></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="back-button" onclick="window.location.href='heroes.html'"><i class="fas fa-arrow-left"></i> Вернуться к героям</div>
+        </div>
+    </div>
+</body>
+</html>

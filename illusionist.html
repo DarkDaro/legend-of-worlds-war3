@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Иллюзионист · Герои · Legend of Worlds</title>
+    <meta property="og:title" content="Иллюзионист — Legend of Worlds">
+    <meta property="og:description" content="Иллюзионист — герой Арены Миров. Способности, статы, тактика.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+</head>
+<body class="agility">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Иллюзионист</span></div>
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"><i class="fas fa-eye"></i></div>
+                <div class="detail-title">Иллюзионист <span class="detail-badge">Ловкость</span></div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><i class="fas fa-crosshairs"></i> Дальний бой (600)</div>
+                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:#55ff55;">Ловкость</span></div>
+                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: 300</div>
+                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="role-damager">Дамагер</span></div>
+            </div>
+            <table class="hero-stats-table">
+                <tr><th>Характеристика</th><th>Значение</th><th>Прирост</th></tr>
+                <tr><td><span class="stat-strength">Сила</span></td><td>15</td><td>+1.5</td></tr>
+                <tr><td><span class="stat-agility">Ловкость</span></td><td>22</td><td>+3.0</td></tr>
+                <tr><td><span class="stat-intelligence">Разум</span></td><td>18</td><td>+2.0</td></tr>
+            </table>
+            <div class="detail-description">
+                <p>Иллюзионист — мастер обмана и зеркальных отражений. Он дезориентирует врагов миражами, заставляя их атаковать пустоту, пока настоящий удар настигает с неожиданной стороны.</p>
+            </div>
+            <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
+            <div class="abilities-grid">
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/illusionist_mirror.png" alt="Зеркальные копии" onerror="this.parentElement.innerHTML='<i class=\'fas fa-users\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">Q</span>
+                            <div class="ability-name">Зеркальные копии</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Создаёт несколько иллюзий, копирующих внешность героя.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">100/110/120/130/140</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25/22/19/16/13</span></div>
+                        <div class="param-row"><span class="param-label">Копии</span><span class="param-values">1/2/3/4/5</span></div>
+                        <div class="param-row"><span class="param-label">Урон копий</span><span class="param-values">30%/40%/50%/60%/70%</span></div>
+                    </div>
+                </div>
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/illusionist_phase.png" alt="Фазовый сдвиг" onerror="this.parentElement.innerHTML='<i class=\'fas fa-ghost\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Фазовый сдвиг</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Мгновенно перемещается на короткое расстояние, становясь неуязвимым.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">40/45/50/55/60</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">8/7/6/5/4</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">1/1.5/2/2.5/3</span></div>
+                    </div>
+                </div>
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/illusionist_confuse.png" alt="Дезориентация" onerror="this.parentElement.innerHTML='<i class=\'fas fa-random\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Дезориентация</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Заставляет врагов атаковать собственных союзников на короткое время.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">80/90/100/110/120</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">14/13/12/11/10</span></div>
+                        <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">30%/40%/50%/60%/70%</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">3/4/5/6/7</span></div>
+                    </div>
+                </div>
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/illusionist_mirage.png" alt="Мираж" onerror="this.parentElement.innerHTML='<i class=\'fas fa-magic\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Мираж</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Ультимейт: заполняет поле боя иллюзиями, каждая наносит часть урона героя.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/200/225/250/275</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100/90/80/70/60</span></div>
+                        <div class="param-row"><span class="param-label">Копии</span><span class="param-values">3/4/5/6/7</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">15/18/21/24/27</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="back-button" onclick="window.location.href='heroes.html'"><i class="fas fa-arrow-left"></i> Вернуться к героям</div>
+        </div>
+    </div>
+</body>
+</html>

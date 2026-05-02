@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лич · Герои · Legend of Worlds</title>
+    <meta property="og:title" content="Лич — Legend of Worlds">
+    <meta property="og:description" content="Лич — герой Арены Миров. Способности, статы, тактика.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+</head>
+<body class="intelligence">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Лич</span></div>
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"><i class="fas fa-icicles"></i></div>
+                <div class="detail-title">Лич <span class="detail-badge">Разум</span></div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><i class="fas fa-crosshairs"></i> Дальний бой (500)</div>
+                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:#55aaff;">Разум</span></div>
+                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: 270</div>
+                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="role-support">Помощник</span></div>
+            </div>
+            <table class="hero-stats-table">
+                <tr><th>Характеристика</th><th>Значение</th><th>Прирост</th></tr>
+                <tr><td><span class="stat-strength">Сила</span></td><td>15</td><td>+2.0</td></tr>
+                <tr><td><span class="stat-agility">Ловкость</span></td><td>14</td><td>+1.0</td></tr>
+                <tr><td><span class="stat-intelligence">Разум</span></td><td>20</td><td>+3.4</td></tr>
+            </table>
+            <div class="detail-description">
+                <p>Лич — некогда могущественный некромант, чья душа была заключена Нер'зулом в лёд. Теперь он — воплощение морозной магии, повелевающий ледяными бурями и питающийся чужой жизненной силой.</p>
+            </div>
+            <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
+            <div class="abilities-grid">
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/lich_nova.png" alt="Ледяная вспышка" onerror="this.parentElement.innerHTML='<i class=\'fas fa-asterisk\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">Q</span>
+                            <div class="ability-name">Ледяная вспышка</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Обрушивает на цель ледяной взрыв, нанося урон и замедляя всех поблизости.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">100/110/120/130/140</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">8/7/6/5/4</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">85/135/185/235/285</span></div>
+                        <div class="param-row"><span class="param-label">Цели</span><span class="param-values">1/2/3/4/5</span></div>
+                    </div>
+                </div>
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/lich_frostarmor.png" alt="Ледяная броня" onerror="this.parentElement.innerHTML='<i class=\'fas fa-shield-alt\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Ледяная броня</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Покрывает цель ледяным панцирем, увеличивая броню и замедляя атакующих врагов.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">40/45/50/55/60</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">5</span></div>
+                        <div class="param-row"><span class="param-label">Доп. броня</span><span class="param-values">3/5/7/9/11</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">40</span></div>
+                    </div>
+                </div>
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/lich_ritual.png" alt="Тёмный ритуал" onerror="this.parentElement.innerHTML='<i class=\'fas fa-skull\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Тёмный ритуал</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Приносит союзное существо в жертву, превращая его здоровье в ману.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">25/30/35/40/45</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15/13/11/9/7</span></div>
+                        <div class="param-row"><span class="param-label">Конвертация маны</span><span class="param-values">25%/35%/45%/55%/65%</span></div>
+                    </div>
+                </div>
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/lich_deathdecay.png" alt="Смерть и разложение" onerror="this.parentElement.innerHTML='<i class=\'fas fa-biohazard\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Смерть и разложение</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Ультимейт: поражает огромную область, уничтожая 4% макс. здоровья целей в секунду.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">200/220/240/260/280</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">150/135/120/105/90</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">4%/5%/6%/7%/8% HP в сек</span></div>
+                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">500</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">30</span></div>
+                    </div>
+                </div>
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/lich_frostaura.png" alt="Аура мороза" onerror="this.parentElement.innerHTML='<i class=\'fas fa-snowflake\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Аура мороза</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Замедляет скорость атаки и передвижения врагов вокруг Лича.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Замедление атаки</span><span class="param-values">5%/10%/15%/20%/25%</span></div>
+                        <div class="param-row"><span class="param-label">Замедление движения</span><span class="param-values">5%/10%/15%/20%/25%</span></div>
+                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">600</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="back-button" onclick="window.location.href='heroes.html'"><i class="fas fa-arrow-left"></i> Вернуться к героям</div>
+        </div>
+    </div>
+</body>
+</html>

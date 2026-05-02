@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Громовержец · Герои · Legend of Worlds</title>
+    <meta property="og:title" content="Громовержец — Legend of Worlds">
+    <meta property="og:description" content="Громовержец — герой Арены Миров. Способности, статы, тактика.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+</head>
+<body class="intelligence">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Громовержец</span></div>
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"><i class="fas fa-cloud-rain"></i></div>
+                <div class="detail-title">Громовержец <span class="detail-badge">Разум</span></div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><i class="fas fa-crosshairs"></i> Дальний бой (600)</div>
+                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:#55aaff;">Разум</span></div>
+                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: 280</div>
+                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="role-support">Помощник</span></div>
+            </div>
+            <table class="hero-stats-table">
+                <tr><th>Характеристика</th><th>Значение</th><th>Прирост</th></tr>
+                <tr><td><span class="stat-strength">Сила</span></td><td>24</td><td>+2</td></tr>
+                <tr><td><span class="stat-agility">Ловкость</span></td><td>12</td><td>+2</td></tr>
+                <tr><td><span class="stat-intelligence">Разум</span></td><td>24</td><td>+3</td></tr>
+            </table>
+            <div class="detail-description">
+                <p>Громовержец — могущественный шаман, повелевающий молниями и бурями. Его заклинания способны как наносить сокрушительный урон, так и ослаблять врагов, делая их уязвимыми для союзников.</p>
+            </div>
+            <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
+            <div class="abilities-grid">
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/thunderer_chain.png" alt="Разветвленная молния" onerror="this.parentElement.innerHTML='<i class=\'fas fa-bolt\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">Q</span>
+                            <div class="ability-name">Разветвленная молния</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Выпускает молнию, поражающую несколько целей и наносящую урон.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">90/100/110/120/130</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">9/8/7/6/5</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">140/185/230/275/320</span></div>
+                        <div class="param-row"><span class="param-label">Цепи</span><span class="param-values">3/4/5/6/7</span></div>
+                    </div>
+                </div>
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/thunderer_storm.png" alt="Гроза" onerror="this.parentElement.innerHTML='<i class=\'fas fa-cloud\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Гроза</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Создаёт грозовое облако, периодически бьющее молниями по врагам в области.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">80/90/100/110/120</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">14/13/12/11/10</span></div>
+                        <div class="param-row"><span class="param-label">Урон в сек</span><span class="param-values">30/45/60/75/90</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">6/7/8/9/10</span></div>
+                    </div>
+                </div>
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/thunderer_leap.png" alt="Громовой скачок" onerror="this.parentElement.innerHTML='<i class=\'fas fa-arrow-up\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Громовой скачок</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Прыгает в указанную точку, нанося урон и замедляя врагов в области приземления.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">70/75/80/85/90</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">12/11/10/9/8</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">60/90/120/150/180</span></div>
+                        <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">30%/40%/50%/60%/70%</span></div>
+                    </div>
+                </div>
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/thunderer_discharge.png" alt="Электрический разряд" onerror="this.parentElement.innerHTML='<i class=\'fas fa-bolt\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Электрический разряд</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">При применении заклинаний следующая атака наносит дополнительный урон молнией.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Доп. урон</span><span class="param-values">20/40/60/80/100</span></div>
+                    </div>
+                </div>
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon"><img src="images/abilities/thunderer_roar.png" alt="Громовой рёв" onerror="this.parentElement.innerHTML='<i class=\'fas fa-volume-up\'></i>'"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Громовой рёв</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Оглушает и наносит урон всем врагам вокруг героя.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/170/190/210/230</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">120/110/100/90/80</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">150/225/300/375/450</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">3/4/5/6/7</span></div>
+                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">500</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="back-button" onclick="window.location.href='heroes.html'"><i class="fas fa-arrow-left"></i> Вернуться к героям</div>
+        </div>
+    </div>
+</body>
+</html>

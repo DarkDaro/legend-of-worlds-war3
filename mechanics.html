@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Механики · Legend of Worlds</title>
+    <meta property="og:title" content="Механики — Legend of Worlds">
+    <meta property="og:description" content="Уникальные игровые механики: вампиризм, возврат урона, порча, сборка в один клик.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link active"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><span class="current">Механики</span></div>
+
+        <h1>Уникальные механики</h1>
+        <p style="color:#8aa0c0; margin-bottom:24px; font-size:1.05rem;">В Legend of Worlds действует ряд уникальных механик, отличающих карту от стандартного Warcraft III. Ниже описана каждая из них.</p>
+
+        <div class="mechanics-grid">
+
+            <!-- Удача -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#1a2a0a; border:1px solid #00ff8844; color:#00ff88;">
+                    <i class="fas fa-dice"></i>
+                </div>
+                <h3>Удача</h3>
+                <p>Параметр, влияющий на шанс срабатывания случайных эффектов: критический удар, оглушение, уклонение, срабатование предметов и способностей. Все источники удачи складываются. Чем выше базовый шанс — тем меньше даёт удача.</p>
+                <div class="mechanic-formula">Итог = Базовый% + Удача × (1 − Базовый% / 100)</div>
+            </div>
+
+            <!-- Магический крит -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#2a0a1a; border:1px solid #ff555544; color:#ff5555;">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Магический крит</h3>
+                <p>Отдельный множитель критического урона для заклинаний. Работает независимо от физического крита. Увеличивает урон способностей при срабатывании.</p>
+                <div class="mechanic-formula">Маг. урон = Базовый урон × Маг. крит (1.5 / 2.0 / 2.5)</div>
+            </div>
+
+            <!-- Магический вампиризм -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#1a0a2a; border:1px solid #bf7fff44; color:#bf7fff;">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <h3>Магический вампиризм</h3>
+                <p>Восстановление здоровья от магического урона, нанесённого способностями. В отличие от физического вампиризма, работает только с заклинаниями.</p>
+                <div class="mechanic-formula">Хил = Маг. урон × Вампиризм%</div>
+            </div>
+
+            <!-- Блок -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#0a1a2a; border:1px solid #55aaff44; color:#55aaff;">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Блок урона</h3>
+                <p>Шанс полностью заблокировать физическую атаку, получив 0 урона. Срабатывает до расчёта брони. Не складывается — берётся наивысшее значение.</p>
+                <div class="mechanic-formula">Шанс блока = Базовый% + Бонус от предметов</div>
+            </div>
+
+            <!-- Сопротивление оглушению -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#2a1a0a; border:1px solid #ff994444; color:#ff9944;">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Сопротивление оглушению</h3>
+                <p>Снижает длительность оглушения, замедления и контроля. Работает на все типы CC-эффектов. Не снижает урон, только время действия.</p>
+                <div class="mechanic-formula">Длительность = Базовая × (1 - Сопрот.% / 100)</div>
+            </div>
+
+            <!-- Вампиризм (физический) -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#2a0a0a; border:1px solid #ff444444; color:#ff4444;">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3>Физический вампиризм</h3>
+                <p>Восстановление здоровья от физического урона автоатаками. Несколько источников складываются мультипликативно.</p>
+                <div class="mechanic-formula">Итого = 1 - (1-a) × (1-b) × (1-c)...</div>
+            </div>
+
+            <!-- Снижение лечения -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#1a1a0a; border:1px solid #aaaa4444; color:#aaaa44;">
+                    <i class="fas fa-ban"></i>
+                </div>
+                <h3>Снижение лечения</h3>
+                <p>Уменьшает входящее исцеление цели. Дебафф 'A13M' снижает лечение на 50%. Несколько источников не складываются — берётся наибольшее значение.</p>
+                <div class="mechanic-formula">Лечение = Базовое × (1 - Снижение%)</div>
+            </div>
+
+            <!-- Скипетр Владыки -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#1a0a2a; border:1px solid #bf7fff44; color:#bf7fff;">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h3>Скипетр Владыки</h3>
+                <p>Уникальный предмет, усиливающий ультимейт каждого героя. Эффект индивидуален: от дополнительного урона до шанса мгновенной перезарядки способности.</p>
+                <div class="mechanic-formula">Эффект уникален для каждого героя (см. карточку)</div>
+            </div>
+
+            <!-- Усиление магического урона -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#2a0a1a; border:1px solid #ff555544; color:#ff5555;">
+                    <i class="fas fa-fire-alt"></i>
+                </div>
+                <h3>Усиление магического урона</h3>
+                <p>Параметр SpellDMG увеличивает урон всех заклинаний. Все источники складываются аддитивно — каждый новый предмет даёт фиксированный прирост. Действует на все типы магического урона (категории 1 и 2).</p>
+                <div class="mechanic-formula">Маг. урон = Базовый урон × (1 + SpellDMG)</div>
+            </div>
+
+            <!-- Усиление магического лечения -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#0a2a1a; border:1px solid #55ff8844; color:#55ff88;">
+                    <i class="fas fa-hand-holding-medical"></i>
+                </div>
+                <h3>Усиление магического лечения</h3>
+                <p>Параметр HealBonus увеличивает исцеление от способностей. Применяется до проверки на снижение лечения. Все источники складываются аддитивно — как и SpellDMG, каждый предмет даёт фиксированный бонус.</p>
+                <div class="mechanic-formula">Лечение = Базовое × (1 + HealBonus)</div>
+            </div>
+
+            <!-- Магическая защита -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#0a1a2a; border:1px solid #55aaff44; color:#55aaff;">
+                    <i class="fas fa-shield-virus"></i>
+                </div>
+                <h3>Магическая защита</h3>
+                <p>Снижает входящий магический урон. Несколько предметов складываются мультипликативно — каждый следующий даёт меньше абсолютного прироста. Это убывающая полезность: два предмета по 20% дают не 40%, а 36%.</p>
+                <div class="mechanic-formula">Защита = 1 − (1−a) × (1−b) × (1−c)...</div>
+            </div>
+
+            <!-- Сборка предметов в 1 клик -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#2a1a0a; border:1px solid #ff994444; color:#ff9944;">
+                    <i class="fas fa-mouse-pointer"></i>
+                </div>
+                <h3>Сборка предметов в 1 клик</h3>
+                <p>Автоматическая стадийная система сборки. Нажмите — и герой сам продаст старые предметы, купит новые на текущую стадию и перейдёт к следующей. Каждая стадия требует определённый уровень героя. Стадии с предметами боссов доступны только при включённом режиме боссов.</p>
+                <div class="mechanic-formula">Стадия → Проверка уровня → Оплата → Сборка</div>
+            </div>
+
+            <!-- Порча -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#1a0a1a; border:1px solid #aa44aa44; color:#aa44aa;">
+                    <i class="fas fa-skull-crossbones"></i>
+                </div>
+                <h3>Порча</h3>
+                <p>Стакающийся дебафф. Каждый стак добавляет +20% бонусного урона по цели — этот урон наносится чистым типом и не усиливается SpellDMG. Также наносит периодический урон, зависящий от интеллекта заклинателя. Стаки складываются, делая цель всё уязвимее.</p>
+                <div class="mechanic-formula">Бонус урон = Полученный урон × 0.20 × Стаки</div>
+            </div>
+
+            <!-- Возврат урона -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#2a0a0a; border:1px solid #ff664444; color:#ff6644;">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h3>Возврат урона</h3>
+                <p>Некоторые предметы возвращают часть полученного урона атакующему. Возврат наносится чистым типом — он не усиливается SpellDMG, не блокируется маг. защитой и не вызывает срабатываний пассивок. Эффективен против автоатакующих героев.</p>
+                <div class="mechanic-formula">Возврат = Полученный урон × Предмет% (20–60%)</div>
+            </div>
+
+            <!-- Система баффов и развеивание -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#0a1a2a; border:1px solid #55ccff44; color:#55ccff;">
+                    <i class="fas fa-wind"></i>
+                </div>
+                <h3>Развеивание баффов</h3>
+                <p>Кастомная система баффов: каждый бафф помечен как положительный или отрицательный и может быть развеян. Развеивание снимает все баффы выбранного типа. Некоторые баффы защищены от развеивания. Баффы могут стакаться по длительности или обновляться.</p>
+                <div class="mechanic-formula">Развеивание → Снятие всех развеиваемых баффов выбранного типа</div>
+            </div>
+
+            <!-- Сопротивление сожжению маны -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#0a1a1a; border:1px solid #55ffcc44; color:#55ffcc;">
+                    <i class="fas fa-fire-alt"></i>
+                </div>
+                <h3>Сопротивление сожжению маны</h3>
+                <p>Снижает количество маны, выжигаемой способностями врага. Как и маг. защита, складывается мультипликативно с убывающей полезностью. Каждый следующий предмет даёт меньше абсолютного снижения.</p>
+                <div class="mechanic-formula">Сожжено = Базовое × (1 − Защита от предметов)</div>
+            </div>
+
+            <!-- Чистый урон -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#1a1a1a; border:1px solid #ffffff44; color:#ffffff;">
+                    <i class="fas fa-star-of-life"></i>
+                </div>
+                <h3>Чистый урон</h3>
+                <p>Особый тип урона, который не усиливается SpellDMG, не блокируется маг. защитой, не учитывает вампиризм и не вызывает срабатываний пассивок. Используется для возврата урона, порчи и гарантированных эффектов. Нельзя снизить — только избежать.</p>
+                <div class="mechanic-formula">Урон = Фиксированный, без модификаторов</div>
+            </div>
+
+        </div>
+
+        <!-- Игровые режимы -->
+        <h2 style="margin-top:40px;"><i class="fas fa-sliders-h" style="color:#00e6ff; margin-right:10px;"></i>Игровые режимы</h2>
+        <p style="color:#8aa0c0; margin-bottom:20px; font-size:1.05rem;">Перед началом игры хост выбирает режимы, которые меняют правила матча.</p>
+
+        <div class="mechanics-grid">
+
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#2a0a1a; border:1px solid #ff555544; color:#ff5555;">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Урон заклинаний = 50%</h3>
+                <p>Уменьшает урон всех заклинаний вдвое. Влияет только на магический тип урона — автоатаки и чистый урон не затронуты. Снижает роль магов и смещает баланс в сторону автоатакеров.</p>
+            </div>
+
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#1a0a2a; border:1px solid #bf7fff44; color:#bf7fff;">
+                    <i class="fas fa-dragon"></i>
+                </div>
+                <h3>Боссы</h3>
+                <p>Включает боссов на карте. Без этого режима предметы, выпадающие с боссов, недоступны — а значит, стадии сборки, требующие босс-предметы, будут пропущены.</p>
+            </div>
+
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#2a1a0a; border:1px solid #ff994444; color:#ff9944;">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <h3>Потеря золота</h3>
+                <p>При смерти от вражеского героя вы теряете часть золота. Добавляет риск и ценность выживания. Без режима — смерть не стоит ресурсов.</p>
+            </div>
+
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#0a2a1a; border:1px solid #55ff8844; color:#55ff88;">
+                    <i class="fas fa-forward"></i>
+                </div>
+                <h3>Турбо</h3>
+                <p>Ускоренный режим: повышенный опыт, больше золота, быстрее темп. Для быстрых матчей.</p>
+            </div>
+
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#0a1a2a; border:1px solid #55aaff44; color:#55aaff;">
+                    <i class="fas fa-ban"></i>
+                </div>
+                <h3>Без книг</h3>
+                <p>Отключает книги и руны прокачки характеристик. Убирает «пей-ту-вин» — все решает только сборка и скилл.</p>
+            </div>
+
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#1a1a0a; border:1px solid #aaaa4444; color:#aaaa44;">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Командные награды</h3>
+                <p>Дополнительные награды за командные действия: убийства, ассисты, контроль. Поощряет командную игру вместо соло-кари.</p>
+            </div>
+
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#2a0a0a; border:1px solid #ff444444; color:#ff4444;">
+                    <i class="fas fa-user-slash"></i>
+                </div>
+                <h3>Соло режим</h3>
+                <p>Отключает командный режим. Каждый играет сам за себя. Изменяет механики для соло-формата.</p>
+            </div>
+
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#1a0a1a; border:1px solid #aa44aa44; color:#aa44aa;">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <h3>Бан героев</h3>
+                <p>Два игрока из двух команд по очереди банят героев. Забаненные герои недоступны для выбора в матче.</p>
+            </div>
+
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#0a1a1a; border:1px solid #55ffcc44; color:#55ffcc;">
+                    <i class="fas fa-random"></i>
+                </div>
+                <h3>Случайный герой</h3>
+                <p>Каждый игрок получает случайного героя вместо выбора. Уравнивает шансы и добавляет элемент неожиданности.</p>
+            </div>
+
+        </div>
+
+        <div class="back-button" onclick="window.location.href='index.html'"><i class="fas fa-arrow-left"></i> Вернуться на главную</div>
+
+    </div>
+</body>
+</html>
