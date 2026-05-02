@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гайды · Legend of Worlds</title>
+    <meta property="og:title" content="Гайды — Legend of Worlds">
+    <meta property="og:description" content="Гайды для начинающих: быстрый старт, сборка предметов, фарм, бой и продвинутые механики.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="guides.html" class="nav-link active"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><span class="current">Гайды</span></div>
+
+        <h1><i class="fas fa-book-open"></i> Гайды</h1>
+        <p style="color:#8aa0c0; margin-bottom:24px; font-size:1.05rem;">Быстрый старт, советы по сборке, экономика и продвинутые механики — всё, что нужно знать новичку.</p>
+
+        <div class="mechanics-grid">
+
+            <!-- 1. Быстрый старт -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#0a2a1a; border:1px solid #00ff8844; color:#00ff88;">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Быстрый старт</h3>
+                <p><strong>Установка:</strong> Скачай карту, помести в папку <code>Maps</code> Warcraft III, создай игру в локальной сети или Battle.net.</p>
+                <p><strong>Первый герой:</strong> Новичкам рекомендуем <strong>Паладина</strong> или <strong>Адмирала</strong> — они живучие, прощают ошибки и дают время освоиться. Из магов — <strong>Архимаг</strong> (простой урон и контроль).</p>
+                <p><strong>Интерфейс:</strong> Магазин открывается у фонтана. Предметы собираются автоматически — нажми кнопку сборки, и герой сам купит нужные компоненты.</p>
+            </div>
+
+            <!-- 2. Что покупать -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#2a1a0a; border:1px solid #ff880044; color:#ff8800;">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <h3>Что покупать в начале</h3>
+                <p><strong>Танки</strong> (Паладин, Адмирал, Друид): щиты, HP, броня. Первая покупка — <strong>Огненный щит</strong> (15% маг. защиты) или <strong>Золотой ключ</strong> (+30 ко всем атрибутам).</p>
+                <p><strong>Дамагеры</strong> (Мастер клинка, Жрица, Самурай): оружие, атака, вампиризм. <strong>Сфера огня</strong> (400 зол.) — лучшая первая покупка: +5 атаки + 20 маг. урона/удар.</p>
+                <p><strong>Саппорты</strong> (Громовержец, Лич, Архимаг): мана, усиление заклинаний, маг. вампиризм. <strong>Сфера плоти</strong> (+5% маг. вампиризма) или предметы на SpellDMG.</p>
+                <p style="color:#ff5555; font-size:0.85rem; margin-top:8px;"><i class="fas fa-exclamation-triangle"></i> <strong>Не покупайте новичкам:</strong> Сферы за 800-1100 зол. с одним процентом (Сфера света, Сфера отрицания) — слишком дорогие для одного эффекта. Головы танатосов (10000 зол.) — вообще без бонусов.</p>
+            </div>
+
+            <!-- 3. Фарм и экономика -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#1a1a2a; border:1px solid #55aaff44; color:#55aaff;">
+                    <i class="fas fa-piggy-bank"></i>
+                </div>
+                <h3>Фарм и экономика</h3>
+                <p><strong>Источники золота:</strong> крипы (регулярный, небольшой), убийства героев (основной), боссы (командная награда 15 000-25 000).</p>
+                <p><strong>Когда идти на боссов:</strong> после первой сборки предметов, командой. Вурдалак даёт 15 000 зол. + Когти вурдалака (70% шанс), Великан — 25 000 + Доспехи великана (50%).</p>
+                <p><strong>Кристаллы:</strong> валюта для продвинутых покупок. Даётся за убийства и боссов.</p>
+                <p><strong>Режим потери золота:</strong> если включён <em>ModeGoldLoss</em>, вы теряете золото при смерти от вражеского героя. Играйте осторожнее — не лезьте без преимущества.</p>
+            </div>
+
+            <!-- 4. Бой и позиционирование -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#2a0a1a; border:1px solid #ff555544; color:#ff5555;">
+                    <i class="fas fa-crosshairs"></i>
+                </div>
+                <h3>Бой и позиционирование</h3>
+                <p><strong>Мили vs ренж:</strong> мили-герои оглушают (баш) с физическим уроном, ренж — с магическим. Это важно для расчёта вампиризма и защиты.</p>
+                <p><strong>Вампиризм:</strong> физический работает от автоатак, магический — от заклинаний. Они не складываются напрямую — каждый считается отдельно.</p>
+                <p><strong>Когда отступать:</strong> если на вас <em>Порча</em> (стакающийся дебафф +20% урона за стак) или дебафф снижения лечения (-50% хила) — уходите, пока не снялось.</p>
+                <p><strong>Контроль:</strong> оглушение — сильнейший контроль, но предметы вроде <strong>Щита штормового рыцаря</strong> снижают длительность оглушения на 45%.</p>
+            </div>
+
+            <!-- 5. Продвинутые механики -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#1a0a2a; border:1px solid #bf7fff44; color:#bf7fff;">
+                    <i class="fas fa-hat-wizard"></i>
+                </div>
+                <h3>Продвинутые механики</h3>
+                <p><strong>Удача:</strong> добавляется к базовому шансу крита, оглушения, уклонения. Предметы дают +5/+10/+15. Чем выше базовый шанс — тем больше пользы от удачи.</p>
+                <p><strong>Магический крит:</strong> множитель 1.5× / 2.0× / 2.5× — работает независимо от физического крита. Идеально для маг-сборок.</p>
+                <p><strong>Мультипликативное сложение:</strong> два предмета по 20% маг. защиты дают 36%, а не 40%. Формула: <code>1 − (1−a)×(1−b)</code>. Это касается вампиризма, защиты, сопротивления оглушению.</p>
+                <p><strong>Блок урона:</strong> шанс полностью обнулить входящую атаку. Не складывается — берётся наивысшее значение из всех источников.</p>
+                <p><strong>Возврат урона:</strong> предметы вроде <strong>Нерубского доспеха</strong> (30%) возвращают часть полученного урона атакующему. Тип урона — чистый, не блокируется.</p>
+            </div>
+
+        </div>
+
+        <div style="margin-top:32px; text-align:center;">
+            <a href="index.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> На главную</a>
+        </div>
+    </div>
+</body>
+</html>
