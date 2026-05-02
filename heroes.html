@@ -40,6 +40,10 @@
     <div class="wiki-container">
         <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><span class="current">Герои</span></div>
         <h1><i class="fas fa-shield-alt"></i> Выбери героя</h1>
+        <div class="hero-search">
+            <i class="fas fa-search"></i>
+            <input type="text" id="heroSearch" placeholder="Найти героя...">
+        </div>
 
         <div class="filters">
             <button class="filter-btn active" data-filter="all"><i class="fas fa-users"></i> Все</button>
@@ -47,10 +51,13 @@
             <button class="filter-btn" data-filter="agility"><i class="fas fa-running"></i> Ловкость</button>
             <button class="filter-btn" data-filter="intelligence"><i class="fas fa-brain"></i> Интеллект</button>
             <button class="filter-btn" data-filter="unique"><i class="fas fa-star"></i> Уникальные</button>
+            <button class="filter-btn" data-filter="favorites"><i class="fas fa-heart"></i> Избранное</button>
         </div>
 
         <!-- Сетка героев будет сгенерирована JS -->
         <div class="hero-grid" id="heroGrid"></div>
+
+        <div class="hero-count" id="heroCount"></div>
 
         <p style="text-align:right; color:#7a8faa; margin-top:10px;">
             <i class="fas fa-mouse-pointer"></i> кликни на героя — откроется подробная страница
@@ -94,6 +101,24 @@
             const filterBtns = document.querySelectorAll('.filter-btn');
             let currentFilter = 'all';
 
+            // Избранное
+            let favorites = JSON.parse(localStorage.getItem('heroFavorites') || '[]');
+
+            function saveFavorites() {
+                localStorage.setItem('heroFavorites', JSON.stringify(favorites));
+            }
+
+            function toggleFavorite(heroId) {
+                if (favorites.includes(heroId)) {
+                    favorites = favorites.filter(id => id !== heroId);
+                } else {
+                    favorites.push(heroId);
+                }
+                saveFavorites();
+                renderHeroes();
+                updateCount();
+            }
+
             // Роли и их иконки
             const roleIcons = {
                 tank: '<i class="fas fa-shield-alt"></i>',
@@ -113,6 +138,9 @@
                 const iconHtml = `<img src="${pngSrc}" alt="${hero.name}" style="max-width:100%;max-height:100%;object-fit:contain;image-rendering:pixelated;" onerror="if(this.src.endsWith('.png')){this.src='${jpgSrc}';}else{this.style.display='none';this.parentElement.classList.add('no-icon');}">`;
 
                 card.innerHTML = `
+                    <div class="hero-fav-btn" title="В избранное">
+                        <i class="${favorites.includes(hero.heroId) ? 'fas' : 'far'} fa-heart"></i>
+                    </div>
                     <div class="hero-image">${iconHtml}</div>
                     ${hero.unique ? '<span class="unique-badge"><i class="fas fa-star"></i></span>' : ''}
                     <div class="hero-name">${hero.name}</div>
@@ -120,6 +148,11 @@
                     <div class="hero-role role-${hero.role}">${roleIcons[hero.role]} ${hero.roleName}</div>
                     <span class="hero-attr-badge">${getAttrName(hero.attr)}</span>
                 `;
+
+                card.querySelector('.hero-fav-btn').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleFavorite(hero.heroId);
+                });
 
                 card.addEventListener('click', () => {
                     window.location.href = 'heroes/' + hero.heroId + '.html';
@@ -152,9 +185,12 @@
                 const cards = document.querySelectorAll('.hero-card');
                 cards.forEach((card, i) => {
                     const hero = heroesData[i];
-                    const show = filterValue === 'all'
+                    let show = filterValue === 'all'
                         || (filterValue === 'unique' && hero.unique)
                         || (hero.attr === filterValue);
+                    if (filterValue === 'favorites') {
+                        show = favorites.includes(hero.heroId);
+                    }
                     card.style.display = show ? '' : 'none';
                 });
                 filterBtns.forEach(btn => {
@@ -163,11 +199,41 @@
                         btn.classList.add('active');
                     }
                 });
+                updateCount();
             }
 
             // Обработчики фильтров
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => filterHeroes(btn.dataset.filter));
+            });
+
+            // Счётчик героев
+            function updateCount() {
+                const visible = document.querySelectorAll('.hero-card[style=""], .hero-card:not([style])').length;
+                const total = heroesData.length;
+                document.getElementById('heroCount').innerHTML =
+                    '<i class="fas fa-filter"></i> Показано: ' + visible + ' из ' + total;
+            }
+
+            // Поиск
+            const searchInput = document.getElementById('heroSearch');
+            searchInput.addEventListener('input', function() {
+                const query = this.value.toLowerCase().trim();
+                document.querySelectorAll('.hero-card').forEach((card, i) => {
+                    const name = heroesData[i].name.toLowerCase();
+                    const title = heroesData[i].title.toLowerCase();
+                    const match = !query || name.includes(query) || title.includes(query);
+                    card.style.display = match ? '' : 'none';
+                });
+                updateCount();
+            });
+
+            // Escape = очистка
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    this.value = '';
+                    this.dispatchEvent(new Event('input'));
+                }
             });
 
             // Первоначальный рендер
