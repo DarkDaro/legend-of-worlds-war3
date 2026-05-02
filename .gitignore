@@ -1,4 +1,4 @@
-# VS Code (настройки редактора)
+# VS Code
 .vscode/
 *.code-workspace
 
@@ -14,18 +14,21 @@ Thumbs.db
 .env
 config/secret.json
 
-# Папка с зависимостями (если используете npm)
+# Папка с зависимостями
 node_modules/
 package-lock.json
 
-# Ваши личные заметки
+# Личные заметки
 notes.txt
 todo.md
 
+# Агент
 .letta/
 
-*.md
+# Мусорные изображения
+images/garb/
 
+# Исходники графики
 *.psd
 *.zip
 *.rar

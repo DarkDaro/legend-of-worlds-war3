@@ -71,6 +71,7 @@ h1 {
     grid-template-columns: repeat(6, 1fr);
     gap: 10px;
     margin-top: 20px;
+    padding-top: 24px;
 }
 @media (max-width: 1200px) {
     .hero-grid { grid-template-columns: repeat(5, 1fr); }
@@ -206,6 +207,9 @@ h1 {
     margin-bottom: 20px;
     font-size: 0.9rem;
     color: #5a7a9a;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .breadcrumbs a {
     color: #00e6ff;
@@ -243,11 +247,11 @@ h1 {
     overflow: hidden;
 }
 .detail-icon img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    image-rendering: pixelated;
-    border-radius: 16px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: auto;
+    border-radius: 18px;
 }
 .detail-title {
     font-size: 2.2rem;
@@ -644,6 +648,121 @@ h1 {
     box-shadow: 0 0 25px #00e6ff;
 }
 
+/* === Мобильная адаптация карточки героя === */
+@media (max-width: 700px) {
+    .hero-page-container {
+        padding: 16px;
+        border-radius: 16px;
+    }
+    .panel-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+    }
+    .detail-icon {
+        width: 72px;
+        height: 72px;
+        font-size: 36px;
+        border-radius: 16px;
+    }
+    .detail-icon img {
+        width: 56px;
+        height: 56px;
+    }
+    .detail-title {
+        font-size: 1.6rem;
+    }
+    .detail-badge {
+        margin-left: 0;
+        display: block;
+        margin-top: 4px;
+    }
+    .hero-stats {
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px 16px;
+    }
+    .ability-card {
+        padding: 12px;
+    }
+    .ability-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .ability-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+    }
+    .ability-icon img {
+        width: 48px;
+        height: 48px;
+    }
+    .ability-info {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    .ability-name {
+        font-size: 0.95rem;
+    }
+    .ability-desc {
+        font-size: 0.85rem;
+    }
+    .ability-params {
+        flex-direction: column;
+        gap: 4px;
+    }
+    .param-row {
+        flex-wrap: wrap;
+    }
+    .param-label {
+        white-space: normal;
+    }
+    .param-values {
+        white-space: normal;
+        word-break: break-word;
+    }
+    .param-row.scepter-row {
+        padding: 8px;
+    }
+    .back-button {
+        width: 100%;
+        display: block;
+    }
+}
+@media (max-width: 480px) {
+    .hero-page-container {
+        padding: 10px;
+        border-radius: 12px;
+    }
+    .detail-title {
+        font-size: 1.3rem;
+    }
+    .ability-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    .ability-icon img {
+        width: 40px;
+        height: 40px;
+    }
+    .ability-name {
+        font-size: 0.9rem;
+    }
+    .ability-type-badge {
+        font-size: 0.6rem;
+        padding: 1px 6px;
+    }
+    .ability-tag {
+        font-size: 0.55rem;
+        padding: 1px 5px;
+    }
+}
+
 /* === Кнопка «Наверх» === */
 
 /* === Страница Лор === */
@@ -763,8 +882,8 @@ h1 {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 14px 0;
-    margin-bottom: 20px;
+    padding: 24px 0;
+    margin-bottom: 32px;
     border-bottom: 1px solid #2a4060;
     box-shadow: 0 5px 20px #00e6ff22;
     min-height: 68px;
@@ -815,6 +934,7 @@ h1 {
     gap: 8px;
     align-items: center;
     flex-wrap: wrap;
+    margin-top: 14px;
 }
 .nav-link {
     color: #b0c8f0;
@@ -979,6 +1099,9 @@ h1 {
     line-height: 1.6;
     margin-bottom: 12px;
 }
+.mechanic-card code {
+    word-break: break-all;
+}
 .mechanic-formula {
     background: #0a0f1a;
     border: 1px solid #1a3050;
@@ -1062,6 +1185,7 @@ h1 {
 /* === Монстры === */
 .monsters-section {
     margin-bottom: 40px;
+    padding-top: 24px;
 }
 .monsters-section h2 {
     font-size: 1.4rem;
@@ -1395,6 +1519,10 @@ h1 {
     padding: 24px 16px;
     text-align: center;
     transition: 0.2s;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+    cursor: pointer;
 }
 .stat-box:hover {
     border-color: #00e6ff;
@@ -1643,12 +1771,15 @@ h1 {
     .stats-section { grid-template-columns: repeat(2, 1fr); }
     .quick-links-grid { grid-template-columns: repeat(2, 1fr); }
     .hero-banner-title { font-size: 2.2rem; }
-    .hero-banner { min-height: 400px; padding: 60px 24px; }
+    .hero-banner { min-height: 400px; padding: 60px 24px; margin: -16px -16px 0; }
+    .support-banner { margin: -16px -16px 0; }
 }
 @media (max-width: 500px) {
     .stats-section { grid-template-columns: 1fr 1fr; }
     .quick-links-grid { grid-template-columns: 1fr; }
     .hero-banner-title { font-size: 1.8rem; }
+    .hero-banner { margin: -12px -12px 0; }
+    .support-banner { margin: -12px -12px 0; }
     .footer-content { flex-direction: column; align-items: center; text-align: center; }
 }
 
@@ -1837,6 +1968,7 @@ h1 {
     border-left: 2px solid #00e6ff44;
     padding-left: 24px;
     margin-top: 8px;
+    margin-left: 12px;
 }
 .timeline-entry {
     position: relative;
@@ -1852,6 +1984,10 @@ h1 {
     border-radius: 50%;
     background: #00e6ff;
     box-shadow: 0 0 10px #00e6ff88;
+}
+@media (max-width: 500px) {
+    .lore-timeline { margin-left: 4px; padding-left: 18px; }
+    .timeline-entry::before { left: -24px; width: 8px; height: 8px; }
 }
 .timeline-era {
     font-size: 1rem;
@@ -1939,17 +2075,78 @@ h1 {
     .site-header {
         flex-direction: column;
         align-items: stretch;
-        gap: 15px;
+        gap: 0;
     }
     .logo {
         justify-content: center;
     }
     .header-nav {
-        justify-content: center;
-        flex-wrap: wrap;
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        padding: 12px 0;
+        border-top: 1px solid #1a3050;
+    }
+    .header-nav.hamburger-open {
+        display: flex;
+    }
+    .header-nav .nav-link {
+        width: 100%;
+        text-align: center;
+        padding: 10px 16px;
+        font-size: 0.9rem;
     }
     .logo-text {
         font-size: 1.3rem;
+    }
+}
+
+/* Гамбургер-кнопка */
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: 1px solid #2a5070;
+    border-radius: 8px;
+    padding: 8px 10px;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+.hamburger-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #00e6ff;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+.hamburger-btn:hover {
+    border-color: #00e6ff;
+    box-shadow: 0 0 10px #00e6ff44;
+}
+.hamburger-btn.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger-btn.open span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-btn.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (max-width: 600px) {
+    .hamburger-btn {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translateY(-50%);
+    }
+    .site-header {
+        position: relative;
     }
 }
 
@@ -2207,6 +2404,7 @@ h1 {
   margin-bottom: 20px;
   max-width: 700px;
   overflow: hidden;
+  padding-top: 24px;
   transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.35s ease;
 }
 .items-grid.collapsed {
@@ -2343,6 +2541,19 @@ h1 {
 @media (max-width: 800px) {
   .app-container { flex-direction: column; }
   .item-detail-panel { position: static; width: 100%; max-height: none; }
+  .category-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #00e6ff44 transparent;
+    padding-bottom: 6px;
+    gap: 6px;
+  }
+  .category-tabs::-webkit-scrollbar { height: 4px; }
+  .category-tabs::-webkit-scrollbar-track { background: transparent; }
+  .category-tabs::-webkit-scrollbar-thumb { background: #00e6ff44; border-radius: 2px; }
+  .tab-btn { flex-shrink: 0; padding: 6px 14px; font-size: 0.8rem; }
 }
 
 /* ===== Расширенные стили для карточек героев (Warcraft III style) ===== */

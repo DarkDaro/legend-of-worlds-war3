@@ -19,15 +19,21 @@
         const detailIcon = document.querySelector('.detail-icon');
         if (!detailIcon || !heroId) return;
 
+        // Если уже есть <img> внутри (например, из HTML), не заменяем
+        if (detailIcon.querySelector('img')) return;
+
         const baseName = heroImageMap[heroId] || heroId;
         const fallback = detailIcon.innerHTML;
 
+        // Определяем префикс пути: если страница в heroes/, нужен ../
+        const prefix = location.pathname.includes('/heroes/') ? '../' : '';
+
         const img = document.createElement('img');
         img.alt = heroId;
-        img.src = 'images/heroes/' + baseName + '.png';
+        img.src = prefix + 'images/heroes/' + baseName + '.png';
         img.onerror = function() {
             if (this.src.endsWith('.png')) {
-                this.src = 'images/heroes/' + baseName + '.jpg';
+                this.src = prefix + 'images/heroes/' + baseName + '.jpg';
             } else {
                 detailIcon.innerHTML = fallback;
             }
@@ -59,6 +65,42 @@
         });
     }
 
+    // ========== ГАМБУРГЕР-МЕНЮ ==========
+
+    function initHamburger() {
+        var nav = document.querySelector('.header-nav');
+        if (!nav) return;
+
+        // Создаём кнопку-гамбургер
+        var btn = document.createElement('button');
+        btn.className = 'hamburger-btn';
+        btn.setAttribute('aria-label', 'Меню');
+        btn.innerHTML = '<span></span><span></span><span></span>';
+        nav.parentNode.insertBefore(btn, nav);
+
+        // Клик по гамбургеру
+        btn.addEventListener('click', function() {
+            btn.classList.toggle('open');
+            nav.classList.toggle('hamburger-open');
+        });
+
+        // Клик по ссылке — закрываем меню
+        nav.querySelectorAll('.nav-link').forEach(function(link) {
+            link.addEventListener('click', function() {
+                btn.classList.remove('open');
+                nav.classList.remove('hamburger-open');
+            });
+        });
+
+        // Клик вне меню — закрываем
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.hamburger-btn') && !e.target.closest('.header-nav')) {
+                btn.classList.remove('open');
+                nav.classList.remove('hamburger-open');
+            }
+        });
+    }
+
     // ========== КНОПКА «НАВЕРХ» ==========
 
     function initScrollToTop() {
@@ -83,11 +125,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             initHeroDetailIcon();
             initParamHighlight();
+            initHamburger();
             initScrollToTop();
         });
     } else {
         initHeroDetailIcon();
         initParamHighlight();
+        initHamburger();
         initScrollToTop();
     }
 })();
