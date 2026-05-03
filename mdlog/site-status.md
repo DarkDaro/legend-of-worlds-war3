@@ -31,6 +31,9 @@
 9. **Item favorites** — items page now supports `itemFavorites` in localStorage, heart toggles on cards, and a dedicated favorites tab.
 10. **Hero build item links** — build slots now open items through `items.html?item=ID` instead of hash anchors, so item detail opens more reliably.
 11. **Item detail favorite toggle** — the detail panel now has its own heart button in the header, matching the card-level favorites state.
+12. **Hero card standardization started** — `blademaster.html` moved to the shared ability-icon loader convention (`.ability-icon[data-ability]`).
+13. **Hero scope note** — only paladin, admiral, and druid are currently in the custom-card set; untouched hero pages stay on the base template until explicitly requested.
+14. **Hero card generator** — `generate-hero-cards.js` now reads `hero-card-data.js` and writes safe draft pages to `generated-heroes/` instead of overwriting live hero pages.
 
 ### 🎨 Hero Card Improvements (v3.7)
 1. **Name format** — "Имя — Прозвище" (Светозар — Паладин, Прохор — Адмирал)
@@ -38,7 +41,7 @@
 3. **Recommended items** — 6-slot build grid (.hero-build-grid), emoji icons, links to items.html
 4. **Тактика** — combat strategy section (.hero-tips), ability usage combos
 5. **Советы** — tips section, counters, warnings, late-game notes
-6. **Implemented on** — paladin.html, admiral.html (other heroes still demo/stubs)
+6. **Implemented on** — paladin.html, admiral.html, druid.html. The rest remain on the base template and are not being manually standardized yet.
 
 ### ⏳ On Hold
 - **Items page preview** — 3 variants tested (tooltip, panel, bottom sheet), user deciding. Test page: test-item-preview.html
