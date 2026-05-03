@@ -769,6 +769,38 @@ function isItemFavorite(itemId) {
   return itemFavorites.includes(itemId);
 }
 
+function toggleItemFavorite(itemId) {
+  if (itemFavorites.includes(itemId)) {
+    itemFavorites = itemFavorites.filter(id => id !== itemId);
+  } else {
+    itemFavorites.push(itemId);
+  }
+  saveItemFavorites();
+  applyItemView();
+  updateItemFavoritesTab();
+}
+
+function updateFavoriteButtonElement(button, itemId) {
+  const favorite = isItemFavorite(itemId);
+  button.innerHTML = '<i class="' + (favorite ? 'fas' : 'far') + ' fa-heart"></i>';
+  button.title = favorite ? 'Убрать из избранного' : 'В избранное';
+  button.setAttribute('aria-label', button.title);
+  button.setAttribute('aria-pressed', favorite ? 'true' : 'false');
+  button.classList.toggle('is-favorite', favorite);
+}
+
+function buildDetailFavoriteButton(itemId) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'item-fav-btn item-detail-fav-btn';
+  updateFavoriteButtonElement(button, itemId);
+  button.addEventListener('click', function(e) {
+    e.stopPropagation();
+    toggleItemFavorite(itemId);
+  });
+  return button;
+}
+
 function getItemSearchText(item) {
   return [item.name, item.description, item.type, item.icon, item.activeAbility?.name, item.activeAbility?.description]
     .filter(Boolean)
@@ -811,6 +843,25 @@ function injectItemFavoritesStyles() {
     .item-card.is-favorite .item-name {
       text-shadow: 0 0 8px #ff5555aa;
     }
+    .item-detail-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .item-detail-title-main {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .item-detail-fav-btn {
+      position: static;
+      width: 36px;
+      height: 36px;
+      flex: 0 0 auto;
+      margin-left: auto;
+    }
     .item-tab-count {
       margin-left: 6px;
       color: #ff9fb0;
@@ -832,21 +883,10 @@ function buildItemFavoriteButton(itemId) {
   const button = document.createElement('button');
   button.type = 'button';
   button.className = 'item-fav-btn';
-  const favorite = isItemFavorite(itemId);
-  button.innerHTML = '<i class="' + (favorite ? 'fas' : 'far') + ' fa-heart"></i>';
-  button.title = favorite ? 'Убрать из избранного' : 'В избранное';
-  button.setAttribute('aria-label', button.title);
-  button.setAttribute('aria-pressed', favorite ? 'true' : 'false');
+  updateFavoriteButtonElement(button, itemId);
   button.addEventListener('click', function(e) {
     e.stopPropagation();
-    if (itemFavorites.includes(itemId)) {
-      itemFavorites = itemFavorites.filter(id => id !== itemId);
-    } else {
-      itemFavorites.push(itemId);
-    }
-    saveItemFavorites();
-    applyItemView();
-    updateItemFavoritesTab();
+    toggleItemFavorite(itemId);
   });
   return button;
 }
@@ -1002,7 +1042,7 @@ function showItemDetail(itemId) {
   const typeLabels = { basic:'🔹 Базовый', strength:'💪 Сила', agility:'🏃 Ловкость', intelligence:'🧠 Разум', neutral:'🌀 Нейтральный', boost:'📈 Усиление', weapon:'⚔️ Оружие', recipe:'📄 Рецепт', vampirism:'🧛 Физ. вампиризм', magic_vampirism:'🔮 Маг. вампиризм', magic_block:'🛡️ Маг. блок', magic_vampirism_block:'🔮🛡️ Маг. вампиризм + блок', magic_immune:'🛡️🚫 Иммунитет к магии', boss_drop:'💀 Выпадает при смерти', control:'🎯 Контроль', intelligence_control:'🧠🎯 Разум + контроль', strength_control:'💪🎯 Сила + контроль', weapon_strength:'⚔️💪 Оружие + сила', weapon_intelligence:'⚔️🧠 Оружие + разум', armor:'🛡️ Доспех', strength_armor:'💪🛡️ Сила + доспех', basic_shield:'🛡️ Базовый + щит', rare:'💎 Редкий' };
   const panel = document.getElementById('detailContent');
   panel.innerHTML = `
-    <div class="panel-header"><div class="detail-icon">${itemIcon(item.id, item.icon, 96)}</div><div class="detail-title">${item.name} <span class="detail-badge${item.type === 'boss_drop' ? ' badge-danger' : ''}">${typeLabels[item.type]||''}</span></div></div>
+    <div class="panel-header"><div class="detail-icon">${itemIcon(item.id, item.icon, 96)}</div><div class="detail-title item-detail-title"><div class="item-detail-title-main">${item.name} <span class="detail-badge${item.type === 'boss_drop' ? ' badge-danger' : ''}">${typeLabels[item.type]||''}</span></div></div></div>
     <div class="detail-description">${item.description||''}<br>
       <div class="cost-badges">
         ${item.cost > 0 ? `<span class="cost-badge">💰 Золото: ${item.cost}</span>` : ''}
@@ -1023,6 +1063,10 @@ function showItemDetail(itemId) {
     ${renderUsedIn(itemId)}
     <div class="back-button" onclick="document.querySelector('#itemDetailPanel').scrollIntoView({behavior:'smooth'});">↩️ Прокрутить</div>
   `;
+  const detailTitle = panel.querySelector('.item-detail-title');
+  if (detailTitle) {
+    detailTitle.appendChild(buildDetailFavoriteButton(itemId));
+  }
   panel.querySelectorAll('.upgrade-btn').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); showItemDetail(b.dataset.upgradeId); }));
   panel.querySelectorAll('.component-item').forEach(el => el.addEventListener('click', e => { e.stopPropagation(); const id = el.dataset.itemId; if(id) showItemDetail(id); }));
   panel.querySelectorAll('.used-in-chip').forEach(c => c.addEventListener('click', e => { e.stopPropagation(); showItemDetail(c.dataset.itemId); }));

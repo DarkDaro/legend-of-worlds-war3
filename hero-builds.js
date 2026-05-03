@@ -45,7 +45,7 @@ function renderHeroBuild(heroId) {
   let html = '<div class="hero-build-grid">';
   build.forEach(item => {
     html += `
-      <a href="../items.html#${item.id}" class="build-slot">
+      <a href="../items.html?item=${item.id}" class="build-slot">
         <div class="build-icon">${getBuildItemIcon(item.id)}</div>
         <div class="build-name">${item.name}</div>
       </a>`;

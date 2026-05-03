@@ -29,6 +29,8 @@
 7. **icon-loader.js** — hero detail icon now auto-detects heroes/ subfolder and adds ../ prefix
 8. **Stat boxes** — index.html stat boxes are now clickable <a> links to respective pages
 9. **Item favorites** — items page now supports `itemFavorites` in localStorage, heart toggles on cards, and a dedicated favorites tab.
+10. **Hero build item links** — build slots now open items through `items.html?item=ID` instead of hash anchors, so item detail opens more reliably.
+11. **Item detail favorite toggle** — the detail panel now has its own heart button in the header, matching the card-level favorites state.
 
 ### 🎨 Hero Card Improvements (v3.7)
 1. **Name format** — "Имя — Прозвище" (Светозар — Паладин, Прохор — Адмирал)
