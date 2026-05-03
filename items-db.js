@@ -1033,16 +1033,26 @@ function renderUsedIn(itemId) {
   }).join('')}</div>`;
 }
 
-function showItemDetail(itemId) {
-  const item = itemsDB[itemId];
-  if (!item) return;
-  const total = calculateItemCost(itemId);
-  const recipe = getRecipeCost(item);
-  const base = total - recipe;
-  const typeLabels = { basic:'🔹 Базовый', strength:'💪 Сила', agility:'🏃 Ловкость', intelligence:'🧠 Разум', neutral:'🌀 Нейтральный', boost:'📈 Усиление', weapon:'⚔️ Оружие', recipe:'📄 Рецепт', vampirism:'🧛 Физ. вампиризм', magic_vampirism:'🔮 Маг. вампиризм', magic_block:'🛡️ Маг. блок', magic_vampirism_block:'🔮🛡️ Маг. вампиризм + блок', magic_immune:'🛡️🚫 Иммунитет к магии', boss_drop:'💀 Выпадает при смерти', control:'🎯 Контроль', intelligence_control:'🧠🎯 Разум + контроль', strength_control:'💪🎯 Сила + контроль', weapon_strength:'⚔️💪 Оружие + сила', weapon_intelligence:'⚔️🧠 Оружие + разум', armor:'🛡️ Доспех', strength_armor:'💪🛡️ Сила + доспех', basic_shield:'🛡️ Базовый + щит', rare:'💎 Редкий' };
-  const panel = document.getElementById('detailContent');
-  panel.innerHTML = `
-    <div class="panel-header"><div class="detail-icon">${itemIcon(item.id, item.icon, 96)}</div><div class="detail-title item-detail-title"><div class="item-detail-title-main">${item.name} <span class="detail-badge${item.type === 'boss_drop' ? ' badge-danger' : ''}">${typeLabels[item.type]||''}</span></div></div></div>
+const ITEM_TYPE_LABELS = { basic:'🔹 Базовый', strength:'💪 Сила', agility:'🏃 Ловкость', intelligence:'🧠 Разум', neutral:'🌀 Нейтральный', boost:'📈 Усиление', weapon:'⚔️ Оружие', recipe:'📄 Рецепт', vampirism:'🧛 Физ. вампиризм', magic_vampirism:'🔮 Маг. вампиризм', magic_block:'🛡️ Маг. блок', magic_vampirism_block:'🔮🛡️ Маг. вампиризм + блок', magic_immune:'🛡️🚫 Иммунитет к магии', boss_drop:'💀 Выпадает при смерти', control:'🎯 Контроль', intelligence_control:'🧠🎯 Разум + контроль', strength_control:'💪🎯 Сила + контроль', weapon_strength:'⚔️💪 Оружие + сила', weapon_intelligence:'⚔️🧠 Оружие + разум', armor:'🛡️ Доспех', strength_armor:'💪🛡️ Сила + доспех', basic_shield:'🛡️ Базовый + щит', rare:'💎 Редкий' };
+
+function isItemMobileSurface() {
+  return window.matchMedia && window.matchMedia('(max-width: 800px)').matches;
+}
+
+function closeItemSheet() {
+  const overlay = document.getElementById('itemSheetOverlay');
+  const sheet = document.getElementById('itemBottomSheet');
+  if (overlay) overlay.classList.remove('visible');
+  if (sheet) {
+    sheet.classList.remove('visible');
+    sheet.setAttribute('aria-hidden', 'true');
+  }
+  document.body.classList.remove('item-sheet-open');
+}
+
+function buildItemDetailHtml(itemId, item, total, recipe, base, includeBackButton) {
+  return `
+    <div class="panel-header"><div class="detail-icon">${itemIcon(item.id, item.icon, 96)}</div><div class="detail-title item-detail-title"><div class="item-detail-title-main">${item.name} <span class="detail-badge${item.type === 'boss_drop' ? ' badge-danger' : ''}">${ITEM_TYPE_LABELS[item.type]||''}</span></div></div></div>
     <div class="detail-description">${item.description||''}<br>
       <div class="cost-badges">
         ${item.cost > 0 ? `<span class="cost-badge">💰 Золото: ${item.cost}</span>` : ''}
@@ -1061,19 +1071,19 @@ function showItemDetail(itemId) {
     ${item.components ? renderComponentTree(item.components) : '<p>Нет компонентов</p>'}
     <div class="recipe-title">🔗 Входит в сборку</div>
     ${renderUsedIn(itemId)}
-    <div class="back-button" onclick="document.querySelector('#itemDetailPanel').scrollIntoView({behavior:'smooth'});">↩️ Прокрутить</div>
+    ${includeBackButton ? '<div class="back-button" onclick="document.querySelector(\'#itemDetailPanel\').scrollIntoView({behavior:\'smooth\'});">↩️ Прокрутить</div>' : ''}
   `;
-  const detailTitle = panel.querySelector('.item-detail-title');
-  if (detailTitle) {
-    detailTitle.appendChild(buildDetailFavoriteButton(itemId));
-  }
-  panel.querySelectorAll('.upgrade-btn').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); showItemDetail(b.dataset.upgradeId); }));
-  panel.querySelectorAll('.component-item').forEach(el => el.addEventListener('click', e => { e.stopPropagation(); const id = el.dataset.itemId; if(id) showItemDetail(id); }));
-  panel.querySelectorAll('.used-in-chip').forEach(c => c.addEventListener('click', e => { e.stopPropagation(); showItemDetail(c.dataset.itemId); }));
-  panel.querySelectorAll('.tree-toggle').forEach(btn => btn.addEventListener('click', e => {
+}
+
+function bindItemDetailInteractions(root) {
+  if (!root) return;
+  root.querySelectorAll('.upgrade-btn').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); openItemDetail(b.dataset.upgradeId); }));
+  root.querySelectorAll('.component-item').forEach(el => el.addEventListener('click', e => { e.stopPropagation(); const id = el.dataset.itemId; if (id) openItemDetail(id); }));
+  root.querySelectorAll('.used-in-chip').forEach(c => c.addEventListener('click', e => { e.stopPropagation(); openItemDetail(c.dataset.itemId); }));
+  root.querySelectorAll('.tree-toggle').forEach(btn => btn.addEventListener('click', e => {
     e.stopPropagation();
     const node = btn.closest('.tree-node');
-    const children = node.querySelector(':scope > .children-tree');
+    const children = node?.querySelector(':scope > .children-tree');
     if (!children) return;
     const collapsed = btn.dataset.collapsed === 'true';
     btn.dataset.collapsed = collapsed ? 'false' : 'true';
@@ -1081,6 +1091,71 @@ function showItemDetail(itemId) {
     btn.querySelector('i').className = collapsed ? 'fas fa-chevron-down' : 'fas fa-chevron-right';
   }));
 }
+
+function showItemDetail(itemId) {
+  const item = itemsDB[itemId];
+  if (!item) return;
+  closeItemSheet();
+  const total = calculateItemCost(itemId);
+  const recipe = getRecipeCost(item);
+  const base = total - recipe;
+  const panel = document.getElementById('detailContent');
+  if (!panel) return;
+  panel.innerHTML = buildItemDetailHtml(itemId, item, total, recipe, base, true);
+  const detailTitle = panel.querySelector('.item-detail-title');
+  if (detailTitle) {
+    detailTitle.appendChild(buildDetailFavoriteButton(itemId));
+  }
+  bindItemDetailInteractions(panel);
+}
+
+function showItemSheet(itemId) {
+  const item = itemsDB[itemId];
+  if (!item) return;
+  const overlay = document.getElementById('itemSheetOverlay');
+  const sheet = document.getElementById('itemBottomSheet');
+  const content = document.getElementById('itemSheetContent');
+  if (!overlay || !sheet || !content) {
+    showItemDetail(itemId);
+    return;
+  }
+  const total = calculateItemCost(itemId);
+  const recipe = getRecipeCost(item);
+  const base = total - recipe;
+  content.innerHTML = buildItemDetailHtml(itemId, item, total, recipe, base, false);
+  const detailTitle = content.querySelector('.item-detail-title');
+  if (detailTitle) {
+    detailTitle.appendChild(buildDetailFavoriteButton(itemId));
+  }
+  bindItemDetailInteractions(content);
+  document.body.classList.add('item-sheet-open');
+  overlay.classList.add('visible');
+  sheet.classList.add('visible');
+  sheet.setAttribute('aria-hidden', 'false');
+  sheet.scrollTop = 0;
+}
+
+function openItemDetail(itemId) {
+  if (isItemMobileSurface()) {
+    showItemSheet(itemId);
+  } else {
+    showItemDetail(itemId);
+  }
+}
+
+const itemSheetOverlay = document.getElementById('itemSheetOverlay');
+if (itemSheetOverlay) {
+  itemSheetOverlay.addEventListener('click', closeItemSheet);
+}
+const itemSheetClose = document.getElementById('itemSheetClose');
+if (itemSheetClose) {
+  itemSheetClose.addEventListener('click', closeItemSheet);
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeItemSheet();
+  }
+});
 
 function renderAllGrids() {
   for (const [gridId, ids] of Object.entries(grids)) {
@@ -1098,7 +1173,7 @@ function renderAllGrids() {
       card.innerHTML = `<div class="item-icon">${itemIcon(item.id, item.icon)}</div><div class="item-name">${item.name}</div>`;
       card.appendChild(buildItemFavoriteButton(id));
       card.classList.toggle('is-favorite', isItemFavorite(id));
-      card.addEventListener('click', e => { e.stopPropagation(); showItemDetail(id); });
+      card.addEventListener('click', e => { e.stopPropagation(); openItemDetail(id); });
       grid.appendChild(card);
     });
   }
@@ -1141,6 +1216,8 @@ updateItemFavoritesTab();
 const urlParams = new URLSearchParams(window.location.search);
 const itemIdParam = urlParams.get('item');
 if (itemIdParam && itemsDB[itemIdParam]) {
-  showItemDetail(itemIdParam);
-  document.getElementById('itemDetailPanel').scrollIntoView({ behavior: 'smooth' });
+  openItemDetail(itemIdParam);
+  if (!isItemMobileSurface()) {
+    document.getElementById('itemDetailPanel').scrollIntoView({ behavior: 'smooth' });
+  }
 }
