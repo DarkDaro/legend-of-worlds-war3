@@ -34,6 +34,10 @@
 12. **Hero card standardization started** — `blademaster.html` moved to the shared ability-icon loader convention (`.ability-icon[data-ability]`).
 13. **Hero scope note** — only paladin, admiral, and druid are currently in the custom-card set; untouched hero pages stay on the base template until explicitly requested.
 14. **Hero card generator** — `generate-hero-cards.js` now reads `hero-card-data.js` and writes safe draft pages to `generated-heroes/` instead of overwriting live hero pages.
+15. **Forms example** — `generated-heroes/druid.html` now demonstrates multi-form rendering with tab switching and the shared icon loader.
+16. **Hero card generator note** — `generate-hero-cards.js` + `hero-card-data.js` exist as a separate future tool; they write drafts to `generated-heroes/` and do not touch live hero pages.
+17. **Items grid collapse** — `items.html` now stores collapsed category state per section in `localStorage`, restores it on load, and shows a visible collapse button on each shop header so the toggle is obvious again. The button is anchored to the right side of the header so long shop names do not hide it.
+18. **Header spacing fix** — `.site-header` now has a card-like frame, more internal padding, and an earlier 900px stack breakpoint so logo/navigation do not press against the border on mid-size screens.
 
 ### 🎨 Hero Card Improvements (v3.7)
 1. **Name format** — "Имя — Прозвище" (Светозар — Паладин, Прохор — Адмирал)
