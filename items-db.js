@@ -112,11 +112,11 @@ const itemsDB = {
   },
 
   // ---------- БРОНЯ И ДОСПЕХИ ----------
-  I002: { id: 'I002', name: 'Щит древних', icon: '📜🛡️', type: 'basic', cost: 2900,
+  I002: { id: 'I002', name: 'Щит древних', icon: '📜🛡️', type: 'basic_shield', cost: 2900,
     description: '+500 здоровья, +8 защиты, Аура защиты 3 ед. (пассив)',
     components: [ {itemId: 'rhth', quantity: 1}, {itemId: 'I00A', quantity: 1}, {itemId: 'lhst', quantity: 1}, {itemId: 'rde2', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 800} ]
   },
-  I00S: { id: 'I00S', name: 'Щит смерти', icon: '💀🛡️', type: 'basic', cost: 10550,
+  I00S: { id: 'I00S', name: 'Щит смерти', icon: '💀🛡️', type: 'basic_shield', cost: 10550,
     description: '+1000 здоровья, +15 защиты, +15 маны за атаку, Аура защиты 5 ед., Жар преисподней [200 дпс]',
     components: [ {itemId: 'I00C', quantity: 1}, {itemId: 'clfm', quantity: 1}, {itemId: 'I002', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 6000} ]
   },
@@ -159,7 +159,7 @@ const itemsDB = {
     description: '+2000 здоровья, +20 защиты (аура), +30 регенерации здоровья, +20% маг. защита, Стойкость Полководца: возвращает 250 урона',
     components: [ {itemId: 'I002', quantity: 1}, {itemId: 'I0AL', quantity: 1}, {itemId: 'I01G', quantity: 1}, {itemId: 'I00C', quantity: 1}, {itemId: 'rhth', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 10000} ]
   },
-  I0AF: { id: 'I0AF', name: 'Антимагические доспехи', icon: '🛡️🚫', type: 'strength', cost: 47975,
+  I0AF: { id: 'I0AF', name: 'Антимагические доспехи', icon: '🛡️🚫', type: 'magic_immune', cost: 47975,
     description: '+2500 здоровья, +20 защиты (аура), +60 регенерации здоровья, +45 силы, +85 атаки, +30% маг. защита, +15% сопротивление к сожжению маны, Стойкость Полководца (250 урона), Невосприимчивость к магии (актив, 8 сек)',
     components: [ {itemId: 'I0AG', quantity: 1}, {itemId: 'I02B', quantity: 1}, {itemId: 'I08U', quantity: 1} ],
     activeAbility: { name: 'Невосприимчивость к магии', description: 'Иммунитет к магии на 8 сек', cooldown: 70, manacost: 300, note: null }
@@ -446,43 +446,43 @@ const itemsDB = {
   },
 
   // ---------- ЭЛЕМЕНТ СИЛЫ ----------
-  I011: { id: 'I011', name: 'Огромный топор', icon: '🪓💪', type: 'strength', cost: 3850,
+  I011: { id: 'I011', name: 'Огромный топор', icon: '🪓💪', type: 'weapon_strength', cost: 3850,
     description: '+25 силы, +60 атаки, +15% скорости боя, Сплеш атака: 20%, 150 АоЕ (10%, 150 для дальнего боя)',
     components: [ {itemId: 'gcel', quantity: 1}, {itemId: 'I006', quantity: 1}, {itemId: 'I004', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 2400} ]
   },
-  I00M: { id: 'I00M', name: 'Громовой молот', icon: '⚡🔨', type: 'strength', cost: 3900,
+  I00M: { id: 'I00M', name: 'Громовой молот', icon: '⚡🔨', type: 'weapon_strength', cost: 3900,
     description: '+20 атаки, +20 силы, Баш: 15% шанс стан 1 сек и 50 урона',
     components: [ {itemId: 'oli2', quantity: 1}, {itemId: 'I015', quantity: 1}, {itemId: 'I005', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 2025} ]
   },
-  I03X: { id: 'I03X', name: 'Кровавая луна I', icon: '🌑🩸', type: 'strength', cost: 11750,
+  I03X: { id: 'I03X', name: 'Кровавая луна I', icon: '🌑🩸', type: 'weapon_strength', cost: 11750,
     description: '+50 силы, +150 атаки, +40% скорости боя, Баш: 15% шанс стан 1.1 сек и 100 урона, Сплеш атака: 40%, 250 АоЕ (20%, 250 для дальнего боя)',
     components: [ {itemId: 'I00M', quantity: 1}, {itemId: 'I011', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 4000} ],
     upgradesTo: ['I01A']
   },
-  I01A: { id: 'I01A', name: 'Кровавая луна II', icon: '🌑🩸✨', type: 'strength', cost: 23100,
+  I01A: { id: 'I01A', name: 'Кровавая луна II', icon: '🌑🩸✨', type: 'weapon_strength', cost: 23100,
     description: '+100 силы, +250 атаки, +60% скорости боя, Баш: 15% шанс стан 1.2 сек и 200 урона, Сплеш: 60%, 300 АоЕ (30%, 300 для дальнего боя), При атаке 15% шанс повысить силу на 12% (6 сек, кд 10)',
     components: [ {itemId: 'I03X', quantity: 1}, {itemId: 'I011', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 7500} ]
   },
-  I028: { id: 'I028', name: 'Посох разложения I', icon: '☣️🔮', type: 'strength', cost: 8525,
+  I028: { id: 'I028', name: 'Посох разложения I', icon: '☣️🔮', type: 'magic_immune', cost: 8525,
     description: '+20 силы, +45 атаки, +5% сопротивление к сожжению маны, Невосприимчивость к магии (актив): 3 сек',
     components: [ {itemId: 'I006', quantity: 1}, {itemId: 'I005', quantity: 1}, {itemId: 'I015', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 6500} ],
     upgradesTo: ['I08U'],
     activeAbility: { name: 'Невосприимчивость к магии', description: 'Иммунитет к магии на 3 сек', cooldown: 60, manacost: 225, note: null }
   },
-  I08U: { id: 'I08U', name: 'Посох разложения II', icon: '☣️🔮✨', type: 'strength', cost: 15025,
+  I08U: { id: 'I08U', name: 'Посох разложения II', icon: '☣️🔮✨', type: 'magic_immune', cost: 15025,
     description: '+30 силы, +65 атаки, +10% сопротивление к сожжению маны, Невосприимчивость к магии (актив): 5 сек',
     components: [ {itemId: 'I028', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 6500} ],
     activeAbility: { name: 'Невосприимчивость к магии', description: 'Иммунитет к магии на 5 сек', cooldown: 60, manacost: 225, note: null }
   },
-  I04O: { id: 'I04O', name: 'Кровопускатель', icon: '🩸⚔️', type: 'strength', cost: 7475,
+  I04O: { id: 'I04O', name: 'Кровопускатель', icon: '🩸⚔️', type: 'weapon_strength', cost: 7475,
     description: '+100 атаки, +25 силы, Кровоточащий удар (пассив): 50 + STRx0.5 (3 сек), 25% урона в дальнем бою, Замедление бега: 30%, 3 сек',
     components: [ {itemId: 'oslo', quantity: 1}, {itemId: 'oven', quantity: 1}, {itemId: 'I015', quantity: 1}, {itemId: 'I006', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 5000} ]
   },
-  I0AC: { id: 'I0AC', name: 'Коса смерти', icon: '💀🌾', type: 'strength', cost: 32125,
+  I0AC: { id: 'I0AC', name: 'Коса смерти', icon: '💀🌾', type: 'weapon_strength', cost: 32125,
     description: '+200 атаки, +60 силы, +30 ловкости, +30% скорости боя, Жатва: +3 ко всем атрибутам за убийство героя, Кровоточащий удар: 100 + STRx1 (4 сек), Замедление бега: 50%, 4 сек',
     components: [ {itemId: 'I04O', quantity: 1}, {itemId: 'I03N', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 20000} ]
   },
-  I0DA: { id: 'I0DA', name: 'Алебарда', icon: '⚔️🪓', type: 'strength', cost: 13250,
+  I0DA: { id: 'I0DA', name: 'Алебарда', icon: '⚔️🪓', type: 'strength_control', cost: 13250,
     description: '+150 атаки, +40 силы, +20% уклонение, +10% множитель маг. вампиризма/блока, Обезоруживание (актив): 4/5 сек',
     components: [ {itemId: 'I0CQ', quantity: 1}, {itemId: 'I015', quantity: 1}, {itemId: 'evtl', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 6000} ],
     activeAbility: { name: 'Обезоруживание', description: 'Противник не может атаковать 4/5 сек', cooldown: 25, manacost: 100, note: null }
@@ -679,13 +679,13 @@ const itemsDB = {
   I057: { id: 'I057', name: 'Книга Могущества', icon: '📖⬆️✨', type: 'boost', cost: 0, costCrystals: 60, description: '+5 уровней' },
   I02V: { id: 'I02V', name: 'Книга Опыта', icon: '📔', type: 'boost', cost: 0, costCrystals: 5, description: '+500 опыта' },
   I04Y: { id: 'I04Y', name: 'Медицинский трактат', icon: '📔❤️', type: 'boost', cost: 0, costCrystals: 4, description: '+100 здоровья' },
-  I04V: { id: 'I04V', name: 'Магические кристаллы (10)', icon: '💎', type: 'boost', cost: 4000, description: '10 магических кристаллов' },
-  I050: { id: 'I050', name: 'Магические кристаллы (40)', icon: '💎💎', type: 'boost', cost: 16000, description: '40 магических кристаллов' },
-  I0BP: { id: 'I0BP', name: 'Магические кристаллы (120)', icon: '💎💎💎', type: 'boost', cost: 48000, description: '120 магических кристаллов' },
-  I04X: { id: 'I04X', name: 'Золото (2000)', icon: '💰', type: 'boost', cost: 0, costCrystals: 10, description: '2000 золота' },
-  I02W: { id: 'I02W', name: 'Золото (2000) за дерево', icon: '💰', type: 'boost', cost: 0, costWood: 20, description: '2000 золота' },
-  I053: { id: 'I053', name: 'Золото (8000)', icon: '💰💰', type: 'boost', cost: 0, costCrystals: 40, description: '8000 золота' },
-  I0BO: { id: 'I0BO', name: 'Золото (24000)', icon: '💰💰💰', type: 'boost', cost: 0, costCrystals: 120, description: '24000 золота' },
+  I04V: { id: 'I04V', name: 'Магические кристаллы (10)', icon: '💎', type: 'boost', cost: 4000, description: 'Получите 10 шт. магических кристаллов' },
+  I050: { id: 'I050', name: 'Магические кристаллы (40)', icon: '💎💎', type: 'boost', cost: 16000, description: 'Купите целый сундук с сокровищами, который содержит 40 шт. магических кристаллов' },
+  I0BP: { id: 'I0BP', name: 'Магические кристаллы (120)', icon: '💎💎💎', type: 'boost', cost: 48000, description: 'Купите целый сундук с сокровищами, который содержит 120 шт. магических кристаллов' },
+  I04X: { id: 'I04X', name: 'Золото (2000)', icon: '💰', type: 'boost', cost: 0, costCrystals: 10, description: 'Приносит своему владельцу 2000 золота' },
+  I053: { id: 'I053', name: 'Золото (8000)', icon: '💰💰', type: 'boost', cost: 0, costCrystals: 40, description: 'Приносит своему владельцу 8000 золота' },
+  I0BO: { id: 'I0BO', name: 'Золото (24000)', icon: '💰💰💰', type: 'boost', cost: 0, costCrystals: 120, description: 'Приносит своему владельцу 24000 золота' },
+  I02W: { id: 'I02W', name: 'Золото (2000)', icon: '💰', type: 'boost', cost: 0, costCrystals: 0, description: '2000 золота.Падает с боссов' },
 
   // Свитки (рецепты) – если нужны отдельно
   I0AM: { id: 'I0AM', name: 'Волшебное кольцо (свиток)', icon: '📜', type: 'recipe', cost: 700 },
@@ -693,15 +693,15 @@ const itemsDB = {
   I0CD: { id: 'I0CD', name: 'Солнечный камень (свиток)', icon: '📜', type: 'recipe', cost: 400 },
   I0CS: { id: 'I0CS', name: 'Посох колдуна (свиток)', icon: '📜', type: 'recipe', cost: 1600 },
   I021: { id: 'I021', name: 'Костыль (свиток)', icon: '📜', type: 'recipe', cost: 100 },
-  I024: { id: 'I024', name: 'Костыль телепорта (свиток)', icon: '📜', type: 'recipe', cost: 200 },
+ I024: { id: 'I024', name: 'Костыль телепорта (свиток)', icon: '📜', type: 'recipe', cost: 200 },
   I01D: { id: 'I01D', name: 'Божественный сапог (свиток)', icon: '📜', type: 'recipe', cost: 2500 },
   I031: { id: 'I031', name: 'Ловкость тела (свиток)', icon: '📜', type: 'recipe', cost: 7700 },
-  I0GS: { id: 'I0GS', name: 'Сапоги громовой поступи (свиток)', icon: '📜', type: 'recipe', cost: 2500 },
+ I0GS: { id: 'I0GS', name: 'Сапоги громовой поступи (свиток)', icon: '📜', type: 'recipe', cost: 2500 },
   I003: { id: 'I003', name: 'Щит древних (свиток)', icon: '📜', type: 'recipe', cost: 800 },
   I00X: { id: 'I00X', name: 'Щит смерти (свиток)', icon: '📜', type: 'recipe', cost: 6000 },
-  I09P: { id: 'I09P', name: 'Огненный щит (свиток)', icon: '📜', type: 'recipe', cost: 11000 },
+ I09P: { id: 'I09P', name: 'Огненный щит (свиток)', icon: '📜', type: 'recipe', cost: 11000 },
   I0CJ: { id: 'I0CJ', name: 'Кристальный щит (свиток)', icon: '📜', type: 'recipe', cost: 8000 },
-  I0F7: { id: 'I0F7', name: 'Рыцарский щит (свиток)', icon: '📜', type: 'recipe', cost: 10400 },
+ I0F7: { id: 'I0F7', name: 'Рыцарский щит (свиток)', icon: '📜', type: 'recipe', cost: 10400 },
   I0GV: { id: 'I0GV', name: 'Грозовой щит (свиток)', icon: '📜', type: 'recipe', cost: 8000 },
   I0D6: { id: 'I0D6', name: 'Рыцарский шлем (свиток)', icon: '📜', type: 'recipe', cost: 400 },
   I037: { id: 'I037', name: 'Шлем дракона (свиток)', icon: '📜', type: 'recipe', cost: 1600 },
@@ -745,6 +745,10 @@ const ITEM_ICONS_DIR = 'images/items/';
 
 function itemIcon(id, emoji, size) {
   size = size || 64;
+  // Специальный случай для рецепта в сборках
+  if (id === 'recipe') {
+    return '<img src="' + ITEM_ICONS_DIR + 'UniveralRecipe.png" alt="📜" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;">';
+  }
   const pngSrc = ITEM_ICONS_DIR + id + '.png';
   const jpgSrc = ITEM_ICONS_DIR + id + '.jpg';
   const escaped = (emoji||'?').replace(/'/g,"\\'");
@@ -841,10 +845,10 @@ function showItemDetail(itemId) {
   const total = calculateItemCost(itemId);
   const recipe = getRecipeCost(item);
   const base = total - recipe;
-  const typeLabels = { basic:'🔹 Базовый', strength:'💪 Сила', agility:'🏃 Ловкость', intelligence:'🧠 Разум', neutral:'🌀 Нейтральный', boost:'📈 Усиление', weapon:'⚔️ Оружие', recipe:'📄 Рецепт', vampirism:'🧛 Физ. вампиризм', magic_vampirism:'🔮 Маг. вампиризм', magic_block:'🛡️ Маг. блок', magic_vampirism_block:'🔮🛡️ Маг. вампиризм + блок', boss_drop:'💀 Выпадает при смерти', control:'🎯 Контроль', intelligence_control:'🧠🎯 Разум + контроль', weapon_strength:'⚔️💪 Оружие + сила', weapon_intelligence:'⚔️🧠 Оружие + разум', armor:'🛡️ Доспех', strength_armor:'💪🛡️ Сила + доспех', rare:'💎 Редкий' };
+  const typeLabels = { basic:'🔹 Базовый', strength:'💪 Сила', agility:'🏃 Ловкость', intelligence:'🧠 Разум', neutral:'🌀 Нейтральный', boost:'📈 Усиление', weapon:'⚔️ Оружие', recipe:'📄 Рецепт', vampirism:'🧛 Физ. вампиризм', magic_vampirism:'🔮 Маг. вампиризм', magic_block:'🛡️ Маг. блок', magic_vampirism_block:'🔮🛡️ Маг. вампиризм + блок', magic_immune:'🛡️🚫 Иммунитет к магии', boss_drop:'💀 Выпадает при смерти', control:'🎯 Контроль', intelligence_control:'🧠🎯 Разум + контроль', strength_control:'💪🎯 Сила + контроль', weapon_strength:'⚔️💪 Оружие + сила', weapon_intelligence:'⚔️🧠 Оружие + разум', armor:'🛡️ Доспех', strength_armor:'💪🛡️ Сила + доспех', basic_shield:'🛡️ Базовый + щит', rare:'💎 Редкий' };
   const panel = document.getElementById('detailContent');
   panel.innerHTML = `
-    <div class="panel-header"><div class="detail-icon">${itemIcon(item.id, item.icon, 80)}</div><div class="detail-title">${item.name} <span class="detail-badge${item.type === 'boss_drop' ? ' badge-danger' : ''}">${typeLabels[item.type]||''}</span></div></div>
+    <div class="panel-header"><div class="detail-icon">${itemIcon(item.id, item.icon, 96)}</div><div class="detail-title">${item.name} <span class="detail-badge${item.type === 'boss_drop' ? ' badge-danger' : ''}">${typeLabels[item.type]||''}</span></div></div>
     <div class="detail-description">${item.description||''}<br>
       <div class="cost-badges">
         ${item.cost > 0 ? `<span class="cost-badge">💰 Золото: ${item.cost}</span>` : ''}
