@@ -2513,6 +2513,73 @@ h1 {
   object-fit: contain;
   image-rendering: pixelated;
 }
+.item-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+  z-index: 1900;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+.item-sheet-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.item-bottom-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1910;
+  background: rgba(18, 25, 40, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid #00e6ff88;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -8px 40px #000000cc;
+  max-height: 78vh;
+  overflow-y: auto;
+  padding: 16px 16px 20px;
+  transform: translateY(110%);
+  transition: transform 0.28s ease, opacity 0.2s ease;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+.item-bottom-sheet.visible {
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+  opacity: 1;
+}
+.item-sheet-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #2a5070;
+  background: #101a28;
+  color: #8ab4f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.15s;
+  z-index: 2;
+}
+.item-sheet-close:hover {
+  border-color: #00e6ff;
+  color: #00e6ff;
+  box-shadow: 0 0 10px #00e6ff33;
+}
+body.item-sheet-open {
+  overflow: hidden;
+}
 .component-tree {
   padding-left: 0;
 }
@@ -2976,7 +3043,7 @@ h1 {
 }
 @media (max-width: 800px) {
   .app-container { flex-direction: column; }
-  .item-detail-panel { position: static; width: 100%; max-height: none; padding: 16px; }
+  .item-detail-panel { display: none; }
   .item-search {
     width: 100%;
     max-width: none;
@@ -2995,6 +3062,62 @@ h1 {
   .category-tabs::-webkit-scrollbar-track { background: transparent; }
   .category-tabs::-webkit-scrollbar-thumb { background: #00e6ff44; border-radius: 2px; }
   .tab-btn { flex-shrink: 0; padding: 6px 14px; font-size: 0.8rem; }
+  .item-bottom-sheet {
+    max-height: calc(100vh - 16px);
+    padding: 14px 14px 18px;
+  }
+  .item-bottom-sheet .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-right: 44px;
+  }
+  .item-bottom-sheet .detail-icon {
+    width: 76px;
+    height: 76px;
+    font-size: 36px;
+  }
+  .item-bottom-sheet .detail-icon img {
+    width: 76px;
+    height: 76px;
+  }
+  .item-bottom-sheet .detail-title {
+    font-size: 1.35rem;
+    line-height: 1.2;
+  }
+  .item-bottom-sheet .detail-badge {
+    margin-left: 0;
+    margin-top: 6px;
+    display: inline-block;
+  }
+  .item-bottom-sheet .detail-description {
+    margin: 14px 0;
+    padding-bottom: 14px;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+  .item-bottom-sheet .cost-badges {
+    gap: 8px;
+  }
+  .item-bottom-sheet .cost-badge {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+  }
+  .item-bottom-sheet .component-item {
+    padding: 7px 10px;
+    gap: 8px;
+  }
+  .item-bottom-sheet .component-cost {
+    font-size: 0.8rem;
+  }
+  .item-bottom-sheet .used-in-chip {
+    padding: 5px 10px;
+    font-size: 0.82rem;
+  }
+  .item-bottom-sheet .recipe-title {
+    font-size: 1rem;
+  }
 }
 
 /* ===== Расширенные стили для карточек героев (Warcraft III style) ===== */

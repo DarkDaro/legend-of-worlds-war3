@@ -109,6 +109,19 @@
     </div>
   </div>
 
+  <div class="item-sheet-overlay" id="itemSheetOverlay"></div>
+  <div class="item-bottom-sheet" id="itemBottomSheet" aria-hidden="true">
+    <button type="button" class="item-sheet-close" id="itemSheetClose" aria-label="Закрыть детали предмета">
+      <i class="fas fa-times"></i>
+    </button>
+    <div id="itemSheetContent">
+      <div class="empty-detail">
+        <div style="font-size:48px;"><i class="fas fa-clipboard-list"></i></div>
+        <p>Выберите предмет</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Подключаем базу предметов и логику -->
   <script src="items-db.js"></script>
   <script>
