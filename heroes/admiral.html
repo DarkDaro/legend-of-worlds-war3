@@ -39,7 +39,7 @@
         <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="../heroes.html">Герои</a><span class="sep">›</span><span class="current">Адмирал — Прохор</span></div>
         <div class="hero-page-container">
             <div class="panel-header">
-                <div class="detail-icon"><img src="../images/heroes/admiral.png" alt="Адмирал" onerror="this.parentElement.innerHTML='<i class=\'fas fa-anchor\'></i>'"></div>
+                <div class="detail-icon"></div>
                 <div class="detail-title">Адмирал — Прохор <span class="detail-badge">Сила</span></div>
             </div>
             <div class="hero-stats">
@@ -87,7 +87,7 @@
                 <!-- Q: Гейзер -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/admiral_geyser.png" alt="Гейзер" onerror="this.parentElement.innerHTML='<i class=\'fas fa-water\'></i>'"></div>
+                        <div class="ability-icon" data-ability="geyser" data-fallback="water"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
                             <div class="ability-name">Гейзер</div>
@@ -108,7 +108,7 @@
                 <!-- W: Меч прилива -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/admiral_tide.png" alt="Меч прилива" onerror="this.parentElement.innerHTML='<i class=\'fas fa-wave-square\'></i>'"></div>
+                        <div class="ability-icon" data-ability="tide" data-fallback="wave-square"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
                             <div class="ability-name">Меч прилива</div>
@@ -126,7 +126,7 @@
                 <!-- E: Призрачный корабль -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/admiral_ship.png" alt="Призрачный корабль" onerror="this.parentElement.innerHTML='<i class=\'fas fa-ship\'></i>'"></div>
+                        <div class="ability-icon" data-ability="ship" data-fallback="ship"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
                             <div class="ability-name">Призрачный корабль</div>
@@ -147,7 +147,7 @@
                 <!-- R: Призрачная Флотилия -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/admiral_fleet.png" alt="Призрачная Флотилия" onerror="this.parentElement.innerHTML='<i class=\'fas fa-skull\'></i>'"></div>
+                        <div class="ability-icon" data-ability="fleet" data-fallback="skull"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
                             <div class="ability-name">Призрачная Флотилия</div>
@@ -172,7 +172,7 @@
                 <!-- F: Волны -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/admiral_waves.png" alt="Волны" onerror="this.parentElement.innerHTML='<i class=\'fas fa-tint\'></i>'"></div>
+                        <div class="ability-icon" data-ability="waves" data-fallback="tint"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
                             <div class="ability-name">Волны</div>

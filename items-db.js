@@ -755,6 +755,160 @@ function itemIcon(id, emoji, size) {
   return '<img src="' + pngSrc + '" alt="' + (emoji||'') + '" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;" onerror="if(this.src.endsWith(\'.png\')){this.src=\'' + jpgSrc + '\';}else{this.outerHTML=\'' + escaped + '\';}">';
 }
 
+const ITEM_FAVORITES_KEY = 'itemFavorites';
+let itemFavorites = JSON.parse(localStorage.getItem(ITEM_FAVORITES_KEY) || '[]');
+let activeItemView = 'all';
+let itemSearchQuery = '';
+let itemFavoritesTab = null;
+
+function saveItemFavorites() {
+  localStorage.setItem(ITEM_FAVORITES_KEY, JSON.stringify(itemFavorites));
+}
+
+function isItemFavorite(itemId) {
+  return itemFavorites.includes(itemId);
+}
+
+function getItemSearchText(item) {
+  return [item.name, item.description, item.type, item.icon, item.activeAbility?.name, item.activeAbility?.description]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+}
+
+function injectItemFavoritesStyles() {
+  if (document.getElementById('item-favorites-style')) return;
+  const style = document.createElement('style');
+  style.id = 'item-favorites-style';
+  style.textContent = `
+    .item-card { position: relative; }
+    .item-fav-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid #2a4060;
+      background: #0f172acc;
+      color: #6b7c99;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.15s ease;
+      z-index: 2;
+    }
+    .item-fav-btn .fas { color: #ff5555; }
+    .item-fav-btn:hover {
+      background: #ff555533;
+      border-color: #ff5555;
+    }
+    .item-card.is-favorite {
+      box-shadow: 0 0 20px #ff555533, 0 0 0 1px #ff555533 inset;
+    }
+    .item-card.is-favorite .item-name {
+      text-shadow: 0 0 8px #ff5555aa;
+    }
+    .item-tab-count {
+      margin-left: 6px;
+      color: #ff9fb0;
+      font-size: 0.9em;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+function updateItemFavoritesTab() {
+  if (!itemFavoritesTab) return;
+  const count = itemFavorites.length;
+  itemFavoritesTab.innerHTML = count
+    ? '<i class="fas fa-heart"></i> Избранное <span class="item-tab-count">' + count + '</span>'
+    : '<i class="fas fa-heart"></i> Избранное';
+}
+
+function buildItemFavoriteButton(itemId) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'item-fav-btn';
+  const favorite = isItemFavorite(itemId);
+  button.innerHTML = '<i class="' + (favorite ? 'fas' : 'far') + ' fa-heart"></i>';
+  button.title = favorite ? 'Убрать из избранного' : 'В избранное';
+  button.setAttribute('aria-label', button.title);
+  button.setAttribute('aria-pressed', favorite ? 'true' : 'false');
+  button.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (itemFavorites.includes(itemId)) {
+      itemFavorites = itemFavorites.filter(id => id !== itemId);
+    } else {
+      itemFavorites.push(itemId);
+    }
+    saveItemFavorites();
+    applyItemView();
+    updateItemFavoritesTab();
+  });
+  return button;
+}
+
+function ensureItemFavoritesTab() {
+  const tabsWrap = document.querySelector('.category-tabs');
+  if (!tabsWrap || tabsWrap.querySelector('[data-cat="favorites"]')) return;
+  const button = document.createElement('button');
+  button.className = 'tab-btn';
+  button.dataset.cat = 'favorites';
+  button.innerHTML = '<i class="fas fa-heart"></i> Избранное';
+  tabsWrap.insertBefore(button, tabsWrap.children[1] || null);
+  itemFavoritesTab = button;
+}
+
+function applyItemView() {
+  const query = itemSearchQuery;
+  const favoritesMode = activeItemView === 'favorites';
+
+  document.querySelectorAll('.category-section').forEach(function(section) {
+    const sectionKey = section.id.replace('cat-', '');
+    const sectionMatchesView = activeItemView === 'all' || activeItemView === 'favorites' || sectionKey === activeItemView;
+    let sectionHasVisible = false;
+
+    section.querySelectorAll('.item-card').forEach(function(card) {
+      const itemId = card.dataset.itemId;
+      const item = itemsDB[itemId];
+      if (!item) return;
+
+      const matchesSearch = !query || getItemSearchText(item).includes(query);
+      const matchesFavorite = !favoritesMode || isItemFavorite(itemId);
+      const visible = sectionMatchesView && matchesSearch && matchesFavorite;
+
+      card.style.display = visible ? '' : 'none';
+      card.classList.toggle('is-favorite', isItemFavorite(itemId));
+
+      const favBtn = card.querySelector('.item-fav-btn');
+      if (favBtn) {
+        const favorite = isItemFavorite(itemId);
+        favBtn.innerHTML = '<i class="' + (favorite ? 'fas' : 'far') + ' fa-heart"></i>';
+        favBtn.title = favorite ? 'Убрать из избранного' : 'В избранное';
+        favBtn.setAttribute('aria-label', favBtn.title);
+        favBtn.setAttribute('aria-pressed', favorite ? 'true' : 'false');
+      }
+
+      if (visible) {
+        sectionHasVisible = true;
+      }
+    });
+
+    if (activeItemView === 'all') {
+      section.style.display = sectionHasVisible || !query ? '' : 'none';
+    } else if (favoritesMode) {
+      section.style.display = sectionHasVisible ? '' : 'none';
+    } else {
+      section.style.display = sectionMatchesView && sectionHasVisible ? '' : 'none';
+    }
+  });
+
+  updateItemFavoritesTab();
+}
+
 // ========== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ (без изменений) ==========
 function findUsedIn(itemId) {
   const used = [];
@@ -898,51 +1052,46 @@ function renderAllGrids() {
       card.className = `item-card ${item.type || ''} ${rarity}`;
       card.dataset.itemId = id;
       card.innerHTML = `<div class="item-icon">${itemIcon(item.id, item.icon)}</div><div class="item-name">${item.name}</div>`;
+      card.appendChild(buildItemFavoriteButton(id));
+      card.classList.toggle('is-favorite', isItemFavorite(id));
       card.addEventListener('click', e => { e.stopPropagation(); showItemDetail(id); });
       grid.appendChild(card);
     });
   }
 }
 
+injectItemFavoritesStyles();
+ensureItemFavoritesTab();
+
 // Инициализация вкладок
 const tabs = document.querySelectorAll('.tab-btn');
-const sections = {
-  all: ['cat-armory','cat-elements','cat-equip','cat-boots','cat-jewels','cat-armor','cat-shields','cat-weapon','cat-weapon2','cat-magic_art','cat-magic_equip','cat-situational','cat-str_element','cat-int_element','cat-agi_element','cat-agi_element2','cat-dark_telec','cat-overseas','cat-boss','cat-boost'],
-  armory: ['cat-armory'],
-  elements: ['cat-elements'],
-  equip: ['cat-equip'],
-  boots: ['cat-boots'],
-  jewels: ['cat-jewels'],
-  armor: ['cat-armor'],
-  shields: ['cat-shields'],
-  weapon: ['cat-weapon'],
-  weapon2: ['cat-weapon2'],
-  magic_art: ['cat-magic_art'],
-  magic_equip: ['cat-magic_equip'],
-  situational: ['cat-situational'],
-  str_element: ['cat-str_element'],
-  int_element: ['cat-int_element'],
-  agi_element: ['cat-agi_element'],
-  agi_element2: ['cat-agi_element2'],
-  dark_telec: ['cat-dark_telec'],
-  overseas: ['cat-overseas'],
-  boss: ['cat-boss'],
-  boost: ['cat-boost']
-};
-function showCategories(key) {
-  document.querySelectorAll('.category-section').forEach(s => s.style.display = 'none');
-  (sections[key] || []).forEach(id => { const el = document.getElementById(id); if(el) el.style.display = 'block'; });
-}
-tabs.forEach(btn => btn.addEventListener('click', () => {
-  const cat = btn.dataset.cat;
-  tabs.forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  showCategories(cat);
-}));
+tabs.forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    const cat = btn.dataset.cat;
+    activeItemView = cat;
+    tabs.forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    applyItemView();
+  });
+});
+
+// Поиск предметов
+const searchInput = document.getElementById('itemSearch');
+searchInput.addEventListener('input', function() {
+  itemSearchQuery = this.value.toLowerCase().trim();
+  applyItemView();
+});
+searchInput.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    this.value = '';
+    this.dispatchEvent(new Event('input'));
+  }
+});
 
 // Запуск
 renderAllGrids();
-showCategories('all');
+applyItemView();
+updateItemFavoritesTab();
 
 // Обработка URL-параметра ?item=ID — открывает предмет из внешней ссылки
 const urlParams = new URLSearchParams(window.location.search);
