@@ -39,7 +39,7 @@
         <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="../heroes.html">Герои</a><span class="sep">›</span><span class="current">Паладин — Светозар</span></div>
         <div class="hero-page-container">
             <div class="panel-header">
-                <div class="detail-icon"><img src="../images/heroes/paladin.png" alt="Паладин" onerror="this.parentElement.innerHTML='<i class=\'fas fa-shield-alt\'></i>'"></div>
+                <div class="detail-icon"></div>
                 <div class="detail-title">Паладин — Светозар <span class="detail-badge">Сила</span></div>
             </div>
             <div class="hero-stats">
@@ -59,32 +59,7 @@
             </div>
 
             <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
-            <div class="hero-build-grid">
-                <a href="../items.html" class="build-slot">
-                    <div class="build-icon">🔥🛡️</div>
-                    <div class="build-name">Огненный щит</div>
-                </a>
-                <a href="../items.html" class="build-slot">
-                    <div class="build-icon">🐉🛡️</div>
-                    <div class="build-name">Доспехи дракона</div>
-                </a>
-                <a href="../items.html" class="build-slot">
-                    <div class="build-icon">🛡️🚫</div>
-                    <div class="build-name">Антимагические доспехи</div>
-                </a>
-                <a href="../items.html" class="build-slot">
-                    <div class="build-icon">👹🎭</div>
-                    <div class="build-name">Маска демона</div>
-                </a>
-                <a href="../items.html" class="build-slot">
-                    <div class="build-icon">🌟⚔️</div>
-                    <div class="build-name">Меч очищения</div>
-                </a>
-                <a href="../items.html" class="build-slot">
-                    <div class="build-icon">👑🔮</div>
-                    <div class="build-name">Скипетр Владыки</div>
-                </a>
-            </div>
+            <div id="hero-build"></div>
 
             <div class="hero-tips">
                 <h4><i class="fas fa-chess"></i> Тактика</h4>
@@ -112,7 +87,7 @@
                 <!-- Q: Исцеляющая Сфера -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/paladin_holy_light.png" alt="Исцеляющая Сфера" onerror="this.parentElement.innerHTML='<i class=\'fas fa-sun\'></i>'"></div>
+                        <div class="ability-icon" data-ability="holy_light" data-fallback="sun"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
                             <div class="ability-name">Исцеляющая Сфера</div>
@@ -133,7 +108,7 @@
                 <!-- W: Дары света -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/paladin_shield.png" alt="Дары света" onerror="this.parentElement.innerHTML='<i class=\'fas fa-hand-holding-heart\'></i>'"></div>
+                        <div class="ability-icon" data-ability="shield" data-fallback="hand-holding-heart"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
                             <div class="ability-name">Дары света</div>
@@ -154,7 +129,7 @@
                 <!-- E: Молитва свету -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/paladin_prayer.png" alt="Молитва свету" onerror="this.parentElement.innerHTML='<i class=\'fas fa-pray\'></i>'"></div>
+                        <div class="ability-icon" data-ability="prayer" data-fallback="pray"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
                             <div class="ability-name">Молитва свету</div>
@@ -176,7 +151,7 @@
                 <!-- R: Святой Щит -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/paladin_resurrect.png" alt="Святой Щит" onerror="this.parentElement.innerHTML='<i class=\'fas fa-shield-alt\'></i>'"></div>
+                        <div class="ability-icon" data-ability="resurrect" data-fallback="shield-alt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
                             <div class="ability-name">Святой Щит</div>
@@ -198,7 +173,7 @@
                 <!-- F: Аура защиты -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/paladin_defense.png" alt="Аура защиты" onerror="this.parentElement.innerHTML='<i class=\'fas fa-heart\'></i>'"></div>
+                        <div class="ability-icon" data-ability="defense" data-fallback="heart"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
                             <div class="ability-name">Аура защиты</div>
@@ -217,5 +192,11 @@
             <div class="back-button" onclick="window.location.href='../heroes.html'"><i class="fas fa-arrow-left"></i> Вернуться к героям</div>
         </div>
     </div>
+    <script>
+        var container = document.getElementById('hero-build');
+        if (container && typeof renderHeroBuild === 'function') {
+            container.innerHTML = renderHeroBuild('paladin');
+        }
+    </script>
 </body>
 </html>

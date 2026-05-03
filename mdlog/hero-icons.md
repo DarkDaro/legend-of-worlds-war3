@@ -31,3 +31,10 @@ Track icon paths for each hero. Updated when hero card is created or icons are u
   - E (Омоложение): `images/abilities/druid_rejuvenation.png`
   - R (Покой): `images/abilities/druid_tranquility.png`
   - F (Кровожадность): `images/abilities/druid_bloodlust.png`
+
+## Standardized ability icon loading
+- Shared loader lives in `icon-loader.js`.
+- New convention: `.ability-icon[data-ability]`.
+- Loader builds the path as `images/abilities/<heroId>_<ability>.png` and falls back to JPG, then Font Awesome.
+- Hero portraits live in `images/heroes/`.
+- This replaces manual `<img>` tags in each hero card over time.

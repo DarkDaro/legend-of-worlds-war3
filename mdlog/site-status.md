@@ -28,6 +28,7 @@
 6. **Lore timeline** — dot position fixed on ≤500px, margin-left adjusted
 7. **icon-loader.js** — hero detail icon now auto-detects heroes/ subfolder and adds ../ prefix
 8. **Stat boxes** — index.html stat boxes are now clickable <a> links to respective pages
+9. **Item favorites** — items page now supports `itemFavorites` in localStorage, heart toggles on cards, and a dedicated favorites tab.
 
 ### 🎨 Hero Card Improvements (v3.7)
 1. **Name format** — "Имя — Прозвище" (Светозар — Паладин, Прохор — Адмирал)
@@ -41,6 +42,7 @@
 - **Items page preview** — 3 variants tested (tooltip, panel, bottom sheet), user deciding. Test page: test-item-preview.html
 - **Monsters page** — raw/incomplete, skip for now
 - **Emoji fallback in itemIcon()** — long-press shows raw emoji, needs FA icon fallback
+- **Ability icon standardization** — agreed to use a shared loader in `icon-loader.js` instead of manual `<img>` tags in every hero card. Target format: `.ability-icon[data-ability]` → `images/abilities/<heroId>_<ability>.png` with JPG + FA fallback.
 
 ### ❌ Known Issues
 - Monster page: 2 of 33 icons, 6 of 8 bosses are stubs

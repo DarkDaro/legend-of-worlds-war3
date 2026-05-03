@@ -44,6 +44,43 @@
         };
     }
 
+    // ========== ИКОНКИ СПОСОБНОСТЕЙ ==========
+
+    function initAbilityIcons() {
+        const heroId = location.pathname.split('/').pop().replace('.html', '');
+        const abilityIcons = document.querySelectorAll('.ability-icon[data-ability]');
+        if (!abilityIcons.length || !heroId) return;
+
+        const prefix = location.pathname.includes('/heroes/') ? '../' : '';
+
+        abilityIcons.forEach(function(icon) {
+            if (icon.querySelector('img')) return;
+
+            const abilityId = icon.getAttribute('data-ability');
+            const fallbackName = icon.getAttribute('data-fallback') || 'image';
+            const abilityCard = icon.closest('.ability-card');
+            const abilityName = abilityCard ? abilityCard.querySelector('.ability-name') : null;
+            const altText = abilityName ? abilityName.textContent.trim() : abilityId;
+            const pngSrc = prefix + 'images/abilities/' + heroId + '_' + abilityId + '.png';
+            const jpgSrc = prefix + 'images/abilities/' + heroId + '_' + abilityId + '.jpg';
+
+            const img = document.createElement('img');
+            img.alt = altText;
+            img.src = pngSrc;
+            img.onerror = function() {
+                if (!this.dataset.jpgTried) {
+                    this.dataset.jpgTried = '1';
+                    this.src = jpgSrc;
+                } else {
+                    icon.innerHTML = '<i class="fas fa-' + fallbackName + '"></i>';
+                }
+            };
+
+            icon.innerHTML = '';
+            icon.appendChild(img);
+        });
+    }
+
     // ========== ПОДСВЕТКА КЛЮЧЕВЫХ ПАРАМЕТРОВ ==========
 
     const paramClasses = {
@@ -124,12 +161,14 @@
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() {
             initHeroDetailIcon();
+            initAbilityIcons();
             initParamHighlight();
             initHamburger();
             initScrollToTop();
         });
     } else {
         initHeroDetailIcon();
+        initAbilityIcons();
         initParamHighlight();
         initHamburger();
         initScrollToTop();
