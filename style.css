@@ -984,10 +984,14 @@ h1 {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 24px 0;
-    margin-bottom: 32px;
-    border-bottom: 1px solid #2a4060;
-    box-shadow: 0 5px 20px #00e6ff22;
+    gap: 16px 24px;
+    padding: clamp(16px, 2.5vw, 26px) clamp(16px, 3vw, 32px);
+    margin-bottom: clamp(20px, 3vw, 32px);
+    border: 1px solid #2a4060;
+    border-radius: 24px;
+    background: rgba(15, 23, 42, 0.86);
+    box-shadow: 0 0 30px #00000055, 0 0 20px #00e6ff22;
+    backdrop-filter: blur(8px);
     min-height: 68px;
 }
 
@@ -999,6 +1003,7 @@ h1 {
     color: #fff;
     transition: 0.2s;
     flex-shrink: 0;
+    min-width: 0;
 }
 .logo:hover {
     text-shadow: 0 0 15px #00e6ff;
@@ -1017,11 +1022,12 @@ h1 {
     color: #00e6ff;
 }
 .logo-text {
-    font-size: 1.6rem;
+    font-size: clamp(1.15rem, 1.4vw, 1.6rem);
     font-weight: 700;
     letter-spacing: 1px;
     color: #ffffff;
     text-shadow: 0 0 12px #00e6ffaa;
+    line-height: 1.1;
 }
 .logo-text small {
     font-size: 0.8rem;
@@ -1036,21 +1042,24 @@ h1 {
     gap: 8px;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 14px;
+    justify-content: flex-end;
+    margin-top: 0;
+    flex: 1 1 520px;
+    min-width: 0;
 }
 .nav-link {
     color: #b0c8f0;
     text-decoration: none;
     font-weight: 500;
-    padding: 6px 12px;
+    padding: 8px 14px;
     border-radius: 30px;
     border: 1px solid transparent;
     transition: 0.15s;
     background: #0f1a2b;
     box-shadow: 0 0 8px #00e6ff33;
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     white-space: nowrap;
-    line-height: 1.4;
+    line-height: 1.35;
 }
 .nav-link i {
     margin-right: 5px;
@@ -1071,16 +1080,16 @@ h1 {
     color: #0b0e14;
     text-decoration: none;
     font-weight: 700;
-    padding: 6px 14px;
+    padding: 8px 14px;
     border-radius: 30px;
     border: 1px solid #00ff88;
     transition: 0.15s;
     background: linear-gradient(135deg, #00cc66, #00ff88);
     box-shadow: 0 0 12px #00ff8866;
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     letter-spacing: 0.5px;
     white-space: nowrap;
-    line-height: 1.4;
+    line-height: 1.35;
 }
 .nav-download i {
     margin-right: 5px;
@@ -2172,6 +2181,29 @@ h1 {
     .support-banner-title { font-size: 1.5rem; }
 }
 
+@media (max-width: 900px) {
+    .site-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    .logo {
+        justify-content: center;
+    }
+    .header-nav {
+        justify-content: center;
+        margin-top: 0;
+    }
+    .nav-link,
+    .nav-download {
+        font-size: 0.82rem;
+        padding: 8px 12px;
+    }
+    .logo-text {
+        font-size: 1.3rem;
+    }
+}
+
 /* Мобильная адаптация шапки */
 @media (max-width: 600px) {
     .site-header {
@@ -2523,24 +2555,59 @@ h1 {
   margin-bottom: 0;
 }
 .category-section h2 {
+  position: relative;
   cursor: pointer;
   user-select: none;
   display: flex;
   align-items: center;
   gap: 8px;
+  padding-right: 150px;
+  min-height: 48px;
 }
-.category-section h2 .collapse-chevron {
-  margin-left: auto;
-  font-size: 0.7em;
-  color: #5a7a9a;
+.category-section h2 .collapse-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(90, 122, 154, 0.4);
+  background: linear-gradient(180deg, rgba(13, 24, 42, 0.95), rgba(9, 15, 28, 0.95));
+  color: #a9c7ff;
+  font-size: 0.78em;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(64, 160, 255, 0.12);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+.category-section h2 .collapse-toggle:hover {
+  border-color: rgba(106, 205, 255, 0.8);
+  color: #d2f3ff;
+  box-shadow: 0 0 16px rgba(64, 160, 255, 0.22);
+  transform: translateY(-50%) translateY(-1px);
+}
+.category-section h2 .collapse-toggle .collapse-chevron {
+  font-size: 0.85em;
+  color: inherit;
   transition: transform 0.3s ease;
 }
-.category-section h2.collapsed-header .collapse-chevron {
+.category-section h2.collapsed-header .collapse-toggle .collapse-chevron {
   transform: rotate(-90deg);
 }
 @media (max-width: 600px) {
   .items-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .category-section h2 {
+    padding-right: 126px;
+    min-height: 44px;
+  }
+  .category-section h2 .collapse-toggle {
+    padding: 7px 10px;
+    font-size: 0.72em;
   }
 }
 .item-card {
