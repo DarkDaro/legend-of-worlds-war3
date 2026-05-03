@@ -140,7 +140,7 @@
     function updateToggleButton(h2, isCollapsed) {
       const btn = getToggleButton(h2);
       if (!btn) return;
-      btn.innerHTML = '<i class="fas ' + (isCollapsed ? 'fa-chevron-right' : 'fa-chevron-down') + ' collapse-chevron"></i><span>' + (isCollapsed ? 'Развернуть' : 'Свернуть') + '</span>';
+      btn.innerHTML = '<i class="fas ' + (isCollapsed ? 'fa-chevron-right' : 'fa-chevron-down') + ' collapse-chevron"></i>';
       btn.setAttribute('aria-label', isCollapsed ? 'Развернуть магазин' : 'Свернуть магазин');
       btn.setAttribute('aria-expanded', isCollapsed ? 'false' : 'true');
       btn.title = isCollapsed ? 'Развернуть магазин' : 'Свернуть магазин';
@@ -192,7 +192,7 @@
       var btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'collapse-toggle';
-      btn.innerHTML = '<i class="fas fa-chevron-down collapse-chevron"></i><span>Свернуть</span>';
+      btn.innerHTML = '<i class="fas fa-chevron-down collapse-chevron"></i>';
       btn.setAttribute('aria-label', 'Свернуть магазин');
       btn.setAttribute('aria-expanded', 'true');
       h2.appendChild(btn);
@@ -211,29 +211,6 @@
     restoreGridState();
   })();
 
-  // Поиск предметов
-  const searchInput = document.getElementById('itemSearch');
-  const itemCards = document.querySelectorAll('.item-card');
-
-  searchInput.addEventListener('input', function() {
-    const query = this.value.toLowerCase().trim();
-
-    document.querySelectorAll('.category-section').forEach(function(section) {
-      const items = section.querySelectorAll('.item-card');
-      let hasVisible = false;
-
-      items.forEach(function(card) {
-        const name = card.querySelector('.item-name')?.textContent.toLowerCase() || '';
-        const tags = card.querySelector('.item-tags')?.textContent.toLowerCase() || '';
-        const match = name.includes(query) || tags.includes(query);
-
-        card.style.display = match ? '' : 'none';
-        if (match) hasVisible = true;
-      });
-
-      section.style.display = hasVisible || !query ? '' : 'none';
-    });
-  });
 
   // Открыть предмет по якорю (например items.html#I03G)
   (function() {

@@ -737,9 +737,7 @@ h1 {
     cursor: pointer;
     font-weight: 500;
     text-decoration: none;
-}
     text-align: center;
-    display: inline-block;
     box-shadow: 0 0 10px #00e6ff33;
     transition: 0.15s;
 }
@@ -784,6 +782,11 @@ h1 {
         flex-direction: column;
         gap: 8px;
         padding: 12px 16px;
+    }
+    .hero-stats-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
     .ability-card {
         padding: 12px;
@@ -842,6 +845,27 @@ h1 {
     }
     .detail-title {
         font-size: 1.3rem;
+    }
+    .recipe-title {
+        font-size: 1.2rem;
+    }
+    .hero-stats-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 12px 0;
+    }
+    .hero-stats-table th,
+    .hero-stats-table td {
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+    .hero-build-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+    .hero-tips {
+        padding: 14px 16px;
     }
     .ability-icon {
         width: 40px;
@@ -1168,6 +1192,35 @@ h1 {
 .change-list li.balance::before { background: #ff5555; }
 .change-list li.rework::before { background: #bf7fff; }
 
+@media (max-width: 500px) {
+    .changelog-section {
+        margin-bottom: 28px;
+    }
+    .version-card {
+        padding: 18px;
+    }
+    .version-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        margin-bottom: 12px;
+    }
+    .version-title {
+        font-size: 1rem;
+    }
+    .version-date {
+        font-size: 0.78rem;
+    }
+    .change-list li {
+        font-size: 0.82rem;
+        line-height: 1.45;
+        padding-left: 18px;
+    }
+    .change-list li::before {
+        top: 12px;
+    }
+}
+
 /* === Механики === */
 .mechanics-grid {
     display: grid;
@@ -1177,6 +1230,27 @@ h1 {
 }
 @media (max-width: 800px) {
     .mechanics-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 500px) {
+    .mechanic-card {
+        padding: 18px;
+    }
+    .mechanic-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 20px;
+    }
+    .mechanic-card h3 {
+        font-size: 1rem;
+    }
+    .mechanic-card p {
+        font-size: 0.85rem;
+    }
+    .mechanic-formula {
+        padding: 10px 12px;
+        font-size: 0.78rem;
+        overflow-wrap: anywhere;
+    }
 }
 .mechanic-card {
     background: #0f172a;
@@ -1886,9 +1960,14 @@ h1 {
     .support-banner { margin: -16px -16px 0; }
 }
 @media (max-width: 500px) {
-    .stats-section { grid-template-columns: 1fr 1fr; }
+    .stats-section { grid-template-columns: 1fr; }
     .quick-links-grid { grid-template-columns: 1fr; }
     .hero-banner-title { font-size: 1.8rem; }
+    .hero-buttons { flex-direction: column; }
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
     .hero-banner { margin: -12px -12px 0; }
     .support-banner { margin: -12px -12px 0; }
     .footer-content { flex-direction: column; align-items: center; text-align: center; }
@@ -2071,7 +2150,27 @@ h1 {
     .info-guides-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 500px) {
-    .info-stats-grid { grid-template-columns: 1fr 1fr; }
+    .info-stats-grid { grid-template-columns: 1fr; }
+    .info-stat-card {
+        padding: 14px 10px;
+    }
+    .info-guides-grid {
+        gap: 10px;
+    }
+    .info-guide-card {
+        padding: 12px 14px;
+    }
+    .info-author-card {
+        padding: 14px 16px;
+        gap: 12px;
+    }
+    .info-links-grid {
+        flex-direction: column;
+    }
+    .info-link-card {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 /* === Лор: таймлайн === */
@@ -2097,6 +2196,33 @@ h1 {
     box-shadow: 0 0 10px #00e6ff88;
 }
 @media (max-width: 500px) {
+    .lore-section {
+        margin-bottom: 24px;
+    }
+    .lore-title {
+        font-size: 1.2rem;
+        padding-left: 14px;
+    }
+    .lore-text {
+        padding: 16px 18px;
+        font-size: 0.95rem;
+    }
+    .modes-grid {
+        grid-template-columns: 1fr;
+    }
+    .mode-card {
+        padding: 16px;
+    }
+    .mode-icon {
+        font-size: 1.7rem;
+    }
+    .cta-title {
+        font-size: 1.25rem;
+    }
+    .call-to-action {
+        padding: 18px;
+        margin-top: 24px;
+    }
     .lore-timeline { margin-left: 4px; padding-left: 18px; }
     .timeline-entry::before { left: -24px; width: 8px; height: 8px; }
 }
@@ -2178,7 +2304,37 @@ h1 {
     .support-logo-img { width: 80px; height: 80px; }
 }
 @media (max-width: 500px) {
+    .support-banner {
+        min-height: 220px;
+        padding: 32px 16px;
+    }
     .support-banner-title { font-size: 1.5rem; }
+    .support-banner-sub {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    .support-logo-img {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 16px;
+    }
+    .support-methods {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+    .support-card {
+        padding: 18px;
+    }
+    .support-card .method-link {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .support-thanks {
+        font-size: 0.85rem;
+    }
 }
 
 @media (max-width: 900px) {
@@ -2210,9 +2366,23 @@ h1 {
         flex-direction: column;
         align-items: stretch;
         gap: 0;
+        padding: 12px 14px;
+        border-radius: 18px;
     }
     .logo {
         justify-content: center;
+        gap: 8px;
+    }
+    .logo-text {
+        font-size: 1.15rem;
+        text-align: center;
+    }
+    .logo-text small {
+        display: block;
+        margin-left: 0;
+        margin-top: 2px;
+        font-size: 0.7rem;
+        letter-spacing: 0.3px;
     }
     .header-nav {
         display: none;
@@ -2229,9 +2399,6 @@ h1 {
         text-align: center;
         padding: 10px 16px;
         font-size: 0.9rem;
-    }
-    .logo-text {
-        font-size: 1.3rem;
     }
 }
 
@@ -2276,7 +2443,7 @@ h1 {
         display: flex;
         position: absolute;
         top: 50%;
-        right: 16px;
+        right: 12px;
         transform: translateY(-50%);
     }
     .site-header {
@@ -2302,7 +2469,7 @@ h1 {
 /* Уменьшаем отступы на мобильных */
 @media (max-width: 600px) {
     body {
-        padding: 12px 16px;
+        padding: 10px 12px;
     }
 }
 
@@ -2571,13 +2738,15 @@ h1 {
   transform: translateY(-50%);
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: 12px;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 50%;
   border: 1px solid rgba(90, 122, 154, 0.4);
   background: linear-gradient(180deg, rgba(13, 24, 42, 0.95), rgba(9, 15, 28, 0.95));
   color: #a9c7ff;
-  font-size: 0.78em;
+  font-size: 0.72em;
   line-height: 1;
   cursor: pointer;
   box-shadow: 0 0 12px rgba(64, 160, 255, 0.12);
@@ -2606,8 +2775,17 @@ h1 {
     min-height: 44px;
   }
   .category-section h2 .collapse-toggle {
-    padding: 7px 10px;
-    font-size: 0.72em;
+    width: 28px;
+    height: 28px;
+    font-size: 0.68em;
+  }
+  .item-detail-panel .detail-icon {
+    width: 80px;
+    height: 80px;
+  }
+  .item-detail-panel .detail-icon img {
+    width: 80px;
+    height: 80px;
   }
 }
 .item-card {
@@ -2738,9 +2916,7 @@ h1 {
   background: #ff555533;
   border-color: #ff5555;
 }
-.hero-card {
-  position: relative;
-}
+.item-search {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -2800,7 +2976,12 @@ h1 {
 }
 @media (max-width: 800px) {
   .app-container { flex-direction: column; }
-  .item-detail-panel { position: static; width: 100%; max-height: none; }
+  .item-detail-panel { position: static; width: 100%; max-height: none; padding: 16px; }
+  .item-search {
+    width: 100%;
+    max-width: none;
+    padding: 8px 16px;
+  }
   .category-tabs {
     flex-wrap: nowrap;
     overflow-x: auto;
