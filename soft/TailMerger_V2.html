@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>TailMerger — Smart Grid Image Mosaic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+            background: var(--bg-body);
+            color: var(--text-primary);
+            padding: 20px;
+        }
+
+        :root {
+            --bg-body: #f5f7fb;
+            --bg-surface: #ffffff;
+            --card-bg: #ffffff;
+            --border-light: #e2e8f0;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --grid-bg: #f1f5f9;
+            --dropzone-bg: #f8fafc;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+        }
+
+        body.dark {
+            --bg-body: #0f172a;
+            --bg-surface: #1e293b;
+            --card-bg: #334155;
+            --border-light: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --accent: #60a5fa;
+            --accent-hover: #3b82f6;
+            --grid-bg: #0f172a;
+            --dropzone-bg: #1e293b;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .app-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .toolbar-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            background: var(--card-bg);
+            padding: 12px 20px;
+            border-radius: 32px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-light);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lizard-icon {
+            font-size: 2rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.7rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, var(--accent), #a855f7);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .ctrl-group {
+            display: flex;
+            gap: 12px;
+            align-items: baseline;
+            background: var(--bg-surface);
+            padding: 5px 12px;
+            border-radius: 40px;
+            border: 1px solid var(--border-light);
+        }
+
+        .ctrl-group label {
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        select, input, button {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: 28px;
+            padding: 6px 12px;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: var(--accent-hover);
+            transform: scale(0.97);
+        }
+
+        .image-upload-zone {
+            background: var(--dropzone-bg);
+            border: 2px dashed var(--border-light);
+            border-radius: 28px;
+            padding: 20px;
+            margin-bottom: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .drag-text {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .grid-config {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: flex-end;
+            background: var(--card-bg);
+            padding: 16px 20px;
+            border-radius: 28px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-light);
+        }
+
+        .grid-size-panel {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .grid-size-panel input {
+            width: 70px;
+            text-align: center;
+        }
+
+        .spacer-input {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .color-preview {
+            width: 28px;
+            height: 28px;
+            border-radius: 28px;
+            border: 2px solid var(--border-light);
+        }
+
+        .grid-canvas-wrapper {
+            background: var(--grid-bg);
+            border-radius: 28px;
+            padding: 20px;
+            overflow-x: auto;
+            text-align: center;
+            border: 1px solid var(--border-light);
+        }
+
+        #gridContainer {
+            display: inline-block;
+        }
+
+        .empty-placeholder {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            background: rgba(0,0,0,0.03);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        button i {
+            font-size: 1rem;
+        }
+
+        @media (max-width: 680px) {
+            .toolbar-header { flex-direction: column; gap: 12px; align-items: stretch; }
+            .controls-row { justify-content: space-between; }
+            .grid-config { flex-direction: column; align-items: stretch; }
+        }
+
+        .toast-msg {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-weight: 500;
+            z-index: 1000;
+            animation: fadeOut 2.5s forwards;
+            pointer-events: none;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            70% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+    </style>
+</head>
+<body>
+<div class="app-container">
+    <div class="toolbar-header">
+        <div class="logo-area">
+            <i class="fas fa-lizard lizard-icon" style="color: var(--accent);"></i>
+            <h1>TailMerger <span style="font-size: 0.8rem;">✓ square-fit</span></h1>
+        </div>
+        <div class="controls-row">
+            <div class="ctrl-group">
+                <i class="fas fa-globe"></i>
+                <select id="langSelect">
+                    <option value="en">English</option>
+                    <option value="ru">Русский</option>
+                </select>
+            </div>
+            <div class="ctrl-group">
+                <i class="fas fa-moon"></i>
+                <select id="themeSelect">
+                    <option value="light">☀️ Light</option>
+                    <option value="dark">🌙 Dark</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-upload-zone" id="dropzone">
+        <div class="drag-text">
+            <i class="fas fa-cloud-upload-alt" style="font-size: 1.8rem;"></i>
+            <span id="dragLabel">📸 Drop images — auto square grid (6×6 for 36 images, 4×5 for 20 etc)</span>
+        </div>
+        <div>
+            <button id="manualAddBtn"><i class="fas fa-plus-circle"></i> <span id="manualBtnText">Add Images</span></button>
+            <button id="clearAllBtn"><i class="fas fa-trash-alt"></i> <span id="clearText">Clear All</span></button>
+        </div>
+    </div>
+
+    <div class="grid-config">
+        <div class="grid-size-panel">
+            <div class="ctrl-group">
+                <label id="colsLabel">Cols:</label>
+                <input type="number" id="colsInput" min="1" max="20" value="3">
+            </div>
+            <div class="ctrl-group">
+                <label id="rowsLabel">Rows:</label>
+                <input type="number" id="rowsInput" min="1" max="20" value="3">
+            </div>
+            <button id="autoFitBtn" style="background:#8b5cf6;"><i class="fas fa-magic"></i> <span id="autoFitText">Smart Square Fit</span></button>
+        </div>
+        <div class="spacer-input">
+            <div class="ctrl-group">
+                <label id="spacingLabel">Spacing (px):</label>
+                <input type="number" id="spacingInput" min="0" max="10" value="2" step="1">
+            </div>
+            <div class="ctrl-group">
+                <label id="spacingColorLabel">Gap Color:</label>
+                <input type="color" id="spacingColorPicker" value="#000000">
+                <button id="transparentGapBtn" style="background:#64748b; padding: 6px 10px;"><i class="fas fa-eye-slash"></i> <span id="transparentText">Transparent</span></button>
+                <div class="color-preview" id="colorPreview" style="background: #000000;"></div>
+            </div>
+        </div>
+        <div>
+            <button id="applyGridBtn"><i class="fas fa-border-all"></i> <span id="applyText">Manual Rebuild</span></button>
+        </div>
+    </div>
+
+    <div class="grid-canvas-wrapper">
+        <div id="gridContainer"></div>
+    </div>
+
+    <div class="action-buttons">
+        <button id="saveImageBtn"><i class="fas fa-save"></i> <span id="saveBtnText">Save as Image</span></button>
+        <button id="copyToClipboardBtn"><i class="fas fa-copy"></i> <span id="copyBtnText">Copy Image</span></button>
+    </div>
+</div>
+
+<script>
+    // ---------- TRANSLATIONS ----------
+    const translations = {
+        en: {
+            dragLabel: "📸 Drop images — auto square grid (6×6 for 36 images, 4×5 for 20 etc)",
+            manualBtnText: "Add Images",
+            clearText: "Clear All",
+            colsLabel: "Cols:",
+            rowsLabel: "Rows:",
+            spacingLabel: "Spacing (px):",
+            spacingColorLabel: "Gap Color:",
+            applyText: "Manual Rebuild",
+            saveBtnText: "Save as Image",
+            copyBtnText: "Copy Image",
+            autoFitText: "Smart Square Fit",
+            transparentText: "Transparent",
+            toastCopied: "✅ Image copied (no empty cells)!",
+            toastSaved: "💾 Saved!",
+            toastCleared: "🧹 All images cleared",
+            toastGridUpdated: "Grid manually updated",
+            toastAutoFit: "🎯 Perfect square grid: {rows}×{cols} for {count} images",
+            toastTransparent: "🎨 Gap is now transparent",
+            noImages: "No images to export"
+        },
+        ru: {
+            dragLabel: "📸 Кидайте фото — авто-квадратная сетка (6×6 для 36 фото, 4×5 для 20)",
+            manualBtnText: "Добавить",
+            clearText: "Очистить всё",
+            colsLabel: "Столбцы:",
+            rowsLabel: "Строки:",
+            spacingLabel: "Отступ (px):",
+            spacingColorLabel: "Цвет зазора:",
+            applyText: "Обновить вручную",
+            saveBtnText: "Сохранить",
+            copyBtnText: "Копировать",
+            autoFitText: "Умная сетка",
+            transparentText: "Прозрачный",
+            toastCopied: "✅ Изображение скопировано (без пустых)!",
+            toastSaved: "💾 Сохранено!",
+            toastCleared: "🧹 Все изображения удалены",
+            toastGridUpdated: "Сетка обновлена вручную",
+            toastAutoFit: "🎯 Идеальная сетка: {rows}×{cols} для {count} фото",
+            toastTransparent: "🎨 Зазор стал прозрачным",
+            noImages: "Нет изображений для экспорта"
+        }
+    };
+
+    let currentLang = "en";
+    
+    function updateAllTexts() {
+        const t = translations[currentLang];
+        if (!t) return;
+        document.getElementById("dragLabel").innerText = t.dragLabel;
+        document.getElementById("manualBtnText").innerText = t.manualBtnText;
+        document.getElementById("clearText").innerText = t.clearText;
+        document.getElementById("colsLabel").innerText = t.colsLabel;
+        document.getElementById("rowsLabel").innerText = t.rowsLabel;
+        document.getElementById("spacingLabel").innerText = t.spacingLabel;
+        document.getElementById("spacingColorLabel").innerText = t.spacingColorLabel;
+        document.getElementById("applyText").innerText = t.applyText;
+        document.getElementById("saveBtnText").innerText = t.saveBtnText;
+        document.getElementById("copyBtnText").innerText = t.copyBtnText;
+        document.getElementById("autoFitText").innerText = t.autoFitText;
+        document.getElementById("transparentText").innerText = t.transparentText;
+    }
+
+    // Theme switching
+    function setTheme(theme) {
+        if (theme === "dark") {
+            document.body.classList.add("dark");
+        } else {
+            document.body.classList.remove("dark");
+        }
+    }
+
+    // ---------- DATA ----------
+    let gridData = [];
+    let currentCols = 3;
+    let currentRows = 3;
+    let currentSpacing = 2;
+    let currentGapColor = "#000000";
+    let isGapTransparent = false;
+
+    function getAllImagesFlat() {
+        const images = [];
+        for (let i = 0; i < currentRows; i++) {
+            if (!gridData[i]) continue;
+            for (let j = 0; j < currentCols; j++) {
+                if (gridData[i][j] !== null && gridData[i][j] !== undefined) {
+                    images.push(gridData[i][j]);
+                }
+            }
+        }
+        return images;
+    }
+
+    // Optimal square-like grid: balance between rows and cols
+    function findBestSquareGrid(imageCount) {
+        if (imageCount <= 0) return { rows: 1, cols: 1 };
+        
+        let bestRows = 1;
+        let bestCols = imageCount;
+        let bestDiff = Math.abs(1 - imageCount);
+        let bestWaste = (1 * imageCount) - imageCount;
+        
+        const maxRows = Math.min(20, imageCount);
+        for (let rows = 1; rows <= maxRows; rows++) {
+            let cols = Math.ceil(imageCount / rows);
+            if (cols > 20) continue;
+            
+            let diff = Math.abs(rows - cols);
+            let waste = (rows * cols) - imageCount;
+            
+            if (diff < bestDiff) {
+                bestDiff = diff;
+                bestRows = rows;
+                bestCols = cols;
+                bestWaste = waste;
+            } else if (diff === bestDiff && waste < bestWaste) {
+                bestRows = rows;
+                bestCols = cols;
+                bestWaste = waste;
+            }
+        }
+        return { rows: bestRows, cols: bestCols };
+    }
+
+    function applySmartSquareFit() {
+        const images = getAllImagesFlat();
+        if (images.length === 0) {
+            showToast(translations[currentLang].noImages);
+            return false;
+        }
+        
+        const { rows, cols } = findBestSquareGrid(images.length);
+        const newGrid = Array(rows).fill().map(() => Array(cols).fill(null));
+        for (let idx = 0; idx < images.length; idx++) {
+            const r = Math.floor(idx / cols);
+            const c = idx % cols;
+            newGrid[r][c] = images[idx];
+        }
+        
+        currentRows = rows;
+        currentCols = cols;
+        gridData = newGrid;
+        
+        document.getElementById("rowsInput").value = currentRows;
+        document.getElementById("colsInput").value = currentCols;
+        renderGridHTML();
+        
+        const msg = translations[currentLang].toastAutoFit
+            .replace("{rows}", rows)
+            .replace("{cols}", cols)
+            .replace("{count}", images.length);
+        showToast(msg);
+        return true;
+    }
+
+    function addImagesAndAutoFit(files) {
+        let validFiles = Array.from(files).filter(f => f.type.startsWith('image/'));
+        if (validFiles.length === 0) {
+            showToast("No valid images");
+            return;
+        }
+        
+        let pendingImages = [];
+        let processed = 0;
+        
+        for (let file of validFiles) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                pendingImages.push(e.target.result);
+                processed++;
+                if (processed === validFiles.length) {
+                    const existingImages = getAllImagesFlat();
+                    const allImages = [...existingImages, ...pendingImages];
+                    const { rows, cols } = findBestSquareGrid(allImages.length);
+                    
+                    const newGrid = Array(rows).fill().map(() => Array(cols).fill(null));
+                    for (let idx = 0; idx < allImages.length; idx++) {
+                        const r = Math.floor(idx / cols);
+                        const c = idx % cols;
+                        newGrid[r][c] = allImages[idx];
+                    }
+                    
+                    currentRows = rows;
+                    currentCols = cols;
+                    gridData = newGrid;
+                    
+                    document.getElementById("rowsInput").value = currentRows;
+                    document.getElementById("colsInput").value = currentCols;
+                    renderGridHTML();
+                    
+                    const msg = translations[currentLang].toastAutoFit
+                        .replace("{rows}", rows)
+                        .replace("{cols}", cols)
+                        .replace("{count}", allImages.length);
+                    showToast(msg);
+                }
+            };
+            reader.onerror = () => {
+                processed++;
+                console.warn('Failed to read file:', file.name);
+                if (processed === validFiles.length) {
+                    const existingImages = getAllImagesFlat();
+                    const allImages = [...existingImages, ...pendingImages];
+                    if (allImages.length === 0) {
+                        showToast(translations[currentLang].noImages);
+                        return;
+                    }
+                    const { rows, cols } = findBestSquareGrid(allImages.length);
+                    const newGrid = Array(rows).fill().map(() => Array(cols).fill(null));
+                    for (let idx = 0; idx < allImages.length; idx++) {
+                        const r = Math.floor(idx / cols);
+                        const c = idx % cols;
+                        newGrid[r][c] = allImages[idx];
+                    }
+                    currentRows = rows;
+                    currentCols = cols;
+                    gridData = newGrid;
+                    document.getElementById("rowsInput").value = currentRows;
+                    document.getElementById("colsInput").value = currentCols;
+                    renderGridHTML();
+                    const msg = translations[currentLang].toastAutoFit
+                        .replace("{rows}", rows)
+                        .replace("{cols}", cols)
+                        .replace("{count}", allImages.length);
+                    showToast(msg);
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function rebuildGridFromState(keepImages = true) {
+        let newRows = parseInt(document.getElementById("rowsInput").value) || 1;
+        let newCols = parseInt(document.getElementById("colsInput").value) || 1;
+        newRows = Math.min(20, Math.max(1, newRows));
+        newCols = Math.min(20, Math.max(1, newCols));
+        currentSpacing = parseInt(document.getElementById("spacingInput").value) || 0;
+        
+        if (!isGapTransparent) {
+            currentGapColor = document.getElementById("spacingColorPicker").value;
+        }
+        document.getElementById("colorPreview").style.background = isGapTransparent ? 
+            "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 2 2\"><rect width=\"2\" height=\"2\" fill=\"%23cccccc\"/><rect width=\"1\" height=\"1\" fill=\"%23ffffff\"/><rect x=\"1\" y=\"1\" width=\"1\" height=\"1\" fill=\"%23ffffff\"/></svg>')" : 
+            currentGapColor;
+        
+        const oldImages = getAllImagesFlat();
+        if (keepImages && oldImages.length) {
+            // Warn if images will be lost due to grid shrinking
+            if (oldImages.length > newRows * newCols) {
+                const lostCount = oldImages.length - (newRows * newCols);
+                const warnMsg = currentLang === 'ru'
+                    ? `⚠️ ${lostCount} изображений не поместится в новую сетку и будет потеряно`
+                    : `⚠️ ${lostCount} image(s) won't fit in the new grid and will be lost`;
+                if (!confirm(warnMsg)) return;
+            }
+            const newGrid = Array(newRows).fill().map(() => Array(newCols).fill(null));
+            for (let idx = 0; idx < Math.min(oldImages.length, newRows * newCols); idx++) {
+                const r = Math.floor(idx / newCols);
+                const c = idx % newCols;
+                newGrid[r][c] = oldImages[idx];
+            }
+            gridData = newGrid;
+        } else {
+            gridData = Array(newRows).fill().map(() => Array(newCols).fill(null));
+        }
+        currentRows = newRows;
+        currentCols = newCols;
+        renderGridHTML();
+    }
+
+    function renderGridHTML() {
+        const container = document.getElementById("gridContainer");
+        const spacing = currentSpacing;
+        const gapColor = isGapTransparent ? "transparent" : currentGapColor;
+        const rows = currentRows;
+        const cols = currentCols;
+        
+        let gridHtml = `<div style="display: grid; grid-template-columns: repeat(${cols}, minmax(110px, 180px)); gap: ${spacing}px; background-color: ${gapColor}; padding: ${spacing}px; border-radius: 20px; justify-content: center;">`;
+        
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                const imgSrc = (gridData[i] && gridData[i][j]) ? gridData[i][j] : null;
+                gridHtml += `<div style="background: var(--card-bg); border-radius: 14px; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.08);">`;
+                if (imgSrc) {
+                    gridHtml += `<img src="${imgSrc}" style="width:100%; height:100%; object-fit: cover; display:block;" alt="cell" crossorigin="anonymous">`;
+                } else {
+                    gridHtml += `<div class="empty-placeholder"><i class="fas fa-image"></i><span style="font-size:10px;">empty</span></div>`;
+                }
+                gridHtml += `</div>`;
+            }
+        }
+        gridHtml += `</div>`;
+        container.innerHTML = gridHtml;
+    }
+
+    async function getCompactExportCanvas() {
+        const imageList = getAllImagesFlat();
+        if (imageList.length === 0) throw new Error("No images");
+        
+        let targetCols = currentCols;
+        let rowsNeeded = Math.ceil(imageList.length / targetCols);
+        const compactRows = rowsNeeded;
+        const compactCols = targetCols;
+        const compactGrid = Array(compactRows).fill().map(() => Array(compactCols).fill(null));
+        
+        for (let idx = 0; idx < imageList.length; idx++) {
+            const r = Math.floor(idx / compactCols);
+            const c = idx % compactCols;
+            compactGrid[r][c] = imageList[idx];
+        }
+        
+        const tempDiv = document.createElement('div');
+        tempDiv.style.position = 'absolute';
+        tempDiv.style.top = '-9999px';
+        tempDiv.style.left = '-9999px';
+        const gapColorStyle = isGapTransparent ? "transparent" : currentGapColor;
+        tempDiv.style.display = 'grid';
+        tempDiv.style.gridTemplateColumns = `repeat(${compactCols}, minmax(110px, 180px))`;
+        tempDiv.style.gap = `${currentSpacing}px`;
+        tempDiv.style.backgroundColor = gapColorStyle;
+        tempDiv.style.padding = `${currentSpacing}px`;
+        tempDiv.style.borderRadius = '20px';
+        
+        for (let i = 0; i < compactRows; i++) {
+            for (let j = 0; j < compactCols; j++) {
+                const imgSrc = compactGrid[i][j];
+                const cell = document.createElement('div');
+                cell.style.background = "var(--card-bg)";
+                cell.style.borderRadius = "14px";
+                cell.style.aspectRatio = "1 / 1";
+                cell.style.display = "flex";
+                cell.style.alignItems = "center";
+                cell.style.justifyContent = "center";
+                cell.style.overflow = "hidden";
+                if (imgSrc) {
+                    const img = document.createElement('img');
+                    img.src = imgSrc;
+                    img.style.width = "100%";
+                    img.style.height = "100%";
+                    img.style.objectFit = "cover";
+                    cell.appendChild(img);
+                }
+                tempDiv.appendChild(cell);
+            }
+        }
+        
+        document.body.appendChild(tempDiv);
+
+        // Wait for all images to load before rendering
+        const imgElements = tempDiv.querySelectorAll('img');
+        await Promise.all(Array.from(imgElements).map(img => {
+            if (img.complete) return Promise.resolve();
+            return new Promise(resolve => {
+                img.onload = resolve;
+                img.onerror = resolve;
+            });
+        }));
+
+        const canvas = await html2canvas(tempDiv, {
+            scale: 2,
+            backgroundColor: isGapTransparent ? null : (currentGapColor === 'transparent' ? null : currentGapColor),
+            logging: false,
+            useCORS: true,
+            allowTaint: false
+        });
+        document.body.removeChild(tempDiv);
+        return canvas;
+    }
+
+    function clearAllImages() {
+        gridData = Array(currentRows).fill().map(() => Array(currentCols).fill(null));
+        renderGridHTML();
+        showToast(translations[currentLang].toastCleared);
+    }
+
+    function showToast(msg) {
+        let existing = document.querySelector('.toast-msg');
+        if(existing) existing.remove();
+        let toast = document.createElement('div');
+        toast.className = 'toast-msg';
+        toast.innerText = msg;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 2500);
+    }
+
+    // ---------- EVENT LISTENERS ----------
+    // Language
+    document.getElementById("langSelect").addEventListener("change", (e) => {
+        currentLang = e.target.value;
+        updateAllTexts();
+    });
+    
+    // Theme
+    document.getElementById("themeSelect").addEventListener("change", (e) => {
+        setTheme(e.target.value);
+    });
+    
+    // Drag & Drop
+    const dropzone = document.getElementById("dropzone");
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(ev => dropzone.addEventListener(ev, (e) => { e.preventDefault(); e.stopPropagation(); }));
+    // Prevent browser from opening file when dropped outside the zone
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(ev => document.body.addEventListener(ev, (e) => { e.preventDefault(); }));
+    dropzone.addEventListener('dragover', () => dropzone.style.borderColor = "var(--accent)");
+    dropzone.addEventListener('dragleave', () => dropzone.style.borderColor = "var(--border-light)");
+    dropzone.addEventListener('drop', (e) => {
+        dropzone.style.borderColor = "var(--border-light)";
+        const files = Array.from(e.dataTransfer.files);
+        if (files.length) addImagesAndAutoFit(files);
+    });
+    // Handle drop anywhere on the page
+    document.body.addEventListener('drop', (e) => {
+        const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+        if (files.length) addImagesAndAutoFit(files);
+    });
+    dropzone.addEventListener('click', () => {
+        const inp = document.createElement('input');
+        inp.type = 'file';
+        inp.accept = 'image/*';
+        inp.multiple = true;
+        inp.onchange = () => { if (inp.files) addImagesAndAutoFit(Array.from(inp.files)); };
+        inp.click();
+    });
+    
+    document.getElementById("manualAddBtn").addEventListener("click", () => {
+        const inp = document.createElement('input');
+        inp.type = 'file';
+        inp.accept = 'image/*';
+        inp.multiple = true;
+        inp.onchange = () => { if (inp.files) addImagesAndAutoFit(Array.from(inp.files)); };
+        inp.click();
+    });
+    
+    document.getElementById("clearAllBtn").addEventListener("click", clearAllImages);
+    document.getElementById("applyGridBtn").addEventListener("click", () => { rebuildGridFromState(true); showToast(translations[currentLang].toastGridUpdated); });
+    document.getElementById("autoFitBtn").addEventListener("click", () => applySmartSquareFit());
+    document.getElementById("colsInput").addEventListener("change", () => rebuildGridFromState(true));
+    document.getElementById("rowsInput").addEventListener("change", () => rebuildGridFromState(true));
+    document.getElementById("spacingInput").addEventListener("input", () => {
+        currentSpacing = parseInt(document.getElementById("spacingInput").value) || 0;
+        renderGridHTML();
+    });
+    document.getElementById("spacingColorPicker").addEventListener("input", (e) => {
+        isGapTransparent = false;
+        currentGapColor = e.target.value;
+        document.getElementById("colorPreview").style.background = currentGapColor;
+        renderGridHTML();
+    });
+    document.getElementById("transparentGapBtn").addEventListener("click", () => {
+        isGapTransparent = true;
+        document.getElementById("colorPreview").style.background = "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 2 2\"><rect width=\"2\" height=\"2\" fill=\"%23cccccc\"/><rect width=\"1\" height=\"1\" fill=\"%23ffffff\"/><rect x=\"1\" y=\"1\" width=\"1\" height=\"1\" fill=\"%23ffffff\"/></svg>')";
+        renderGridHTML();
+        showToast(translations[currentLang].toastTransparent);
+    });
+    document.getElementById("saveImageBtn").addEventListener("click", async () => {
+        try {
+            if (getAllImagesFlat().length === 0) throw new Error("no images");
+            const canvas = await getCompactExportCanvas();
+            const link = document.createElement('a');
+            link.download = 'tailmerger_grid.png';
+            link.href = canvas.toDataURL();
+            link.click();
+            showToast(translations[currentLang].toastSaved);
+        } catch (err) { showToast(translations[currentLang].noImages); }
+    });
+    document.getElementById("copyToClipboardBtn").addEventListener("click", async () => {
+        try {
+            if (getAllImagesFlat().length === 0) throw new Error("no images");
+            const canvas = await getCompactExportCanvas();
+            canvas.toBlob(async (blob) => {
+                try {
+                    await navigator.clipboard.write([new ClipboardItem({ [blob.type]: blob })]);
+                    showToast(translations[currentLang].toastCopied);
+                } catch (clipErr) {
+                    // Fallback for browsers without ClipboardItem support (e.g. Firefox)
+                    try {
+                        const dataUrl = canvas.toDataURL('image/png');
+                        await navigator.clipboard.writeText(dataUrl);
+                        showToast(translations[currentLang].toastCopied);
+                    } catch (fallbackErr) {
+                        showToast(translations[currentLang].noImages);
+                    }
+                }
+            });
+        } catch (err) { showToast(translations[currentLang].noImages); }
+    });
+
+    // ---------- INIT ----------
+    function init() {
+        currentRows = 3; currentCols = 3; currentSpacing = 2; currentGapColor = "#000000"; isGapTransparent = false;
+        document.getElementById("rowsInput").value = 3;
+        document.getElementById("colsInput").value = 3;
+        document.getElementById("spacingInput").value = 2;
+        document.getElementById("spacingColorPicker").value = "#000000";
+        gridData = Array(3).fill().map(() => Array(3).fill(null));
+        renderGridHTML();
+        updateAllTexts();
+        setTheme("light");
+        document.getElementById("themeSelect").value = "light";
+        document.getElementById("langSelect").value = "en";
+    }
+    init();
+</script>
+</body>
+</html>
