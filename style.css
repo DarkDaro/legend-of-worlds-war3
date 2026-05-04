@@ -1495,6 +1495,49 @@ h1 {
     margin-top: 12px;
 }
 
+/* Боссы и крипы: разный уровень детализации */
+.monster-card.boss .monster-header {
+    padding: 16px 18px;
+}
+.monster-card.boss .monster-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+}
+.monster-card.boss .monster-body-inner {
+    padding: 0 18px 18px;
+}
+.monster-card.boss .monster-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.monster-card.creep .monster-header {
+    padding: 12px 16px;
+}
+.monster-card.creep .monster-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+}
+.monster-card.creep .monster-name {
+    font-size: 0.96rem;
+}
+.monster-card.creep .monster-body-inner {
+    padding: 0 16px 14px;
+}
+.monster-card.creep .monster-stats-grid {
+    grid-template-columns: 1fr;
+}
+.monster-card.creep .monster-abilities,
+.monster-card.creep .monster-desc {
+    display: none;
+}
+.monster-card.creep .monster-reward {
+    margin-top: 12px;
+}
+.monster-card.creep .reward-row {
+    padding: 5px 10px;
+}
+
 /* Способности босса */
 .boss-ability {
     background: #0a0f1a;
