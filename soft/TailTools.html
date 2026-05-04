@@ -319,6 +319,24 @@
             background: var(--bg);
         }
 
+        #centeringWrapper {
+            min-height: 100%;
+            min-width: 100%;
+            position: relative;
+            display: grid;
+            place-items: center;
+            padding: 80px 24px 24px;
+        }
+
+        #mainCanvas {
+            max-width: 100%;
+            max-height: calc(100vh - 180px);
+            width: auto;
+            height: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+            background: #fff;
+        }
+
         #canvasToolbar {
             position: absolute;
             top: 16px;
@@ -810,7 +828,13 @@
                 downloadBtn: document.getElementById('downloadBtn'),
                 mainCanvas: document.getElementById('mainCanvas'),
                 scrollContainer: document.getElementById('scrollContainer'),
+                rowsInput: document.getElementById('rowsInput'),
+                colsInput: document.getElementById('colsInput'),
+                gridColor: document.getElementById('gridColor'),
+                gridThickness: document.getElementById('gridThickness'),
                 imageInfo: document.getElementById('imageInfo'),
+                imgSize: document.getElementById('imgSize'),
+                imgRes: document.getElementById('imgRes'),
                 selectedLinePanel: document.getElementById('selectedLinePanel'),
                 mobileSelectedPanel: document.getElementById('mobileSelectedPanel')
             },
@@ -821,9 +845,23 @@
                 if (this.elements.imageInfo) this.elements.imageInfo.hidden = true;
                 if (this.elements.selectedLinePanel) this.elements.selectedLinePanel.hidden = true;
                 if (this.elements.mobileSelectedPanel) this.elements.mobileSelectedPanel.hidden = true;
+                this.ctx = this.elements.mainCanvas ? this.elements.mainCanvas.getContext('2d') : null;
+                this.currentImage = null;
 
                 if (this.elements.fileInput) {
                     this.elements.fileInput.addEventListener('change', (e) => this.handleFileSelect(e));
+                }
+                if (this.elements.rowsInput) {
+                    this.elements.rowsInput.addEventListener('input', () => this.redrawCurrentImage());
+                }
+                if (this.elements.colsInput) {
+                    this.elements.colsInput.addEventListener('input', () => this.redrawCurrentImage());
+                }
+                if (this.elements.gridColor) {
+                    this.elements.gridColor.addEventListener('input', () => this.redrawCurrentImage());
+                }
+                if (this.elements.gridThickness) {
+                    this.elements.gridThickness.addEventListener('input', () => this.redrawCurrentImage());
                 }
                 if (this.elements.dragDropZone) {
                     this.elements.dragDropZone.addEventListener('click', () => {
@@ -869,11 +907,86 @@
                 preview.hidden = false;
                 name.textContent = file.name;
 
+                const sizeStr = file.size > 1024 * 1024
+                    ? `${(file.size / (1024 * 1024)).toFixed(2)} MB`
+                    : `${(file.size / 1024).toFixed(1)} KB`;
+                if (this.elements.imgSize) this.elements.imgSize.textContent = sizeStr;
+
                 const reader = new FileReader();
                 reader.onload = (event) => {
                     img.src = event.target.result;
+                    const image = new Image();
+                    image.onload = () => {
+                        if (this.elements.imgRes) this.elements.imgRes.textContent = `${image.width}x${image.height}px`;
+                        if (this.elements.imageInfo) this.elements.imageInfo.hidden = false;
+                        this.currentImage = image;
+                        this.renderCanvas();
+                    };
+                    image.src = event.target.result;
                 };
                 reader.readAsDataURL(file);
+            },
+
+            renderCanvas() {
+                const image = this.currentImage;
+                if (!this.elements.mainCanvas || !this.ctx || !image) return;
+
+                const canvas = this.elements.mainCanvas;
+                const wrapper = document.getElementById('centeringWrapper');
+                const toolbarHeight = 80;
+                const maxWidth = Math.max(320, (wrapper ? wrapper.clientWidth : window.innerWidth) - 48);
+                const maxHeight = Math.max(320, window.innerHeight - toolbarHeight - 48);
+                const scale = Math.min(maxWidth / image.width, maxHeight / image.height, 1);
+                const drawWidth = Math.max(1, Math.round(image.width * scale));
+                const drawHeight = Math.max(1, Math.round(image.height * scale));
+
+                canvas.width = drawWidth;
+                canvas.height = drawHeight;
+                canvas.style.width = drawWidth + 'px';
+                canvas.style.height = drawHeight + 'px';
+                this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+                this.ctx.drawImage(image, 0, 0, drawWidth, drawHeight);
+
+                const rows = Math.max(1, parseInt(this.elements.rowsInput?.value, 10) || 2);
+                const cols = Math.max(1, parseInt(this.elements.colsInput?.value, 10) || 2);
+                this.drawGridOverlay(rows, cols);
+            },
+
+            drawGridOverlay(rows = 2, cols = 2) {
+                if (!this.ctx || !this.elements.mainCanvas) return;
+                const canvas = this.elements.mainCanvas;
+                const w = canvas.width;
+                const h = canvas.height;
+
+                this.ctx.save();
+                this.ctx.strokeStyle = this.elements.gridColor?.value || 'rgba(255, 82, 82, 0.9)';
+                this.ctx.lineWidth = Math.max(1, parseInt(this.elements.gridThickness?.value, 10) || 2);
+
+                for (let i = 1; i < cols; i++) {
+                    const x = Math.round((w / cols) * i) + 0.5;
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(x, 0);
+                    this.ctx.lineTo(x, h);
+                    this.ctx.stroke();
+                }
+
+                for (let i = 1; i < rows; i++) {
+                    const y = Math.round((h / rows) * i) + 0.5;
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(0, y);
+                    this.ctx.lineTo(w, y);
+                    this.ctx.stroke();
+                }
+
+                this.ctx.restore();
+            },
+
+
+
+            redrawCurrentImage() {
+                if (this.currentImage) {
+                    this.renderCanvas();
+                }
             },
 
             removeFile() {
@@ -881,6 +994,11 @@
                 if (this.elements.filePreview) this.elements.filePreview.hidden = true;
                 if (this.elements.previewImage) this.elements.previewImage.src = '';
                 if (this.elements.fileName) this.elements.fileName.textContent = '';
+                if (this.elements.imageInfo) this.elements.imageInfo.hidden = true;
+                this.currentImage = null;
+                if (this.ctx && this.elements.mainCanvas) {
+                    this.ctx.clearRect(0, 0, this.elements.mainCanvas.width, this.elements.mainCanvas.height);
+                }
             }
         };
 
