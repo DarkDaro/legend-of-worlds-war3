@@ -195,6 +195,12 @@
             background: var(--dropzone-bg);
         }
 
+        #dragDropZone.active {
+            border-color: var(--accent);
+            background: color-mix(in srgb, var(--accent) 10%, var(--dropzone-bg));
+            transform: translateY(-1px);
+        }
+
         #dragDropZone p {
             margin: 4px 0;
             color: var(--muted);
@@ -793,6 +799,91 @@
             }
         };
 
+        const TailCutter = {
+            elements: {
+                dragDropZone: document.getElementById('dragDropZone'),
+                fileInput: document.getElementById('fileInput'),
+                filePreview: document.getElementById('filePreview'),
+                previewImage: document.getElementById('previewImage'),
+                fileName: document.getElementById('fileName'),
+                removeFileBtn: document.getElementById('removeFileBtn'),
+                downloadBtn: document.getElementById('downloadBtn'),
+                mainCanvas: document.getElementById('mainCanvas'),
+                scrollContainer: document.getElementById('scrollContainer'),
+                imageInfo: document.getElementById('imageInfo'),
+                selectedLinePanel: document.getElementById('selectedLinePanel'),
+                mobileSelectedPanel: document.getElementById('mobileSelectedPanel')
+            },
+            init() {
+                // Base UI state only; real Cutter logic comes later.
+                if (this.elements.downloadBtn) this.elements.downloadBtn.disabled = true;
+                if (this.elements.filePreview) this.elements.filePreview.hidden = true;
+                if (this.elements.imageInfo) this.elements.imageInfo.hidden = true;
+                if (this.elements.selectedLinePanel) this.elements.selectedLinePanel.hidden = true;
+                if (this.elements.mobileSelectedPanel) this.elements.mobileSelectedPanel.hidden = true;
+
+                if (this.elements.fileInput) {
+                    this.elements.fileInput.addEventListener('change', (e) => this.handleFileSelect(e));
+                }
+                if (this.elements.dragDropZone) {
+                    this.elements.dragDropZone.addEventListener('click', () => {
+                        if (this.elements.fileInput) this.elements.fileInput.click();
+                    });
+                    this.elements.dragDropZone.addEventListener('dragover', (e) => {
+                        e.preventDefault();
+                        this.elements.dragDropZone.classList.add('active');
+                    });
+                    this.elements.dragDropZone.addEventListener('dragleave', () => {
+                        this.elements.dragDropZone.classList.remove('active');
+                    });
+                    this.elements.dragDropZone.addEventListener('drop', (e) => {
+                        e.preventDefault();
+                        this.elements.dragDropZone.classList.remove('active');
+                        this.handleDroppedFiles(e.dataTransfer.files);
+                    });
+                }
+                if (this.elements.removeFileBtn) {
+                    this.elements.removeFileBtn.addEventListener('click', () => this.removeFile());
+                }
+            },
+
+            handleFileSelect(e) {
+                const files = e.target.files;
+                if (!files || files.length === 0) return;
+                this.handleDroppedFiles(files);
+            },
+
+            handleDroppedFiles(files) {
+                const file = files[0];
+                if (!file) return;
+                if (!file.type || !file.type.startsWith('image/')) {
+                    TailTools.showToast('Please choose an image file');
+                    return;
+                }
+
+                const preview = this.elements.filePreview;
+                const img = this.elements.previewImage;
+                const name = this.elements.fileName;
+                if (!preview || !img || !name) return;
+
+                preview.hidden = false;
+                name.textContent = file.name;
+
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            },
+
+            removeFile() {
+                if (this.elements.fileInput) this.elements.fileInput.value = '';
+                if (this.elements.filePreview) this.elements.filePreview.hidden = true;
+                if (this.elements.previewImage) this.elements.previewImage.src = '';
+                if (this.elements.fileName) this.elements.fileName.textContent = '';
+            }
+        };
+
         const tabs = {
             cutter: document.getElementById('cutterPanel'),
             merger: document.getElementById('mergerPanel')
@@ -813,6 +904,7 @@
         TailTools.applyTheme(savedTheme);
         TailTools.applyLanguage(savedLang);
         TailTools.switchTab('cutter');
+        TailCutter.init();
     </script>
 </body>
 </html>
