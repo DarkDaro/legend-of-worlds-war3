@@ -293,6 +293,7 @@
         <div class="drag-text">
             <i class="fas fa-cloud-upload-alt" style="font-size: 1.8rem;"></i>
             <span id="dragLabel">📸 Drop images — auto square grid (6×6 for 36 images, 4×5 for 20 etc)</span>
+            <span id="pasteHint" style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-top:4px;">Ctrl+V to paste from clipboard</span>
         </div>
         <div>
             <button id="manualAddBtn"><i class="fas fa-plus-circle"></i> <span id="manualBtnText">Add Images</span></button>
@@ -361,7 +362,8 @@
             toastGridUpdated: "Grid manually updated",
             toastAutoFit: "🎯 Perfect square grid: {rows}×{cols} for {count} images",
             toastTransparent: "🎨 Gap is now transparent",
-            noImages: "No images to export"
+            noImages: "No images to export",
+            pasteHint: "Ctrl+V to paste from clipboard"
         },
         ru: {
             dragLabel: "📸 Кидайте фото — авто-квадратная сетка (6×6 для 36 фото, 4×5 для 20)",
@@ -382,7 +384,8 @@
             toastGridUpdated: "Сетка обновлена вручную",
             toastAutoFit: "🎯 Идеальная сетка: {rows}×{cols} для {count} фото",
             toastTransparent: "🎨 Зазор стал прозрачным",
-            noImages: "Нет изображений для экспорта"
+            noImages: "Нет изображений для экспорта",
+            pasteHint: "Ctrl+V — вставить из буфера обмена"
         }
     };
 
@@ -403,6 +406,7 @@
         document.getElementById("copyBtnText").innerText = t.copyBtnText;
         document.getElementById("autoFitText").innerText = t.autoFitText;
         document.getElementById("transparentText").innerText = t.transparentText;
+        document.getElementById("pasteHint").innerText = t.pasteHint;
     }
 
     // Theme switching
@@ -755,6 +759,24 @@
     document.body.addEventListener('drop', (e) => {
         const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
         if (files.length) addImagesAndAutoFit(files);
+    });
+
+    // Paste from clipboard (Ctrl+V)
+    window.addEventListener('paste', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (!e.clipboardData || !e.clipboardData.items) return;
+
+        const items = e.clipboardData.items;
+        for (let i = 0; i < items.length; i++) {
+            const item = items[i];
+            if (item.type.indexOf('image') !== -1) {
+                e.preventDefault();
+                const file = item.getAsFile();
+                if (!file) continue;
+                addImagesAndAutoFit([file]);
+                break;
+            }
+        }
     });
     dropzone.addEventListener('click', () => {
         const inp = document.createElement('input');
