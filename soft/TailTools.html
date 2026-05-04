@@ -695,7 +695,7 @@
 </head>
 <body>
     <div id="dragOverlay" hidden>
-        <div>Drop Image Here</div>
+        <div data-i18n="dropOverlay">Drop Image Here</div>
     </div>
 
     <div class="shell">
@@ -745,14 +745,14 @@
                             <div id="filePreview" hidden>
                                 <img id="previewImage" alt="Preview">
                                 <span id="fileName"></span>
-                                <button id="removeFileBtn" type="button">Remove</button>
+                                <button id="removeFileBtn" type="button" data-i18n="removeFile">Remove</button>
                                 <div id="fileProgress"><div id="progressBarFill"></div></div>
                             </div>
                         </div>
 
                         <div id="imageInfo" hidden>
-                            <div><span>Size:</span> <span id="imgSize">0 KB</span></div>
-                            <div><span>Res:</span> <span id="imgRes">0x0px</span></div>
+                            <div><span data-i18n="sizeLabel">Size:</span> <span id="imgSize">0 KB</span></div>
+                            <div><span data-i18n="resLabel">Res:</span> <span id="imgRes">0x0px</span></div>
                         </div>
 
                         <div>
@@ -805,7 +805,7 @@
 
                         <div id="selectedLinePanel" hidden>
                             <h3 data-i18n="selectedLine">Selected Line</h3>
-                            <span id="selectedLineInfo">None selected</span>
+                            <span id="selectedLineInfo" data-i18n="noneSelected">None selected</span>
                             <button type="button">-1px</button>
                             <button type="button">+1px</button>
                             <button type="button">-10px</button>
@@ -837,8 +837,8 @@
                             <canvas id="mainCanvas" width="800" height="800"></canvas>
                         </div>
                         <div id="mobileSelectedPanel" hidden>
-                            <button id="mobileCloseSelected" type="button">Close</button>
-                            <span id="mobileSelectedLineInfo">None selected</span>
+                            <button id="mobileCloseSelected" type="button" data-i18n="close">Close</button>
+                            <span id="mobileSelectedLineInfo" data-i18n="noneSelected">None selected</span>
                         </div>
                     </main>
                 </div>
@@ -851,22 +851,7 @@
                             <span style="font-size: 1.5rem;">🦎</span>
                             <h2>TailMerger <span style="font-size: 0.78rem; color: var(--muted);">square-fit</span></h2>
                         </div>
-                        <div class="merger-controls">
-                            <div class="merger-ctrl">
-                                <label for="mergerThemeSelect">Theme</label>
-                                <select id="mergerThemeSelect">
-                                    <option value="dark">Dark</option>
-                                    <option value="light">Light</option>
-                                </select>
-                            </div>
-                            <div class="merger-ctrl">
-                                <label for="mergerLangSelect">Language</label>
-                                <select id="mergerLangSelect">
-                                    <option value="en">English</option>
-                                    <option value="ru">Русский</option>
-                                </select>
-                            </div>
-                        </div>
+
                     </div>
 
                     <div class="merger-dropzone" id="mergerDropzone">
@@ -1010,7 +995,13 @@
                     pleaseChooseImageFile: 'Please choose an image file',
                     loadImageFirst: 'Load an image first',
                     nothingToExport: 'Nothing to export',
-                    zipDownloaded: 'ZIP downloaded'
+                    zipDownloaded: 'ZIP downloaded',
+                    dropOverlay: 'Drop Image Here',
+                    removeFile: 'Remove',
+                    noneSelected: 'None selected',
+                    sizeLabel: 'Size:',
+                    resLabel: 'Res:',
+                    close: 'Close'
                 },
                 ru: {
                     brandSubtitle: 'TailCutter + TailMerger',
@@ -1022,7 +1013,13 @@
                     pleaseChooseImageFile: 'Выберите файл изображения',
                     loadImageFirst: 'Сначала загрузите изображение',
                     nothingToExport: 'Экспортировать нечего',
-                    zipDownloaded: 'ZIP скачан'
+                    zipDownloaded: 'ZIP скачан',
+                    dropOverlay: 'Перетащите изображение сюда',
+                    removeFile: 'Удалить',
+                    noneSelected: 'Ничего не выбрано',
+                    sizeLabel: 'Размер:',
+                    resLabel: 'Разрешение:',
+                    close: 'Закрыть'
                 }
             },
             lang: 'en',
