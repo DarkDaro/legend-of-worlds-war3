@@ -1,5 +1,6 @@
 const fs = require('fs');
-const dir = 'C:/AgentLetta/HeroData/heroes';
+const path = require('path');
+const dir = path.join(path.resolve(__dirname, '..'), 'heroes');
 const files = fs.readdirSync(dir).filter(f => f.endsWith('.html'));
 
 const replacements = [

@@ -22,12 +22,20 @@ package-lock.json
 # Личные заметки
 notes.txt
 todo.md
+tasks.md
 
-# Агент
+# Локальные служебные файлы
 .letta/
+download/
+mdlog/*.af
+mdlog/resource.txt
 
 # Мусорные изображения
 images/garb/
+
+# Черновики и локальные тесты
+generated-heroes/
+test-item-preview.html
 
 # Исходники графики
 *.psd

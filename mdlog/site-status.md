@@ -1,6 +1,6 @@
 # HeroData — Site Status
 
-## Last updated: 2026-05-02
+## Last updated: 2026-05-04
 
 ## Mobile Adaptation Status
 
@@ -38,6 +38,7 @@
 16. **Hero card generator note** — `generate-hero-cards.js` + `hero-card-data.js` exist as a separate future tool; they write drafts to `generated-heroes/` and do not touch live hero pages.
 17. **Items grid collapse** — `items.html` now stores collapsed category state per section in `localStorage`, restores it on load, and shows a visible collapse button on each shop header so the toggle is obvious again. The button is anchored to the right side of the header so long shop names do not hide it.
 18. **Header spacing fix** — `.site-header` now has a card-like frame, more internal padding, and an earlier 900px stack breakpoint so logo/navigation do not press against the border on mid-size screens.
+19. **Dev scripts moved** — the internal helper scripts now live in `tools/` (`generate-hero-cards.js`, `hero-card-data.js`, `site-audit.js`, `check-item-icons.js`, `fix-hero-paths.js`) so the site root stays cleaner.
 
 ### 🎨 Hero Card Improvements (v3.7)
 1. **Name format** — "Имя — Прозвище" (Светозар — Паладин, Прохор — Адмирал)

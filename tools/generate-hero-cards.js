@@ -4,6 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 
+const ROOT_DIR = path.resolve(__dirname, '..');
 const heroes = require('./hero-card-data');
 const DEFAULT_OUTPUT_DIR = 'generated-heroes';
 /*
@@ -347,10 +348,10 @@ function parseOutputDir(args) {
 
 function writeHeroFiles(selectedHeroes, outputDir = DEFAULT_OUTPUT_DIR) {
   selectedHeroes.forEach(hero => {
-    const outputPath = path.join(__dirname, outputDir, `${hero.id}.html`);
+    const outputPath = path.resolve(ROOT_DIR, outputDir, `${hero.id}.html`);
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, renderHeroPage(hero), 'utf8');
-    console.log(`Generated ${path.relative(__dirname, outputPath)}`);
+    console.log(`Generated ${path.relative(ROOT_DIR, outputPath)}`);
   });
 }
 
