@@ -648,6 +648,48 @@
                 flex-direction: column;
                 align-items: stretch;
             }
+
+            .merger-toolbar,
+            .merger-dropzone,
+            .merger-grid-config,
+            .merger-action-buttons {
+                padding: 14px;
+            }
+
+            .merger-toolbar,
+            .merger-dropzone,
+            .merger-grid-config,
+            .merger-action-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .merger-controls,
+            .merger-grid-size,
+            .merger-gap,
+            .merger-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .merger-ctrl {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .merger-grid-size input,
+            .merger-gap input {
+                width: 100%;
+                max-width: 100%;
+                flex: 1;
+            }
+
+            .merger-action-buttons button,
+            .merger-grid-config button,
+            .merger-dropzone button,
+            .merger-toolbar button {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -964,7 +1006,11 @@
                     langLabel: 'Language',
                     tabCutter: 'Cutter',
                     tabMerger: 'Merger',
-                    toastReady: 'TailTools is ready'
+                    toastReady: 'TailTools is ready',
+                    pleaseChooseImageFile: 'Please choose an image file',
+                    loadImageFirst: 'Load an image first',
+                    nothingToExport: 'Nothing to export',
+                    zipDownloaded: 'ZIP downloaded'
                 },
                 ru: {
                     brandSubtitle: 'TailCutter + TailMerger',
@@ -972,7 +1018,11 @@
                     langLabel: 'Язык',
                     tabCutter: 'Нарезка',
                     tabMerger: 'Склейка',
-                    toastReady: 'TailTools готов'
+                    toastReady: 'TailTools готов',
+                    pleaseChooseImageFile: 'Выберите файл изображения',
+                    loadImageFirst: 'Сначала загрузите изображение',
+                    nothingToExport: 'Экспортировать нечего',
+                    zipDownloaded: 'ZIP скачан'
                 }
             },
             lang: 'en',
@@ -993,6 +1043,19 @@
                 toast.textContent = message;
                 document.body.appendChild(toast);
                 setTimeout(() => toast.remove(), 2500);
+            },
+
+            text(key, vars = {}) {
+                const dict = this.translations[this.lang] || this.translations.en;
+                let value = dict[key] || this.translations.en[key] || key;
+                Object.entries(vars).forEach(([name, val]) => {
+                    value = value.replaceAll(`{${name}}`, String(val));
+                });
+                return value;
+            },
+
+            toast(key, vars = {}) {
+                this.showToast(this.text(key, vars));
             },
 
             applyTheme(name) {
@@ -1024,8 +1087,12 @@
 
             switchTab(name) {
                 const showCutter = name === 'cutter';
-                document.getElementById('cutterPanel').hidden = !showCutter;
-                document.getElementById('mergerPanel').hidden = showCutter;
+                const cutterPanel = document.getElementById('cutterPanel');
+                const mergerPanel = document.getElementById('mergerPanel');
+                cutterPanel.hidden = !showCutter;
+                mergerPanel.hidden = showCutter;
+                cutterPanel.setAttribute('aria-hidden', String(!showCutter));
+                mergerPanel.setAttribute('aria-hidden', String(showCutter));
                 document.getElementById('tabCutterBtn').classList.toggle('active', showCutter);
                 document.getElementById('tabMergerBtn').classList.toggle('active', !showCutter);
                 document.getElementById('tabCutterBtn').setAttribute('aria-selected', String(showCutter));
@@ -1116,7 +1183,7 @@
                 const file = files[0];
                 if (!file) return;
                 if (!file.type || !file.type.startsWith('image/')) {
-                    TailTools.showToast('Please choose an image file');
+                    TailTools.toast('pleaseChooseImageFile');
                     return;
                 }
 
@@ -1232,7 +1299,7 @@
 
             async downloadSlices() {
                 if (!this.currentImage || !this.slices.length) {
-                    TailTools.showToast('Load an image first');
+                    TailTools.toast('loadImageFirst');
                     return;
                 }
 
@@ -1267,7 +1334,7 @@
                 }
 
                 if (!entries.length) {
-                    TailTools.showToast('Nothing to export');
+                    TailTools.toast('nothingToExport');
                     return;
                 }
 
@@ -1432,7 +1499,7 @@
                 link.click();
                 link.remove();
                 setTimeout(() => URL.revokeObjectURL(url), 1000);
-                TailTools.showToast('ZIP downloaded');
+                TailTools.toast('zipDownloaded');
             },
 
 
