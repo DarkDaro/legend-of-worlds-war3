@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>TailTools</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root {
             --bg: #0f172a;
@@ -151,6 +152,153 @@
             border-radius: 16px;
             background: rgba(255, 255, 255, 0.02);
             color: var(--muted);
+        }
+
+        /* Merger shell styling */
+        .merger-shell {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .merger-toolbar,
+        .merger-dropzone,
+        .merger-grid-config,
+        .merger-grid-wrapper,
+        .merger-action-buttons {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .merger-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 18px;
+        }
+
+        .merger-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .merger-logo h2 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .merger-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .merger-ctrl {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: var(--panel-2);
+        }
+
+        .merger-dropzone {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 18px;
+            background: var(--dropzone-bg);
+        }
+
+        .merger-droptext {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .merger-droptext strong {
+            font-size: 0.98rem;
+        }
+
+        .merger-droptext span {
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        .merger-grid-config {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 16px 18px;
+        }
+
+        .merger-grid-size,
+        .merger-gap,
+        .merger-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .merger-grid-size input,
+        .merger-gap input {
+            width: 78px;
+            text-align: center;
+        }
+
+        .merger-color-preview {
+            width: 28px;
+            height: 28px;
+            border-radius: 999px;
+            border: 2px solid var(--border);
+            background: #000;
+        }
+
+        .merger-grid-wrapper {
+            padding: 18px;
+            overflow-x: auto;
+            text-align: center;
+            min-height: 280px;
+            display: grid;
+            place-items: center;
+            background: var(--grid-bg);
+        }
+
+        .merger-empty {
+            width: 100%;
+            min-height: 220px;
+            display: grid;
+            place-items: center;
+            color: var(--muted);
+            text-align: center;
+            gap: 6px;
+            padding: 24px;
+        }
+
+        .merger-action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 18px;
+        }
+
+        .merger-action-buttons button,
+        .merger-grid-config button,
+        .merger-dropzone button,
+        .merger-toolbar button {
+            min-height: 40px;
         }
 
         /* Cutter shell styling */
@@ -655,8 +803,73 @@
             </section>
 
             <section id="mergerPanel" class="panel" role="tabpanel" hidden>
-                <div class="placeholder">
-                    Merger panel placeholder
+                <div class="merger-shell">
+                    <div class="merger-toolbar">
+                        <div class="merger-logo">
+                            <span style="font-size: 1.5rem;">🦎</span>
+                            <h2>TailMerger <span style="font-size: 0.78rem; color: var(--muted);">square-fit</span></h2>
+                        </div>
+                        <div class="merger-controls">
+                            <div class="merger-ctrl">
+                                <label for="mergerThemeSelect">Theme</label>
+                                <select id="mergerThemeSelect">
+                                    <option value="dark">Dark</option>
+                                    <option value="light">Light</option>
+                                </select>
+                            </div>
+                            <div class="merger-ctrl">
+                                <label for="mergerLangSelect">Language</label>
+                                <select id="mergerLangSelect">
+                                    <option value="en">English</option>
+                                    <option value="ru">Русский</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="merger-dropzone" id="mergerDropzone">
+                        <div class="merger-droptext">
+                            <strong>Drop images here</strong>
+                            <span>Paste with Ctrl+V or add files manually</span>
+                        </div>
+                        <div style="display:flex; gap: 10px; flex-wrap: wrap;">
+                            <button id="mergerManualAddBtn" type="button">Add Images</button>
+                            <button id="mergerClearAllBtn" type="button">Clear All</button>
+                        </div>
+                    </div>
+
+                    <div class="merger-grid-config">
+                        <div class="merger-grid-size">
+                            <label for="mergerColsInput">Cols:</label>
+                            <input id="mergerColsInput" type="number" min="1" max="20" value="3">
+                            <label for="mergerRowsInput">Rows:</label>
+                            <input id="mergerRowsInput" type="number" min="1" max="20" value="3">
+                            <button id="mergerAutoFitBtn" type="button">Smart Square Fit</button>
+                        </div>
+                        <div class="merger-gap">
+                            <label for="mergerSpacingInput">Spacing (px):</label>
+                            <input id="mergerSpacingInput" type="number" min="0" max="10" value="2" step="1">
+                            <label for="mergerSpacingColorPicker">Gap Color:</label>
+                            <input id="mergerSpacingColorPicker" type="color" value="#000000">
+                            <button id="mergerTransparentGapBtn" type="button">Transparent</button>
+                            <div class="merger-color-preview" id="mergerColorPreview"></div>
+                        </div>
+                        <div>
+                            <button id="mergerApplyGridBtn" type="button">Manual Rebuild</button>
+                        </div>
+                    </div>
+
+                    <div class="merger-grid-wrapper">
+                        <div id="mergerGridContainer" class="merger-empty">
+                            <strong>Merger panel is ready</strong>
+                            <span>Add images to build the grid here.</span>
+                        </div>
+                    </div>
+
+                    <div class="merger-action-buttons">
+                        <button id="mergerSaveImageBtn" type="button">Save as Image</button>
+                        <button id="mergerCopyToClipboardBtn" type="button">Copy Image</button>
+                    </div>
                 </div>
             </section>
         </main>
@@ -847,6 +1060,8 @@
                 if (this.elements.mobileSelectedPanel) this.elements.mobileSelectedPanel.hidden = true;
                 this.ctx = this.elements.mainCanvas ? this.elements.mainCanvas.getContext('2d') : null;
                 this.currentImage = null;
+                this.currentFileName = 'slices';
+                this.slices = [];
 
                 if (this.elements.fileInput) {
                     this.elements.fileInput.addEventListener('change', (e) => this.handleFileSelect(e));
@@ -883,6 +1098,9 @@
                 if (this.elements.removeFileBtn) {
                     this.elements.removeFileBtn.addEventListener('click', () => this.removeFile());
                 }
+                if (this.elements.downloadBtn) {
+                    this.elements.downloadBtn.addEventListener('click', () => this.downloadSlices());
+                }
             },
 
             handleFileSelect(e) {
@@ -906,6 +1124,7 @@
 
                 preview.hidden = false;
                 name.textContent = file.name;
+                this.currentFileName = file.name.replace(/\.[^.]+$/, '') || 'slices';
 
                 const sizeStr = file.size > 1024 * 1024
                     ? `${(file.size / (1024 * 1024)).toFixed(2)} MB`
@@ -921,6 +1140,7 @@
                         if (this.elements.imageInfo) this.elements.imageInfo.hidden = false;
                         this.currentImage = image;
                         this.renderCanvas();
+                        if (this.elements.downloadBtn) this.elements.downloadBtn.disabled = false;
                     };
                     image.src = event.target.result;
                 };
@@ -949,6 +1169,7 @@
 
                 const rows = Math.max(1, parseInt(this.elements.rowsInput?.value, 10) || 2);
                 const cols = Math.max(1, parseInt(this.elements.colsInput?.value, 10) || 2);
+                this.slices = this.buildSliceMap(rows, cols, image.width, image.height);
                 this.drawGridOverlay(rows, cols);
             },
 
@@ -981,6 +1202,235 @@
                 this.ctx.restore();
             },
 
+            buildSliceMap(rows, cols, imageWidth, imageHeight) {
+                const slices = [];
+                const sliceWidth = imageWidth / cols;
+                const sliceHeight = imageHeight / rows;
+
+                for (let row = 0; row < rows; row++) {
+                    for (let col = 0; col < cols; col++) {
+                        const x = Math.round(col * sliceWidth);
+                        const y = Math.round(row * sliceHeight);
+                        const nextX = col === cols - 1 ? imageWidth : Math.round((col + 1) * sliceWidth);
+                        const nextY = row === rows - 1 ? imageHeight : Math.round((row + 1) * sliceHeight);
+                        slices.push({
+                            row,
+                            col,
+                            x,
+                            y,
+                            width: Math.max(1, nextX - x),
+                            height: Math.max(1, nextY - y)
+                        });
+                    }
+                }
+
+                return slices;
+            },
+
+            async downloadSlices() {
+                if (!this.currentImage || !this.slices.length) {
+                    TailTools.showToast('Load an image first');
+                    return;
+                }
+
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                if (!ctx) return;
+
+                const entries = [];
+                for (const slice of this.slices) {
+                    canvas.width = slice.width;
+                    canvas.height = slice.height;
+                    ctx.clearRect(0, 0, slice.width, slice.height);
+                    ctx.drawImage(
+                        this.currentImage,
+                        slice.x,
+                        slice.y,
+                        slice.width,
+                        slice.height,
+                        0,
+                        0,
+                        slice.width,
+                        slice.height
+                    );
+
+                    const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
+                    if (!blob) continue;
+                    const buffer = new Uint8Array(await blob.arrayBuffer());
+                    entries.push({
+                        name: `${this.currentFileName}_r${slice.row + 1}_c${slice.col + 1}.png`,
+                        data: buffer
+                    });
+                }
+
+                if (!entries.length) {
+                    TailTools.showToast('Nothing to export');
+                    return;
+                }
+
+                const zipBlob = this.createZipBlob(entries);
+                this.downloadBlob(zipBlob, `${this.currentFileName}.zip`);
+            },
+
+            createZipBlob(entries) {
+                const encoder = new TextEncoder();
+                const fileParts = [];
+                const centralParts = [];
+                let offset = 0;
+
+                for (const entry of entries) {
+                    const nameBytes = encoder.encode(entry.name);
+                    const crc = this.crc32(entry.data);
+                    const size = entry.data.length;
+                    const mod = this.getDosDateTime(new Date());
+
+                    const local = this.makeZipRecord({
+                        signature: 0x04034b50,
+                        version: 20,
+                        flags: 0,
+                        compression: 0,
+                        modTime: mod.time,
+                        modDate: mod.date,
+                        crc,
+                        compressedSize: size,
+                        uncompressedSize: size,
+                        nameBytes,
+                        extraBytes: new Uint8Array(0),
+                        data: entry.data
+                    });
+                    fileParts.push(local);
+
+                    const central = this.makeZipRecord({
+                        signature: 0x02014b50,
+                        versionMade: 20,
+                        version: 20,
+                        flags: 0,
+                        compression: 0,
+                        modTime: mod.time,
+                        modDate: mod.date,
+                        crc,
+                        compressedSize: size,
+                        uncompressedSize: size,
+                        nameBytes,
+                        extraBytes: new Uint8Array(0),
+                        commentBytes: new Uint8Array(0),
+                        localHeaderOffset: offset,
+                        externalAttributes: 0
+                    });
+                    centralParts.push(central);
+                    offset += local.length;
+                }
+
+                const centralSize = centralParts.reduce((sum, part) => sum + part.length, 0);
+                const totalEntries = entries.length;
+                const eocd = this.makeEocd(totalEntries, centralSize, offset);
+
+                return new Blob([...fileParts, ...centralParts, eocd], { type: 'application/zip' });
+            },
+
+            makeZipRecord(fields) {
+                const encoder = new TextEncoder();
+                if (fields.signature === 0x04034b50) {
+                    const header = new Uint8Array(30 + fields.nameBytes.length + fields.extraBytes.length + fields.data.length);
+                    const view = new DataView(header.buffer);
+                    view.setUint32(0, fields.signature, true);
+                    view.setUint16(4, fields.version, true);
+                    view.setUint16(6, fields.flags, true);
+                    view.setUint16(8, fields.compression, true);
+                    view.setUint16(10, fields.modTime, true);
+                    view.setUint16(12, fields.modDate, true);
+                    view.setUint32(14, fields.crc, true);
+                    view.setUint32(18, fields.compressedSize, true);
+                    view.setUint32(22, fields.uncompressedSize, true);
+                    view.setUint16(26, fields.nameBytes.length, true);
+                    view.setUint16(28, fields.extraBytes.length, true);
+                    header.set(fields.nameBytes, 30);
+                    header.set(fields.extraBytes, 30 + fields.nameBytes.length);
+                    header.set(fields.data, 30 + fields.nameBytes.length + fields.extraBytes.length);
+                    return header;
+                }
+
+                const commentBytes = fields.commentBytes || new Uint8Array(0);
+                const header = new Uint8Array(46 + fields.nameBytes.length + fields.extraBytes.length + commentBytes.length);
+                const view = new DataView(header.buffer);
+                view.setUint32(0, fields.signature, true);
+                view.setUint16(4, fields.versionMade, true);
+                view.setUint16(6, fields.version, true);
+                view.setUint16(8, fields.flags, true);
+                view.setUint16(10, fields.compression, true);
+                view.setUint16(12, fields.modTime, true);
+                view.setUint16(14, fields.modDate, true);
+                view.setUint32(16, fields.crc, true);
+                view.setUint32(20, fields.compressedSize, true);
+                view.setUint32(24, fields.uncompressedSize, true);
+                view.setUint16(28, fields.nameBytes.length, true);
+                view.setUint16(30, fields.extraBytes.length, true);
+                view.setUint16(32, commentBytes.length, true);
+                view.setUint16(34, 0, true);
+                view.setUint16(36, 0, true);
+                view.setUint32(38, fields.externalAttributes || 0, true);
+                view.setUint32(42, fields.localHeaderOffset, true);
+                header.set(fields.nameBytes, 46);
+                header.set(fields.extraBytes, 46 + fields.nameBytes.length);
+                header.set(commentBytes, 46 + fields.nameBytes.length + fields.extraBytes.length);
+                return header;
+            },
+
+            makeEocd(totalEntries, centralSize, centralOffset) {
+                const eocd = new Uint8Array(22);
+                const view = new DataView(eocd.buffer);
+                view.setUint32(0, 0x06054b50, true);
+                view.setUint16(4, 0, true);
+                view.setUint16(6, 0, true);
+                view.setUint16(8, totalEntries, true);
+                view.setUint16(10, totalEntries, true);
+                view.setUint32(12, centralSize, true);
+                view.setUint32(16, centralOffset, true);
+                view.setUint16(20, 0, true);
+                return eocd;
+            },
+
+            crc32(bytes) {
+                const table = this.getCrc32Table();
+                let crc = 0xffffffff;
+                for (let i = 0; i < bytes.length; i++) {
+                    crc = table[(crc ^ bytes[i]) & 0xff] ^ (crc >>> 8);
+                }
+                return (crc ^ 0xffffffff) >>> 0;
+            },
+
+            getCrc32Table() {
+                if (this._crc32Table) return this._crc32Table;
+                const table = new Uint32Array(256);
+                for (let i = 0; i < 256; i++) {
+                    let c = i;
+                    for (let j = 0; j < 8; j++) {
+                        c = ((c & 1) ? (0xedb88320 ^ (c >>> 1)) : (c >>> 1));
+                    }
+                    table[i] = c >>> 0;
+                }
+                this._crc32Table = table;
+                return table;
+            },
+
+            getDosDateTime(date) {
+                const year = Math.max(1980, date.getFullYear());
+                const dosTime = ((date.getHours() & 31) << 11) | ((date.getMinutes() & 63) << 5) | Math.floor(date.getSeconds() / 2);
+                const dosDate = (((year - 1980) & 127) << 9) | ((date.getMonth() + 1) << 5) | date.getDate();
+                return { time: dosTime, date: dosDate };
+            },
+
+            downloadBlob(blob, filename) {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
+                TailTools.showToast('ZIP downloaded');
+            },
 
 
             redrawCurrentImage() {
@@ -995,10 +1445,437 @@
                 if (this.elements.previewImage) this.elements.previewImage.src = '';
                 if (this.elements.fileName) this.elements.fileName.textContent = '';
                 if (this.elements.imageInfo) this.elements.imageInfo.hidden = true;
+                if (this.elements.downloadBtn) this.elements.downloadBtn.disabled = true;
                 this.currentImage = null;
+                this.currentFileName = 'slices';
+                this.slices = [];
                 if (this.ctx && this.elements.mainCanvas) {
                     this.ctx.clearRect(0, 0, this.elements.mainCanvas.width, this.elements.mainCanvas.height);
                 }
+            }
+        };
+
+        const TailMerger = {
+            elements: {
+                dropzone: document.getElementById('mergerDropzone'),
+                manualAddBtn: document.getElementById('mergerManualAddBtn'),
+                clearAllBtn: document.getElementById('mergerClearAllBtn'),
+                colsInput: document.getElementById('mergerColsInput'),
+                rowsInput: document.getElementById('mergerRowsInput'),
+                autoFitBtn: document.getElementById('mergerAutoFitBtn'),
+                spacingInput: document.getElementById('mergerSpacingInput'),
+                spacingColorPicker: document.getElementById('mergerSpacingColorPicker'),
+                transparentGapBtn: document.getElementById('mergerTransparentGapBtn'),
+                colorPreview: document.getElementById('mergerColorPreview'),
+                applyGridBtn: document.getElementById('mergerApplyGridBtn'),
+                gridContainer: document.getElementById('mergerGridContainer'),
+                saveImageBtn: document.getElementById('mergerSaveImageBtn'),
+                copyToClipboardBtn: document.getElementById('mergerCopyToClipboardBtn'),
+                themeSelect: document.getElementById('mergerThemeSelect'),
+                langSelect: document.getElementById('mergerLangSelect')
+            },
+            gridData: [],
+            currentRows: 3,
+            currentCols: 3,
+            currentSpacing: 2,
+            currentGapColor: '#000000',
+            isGapTransparent: false,
+
+            init() {
+                this.currentRows = Math.max(1, parseInt(this.elements.rowsInput?.value, 10) || 3);
+                this.currentCols = Math.max(1, parseInt(this.elements.colsInput?.value, 10) || 3);
+                this.currentSpacing = Math.max(0, parseInt(this.elements.spacingInput?.value, 10) || 2);
+                this.currentGapColor = this.elements.spacingColorPicker?.value || '#000000';
+                this.isGapTransparent = false;
+                this.gridData = Array.from({ length: this.currentRows }, () => Array(this.currentCols).fill(null));
+
+                this.updateColorPreview();
+                this.renderGridHTML();
+
+                const savedTheme = localStorage.getItem('tailToolsTheme') || 'dark';
+                const savedLang = localStorage.getItem('tailToolsLang') || 'en';
+                if (this.elements.themeSelect) this.elements.themeSelect.value = savedTheme;
+                if (this.elements.langSelect) this.elements.langSelect.value = savedLang;
+                if (this.elements.themeSelect) {
+                    this.elements.themeSelect.addEventListener('change', (e) => TailTools.applyTheme(e.target.value));
+                }
+                if (this.elements.langSelect) {
+                    this.elements.langSelect.addEventListener('change', (e) => TailTools.applyLanguage(e.target.value));
+                }
+                if (this.elements.dropzone) {
+                    this.elements.dropzone.addEventListener('click', () => this.pickFiles());
+                    this.elements.dropzone.addEventListener('dragover', (e) => {
+                        e.preventDefault();
+                        this.elements.dropzone.classList.add('active');
+                    });
+                    this.elements.dropzone.addEventListener('dragleave', () => {
+                        this.elements.dropzone.classList.remove('active');
+                    });
+                    this.elements.dropzone.addEventListener('drop', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        this.elements.dropzone.classList.remove('active');
+                        this.addImagesAndAutoFit(e.dataTransfer.files);
+                    });
+                }
+                document.addEventListener('dragover', (e) => e.preventDefault());
+                document.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    const files = Array.from(e.dataTransfer?.files || []).filter(file => file.type && file.type.startsWith('image/'));
+                    if (files.length) this.addImagesAndAutoFit(files);
+                });
+                window.addEventListener('paste', (e) => {
+                    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                    if (!e.clipboardData || !e.clipboardData.items) return;
+                    const files = [];
+                    for (let i = 0; i < e.clipboardData.items.length; i++) {
+                        const item = e.clipboardData.items[i];
+                        if (item.type.indexOf('image') !== -1) {
+                            const file = item.getAsFile();
+                            if (file) files.push(file);
+                        }
+                    }
+                    if (files.length) this.addImagesAndAutoFit(files);
+                });
+                if (this.elements.manualAddBtn) this.elements.manualAddBtn.addEventListener('click', () => this.pickFiles());
+                if (this.elements.clearAllBtn) this.elements.clearAllBtn.addEventListener('click', () => this.clearAllImages());
+                if (this.elements.colsInput) this.elements.colsInput.addEventListener('change', () => this.rebuildGridFromState(true));
+                if (this.elements.rowsInput) this.elements.rowsInput.addEventListener('change', () => this.rebuildGridFromState(true));
+                if (this.elements.autoFitBtn) this.elements.autoFitBtn.addEventListener('click', () => this.applySmartSquareFit());
+                if (this.elements.spacingInput) this.elements.spacingInput.addEventListener('input', () => {
+                    this.currentSpacing = parseInt(this.elements.spacingInput.value, 10) || 0;
+                    this.renderGridHTML();
+                });
+                if (this.elements.spacingColorPicker) this.elements.spacingColorPicker.addEventListener('input', (e) => {
+                    this.isGapTransparent = false;
+                    this.currentGapColor = e.target.value;
+                    this.updateColorPreview();
+                    this.renderGridHTML();
+                });
+                if (this.elements.transparentGapBtn) this.elements.transparentGapBtn.addEventListener('click', () => {
+                    this.isGapTransparent = true;
+                    this.updateColorPreview();
+                    this.renderGridHTML();
+                    TailTools.showToast('Gap is now transparent');
+                });
+                if (this.elements.applyGridBtn) this.elements.applyGridBtn.addEventListener('click', () => {
+                    this.rebuildGridFromState(true);
+                    TailTools.showToast('Grid updated');
+                });
+                if (this.elements.saveImageBtn) {
+                    this.elements.saveImageBtn.disabled = true;
+                    this.elements.saveImageBtn.addEventListener('click', () => this.saveImage());
+                }
+                if (this.elements.copyToClipboardBtn) {
+                    this.elements.copyToClipboardBtn.disabled = true;
+                    this.elements.copyToClipboardBtn.addEventListener('click', () => this.copyToClipboard());
+                }
+                this.updateActionButtons();
+            },
+
+            pickFiles() {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*';
+                input.multiple = true;
+                input.onchange = () => {
+                    if (input.files) this.addImagesAndAutoFit(Array.from(input.files));
+                };
+                input.click();
+            },
+
+            readFileAsDataURL(file) {
+                return new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => resolve(e.target.result);
+                    reader.onerror = () => resolve(null);
+                    reader.readAsDataURL(file);
+                });
+            },
+
+            async addImagesAndAutoFit(files) {
+                const validFiles = Array.from(files || []).filter(file => file && file.type && file.type.startsWith('image/'));
+                if (!validFiles.length) {
+                    TailTools.showToast('No valid images');
+                    return;
+                }
+
+                const pendingImages = await Promise.all(validFiles.map(file => this.readFileAsDataURL(file)));
+                const newImages = pendingImages.filter(Boolean);
+                const allImages = [...this.getAllImagesFlat(), ...newImages];
+                if (!allImages.length) {
+                    TailTools.showToast('No valid images');
+                    return;
+                }
+
+                const { rows, cols } = this.findBestSquareGrid(allImages.length);
+                this.buildGridFromImages(allImages, rows, cols);
+                TailTools.showToast(`Added ${newImages.length} image(s)`);
+            },
+
+            getAllImagesFlat() {
+                const images = [];
+                for (let i = 0; i < this.currentRows; i++) {
+                    if (!this.gridData[i]) continue;
+                    for (let j = 0; j < this.currentCols; j++) {
+                        const value = this.gridData[i][j];
+                        if (value !== null && value !== undefined) images.push(value);
+                    }
+                }
+                return images;
+            },
+
+            findBestSquareGrid(imageCount) {
+                if (imageCount <= 0) return { rows: 1, cols: 1 };
+
+                let bestRows = 1;
+                let bestCols = imageCount;
+                let bestDiff = Math.abs(1 - imageCount);
+                let bestWaste = (1 * imageCount) - imageCount;
+
+                const maxRows = Math.min(20, imageCount);
+                for (let rows = 1; rows <= maxRows; rows++) {
+                    const cols = Math.ceil(imageCount / rows);
+                    if (cols > 20) continue;
+                    const diff = Math.abs(rows - cols);
+                    const waste = (rows * cols) - imageCount;
+                    if (diff < bestDiff || (diff === bestDiff && waste < bestWaste)) {
+                        bestDiff = diff;
+                        bestRows = rows;
+                        bestCols = cols;
+                        bestWaste = waste;
+                    }
+                }
+
+                return { rows: bestRows, cols: bestCols };
+            },
+
+            buildGridFromImages(images, rows, cols) {
+                const newGrid = Array.from({ length: rows }, () => Array(cols).fill(null));
+                for (let idx = 0; idx < images.length; idx++) {
+                    const r = Math.floor(idx / cols);
+                    const c = idx % cols;
+                    if (newGrid[r]) newGrid[r][c] = images[idx];
+                }
+
+                this.currentRows = rows;
+                this.currentCols = cols;
+                this.gridData = newGrid;
+                if (this.elements.rowsInput) this.elements.rowsInput.value = rows;
+                if (this.elements.colsInput) this.elements.colsInput.value = cols;
+                this.renderGridHTML();
+            },
+
+            applySmartSquareFit() {
+                const images = this.getAllImagesFlat();
+                if (!images.length) {
+                    TailTools.showToast('No images to fit');
+                    return false;
+                }
+
+                const { rows, cols } = this.findBestSquareGrid(images.length);
+                this.buildGridFromImages(images, rows, cols);
+                TailTools.showToast(`Square grid: ${rows}×${cols}`);
+                return true;
+            },
+
+            rebuildGridFromState(keepImages = true) {
+                let newRows = parseInt(this.elements.rowsInput?.value, 10) || 1;
+                let newCols = parseInt(this.elements.colsInput?.value, 10) || 1;
+                newRows = Math.min(20, Math.max(1, newRows));
+                newCols = Math.min(20, Math.max(1, newCols));
+                this.currentSpacing = parseInt(this.elements.spacingInput?.value, 10) || 0;
+                if (!this.isGapTransparent && this.elements.spacingColorPicker) {
+                    this.currentGapColor = this.elements.spacingColorPicker.value;
+                }
+                this.updateColorPreview();
+
+                const oldImages = keepImages ? this.getAllImagesFlat() : [];
+                if (keepImages && oldImages.length > newRows * newCols) {
+                    const lostCount = oldImages.length - (newRows * newCols);
+                    const warnMsg = TailTools.lang === 'ru'
+                        ? `⚠️ ${lostCount} изображений не поместится в новую сетку и будет потеряно`
+                        : `⚠️ ${lostCount} image(s) won't fit in the new grid and will be lost`;
+                    if (!confirm(warnMsg)) return;
+                }
+
+                if (keepImages) {
+                    const newGrid = Array.from({ length: newRows }, () => Array(newCols).fill(null));
+                    for (let idx = 0; idx < Math.min(oldImages.length, newRows * newCols); idx++) {
+                        const r = Math.floor(idx / newCols);
+                        const c = idx % newCols;
+                        newGrid[r][c] = oldImages[idx];
+                    }
+                    this.gridData = newGrid;
+                } else {
+                    this.gridData = Array.from({ length: newRows }, () => Array(newCols).fill(null));
+                }
+
+                this.currentRows = newRows;
+                this.currentCols = newCols;
+                this.renderGridHTML();
+            },
+
+            updateColorPreview() {
+                if (!this.elements.colorPreview) return;
+                this.elements.colorPreview.style.background = this.isGapTransparent
+                    ? "url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 2 2\"><rect width=\"2\" height=\"2\" fill=\"%23cccccc\"/><rect width=\"1\" height=\"1\" fill=\"%23ffffff\"/><rect x=\"1\" y=\"1\" width=\"1\" height=\"1\" fill=\"%23ffffff\"/></svg>')"
+                    : this.currentGapColor;
+            },
+
+            renderGridHTML() {
+                const container = this.elements.gridContainer;
+                if (!container) return;
+
+                const images = this.getAllImagesFlat();
+                if (!images.length) {
+                    container.innerHTML = '<div class="merger-empty"><strong>Merger panel is ready</strong><span>Add images to build the grid here.</span></div>';
+                    this.updateActionButtons();
+                    return;
+                }
+
+                const spacing = this.currentSpacing;
+                const gapColor = this.isGapTransparent ? 'transparent' : this.currentGapColor;
+                let gridHtml = `<div style="display:grid; grid-template-columns: repeat(${this.currentCols}, minmax(110px, 180px)); gap: ${spacing}px; background-color: ${gapColor}; padding: ${spacing}px; border-radius: 20px; justify-content: center;">`;
+
+                for (let i = 0; i < this.currentRows; i++) {
+                    for (let j = 0; j < this.currentCols; j++) {
+                        const imgSrc = (this.gridData[i] && this.gridData[i][j]) ? this.gridData[i][j] : null;
+                        gridHtml += '<div style="background: var(--card-bg); border-radius: 14px; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.08);">';
+                        if (imgSrc) {
+                            gridHtml += `<img src="${TailTools.escapeHtml(imgSrc)}" style="width:100%; height:100%; object-fit: cover; display:block;" alt="cell" crossorigin="anonymous">`;
+                        } else {
+                            gridHtml += '<div class="empty-placeholder"><i class="fas fa-image"></i><span style="font-size:10px;">empty</span></div>';
+                        }
+                        gridHtml += '</div>';
+                    }
+                }
+
+                gridHtml += '</div>';
+                container.innerHTML = gridHtml;
+                this.updateActionButtons();
+            },
+
+            updateActionButtons() {
+                const hasImages = this.getAllImagesFlat().length > 0;
+                if (this.elements.saveImageBtn) this.elements.saveImageBtn.disabled = !hasImages;
+                if (this.elements.copyToClipboardBtn) this.elements.copyToClipboardBtn.disabled = !hasImages;
+            },
+
+            async getCompactExportCanvas() {
+                const imageList = this.getAllImagesFlat();
+                if (imageList.length === 0) throw new Error('No images');
+
+                let targetCols = this.currentCols;
+                let rowsNeeded = Math.ceil(imageList.length / targetCols);
+                const compactRows = rowsNeeded;
+                const compactCols = targetCols;
+                const compactGrid = Array(compactRows).fill().map(() => Array(compactCols).fill(null));
+
+                for (let idx = 0; idx < imageList.length; idx++) {
+                    const r = Math.floor(idx / compactCols);
+                    const c = idx % compactCols;
+                    compactGrid[r][c] = imageList[idx];
+                }
+
+                const tempDiv = document.createElement('div');
+                tempDiv.style.position = 'absolute';
+                tempDiv.style.top = '-9999px';
+                tempDiv.style.left = '-9999px';
+                const gapColorStyle = this.isGapTransparent ? 'transparent' : this.currentGapColor;
+                tempDiv.style.display = 'grid';
+                tempDiv.style.gridTemplateColumns = `repeat(${compactCols}, minmax(110px, 180px))`;
+                tempDiv.style.gap = `${this.currentSpacing}px`;
+                tempDiv.style.backgroundColor = gapColorStyle;
+                tempDiv.style.padding = `${this.currentSpacing}px`;
+                tempDiv.style.borderRadius = '20px';
+
+                for (let i = 0; i < compactRows; i++) {
+                    for (let j = 0; j < compactCols; j++) {
+                        const imgSrc = compactGrid[i][j];
+                        const cell = document.createElement('div');
+                        cell.style.background = 'var(--card-bg)';
+                        cell.style.borderRadius = '14px';
+                        cell.style.aspectRatio = '1 / 1';
+                        cell.style.display = 'flex';
+                        cell.style.alignItems = 'center';
+                        cell.style.justifyContent = 'center';
+                        cell.style.overflow = 'hidden';
+                        if (imgSrc) {
+                            const img = document.createElement('img');
+                            img.src = imgSrc;
+                            img.style.width = '100%';
+                            img.style.height = '100%';
+                            img.style.objectFit = 'cover';
+                            cell.appendChild(img);
+                        }
+                        tempDiv.appendChild(cell);
+                    }
+                }
+
+                document.body.appendChild(tempDiv);
+
+                const imgElements = tempDiv.querySelectorAll('img');
+                await Promise.all(Array.from(imgElements).map(img => {
+                    if (img.complete) return Promise.resolve();
+                    return new Promise(resolve => {
+                        img.onload = resolve;
+                        img.onerror = resolve;
+                    });
+                }));
+
+                const canvas = await html2canvas(tempDiv, {
+                    scale: 2,
+                    backgroundColor: this.isGapTransparent ? null : (this.currentGapColor === 'transparent' ? null : this.currentGapColor),
+                    logging: false,
+                    useCORS: true,
+                    allowTaint: false
+                });
+                document.body.removeChild(tempDiv);
+                return canvas;
+            },
+
+            async saveImage() {
+                try {
+                    if (this.getAllImagesFlat().length === 0) throw new Error('no images');
+                    const canvas = await this.getCompactExportCanvas();
+                    const link = document.createElement('a');
+                    link.download = 'tailmerger_grid.png';
+                    link.href = canvas.toDataURL();
+                    link.click();
+                    TailTools.showToast('Saved!');
+                } catch (err) {
+                    TailTools.showToast('No images to export');
+                }
+            },
+
+            async copyToClipboard() {
+                try {
+                    if (this.getAllImagesFlat().length === 0) throw new Error('no images');
+                    const canvas = await this.getCompactExportCanvas();
+                    canvas.toBlob(async (blob) => {
+                        try {
+                            await navigator.clipboard.write([new ClipboardItem({ [blob.type]: blob })]);
+                            TailTools.showToast('Image copied');
+                        } catch (clipErr) {
+                            try {
+                                const dataUrl = canvas.toDataURL('image/png');
+                                await navigator.clipboard.writeText(dataUrl);
+                                TailTools.showToast('Image copied');
+                            } catch (fallbackErr) {
+                                TailTools.showToast('No images to export');
+                            }
+                        }
+                    });
+                } catch (err) {
+                    TailTools.showToast('No images to export');
+                }
+            },
+
+            clearAllImages() {
+                this.gridData = Array.from({ length: this.currentRows }, () => Array(this.currentCols).fill(null));
+                this.renderGridHTML();
+                TailTools.showToast('All images cleared');
             }
         };
 
@@ -1023,6 +1900,7 @@
         TailTools.applyLanguage(savedLang);
         TailTools.switchTab('cutter');
         TailCutter.init();
+        TailMerger.init();
     </script>
 </body>
 </html>
