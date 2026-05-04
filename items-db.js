@@ -114,29 +114,35 @@ const itemsDB = {
   // ---------- БРОНЯ И ДОСПЕХИ ----------
   I002: { id: 'I002', name: 'Щит древних', icon: '📜🛡️', type: 'basic_shield', cost: 2900,
     description: '+500 здоровья, +8 защиты, Аура защиты 3 ед. (пассив)',
+    tags: ['shield'],
     components: [ {itemId: 'rhth', quantity: 1}, {itemId: 'I00A', quantity: 1}, {itemId: 'lhst', quantity: 1}, {itemId: 'rde2', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 800} ]
   },
   I00S: { id: 'I00S', name: 'Щит смерти', icon: '💀🛡️', type: 'basic_shield', cost: 10550,
     description: '+1000 здоровья, +15 защиты, +15 маны за атаку, Аура защиты 5 ед., Жар преисподней [200 дпс]',
+    tags: ['shield'],
     components: [ {itemId: 'I00C', quantity: 1}, {itemId: 'clfm', quantity: 1}, {itemId: 'I002', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 6000} ]
   },
   I03G: { id: 'I03G', name: 'Огненный щит', icon: '🔥🛡️', type: 'strength', cost: 29450,
     description: '+2000 здоровья, +15 защиты, +25 маны за атаку, +15% маг. защита, +20 ко всем атрибутам, Аура защиты 15 ед., Жар преисподней [300 дпс], Отмщение (актив) (500 + 20% от зд, шанс 20%, урон x2)',
+    tags: ['shield'],
     components: [ {itemId: 'I036', quantity: 1}, {itemId: 'I00S', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 11000} ],
     activeAbility: { name: 'Отмщение', description: '500 + 20% от здоровья, шанс 20%, урон x2', cooldown: 40, manacost: 150, note: null }
   },
   I0BJ: { id: 'I0BJ', name: 'Кристальный щит', icon: '💎🛡️', type: 'strength', cost: 11775,
     description: '+800 здоровья, +1200 маны, +180% регенерации маны, +12 защиты, Кристальная пыль (актив): блокирует 80% урона, возвращает 80% врагу, пока есть мана',
+    tags: ['shield'],
     components: [ {itemId: 'I0C8', quantity: 1}, {itemId: 'I0C9', quantity: 1}, {itemId: 'rwiz', quantity: 1}, {itemId: 'I00A', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 8000} ],
     activeAbility: { name: 'Кристальная пыль', description: 'Блокирует 80% входящего урона, возвращает 80% врагу', cooldown: 30, manacost: 100, note: null }
   },
   I09T: { id: 'I09T', name: 'Рыцарский щит', icon: '🛡️⚔️', type: 'strength', cost: 15750,
     description: '+1800 здоровья, +10 защиты, +10% маг. защита, +30% сопротивление к оглушению, +10% сопротивление к сожжению маны, Божественная защита (актив): +30 защиты, +70% маг. защиты, +70 лечения на 6 сек',
+    tags: ['shield'],
     components: [ {itemId: 'I0C9', quantity: 2}, {itemId: 'I01G', quantity: 1}, {itemId: 'I00A', quantity: 1}, {itemId: 'I0FC', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 10400} ],
     activeAbility: { name: 'Божественная защита', description: '+30 защиты, +70% маг. защиты, +70 лечения на 6 сек', cooldown: 25, manacost: 100, note: null }
   },
   I0GM: { id: 'I0GM', name: 'Грозовой щит', icon: '⚡🛡️', type: 'strength', cost: 13775,
     description: '+1500 здоровья, +15 защиты, +100 атаки, +100% регенерации маны, Грозовая преграда (пассив): 15% шанс отразить 25% урона +500 урона молнией (кд 3 сек)',
+    tags: ['shield'],
     components: [ {itemId: 'I002', quantity: 1}, {itemId: 'I01Q', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 8000} ]
   },
   I0D0: { id: 'I0D0', name: 'Рыцарский шлем', icon: '⚔️⛑️', type: 'basic', cost: 2550,
@@ -740,7 +746,7 @@ const grids = {
   'grid-boost': ['I04P','I04Q','I04R','I04U','I04S','I04T','I056','I04W','I057','I02V','I04Y','I04V','I050','I0BP','I04X','I02W','I053','I0BO']
 };
 
-// ========== ИКОНКИ ПРЕДМЕТОВ (img с фоллбэком PNG→JPG→нейтральная иконка) ==========
+// ========== ИКОНКИ ПРЕДМЕТОВ (img с фоллбэком PNG→JPG→SVG) ==========
 const ITEM_ICONS_DIR = 'images/items/';
 
 function itemIcon(id, emoji, size, type) {
@@ -755,10 +761,9 @@ function itemIcon(id, emoji, size, type) {
   }
   const pngSrc = ITEM_ICONS_DIR + id + '.png';
   const jpgSrc = ITEM_ICONS_DIR + id + '.jpg';
-  const fallbackSize = Math.max(14, Math.round(size * 0.52));
-  const fallbackHtml = '<span class="item-icon-fallback" style="display:inline-flex;align-items:center;justify-content:center;width:' + size + 'px;height:' + size + 'px;font-size:' + fallbackSize + 'px;line-height:1;color:#8ab4f0;"><i class="fas fa-box-open"></i></span>';
-  const escaped = fallbackHtml.replace(/'/g,"\\'");
-  return '<img src="' + pngSrc + '" alt="" aria-hidden="true" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;" onerror="if(this.src.endsWith(\'.png\')){this.src=\'' + jpgSrc + '\';}else{this.outerHTML=\'' + escaped + '\';}">';
+  const fallbackSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + size + '" height="' + size + '" viewBox="0 0 64 64"><g fill="none" stroke="#8ab4f0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 22h24l6 10-18 20-18-20 6-10z"/><path d="M26 22l6 10 6-10"/></g></svg>';
+  const fallbackDataUri = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(fallbackSvg);
+  return '<img src="' + pngSrc + '" alt="" aria-hidden="true" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;" onerror="if(this.src.endsWith(\'.png\')){this.src=\'' + jpgSrc + '\';}else{this.src=\'' + fallbackDataUri + '\';}">';
 }
 
 const ITEM_FAVORITES_KEY = 'itemFavorites';
@@ -1039,7 +1044,39 @@ function renderUsedIn(itemId) {
   }).join('')}</div>`;
 }
 
-const ITEM_TYPE_LABELS = { basic:'🔹 Базовый', strength:'💪 Сила', agility:'🏃 Ловкость', intelligence:'🧠 Разум', neutral:'🌀 Нейтральный', boost:'📈 Усиление', weapon:'⚔️ Оружие', recipe:'📄 Рецепт', vampirism:'🧛 Физ. вампиризм', magic_vampirism:'🔮 Маг. вампиризм', magic_block:'🛡️ Маг. блок', magic_vampirism_block:'🔮🛡️ Маг. вампиризм + блок', magic_immune:'🛡️🚫 Иммунитет к магии', boss_drop:'💀 Выпадает при смерти', control:'🎯 Контроль', intelligence_control:'🧠🎯 Разум + контроль', strength_control:'💪🎯 Сила + контроль', weapon_strength:'⚔️💪 Оружие + сила', weapon_intelligence:'⚔️🧠 Оружие + разум', armor:'🛡️ Доспех', strength_armor:'💪🛡️ Сила + доспех', basic_shield:'🛡️ Базовый + щит', rare:'💎 Редкий' };
+const ITEM_TYPE_TAGS = {
+  basic: ['🔹 Базовый'],
+  strength: ['💪 Сила'],
+  agility: ['🏃 Ловкость'],
+  intelligence: ['🧠 Разум'],
+  neutral: ['🌀 Нейтральный'],
+  boost: ['📈 Усиление'],
+  weapon: ['⚔️ Оружие'],
+  recipe: ['📄 Рецепт'],
+  vampirism: ['🧛 Физ. вампиризм'],
+  magic_vampirism: ['🔮 Маг. вампиризм'],
+  magic_block: ['🛡️ Маг. блок'],
+  magic_vampirism_block: ['🔮 Маг. вампиризм', '🛡️ Маг. блок'],
+  magic_immune: ['🛡️🚫 Иммунитет к магии'],
+  boss_drop: ['💀 Выпадает при смерти'],
+  control: ['🎯 Контроль'],
+  intelligence_control: ['🧠 Разум', '🎯 Контроль'],
+  strength_control: ['💪 Сила', '🎯 Контроль'],
+  weapon_strength: ['⚔️ Оружие', '💪 Сила'],
+  weapon_intelligence: ['⚔️ Оружие', '🧠 Разум'],
+  armor: ['🛡️ Доспех'],
+  strength_armor: ['💪 Сила', '🛡️ Доспех'],
+  basic_shield: ['🔹 Базовый', '🛡️ Щит'],
+  shield: ['🛡️ Щит'],
+  rare: ['💎 Редкий']
+};
+
+function renderItemTypeBadges(item) {
+  const labels = [ ...(ITEM_TYPE_TAGS[item.type] || []), ...((item.tags || []).flatMap(tag => ITEM_TYPE_TAGS[tag] || [])) ];
+  const uniqueLabels = [...new Set(labels)];
+  if (!uniqueLabels.length) return '';
+  return '<div class="detail-badges">' + uniqueLabels.map(label => '<span class="detail-badge' + (item.type === 'boss_drop' ? ' badge-danger' : '') + '">' + label + '</span>').join('') + '</div>';
+}
 
 function isItemMobileSurface() {
   return window.matchMedia && window.matchMedia('(max-width: 800px)').matches;
@@ -1058,7 +1095,7 @@ function closeItemSheet() {
 
 function buildItemDetailHtml(itemId, item, total, recipe, base, includeBackButton) {
   return `
-    <div class="panel-header"><div class="detail-icon">${itemIcon(item.id, item.icon, 96, item.type)}</div><div class="detail-title item-detail-title"><div class="item-detail-title-main">${item.name} <span class="detail-badge${item.type === 'boss_drop' ? ' badge-danger' : ''}">${ITEM_TYPE_LABELS[item.type]||''}</span></div></div></div>
+    <div class="panel-header"><div class="detail-icon">${itemIcon(item.id, item.icon, 96, item.type)}</div><div class="detail-title item-detail-title"><div class="item-detail-title-main"><span class="item-detail-name">${item.name}</span>${renderItemTypeBadges(item)}</div></div></div>
     <div class="detail-description">${item.description||''}<br>
       <div class="cost-badges">
         ${item.cost > 0 ? `<span class="cost-badge">💰 Золото: ${item.cost}</span>` : ''}

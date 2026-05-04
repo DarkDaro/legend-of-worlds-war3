@@ -259,13 +259,18 @@ h1 {
     color: white;
     text-shadow: 0 0 12px #00e6ffcc;
 }
+.detail-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
 .detail-badge {
     display: inline-block;
     background: #1e3a5a;
     padding: 4px 14px;
     border-radius: 40px;
     font-size: 0.9rem;
-    margin-left: 12px;
+    margin-left: 0;
     color: #c0e4ff;
     border: 1px solid #00e6ff88;
 }
