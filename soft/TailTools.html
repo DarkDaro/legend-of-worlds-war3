@@ -187,21 +187,12 @@
             gap: 10px;
         }
 
-        .merger-logo-icon {
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-
         .merger-logo h2 {
             margin: 0;
             font-size: 1.2rem;
             line-height: 1.15;
         }
 
-        .merger-logo-subtitle {
-            font-size: 0.78rem;
-            color: var(--muted);
-        }
 
         .merger-action-row {
             display: flex;
@@ -503,6 +494,20 @@
         #sidebar input[type="color"] {
             width: 100%;
             margin-top: 6px;
+        }
+
+        #sidebar .value-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        #sidebar .value-row span {
+            min-width: 2.5rem;
+            text-align: right;
+            color: var(--muted);
+            font-variant-numeric: tabular-nums;
         }
 
         #sidebar input[type="text"],
@@ -864,16 +869,16 @@
                         <div>
                             <h3 data-i18n="gridSettings">Grid Settings</h3>
                             <p data-i18n="manualHint">Click lines on image to select and move.</p>
-                            <div>
+                            <div class="value-row">
                                 <label data-i18n="rows">Horizontal Lines</label>
                                 <span id="rowsVal">2</span>
-                                <input id="rowsInput" type="range" min="1" max="64" value="2">
                             </div>
-                            <div>
+                            <input id="rowsInput" type="range" min="1" max="64" value="2">
+                            <div class="value-row">
                                 <label data-i18n="cols">Vertical Lines</label>
                                 <span id="colsVal">2</span>
-                                <input id="colsInput" type="range" min="1" max="64" value="2">
                             </div>
+                            <input id="colsInput" type="range" min="1" max="64" value="2">
                         </div>
 
                         <div>
@@ -929,8 +934,7 @@
                 <div class="merger-shell">
                     <div class="merger-toolbar">
                         <div class="merger-logo">
-                            <span class="merger-logo-icon">🦎</span>
-                            <h2>TailMerger <span class="merger-logo-subtitle">square-fit</span></h2>
+                            <h2>TailMerger</h2>
                         </div>
                     </div>
 
@@ -1199,6 +1203,8 @@
                 imageInfo: document.getElementById('imageInfo'),
                 imgSize: document.getElementById('imgSize'),
                 imgRes: document.getElementById('imgRes'),
+                rowsValue: document.getElementById('rowsVal'),
+                colsValue: document.getElementById('colsVal'),
                 selectedLinePanel: document.getElementById('selectedLinePanel'),
                 mobileSelectedPanel: document.getElementById('mobileSelectedPanel')
             },
@@ -1220,10 +1226,16 @@
                     this.elements.fileInput.addEventListener('change', (e) => this.handleFileSelect(e));
                 }
                 if (this.elements.rowsInput) {
-                    this.elements.rowsInput.addEventListener('input', () => this.redrawCurrentImage());
+                    this.elements.rowsInput.addEventListener('input', () => {
+                        this.updateGridValueLabels();
+                        this.redrawCurrentImage();
+                    });
                 }
                 if (this.elements.colsInput) {
-                    this.elements.colsInput.addEventListener('input', () => this.redrawCurrentImage());
+                    this.elements.colsInput.addEventListener('input', () => {
+                        this.updateGridValueLabels();
+                        this.redrawCurrentImage();
+                    });
                 }
                 if (this.elements.gridColor) {
                     this.elements.gridColor.addEventListener('input', () => this.redrawCurrentImage());
@@ -1268,6 +1280,7 @@
                 });
                 this.updateZoomControls(false);
                 this.updateZoomLabel();
+                this.updateGridValueLabels();
             },
 
             handleFileSelect(e) {
@@ -1613,6 +1626,15 @@
                 }
             },
 
+            updateGridValueLabels() {
+                if (this.elements.rowsValue && this.elements.rowsInput) {
+                    this.elements.rowsValue.textContent = this.elements.rowsInput.value;
+                }
+                if (this.elements.colsValue && this.elements.colsInput) {
+                    this.elements.colsValue.textContent = this.elements.colsInput.value;
+                }
+            },
+
             updateZoomLabel() {
                 if (!this.elements.zoomLevel) return;
                 const zoomValue = Math.max(0.1, this.currentZoom || 1);
@@ -1664,7 +1686,6 @@
             translations: {
                 en: {
                     title: 'TailMerger',
-                    subtitle: 'square-fit',
                     dropTitle: 'Drop images here',
                     dropHint: 'Paste with Ctrl+V or add files manually',
                     addBtn: 'Add Images',
@@ -1694,7 +1715,6 @@
                 },
                 ru: {
                     title: 'TailMerger',
-                    subtitle: 'квадратная сетка',
                     dropTitle: 'Сюда картинки',
                     dropHint: 'Вставляйте через Ctrl+V или добавляйте вручную',
                     addBtn: 'Добавить',
@@ -1741,7 +1761,6 @@
                 themeSelect: document.getElementById('mergerThemeSelect'),
                 langSelect: document.getElementById('mergerLangSelect'),
                 title: document.querySelector('#mergerPanel .merger-logo h2'),
-                subtitle: document.querySelector('#mergerPanel .merger-logo h2 span'),
                 dropTitle: document.querySelector('#mergerPanel .merger-droptext strong'),
                 dropHint: document.querySelector('#mergerPanel .merger-droptext span'),
                 readyTitle: document.querySelector('#mergerGridContainer strong'),
@@ -1849,8 +1868,7 @@
 
             updateTexts(lang = 'en') {
                 const dict = this.translations[lang] || this.translations.en;
-                if (this.elements.title) this.elements.title.childNodes[0].textContent = dict.title + ' ';
-                if (this.elements.subtitle) this.elements.subtitle.textContent = dict.subtitle;
+                if (this.elements.title) this.elements.title.textContent = dict.title;
                 if (this.elements.dropTitle) this.elements.dropTitle.textContent = dict.dropTitle;
                 if (this.elements.dropHint) this.elements.dropHint.textContent = dict.dropHint;
                 if (this.elements.manualAddBtn) this.elements.manualAddBtn.textContent = dict.addBtn;
