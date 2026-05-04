@@ -187,9 +187,68 @@
             gap: 10px;
         }
 
+        .merger-logo-icon {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
         .merger-logo h2 {
             margin: 0;
             font-size: 1.2rem;
+            line-height: 1.15;
+        }
+
+        .merger-logo-subtitle {
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+
+        .merger-action-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .merger-preview-grid {
+            display: grid;
+            justify-content: center;
+            border-radius: 20px;
+        }
+
+        .merger-grid-cell {
+            background: var(--panel-2);
+            border-radius: 14px;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+
+        .merger-grid-cell img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .empty-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            color: var(--muted);
+            font-size: 0.78rem;
+            text-align: center;
+        }
+
+        .empty-placeholder i {
+            font-size: 1.15rem;
+            opacity: 0.85;
         }
 
         .merger-controls {
@@ -299,6 +358,7 @@
         .merger-dropzone button,
         .merger-toolbar button {
             min-height: 40px;
+            font: inherit;
         }
 
         /* Cutter shell styling */
@@ -471,25 +531,45 @@
             min-height: 100%;
             min-width: 100%;
             position: relative;
-            display: grid;
-            place-items: center;
-            padding: 80px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 56px 24px 24px;
+        }
+
+        #rulerTop,
+        #rulerLeft {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.35;
+        }
+
+        #rulerTop {
+            top: 24px;
+            left: 24px;
+        }
+
+        #rulerLeft {
+            top: 48px;
+            left: 24px;
         }
 
         #mainCanvas {
-            max-width: 100%;
-            max-height: calc(100vh - 180px);
+            max-width: none;
+            max-height: none;
             width: auto;
             height: auto;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
             background: #fff;
+            z-index: 1;
         }
 
         #canvasToolbar {
             position: absolute;
             top: 16px;
             left: 16px;
-            z-index: 20;
+            z-index: 30;
             display: flex;
             gap: 8px;
             align-items: center;
@@ -639,7 +719,7 @@
             }
 
             #centeringWrapper {
-                padding: 84px 14px 14px;
+                padding: 64px 14px 14px;
             }
 
             #mobileSelectedPanel {
@@ -689,6 +769,7 @@
             .merger-dropzone button,
             .merger-toolbar button {
                 width: 100%;
+                font: inherit;
             }
         }
     </style>
@@ -848,10 +929,9 @@
                 <div class="merger-shell">
                     <div class="merger-toolbar">
                         <div class="merger-logo">
-                            <span style="font-size: 1.5rem;">🦎</span>
-                            <h2>TailMerger <span style="font-size: 0.78rem; color: var(--muted);">square-fit</span></h2>
+                            <span class="merger-logo-icon">🦎</span>
+                            <h2>TailMerger <span class="merger-logo-subtitle">square-fit</span></h2>
                         </div>
-
                     </div>
 
                     <div class="merger-dropzone" id="mergerDropzone">
@@ -859,7 +939,7 @@
                             <strong>Drop images here</strong>
                             <span>Paste with Ctrl+V or add files manually</span>
                         </div>
-                        <div style="display:flex; gap: 10px; flex-wrap: wrap;">
+                        <div class="merger-action-row">
                             <button id="mergerManualAddBtn" type="button">Add Images</button>
                             <button id="mergerClearAllBtn" type="button">Clear All</button>
                         </div>
@@ -1106,6 +1186,10 @@
                 fileName: document.getElementById('fileName'),
                 removeFileBtn: document.getElementById('removeFileBtn'),
                 downloadBtn: document.getElementById('downloadBtn'),
+                zoomOutBtn: document.getElementById('zoomOutBtn'),
+                zoomInBtn: document.getElementById('zoomInBtn'),
+                zoomFitBtn: document.getElementById('zoomFitBtn'),
+                zoomLevel: document.getElementById('zoomLevel'),
                 mainCanvas: document.getElementById('mainCanvas'),
                 scrollContainer: document.getElementById('scrollContainer'),
                 rowsInput: document.getElementById('rowsInput'),
@@ -1129,6 +1213,8 @@
                 this.currentImage = null;
                 this.currentFileName = 'slices';
                 this.slices = [];
+                this.currentZoom = 1;
+                this.fitScale = 1;
 
                 if (this.elements.fileInput) {
                     this.elements.fileInput.addEventListener('change', (e) => this.handleFileSelect(e));
@@ -1144,6 +1230,15 @@
                 }
                 if (this.elements.gridThickness) {
                     this.elements.gridThickness.addEventListener('input', () => this.redrawCurrentImage());
+                }
+                if (this.elements.zoomOutBtn) {
+                    this.elements.zoomOutBtn.addEventListener('click', () => this.zoomBy(-0.1));
+                }
+                if (this.elements.zoomInBtn) {
+                    this.elements.zoomInBtn.addEventListener('click', () => this.zoomBy(0.1));
+                }
+                if (this.elements.zoomFitBtn) {
+                    this.elements.zoomFitBtn.addEventListener('click', () => this.fitZoom());
                 }
                 if (this.elements.dragDropZone) {
                     this.elements.dragDropZone.addEventListener('click', () => {
@@ -1168,6 +1263,11 @@
                 if (this.elements.downloadBtn) {
                     this.elements.downloadBtn.addEventListener('click', () => this.downloadSlices());
                 }
+                window.addEventListener('resize', () => {
+                    if (this.currentImage) this.renderCanvas();
+                });
+                this.updateZoomControls(false);
+                this.updateZoomLabel();
             },
 
             handleFileSelect(e) {
@@ -1206,6 +1306,8 @@
                         if (this.elements.imgRes) this.elements.imgRes.textContent = `${image.width}x${image.height}px`;
                         if (this.elements.imageInfo) this.elements.imageInfo.hidden = false;
                         this.currentImage = image;
+                        this.currentZoom = 1;
+                        this.updateZoomControls(true);
                         this.renderCanvas();
                         if (this.elements.downloadBtn) this.elements.downloadBtn.disabled = false;
                     };
@@ -1220,10 +1322,12 @@
 
                 const canvas = this.elements.mainCanvas;
                 const wrapper = document.getElementById('centeringWrapper');
-                const toolbarHeight = 80;
+                const toolbarHeight = 64;
                 const maxWidth = Math.max(320, (wrapper ? wrapper.clientWidth : window.innerWidth) - 48);
                 const maxHeight = Math.max(320, window.innerHeight - toolbarHeight - 48);
-                const scale = Math.min(maxWidth / image.width, maxHeight / image.height, 1);
+                const fitScale = Math.min(maxWidth / image.width, maxHeight / image.height, 1);
+                this.fitScale = fitScale;
+                const scale = fitScale * (this.currentZoom || 1);
                 const drawWidth = Math.max(1, Math.round(image.width * scale));
                 const drawHeight = Math.max(1, Math.round(image.height * scale));
 
@@ -1231,8 +1335,11 @@
                 canvas.height = drawHeight;
                 canvas.style.width = drawWidth + 'px';
                 canvas.style.height = drawHeight + 'px';
+                canvas.style.maxWidth = 'none';
+                canvas.style.maxHeight = 'none';
                 this.ctx.clearRect(0, 0, canvas.width, canvas.height);
                 this.ctx.drawImage(image, 0, 0, drawWidth, drawHeight);
+                this.updateZoomLabel();
 
                 const rows = Math.max(1, parseInt(this.elements.rowsInput?.value, 10) || 2);
                 const cols = Math.max(1, parseInt(this.elements.colsInput?.value, 10) || 2);
@@ -1506,6 +1613,33 @@
                 }
             },
 
+            updateZoomLabel() {
+                if (!this.elements.zoomLevel) return;
+                const zoomValue = Math.max(0.1, this.currentZoom || 1);
+                this.elements.zoomLevel.textContent = `${Math.round(zoomValue * 100)}%`;
+            },
+
+            updateZoomControls(enabled) {
+                if (this.elements.zoomOutBtn) this.elements.zoomOutBtn.disabled = !enabled;
+                if (this.elements.zoomInBtn) this.elements.zoomInBtn.disabled = !enabled;
+                if (this.elements.zoomFitBtn) this.elements.zoomFitBtn.disabled = !enabled;
+            },
+
+            setZoom(value) {
+                const nextZoom = Math.min(4, Math.max(0.25, value));
+                this.currentZoom = nextZoom;
+                this.updateZoomLabel();
+                if (this.currentImage) this.renderCanvas();
+            },
+
+            zoomBy(delta) {
+                this.setZoom((this.currentZoom || 1) + delta);
+            },
+
+            fitZoom() {
+                this.setZoom(1);
+            },
+
             removeFile() {
                 if (this.elements.fileInput) this.elements.fileInput.value = '';
                 if (this.elements.filePreview) this.elements.filePreview.hidden = true;
@@ -1514,6 +1648,10 @@
                 if (this.elements.imageInfo) this.elements.imageInfo.hidden = true;
                 if (this.elements.downloadBtn) this.elements.downloadBtn.disabled = true;
                 this.currentImage = null;
+                this.currentZoom = 1;
+                this.fitScale = 1;
+                this.updateZoomControls(false);
+                this.updateZoomLabel();
                 this.currentFileName = 'slices';
                 this.slices = [];
                 if (this.ctx && this.elements.mainCanvas) {
@@ -1906,16 +2044,16 @@
 
                 const spacing = this.currentSpacing;
                 const gapColor = this.isGapTransparent ? 'transparent' : this.currentGapColor;
-                let gridHtml = `<div style="display:grid; grid-template-columns: repeat(${this.currentCols}, minmax(110px, 180px)); gap: ${spacing}px; background-color: ${gapColor}; padding: ${spacing}px; border-radius: 20px; justify-content: center;">`;
+                let gridHtml = `<div class="merger-preview-grid" style="grid-template-columns: repeat(${this.currentCols}, minmax(110px, 180px)); gap: ${spacing}px; background-color: ${gapColor}; padding: ${spacing}px;">`;
 
                 for (let i = 0; i < this.currentRows; i++) {
                     for (let j = 0; j < this.currentCols; j++) {
                         const imgSrc = (this.gridData[i] && this.gridData[i][j]) ? this.gridData[i][j] : null;
-                        gridHtml += '<div style="background: var(--card-bg); border-radius: 14px; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.08);">';
+                        gridHtml += '<div class="merger-grid-cell">';
                         if (imgSrc) {
-                            gridHtml += `<img src="${TailTools.escapeHtml(imgSrc)}" style="width:100%; height:100%; object-fit: cover; display:block;" alt="cell" crossorigin="anonymous">`;
+                            gridHtml += `<img src="${TailTools.escapeHtml(imgSrc)}" alt="cell" crossorigin="anonymous">`;
                         } else {
-                            gridHtml += '<div class="empty-placeholder"><i class="fas fa-image"></i><span style="font-size:10px;">empty</span></div>';
+                            gridHtml += '<div class="empty-placeholder"><i class="fas fa-image"></i><span>empty</span></div>';
                         }
                         gridHtml += '</div>';
                     }
@@ -1953,31 +2091,31 @@
                 tempDiv.style.top = '-9999px';
                 tempDiv.style.left = '-9999px';
                 const gapColorStyle = this.isGapTransparent ? 'transparent' : this.currentGapColor;
-                tempDiv.style.display = 'grid';
+                tempDiv.className = 'merger-preview-grid';
                 tempDiv.style.gridTemplateColumns = `repeat(${compactCols}, minmax(110px, 180px))`;
                 tempDiv.style.gap = `${this.currentSpacing}px`;
                 tempDiv.style.backgroundColor = gapColorStyle;
                 tempDiv.style.padding = `${this.currentSpacing}px`;
-                tempDiv.style.borderRadius = '20px';
 
                 for (let i = 0; i < compactRows; i++) {
                     for (let j = 0; j < compactCols; j++) {
                         const imgSrc = compactGrid[i][j];
                         const cell = document.createElement('div');
-                        cell.style.background = 'var(--card-bg)';
-                        cell.style.borderRadius = '14px';
-                        cell.style.aspectRatio = '1 / 1';
-                        cell.style.display = 'flex';
-                        cell.style.alignItems = 'center';
-                        cell.style.justifyContent = 'center';
-                        cell.style.overflow = 'hidden';
+                        cell.className = 'merger-grid-cell';
                         if (imgSrc) {
                             const img = document.createElement('img');
                             img.src = imgSrc;
-                            img.style.width = '100%';
-                            img.style.height = '100%';
-                            img.style.objectFit = 'cover';
                             cell.appendChild(img);
+                        } else {
+                            const empty = document.createElement('div');
+                            empty.className = 'empty-placeholder';
+                            const icon = document.createElement('i');
+                            icon.className = 'fas fa-image';
+                            const label = document.createElement('span');
+                            label.textContent = 'empty';
+                            empty.appendChild(icon);
+                            empty.appendChild(label);
+                            cell.appendChild(empty);
                         }
                         tempDiv.appendChild(cell);
                     }
