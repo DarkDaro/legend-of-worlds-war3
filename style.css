@@ -3104,8 +3104,12 @@ body.item-sheet-open {
   .category-tabs::-webkit-scrollbar { height: 4px; }
   .category-tabs::-webkit-scrollbar-track { background: transparent; }
   .category-tabs::-webkit-scrollbar-thumb { background: #00e6ff44; border-radius: 2px; }
-  .tab-btn { flex-shrink: 0; padding: 6px 14px; font-size: 0.8rem; }
+  .tab-btn { flex-shrink: 0; padding: 5px 12px; font-size: 0.78rem; line-height: 1.1; }
   .item-bottom-sheet {
+    left: 10px;
+    right: 10px;
+    width: auto;
+    max-width: calc(100vw - 20px);
     max-height: calc(100vh - 16px);
     padding: 14px 14px 18px;
   }
@@ -3160,6 +3164,116 @@ body.item-sheet-open {
   }
   .item-bottom-sheet .recipe-title {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .category-tabs {
+    flex-wrap: wrap;
+    overflow-x: visible;
+    padding-bottom: 0;
+  }
+
+  .tab-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 calc(50% - 6px);
+    min-width: 0;
+    white-space: normal;
+    text-align: center;
+    padding: 6px 8px;
+    font-size: 0.72rem;
+  }
+
+  .tab-btn i {
+    margin-right: 5px;
+  }
+
+  .item-bottom-sheet {
+    left: 6px;
+    right: 6px;
+    max-width: calc(100vw - 12px);
+    border-radius: 18px 18px 0 0;
+    padding: 10px 10px 14px;
+  }
+
+  .item-bottom-sheet .panel-header {
+    gap: 6px;
+    padding-right: 36px;
+    margin-bottom: 12px;
+  }
+
+  .item-bottom-sheet .detail-icon {
+    width: 52px;
+    height: 52px;
+    font-size: 24px;
+  }
+
+  .item-bottom-sheet .detail-icon img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .item-bottom-sheet .detail-title {
+    font-size: 0.98rem;
+    line-height: 1.15;
+  }
+
+  .item-bottom-sheet .detail-badge {
+    font-size: 0.64rem;
+    padding: 2px 7px;
+    margin-top: 4px;
+  }
+
+  .item-bottom-sheet .detail-description {
+    margin: 10px 0 12px;
+    padding-bottom: 10px;
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+
+  .item-bottom-sheet .cost-badges {
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .item-bottom-sheet .cost-badge {
+    font-size: 0.72rem;
+    padding: 3px 8px;
+  }
+
+  .item-bottom-sheet .recipe-title {
+    margin: 12px 0 8px;
+    font-size: 0.92rem;
+  }
+
+  .item-bottom-sheet .component-item {
+    padding: 6px 8px;
+    gap: 6px;
+  }
+
+  .item-bottom-sheet .component-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .item-bottom-sheet .component-icon img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .item-bottom-sheet .component-name {
+    font-size: 0.8rem;
+  }
+
+  .item-bottom-sheet .component-cost {
+    font-size: 0.72rem;
+  }
+
+  .item-bottom-sheet .used-in-chip {
+    padding: 4px 8px;
+    font-size: 0.78rem;
   }
 }
 

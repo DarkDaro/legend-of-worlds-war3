@@ -740,23 +740,25 @@ const grids = {
   'grid-boost': ['I04P','I04Q','I04R','I04U','I04S','I04T','I056','I04W','I057','I02V','I04Y','I04V','I050','I0BP','I04X','I02W','I053','I0BO']
 };
 
-// ========== ИКОНКИ ПРЕДМЕТОВ (img с фоллбэком PNG→JPG→эмодзи) ==========
+// ========== ИКОНКИ ПРЕДМЕТОВ (img с фоллбэком PNG→JPG→нейтральная иконка) ==========
 const ITEM_ICONS_DIR = 'images/items/';
 
 function itemIcon(id, emoji, size, type) {
   size = size || 64;
   // Специальный случай для рецепта в сборках
   if (id === 'recipe') {
-    return '<img src="' + ITEM_ICONS_DIR + 'UniveralRecipe.png" alt="📜" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;">';
+    return '<img src="' + ITEM_ICONS_DIR + 'UniveralRecipe.png" alt="" aria-hidden="true" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;">';
   }
   // Свитки-рецепты показываем отдельной базовой иконкой recipe.png
   if (type === 'recipe') {
-    return '<img src="' + ITEM_ICONS_DIR + 'recipe.png" alt="' + (emoji||'📜') + '" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;">';
+    return '<img src="' + ITEM_ICONS_DIR + 'recipe.png" alt="" aria-hidden="true" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;">';
   }
   const pngSrc = ITEM_ICONS_DIR + id + '.png';
   const jpgSrc = ITEM_ICONS_DIR + id + '.jpg';
-  const escaped = (emoji||'?').replace(/'/g,"\\'");
-  return '<img src="' + pngSrc + '" alt="' + (emoji||'') + '" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;" onerror="if(this.src.endsWith(\'.png\')){this.src=\'' + jpgSrc + '\';}else{this.outerHTML=\'' + escaped + '\';}">';
+  const fallbackSize = Math.max(14, Math.round(size * 0.52));
+  const fallbackHtml = '<span class="item-icon-fallback" style="display:inline-flex;align-items:center;justify-content:center;width:' + size + 'px;height:' + size + 'px;font-size:' + fallbackSize + 'px;line-height:1;color:#8ab4f0;"><i class="fas fa-box-open"></i></span>';
+  const escaped = fallbackHtml.replace(/'/g,"\\'");
+  return '<img src="' + pngSrc + '" alt="" aria-hidden="true" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;" onerror="if(this.src.endsWith(\'.png\')){this.src=\'' + jpgSrc + '\';}else{this.outerHTML=\'' + escaped + '\';}">';
 }
 
 const ITEM_FAVORITES_KEY = 'itemFavorites';
