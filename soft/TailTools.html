@@ -1016,6 +1016,9 @@
                 });
 
                 document.getElementById('langSelect').value = lang;
+                if (typeof TailMerger !== 'undefined' && TailMerger.updateTexts) {
+                    TailMerger.updateTexts(lang);
+                }
                 this.showToast(dict.toastReady);
             },
 
@@ -1456,6 +1459,68 @@
         };
 
         const TailMerger = {
+            translations: {
+                en: {
+                    title: 'TailMerger',
+                    subtitle: 'square-fit',
+                    dropTitle: 'Drop images here',
+                    dropHint: 'Paste with Ctrl+V or add files manually',
+                    addBtn: 'Add Images',
+                    clearBtn: 'Clear All',
+                    colsLabel: 'Cols:',
+                    rowsLabel: 'Rows:',
+                    autoFitBtn: 'Smart Square Fit',
+                    spacingLabel: 'Spacing (px):',
+                    gapLabel: 'Gap Color:',
+                    transparentBtn: 'Transparent',
+                    applyBtn: 'Manual Rebuild',
+                    saveBtn: 'Save as Image',
+                    copyBtn: 'Copy Image',
+                    readyTitle: 'Merger panel is ready',
+                    readyHint: 'Add images to build the grid here.',
+                    noValidImages: 'No valid images',
+                    addedImages: 'Added {count} image(s)',
+                    noImagesToFit: 'No images to fit',
+                    squareGrid: 'Square grid: {rows}×{cols}',
+                    gapTransparent: 'Gap is now transparent',
+                    gridUpdated: 'Grid updated',
+                    allImagesCleared: 'All images cleared',
+                    saved: 'Saved!',
+                    copied: 'Image copied',
+                    noImagesToExport: 'No images to export',
+                    confirmShrink: '⚠️ {lostCount} image(s) won\'t fit in the new grid and will be lost'
+                },
+                ru: {
+                    title: 'TailMerger',
+                    subtitle: 'квадратная сетка',
+                    dropTitle: 'Сюда картинки',
+                    dropHint: 'Вставляйте через Ctrl+V или добавляйте вручную',
+                    addBtn: 'Добавить',
+                    clearBtn: 'Очистить всё',
+                    colsLabel: 'Столбцы:',
+                    rowsLabel: 'Строки:',
+                    autoFitBtn: 'Умная сетка',
+                    spacingLabel: 'Отступ (px):',
+                    gapLabel: 'Цвет зазора:',
+                    transparentBtn: 'Прозрачный',
+                    applyBtn: 'Обновить вручную',
+                    saveBtn: 'Сохранить как PNG',
+                    copyBtn: 'Копировать PNG',
+                    readyTitle: 'Модуль склейки готов',
+                    readyHint: 'Добавьте изображения, чтобы собрать сетку.',
+                    noValidImages: 'Нет подходящих изображений',
+                    addedImages: 'Добавлено изображений: {count}',
+                    noImagesToFit: 'Нет изображений для подгонки',
+                    squareGrid: 'Квадратная сетка: {rows}×{cols}',
+                    gapTransparent: 'Зазор стал прозрачным',
+                    gridUpdated: 'Сетка обновлена',
+                    allImagesCleared: 'Все изображения удалены',
+                    saved: 'Сохранено!',
+                    copied: 'Изображение скопировано',
+                    noImagesToExport: 'Нет изображений для экспорта',
+                    confirmShrink: '⚠️ В новую сетку не поместится {lostCount} изображений и они будут потеряны'
+                }
+            },
             elements: {
                 dropzone: document.getElementById('mergerDropzone'),
                 manualAddBtn: document.getElementById('mergerManualAddBtn'),
@@ -1472,7 +1537,13 @@
                 saveImageBtn: document.getElementById('mergerSaveImageBtn'),
                 copyToClipboardBtn: document.getElementById('mergerCopyToClipboardBtn'),
                 themeSelect: document.getElementById('mergerThemeSelect'),
-                langSelect: document.getElementById('mergerLangSelect')
+                langSelect: document.getElementById('mergerLangSelect'),
+                title: document.querySelector('#mergerPanel .merger-logo h2'),
+                subtitle: document.querySelector('#mergerPanel .merger-logo h2 span'),
+                dropTitle: document.querySelector('#mergerPanel .merger-droptext strong'),
+                dropHint: document.querySelector('#mergerPanel .merger-droptext span'),
+                readyTitle: document.querySelector('#mergerGridContainer strong'),
+                readyHint: document.querySelector('#mergerGridContainer span')
             },
             gridData: [],
             currentRows: 3,
@@ -1489,6 +1560,7 @@
                 this.isGapTransparent = false;
                 this.gridData = Array.from({ length: this.currentRows }, () => Array(this.currentCols).fill(null));
 
+                this.updateTexts(TailTools.lang || 'en');
                 this.updateColorPreview();
                 this.renderGridHTML();
 
@@ -1556,11 +1628,11 @@
                     this.isGapTransparent = true;
                     this.updateColorPreview();
                     this.renderGridHTML();
-                    TailTools.showToast('Gap is now transparent');
+                    this.toast('gapTransparent');
                 });
                 if (this.elements.applyGridBtn) this.elements.applyGridBtn.addEventListener('click', () => {
                     this.rebuildGridFromState(true);
-                    TailTools.showToast('Grid updated');
+                    this.toast('gridUpdated');
                 });
                 if (this.elements.saveImageBtn) {
                     this.elements.saveImageBtn.disabled = true;
@@ -1571,6 +1643,42 @@
                     this.elements.copyToClipboardBtn.addEventListener('click', () => this.copyToClipboard());
                 }
                 this.updateActionButtons();
+            },
+
+            updateTexts(lang = 'en') {
+                const dict = this.translations[lang] || this.translations.en;
+                if (this.elements.title) this.elements.title.childNodes[0].textContent = dict.title + ' ';
+                if (this.elements.subtitle) this.elements.subtitle.textContent = dict.subtitle;
+                if (this.elements.dropTitle) this.elements.dropTitle.textContent = dict.dropTitle;
+                if (this.elements.dropHint) this.elements.dropHint.textContent = dict.dropHint;
+                if (this.elements.manualAddBtn) this.elements.manualAddBtn.textContent = dict.addBtn;
+                if (this.elements.clearAllBtn) this.elements.clearAllBtn.textContent = dict.clearBtn;
+                if (this.elements.colsInput?.previousElementSibling) this.elements.colsInput.previousElementSibling.textContent = dict.colsLabel;
+                if (this.elements.rowsInput?.previousElementSibling) this.elements.rowsInput.previousElementSibling.textContent = dict.rowsLabel;
+                if (this.elements.autoFitBtn) this.elements.autoFitBtn.textContent = dict.autoFitBtn;
+                if (this.elements.spacingInput?.previousElementSibling) this.elements.spacingInput.previousElementSibling.textContent = dict.spacingLabel;
+                if (this.elements.spacingColorPicker?.previousElementSibling) this.elements.spacingColorPicker.previousElementSibling.textContent = dict.gapLabel;
+                if (this.elements.transparentGapBtn) this.elements.transparentGapBtn.textContent = dict.transparentBtn;
+                if (this.elements.applyGridBtn) this.elements.applyGridBtn.textContent = dict.applyBtn;
+                if (this.elements.saveImageBtn) this.elements.saveImageBtn.textContent = dict.saveBtn;
+                if (this.elements.copyToClipboardBtn) this.elements.copyToClipboardBtn.textContent = dict.copyBtn;
+                if (this.elements.gridContainer && !this.getAllImagesFlat().length) {
+                    this.elements.gridContainer.innerHTML = `<div class="merger-empty"><strong>${dict.readyTitle}</strong><span>${dict.readyHint}</span></div>`;
+                }
+            },
+
+            text(key, vars = {}) {
+                const lang = TailTools.lang || 'en';
+                const dict = this.translations[lang] || this.translations.en;
+                let value = dict[key] || this.translations.en[key] || key;
+                Object.entries(vars).forEach(([name, val]) => {
+                    value = value.replaceAll(`{${name}}`, String(val));
+                });
+                return value;
+            },
+
+            toast(key, vars = {}) {
+                TailTools.showToast(this.text(key, vars));
             },
 
             pickFiles() {
@@ -1596,7 +1704,7 @@
             async addImagesAndAutoFit(files) {
                 const validFiles = Array.from(files || []).filter(file => file && file.type && file.type.startsWith('image/'));
                 if (!validFiles.length) {
-                    TailTools.showToast('No valid images');
+                    this.toast('noValidImages');
                     return;
                 }
 
@@ -1604,13 +1712,13 @@
                 const newImages = pendingImages.filter(Boolean);
                 const allImages = [...this.getAllImagesFlat(), ...newImages];
                 if (!allImages.length) {
-                    TailTools.showToast('No valid images');
+                    this.toast('noValidImages');
                     return;
                 }
 
                 const { rows, cols } = this.findBestSquareGrid(allImages.length);
                 this.buildGridFromImages(allImages, rows, cols);
-                TailTools.showToast(`Added ${newImages.length} image(s)`);
+                this.toast('addedImages', { count: newImages.length });
             },
 
             getAllImagesFlat() {
@@ -1669,13 +1777,13 @@
             applySmartSquareFit() {
                 const images = this.getAllImagesFlat();
                 if (!images.length) {
-                    TailTools.showToast('No images to fit');
+                    this.toast('noImagesToFit');
                     return false;
                 }
 
                 const { rows, cols } = this.findBestSquareGrid(images.length);
                 this.buildGridFromImages(images, rows, cols);
-                TailTools.showToast(`Square grid: ${rows}×${cols}`);
+                this.toast('squareGrid', { rows, cols });
                 return true;
             },
 
@@ -1693,9 +1801,7 @@
                 const oldImages = keepImages ? this.getAllImagesFlat() : [];
                 if (keepImages && oldImages.length > newRows * newCols) {
                     const lostCount = oldImages.length - (newRows * newCols);
-                    const warnMsg = TailTools.lang === 'ru'
-                        ? `⚠️ ${lostCount} изображений не поместится в новую сетку и будет потеряно`
-                        : `⚠️ ${lostCount} image(s) won't fit in the new grid and will be lost`;
+                    const warnMsg = this.text('confirmShrink', { lostCount });
                     if (!confirm(warnMsg)) return;
                 }
 
@@ -1843,9 +1949,9 @@
                     link.download = 'tailmerger_grid.png';
                     link.href = canvas.toDataURL();
                     link.click();
-                    TailTools.showToast('Saved!');
+                    this.toast('saved');
                 } catch (err) {
-                    TailTools.showToast('No images to export');
+                    this.toast('noImagesToExport');
                 }
             },
 
@@ -1856,26 +1962,26 @@
                     canvas.toBlob(async (blob) => {
                         try {
                             await navigator.clipboard.write([new ClipboardItem({ [blob.type]: blob })]);
-                            TailTools.showToast('Image copied');
+                            this.toast('copied');
                         } catch (clipErr) {
                             try {
                                 const dataUrl = canvas.toDataURL('image/png');
                                 await navigator.clipboard.writeText(dataUrl);
-                                TailTools.showToast('Image copied');
+                                this.toast('copied');
                             } catch (fallbackErr) {
-                                TailTools.showToast('No images to export');
+                                this.toast('noImagesToExport');
                             }
                         }
                     });
                 } catch (err) {
-                    TailTools.showToast('No images to export');
+                    this.toast('noImagesToExport');
                 }
             },
 
             clearAllImages() {
                 this.gridData = Array.from({ length: this.currentRows }, () => Array(this.currentCols).fill(null));
                 this.renderGridHTML();
-                TailTools.showToast('All images cleared');
+                this.toast('allImagesCleared');
             }
         };
 
