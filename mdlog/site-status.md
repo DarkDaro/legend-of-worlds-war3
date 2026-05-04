@@ -2,6 +2,17 @@
 
 ## Last updated: 2026-05-04
 
+## Site Check Notes (2026-05-04)
+
+- Core public pages inspected: `monsters.html`, `info.html`, `guides.html`, `support.html`, `lore.html`, `updates.html`, `changelog.html`.
+- `support.html` still contains placeholder `#` links for donation and social buttons, so those controls do nothing yet.
+- Hero page pattern is mixed: `paladin.html` and `admiral.html` rely on `icon-loader.js` to populate an empty `.detail-icon`, while several standard hero pages still hardcode portrait paths like `images/heroes/...` without the needed `../` prefix inside `heroes/`.
+- Confirmed broken portrait paths on sampled pages: `heroes/archmage.html`, `heroes/drowranger.html`, `heroes/farseer.html`. These pages will fall back to their `onerror` icon instead of showing the portrait image.
+- `icon-loader.js` itself is fine: it auto-adds hero portraits when the header icon is empty and loads ability icons with PNG → JPG → FA fallback.
+- `hero-builds.js` is loading correctly and renders the build grid from item IDs.
+- `site-audit.js` only reported the expected local test harness (`test-item-preview.html`) as an issue.
+- `monsters.html` is structurally intact but still contains obvious placeholder/test content for bosses and abilities.
+
 ## Mobile Adaptation Status
 
 ### ✅ Done
@@ -39,6 +50,7 @@
 17. **Items grid collapse** — `items.html` now stores collapsed category state per section in `localStorage`, restores it on load, and shows a visible collapse button on each shop header so the toggle is obvious again. The button is anchored to the right side of the header so long shop names do not hide it.
 18. **Header spacing fix** — `.site-header` now has a card-like frame, more internal padding, and an earlier 900px stack breakpoint so logo/navigation do not press against the border on mid-size screens.
 19. **Dev scripts moved** — the internal helper scripts now live in `tools/` (`generate-hero-cards.js`, `hero-card-data.js`, `site-audit.js`, `check-item-icons.js`, `fix-hero-paths.js`) so the site root stays cleaner.
+20. **Recipe scroll icons** — recipe-type scroll items now use `images/items/recipe.png`; the special `recipe` component still uses `UniveralRecipe.png`.
 
 ### 🎨 Hero Card Improvements (v3.7)
 1. **Name format** — "Имя — Прозвище" (Светозар — Паладин, Прохор — Адмирал)
@@ -60,6 +72,15 @@
 - Ability icons: only 6 (paladin + admiral)
 - Analytics: Yandex Metrika counter ID pending
 - Build slots link to items.html in general — no anchor navigation to specific item yet
+
+### ✅ Next priorities
+1. Make the item database the single source of truth for item names, costs, recipes, and item links.
+2. Finish visual browser checks for the public pages on real screen sizes, especially mobile widths.
+3. Fill missing hero portraits and ability icons so the site feels complete.
+4. Tighten cross-page navigation: hero → build → item → recipe → source.
+5. Make search, favorites, and section collapse work together without edge-case conflicts.
+6. Normalize SEO/share metadata across the whole site.
+7. Separate public runtime files from developer-only tools more cleanly.
 
 ## File Structure
 ```

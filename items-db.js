@@ -743,11 +743,15 @@ const grids = {
 // ========== ИКОНКИ ПРЕДМЕТОВ (img с фоллбэком PNG→JPG→эмодзи) ==========
 const ITEM_ICONS_DIR = 'images/items/';
 
-function itemIcon(id, emoji, size) {
+function itemIcon(id, emoji, size, type) {
   size = size || 64;
   // Специальный случай для рецепта в сборках
   if (id === 'recipe') {
     return '<img src="' + ITEM_ICONS_DIR + 'UniveralRecipe.png" alt="📜" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;">';
+  }
+  // Свитки-рецепты показываем отдельной базовой иконкой recipe.png
+  if (type === 'recipe') {
+    return '<img src="' + ITEM_ICONS_DIR + 'recipe.png" alt="' + (emoji||'📜') + '" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;">';
   }
   const pngSrc = ITEM_ICONS_DIR + id + '.png';
   const jpgSrc = ITEM_ICONS_DIR + id + '.jpg';
@@ -997,7 +1001,7 @@ function renderComponentTree(components, visited = new Set()) {
       <div class="component-row">
         ${hasChildren ? `<button class="tree-toggle" data-collapsed="false" title="Свернуть/развернуть"><i class="fas fa-chevron-down"></i></button>` : '<span class="tree-toggle-spacer"></span>'}
         <div class="component-item" data-item-id="${item.id}">
-          <div class="component-icon">${itemIcon(item.id, item.icon, 36)}</div>
+          <div class="component-icon">${itemIcon(item.id, item.icon, 36, item.type)}</div>
           <span class="component-name">${item.name}${qty}</span>
           <span class="component-cost">${cost} 🪙</span>
         </div>
@@ -1029,7 +1033,7 @@ function renderUsedIn(itemId) {
   if (!ids.length) return '<p style="color:#8e97aa;">Не используется</p>';
   return `<div class="used-in-list">${ids.map(id => {
     const it = itemsDB[id];
-    return `<span class="used-in-chip" data-item-id="${id}">${itemIcon(it.id, it.icon, 20)} ${it.name}</span>`;
+    return `<span class="used-in-chip" data-item-id="${id}">${itemIcon(it.id, it.icon, 20, it.type)} ${it.name}</span>`;
   }).join('')}</div>`;
 }
 
@@ -1052,7 +1056,7 @@ function closeItemSheet() {
 
 function buildItemDetailHtml(itemId, item, total, recipe, base, includeBackButton) {
   return `
-    <div class="panel-header"><div class="detail-icon">${itemIcon(item.id, item.icon, 96)}</div><div class="detail-title item-detail-title"><div class="item-detail-title-main">${item.name} <span class="detail-badge${item.type === 'boss_drop' ? ' badge-danger' : ''}">${ITEM_TYPE_LABELS[item.type]||''}</span></div></div></div>
+    <div class="panel-header"><div class="detail-icon">${itemIcon(item.id, item.icon, 96, item.type)}</div><div class="detail-title item-detail-title"><div class="item-detail-title-main">${item.name} <span class="detail-badge${item.type === 'boss_drop' ? ' badge-danger' : ''}">${ITEM_TYPE_LABELS[item.type]||''}</span></div></div></div>
     <div class="detail-description">${item.description||''}<br>
       <div class="cost-badges">
         ${item.cost > 0 ? `<span class="cost-badge">💰 Золото: ${item.cost}</span>` : ''}
@@ -1170,7 +1174,7 @@ function renderAllGrids() {
       const card = document.createElement('div');
       card.className = `item-card ${item.type || ''} ${rarity}`;
       card.dataset.itemId = id;
-      card.innerHTML = `<div class="item-icon">${itemIcon(item.id, item.icon)}</div><div class="item-name">${item.name}</div>`;
+      card.innerHTML = `<div class="item-icon">${itemIcon(item.id, item.icon, undefined, item.type)}</div><div class="item-name">${item.name}</div>`;
       card.appendChild(buildItemFavoriteButton(id));
       card.classList.toggle('is-favorite', isItemFavorite(id));
       card.addEventListener('click', e => { e.stopPropagation(); openItemDetail(id); });
