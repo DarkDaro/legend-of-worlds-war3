@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const dir = 'C:/AgentLetta/HeroData';
+const dir = path.resolve(__dirname, '..');
 
 const files = fs.readdirSync(dir);
 const htmlFiles = files.filter(f => f.endsWith('.html'));
@@ -151,7 +151,7 @@ if (fs.existsSync(cssPath)) {
 }
 
 // Check JS files
-const jsFiles = files.filter(f => f.endsWith('.js') && !f.startsWith('_') && f !== 'site-audit.js');
+const jsFiles = files.filter(f => f.endsWith('.js') && !f.startsWith('_') && f !== path.basename(__filename));
 jsFiles.forEach(f => {
   const c = fs.readFileSync(path.join(dir, f), 'utf8');
   if (c.includes('home.html')) {
