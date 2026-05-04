@@ -2,6 +2,13 @@
 
 ## Last updated: 2026-05-04
 
+## Content Sync Notes (2026-05-04)
+
+- `guides.html` was rewritten to feel more useful and more alive for new players.
+- `lore.html` and `info.html` were aligned so they describe the same world without contradiction.
+- `updates.html` and `changelog.html` now use a fresher, more player-facing changelog tone.
+- `index.html` was updated to match the new site tone in the banner, quick links, and recent updates block.
+
 ## Site Check Notes (2026-05-04)
 
 - Core public pages inspected: `monsters.html`, `info.html`, `guides.html`, `support.html`, `lore.html`, `updates.html`, `changelog.html`.
