@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор сборок · Legend of Worlds</title>
+    <meta property="og:title" content="Калькулятор сборок — Legend of Worlds">
+    <meta property="og:description" content="Собери 6 предметов и узнай стоимость, дерево компонентов и лист покупок.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="items-db.js"></script>
+    <script src="hero-builds.js"></script>
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+</head>
+<body class="page-items">
+
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="items.html">Предметы</a><span class="sep">›</span><span class="current">Калькулятор сборок</span></div>
+
+        <h1><i class="fas fa-calculator"></i> Калькулятор сборок</h1>
+        <p class="calc-intro">Выберите до 6 предметов и узнайте итоговую стоимость, дерево компонентов и лист покупок.</p>
+
+        <div class="calc-hero-import">
+            <label for="calcHeroSelect" class="calc-hero-label"><i class="fas fa-user-shield"></i> Сборка героя</label>
+            <select id="calcHeroSelect" class="calc-hero-select">
+                <option value="">— Выберите героя —</option>
+            </select>
+            <button id="calcShareBtn" class="calc-share-btn" title="Скопировать ссылку на сборку"><i class="fas fa-link"></i> Поделиться</button>
+        </div>
+
+        <!-- Слоты и результаты -->
+        <div class="calc-container">
+            <div class="calc-left">
+                <div class="calc-slots" id="calcSlots"></div>
+                <div class="calc-slots-bar">
+                    <span class="calc-slots-counter" id="calcSlotsCounter">0/6</span>
+                    <button class="calc-clear-btn" id="calcClearBtn" title="Очистить все слоты"><i class="fas fa-trash-alt"></i> Очистить</button>
+                </div>
+                <div class="calc-tree" id="calcTree"></div>
+            </div>
+            <div class="calc-right">
+                <div class="calc-results" id="calcResults"></div>
+            </div>
+        </div>
+
+        <!-- Каталог выбора -->
+        <div class="calc-catalog-section">
+            <h2 class="section-title"><i class="fas fa-flask"></i> Выберите предмет</h2>
+            <div class="calc-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="calcSearch" placeholder="Найти предмет...">
+            </div>
+            <div class="category-tabs" id="calcTabs"></div>
+            <div id="calcCatalog"></div>
+        </div>
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <span>Legend of Worlds — Warcraft III Hero Arena</span>
+            <span class="footer-dot">·</span>
+            <span>Калькулятор сборок</span>
+        </div>
+    </footer>
+
+    <script src="calculator.js"></script>
+</body>
+</html>

@@ -3334,3 +3334,800 @@ body.item-sheet-open {
 .stat-intelligence { color: #55aaff; }
 
 /* passive-ability и ability-stats заменены на .ability-card.passive и .ability-params */
+
+/* ===== Микро-анимации ===== */
+
+/* Пульсация свечения при наведении */
+@keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(0, 230, 255, 0.3); }
+    50% { box-shadow: 0 0 25px rgba(0, 230, 255, 0.5); }
+}
+
+/* Появление карточки снизу */
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Пульсация свечения для карточек героев */
+.hero-card:hover {
+    animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Пульсация свечения для карточек предметов */
+.item-card:hover {
+    animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Пульсация свечения для stat-box */
+.stat-box:hover {
+    animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Пульсация свечения для quick-link-card */
+.quick-link-card:hover {
+    animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Появление карточек при загрузке */
+.hero-card {
+    animation: fadeSlideUp 0.4s ease-out both;
+}
+.item-card {
+    animation: fadeSlideUp 0.4s ease-out both;
+}
+.stat-box {
+    animation: fadeSlideUp 0.4s ease-out both;
+}
+.quick-link-card {
+    animation: fadeSlideUp 0.4s ease-out both;
+}
+
+/* Staggered delay — первые 6 карточек появляются с задержкой */
+.hero-card:nth-child(1) { animation-delay: 0.05s; }
+.hero-card:nth-child(2) { animation-delay: 0.1s; }
+.hero-card:nth-child(3) { animation-delay: 0.15s; }
+.hero-card:nth-child(4) { animation-delay: 0.2s; }
+.hero-card:nth-child(5) { animation-delay: 0.25s; }
+.hero-card:nth-child(6) { animation-delay: 0.3s; }
+
+.item-card:nth-child(1) { animation-delay: 0.05s; }
+.item-card:nth-child(2) { animation-delay: 0.1s; }
+.item-card:nth-child(3) { animation-delay: 0.15s; }
+.item-card:nth-child(4) { animation-delay: 0.2s; }
+.item-card:nth-child(5) { animation-delay: 0.25s; }
+.item-card:nth-child(6) { animation-delay: 0.3s; }
+
+.stat-box:nth-child(1) { animation-delay: 0.05s; }
+.stat-box:nth-child(2) { animation-delay: 0.1s; }
+.stat-box:nth-child(3) { animation-delay: 0.15s; }
+.stat-box:nth-child(4) { animation-delay: 0.2s; }
+
+.quick-link-card:nth-child(1) { animation-delay: 0.05s; }
+.quick-link-card:nth-child(2) { animation-delay: 0.1s; }
+.quick-link-card:nth-child(3) { animation-delay: 0.15s; }
+
+/* Нажатие кнопки — эффект вдавливания */
+.btn-primary:active,
+.btn-secondary:active {
+    transform: translateY(1px) !important;
+    box-shadow: 0 0 8px rgba(0, 230, 255, 0.3) !important;
+}
+.filter-btn:active {
+    transform: translateY(1px);
+}
+
+/* Способность при наведении — лёгкий сдвиг вправо */
+.ability-card:hover {
+    transform: translateX(4px);
+}
+
+/* ===== Текстуры и паттерны ===== */
+
+/* Диагональные линии внутри карточек — «тканевая» текстура */
+.hero-card,
+.item-card,
+.stat-box,
+.quick-link-card,
+.ability-card,
+.mechanic-card,
+.support-card,
+.monster-card,
+.version-card {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.008'%3E%3Cpath d='M0 40L40 0H20L0 20zM40 40V20L20 40z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Точечная сетка в футере */
+.site-footer {
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2300e6ff' fill-opacity='0.04'%3E%3Ccircle cx='10' cy='10' r='1'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ===== Страничные оттенки фона ===== */
+/* Лёгкий сдвиг градиента + второй cyan-отсвет в разных точках — всё в рамках палитры */
+
+/* Герои — cyan отсвет правее + лёгкий тёплый тон */
+body.page-heroes {
+    background-image:
+        radial-gradient(ellipse at 70% 80%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 30% 10%, #1c2230 0%, #05070a 100%);
+}
+
+/* Предметы — cyan отсвет ниже + лёгкий teal тон */
+body.page-items {
+    background-image:
+        radial-gradient(ellipse at 50% 90%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 30% 10%, #1a2430 0%, #05070a 100%);
+}
+
+/* Механики — cyan отсвет левее + лёгкий фиолетовый тон */
+body.page-mechanics {
+    background-image:
+        radial-gradient(ellipse at 20% 70%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 30% 10%, #1e2230 0%, #05070a 100%);
+}
+
+/* Монстры — cyan отсвет выше + лёгкий тёплый тон */
+body.page-monsters {
+    background-image:
+        radial-gradient(ellipse at 60% 20%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 30% 10%, #1e2030 0%, #05070a 100%);
+}
+
+/* Лор — cyan отсвет шире + глубокий синий тон */
+body.page-lore {
+    background-image:
+        radial-gradient(ellipse at 40% 60%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 30% 10%, #182530 0%, #05070a 100%);
+}
+
+/* ===== Калькулятор сборок ===== */
+
+.calc-intro {
+    color: #b0b9d0;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+}
+
+.calc-hero-import {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.calc-hero-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #c0d0e8;
+    white-space: nowrap;
+}
+
+.calc-hero-select {
+    background: #0f172a;
+    border: 1px solid #2a4060;
+    color: #e0f0ff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    min-width: 160px;
+}
+
+.calc-hero-select:focus {
+    outline: none;
+    border-color: #00e6ff88;
+    box-shadow: 0 0 8px #00e6ff22;
+}
+
+.calc-share-btn {
+    background: transparent;
+    border: 1px solid #2a4060;
+    color: #8aa0c0;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: border-color 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+
+.calc-share-btn:hover {
+    border-color: #00e6ff88;
+    color: #00e6ff;
+}
+
+.calc-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #0a1a2a, #0f2535);
+    border: 1px solid #00e6ff44;
+    color: #00e6ff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.calc-link-btn:hover {
+    border-color: #00e6ff88;
+    box-shadow: 0 0 15px #00e6ff33;
+    transform: translateY(-2px);
+}
+
+.calc-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.calc-left {
+    flex: 1;
+    min-width: 0;
+}
+
+.calc-right {
+    width: 260px;
+    flex-shrink: 0;
+}
+
+/* Слоты */
+.calc-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.calc-slot {
+    background: #0f172a;
+    border: 2px dashed #2a4060;
+    border-radius: 10px;
+    padding: 8px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90px;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    position: relative;
+}
+
+.calc-slot:hover {
+    border-color: #00e6ff66;
+    box-shadow: 0 0 12px #00e6ff22;
+}
+
+.calc-slot-empty {
+    color: #2a4060;
+    font-size: 1.5rem;
+}
+
+.calc-slot-empty:hover {
+    color: #00e6ff;
+    border-color: #00e6ff88;
+}
+
+.calc-slot-filled {
+    border-style: solid;
+    border-color: #00e6ff44;
+    background: #101a28;
+    cursor: default;
+}
+
+.calc-slot-filled:hover {
+    border-color: #ff555588;
+    box-shadow: 0 0 12px #ff555522;
+}
+
+/* Цвет рамки слота по атрибуту */
+.calc-attr-strength { border-color: #ff555566; }
+.calc-attr-strength .calc-slot-icon img { border-color: #ff5555aa; box-shadow: 0 0 10px #ff555544; }
+.calc-attr-agility { border-color: #55ff5566; }
+.calc-attr-agility .calc-slot-icon img { border-color: #55ff55aa; box-shadow: 0 0 10px #55ff5544; }
+.calc-attr-intelligence { border-color: #55aaff66; }
+.calc-attr-intelligence .calc-slot-icon img { border-color: #55aaffaa; box-shadow: 0 0 10px #55aaff44; }
+.calc-attr-weapon { border-color: #ff880066; }
+.calc-attr-weapon .calc-slot-icon img { border-color: #ff8800aa; box-shadow: 0 0 10px #ff880044; }
+.calc-attr-armor { border-color: #00e6ff66; }
+.calc-attr-armor .calc-slot-icon img { border-color: #00e6ffaa; box-shadow: 0 0 10px #00e6ff44; }
+.calc-attr-boss { border-color: #ff880066; }
+.calc-attr-boss .calc-slot-icon img { border-color: #ff8800aa; box-shadow: 0 0 10px #ff880044; }
+.calc-attr-neutral { border-color: #bf7fff66; }
+.calc-attr-neutral .calc-slot-icon img { border-color: #bf7fffaa; box-shadow: 0 0 10px #bf7fff44; }
+
+.calc-slot-icon {
+    margin-bottom: 4px;
+}
+
+.calc-slot-icon img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    border-radius: 8px;
+    border: 2px solid #00e6ffaa;
+    box-shadow: 0 0 8px #00e6ff44;
+}
+
+.calc-slot-name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #e0f0ff;
+    text-align: center;
+    margin-bottom: 1px;
+    word-break: break-word;
+}
+
+.calc-slot-cost {
+    font-size: 0.7rem;
+    color: #8aa0c0;
+}
+
+.calc-slot-remove {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: #ff555533;
+    border: none;
+    color: #ff5555;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.15s, background 0.15s;
+}
+
+.calc-slot-filled:hover .calc-slot-remove {
+    opacity: 1;
+}
+
+.calc-slot-remove:hover {
+    background: #ff555566;
+}
+
+.calc-slots-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.calc-slots-counter {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #00e6ff;
+    background: #0f172a;
+    border: 1px solid #2a4060;
+    border-radius: 6px;
+    padding: 4px 10px;
+}
+
+/* Кнопка очистки */
+.calc-clear-btn {
+    background: transparent;
+    border: 1px solid #2a4060;
+    color: #8aa0c0;
+    padding: 4px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.calc-clear-btn:hover {
+    border-color: #ff555588;
+    color: #ff5555;
+}
+
+/* Результаты */
+.calc-results {
+    background: #0f172a;
+    border: 1px solid #2a4060;
+    border-radius: 12px;
+    padding: 14px;
+    position: sticky;
+    top: 20px;
+}
+
+.calc-results-empty {
+    color: #5a7a9a;
+    text-align: center;
+    padding: 24px 12px;
+    font-size: 0.9rem;
+}
+
+.calc-results-empty i {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: #2a4060;
+}
+
+.calc-results-total {
+    text-align: center;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #1a2a40;
+}
+
+.calc-results-label {
+    font-size: 0.72rem;
+    color: #5a7a9a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.calc-results-value {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #00e6ff;
+    text-shadow: 0 0 10px #00e6ff66;
+}
+
+.calc-results-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.calc-results-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+}
+
+.calc-results-row-label {
+    color: #8aa0c0;
+}
+
+.calc-results-row-value {
+    color: #e0f0ff;
+    font-weight: 600;
+}
+
+.calc-results-boss .calc-results-row-label {
+    color: #ff8800;
+}
+
+.calc-results-boss .calc-results-row-value {
+    color: #ff8800;
+}
+
+.calc-results-summary {
+    font-size: 0.72rem;
+    color: #5a7a9a;
+    text-align: center;
+    padding-top: 8px;
+    border-top: 1px solid #1a2a40;
+}
+
+.calc-shopping-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #e0f0ff;
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid #1a2a40;
+    margin-bottom: 6px;
+}
+
+.calc-shopping-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.calc-shopping-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.72rem;
+    padding: 2px 0;
+}
+
+.calc-shopping-icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    border-radius: 4px;
+}
+
+.calc-shopping-name {
+    flex: 1;
+    color: #c0d0e8;
+    word-break: break-word;
+}
+
+.calc-shopping-cost {
+    color: #8aa0c0;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Дерево компонентов */
+.calc-tree-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #e0f0ff;
+    margin-bottom: 8px;
+}
+
+.calc-tree-item {
+    background: #0f172a;
+    border: 1px solid #1a2a40;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 8px;
+}
+
+.calc-tree-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.calc-tree-expandable {
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 4px;
+    margin: -4px;
+    transition: background 0.15s;
+}
+
+.calc-tree-expandable:hover {
+    background: #1a2a40;
+}
+
+.calc-tree-chevron {
+    font-size: 0.7rem;
+    color: #5a7a9a;
+    width: 14px;
+    flex-shrink: 0;
+    transition: transform 0.15s;
+}
+
+.calc-tree-icon img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    border-radius: 6px;
+    border: 2px solid #00e6ffaa;
+}
+
+.calc-tree-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #e0f0ff;
+    flex: 1;
+}
+
+.calc-tree-cost {
+    font-size: 0.78rem;
+    color: #8aa0c0;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.calc-tree-components {
+    padding-left: 8px;
+}
+
+/* Каталог выбора */
+.calc-catalog-section {
+    margin-top: 24px;
+}
+
+.calc-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #0f172a;
+    border: 1px solid #2a4060;
+    border-radius: 30px;
+    padding: 8px 16px;
+    margin-bottom: 12px;
+    max-width: 360px;
+}
+
+.calc-search i {
+    color: #00e6ff;
+    font-size: 14px;
+}
+
+.calc-search input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #e0f0ff;
+    font-size: 14px;
+    width: 100%;
+}
+
+.calc-search input::placeholder {
+    color: #6b7c99;
+}
+
+.calc-catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+    gap: 8px;
+}
+
+.calc-catalog-item {
+    background: #0f172a;
+    border: 1px solid #2a4060;
+    border-radius: 8px;
+    padding: 8px 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.calc-catalog-item:hover {
+    border-color: #00e6ff66;
+    box-shadow: 0 0 10px #00e6ff22;
+    transform: translateY(-2px);
+}
+
+.calc-catalog-item.calc-catalog-in-build {
+    border-color: #00e6ff44;
+    background: #0a1520;
+    opacity: 0.6;
+}
+
+.calc-catalog-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    border-radius: 6px;
+    margin-bottom: 2px;
+}
+
+.calc-catalog-name {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #e0f0ff;
+    word-break: break-word;
+    margin-bottom: 1px;
+}
+
+.calc-catalog-cost {
+    font-size: 0.65rem;
+    color: #8aa0c0;
+}
+
+/* Мобильная адаптация калькулятора */
+@media (max-width: 900px) {
+    .calc-container {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .calc-right {
+        width: 100%;
+    }
+    .calc-results {
+        position: static;
+    }
+}
+
+@media (max-width: 800px) {
+    .calc-slots {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .calc-hero-import {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+    .calc-hero-select {
+        min-width: 0;
+        width: 100%;
+    }
+    .calc-share-btn {
+        width: 100%;
+        text-align: center;
+    }
+    .calc-search {
+        max-width: 100%;
+    }
+    .calc-catalog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+        gap: 6px;
+    }
+    .calc-catalog-item {
+        padding: 6px 3px;
+    }
+    .calc-catalog-icon img {
+        width: 36px;
+        height: 36px;
+    }
+    .calc-catalog-name {
+        font-size: 0.68rem;
+    }
+    .calc-catalog-cost {
+        font-size: 0.6rem;
+    }
+    /* Табы каталога — горизонтальный скролл */
+    .calc-catalog-section .category-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+    }
+    .calc-catalog-section .category-tabs::-webkit-scrollbar {
+        display: none;
+    }
+    .calc-catalog-section .tab-btn {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 500px) {
+    .calc-slots {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+    .calc-slot {
+        min-height: 80px;
+        padding: 6px 4px;
+    }
+    .calc-slot-icon img {
+        width: 40px;
+        height: 40px;
+    }
+    .calc-slot-name {
+        font-size: 0.68rem;
+    }
+    .calc-slot-cost {
+        font-size: 0.62rem;
+    }
+    .calc-tree-icon img {
+        width: 28px;
+        height: 28px;
+    }
+    .calc-tree-name {
+        font-size: 0.78rem;
+    }
+    .calc-tree-cost {
+        font-size: 0.7rem;
+    }
+    .calc-shopping-list {
+        max-height: 140px;
+    }
+    .calc-results-value {
+        font-size: 1.1rem;
+    }
+}
+
+/* ===== Доступность: отключение анимаций ===== */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
