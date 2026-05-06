@@ -1302,21 +1302,51 @@ renderAllGrids();
 applyItemView();
 updateItemFavoritesTab();
 
-// Обработка URL-параметра ?item=ID — открывает предмет из внешней ссылки
+// Обработка URL-параметра ?item=ID или #ID — открывает предмет из внешней ссылки
+function getItemIdFromUrl() {
+  // Способ 1: query string (?item=ID) — работает на HTTP-сервере
+  var id = new URLSearchParams(window.location.search).get('item');
+  if (id) return id;
+  // Запасной: парсим href вручную (при file:// location.search может быть пустым)
+  var href = window.location.href;
+  var idx = href.indexOf('?');
+  if (idx !== -1) {
+    var match = href.substring(idx).match(/[?&]item=([^&]+)/);
+    if (match) return match[1];
+  }
+  // Способ 2: hash (#ID) — надёжно при file:// протоколе
+  var hash = window.location.hash;
+  if (hash) {
+    var hashId = hash.replace(/^#/, '');
+    if (hashId && itemsDB[hashId]) return hashId;
+  }
+  return null;
+}
+
 function openItemFromUrl() {
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get('item');
-  if (id && itemsDB[id]) {
-    openItemDetail(id);
-    if (!isItemMobileSurface()) {
-      var panel = document.getElementById('itemDetailPanel');
-      if (panel) panel.scrollIntoView({ behavior: 'smooth' });
-    }
+  var id = getItemIdFromUrl();
+  if (!id) return;
+  if (!itemsDB[id]) {
+    console.warn('[items-db] openItemFromUrl: item not found in DB:', id);
+    return;
+  }
+  openItemDetail(id);
+  if (!isItemMobileSurface()) {
+    var panel = document.getElementById('itemDetailPanel');
+    if (panel) panel.scrollIntoView({ behavior: 'smooth' });
   }
 }
 openItemFromUrl();
 
-// Также обрабатываем, если страница была восстановлена из bfcache
+// bfcache — страница восстановлена из кэша назад/вперёд
 window.addEventListener('pageshow', function(e) {
   if (e.persisted) openItemFromUrl();
+});
+
+// hashchange — переход между предметами без перезагрузки страницы
+window.addEventListener('hashchange', function() {
+  var id = getItemIdFromUrl();
+  if (id && itemsDB[id]) {
+    openItemDetail(id);
+  }
 });
