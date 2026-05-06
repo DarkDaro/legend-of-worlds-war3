@@ -37,6 +37,9 @@ images/garb/
 generated-heroes/
 test-item-preview.html
 
+# JASS скрипты (не для публикации)
+JassCode/
+
 # Исходники графики
 *.psd
 *.zip
