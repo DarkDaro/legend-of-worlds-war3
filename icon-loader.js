@@ -156,6 +156,25 @@
         });
     }
 
+    // ========== КНОПКА ГЛОБАЛЬНОГО ПОИСКА ==========
+
+    function initSearchTrigger() {
+        var nav = document.querySelector('.header-nav');
+        if (!nav) return;
+
+        var trigger = document.createElement('button');
+        trigger.className = 'gs-trigger';
+        trigger.innerHTML = '<i class="fas fa-search"></i> Поиск <kbd>Ctrl+K</kbd>';
+        trigger.addEventListener('click', function() {
+            if (typeof GlobalSearch !== 'undefined') {
+                GlobalSearch.open();
+            }
+        });
+
+        // Вставляем первым элементом навигации
+        nav.insertBefore(trigger, nav.firstChild);
+    }
+
     // ========== INIT ==========
 
     if (document.readyState === 'loading') {
@@ -165,6 +184,7 @@
             initParamHighlight();
             initHamburger();
             initScrollToTop();
+            initSearchTrigger();
         });
     } else {
         initHeroDetailIcon();
@@ -172,5 +192,6 @@
         initParamHighlight();
         initHamburger();
         initScrollToTop();
+        initSearchTrigger();
     }
 })();
