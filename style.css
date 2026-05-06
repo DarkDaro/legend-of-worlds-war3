@@ -2766,6 +2766,59 @@ body.item-sheet-open {
   color: #0b0e14;
   box-shadow: 0 0 20px #00e6ff;
 }
+
+/* Босс-дроп ссылка */
+.boss-drop-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #1a1020;
+  border: 1px solid #ff880066;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  color: #ff8800;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.boss-drop-link:hover {
+  background: #ff8800;
+  border-color: #ffffff;
+  color: #0b0e14;
+  box-shadow: 0 0 15px #ff880066;
+}
+
+/* Рекомендуется героям */
+.hero-reco-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hero-reco-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #162433;
+  border: 1px solid #00e6ffaa;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  color: #d0e4ff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.hero-reco-chip:hover {
+  background: #00e6ff;
+  border-color: #ffffff;
+  color: #0b0e14;
+  box-shadow: 0 0 20px #00e6ff;
+}
+
 .upgrade-chain {
   display: flex;
   flex-wrap: wrap;
@@ -3280,6 +3333,21 @@ body.item-sheet-open {
     padding: 4px 8px;
     font-size: 0.78rem;
   }
+
+  .item-bottom-sheet .boss-drop-link {
+    font-size: 0.82rem;
+    padding: 5px 10px;
+  }
+
+  .item-bottom-sheet .hero-reco-chip {
+    font-size: 0.82rem;
+    padding: 5px 10px;
+  }
+
+  .item-bottom-sheet .hero-reco-chip img {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 /* ===== Расширенные стили для карточек героев (Warcraft III style) ===== */
@@ -3490,38 +3558,43 @@ body.page-calculator {
 
 .calc-intro {
     color: #b0b9d0;
-    margin-bottom: 12px;
-    font-size: 0.95rem;
+    margin-bottom: 8px;
+    font-size: 0.88rem;
 }
 
 .calc-top-bar {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .calc-back-link {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    color: #5a7a9a;
+    gap: 5px;
+    color: #8aa0c0;
     text-decoration: none;
-    font-size: 0.85rem;
-    transition: color 0.2s;
+    font-size: 0.8rem;
+    background: #0f172a;
+    border: 1px solid #2a4060;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: border-color 0.2s, color 0.2s;
 }
 
 .calc-back-link:hover {
     color: #00e6ff;
+    border-color: #00e6ff88;
 }
 
 .calc-hero-import {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 16px;
+    gap: 8px;
+    margin-bottom: 10px;
     flex-wrap: wrap;
 }
 
 .calc-hero-label {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: #c0d0e8;
     white-space: nowrap;
@@ -3531,27 +3604,27 @@ body.page-calculator {
     background: #0f172a;
     border: 1px solid #2a4060;
     color: #e0f0ff;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 0.85rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
     cursor: pointer;
-    min-width: 160px;
+    min-width: 140px;
 }
 
 .calc-hero-select:focus {
     outline: none;
     border-color: #00e6ff88;
-    box-shadow: 0 0 8px #00e6ff22;
+    box-shadow: 0 0 6px #00e6ff22;
 }
 
 .calc-share-btn {
     background: transparent;
     border: 1px solid #2a4060;
     color: #8aa0c0;
-    padding: 6px 14px;
-    border-radius: 8px;
+    padding: 4px 10px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     transition: border-color 0.2s, color 0.2s;
     white-space: nowrap;
 }
@@ -3563,20 +3636,20 @@ body.page-calculator {
 
 .calc-toast {
     position: fixed;
-    bottom: 24px;
+    bottom: 20px;
     left: 50%;
-    transform: translateX(-50%) translateY(20px);
+    transform: translateX(-50%) translateY(16px);
     background: #0f172aee;
     border: 1px solid #00e6ff66;
     color: #e0f0ff;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 0.85rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.8rem;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.25s, transform 0.25s;
+    transition: opacity 0.2s, transform 0.2s;
     z-index: 1000;
-    box-shadow: 0 4px 20px #00000066;
+    box-shadow: 0 4px 16px #00000066;
 }
 
 .calc-toast.visible {
@@ -3587,30 +3660,30 @@ body.page-calculator {
 .calc-link-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     background: linear-gradient(135deg, #0a1a2a, #0f2535);
     border: 1px solid #00e6ff44;
     color: #00e6ff;
-    padding: 10px 20px;
-    border-radius: 10px;
+    padding: 8px 16px;
+    border-radius: 8px;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
 }
 
 .calc-link-btn:hover {
     border-color: #00e6ff88;
-    box-shadow: 0 0 15px #00e6ff33;
+    box-shadow: 0 0 12px #00e6ff33;
     transform: translateY(-2px);
 }
 
 .calc-container {
     display: flex;
-    gap: 20px;
+    gap: 16px;
     align-items: flex-start;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .calc-left {
@@ -3619,7 +3692,7 @@ body.page-calculator {
 }
 
 .calc-right {
-    width: 260px;
+    width: 240px;
     flex-shrink: 0;
 }
 
@@ -3627,20 +3700,20 @@ body.page-calculator {
 .calc-slots {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-bottom: 8px;
+    gap: 6px;
+    margin-bottom: 6px;
 }
 
 .calc-slot {
     background: #0f172a;
     border: 2px dashed #2a4060;
-    border-radius: 10px;
-    padding: 8px 6px;
+    border-radius: 8px;
+    padding: 6px 4px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 90px;
+    min-height: 78px;
     cursor: pointer;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
     position: relative;
@@ -3648,12 +3721,12 @@ body.page-calculator {
 
 .calc-slot:hover {
     border-color: #00e6ff66;
-    box-shadow: 0 0 12px #00e6ff22;
+    box-shadow: 0 0 8px #00e6ff22;
 }
 
 .calc-slot-empty {
     color: #2a4060;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .calc-slot-empty:hover {
@@ -3670,65 +3743,66 @@ body.page-calculator {
 
 .calc-slot-filled:hover {
     border-color: #ff555588;
-    box-shadow: 0 0 12px #ff555522;
+    box-shadow: 0 0 8px #ff555522;
 }
 
 /* Цвет рамки слота по атрибуту */
 .calc-attr-strength { border-color: #ff555566; }
-.calc-attr-strength .calc-slot-icon img { border-color: #ff5555aa; box-shadow: 0 0 10px #ff555544; }
+.calc-attr-strength .calc-slot-icon img { border-color: #ff5555aa; box-shadow: 0 0 8px #ff555544; }
 .calc-attr-agility { border-color: #55ff5566; }
-.calc-attr-agility .calc-slot-icon img { border-color: #55ff55aa; box-shadow: 0 0 10px #55ff5544; }
+.calc-attr-agility .calc-slot-icon img { border-color: #55ff55aa; box-shadow: 0 0 8px #55ff5544; }
 .calc-attr-intelligence { border-color: #55aaff66; }
-.calc-attr-intelligence .calc-slot-icon img { border-color: #55aaffaa; box-shadow: 0 0 10px #55aaff44; }
+.calc-attr-intelligence .calc-slot-icon img { border-color: #55aaffaa; box-shadow: 0 0 8px #55aaff44; }
 .calc-attr-weapon { border-color: #ff880066; }
-.calc-attr-weapon .calc-slot-icon img { border-color: #ff8800aa; box-shadow: 0 0 10px #ff880044; }
+.calc-attr-weapon .calc-slot-icon img { border-color: #ff8800aa; box-shadow: 0 0 8px #ff880044; }
 .calc-attr-armor { border-color: #00e6ff66; }
-.calc-attr-armor .calc-slot-icon img { border-color: #00e6ffaa; box-shadow: 0 0 10px #00e6ff44; }
+.calc-attr-armor .calc-slot-icon img { border-color: #00e6ffaa; box-shadow: 0 0 8px #00e6ff44; }
 .calc-attr-boss { border-color: #ff880066; }
-.calc-attr-boss .calc-slot-icon img { border-color: #ff8800aa; box-shadow: 0 0 10px #ff880044; }
+.calc-attr-boss .calc-slot-icon img { border-color: #ff8800aa; box-shadow: 0 0 8px #ff880044; }
 .calc-attr-neutral { border-color: #bf7fff66; }
-.calc-attr-neutral .calc-slot-icon img { border-color: #bf7fffaa; box-shadow: 0 0 10px #bf7fff44; }
+.calc-attr-neutral .calc-slot-icon img { border-color: #bf7fffaa; box-shadow: 0 0 8px #bf7fff44; }
 
 .calc-slot-icon {
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .calc-slot-icon img {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     object-fit: contain;
     image-rendering: pixelated;
-    border-radius: 8px;
+    border-radius: 6px;
     border: 2px solid #00e6ffaa;
-    box-shadow: 0 0 8px #00e6ff44;
+    box-shadow: 0 0 6px #00e6ff44;
 }
 
 .calc-slot-name {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
     color: #e0f0ff;
     text-align: center;
-    margin-bottom: 1px;
+    margin-bottom: 0;
     word-break: break-word;
+    line-height: 1.2;
 }
 
 .calc-slot-cost {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: #8aa0c0;
 }
 
 .calc-slot-remove {
     position: absolute;
-    top: 4px;
-    right: 4px;
+    top: 2px;
+    right: 2px;
     background: #ff555533;
     border: none;
     color: #ff5555;
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3747,18 +3821,18 @@ body.page-calculator {
 .calc-slots-bar {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 16px;
+    gap: 8px;
+    margin-bottom: 10px;
 }
 
 .calc-slots-counter {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
     color: #00e6ff;
     background: #0f172a;
     border: 1px solid #2a4060;
     border-radius: 6px;
-    padding: 4px 10px;
+    padding: 3px 8px;
 }
 
 /* Кнопка очистки */
@@ -3766,10 +3840,10 @@ body.page-calculator {
     background: transparent;
     border: 1px solid #2a4060;
     color: #8aa0c0;
-    padding: 4px 12px;
+    padding: 3px 10px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     transition: border-color 0.2s, color 0.2s;
 }
 
@@ -3782,60 +3856,60 @@ body.page-calculator {
 .calc-results {
     background: #0f172a;
     border: 1px solid #2a4060;
-    border-radius: 12px;
-    padding: 14px;
+    border-radius: 10px;
+    padding: 12px;
     position: sticky;
-    top: 20px;
+    top: 16px;
 }
 
 .calc-results-empty {
     color: #5a7a9a;
     text-align: center;
-    padding: 24px 12px;
-    font-size: 0.9rem;
+    padding: 16px 8px;
+    font-size: 0.82rem;
 }
 
 .calc-results-empty i {
     display: block;
-    font-size: 1.5rem;
-    margin-bottom: 8px;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
     color: #2a4060;
 }
 
 .calc-results-total {
     text-align: center;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #1a2a40;
 }
 
 .calc-results-label {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     color: #5a7a9a;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
 }
 
 .calc-results-value {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     font-weight: 800;
     color: #00e6ff;
-    text-shadow: 0 0 10px #00e6ff66;
+    text-shadow: 0 0 8px #00e6ff66;
 }
 
 .calc-results-breakdown {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    margin-bottom: 12px;
+    gap: 4px;
+    margin-bottom: 8px;
 }
 
 .calc-results-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.78rem;
+    font-size: 0.72rem;
 }
 
 .calc-results-row-label {
@@ -3856,45 +3930,45 @@ body.page-calculator {
 }
 
 .calc-results-summary {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     color: #5a7a9a;
     text-align: center;
-    padding-top: 8px;
+    padding-top: 6px;
     border-top: 1px solid #1a2a40;
 }
 
 .calc-shopping-title {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 700;
     color: #e0f0ff;
-    margin-top: 12px;
-    padding-top: 8px;
+    margin-top: 8px;
+    padding-top: 6px;
     border-top: 1px solid #1a2a40;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 .calc-shopping-list {
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    max-height: 180px;
+    gap: 1px;
+    max-height: 150px;
     overflow-y: auto;
 }
 
 .calc-shopping-row {
     display: flex;
     align-items: center;
-    gap: 5px;
-    font-size: 0.72rem;
-    padding: 2px 0;
+    gap: 4px;
+    font-size: 0.68rem;
+    padding: 1px 0;
 }
 
 .calc-shopping-icon img {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     object-fit: contain;
     image-rendering: pixelated;
-    border-radius: 4px;
+    border-radius: 3px;
 }
 
 .calc-shopping-name {
@@ -3911,32 +3985,32 @@ body.page-calculator {
 
 /* Дерево компонентов */
 .calc-tree-title {
-    font-size: 0.9rem;
+    font-size: 0.82rem;
     font-weight: 700;
     color: #e0f0ff;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .calc-tree-item {
     background: #0f172a;
     border: 1px solid #1a2a40;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 8px;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 6px;
 }
 
 .calc-tree-header {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 4px;
+    gap: 6px;
+    margin-bottom: 2px;
 }
 
 .calc-tree-expandable {
     cursor: pointer;
-    border-radius: 6px;
-    padding: 4px;
-    margin: -4px;
+    border-radius: 5px;
+    padding: 3px;
+    margin: -3px;
     transition: background 0.15s;
 }
 
@@ -3945,60 +4019,60 @@ body.page-calculator {
 }
 
 .calc-tree-chevron {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: #5a7a9a;
-    width: 14px;
+    width: 12px;
     flex-shrink: 0;
     transition: transform 0.15s;
 }
 
 .calc-tree-icon img {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     object-fit: contain;
     image-rendering: pixelated;
-    border-radius: 6px;
+    border-radius: 5px;
     border: 2px solid #00e6ffaa;
 }
 
 .calc-tree-name {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     font-weight: 600;
     color: #e0f0ff;
     flex: 1;
 }
 
 .calc-tree-cost {
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     color: #8aa0c0;
     font-weight: 600;
     white-space: nowrap;
 }
 
 .calc-tree-components {
-    padding-left: 8px;
+    padding-left: 6px;
 }
 
 /* Каталог выбора */
 .calc-catalog-section {
-    margin-top: 24px;
+    margin-top: 16px;
 }
 
 .calc-search {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     background: #0f172a;
     border: 1px solid #2a4060;
     border-radius: 30px;
-    padding: 8px 16px;
-    margin-bottom: 12px;
-    max-width: 360px;
+    padding: 6px 14px;
+    margin-bottom: 8px;
+    max-width: 320px;
 }
 
 .calc-search i {
     color: #00e6ff;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .calc-search input {
@@ -4006,7 +4080,7 @@ body.page-calculator {
     border: none;
     outline: none;
     color: #e0f0ff;
-    font-size: 14px;
+    font-size: 13px;
     width: 100%;
 }
 
@@ -4016,15 +4090,15 @@ body.page-calculator {
 
 .calc-catalog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
+    gap: 6px;
 }
 
 .calc-catalog-item {
     background: #0f172a;
     border: 1px solid #2a4060;
-    border-radius: 8px;
-    padding: 8px 4px;
+    border-radius: 6px;
+    padding: 6px 3px;
     text-align: center;
     cursor: pointer;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
@@ -4032,8 +4106,8 @@ body.page-calculator {
 
 .calc-catalog-item:hover {
     border-color: #00e6ff66;
-    box-shadow: 0 0 10px #00e6ff22;
-    transform: translateY(-2px);
+    box-shadow: 0 0 8px #00e6ff22;
+    transform: translateY(-1px);
 }
 
 .calc-catalog-item.calc-catalog-in-build {
@@ -4043,24 +4117,25 @@ body.page-calculator {
 }
 
 .calc-catalog-icon img {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     object-fit: contain;
     image-rendering: pixelated;
-    border-radius: 6px;
-    margin-bottom: 2px;
-}
-
-.calc-catalog-name {
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: #e0f0ff;
-    word-break: break-word;
+    border-radius: 5px;
     margin-bottom: 1px;
 }
 
+.calc-catalog-name {
+    font-size: 0.66rem;
+    font-weight: 600;
+    color: #e0f0ff;
+    word-break: break-word;
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+
 .calc-catalog-cost {
-    font-size: 0.65rem;
+    font-size: 0.58rem;
     color: #8aa0c0;
 }
 

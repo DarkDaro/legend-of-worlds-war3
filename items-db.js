@@ -722,6 +722,18 @@ const itemsDB = {
   recipe: { id: 'recipe', name: 'Свиток рецепта', icon: '📜', type: 'recipe', cost: 0, description: 'Используется для сборки.' },
 };
 
+// ========== БОСС-ДРОПЫ: какой босс какой предмет роняет ==========
+const BOSS_DROPS = {
+  I01N: { code: 'u008', name: 'Вурдалак' },
+  I01L: { code: 'e00B', name: 'Великан' },
+  I0CK: { code: 'u00Z', name: 'Рак' },
+  I02E: { code: 'n012', name: 'Дракон' },
+  I0B5: { code: 'n00L', name: 'Призрак' },
+  I047: { code: 'u00J', name: 'Рыцарь смерти' },
+  I0G4: { code: 'n01M', name: 'Синий Танатос' },
+  I0G3: { code: 'n01N', name: 'Зелёный Танатос' },
+};
+
 // ========== РАСПРЕДЕЛЕНИЕ ПО ЛАВКАМ ==========
 const grids = {
   'grid-armory': ['I004','I007','I005','I006','I008','I009','I00A','I00D','I00C','modt','I03I','I0CQ'],
@@ -970,6 +982,38 @@ function findUsedIn(itemId) {
   return used;
 }
 
+// Какие герои рекомендуют этот предмет
+function findHeroesWithItem(itemId) {
+  if (typeof heroBuilds === 'undefined') return [];
+  const result = [];
+  const HERO_NAMES = {
+    paladin: 'Паладин',
+    admiral: 'Адмирал',
+    druid: 'Друид',
+  };
+  for (const heroId in heroBuilds) {
+    if (heroBuilds[heroId].some(b => b.id === itemId)) {
+      result.push({ id: heroId, name: HERO_NAMES[heroId] || heroId });
+    }
+  }
+  return result;
+}
+
+// Рендер: выпадает из босса
+function renderBossDrop(itemId) {
+  const boss = BOSS_DROPS[itemId];
+  if (!boss) return '';
+  return `<a href="monsters.html" class="boss-drop-link"><i class="fas fa-skull"></i> ${boss.name}</a>`;
+}
+
+// Рендер: рекомендуется героям (принимает готовый список)
+function renderHeroRecommendationsFromList(heroes) {
+  if (!heroes.length) return '';
+  return `<div class="hero-reco-list">${heroes.map(h =>
+    `<a href="heroes/${h.id}.html" class="hero-reco-chip"><img src="images/heroes/${h.id}.png" alt="" width="20" height="20" style="image-rendering:pixelated;border-radius:4px;object-fit:contain;"> ${h.name}</a>`
+  ).join('')}</div>`;
+}
+
 function calculateItemCost(itemId, visited = new Set()) {
   if (visited.has(itemId)) return 0;
   visited.add(itemId);
@@ -1115,6 +1159,8 @@ function buildItemDetailHtml(itemId, item, total, recipe, base, includeBackButto
     ${item.components ? renderComponentTree(item.components) : '<p>Нет компонентов</p>'}
     <div class="recipe-title">🔗 Входит в сборку</div>
     ${renderUsedIn(itemId)}
+    ${BOSS_DROPS[itemId] ? `<div class="recipe-title">💀 Выпадает из</div>${renderBossDrop(itemId)}` : ''}
+    ${(() => { const h = findHeroesWithItem(itemId); return h.length ? `<div class="recipe-title">🛡️ Рекомендуется героям</div>${renderHeroRecommendationsFromList(h)}` : ''; })()}
     ${includeBackButton ? '<div class="back-button" onclick="document.querySelector(\'#itemDetailPanel\').scrollIntoView({behavior:\'smooth\'});">↩️ Прокрутить</div>' : ''}
   `;
 }
