@@ -146,9 +146,10 @@ function escapeHtml(value) {
 function renderParamRow(param) {
   const classes = ['param-row'];
   if (param.isSpecial) classes.push('scepter-row');
+  if (param.isPassive) classes.push('passive-row');
   return `
     <div class="${classes.join(' ')}">
-      <span class="param-label">${escapeHtml(param.label)}</span>
+      <span class="param-label">${param.isPassive ? '<i class="fas fa-bolt"></i> ' : ''}${escapeHtml(param.label)}</span>
       <span class="param-values">${escapeHtml(param.value)}</span>
     </div>`;
 }
@@ -311,6 +312,7 @@ ${renderStatsTable(hero.statsRows)}
 
             <div class="recipe-title"><i class="${escapeHtml(hero.buildTitleIcon)}"></i> Рекомендуемая сборка</div>
             <div id="hero-build"></div>
+${hero.buildItems ? `            <a href="../calculator.html?items=${escapeHtml(hero.buildItems)}" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>` : ''}
 
 ${renderSection('Тактика', hero.tacticsTitleIcon, hero.tactics)}
 ${renderSection('Советы', hero.tipsTitleIcon, hero.tips)}

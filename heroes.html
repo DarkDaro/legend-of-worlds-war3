@@ -52,6 +52,7 @@
             <button class="filter-btn" data-filter="intelligence"><i class="fas fa-brain"></i> Интеллект</button>
             <button class="filter-btn" data-filter="unique"><i class="fas fa-star"></i> Уникальные</button>
             <button class="filter-btn" data-filter="favorites"><i class="fas fa-heart"></i> Избранное</button>
+            <button class="filter-btn" data-filter="wip"><i class="fas fa-hammer"></i> В разработке</button>
         </div>
 
         <!-- Сетка героев будет сгенерирована JS -->
@@ -74,27 +75,27 @@
                 { name: 'Друид', title: 'Хранитель природы', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'druid', image: 'druid' },
                 { name: 'Киборг', title: 'Механический воин', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'cyborg', image: 'cyborg' },
                 { name: 'Паладин', title: 'Святой рыцарь', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'paladin', image: 'paladin' },
-                { name: 'Король гор', title: 'Тан', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'mountainking', image: 'mountainking' },
-                { name: 'Пожиратель душ', title: 'Голод Пустоты', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'souleater', image: 'souleater', unique: true },
-                { name: 'Огненный страж', title: 'Элементаль пламени', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'flamewarden', image: 'flamewarden', unique: true },
+                { name: 'Король гор', title: 'Тан', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'mountainking', image: 'mountainking', wip: true },
+                { name: 'Пожиратель душ', title: 'Голод Пустоты', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'souleater', image: 'souleater', unique: true, wip: true },
+                { name: 'Огненный страж', title: 'Элементаль пламени', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'flamewarden', image: 'flamewarden', unique: true, wip: true },
                 // Ловкость
-                { name: 'Жрица Луны', title: 'Лучница ночи', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'priestess', image: 'priestess' },
-                { name: 'Иллюзионист', title: 'Мастер обмана', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'illusionist', image: 'illusionist' },
-                { name: 'Мурлок', title: 'Подводный охотник', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'murloc', image: 'murloc' },
-                { name: 'Самурай', title: 'Мастер меча', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'samurai', image: 'samurai' },
-                { name: 'Мастер клинка', title: 'Элитный мечник', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'blademaster', image: 'blademaster' },
-                { name: 'Охотник на демонов', title: 'Мститель', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'demonhunter', image: 'demonhunter' },
-                { name: 'Лучница', title: 'Ледяная охотница', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'drowranger', image: 'DarkRanger' },
-                { name: 'Теневой клинок', title: 'Убийца из тени', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'shadowblade', image: 'shadowblade', unique: true },
+                { name: 'Жрица Луны', title: 'Лучница ночи', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'priestess', image: 'priestess', wip: true },
+                { name: 'Иллюзионист', title: 'Мастер обмана', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'illusionist', image: 'illusionist', wip: true },
+                { name: 'Мурлок', title: 'Подводный охотник', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'murloc', image: 'murloc', wip: true },
+                { name: 'Самурай', title: 'Мастер меча', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'samurai', image: 'samurai', wip: true },
+                { name: 'Мастер клинка', title: 'Элитный мечник', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'blademaster', image: 'blademaster', wip: true },
+                { name: 'Охотник на демонов', title: 'Мститель', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'demonhunter', image: 'demonhunter', wip: true },
+                { name: 'Лучница', title: 'Ледяная охотница', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'drowranger', image: 'DarkRanger', wip: true },
+                { name: 'Теневой клинок', title: 'Убийца из тени', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'shadowblade', image: 'shadowblade', unique: true, wip: true },
                 // Интеллект
-                { name: 'Громовержец', title: 'Повелитель молний', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'thunderer', image: 'thunderer' },
-                { name: 'Повелитель Льдов', title: 'Маг холода', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'icelord', image: 'icelord' },
-                { name: 'Архимаг', title: 'Маг воды', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'archmage', image: 'Archmage' },
-                { name: 'Лич', title: 'Маг льда', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'lich', image: 'lich' },
-                { name: 'Провидец', title: 'Шаман', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'farseer', image: 'FarSeer' },
-                { name: 'Хранитель рощи', title: 'Друид', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'keeper', image: 'keeper' },
-                { name: 'Хромомант', title: 'Повелитель времени', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'chronomancer', image: 'chronomancer', unique: true },
-                { name: 'Шаман крови', title: 'Запретная магия', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'bloodshaman', image: 'bloodshaman', unique: true },
+                { name: 'Громовержец', title: 'Повелитель молний', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'thunderer', image: 'thunderer', wip: true },
+                { name: 'Повелитель Льдов', title: 'Маг холода', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'icelord', image: 'icelord', wip: true },
+                { name: 'Архимаг', title: 'Маг воды', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'archmage', image: 'Archmage', wip: true },
+                { name: 'Лич', title: 'Маг льда', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'lich', image: 'lich', wip: true },
+                { name: 'Провидец', title: 'Шаман', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'farseer', image: 'FarSeer', wip: true },
+                { name: 'Хранитель рощи', title: 'Друид', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'keeper', image: 'keeper', wip: true },
+                { name: 'Хромомант', title: 'Повелитель времени', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'chronomancer', image: 'chronomancer', unique: true, wip: true },
+                { name: 'Шаман крови', title: 'Запретная магия', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'bloodshaman', image: 'bloodshaman', unique: true, wip: true },
             ];
 
             const heroGrid = document.getElementById('heroGrid');
@@ -151,6 +152,7 @@
                     </div>
                     <div class="hero-image">${iconHtml}</div>
                     ${hero.unique ? '<span class="unique-badge"><i class="fas fa-star"></i></span>' : ''}
+                    ${hero.wip ? '<span class="wip-badge"><i class="fas fa-hammer"></i> В разработке</span>' : ''}
                     <div class="hero-name">${hero.name}</div>
                     <div class="hero-title">${hero.title}</div>
                     <div class="hero-role role-${hero.role}">${roleIcons[hero.role]} ${hero.roleName}</div>
@@ -181,6 +183,7 @@
                     const card = createHeroCard(hero);
                     let show = currentFilter === 'all'
                         || (currentFilter === 'unique' && hero.unique)
+                        || (currentFilter === 'wip' && hero.wip)
                         || (hero.attr === currentFilter);
                     if (currentFilter === 'favorites') {
                         show = favorites.includes(hero.heroId);
@@ -198,6 +201,7 @@
                     const hero = heroesData[i];
                     let show = filterValue === 'all'
                         || (filterValue === 'unique' && hero.unique)
+                        || (filterValue === 'wip' && hero.wip)
                         || (hero.attr === filterValue);
                     if (filterValue === 'favorites') {
                         show = favorites.includes(hero.heroId);
