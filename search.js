@@ -9,9 +9,21 @@
     var searchOverlay = null;
     var searchInput = null;
     var resultsContainer = null;
-    var index = null;
+    var indexBuilt = false;
+    var index = { heroes: [], items: [] };
 
-    // ── Построение индекса ──
+    // ── Определяем, на какой странице мы находимся ──
+
+    function isOnItemsPage() {
+        var p = location.pathname;
+        return p.indexOf('/items.html') !== -1 || p.endsWith('/items.html') || p === '/items.html';
+    }
+
+    function isOnHeroesDir() {
+        return location.pathname.indexOf('/heroes/') !== -1;
+    }
+
+    // ── Построение индекса (ленивое) ──
 
     function buildIndex() {
         index = { heroes: [], items: [] };
@@ -19,13 +31,16 @@
         // Герои
         if (typeof HEROES_DATA !== 'undefined' && Array.isArray(HEROES_DATA)) {
             HEROES_DATA.forEach(function(h) {
+                var url = isOnHeroesDir()
+                    ? h.heroId + '.html'
+                    : 'heroes/' + h.heroId + '.html';
                 index.heroes.push({
                     name: h.name,
                     title: h.title || '',
                     attr: h.attr || '',
                     roleName: h.roleName || '',
                     heroId: h.heroId,
-                    url: 'heroes/' + h.heroId + '.html',
+                    url: url,
                     searchText: (h.name + ' ' + (h.title || '') + ' ' + (h.roleName || '')).toLowerCase()
                 });
             });
@@ -46,12 +61,14 @@
                 });
             });
         }
+
+        indexBuilt = true;
     }
 
     // ── Поиск ──
 
     function search(query) {
-        if (!index) buildIndex();
+        if (!indexBuilt) buildIndex();
         var q = query.toLowerCase().trim();
         if (!q) return { heroes: [], items: [] };
 
@@ -69,7 +86,6 @@
             }
         });
 
-        // Лимит
         results.heroes = results.heroes.slice(0, 8);
         results.items = results.items.slice(0, 8);
 
@@ -105,7 +121,7 @@
             results.heroes.forEach(function(h) {
                 var attrColor = ATTR_COLORS[h.attr] || '#8aa0c0';
                 var attrLabel = ATTR_LABELS[h.attr] || h.attr;
-                html += '<a href="' + h.url + '" class="gs-result">'
+                html += '<a href="' + h.url + '" class="gs-result gs-hero-link" data-hero-id="' + h.heroId + '">'
                     + '<span class="gs-result-name">' + highlightMatch(h.name, query) + '</span>'
                     + '<span class="gs-result-sub" style="color:' + attrColor + '">' + attrLabel + '</span>'
                     + '<span class="gs-result-sub">' + h.roleName + '</span>'
@@ -117,7 +133,7 @@
         if (results.items.length > 0) {
             html += '<div class="gs-group"><div class="gs-group-title"><i class="fas fa-flask"></i> Предметы</div>';
             results.items.forEach(function(item) {
-                html += '<a href="' + item.url + '" class="gs-result">'
+                html += '<a href="' + item.url + '" class="gs-result gs-item-link" data-item-id="' + item.id + '">'
                     + '<span class="gs-result-name">' + highlightMatch(item.name, query) + '</span>'
                     + '<span class="gs-result-sub">' + formatCost(item.cost) + '</span>'
                     + '</a>';
@@ -137,6 +153,46 @@
     function formatCost(cost) {
         if (!cost) return '';
         return cost.toLocaleString('ru-RU') + ' зол.';
+    }
+
+    // ── Обработка клика по результату ──
+
+    function handleResultClick(e) {
+        // Предмет
+        var itemLink = e.target.closest('.gs-item-link');
+        if (itemLink) {
+            var itemId = itemLink.getAttribute('data-item-id');
+            if (!itemId) return;
+
+            e.preventDefault(); // Всегда предотвращаем стандартную навигацию
+
+            // Если мы на items.html — открываем деталь напрямую
+            if (isOnItemsPage() && typeof openItemDetail === 'function') {
+                closeSearch();
+                openItemDetail(itemId);
+                if (typeof isItemMobileSurface === 'function' && !isItemMobileSurface()) {
+                    var panel = document.getElementById('itemDetailPanel');
+                    if (panel) panel.scrollIntoView({ behavior: 'smooth' });
+                }
+                return;
+            }
+
+            // С другой страницы — навигируем программно
+            closeSearch();
+            var url = itemLink.getAttribute('href') || ('items.html?item=' + itemId);
+            window.location.href = url;
+            return;
+        }
+
+        // Герой — предотвращаем стандартную навигацию и переходим программно
+        var heroLink = e.target.closest('.gs-hero-link');
+        if (heroLink) {
+            e.preventDefault();
+            closeSearch();
+            var heroUrl = heroLink.getAttribute('href');
+            if (heroUrl) window.location.href = heroUrl;
+            return;
+        }
     }
 
     // ── UI ──
@@ -172,37 +228,19 @@
             renderResults(results, q);
         });
 
-        // Закрытие
-        searchOverlay.querySelector('.gs-close').addEventListener('click', closeSearch);
+        // Закрытие по кнопке
+        searchOverlay.querySelector('.gs-close').addEventListener('click', function(e) {
+            e.stopPropagation();
+            closeSearch();
+        });
+
+        // Закрытие по клику на фон
         searchOverlay.addEventListener('click', function(e) {
             if (e.target === searchOverlay) closeSearch();
         });
 
-        // Клик по результату — если уже на целевой странице, не навигируем, а открываем напрямую
-        searchOverlay.addEventListener('click', function(e) {
-            var link = e.target.closest('.gs-result');
-            if (!link) return;
-            var href = link.getAttribute('href');
-            if (!href) return;
-
-            // Предметы: если мы на items.html, открываем деталь напрямую
-            if (href.indexOf('items.html?item=') === 0 || href.indexOf('/items.html?item=') !== -1) {
-                var match = href.match(/item=([^&]+)/);
-                if (match && typeof openItemDetail === 'function') {
-                    e.preventDefault();
-                    closeSearch();
-                    openItemDetail(match[1]);
-                    if (!isItemMobileSurface()) {
-                        var panel = document.getElementById('itemDetailPanel');
-                        if (panel) panel.scrollIntoView({ behavior: 'smooth' });
-                    }
-                    return;
-                }
-            }
-
-            // Герои: если мы в heroes/ и кликаем на другого героя, навигируем нормально
-            // (каждый герой — отдельный HTML, просто переходим)
-        });
+        // Клик по результату — делегируем на контейнер результатов
+        resultsContainer.addEventListener('click', handleResultClick);
 
         // Клавиши
         searchInput.addEventListener('keydown', function(e) {
@@ -212,6 +250,8 @@
 
     function openSearch() {
         createOverlay();
+        // Перестраиваем индекс при каждом открытии — данные могли подгрузиться позже
+        indexBuilt = false;
         searchOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
         searchInput.value = '';
@@ -227,7 +267,6 @@
 
     // Глобальный хоткей
     document.addEventListener('keydown', function(e) {
-        // Ctrl+K или Cmd+K
         if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
             e.preventDefault();
             openSearch();
