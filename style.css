@@ -3480,12 +3480,36 @@ body.page-lore {
         radial-gradient(circle at 30% 10%, #182530 0%, #05070a 100%);
 }
 
+body.page-calculator {
+    background-image:
+        radial-gradient(ellipse at 60% 30%, rgba(0, 230, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, #182530 0%, #05070a 100%);
+}
+
 /* ===== Калькулятор сборок ===== */
 
 .calc-intro {
     color: #b0b9d0;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     font-size: 0.95rem;
+}
+
+.calc-top-bar {
+    margin-bottom: 12px;
+}
+
+.calc-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #5a7a9a;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+}
+
+.calc-back-link:hover {
+    color: #00e6ff;
 }
 
 .calc-hero-import {
@@ -3535,6 +3559,29 @@ body.page-lore {
 .calc-share-btn:hover {
     border-color: #00e6ff88;
     color: #00e6ff;
+}
+
+.calc-toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #0f172aee;
+    border: 1px solid #00e6ff66;
+    color: #e0f0ff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+    z-index: 1000;
+    box-shadow: 0 4px 20px #00000066;
+}
+
+.calc-toast.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 .calc-link-btn {
