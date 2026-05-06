@@ -115,8 +115,16 @@
                     favorites.push(heroId);
                 }
                 saveFavorites();
-                renderHeroes();
-                updateCount();
+                // Обновляем иконку сердца без пересоздания DOM
+                const card = document.querySelector(`.hero-card[data-hero="${heroId}"]`);
+                if (card) {
+                    const icon = card.querySelector('.hero-fav-btn i');
+                    if (icon) {
+                        icon.className = favorites.includes(heroId) ? 'fas fa-heart' : 'far fa-heart';
+                    }
+                }
+                // Перефильтровываем с учётом текущей вкладки
+                filterHeroes(currentFilter);
             }
 
             // Роли и их иконки
@@ -171,9 +179,12 @@
                 heroGrid.innerHTML = '';
                 heroesData.forEach(hero => {
                     const card = createHeroCard(hero);
-                    const show = currentFilter === 'all'
+                    let show = currentFilter === 'all'
                         || (currentFilter === 'unique' && hero.unique)
                         || (hero.attr === currentFilter);
+                    if (currentFilter === 'favorites') {
+                        show = favorites.includes(hero.heroId);
+                    }
                     card.style.display = show ? '' : 'none';
                     heroGrid.appendChild(card);
                 });
@@ -209,7 +220,7 @@
 
             // Счётчик героев
             function updateCount() {
-                const visible = document.querySelectorAll('.hero-card[style=""], .hero-card:not([style])').length;
+                const visible = [...document.querySelectorAll('.hero-card')].filter(c => c.style.display !== 'none').length;
                 const total = heroesData.length;
                 document.getElementById('heroCount').innerHTML =
                     '<i class="fas fa-filter"></i> Показано: ' + visible + ' из ' + total;
