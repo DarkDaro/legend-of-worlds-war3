@@ -178,9 +178,11 @@
             }
 
             // С другой страницы — навигируем программно
+            // Используем hash (#ID) — надёжнее при file:// протоколе,
+            // где query string (?item=ID) может обрезаться браузером
             closeSearch();
-            var url = itemLink.getAttribute('href') || ('items.html?item=' + itemId);
-            window.location.href = url;
+            var prefix = isOnHeroesDir() ? '../' : '';
+            window.location.href = prefix + 'items.html#' + itemId;
             return;
         }
 
