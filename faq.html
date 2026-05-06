@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЧаВо · Legend of Worlds</title>
+    <meta property="og:title" content="ЧаВо — Legend of Worlds">
+    <meta property="og:description" content="Часто задаваемые вопросы о карте Legend of Worlds.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="hero-data.js"></script>
+    <script src="search.js"></script>
+    <script src="items-db.js" defer></script>
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+    <style>
+        .faq-section { margin-bottom: 32px; }
+        .faq-section-title {
+            font-size: 1.1rem;
+            color: #00e5ff;
+            margin-bottom: 14px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #1a3a5c;
+        }
+        .faq-section-title i { margin-right: 8px; font-size: 0.9rem; }
+        .faq-item {
+            margin-bottom: 8px;
+            border: 1px solid #1a3a5c;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #0a1628;
+        }
+        .faq-question {
+            padding: 12px 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            color: #e0e8f0;
+            font-size: 0.92rem;
+            font-weight: 500;
+            user-select: none;
+        }
+        .faq-question:hover { background: rgba(0, 229, 255, 0.04); }
+        .faq-question i {
+            color: #5a7a9a;
+            font-size: 0.7rem;
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+        }
+        .faq-item.open .faq-question i {
+            transform: rotate(90deg);
+            color: #00e5ff;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 16px;
+            color: #8aa0c0;
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+        .faq-item.open .faq-answer { max-height: 500px; padding: 0 16px 14px; }
+        .faq-answer a { color: #00e5ff; text-decoration: none; }
+        .faq-answer a:hover { text-decoration: underline; }
+        .faq-answer .faq-link {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 0.8rem;
+            color: #5a7a9a;
+        }
+        .faq-answer .faq-link i { margin-right: 4px; font-size: 0.7rem; }
+        .faq-answer code {
+            background: #0d1b2a;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-size: 0.82rem;
+            color: #55ff88;
+        }
+
+        @media (max-width: 800px) {
+            .faq-section-title { font-size: 1rem; }
+            .faq-question { font-size: 0.88rem; padding: 11px 14px; }
+            .faq-answer { font-size: 0.84rem; }
+        }
+        @media (max-width: 600px) {
+            .faq-section-title { font-size: 0.95rem; margin-bottom: 10px; }
+            .faq-question { font-size: 0.85rem; padding: 10px 12px; }
+            .faq-answer { font-size: 0.82rem; padding: 0 12px; }
+            .faq-item.open .faq-answer { padding: 0 12px 12px; }
+            .faq-answer code { font-size: 0.78rem; }
+        }
+        @media (max-width: 480px) {
+            h1 { font-size: 1.3rem; }
+            .faq-section-title { font-size: 0.9rem; }
+            .faq-question { font-size: 0.82rem; padding: 9px 10px; gap: 8px; }
+            .faq-answer { font-size: 0.8rem; line-height: 1.5; }
+            .faq-item.open .faq-answer { padding: 0 10px 10px; }
+            .faq-answer .faq-link { font-size: 0.76rem; }
+        }
+    </style>
+</head>
+<body class="page-heroes">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><span class="current">ЧаВо</span></div>
+
+        <h1><i class="fas fa-question-circle"></i> Часто задаваемые вопросы</h1>
+        <p style="color:#8aa0c0; margin-bottom:24px; font-size:1.05rem;">Быстрые ответы на популярные вопросы. Если здесь нет ответа — подробности на соответствующей странице.</p>
+
+        <!-- Установка и запуск -->
+        <div class="faq-section">
+            <div class="faq-section-title"><i class="fas fa-download"></i> Установка и запуск</div>
+
+            <div class="faq-item">
+                <div class="faq-question">Как установить карту? <i class="fas fa-chevron-right"></i></div>
+                <div class="faq-answer">
+                    Скачайте файл карты (.w3x) и поместите его в папку <code>Documents/Warcraft III/Maps/</code>. Если папки нет — создайте её. После этого карта появится в списке карт в игре.
+                    <div class="faq-link"><i class="fas fa-arrow-right"></i> <a href="info.html">Подробнее на странице информации</a></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Карта не отображается в списке. Что делать? <i class="fas fa-chevron-right"></i></div>
+                <div class="faq-answer">
+                    Убедитесь, что файл лежит в правильной папке и у вас актуальная версия Warcraft III. Некоторые версии патча меняют расположение папки карт. Также проверьте, что файл не повреждён и имеет расширение .w3x.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Как играть с ботами? <i class="fas fa-chevron-right"></i></div>
+                <div class="faq-answer">
+                    Создайте лобби с картой, добавьте компьютерных игроков в свободные слоты. Боты автоматически выберут героев и будут собирать предметы по встроенным сборкам.
+                </div>
+            </div>
+        </div>
+
+        <!-- Геймплей -->
+        <div class="faq-section">
+            <div class="faq-section-title"><i class="fas fa-gamepad"></i> Геймплей</div>
+
+            <div class="faq-item">
+                <div class="faq-question">Как работает автосборка в 1 клик? <i class="fas fa-chevron-right"></i></div>
+                <div class="faq-answer">
+                    Нажмите кнопку сборки — герой автоматически продаст старые предметы, купит нужные на текущую стадию и перейдёт к следующей. Каждая стадия требует определённый уровень. Стадии с босс-предметами доступны только при включённом режиме боссов.
+                    <div class="faq-link"><i class="fas fa-arrow-right"></i> <a href="mechanics.html">Механика «Сборка в 1 клик»</a></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Что такое Скипетр Владыки? <i class="fas fa-chevron-right"></i></div>
+                <div class="faq-answer">
+                    Уникальный предмет, усиливающий ультимейт каждого героя. Эффект индивидуален: от дополнительного урона до шанса мгновенной перезарядки. Смотрите карточку конкретного героя, чтобы узнать эффект скипетра.
+                    <div class="faq-link"><i class="fas fa-arrow-right"></i> <a href="mechanics.html">Механика «Скипетр Владыки»</a></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Как считается броня и защита? <i class="fas fa-chevron-right"></i></div>
+                <div class="faq-answer">
+                    Защита = базовая + ловкость × 0.05. Снижение урона рассчитывается по формуле: (Защита × 0.05) / (1 + Защита × 0.05). Константа карты — 0.05, а не стандартные 0.06. Это значит, что каждая единица защиты даёт меньше снижения, чем в обычном WC3.
+                    <div class="faq-link"><i class="fas fa-arrow-right"></i> <a href="mechanics.html">Все механики</a></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Как работает удача? <i class="fas fa-chevron-right"></i></div>
+                <div class="faq-answer">
+                    Удача увеличивает шанс срабатывания случайных эффектов (крит, оглушение, уклонение). Формула нелинейная: Итог = Базовый% + Удача × (1 − Базовый% / 100). Чем выше базовый шанс — тем меньше даёт удача. Все источники складываются.
+                    <div class="faq-link"><i class="fas fa-arrow-right"></i> <a href="mechanics.html">Механика «Удача»</a></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Когда появляются боссы? <i class="fas fa-chevron-right"></i></div>
+                <div class="faq-answer">
+                    Боссы появляются в специальном режиме боссов. Точные таймеры спавна и условия — в карточках боссов на странице монстров.
+                    <div class="faq-link"><i class="fas fa-arrow-right"></i> <a href="monsters.html">Страница монстров</a></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">В чём разница между физическим и магическим вампиризмом? <i class="fas fa-chevron-right"></i></div>
+                <div class="faq-answer">
+                    Физический вампиризм восстанавливает здоровье от автоатак, несколько источников складываются мультипликативно. Магический вампиризм восстанавливает здоровье от заклинаний, работает только со способностями.
+                    <div class="faq-link"><i class="fas fa-arrow-right"></i> <a href="mechanics.html">Механики вампиризма</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Сайт -->
+        <div class="faq-section">
+            <div class="faq-section-title"><i class="fas fa-globe"></i> Сайт</div>
+
+            <div class="faq-item">
+                <div class="faq-question">Откуда данные на сайте? <i class="fas fa-chevron-right"></i></div>
+                <div class="faq-answer">
+                    Все данные взяты из карты Legend of Worlds авторства DarkDaro. Статы героев, предметы и механики соответствуют актуальной версии карты.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Как сообщить о баге? <i class="fas fa-chevron-right"></i></div>
+                <div class="faq-answer">
+                    Если нашли ошибку на сайте или в данных — напишите автору через страницу информации.
+                    <div class="faq-link"><i class="fas fa-arrow-right"></i> <a href="info.html">Страница информации</a></div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Как предложить героя или механику? <i class="fas fa-chevron-right"></i></div>
+                <div class="faq-answer">
+                    Предложения и идеи можно оставить в сообществе карты. Ссылки на соцсети — на странице поддержки.
+                    <div class="faq-link"><i class="fas fa-arrow-right"></i> <a href="support.html">Страница поддержки</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-button" onclick="window.location.href='index.html'"><i class="fas fa-arrow-left"></i> На главную</div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><i class="fas fa-shield-alt"></i> Legend of Worlds</span>
+                <p>Уникальная карта для Warcraft III</p>
+            </div>
+            <div class="footer-links">
+                <a href="updates.html">Обновления</a>
+                <a href="lore.html">Лор</a>
+                <a href="support.html">Поддержать</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025–2026 Legend of Worlds. Все права защищены.</p>
+        </div>
+    </footer>
+
+<script>
+document.querySelectorAll('.faq-question').forEach(function(q) {
+    q.addEventListener('click', function() {
+        var item = q.closest('.faq-item');
+        item.parentElement.querySelectorAll('.faq-item.open').forEach(function(open) {
+            if (open !== item) open.classList.remove('open');
+        });
+        item.classList.toggle('open');
+    });
+});
+</script>
+</body>
+</html>
