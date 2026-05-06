@@ -20,15 +20,37 @@ function loadBuild() {
     } catch (e) { /* ignore */ }
 }
 
+// === Тост-уведомления ===
+
+function calcToast(message) {
+    let toast = document.getElementById('calcToast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'calcToast';
+        toast.className = 'calc-toast';
+        document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add('visible');
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(() => { toast.classList.remove('visible'); }, 2000);
+}
+
 // === Действия со слотами ===
 
 function addToSlot(itemId) {
     const item = itemsDB[itemId];
     if (!item) return;
     // Если уже есть — не добавляем дубликат
-    if (buildSlots.includes(itemId)) return;
+    if (buildSlots.includes(itemId)) {
+        calcToast(`${item.name} уже в сборке`);
+        return;
+    }
     const emptyIndex = buildSlots.indexOf(null);
-    if (emptyIndex === -1) return;
+    if (emptyIndex === -1) {
+        calcToast('Все 6 слотов заняты');
+        return;
+    }
     buildSlots[emptyIndex] = itemId;
     saveBuild();
     renderCalc();
@@ -99,6 +121,9 @@ function collectBaseComponents(itemId, quantity, visited) {
         const qty = comp.quantity || 1;
         const child = itemsDB[comp.itemId];
         if (!child) return;
+        // Босс-дроп внутри дерева — бесплатный, не покупаем
+        const isBossDrop = child.type === 'boss_drop' || (child.tags && child.tags.includes('boss_drop'));
+        if (isBossDrop) return;
         // Рецепт — тоже базовая покупка
         if (child.type === 'recipe') {
             result.push({ itemId: comp.itemId, quantity: qty * quantity });
@@ -502,6 +527,10 @@ function loadFromUrl() {
         if (i < 6) buildSlots[i] = id;
     });
     saveBuild();
+    // Очистить URL-параметры, чтобы при обновлении не перезагружать старую сборку
+    if (window.history.replaceState) {
+        window.history.replaceState({}, '', window.location.pathname);
+    }
     return true;
 }
 
