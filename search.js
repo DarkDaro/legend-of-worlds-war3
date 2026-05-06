@@ -1,7 +1,5 @@
 /**
  * search.js — Глобальный поиск по героям и предметам.
- * Строит индекс из HEROES_DATA (hero-data.js) и itemsDB (items-db.js).
- * Внедряется через icon-loader.js.
  */
 (function() {
     'use strict';
@@ -12,11 +10,8 @@
     var indexBuilt = false;
     var index = { heroes: [], items: [] };
 
-    // ── Определяем, на какой странице мы находимся ──
-
     function isOnItemsPage() {
-        var p = location.pathname;
-        return p.indexOf('/items.html') !== -1 || p.endsWith('/items.html') || p === '/items.html';
+        return location.pathname.indexOf('/items.html') !== -1 || location.pathname.endsWith('/items.html');
     }
 
     function isOnHeroesDir() {
@@ -28,25 +23,19 @@
     function buildIndex() {
         index = { heroes: [], items: [] };
 
-        // Герои
         if (typeof HEROES_DATA !== 'undefined' && Array.isArray(HEROES_DATA)) {
             HEROES_DATA.forEach(function(h) {
-                var url = isOnHeroesDir()
-                    ? h.heroId + '.html'
-                    : 'heroes/' + h.heroId + '.html';
                 index.heroes.push({
                     name: h.name,
                     title: h.title || '',
                     attr: h.attr || '',
                     roleName: h.roleName || '',
                     heroId: h.heroId,
-                    url: url,
                     searchText: (h.name + ' ' + (h.title || '') + ' ' + (h.roleName || '')).toLowerCase()
                 });
             });
         }
 
-        // Предметы
         if (typeof itemsDB !== 'undefined' && typeof itemsDB === 'object') {
             Object.keys(itemsDB).forEach(function(key) {
                 var item = itemsDB[key];
@@ -56,7 +45,6 @@
                     type: item.type || '',
                     cost: item.cost || 0,
                     id: item.id,
-                    url: 'items.html?item=' + item.id,
                     searchText: (item.name + ' ' + (item.type || '')).toLowerCase()
                 });
             });
@@ -73,76 +61,21 @@
         if (!q) return { heroes: [], items: [] };
 
         var results = { heroes: [], items: [] };
-
         index.heroes.forEach(function(h) {
-            if (h.searchText.indexOf(q) !== -1) {
-                results.heroes.push(h);
-            }
+            if (h.searchText.indexOf(q) !== -1) results.heroes.push(h);
         });
-
         index.items.forEach(function(item) {
-            if (item.searchText.indexOf(q) !== -1) {
-                results.items.push(item);
-            }
+            if (item.searchText.indexOf(q) !== -1) results.items.push(item);
         });
-
         results.heroes = results.heroes.slice(0, 8);
         results.items = results.items.slice(0, 8);
-
         return results;
     }
 
     // ── Рендер результатов ──
 
-    var ATTR_LABELS = {
-        strength: 'Сила',
-        agility: 'Ловкость',
-        intelligence: 'Разум'
-    };
-
-    var ATTR_COLORS = {
-        strength: '#ff5555',
-        agility: '#55ff55',
-        intelligence: '#55aaff'
-    };
-
-    function renderResults(results, query) {
-        if (!resultsContainer) return;
-        var html = '';
-
-        if (results.heroes.length === 0 && results.items.length === 0) {
-            html = '<div class="gs-empty">Ничего не найдено</div>';
-            resultsContainer.innerHTML = html;
-            return;
-        }
-
-        if (results.heroes.length > 0) {
-            html += '<div class="gs-group"><div class="gs-group-title"><i class="fas fa-users"></i> Герои</div>';
-            results.heroes.forEach(function(h) {
-                var attrColor = ATTR_COLORS[h.attr] || '#8aa0c0';
-                var attrLabel = ATTR_LABELS[h.attr] || h.attr;
-                html += '<a href="' + h.url + '" class="gs-result gs-hero-link" data-hero-id="' + h.heroId + '">'
-                    + '<span class="gs-result-name">' + highlightMatch(h.name, query) + '</span>'
-                    + '<span class="gs-result-sub" style="color:' + attrColor + '">' + attrLabel + '</span>'
-                    + '<span class="gs-result-sub">' + h.roleName + '</span>'
-                    + '</a>';
-            });
-            html += '</div>';
-        }
-
-        if (results.items.length > 0) {
-            html += '<div class="gs-group"><div class="gs-group-title"><i class="fas fa-flask"></i> Предметы</div>';
-            results.items.forEach(function(item) {
-                html += '<a href="' + item.url + '" class="gs-result gs-item-link" data-item-id="' + item.id + '">'
-                    + '<span class="gs-result-name">' + highlightMatch(item.name, query) + '</span>'
-                    + '<span class="gs-result-sub">' + formatCost(item.cost) + '</span>'
-                    + '</a>';
-            });
-            html += '</div>';
-        }
-
-        resultsContainer.innerHTML = html;
-    }
+    var ATTR_LABELS = { strength: 'Сила', agility: 'Ловкость', intelligence: 'Разум' };
+    var ATTR_COLORS = { strength: '#ff5555', agility: '#55ff55', intelligence: '#55aaff' };
 
     function highlightMatch(text, query) {
         if (!query) return text;
@@ -155,45 +88,73 @@
         return cost.toLocaleString('ru-RU') + ' зол.';
     }
 
-    // ── Обработка клика по результату ──
+    function renderResults(results, query) {
+        if (!resultsContainer) return;
 
-    function handleResultClick(e) {
-        // Предмет
-        var itemLink = e.target.closest('.gs-item-link');
-        if (itemLink) {
-            var itemId = itemLink.getAttribute('data-item-id');
-            if (!itemId) return;
-
-            e.preventDefault(); // Всегда предотвращаем стандартную навигацию
-
-            // Если мы на items.html — открываем деталь напрямую
-            if (isOnItemsPage() && typeof openItemDetail === 'function') {
-                closeSearch();
-                openItemDetail(itemId);
-                if (typeof isItemMobileSurface === 'function' && !isItemMobileSurface()) {
-                    var panel = document.getElementById('itemDetailPanel');
-                    if (panel) panel.scrollIntoView({ behavior: 'smooth' });
-                }
-                return;
-            }
-
-            // С другой страницы — навигируем программно
-            // Используем hash (#ID) — надёжнее при file:// протоколе,
-            // где query string (?item=ID) может обрезаться браузером
-            closeSearch();
-            var prefix = isOnHeroesDir() ? '../' : '';
-            window.location.href = prefix + 'items.html#' + itemId;
+        if (results.heroes.length === 0 && results.items.length === 0) {
+            resultsContainer.innerHTML = '<div class="gs-empty">Ничего не найдено</div>';
             return;
         }
 
-        // Герой — предотвращаем стандартную навигацию и переходим программно
-        var heroLink = e.target.closest('.gs-hero-link');
-        if (heroLink) {
-            e.preventDefault();
-            closeSearch();
-            var heroUrl = heroLink.getAttribute('href');
-            if (heroUrl) window.location.href = heroUrl;
-            return;
+        resultsContainer.innerHTML = '';
+
+        if (results.heroes.length > 0) {
+            var group = document.createElement('div');
+            group.className = 'gs-group';
+            group.innerHTML = '<div class="gs-group-title"><i class="fas fa-users"></i> Герои</div>';
+            results.heroes.forEach(function(h) {
+                var row = document.createElement('div');
+                row.className = 'gs-result gs-hero-result';
+                row.setAttribute('data-hero-id', h.heroId);
+                var attrColor = ATTR_COLORS[h.attr] || '#8aa0c0';
+                var attrLabel = ATTR_LABELS[h.attr] || h.attr;
+                row.innerHTML =
+                    '<span class="gs-result-name">' + highlightMatch(h.name, query) + '</span>'
+                    + '<span class="gs-result-sub" style="color:' + attrColor + '">' + attrLabel + '</span>'
+                    + '<span class="gs-result-sub">' + h.roleName + '</span>';
+                row.addEventListener('click', (function(heroId) {
+                    return function() {
+                        closeSearch();
+                        var prefix = isOnHeroesDir() ? '' : 'heroes/';
+                        location.href = prefix + heroId + '.html';
+                    };
+                })(h.heroId));
+                group.appendChild(row);
+            });
+            resultsContainer.appendChild(group);
+        }
+
+        if (results.items.length > 0) {
+            var group = document.createElement('div');
+            group.className = 'gs-group';
+            group.innerHTML = '<div class="gs-group-title"><i class="fas fa-flask"></i> Предметы</div>';
+            results.items.forEach(function(item) {
+                var row = document.createElement('div');
+                row.className = 'gs-result gs-item-result';
+                row.setAttribute('data-item-id', item.id);
+                row.innerHTML =
+                    '<span class="gs-result-name">' + highlightMatch(item.name, query) + '</span>'
+                    + '<span class="gs-result-sub">' + formatCost(item.cost) + '</span>';
+                row.addEventListener('click', (function(itemId) {
+                    return function() {
+                        closeSearch();
+                        if (isOnItemsPage() && typeof openItemDetail === 'function') {
+                            // Уже на странице предметов — открываем напрямую
+                            openItemDetail(itemId);
+                            if (typeof isItemMobileSurface === 'function' && !isItemMobileSurface()) {
+                                var panel = document.getElementById('itemDetailPanel');
+                                if (panel) panel.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        } else {
+                            // С другой страницы — переходим на items.html
+                            var prefix = isOnHeroesDir() ? '../' : '';
+                            location.href = prefix + 'items.html?item=' + itemId;
+                        }
+                    };
+                })(item.id));
+                group.appendChild(row);
+            });
+            resultsContainer.appendChild(group);
         }
     }
 
@@ -219,7 +180,6 @@
         searchInput = searchOverlay.querySelector('.gs-input');
         resultsContainer = searchOverlay.querySelector('.gs-results');
 
-        // Ввод
         searchInput.addEventListener('input', function() {
             var q = searchInput.value.trim();
             if (q.length < 2) {
@@ -230,21 +190,15 @@
             renderResults(results, q);
         });
 
-        // Закрытие по кнопке
         searchOverlay.querySelector('.gs-close').addEventListener('click', function(e) {
             e.stopPropagation();
             closeSearch();
         });
 
-        // Закрытие по клику на фон
         searchOverlay.addEventListener('click', function(e) {
             if (e.target === searchOverlay) closeSearch();
         });
 
-        // Клик по результату — делегируем на контейнер результатов
-        resultsContainer.addEventListener('click', handleResultClick);
-
-        // Клавиши
         searchInput.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeSearch();
         });
@@ -252,7 +206,6 @@
 
     function openSearch() {
         createOverlay();
-        // Перестраиваем индекс при каждом открытии — данные могли подгрузиться позже
         indexBuilt = false;
         searchOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -267,7 +220,6 @@
         document.body.style.overflow = '';
     }
 
-    // Глобальный хоткей
     document.addEventListener('keydown', function(e) {
         if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
             e.preventDefault();
@@ -275,7 +227,6 @@
         }
     });
 
-    // Публичный API
     window.GlobalSearch = {
         open: openSearch,
         close: closeSearch
