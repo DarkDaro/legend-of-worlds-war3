@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сравнение героев · Legend of Worlds</title>
+    <meta property="og:title" content="Сравнение героев — Legend of Worlds">
+    <meta property="og:description" content="Сравните статы и способности героев рядом.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="hero-data.js"></script>
+    <script src="search.js"></script>
+    <script src="items-db.js" defer></script>
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+    <style>
+        /* ── Верхняя панель: селекты + уровень ── */
+        .compare-controls {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            margin-bottom: 24px;
+        }
+        .compare-slot {
+            flex: 1;
+            min-width: 160px;
+            max-width: 260px;
+        }
+        .compare-slot select {
+            width: 100%;
+            padding: 9px 32px 9px 12px;
+            background: #0d1b2a;
+            color: #e0e8f0;
+            border: 1px solid #1a3a5c;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238aa0c0' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+        .compare-slot select:focus {
+            outline: none;
+            border-color: #00e5ff;
+            box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
+        }
+        .compare-slot select option {
+            background: #0d1b2a;
+            color: #e0e8f0;
+        }
+        .compare-slot select option:disabled {
+            color: #3a4a5a;
+        }
+        .compare-slot-label {
+            font-size: 0.7rem;
+            color: #5a7a9a;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .compare-level {
+            min-width: 90px;
+            max-width: 120px;
+        }
+        .compare-level input {
+            width: 100%;
+            padding: 9px 12px;
+            background: #0d1b2a;
+            color: #e0e8f0;
+            border: 1px solid #1a3a5c;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            text-align: center;
+        }
+        .compare-level input:focus {
+            outline: none;
+            border-color: #00e5ff;
+            box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
+        }
+
+        /* ── Таблица ── */
+        .compare-table-wrap {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid #1a3a5c;
+            background: #0a1628;
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+        }
+        .compare-table thead th {
+            padding: 10px 10px;
+            text-align: center;
+            background: #0d1f35;
+            border-bottom: 1px solid #1a3a5c;
+            font-weight: 600;
+            color: #8aa0c0;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        .compare-table thead th:first-child {
+            text-align: left;
+            color: #5a7a9a;
+            font-weight: 400;
+            min-width: 110px;
+        }
+        .compare-table thead th.hero-col {
+            color: #e0e8f0;
+            min-width: 140px;
+        }
+        .compare-table thead th.hero-col a {
+            color: #e0e8f0;
+            text-decoration: none;
+        }
+        .compare-table thead th.hero-col a:hover {
+            color: #00e5ff;
+        }
+        .hero-col-name {
+            font-size: 0.92rem;
+        }
+        .hero-col-attr {
+            font-size: 0.68rem;
+        }
+        .compare-table tbody td {
+            padding: 6px 10px;
+            border-bottom: 1px solid #111e30;
+            text-align: center;
+            color: #c0d0e0;
+            vertical-align: middle;
+        }
+        .compare-table tbody td:first-child {
+            text-align: left;
+            color: #5a7a9a;
+            font-size: 0.78rem;
+        }
+        .compare-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .compare-table tbody tr:hover {
+            background: rgba(0, 229, 255, 0.03);
+        }
+
+        /* Подсветка лучшего/худшего */
+        .stat-best { color: #00e5ff; font-weight: 600; }
+        .stat-worst { color: #5a5a7a; }
+
+        /* Полоски-бары */
+        .stat-bar-wrap {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            justify-content: center;
+        }
+        .stat-bar-value {
+            min-width: 36px;
+            text-align: right;
+        }
+        .stat-bar {
+            flex: 0 0 50px;
+            height: 5px;
+            background: #111e30;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .stat-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            background: #1a5a7a;
+            transition: width 0.3s ease;
+        }
+        .stat-best .stat-bar-fill { background: #00e5ff; }
+        .stat-worst .stat-bar-fill { background: #2a2a3a; }
+
+        /* Разделитель секций */
+        .compare-table tbody tr.section-row td {
+            padding: 8px 16px 4px;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #3a5a7a;
+            border-bottom: 1px solid #1a3a5c;
+            background: #0d1a2a;
+        }
+
+        /* Способности */
+        .ability-cell {
+            text-align: left !important;
+            padding: 7px 10px !important;
+        }
+        .ability-cell .ability-name {
+            color: #00e5ff;
+            font-size: 0.82rem;
+            margin-bottom: 1px;
+        }
+        .ability-cell .ability-desc {
+            color: #7a8a9a;
+            font-size: 0.74rem;
+            line-height: 1.3;
+        }
+        .ability-cell .ability-passive {
+            display: inline-block;
+            font-size: 0.62rem;
+            background: #1a3a0a;
+            color: #55ff88;
+            padding: 1px 5px;
+            border-radius: 3px;
+            margin-left: 3px;
+        }
+
+        /* Пустое состояние */
+        .compare-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: #3a5a7a;
+            font-size: 1rem;
+        }
+        .compare-empty i {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: block;
+            color: #1a3a5c;
+        }
+
+        /* ── Мобильная адаптация ── */
+        @media (max-width: 800px) {
+            .compare-controls {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .compare-slot, .compare-level {
+                max-width: none;
+                min-width: 0;
+            }
+            .compare-table thead th:first-child,
+            .compare-table tbody td:first-child {
+                min-width: 80px;
+                font-size: 0.72rem;
+            }
+            .compare-table thead th.hero-col {
+                min-width: 110px;
+                font-size: 0.82rem;
+            }
+            .hero-col-name { font-size: 0.82rem; }
+            .hero-col-attr { font-size: 0.62rem; }
+            .stat-bar { flex: 0 0 32px; }
+            .ability-cell .ability-desc { display: none; }
+            .ability-cell .ability-name { font-size: 0.76rem; }
+            .compare-table { font-size: 0.76rem; }
+            .compare-table tbody td { padding: 5px 6px; }
+            .compare-table thead th { padding: 8px 6px; }
+        }
+        @media (max-width: 480px) {
+            .compare-controls { gap: 6px; }
+            .compare-slot select, .compare-level input {
+                padding: 8px 10px;
+                font-size: 0.82rem;
+            }
+            .compare-table thead th.hero-col {
+                min-width: 90px;
+            }
+            .compare-table thead th:first-child,
+            .compare-table tbody td:first-child {
+                min-width: 60px;
+                font-size: 0.68rem;
+            }
+            .stat-bar { display: none; }
+            .stat-bar-value { min-width: auto; }
+            .hero-col-attr { display: none; }
+            .compare-table { font-size: 0.72rem; }
+            .compare-table tbody td { padding: 4px 5px; }
+            .compare-table thead th { padding: 6px 5px; }
+            .ability-cell .ability-passive { font-size: 0.56rem; }
+            h1 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body class="page-heroes">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Сравнение</span></div>
+
+        <h1><i class="fas fa-balance-scale"></i> Сравнение героев</h1>
+        <p style="color:#8aa0c0; margin-bottom:20px; font-size:1.05rem;">Выберите до 4 героев, чтобы увидеть их характеристики рядом.</p>
+
+        <!-- Селекты + уровень -->
+        <div class="compare-controls">
+            <div class="compare-slot">
+                <div class="compare-slot-label">Герой 1</div>
+                <select id="hero1"><option value="">— выбрать —</option></select>
+            </div>
+            <div class="compare-slot">
+                <div class="compare-slot-label">Герой 2</div>
+                <select id="hero2"><option value="">— выбрать —</option></select>
+            </div>
+            <div class="compare-slot">
+                <div class="compare-slot-label">Герой 3</div>
+                <select id="hero3"><option value="">— выбрать —</option></select>
+            </div>
+            <div class="compare-slot">
+                <div class="compare-slot-label">Герой 4</div>
+                <select id="hero4"><option value="">— выбрать —</option></select>
+            </div>
+            <div class="compare-level">
+                <div class="compare-slot-label">Уровень</div>
+                <input type="number" id="heroLevel" value="25" min="1" max="25">
+            </div>
+        </div>
+
+        <!-- Результат -->
+        <div id="compareResult">
+            <div class="compare-empty">
+                <i class="fas fa-balance-scale"></i>
+                Выберите хотя бы двух героев для сравнения
+            </div>
+        </div>
+
+        <div class="back-button" onclick="window.location.href='heroes.html'"><i class="fas fa-arrow-left"></i> К списку героев</div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><i class="fas fa-shield-alt"></i> Legend of Worlds</span>
+                <p>Уникальная карта для Warcraft III</p>
+            </div>
+            <div class="footer-links">
+                <a href="updates.html">Обновления</a>
+                <a href="lore.html">Лор</a>
+                <a href="support.html">Поддержать</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025–2026 Legend of Worlds. Все права защищены.</p>
+        </div>
+    </footer>
+
+<script>
+// ── Данные героев для сравнения ──
+// В будущем: брать из hero-data.js + отдельного файла со статами
+// ВНИМАНИЕ: базовые статы (hp, mp, atk, def) — тестовые значения.
+// У каждого героя уникальные базовые HP, мана, атака и защита —
+// реальные данные будут импортированы из Excel-таблицы автора.
+// Формулы пересчёта по уровню корректны, но базовые значения — заглушки.
+var HERO_COMPARE_DATA = {
+    paladin: {
+        id: 'paladin', name: 'Паладин', attr: 'strength', attrLabel: 'Сила',
+        role: 'Танк / Поддержка', image: 'images/heroes/paladin.png',
+        stats: {
+            hp: 700, mp: 240, atk: 24, def: 3, speed: 290, range: 128,
+            strBase: 22, strGain: 2.8, agiBase: 14, agiGain: 1.5, intBase: 16, intGain: 1.8
+        },
+        abilities: [
+            { name: 'Святой свет', desc: 'Лечит союзника или наносит урон нежити', passive: false },
+            { name: 'Щит веры', desc: 'Блокирует входящий урон на 3 секунды', passive: false },
+            { name: 'Аура стойкости', desc: '+3 защиты союзникам рядом', passive: true },
+            { name: 'Возложение рук', desc: 'Мгновенное полное лечение цели', passive: false },
+            { name: 'Божественный гнев', desc: 'Усиление: атаки наносят дополнительный святой урон', passive: true }
+        ]
+    },
+    admiral: {
+        id: 'admiral', name: 'Адмирал', attr: 'strength', attrLabel: 'Сила',
+        role: 'Инициатор / Контроль', image: 'images/heroes/admiral.png',
+        stats: {
+            hp: 680, mp: 270, atk: 26, def: 2, speed: 300, range: 128,
+            strBase: 20, strGain: 2.6, agiBase: 16, agiGain: 1.8, intBase: 18, intGain: 2.0
+        },
+        abilities: [
+            { name: 'Торпеда', desc: 'Выстрел по прямой с замедлением', passive: false },
+            { name: 'Прилив', desc: 'Волна отбрасывает врагов', passive: false },
+            { name: 'Капитанский дух', desc: '+15% к урону союзникам рядом', passive: true },
+            { name: 'Цунами', desc: 'Массовая волна по площади', passive: false },
+            { name: 'Стальная воля', desc: 'Пассивное снижение входящего урона', passive: true }
+        ]
+    },
+    druid: {
+        id: 'druid', name: 'Друид', attr: 'intelligence', attrLabel: 'Разум',
+        role: 'Поддержка / Целитель', image: 'images/heroes/druid.png',
+        stats: {
+            hp: 520, mp: 360, atk: 18, def: 1, speed: 280, range: 600,
+            strBase: 14, strGain: 1.6, agiBase: 12, agiGain: 1.2, intBase: 24, intGain: 3.2
+        },
+        abilities: [
+            { name: 'Исцеление природы', desc: 'Лечит цель и союзников рядом', passive: false },
+            { name: 'Корни', desc: 'Обездвиживает цель на 2.5 секунды', passive: false },
+            { name: 'Шипы', desc: 'Пассивный возврат урона атакующим', passive: true },
+            { name: 'Пробуждение леса', desc: 'Массовое лечение + защита', passive: false },
+            { name: 'Древний дух', desc: 'Пассивная аура: регенерация маны союзникам', passive: true }
+        ]
+    },
+    cyborg: {
+        id: 'cyborg', name: 'Киборг', attr: 'strength', attrLabel: 'Сила',
+        role: 'Инициатор / Дуэлянт', image: 'images/heroes/cyborg.png',
+        stats: {
+            hp: 720, mp: 210, atk: 28, def: 4, speed: 295, range: 128,
+            strBase: 24, strGain: 3.0, agiBase: 13, agiGain: 1.3, intBase: 14, intGain: 1.5
+        },
+        abilities: [
+            { name: 'Ракетный удар', desc: 'Выстрел ракетой по площади', passive: false },
+            { name: 'Щит энергии', desc: 'Поглощает урон на 4 секунды', passive: false },
+            { name: 'Реактор', desc: 'Пассивная регенерация HP и маны', passive: true },
+            { name: 'Аннигиляция', desc: 'Массовый взрыв вокруг героя', passive: false },
+            { name: 'Титановый корпус', desc: 'Пассивное снижение физического урона', passive: true }
+        ]
+    },
+    thunderer: {
+        id: 'thunderer', name: 'Громовержец', attr: 'strength', attrLabel: 'Сила',
+        role: 'Маг-разрушитель', image: 'images/heroes/thunderer.png',
+        stats: {
+            hp: 650, mp: 300, atk: 22, def: 2, speed: 290, range: 128,
+            strBase: 18, strGain: 2.4, agiBase: 15, agiGain: 1.6, intBase: 20, intGain: 2.2
+        },
+        abilities: [
+            { name: 'Молния', desc: 'Удар молнией по одной цели', passive: false },
+            { name: 'Грозовой щит', desc: 'Защита + возврат урона', passive: false },
+            { name: 'Громовой шаг', desc: 'Рывок к цели с уроном', passive: false },
+            { name: 'Шторм', desc: 'Массовый урон молниями по площади', passive: false },
+            { name: 'Гнев небес', desc: 'Пассивный шанс молнии при атаке', passive: true }
+        ]
+    },
+    illusionist: {
+        id: 'illusionist', name: 'Иллюзионист', attr: 'intelligence', attrLabel: 'Разум',
+        role: 'Контроль / Дуэлянт', image: 'images/heroes/illusionist.png',
+        stats: {
+            hp: 500, mp: 380, atk: 16, def: 1, speed: 285, range: 600,
+            strBase: 12, strGain: 1.4, agiBase: 14, agiGain: 1.6, intBase: 26, intGain: 3.4
+        },
+        abilities: [
+            { name: 'Зеркало', desc: 'Создаёт иллюзию героя', passive: false },
+            { name: 'Смещение', desc: 'Телепорт на короткую дистанцию', passive: false },
+            { name: 'Обман чувств', desc: 'Цель промахивается 3 секунды', passive: false },
+            { name: 'Лабиринт', desc: 'Все враги в области теряют контроль', passive: false },
+            { name: 'Призрачный шаг', desc: 'Пассивное уклонение от атак', passive: true }
+        ]
+    }
+};
+
+var SELECT_IDS = ['hero1', 'hero2', 'hero3', 'hero4'];
+
+// ── 1. Запрет дубликатов ──
+function updateSelectDisables() {
+    var selected = {};
+    SELECT_IDS.forEach(function(id) {
+        var v = document.getElementById(id).value;
+        if (v) selected[v] = id;
+    });
+    SELECT_IDS.forEach(function(id) {
+        var sel = document.getElementById(id);
+        var current = sel.value;
+        for (var i = 0; i < sel.options.length; i++) {
+            var opt = sel.options[i];
+            if (!opt.value) continue;
+            opt.disabled = !!(selected[opt.value] && selected[opt.value] !== id);
+        }
+    });
+}
+
+// ── 5. URL-параметры ──
+function readUrlParams() {
+    var params = new URLSearchParams(location.search);
+    var h = params.get('h');
+    if (h) return h.split(',').filter(Boolean);
+    return null;
+}
+
+function writeUrlParams() {
+    var ids = SELECT_IDS.map(function(id) { return document.getElementById(id).value; }).filter(Boolean);
+    if (ids.length < 2) {
+        history.replaceState(null, '', location.pathname);
+        return;
+    }
+    history.replaceState(null, '', '?h=' + ids.join(','));
+}
+
+// ── Инициализация ──
+(function() {
+    var heroes = Object.values(HERO_COMPARE_DATA);
+    heroes.sort(function(a, b) { return a.name.localeCompare(b.name, 'ru'); });
+
+    SELECT_IDS.forEach(function(id) {
+        var sel = document.getElementById(id);
+        heroes.forEach(function(h) {
+            var opt = document.createElement('option');
+            opt.value = h.id;
+            opt.textContent = h.name + ' — ' + h.attrLabel;
+            sel.appendChild(opt);
+        });
+        sel.addEventListener('change', function() {
+            updateSelectDisables();
+            renderComparison();
+            writeUrlParams();
+        });
+    });
+
+    document.getElementById('heroLevel').addEventListener('input', renderComparison);
+
+    // Предвыбор из URL или демо
+    var urlHeroes = readUrlParams();
+    if (urlHeroes && urlHeroes.length >= 2) {
+        urlHeroes.forEach(function(hid, i) {
+            if (i < 4 && HERO_COMPARE_DATA[hid]) {
+                document.getElementById(SELECT_IDS[i]).value = hid;
+            }
+        });
+    } else {
+        document.getElementById('hero1').value = 'paladin';
+        document.getElementById('hero2').value = 'druid';
+        document.getElementById('hero3').value = 'cyborg';
+        document.getElementById('hero4').value = 'illusionist';
+    }
+
+    updateSelectDisables();
+    renderComparison();
+})();
+
+// ── Рендер таблицы ──
+function renderComparison() {
+    var ids = SELECT_IDS.map(function(id) { return document.getElementById(id).value; }).filter(Boolean);
+    var container = document.getElementById('compareResult');
+
+    if (ids.length < 2) {
+        container.innerHTML = '<div class="compare-empty"><i class="fas fa-balance-scale"></i>Выберите хотя бы двух героев для сравнения</div>';
+        return;
+    }
+
+    var heroes = ids.map(function(id) { return HERO_COMPARE_DATA[id]; }).filter(Boolean);
+    if (heroes.length < 2) {
+        container.innerHTML = '<div class="compare-empty"><i class="fas fa-exclamation-triangle"></i>Данные не найдены</div>';
+        return;
+    }
+
+    var level = parseInt(document.getElementById('heroLevel').value) || 25;
+    level = Math.max(1, Math.min(25, level));
+
+    var ATTR_COLORS = { strength: '#ff5555', agility: '#55ff55', intelligence: '#55aaff' };
+
+    // Заголовок
+    var html = '<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>Параметр</th>';
+    heroes.forEach(function(h) {
+        var ac = ATTR_COLORS[h.attr] || '#8aa0c0';
+        html += '<th class="hero-col">'
+            + '<a href="heroes/' + h.id + '.html" class="hero-col-name">' + h.name + '</a>'
+            + '<div class="hero-col-attr" style="color:' + ac + '">' + h.attrLabel + ' · ' + h.role + '</div>'
+            + '</th>';
+    });
+    html += '</tr></thead><tbody>';
+
+    // ── Атрибуты на уровне ──
+    html += sectionRow('Атрибуты на уровне ' + level);
+    html += statRow('Сила', heroes, function(h) {
+        return Math.round(h.stats.strBase + h.stats.strGain * (level - 1));
+    }, true);
+    html += statRow('Ловкость', heroes, function(h) {
+        return Math.round(h.stats.agiBase + h.stats.agiGain * (level - 1));
+    }, true);
+    html += statRow('Разум', heroes, function(h) {
+        return Math.round(h.stats.intBase + h.stats.intGain * (level - 1));
+    }, true);
+
+    // ── Статы на уровне ──
+    html += sectionRow('На уровне ' + level);
+    html += statRow('HP', heroes, function(h) { return calcStat(h, 'hp', 'strBase', 'strGain', level); }, true);
+    html += statRow('Мана', heroes, function(h) { return calcStat(h, 'mp', 'intBase', 'intGain', level); }, true);
+    html += statRow('Атака', heroes, function(h) {
+        // Базовая атака (уже с бонусом от базового главного атрибута)
+        // + прирост от уровня: главный_прирост × (level-1)
+        var gain = getMainAttrGain(h);
+        return Math.round(h.stats.atk + gain * (level - 1));
+    }, true);
+    html += statRow('Защита', heroes, function(h) {
+        // Базовая защита (уже с бонусом от базовой ловкости)
+        // + прирост от уровня: ловкость_прирост × (level-1) × 0.05
+        var armorGain = h.stats.agiGain * (level - 1) * 0.05;
+        return +(h.stats.def + armorGain).toFixed(1);
+    }, true);
+    html += statRow('Снижение урона', heroes, function(h) {
+        var armorGain = h.stats.agiGain * (level - 1) * 0.05;
+        var armor = h.stats.def + armorGain;
+        var reduction = (armor * 0.05) / (1 + armor * 0.05);
+        return (reduction * 100).toFixed(1) + '%';
+    }, false);
+    html += statRow('Скорость боя', heroes, function(h) {
+        // Базовая скорость боя (1 + базовая ловкость × 0.01)
+        // + прирост: ловкость_прирост × (level-1) × 0.01
+        var baseAtkSpeed = 1 + h.stats.agiBase * 0.01;
+        var gainAtkSpeed = h.stats.agiGain * (level - 1) * 0.01;
+        return +(baseAtkSpeed + gainAtkSpeed).toFixed(3);
+    }, true);
+    html += statRow('Скорость', heroes, function(h) { return h.stats.speed; }, false);
+    html += statRow('Дальность', heroes, function(h) { return h.stats.range == 128 ? 'Ближний' : h.stats.range; }, false);
+
+    // ── Прирост ──
+    html += sectionRow('Прирост за уровень');
+    html += statRow('Сила', heroes, function(h) {
+        var total = Math.round(h.stats.strBase + h.stats.strGain * (level - 1));
+        return h.stats.strBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.strGain + '</span> <span style="color:#5a7a9a;font-size:0.72rem;">(' + total + ')</span>';
+    }, false);
+    html += statRow('Ловкость', heroes, function(h) {
+        var total = Math.round(h.stats.agiBase + h.stats.agiGain * (level - 1));
+        return h.stats.agiBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.agiGain + '</span> <span style="color:#5a7a9a;font-size:0.72rem;">(' + total + ')</span>';
+    }, false);
+    html += statRow('Разум', heroes, function(h) {
+        var total = Math.round(h.stats.intBase + h.stats.intGain * (level - 1));
+        return h.stats.intBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.intGain + '</span> <span style="color:#5a7a9a;font-size:0.72rem;">(' + total + ')</span>';
+    }, false);
+
+    // ── Способности ──
+    html += sectionRow('Способности');
+    var maxAbilities = Math.max.apply(null, heroes.map(function(h) { return h.abilities.length; }));
+    for (var i = 0; i < maxAbilities; i++) {
+        html += '<tr><td>Способность ' + (i + 1) + '</td>';
+        heroes.forEach(function(h) {
+            var ab = h.abilities[i];
+            if (!ab) {
+                html += '<td>—</td>';
+            } else {
+                html += '<td class="ability-cell">'
+                    + '<div class="ability-name">' + ab.name + (ab.passive ? '<span class="ability-passive">пассивная</span>' : '') + '</div>'
+                    + '<div class="ability-desc">' + ab.desc + '</div>'
+                    + '</td>';
+            }
+        });
+        html += '</tr>';
+    }
+
+    html += '</tbody></table></div>';
+    container.innerHTML = html;
+}
+
+function calcStat(hero, baseKey, attrBaseKey, attrGainKey, level) {
+    // HP = базовый + (сила_итого) × 20
+    // Мана = базовый + (разум_итого) × 15
+    var base = hero.stats[baseKey];
+    var attrBase = hero.stats[attrBaseKey];
+    var attrGain = hero.stats[attrGainKey];
+    var totalAttr = attrBase + attrGain * (level - 1);
+    var perPoint = baseKey === 'hp' ? 20 : 15;
+    return Math.round(base + totalAttr * perPoint);
+}
+
+function getMainAttrTotal(hero, level) {
+    // Итого главного атрибута на уровне
+    if (hero.attr === 'strength') return hero.stats.strBase + hero.stats.strGain * (level - 1);
+    if (hero.attr === 'agility') return hero.stats.agiBase + hero.stats.agiGain * (level - 1);
+    if (hero.attr === 'intelligence') return hero.stats.intBase + hero.stats.intGain * (level - 1);
+    return 0;
+}
+
+function getMainAttrGain(hero) {
+    // Прирост главного атрибута за уровень
+    if (hero.attr === 'strength') return hero.stats.strGain;
+    if (hero.attr === 'agility') return hero.stats.agiGain;
+    if (hero.attr === 'intelligence') return hero.stats.intGain;
+    return 0;
+}
+
+function sectionRow(label) {
+    return '<tr class="section-row"><td colspan="10">' + label + '</td></tr>';
+}
+
+// ── Строка с полоской-баром ──
+function statRow(label, heroes, valueFn, showBar) {
+    var values = heroes.map(function(h) { return typeof valueFn(h) === 'number' ? valueFn(h) : null; });
+    var numericValues = values.filter(function(v) { return v !== null; });
+    var max = numericValues.length ? Math.max.apply(null, numericValues) : 0;
+    var min = numericValues.length ? Math.min.apply(null, numericValues) : 0;
+    var allSame = max === min;
+
+    var html = '<tr><td>' + label + '</td>';
+    heroes.forEach(function(h, i) {
+        var v = valueFn(h);
+        var isNumeric = typeof v === 'number';
+        var cls = '';
+        if (isNumeric && !allSame && numericValues.length > 1) {
+            if (v === max) cls = 'stat-best';
+            else if (v === min) cls = 'stat-worst';
+        }
+
+        if (showBar && isNumeric && max > 0) {
+            var pct = Math.round((v / max) * 100);
+            html += '<td class="' + cls + '"><div class="stat-bar-wrap">'
+                + '<span class="stat-bar-value">' + v + '</span>'
+                + '<div class="stat-bar"><div class="stat-bar-fill" style="width:' + pct + '%"></div></div>'
+                + '</div></td>';
+        } else {
+            html += '<td class="' + cls + '">' + v + '</td>';
+        }
+    });
+    html += '</tr>';
+    return html;
+}
+</script>
+</body>
+</html>
