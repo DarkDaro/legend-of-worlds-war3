@@ -4329,11 +4329,13 @@ body.page-calculator {
     padding-top: 12vh;
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transition: opacity 0.2s, visibility 0.2s;
 }
 .gs-overlay.active {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
 }
 
 /* Модальное окно */

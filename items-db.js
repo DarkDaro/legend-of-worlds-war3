@@ -1303,11 +1303,20 @@ applyItemView();
 updateItemFavoritesTab();
 
 // Обработка URL-параметра ?item=ID — открывает предмет из внешней ссылки
-const urlParams = new URLSearchParams(window.location.search);
-const itemIdParam = urlParams.get('item');
-if (itemIdParam && itemsDB[itemIdParam]) {
-  openItemDetail(itemIdParam);
-  if (!isItemMobileSurface()) {
-    document.getElementById('itemDetailPanel').scrollIntoView({ behavior: 'smooth' });
+function openItemFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('item');
+  if (id && itemsDB[id]) {
+    openItemDetail(id);
+    if (!isItemMobileSurface()) {
+      var panel = document.getElementById('itemDetailPanel');
+      if (panel) panel.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }
+openItemFromUrl();
+
+// Также обрабатываем, если страница была восстановлена из bfcache
+window.addEventListener('pageshow', function(e) {
+  if (e.persisted) openItemFromUrl();
+});
