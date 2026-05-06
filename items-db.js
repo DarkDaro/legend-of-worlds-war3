@@ -618,7 +618,7 @@ const itemsDB = {
     components: [ {itemId: 'I013', quantity: 2}, {itemId: 'recipe', quantity: 1, costOverride: 8500} ]
   },
 
-  // ---------- ТЕМНЫЙ ТЕЛЕЦ ----------
+  // ---------- ТЕМНЫЙ ДЕЛЕЦ ----------
   I0BA: { id: 'I0BA', name: 'Меч падшего', icon: '😈⚔️', type: 'weapon', cost: 189400, tags: ['boss'],
     description: '+2400 атаки, +100 ко всем атрибутам, Критический удар: 30% x4, Снижение защиты: ближний бой 150 (10 сек), дальний 112 (7 сек), Безмолвие (актив): 800 АоЕ, 3 сек, +Безмолвие 5% шанс при атаке 1 сек',
     components: [ {itemId: 'I047', quantity: 1}, {itemId: 'I03J', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 80000} ],
@@ -633,7 +633,7 @@ const itemsDB = {
     description: '+500 ко всем атрибутам',
     components: [ {itemId: 'I02E', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 20000} ]
   },
-  I03L: { id: 'I03L', name: 'Фростморн', icon: '❄️💀⚔️', type: 'weapon_intelligence', cost: 203750, tags: ['boss'],
+  I03L: { id: 'I03L', name: 'Меч вечной стужи', icon: '❄️💀⚔️', type: 'weapon_intelligence', cost: 203750, tags: ['boss'],
     description: '+5000 атаки, +3000 маны, +100 разума, +50 защиты, +500 ко всем атрибутам, Ледяная звезда: 50% шанс, 800 + 2.5x осн. атрибут, Замораживающая аура 50%, Фростшторм (актив): 5000 + 20x осн. атрибут',
     components: [ {itemId: 'I01J', quantity: 1}, {itemId: 'I09R', quantity: 1}, {itemId: 'I047', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 50000} ],
     activeAbility: { name: 'Фростшторм', description: '5000 + 20x осн. атрибут урона', cooldown: 150, manacost: 400, note: null }
