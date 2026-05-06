@@ -365,7 +365,7 @@ const CALC_TABS = [
     { key: 'int_element', label: 'Разум' },
     { key: 'agi_element', label: 'Ловкость' },
     { key: 'agi_element2', label: 'Ловкость 2' },
-    { key: 'dark_telec', label: 'Тёмный телец' },
+    { key: 'dark_telec', label: 'Тёмный делец' },
     { key: 'boss', label: 'С боссов' },
 ];
 
@@ -456,30 +456,25 @@ function renderCalcCatalog() {
 
 // === Импорт сборки героя ===
 
-const HERO_NAMES = {
-    paladin: 'Паладин',
-    admiral: 'Адмирал',
-    druid: 'Друид',
-};
-
 function populateHeroSelect() {
     const select = document.getElementById('calcHeroSelect');
     if (!select) return;
-    Object.keys(HERO_NAMES).forEach(key => {
-        if (heroBuilds[key]) {
+    Object.keys(heroBuilds).forEach(key => {
+        const hero = heroBuilds[key];
+        if (hero && hero.items && hero.items.length > 0) {
             const opt = document.createElement('option');
             opt.value = key;
-            opt.textContent = HERO_NAMES[key];
+            opt.textContent = hero.name || key;
             select.appendChild(opt);
         }
     });
 }
 
 function importHeroBuild(heroId) {
-    const build = heroBuilds[heroId];
-    if (!build) return;
+    const hero = heroBuilds[heroId];
+    if (!hero || !hero.items) return;
     buildSlots = [null, null, null, null, null, null];
-    build.forEach((item, i) => {
+    hero.items.forEach((item, i) => {
         if (i < 6 && itemsDB[item.id]) {
             buildSlots[i] = item.id;
         }
