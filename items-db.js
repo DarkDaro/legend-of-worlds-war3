@@ -1016,7 +1016,7 @@ function findHeroesWithItem(itemId) {
 function renderBossDrop(itemId) {
   const boss = BOSS_DROPS[itemId];
   if (!boss) return '';
-  return `<a href="monsters.html" class="boss-drop-link"><i class="fas fa-skull"></i> ${boss.name}</a>`;
+  return `<a href="monsters.html?boss=${boss.code}" class="boss-drop-link"><i class="fas fa-skull"></i> ${boss.name}</a>`;
 }
 
 // Рендер: рекомендуется героям (принимает готовый список)
