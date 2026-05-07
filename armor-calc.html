@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="hero-data.js"></script>
+    <script src="game-constants.js"></script>
     <script src="search.js"></script>
     <script src="items-db.js" defer></script>
     <script src="icon-loader.js" defer></script>
@@ -237,7 +238,6 @@
                 <div class="armor-const-input" id="constInput">
                     <div class="armor-input-row">
                         <input type="number" id="cInput" value="0.05" min="0.01" max="1" step="0.01">
-                        <span class="armor-unit">C</span>
                     </div>
                 </div>
             </div>
@@ -318,9 +318,9 @@
         function calculate() {
             const baseArmor = parseFloat(armorInput.value) || 0;
             const agi = parseFloat(agiInput.value) || 0;
-            const armor = baseArmor + agi * 0.05;
+            const armor = baseArmor + agi * GAME_CONSTANTS.AGI_ARMOR_FACTOR;
             const hp = parseFloat(hpInput.value) || 1;
-            const C = constToggle.checked ? (parseFloat(cInput.value) || 0.05) : 0.05;
+            const C = constToggle.checked ? (parseFloat(cInput.value) || GAME_CONSTANTS.ARMOR_C) : GAME_CONSTANTS.ARMOR_C;
 
             const reduction = (armor * C) / (1 + armor * C);
             const ehp = hp * (1 + armor * C);
@@ -351,6 +351,10 @@
         agiInput.addEventListener('input', calculate);
         hpInput.addEventListener('input', calculate);
         cInput.addEventListener('input', calculate);
+
+        // Синхронизируем инпут C с константой
+        cInput.value = GAME_CONSTANTS.ARMOR_C;
+        document.getElementById('formulaC').textContent = GAME_CONSTANTS.ARMOR_C;
 
         calculate();
     </script>
