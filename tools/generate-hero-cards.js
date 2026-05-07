@@ -292,6 +292,7 @@ function renderHeroPage(hero) {
             <a href="../monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
             <a href="../info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
             <a href="../guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="../faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
             <a href="../lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
             <a href="../support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
             <a href="../updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
@@ -313,8 +314,8 @@ function renderHeroPage(hero) {
                 <div class="stat-item"><i class="fas fa-tint-slash"></i> Реген. маны: ${escapeHtml(hero.mpRegen || '0.01/сек')}</div>
                 <div class="stat-item"><i class="fas fa-fist-raised"></i> Атака: ${escapeHtml(hero.atk || '—')}</div>
                 <div class="stat-item"><i class="fas fa-shield-alt"></i> Защита: ${escapeHtml(hero.def || '—')}</div>
-                <div class="stat-item"><i class="fas fa-clock"></i> Скорость атаки: ${escapeHtml(hero.atkSpeed || '—')}</div>
-                <div class="stat-item"><i class="fas fa-heartbeat"></i> Реген. здоровья: ${escapeHtml(hero.hpRegen || '—')}</div>
+                <div class="stat-item"><i class="fas fa-clock"></i> Скорость атаки: ${hero.atkSpeed ? escapeHtml(hero.atkSpeed) + ' сек' : '—'}</div>
+                <div class="stat-item"><i class="fas fa-heartbeat"></i> Реген. здоровья: ${hero.hpRegen ? escapeHtml(hero.hpRegen) + '/сек' : '—'}</div>
                 <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: ${escapeHtml(hero.speed)}</div>
                 <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="${escapeHtml(hero.roleClass)}">${escapeHtml(hero.roleLabel)}</span></div>
             </div>

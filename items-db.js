@@ -727,9 +727,9 @@ const BOSS_DROPS = {
   I01N: { code: 'u008', name: 'Вурдалак' },
   I01L: { code: 'e00B', name: 'Великан' },
   I0CK: { code: 'u00Z', name: 'Рак' },
-  I02E: { code: 'n012', name: 'Дракон' },
-  I0B5: { code: 'n00L', name: 'Призрак' },
-  I047: { code: 'u00J', name: 'Рыцарь смерти' },
+  I02E: { code: 'n012', name: 'Пустынник высший' },
+  I0B5: { code: 'n00L', name: 'Низший пустынник' },
+  I047: { code: 'u00J', name: 'Ледяной голем' },
   I0G4: { code: 'n01M', name: 'Синий Танатос' },
   I0G3: { code: 'n01N', name: 'Зелёный Танатос' },
 };
