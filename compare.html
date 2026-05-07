@@ -14,6 +14,7 @@
     <script src="hero-data.js"></script>
     <script src="hero-builds.js"></script>
     <script src="item-bonus-parser.js"></script>
+    <script src="game-constants.js"></script>
     <script src="search.js"></script>
     <script src="items-db.js" defer></script>
     <script src="icon-loader.js" defer></script>
@@ -613,7 +614,7 @@ function renderComparison() {
     }, true);
     html += statRow('Снижение урона от брони', heroes, function(h) {
         var armor = getArmorTotal(h, level);
-        var reduction = (armor * 0.05) / (1 + armor * 0.05);
+        var reduction = (armor * GAME_CONSTANTS.ARMOR_C) / (1 + armor * GAME_CONSTANTS.ARMOR_C);
         return (reduction * 100).toFixed(1) + '%';
     }, false);
     html += statRow('Скорость атаки', heroes, function(h) {
@@ -624,10 +625,10 @@ function renderComparison() {
     }, false);
     html += statRow('Дальность атаки', heroes, function(h) { return h.stats.range == 128 ? 'Ближний' : h.stats.range; }, false);
     html += statRow('Реген. здоровья', heroes, function(h) {
-        return +((h.stats.hpRegen || 0) + getAttrTotalWithBuild(h, 'strength', level) * 0.05).toFixed(2);
+        return +((h.stats.hpRegen || 0) + getAttrTotalWithBuild(h, 'strength', level) * GAME_CONSTANTS.STR_HP_REGEN_FACTOR).toFixed(2);
     }, true);
     html += statRow('Реген. маны', heroes, function(h) {
-        return +((h.stats.mpRegen || 0.01) + getAttrTotalWithBuild(h, 'intelligence', level) * 0.05).toFixed(2);
+        return +((h.stats.mpRegen || GAME_CONSTANTS.MP_REGEN_BASE) + getAttrTotalWithBuild(h, 'intelligence', level) * GAME_CONSTANTS.INT_MP_REGEN_FACTOR).toFixed(2);
     }, true);
 
     // ── Прирост ──
@@ -743,18 +744,18 @@ function getAttackTotal(hero, level) {
 }
 
 function getArmorTotal(hero, level) {
-    // Игровая формула: 1 броня за каждые 20 ловкости
+    // Игровая формула: 1 броня за каждые 20 ловкости (AGI_ARMOR_FACTOR = 0.05)
     // Базовая броня уже включает бонус от базовой ловкости.
     var bonus = getCompareHeroBuildBonus(hero.id);
-    var baseAgiArmor = Math.floor(getAttrBase(hero, 'agility') / 20);
-    var totalAgiArmor = Math.floor(getAttrTotalWithBuild(hero, 'agility', level) / 20);
+    var baseAgiArmor = Math.floor(getAttrBase(hero, 'agility') * GAME_CONSTANTS.AGI_ARMOR_FACTOR);
+    var totalAgiArmor = Math.floor(getAttrTotalWithBuild(hero, 'agility', level) * GAME_CONSTANTS.AGI_ARMOR_FACTOR);
     return +(hero.stats.def + (totalAgiArmor - baseAgiArmor) + bonus.armor).toFixed(1);
 }
 
 function getAttackSpeed(hero, level) {
     // Ловкость повышает скорость атаки, предметы могут добавить отдельный процент
     var bonus = getCompareHeroBuildBonus(hero.id);
-    return +(1 + getAttrTotalWithBuild(hero, 'agility', level) * 0.01 + bonus.attackSpeedPct / 100).toFixed(3);
+    return +(1 + getAttrTotalWithBuild(hero, 'agility', level) * GAME_CONSTANTS.AGI_ATK_SPEED_FACTOR + bonus.attackSpeedPct / 100).toFixed(3);
 }
 
 function getMovementSpeed(hero, level) {
