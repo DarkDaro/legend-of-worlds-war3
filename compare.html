@@ -368,6 +368,7 @@
                 <div class="compare-slot-label">Уровень</div>
                 <input type="number" id="heroLevel" value="1" min="1" max="500">
             </div>
+            <button class="filter-btn" onclick="clearCompare()" style="align-self:flex-end;"><i class="fas fa-times"></i> Очистить</button>
         </div>
 
         <!-- Результат -->
@@ -408,101 +409,39 @@
 // ── Данные героев для сравнения ──
 // В будущем: брать из hero-data.js + отдельного файла со статами
 // ВНИМАНИЕ: базовые статы (hp, mp, atk, def) — тестовые значения.
-// У каждого героя уникальные базовые HP, мана, атака и защита —
-// реальные данные будут импортированы из Excel-таблицы автора.
-// Формулы пересчёта по уровню корректны, но базовые значения — заглушки.
-var HERO_COMPARE_DATA = {
-    paladin: {
-        id: 'paladin', name: 'Паладин', attr: 'strength', attrLabel: 'Сила',
-        role: 'Танк / Поддержка', image: 'images/heroes/paladin.png',
+// Данные героев берутся из hero-data.js (HEROES_DATA).
+// Формируем объект для сравнения, фильтруя героев без атрибутов.
+var HERO_COMPARE_DATA = {};
+var ATTR_LABELS = { strength: 'Сила', agility: 'Ловкость', intelligence: 'Разум' };
+var ROLE_LABELS = { tank: 'Танк', damager: 'Дамагер', support: 'Помощник' };
+
+HEROES_DATA.forEach(function(hero) {
+    if (!hero.strBase || !hero.hp) return; // пропускаем героев без полных данных
+    HERO_COMPARE_DATA[hero.heroId] = {
+        id: hero.heroId,
+        name: hero.name,
+        attr: hero.attr,
+        attrLabel: ATTR_LABELS[hero.attr] || hero.attr,
+        role: hero.roleName || ROLE_LABELS[hero.role] || hero.role,
+        image: 'images/heroes/' + hero.image + '.png',
         stats: {
-            hp: 700, mp: 240, atk: 24, def: 3, speed: 290, range: 128,
-            strBase: 22, strGain: 2.8, agiBase: 14, agiGain: 1.5, intBase: 16, intGain: 1.8
-        },
-        abilities: [
-            { name: 'Святой свет', desc: 'Лечит союзника или наносит урон нежити', passive: false },
-            { name: 'Щит веры', desc: 'Блокирует входящий урон на 3 секунды', passive: false },
-            { name: 'Аура стойкости', desc: '+3 защиты союзникам рядом', passive: true },
-            { name: 'Возложение рук', desc: 'Мгновенное полное лечение цели', passive: false },
-            { name: 'Божественный гнев', desc: 'Усиление: атаки наносят дополнительный святой урон', passive: true }
-        ]
-    },
-    admiral: {
-        id: 'admiral', name: 'Адмирал', attr: 'strength', attrLabel: 'Сила',
-        role: 'Инициатор / Контроль', image: 'images/heroes/admiral.png',
-        stats: {
-            hp: 680, mp: 270, atk: 26, def: 2, speed: 300, range: 128,
-            strBase: 20, strGain: 2.6, agiBase: 16, agiGain: 1.8, intBase: 18, intGain: 2.0
-        },
-        abilities: [
-            { name: 'Торпеда', desc: 'Выстрел по прямой с замедлением', passive: false },
-            { name: 'Прилив', desc: 'Волна отбрасывает врагов', passive: false },
-            { name: 'Капитанский дух', desc: '+15% к урону союзникам рядом', passive: true },
-            { name: 'Цунами', desc: 'Массовая волна по площади', passive: false },
-            { name: 'Стальная воля', desc: 'Пассивное снижение входящего урона', passive: true }
-        ]
-    },
-    druid: {
-        id: 'druid', name: 'Друид', attr: 'intelligence', attrLabel: 'Разум',
-        role: 'Поддержка / Целитель', image: 'images/heroes/druid.png',
-        stats: {
-            hp: 520, mp: 360, atk: 18, def: 1, speed: 280, range: 600,
-            strBase: 14, strGain: 1.6, agiBase: 12, agiGain: 1.2, intBase: 24, intGain: 3.2
-        },
-        abilities: [
-            { name: 'Исцеление природы', desc: 'Лечит цель и союзников рядом', passive: false },
-            { name: 'Корни', desc: 'Обездвиживает цель на 2.5 секунды', passive: false },
-            { name: 'Шипы', desc: 'Пассивный возврат урона атакующим', passive: true },
-            { name: 'Пробуждение леса', desc: 'Массовое лечение + защита', passive: false },
-            { name: 'Древний дух', desc: 'Пассивная аура: регенерация маны союзникам', passive: true }
-        ]
-    },
-    cyborg: {
-        id: 'cyborg', name: 'Киборг', attr: 'strength', attrLabel: 'Сила',
-        role: 'Инициатор / Дуэлянт', image: 'images/heroes/cyborg.png',
-        stats: {
-            hp: 720, mp: 210, atk: 28, def: 4, speed: 295, range: 128,
-            strBase: 24, strGain: 3.0, agiBase: 13, agiGain: 1.3, intBase: 14, intGain: 1.5
-        },
-        abilities: [
-            { name: 'Ракетный удар', desc: 'Выстрел ракетой по площади', passive: false },
-            { name: 'Щит энергии', desc: 'Поглощает урон на 4 секунды', passive: false },
-            { name: 'Реактор', desc: 'Пассивная регенерация HP и маны', passive: true },
-            { name: 'Аннигиляция', desc: 'Массовый взрыв вокруг героя', passive: false },
-            { name: 'Титановый корпус', desc: 'Пассивное снижение физического урона', passive: true }
-        ]
-    },
-    thunderer: {
-        id: 'thunderer', name: 'Громовержец', attr: 'strength', attrLabel: 'Сила',
-        role: 'Маг-разрушитель', image: 'images/heroes/thunderer.png',
-        stats: {
-            hp: 650, mp: 300, atk: 22, def: 2, speed: 290, range: 128,
-            strBase: 18, strGain: 2.4, agiBase: 15, agiGain: 1.6, intBase: 20, intGain: 2.2
-        },
-        abilities: [
-            { name: 'Молния', desc: 'Удар молнией по одной цели', passive: false },
-            { name: 'Грозовой щит', desc: 'Защита + возврат урона', passive: false },
-            { name: 'Громовой шаг', desc: 'Рывок к цели с уроном', passive: false },
-            { name: 'Шторм', desc: 'Массовый урон молниями по площади', passive: false },
-            { name: 'Гнев небес', desc: 'Пассивный шанс молнии при атаке', passive: true }
-        ]
-    },
-    illusionist: {
-        id: 'illusionist', name: 'Иллюзионист', attr: 'intelligence', attrLabel: 'Разум',
-        role: 'Контроль / Дуэлянт', image: 'images/heroes/illusionist.png',
-        stats: {
-            hp: 500, mp: 380, atk: 16, def: 1, speed: 285, range: 600,
-            strBase: 12, strGain: 1.4, agiBase: 14, agiGain: 1.6, intBase: 26, intGain: 3.4
-        },
-        abilities: [
-            { name: 'Зеркало', desc: 'Создаёт иллюзию героя', passive: false },
-            { name: 'Смещение', desc: 'Телепорт на короткую дистанцию', passive: false },
-            { name: 'Обман чувств', desc: 'Цель промахивается 3 секунды', passive: false },
-            { name: 'Лабиринт', desc: 'Все враги в области теряют контроль', passive: false },
-            { name: 'Призрачный шаг', desc: 'Пассивное уклонение от атак', passive: true }
-        ]
-    }
-};
+            hp: hero.hp || 0,
+            mp: hero.mp || 0,
+            atk: hero.atk || 0,
+            def: hero.def || 0,
+            hpRegen: hero.hpRegen || 0,
+            mpRegen: hero.mpRegen || 0.01,
+            speed: hero.speed || 280,
+            range: hero.range || 150,
+            strBase: hero.strBase,
+            strGain: hero.strGain,
+            agiBase: hero.agiBase,
+            agiGain: hero.agiGain,
+            intBase: hero.intBase,
+            intGain: hero.intGain
+        }
+    };
+});
 
 var SELECT_IDS = ['hero1', 'hero2', 'hero3', 'hero4'];
 
@@ -556,6 +495,17 @@ function getCompareHeroes() {
 
 function getCompareHeroLabel(hero) {
     return hero.name;
+}
+
+// ── Очистка ──
+function clearCompare() {
+    SELECT_IDS.forEach(function(id) {
+        document.getElementById(id).value = '';
+    });
+    document.getElementById('heroLevel').value = 1;
+    updateSelectDisables();
+    renderComparison();
+    history.replaceState(null, '', 'compare.html');
 }
 
 // ── Инициализация ──
@@ -673,6 +623,12 @@ function renderComparison() {
         return getMovementSpeed(h, level);
     }, false);
     html += statRow('Дальность атаки', heroes, function(h) { return h.stats.range == 128 ? 'Ближний' : h.stats.range; }, false);
+    html += statRow('Реген. здоровья', heroes, function(h) {
+        return +((h.stats.hpRegen || 0) + getAttrTotalWithBuild(h, 'strength', level) * 0.05).toFixed(2);
+    }, true);
+    html += statRow('Реген. маны', heroes, function(h) {
+        return +((h.stats.mpRegen || 0.01) + getAttrTotalWithBuild(h, 'intelligence', level) * 0.05).toFixed(2);
+    }, true);
 
     // ── Прирост ──
     html += sectionRow('Прирост за уровень');
