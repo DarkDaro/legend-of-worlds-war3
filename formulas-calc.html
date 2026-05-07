@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор формул · Legend of Worlds</title>
+    <meta property="og:title" content="Калькулятор формул — Legend of Worlds">
+    <meta property="og:description" content="Рассчитайте удачу, магзащиту, вампиризм и другие формулы карты.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="hero-data.js"></script>
+    <script src="search.js"></script>
+    <script src="items-db.js" defer></script>
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+    <style>
+        .formulas-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .formula-tabs {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .formula-tab {
+            background: #0f172a;
+            border: 1px solid #2a4060;
+            border-radius: 8px;
+            padding: 8px 16px;
+            color: #8ab4f0;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .formula-tab:hover {
+            border-color: #00e6ff;
+            color: #e0f0ff;
+        }
+        .formula-tab.active {
+            background: #00e6ff22;
+            border-color: #00e6ff;
+            color: #00e6ff;
+        }
+        .formula-panel {
+            display: none;
+        }
+        .formula-panel.active {
+            display: block;
+        }
+        .formula-input-group {
+            margin-bottom: 16px;
+        }
+        .formula-input-group label {
+            display: block;
+            color: #8ab4f0;
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+        }
+        .formula-input-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .formula-input-row input {
+            flex: 1;
+            background: #0f172a;
+            border: 1px solid #2a4060;
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: #e0f0ff;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .formula-input-row input:focus {
+            border-color: #00e6ff;
+        }
+        .formula-input-row .unit {
+            color: #6b7c99;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .formula-sources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .formula-source-chip {
+            background: #0f172a;
+            border: 1px solid #2a4060;
+            border-radius: 20px;
+            padding: 6px 14px;
+            color: #e0f0ff;
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .formula-source-chip:hover {
+            border-color: #00e6ff;
+        }
+        .formula-source-chip.selected {
+            background: #00e6ff22;
+            border-color: #00e6ff;
+            color: #00e6ff;
+        }
+        .formula-source-chip .chip-value {
+            color: #00ffaa;
+            font-weight: 600;
+        }
+        .formula-source-chip.selected .chip-value {
+            color: #00e6ff;
+        }
+        .formula-results {
+            background: #0f172a;
+            border: 1px solid #2a4060;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+        .formula-result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #1a2744;
+        }
+        .formula-result-row:last-child {
+            border-bottom: none;
+        }
+        .formula-result-label {
+            color: #8ab4f0;
+            font-size: 0.9rem;
+        }
+        .formula-result-value {
+            color: #e0f0ff;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .formula-result-value.positive {
+            color: #00ffaa;
+        }
+        .formula-bar-container {
+            margin-top: 12px;
+        }
+        .formula-bar-label {
+            display: flex;
+            justify-content: space-between;
+            color: #6b7c99;
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+        }
+        .formula-bar {
+            background: #1a2744;
+            border-radius: 6px;
+            height: 10px;
+            overflow: hidden;
+        }
+        .formula-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.3s ease;
+        }
+        .formula-bar-fill.cyan { background: linear-gradient(90deg, #00e6ff, #00ffaa); }
+        .formula-bar-fill.red { background: linear-gradient(90deg, #ff5555, #ff9944); }
+        .formula-bar-fill.purple { background: linear-gradient(90deg, #aa55ff, #ff55aa); }
+        .formula-formula-box {
+            margin-top: 20px;
+            background: #0a1020;
+            border: 1px solid #1a2744;
+            border-radius: 8px;
+            padding: 14px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #6b7c99;
+            line-height: 1.6;
+        }
+        .formula-formula-box strong {
+            color: #00e6ff;
+        }
+        .formula-add-btn {
+            background: #0f172a;
+            border: 1px dashed #2a4060;
+            border-radius: 8px;
+            padding: 8px 16px;
+            color: #6b7c99;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 8px;
+        }
+        .formula-add-btn:hover {
+            border-color: #00e6ff;
+            color: #00e6ff;
+        }
+        .formula-source-list {
+            margin-top: 8px;
+        }
+        .formula-source-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: #0f172a;
+            border: 1px solid #2a4060;
+            border-radius: 8px;
+            margin-bottom: 6px;
+        }
+        .formula-source-item .source-name {
+            color: #e0f0ff;
+            font-size: 0.9rem;
+        }
+        .formula-source-item .source-value {
+            color: #00ffaa;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .formula-source-item .source-remove {
+            color: #6b7c99;
+            cursor: pointer;
+            padding: 2px 8px;
+            border: none;
+            background: none;
+            font-size: 0.9rem;
+        }
+        .formula-source-item .source-remove:hover {
+            color: #ff5555;
+        }
+        .luck-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .luck-item-card {
+            background: #0f172a;
+            border: 1px solid #2a4060;
+            border-radius: 8px;
+            padding: 10px 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .luck-item-card:hover {
+            border-color: #00e6ff;
+        }
+        .luck-item-card.selected {
+            background: #00e6ff22;
+            border-color: #00e6ff;
+        }
+        .luck-item-card .luck-item-icon {
+            width: 32px;
+            height: 32px;
+            image-rendering: pixelated;
+            object-fit: contain;
+        }
+        .luck-item-card .luck-item-name {
+            color: #e0f0ff;
+            font-size: 0.82rem;
+            flex: 1;
+        }
+        .luck-item-card .luck-item-value {
+            color: #00ffaa;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .luck-item-card.selected .luck-item-value {
+            color: #00e6ff;
+        }
+        @media (max-width: 600px) {
+            .formulas-container {
+                padding: 0 4px;
+            }
+            .formula-input-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .formula-input-row .unit {
+                text-align: right;
+            }
+            .luck-items-grid {
+                grid-template-columns: 1fr;
+            }
+            .formula-tabs {
+                gap: 4px;
+            }
+            .formula-tab {
+                padding: 6px 10px;
+                font-size: 0.78rem;
+            }
+            .formula-results {
+                padding: 14px;
+            }
+            .formula-result-value {
+                font-size: 1rem;
+            }
+            .formula-formula-box {
+                font-size: 0.78rem;
+                padding: 10px 12px;
+            }
+            .formula-source-item {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .formula-source-item input {
+                width: 70px !important;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body class="page-mechanics">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="mechanics.html">Механики</a><span class="sep">›</span><span class="current">Калькулятор формул</span></div>
+
+        <div class="formulas-container">
+            <h1><i class="fas fa-calculator"></i> Калькулятор формул</h1>
+            <p class="calc-intro">Рассчитайте итоговые значения механик карты: удача, магзащита, вампиризм и другие.</p>
+
+            <div class="formula-tabs">
+                <button class="formula-tab active" data-tab="luck"><i class="fas fa-dice"></i> Удача</button>
+                <button class="formula-tab" data-tab="luck-items"><i class="fas fa-dice"></i> Удача + предметы</button>
+                <button class="formula-tab" data-tab="diminishing"><i class="fas fa-chart-line"></i> Убывающая</button>
+                <button class="formula-tab" data-tab="additive"><i class="fas fa-plus"></i> Аддитивная</button>
+            </div>
+
+            <!-- Удача -->
+            <div class="formula-panel active" id="panel-luck">
+                <div class="formula-input-group">
+                    <label for="luckBase"><i class="fas fa-percentage"></i> Базовый шанс способности</label>
+                    <div class="formula-input-row">
+                        <input type="number" id="luckBase" value="15" min="0" max="100" step="1">
+                        <span class="unit">%</span>
+                    </div>
+                </div>
+                <div class="formula-input-group">
+                    <label for="luckValue"><i class="fas fa-dice"></i> Удача</label>
+                    <div class="formula-input-row">
+                        <input type="number" id="luckValue" value="10" min="0" step="1">
+                        <span class="unit">ед.</span>
+                    </div>
+                </div>
+                <div class="formula-results" id="luckResults">
+                    <div class="formula-result-row">
+                        <span class="formula-result-label">Итоговый шанс</span>
+                        <span class="formula-result-value positive" id="luckResult">23.5%</span>
+                    </div>
+                    <div class="formula-result-row">
+                        <span class="formula-result-label">Прирост от удачи</span>
+                        <span class="formula-result-value" id="luckGain">+8.5%</span>
+                    </div>
+                    <div class="formula-bar-container">
+                        <div class="formula-bar-label">
+                            <span>0%</span>
+                            <span id="luckBarLabel">23.5%</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="formula-bar">
+                            <div class="formula-bar-fill cyan" id="luckBar" style="width:23.5%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="formula-formula-box">
+                    <strong>Формула:</strong> Итог = Базовый% + Удача × (1 − Базовый% / 100)<br>
+                    Чем выше базовый шанс, тем меньше даёт каждая единица удачи.
+                </div>
+            </div>
+
+            <!-- Удача + предметы -->
+            <div class="formula-panel" id="panel-luck-items">
+                <div class="formula-input-group">
+                    <label for="luckBase2"><i class="fas fa-percentage"></i> Базовый шанс способности</label>
+                    <div class="formula-input-row">
+                        <input type="number" id="luckBase2" value="15" min="0" max="100" step="1">
+                        <span class="unit">%</span>
+                    </div>
+                </div>
+                <div class="formula-input-group">
+                    <label for="luckHeroValue"><i class="fas fa-dice"></i> Удача героя (без предметов) <span style="color:#6b7c99; font-weight:400;">— базовый параметр героя</span></label>
+                    <div class="formula-input-row">
+                        <input type="number" id="luckHeroValue" value="0" min="0" step="1">
+                        <span class="unit">ед.</span>
+                    </div>
+                </div>
+                <div class="formula-input-group">
+                    <label><i class="fas fa-flask"></i> Предметы с удачей</label>
+                    <div class="luck-items-grid" id="luckItemsGrid"></div>
+                </div>
+                <div class="formula-results" id="luckItemsResults">
+                    <div class="formula-result-row">
+                        <span class="formula-result-label">Удача всего</span>
+                        <span class="formula-result-value" id="luckItemsTotal">0</span>
+                    </div>
+                    <div class="formula-result-row">
+                        <span class="formula-result-label">Итоговый шанс</span>
+                        <span class="formula-result-value positive" id="luckItemsResult">15%</span>
+                    </div>
+                    <div class="formula-result-row">
+                        <span class="formula-result-label">Прирост от удачи</span>
+                        <span class="formula-result-value" id="luckItemsGain">+0%</span>
+                    </div>
+                    <div class="formula-bar-container">
+                        <div class="formula-bar-label">
+                            <span>0%</span>
+                            <span id="luckItemsBarLabel">15%</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="formula-bar">
+                            <div class="formula-bar-fill cyan" id="luckItemsBar" style="width:15%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="formula-formula-box">
+                    <strong>Формула:</strong> Итог = Базовый% + (Удача героя + Удача предметов) × (1 − Базовый% / 100)<br>
+                    Удача складывается: герой + все выбранные предметы.
+                </div>
+            </div>
+
+            <!-- Убывающая полезность (мультипликативная) -->
+            <div class="formula-panel" id="panel-diminishing">
+                <p style="color:#8ab4f0; font-size:0.9rem; margin-bottom:16px;">Для магической защиты, физического вампиризма, сопротивления сожжению маны. Каждый источник даёт меньше, чем предыдущий.</p>
+                <div class="formula-input-group">
+                    <label><i class="fas fa-layer-group"></i> Источники (в %) <span style="color:#6b7c99; font-weight:400;">— справа реальный вклад</span></label>
+                    <div class="formula-source-list" id="dimSources"></div>
+                    <button class="formula-add-btn" id="dimAddBtn"><i class="fas fa-plus"></i> Добавить источник</button>
+                </div>
+                <div class="formula-results" id="dimResults">
+                    <div class="formula-result-row">
+                        <span class="formula-result-label">Итоговое значение</span>
+                        <span class="formula-result-value positive" id="dimResult">0%</span>
+                    </div>
+                    <div class="formula-result-row">
+                        <span class="formula-result-label">Потеря от убывания</span>
+                        <span class="formula-result-value" id="dimLoss" style="color:#ff9944;">0%</span>
+                    </div>
+                    <div class="formula-bar-container">
+                        <div class="formula-bar-label">
+                            <span>0%</span>
+                            <span id="dimBarLabel">0%</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="formula-bar">
+                            <div class="formula-bar-fill purple" id="dimBar" style="width:0%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="formula-formula-box">
+                    <strong>Формула:</strong> Итого = 1 − (1−a) × (1−b) × (1−c)...<br>
+                    Пример: 30% + 20% = 1 − 0.7 × 0.8 = 44% (не 50%)
+                </div>
+            </div>
+
+            <!-- Аддитивная -->
+            <div class="formula-panel" id="panel-additive">
+                <p style="color:#8ab4f0; font-size:0.9rem; margin-bottom:16px;">Для усиления маг. урона (SpellDMG), усиления лечения. Все источники складываются напрямую.</p>
+                <div class="formula-input-group">
+                    <label><i class="fas fa-layer-group"></i> Источники (в %)</label>
+                    <div class="formula-source-list" id="addSources"></div>
+                    <button class="formula-add-btn" id="addAddBtn"><i class="fas fa-plus"></i> Добавить источник</button>
+                </div>
+                <div class="formula-results" id="addResults">
+                    <div class="formula-result-row">
+                        <span class="formula-result-label">Итого</span>
+                        <span class="formula-result-value positive" id="addResult">0%</span>
+                    </div>
+                    <div class="formula-result-row">
+                        <span class="formula-result-label">Множитель</span>
+                        <span class="formula-result-value" id="addMultiplier">×1.00</span>
+                    </div>
+                </div>
+                <div class="formula-formula-box">
+                    <strong>Формула:</strong> Итого = a + b + c...<br>
+                    Урон = Базовый × (1 + Итого%)<br>
+                    Пример: 20% + 15% = 35% → урон × 1.35
+                </div>
+            </div>
+
+            <a href="mechanics.html" style="display:inline-block;margin-top:20px;color:#00e6ff;font-size:0.85rem;text-decoration:none;"><i class="fas fa-arrow-left"></i> К механикам</a>
+            <a href="armor-calc.html" style="display:inline-block;margin-top:20px;margin-left:16px;color:#00e6ff;font-size:0.85rem;text-decoration:none;"><i class="fas fa-shield-alt"></i> Калькулятор брони</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><i class="fas fa-shield-alt"></i> Legend of Worlds</span>
+                <p>Уникальная карта для Warcraft III</p>
+            </div>
+            <div class="footer-links">
+                <a href="updates.html">Обновления</a>
+                <a href="lore.html">Лор</a>
+                <a href="faq.html">ЧаВо</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // === Вкладки ===
+        document.querySelectorAll('.formula-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.formula-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.formula-panel').forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // === Удача (простая) ===
+        function calcLuck() {
+            const base = parseFloat(document.getElementById('luckBase').value) || 0;
+            const luck = parseFloat(document.getElementById('luckValue').value) || 0;
+            const result = base + luck * (1 - base / 100);
+            const gain = result - base;
+            document.getElementById('luckResult').textContent = result.toFixed(1) + '%';
+            document.getElementById('luckGain').textContent = '+' + gain.toFixed(1) + '%';
+            document.getElementById('luckBar').style.width = result + '%';
+            document.getElementById('luckBarLabel').textContent = result.toFixed(1) + '%';
+        }
+        document.getElementById('luckBase').addEventListener('input', calcLuck);
+        document.getElementById('luckValue').addEventListener('input', calcLuck);
+        calcLuck();
+
+        // === Удача + предметы ===
+        var LUCK_ITEMS = [
+            { id: 'I0CM', name: 'Проклятый череп', luck: 10 },
+            { id: 'I0CN', name: 'Сфера магии', luck: 10 },
+            { id: 'I0EY', name: 'Скипетр Владыки II', luck: 15 },
+            { id: 'I03V', name: 'Посох света', luck: 5 },
+            { id: 'I0DB', name: 'Скипетр Владыки I', luck: 5 },
+        ];
+        var selectedLuckItems = {};
+
+        function renderLuckItems() {
+            var grid = document.getElementById('luckItemsGrid');
+            grid.innerHTML = LUCK_ITEMS.map(function(item) {
+                var sel = selectedLuckItems[item.id];
+                return '<div class="luck-item-card' + (sel ? ' selected' : '') + '" data-luck-id="' + item.id + '">'
+                    + '<img src="images/items/' + item.id + '.png" alt="" class="luck-item-icon" onerror="this.style.display=\'none\'">'
+                    + '<span class="luck-item-name">' + item.name + '</span>'
+                    + '<span class="luck-item-value">+' + item.luck + '%</span>'
+                    + '</div>';
+            }).join('');
+            grid.querySelectorAll('.luck-item-card').forEach(function(card) {
+                card.addEventListener('click', function() {
+                    var id = card.dataset.luckId;
+                    if (selectedLuckItems[id]) {
+                        delete selectedLuckItems[id];
+                    } else {
+                        selectedLuckItems[id] = true;
+                    }
+                    renderLuckItems();
+                    calcLuckItems();
+                });
+            });
+        }
+
+        function calcLuckItems() {
+            var base = parseFloat(document.getElementById('luckBase2').value) || 0;
+            var heroLuck = parseFloat(document.getElementById('luckHeroValue').value) || 0;
+            var itemLuck = 0;
+            for (var id in selectedLuckItems) {
+                var item = LUCK_ITEMS.find(function(i) { return i.id === id; });
+                if (item) itemLuck += item.luck;
+            }
+            var totalLuck = heroLuck + itemLuck;
+            var result = base + totalLuck * (1 - base / 100);
+            var gain = result - base;
+            document.getElementById('luckItemsTotal').textContent = totalLuck;
+            document.getElementById('luckItemsResult').textContent = result.toFixed(1) + '%';
+            document.getElementById('luckItemsGain').textContent = '+' + gain.toFixed(1) + '%';
+            document.getElementById('luckItemsBar').style.width = result + '%';
+            document.getElementById('luckItemsBarLabel').textContent = result.toFixed(1) + '%';
+        }
+        document.getElementById('luckBase2').addEventListener('input', calcLuckItems);
+        document.getElementById('luckHeroValue').addEventListener('input', calcLuckItems);
+        renderLuckItems();
+        calcLuckItems();
+
+        // === Убывающая полезность (мультипликативная) ===
+        var dimSources = [{ value: 30 }, { value: 20 }];
+
+        function renderDimSources() {
+            var container = document.getElementById('dimSources');
+            container.innerHTML = dimSources.map(function(s, i) {
+                return '<div class="formula-source-item">'
+                    + '<input type="number" value="' + s.value + '" min="0" max="100" step="1" data-dim-idx="' + i + '" style="width:80px;background:#0a1020;border:1px solid #2a4060;border-radius:6px;padding:6px 10px;color:#e0f0ff;font-size:0.9rem;outline:none;">'
+                    + '<span class="source-name">Источник ' + (i + 1) + '</span>'
+                    + '<span class="source-value">' + s.value + '%</span>'
+                    + '<button class="source-remove" data-dim-rm="' + i + '"><i class="fas fa-times"></i></button>'
+                    + '</div>';
+            }).join('');
+            container.querySelectorAll('input[data-dim-idx]').forEach(function(inp) {
+                inp.addEventListener('input', function() {
+                    dimSources[parseInt(inp.dataset.dimIdx)].value = parseFloat(inp.value) || 0;
+                    calcDim();
+                });
+            });
+            container.querySelectorAll('[data-dim-rm]').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    dimSources.splice(parseInt(btn.dataset.dimRm), 1);
+                    renderDimSources();
+                    calcDim();
+                });
+            });
+            calcDim();
+        }
+
+        function calcDim() {
+            var product = 1;
+            var sum = 0;
+            var contributions = [];
+            dimSources.forEach(function(s, i) {
+                var prevResult = (1 - product) * 100;
+                product *= (1 - s.value / 100);
+                var newResult = (1 - product) * 100;
+                contributions.push(newResult - prevResult);
+                sum += s.value;
+            });
+            var result = (1 - product) * 100;
+            var loss = sum - result;
+            document.getElementById('dimResult').textContent = result.toFixed(1) + '%';
+            document.getElementById('dimLoss').textContent = '−' + loss.toFixed(1) + '%';
+            document.getElementById('dimBar').style.width = result + '%';
+            document.getElementById('dimBarLabel').textContent = result.toFixed(1) + '%';
+
+            // Обновить реальные вклады в списке
+            var items = document.querySelectorAll('#dimSources .formula-source-item');
+            items.forEach(function(item, i) {
+                var valSpan = item.querySelector('.source-value');
+                if (valSpan && contributions[i] !== undefined) {
+                    valSpan.textContent = contributions[i].toFixed(1) + '%';
+                }
+            });
+        }
+
+        document.getElementById('dimAddBtn').addEventListener('click', function() {
+            dimSources.push({ value: 0 });
+            renderDimSources();
+        });
+        renderDimSources();
+
+        // === Аддитивная ===
+        var addSources = [{ value: 20 }, { value: 15 }];
+
+        function renderAddSources() {
+            var container = document.getElementById('addSources');
+            container.innerHTML = addSources.map(function(s, i) {
+                return '<div class="formula-source-item">'
+                    + '<input type="number" value="' + s.value + '" min="0" max="500" step="1" data-add-idx="' + i + '" style="width:80px;background:#0a1020;border:1px solid #2a4060;border-radius:6px;padding:6px 10px;color:#e0f0ff;font-size:0.9rem;outline:none;">'
+                    + '<span class="source-name">Источник ' + (i + 1) + '</span>'
+                    + '<span class="source-value">' + s.value + '%</span>'
+                    + '<button class="source-remove" data-add-rm="' + i + '"><i class="fas fa-times"></i></button>'
+                    + '</div>';
+            }).join('');
+            container.querySelectorAll('input[data-add-idx]').forEach(function(inp) {
+                inp.addEventListener('input', function() {
+                    addSources[parseInt(inp.dataset.addIdx)].value = parseFloat(inp.value) || 0;
+                    calcAdd();
+                });
+            });
+            container.querySelectorAll('[data-add-rm]').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    addSources.splice(parseInt(btn.dataset.addRm), 1);
+                    renderAddSources();
+                    calcAdd();
+                });
+            });
+            calcAdd();
+        }
+
+        function calcAdd() {
+            var total = addSources.reduce(function(s, src) { return s + src.value; }, 0);
+            var multiplier = 1 + total / 100;
+            document.getElementById('addResult').textContent = total + '%';
+            document.getElementById('addMultiplier').textContent = '×' + multiplier.toFixed(2);
+        }
+
+        document.getElementById('addAddBtn').addEventListener('click', function() {
+            addSources.push({ value: 0 });
+            renderAddSources();
+        });
+        renderAddSources();
+    </script>
+</body>
+</html>

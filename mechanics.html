@@ -44,6 +44,11 @@
         <h1>Уникальные механики</h1>
         <p style="color:#8aa0c0; margin-bottom:24px; font-size:1.05rem;">В Legend of Worlds действует ряд уникальных механик, отличающих карту от стандартного Warcraft III. Ниже описана каждая из них.</p>
 
+        <div class="mechanics-calc-links">
+            <a href="armor-calc.html" class="calc-link-btn"><i class="fas fa-shield-alt"></i> Калькулятор брони</a>
+            <a href="formulas-calc.html" class="calc-link-btn"><i class="fas fa-calculator"></i> Калькулятор формул</a>
+        </div>
+
         <div class="mechanics-grid">
 
             <!-- Удача -->
@@ -76,7 +81,17 @@
                 <div class="mechanic-formula">Хил = Маг. урон × Вампиризм%</div>
             </div>
 
-            <!-- Блок -->
+            <!-- Броня -->
+            <div class="mechanic-card">
+                <div class="mechanic-icon" style="background:#0a1a2a; border:1px solid #55aaff44; color:#55aaff;">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Броня</h3>
+                <p>Снижает входящий физический урон. Чем больше брони — тем сильнее снижение, но прирост замедляется. Константа C = 0.05 (отличается от стандартного WC3).</p>
+                <div class="mechanic-formula">Снижение = (Броня × C) / (1 + Броня × C)</div>
+            </div>
+
+            <!-- Блок урона -->
             <div class="mechanic-card">
                 <div class="mechanic-icon" style="background:#0a1a2a; border:1px solid #55aaff44; color:#55aaff;">
                     <i class="fas fa-shield-alt"></i>
