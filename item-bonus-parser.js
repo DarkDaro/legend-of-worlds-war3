@@ -193,6 +193,50 @@
       return _match;
     });
 
+    // Вампиризм
+    text.replace(/(\d+(?:[.,]\d+)?)%\s+вампиризм/g, function (_match, value) {
+      bonus.vampirismPct += normalizeNumber(value);
+      return _match;
+    });
+    text.replace(/(\d+(?:[.,]\d+)?)%\s+маг(?:ический)?\s+вампиризм/g, function (_match, value) {
+      bonus.magicVampirismPct += normalizeNumber(value);
+      return _match;
+    });
+    text.replace(/(\d+(?:[.,]\d+)?)%\s+маг(?:ический)?\s+блок/g, function (_match, value) {
+      bonus.magicBlockPct += normalizeNumber(value);
+      return _match;
+    });
+
+    // Сопротивления
+    text.replace(/\+(\d+(?:[.,]\d+)?)%\s+сопротивление\s+к\s+оглушению/g, function (_match, value) {
+      bonus.stunResistPct += normalizeNumber(value);
+      return _match;
+    });
+    text.replace(/\+(\d+(?:[.,]\d+)?)%\s+сопротивление\s+к\s+сожжени[юя]\s+маны/g, function (_match, value) {
+      bonus.manaBurnResistPct += normalizeNumber(value);
+      return _match;
+    });
+
+    // Ауры
+    text.replace(/аура\s+защит[а-яё]*\s+(\d+(?:[.,]\d+)?)\s+ед/g, function (_match, value) {
+      bonus.auraArmor += normalizeNumber(value);
+      return _match;
+    });
+    text.replace(/аура\s+скорости\s*\((\d+(?:[.,]\d+)?)%\s*as/g, function (_match, value) {
+      bonus.auraAttackSpeedPct += normalizeNumber(value);
+      return _match;
+    });
+    text.replace(/аура\s+скорости\s*\(.*?(\d+(?:[.,]\d+)?)%\s*ms/g, function (_match, value) {
+      bonus.auraMoveSpeedPct += normalizeNumber(value);
+      return _match;
+    });
+
+    // Синоним регена маны: «+N% восстановления маны»
+    text.replace(/\+(\d+(?:[.,]\d+)?)%\s+восстановления\s+маны/g, function (_match, value) {
+      bonus.manaRegenPct += normalizeNumber(value);
+      return _match;
+    });
+
     return bonus;
   }
 

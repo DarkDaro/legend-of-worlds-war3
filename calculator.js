@@ -268,6 +268,7 @@ function renderResults() {
             Покупок: ${stats.items.length - stats.bossDropCount} | Золота: ${stats.baseCost.toLocaleString('ru-RU')}
             ${stats.bossDropCount > 0 ? ' | Босс-дропов: ' + stats.bossDropCount : ''}
         </div>
+        ${renderBuildBonuses()}
         ${renderShoppingList()}`;
 }
 
@@ -580,3 +581,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// === Суммарные бонусы сборки ===
+
+function renderBuildBonuses() {
+    if (typeof ItemBonusParser === 'undefined') return '';
+
+    const bonuses = buildSlots.filter(Boolean).map(id => {
+        const item = itemsDB[id];
+        return item ? ItemBonusParser.parseDescription(item.description || '') : null;
+    }).filter(Boolean);
+
+    if (!bonuses.length) return '';
+
+    const total = ItemBonusParser.sumBonuses(bonuses);
+    const chips = [];
+
+    const add = (label, value, suffix = '') => {
+        if (!value) return;
+        const normalized = Number.isInteger(value) ? String(value) : value.toFixed(1).replace(/\.0$/, '');
+        chips.push(`<span class="cost-badge">${label}: +${normalized}${suffix}</span>`);
+    };
+
+    add('Все атрибуты', total.allStats);
+    add('Сила', total.strength);
+    add('Ловкость', total.agility);
+    add('Разум', total.intelligence);
+    add('Жизни', total.hp);
+    add('Мана', total.mana);
+    add('Атака', total.attack);
+    add('Броня', total.armor);
+    add('Маг. защита', total.magicDefenseFlat);
+    add('Маг. защита', total.magicDefensePct, '%');
+    add('Реген HP', total.hpRegenFlat);
+    add('Реген HP', total.hpRegenPct, '%');
+    add('Реген маны', total.manaRegenFlat);
+    add('Реген маны', total.manaRegenPct, '%');
+    add('Мана при атаке', total.manaOnAttack);
+    add('Уклонение', total.evasionPct, '%');
+    add('Крит. шанс', total.critChancePct, '%');
+    add('Крит. урон', total.critDamagePct, '%');
+    add('Урон заклинаний', total.spellDamagePct, '%');
+    add('Вампиризм', total.vampirismPct, '%');
+    add('Маг. вампиризм', total.magicVampirismPct, '%');
+    add('Маг. блок', total.magicBlockPct, '%');
+    add('Стан-резист', total.stunResistPct, '%');
+    add('Мана-бёрн резист', total.manaBurnResistPct, '%');
+    add('Аура брони', total.auraArmor);
+    add('Аура AS', total.auraAttackSpeedPct, '%');
+    add('Аура MS', total.auraMoveSpeedPct, '%');
+    add('Скорость атаки', total.attackSpeedPct, '%');
+    add('Скорость бега', total.movementSpeedFlat);
+    add('Скорость бега', total.movementSpeedPct, '%');
+
+    if (!chips.length) return '';
+
+    return `<div class="calc-bonuses-title">📈 Суммарные бонусы</div><div class="cost-badges">${chips.join('')}</div>`;
+}
