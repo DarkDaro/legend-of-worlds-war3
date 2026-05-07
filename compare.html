@@ -713,7 +713,7 @@ function renderCompareBuildItems(heroId) {
 }
 
 function getCompareItemBonuses(item) {
-    if (!item || typeof ItemBonusParser === 'undefined') return {};
+    if (!item || typeof ItemBonusParser === 'undefined') return ItemBonusParser ? ItemBonusParser.createEmptyBonus() : {};
     if (ITEM_BONUS_CACHE[item.id]) return ITEM_BONUS_CACHE[item.id];
 
     var bonus = ItemBonusParser.parseDescription(item.description || '');
@@ -724,7 +724,7 @@ function getCompareItemBonuses(item) {
 function getCompareHeroBuildBonus(heroId) {
     if (HERO_BUILD_BONUS_CACHE[heroId]) return HERO_BUILD_BONUS_CACHE[heroId];
 
-    var total = ItemBonusParser.createEmptyBonus();
+    var total = (typeof ItemBonusParser !== 'undefined') ? ItemBonusParser.createEmptyBonus() : {};
     getCompareBuildItems(heroId).forEach(function(item) {
         ItemBonusParser.mergeBonuses(total, getCompareItemBonuses(item));
     });
