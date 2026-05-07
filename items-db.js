@@ -982,6 +982,17 @@ function findUsedIn(itemId) {
   return used;
 }
 
+// Совместимый доступ к сборке героя: переживает и старый массив, и новый объект
+function getHeroBuildItems(heroId) {
+  if (typeof heroBuilds === 'undefined' || !heroBuilds) return [];
+  const hero = heroBuilds[heroId];
+  if (!hero) return [];
+  if (Array.isArray(hero)) return hero;
+  if (Array.isArray(hero.items)) return hero.items;
+  console.warn('[items-db] Unexpected hero build shape for', heroId, hero);
+  return [];
+}
+
 // Какие герои рекомендуют этот предмет
 function findHeroesWithItem(itemId) {
   if (typeof heroBuilds === 'undefined') return [];
@@ -992,8 +1003,10 @@ function findHeroesWithItem(itemId) {
     druid: 'Друид',
   };
   for (const heroId in heroBuilds) {
-    if (heroBuilds[heroId].some(b => b.id === itemId)) {
-      result.push({ id: heroId, name: HERO_NAMES[heroId] || heroId });
+    const hero = heroBuilds[heroId];
+    const items = getHeroBuildItems(heroId);
+    if (items.some(b => b.id === itemId)) {
+      result.push({ id: heroId, name: HERO_NAMES[heroId] || hero?.name || heroId });
     }
   }
   return result;
