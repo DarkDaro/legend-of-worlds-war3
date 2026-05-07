@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сравнение героев · Legend of Worlds</title>
     <meta property="og:title" content="Сравнение героев — Legend of Worlds">
-    <meta property="og:description" content="Сравните статы и способности героев рядом.">
+    <meta property="og:description" content="Сравните героев по уровню и предметам из сборок рядом.">
     <meta property="og:image" content="images/preview.png">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="hero-data.js"></script>
+    <script src="hero-builds.js"></script>
     <script src="search.js"></script>
     <script src="items-db.js" defer></script>
     <script src="icon-loader.js" defer></script>
@@ -130,6 +131,30 @@
         .hero-col-attr {
             font-size: 0.68rem;
         }
+        .hero-col-build {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 4px;
+            margin-top: 8px;
+        }
+        .hero-build-item {
+            width: 26px;
+            height: 26px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #1a3a5c;
+            border-radius: 6px;
+            background: #091421;
+            overflow: hidden;
+            text-decoration: none;
+        }
+        .hero-build-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
         .compare-table tbody td {
             padding: 6px 10px;
             border-bottom: 1px solid #111e30;
@@ -240,23 +265,29 @@
                 max-width: none;
                 min-width: 0;
             }
+            .compare-table-wrap {
+                -webkit-overflow-scrolling: touch;
+            }
+            .compare-table {
+                min-width: 560px;
+                font-size: 0.75rem;
+            }
             .compare-table thead th:first-child,
             .compare-table tbody td:first-child {
-                min-width: 80px;
-                font-size: 0.72rem;
+                min-width: 70px;
+                font-size: 0.7rem;
             }
             .compare-table thead th.hero-col {
-                min-width: 110px;
-                font-size: 0.82rem;
+                min-width: 102px;
+                font-size: 0.8rem;
             }
-            .hero-col-name { font-size: 0.82rem; }
-            .hero-col-attr { font-size: 0.62rem; }
-            .stat-bar { flex: 0 0 32px; }
+            .hero-col-name { font-size: 0.8rem; }
+            .hero-col-attr { font-size: 0.6rem; }
+            .stat-bar { flex: 0 0 28px; }
             .ability-cell .ability-desc { display: none; }
-            .ability-cell .ability-name { font-size: 0.76rem; }
-            .compare-table { font-size: 0.76rem; }
-            .compare-table tbody td { padding: 5px 6px; }
-            .compare-table thead th { padding: 8px 6px; }
+            .ability-cell .ability-name { font-size: 0.75rem; }
+            .compare-table tbody td { padding: 5px 5px; }
+            .compare-table thead th { padding: 8px 5px; }
         }
         @media (max-width: 480px) {
             .compare-controls { gap: 6px; }
@@ -264,20 +295,24 @@
                 padding: 8px 10px;
                 font-size: 0.82rem;
             }
+            .compare-table {
+                min-width: 500px;
+                font-size: 0.71rem;
+            }
             .compare-table thead th.hero-col {
-                min-width: 90px;
+                min-width: 82px;
             }
             .compare-table thead th:first-child,
             .compare-table tbody td:first-child {
-                min-width: 60px;
-                font-size: 0.68rem;
+                min-width: 54px;
+                font-size: 0.66rem;
             }
             .stat-bar { display: none; }
             .stat-bar-value { min-width: auto; }
             .hero-col-attr { display: none; }
-            .compare-table { font-size: 0.72rem; }
-            .compare-table tbody td { padding: 4px 5px; }
-            .compare-table thead th { padding: 6px 5px; }
+            .compare-table tbody td { padding: 4px 4px; }
+            .compare-table thead th { padding: 6px 4px; }
+            .ability-cell { padding: 6px 4px !important; }
             .ability-cell .ability-passive { font-size: 0.56rem; }
             h1 { font-size: 1.3rem; }
         }
@@ -307,7 +342,7 @@
         <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Сравнение</span></div>
 
         <h1><i class="fas fa-balance-scale"></i> Сравнение героев</h1>
-        <p style="color:#8aa0c0; margin-bottom:20px; font-size:1.05rem;">Выберите до 4 героев, чтобы увидеть их характеристики рядом.</p>
+        <p style="color:#8aa0c0; margin-bottom:20px; font-size:1.05rem;">Выберите до 4 героев, чтобы сравнить их уровень и сборки предметов.</p>
 
         <!-- Селекты + уровень -->
         <div class="compare-controls">
@@ -329,7 +364,7 @@
             </div>
             <div class="compare-level">
                 <div class="compare-slot-label">Уровень</div>
-                <input type="number" id="heroLevel" value="25" min="1" max="25">
+                <input type="number" id="heroLevel" value="1" min="1" max="500">
             </div>
         </div>
 
@@ -504,17 +539,33 @@ function writeUrlParams() {
     history.replaceState(null, '', '?h=' + ids.join(','));
 }
 
+function getCompareHeroIds() {
+    var buildIds = (typeof heroBuilds !== 'undefined' && heroBuilds) ? Object.keys(heroBuilds) : [];
+    var compareIds = buildIds.filter(function(id) { return !!HERO_COMPARE_DATA[id]; });
+    if (compareIds.length) return compareIds;
+    return Object.keys(HERO_COMPARE_DATA);
+}
+
+function getCompareHeroes() {
+    return getCompareHeroIds()
+        .map(function(id) { return HERO_COMPARE_DATA[id]; })
+        .filter(Boolean);
+}
+
+function getCompareHeroLabel(hero) {
+    return hero.name;
+}
+
 // ── Инициализация ──
-(function() {
-    var heroes = Object.values(HERO_COMPARE_DATA);
-    heroes.sort(function(a, b) { return a.name.localeCompare(b.name, 'ru'); });
+function initComparePage() {
+    var heroes = getCompareHeroes();
 
     SELECT_IDS.forEach(function(id) {
         var sel = document.getElementById(id);
         heroes.forEach(function(h) {
             var opt = document.createElement('option');
             opt.value = h.id;
-            opt.textContent = h.name + ' — ' + h.attrLabel;
+            opt.textContent = getCompareHeroLabel(h) + ' — ' + h.attrLabel;
             sel.appendChild(opt);
         });
         sel.addEventListener('change', function() {
@@ -526,7 +577,7 @@ function writeUrlParams() {
 
     document.getElementById('heroLevel').addEventListener('input', renderComparison);
 
-    // Предвыбор из URL или демо
+    // Предвыбор из URL или первые герои из билдов
     var urlHeroes = readUrlParams();
     if (urlHeroes && urlHeroes.length >= 2) {
         urlHeroes.forEach(function(hid, i) {
@@ -535,15 +586,21 @@ function writeUrlParams() {
             }
         });
     } else {
-        document.getElementById('hero1').value = 'paladin';
-        document.getElementById('hero2').value = 'druid';
-        document.getElementById('hero3').value = 'cyborg';
-        document.getElementById('hero4').value = 'illusionist';
+        var defaultHeroes = heroes.slice(0, 4);
+        defaultHeroes.forEach(function(h, i) {
+            document.getElementById(SELECT_IDS[i]).value = h.id;
+        });
     }
 
     updateSelectDisables();
     renderComparison();
-})();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initComparePage);
+} else {
+    initComparePage();
+}
 
 // ── Рендер таблицы ──
 function renderComparison() {
@@ -561,8 +618,10 @@ function renderComparison() {
         return;
     }
 
-    var level = parseInt(document.getElementById('heroLevel').value) || 25;
-    level = Math.max(1, Math.min(25, level));
+    var levelInput = document.getElementById('heroLevel');
+    var level = parseInt(levelInput.value) || 1;
+    level = Math.max(1, Math.min(500, level));
+    levelInput.value = level;
 
     var ATTR_COLORS = { strength: '#ff5555', agility: '#55ff55', intelligence: '#55aaff' };
 
@@ -571,55 +630,47 @@ function renderComparison() {
     heroes.forEach(function(h) {
         var ac = ATTR_COLORS[h.attr] || '#8aa0c0';
         html += '<th class="hero-col">'
-            + '<a href="heroes/' + h.id + '.html" class="hero-col-name">' + h.name + '</a>'
+            + '<a href=\'heroes/' + h.id + '.html\' class="hero-col-name">' + getCompareHeroLabel(h) + '</a>'
             + '<div class="hero-col-attr" style="color:' + ac + '">' + h.attrLabel + ' · ' + h.role + '</div>'
+            + renderCompareBuildItems(h.id)
             + '</th>';
     });
     html += '</tr></thead><tbody>';
 
-    // ── Атрибуты на уровне ──
-    html += sectionRow('Атрибуты на уровне ' + level);
+    // ── Атрибуты ──
+    html += sectionRow('Атрибуты с предметами на уровне ' + level);
     html += statRow('Сила', heroes, function(h) {
-        return Math.round(h.stats.strBase + h.stats.strGain * (level - 1));
+        return Math.round(getAttrTotalWithBuild(h, 'strength', level));
     }, true);
     html += statRow('Ловкость', heroes, function(h) {
-        return Math.round(h.stats.agiBase + h.stats.agiGain * (level - 1));
+        return Math.round(getAttrTotalWithBuild(h, 'agility', level));
     }, true);
     html += statRow('Разум', heroes, function(h) {
-        return Math.round(h.stats.intBase + h.stats.intGain * (level - 1));
+        return Math.round(getAttrTotalWithBuild(h, 'intelligence', level));
     }, true);
 
-    // ── Статы на уровне ──
-    html += sectionRow('На уровне ' + level);
-    html += statRow('HP', heroes, function(h) { return calcStat(h, 'hp', 'strBase', 'strGain', level); }, true);
-    html += statRow('Мана', heroes, function(h) { return calcStat(h, 'mp', 'intBase', 'intGain', level); }, true);
-    html += statRow('Атака', heroes, function(h) {
-        // Базовая атака (уже с бонусом от базового главного атрибута)
-        // + прирост от уровня: главный_прирост × (level-1)
-        var gain = getMainAttrGain(h);
-        return Math.round(h.stats.atk + gain * (level - 1));
+    // ── Статы ──
+    html += sectionRow('Боевые статы с предметами на уровне ' + level);
+    html += statRow('Жизни', heroes, function(h) { return calcStat(h, 'hp', 'strength', level, 20); }, true);
+    html += statRow('Мана', heroes, function(h) { return calcStat(h, 'mp', 'intelligence', level, 15); }, true);
+    html += statRow('Урон', heroes, function(h) {
+        return getAttackTotal(h, level);
     }, true);
-    html += statRow('Защита', heroes, function(h) {
-        // Базовая защита (уже с бонусом от базовой ловкости)
-        // + прирост от уровня: ловкость_прирост × (level-1) × 0.05
-        var armorGain = h.stats.agiGain * (level - 1) * 0.05;
-        return +(h.stats.def + armorGain).toFixed(1);
+    html += statRow('Броня', heroes, function(h) {
+        return getArmorTotal(h, level);
     }, true);
-    html += statRow('Снижение урона', heroes, function(h) {
-        var armorGain = h.stats.agiGain * (level - 1) * 0.05;
-        var armor = h.stats.def + armorGain;
+    html += statRow('Снижение урона от брони', heroes, function(h) {
+        var armor = getArmorTotal(h, level);
         var reduction = (armor * 0.05) / (1 + armor * 0.05);
         return (reduction * 100).toFixed(1) + '%';
     }, false);
-    html += statRow('Скорость боя', heroes, function(h) {
-        // Базовая скорость боя (1 + базовая ловкость × 0.01)
-        // + прирост: ловкость_прирост × (level-1) × 0.01
-        var baseAtkSpeed = 1 + h.stats.agiBase * 0.01;
-        var gainAtkSpeed = h.stats.agiGain * (level - 1) * 0.01;
-        return +(baseAtkSpeed + gainAtkSpeed).toFixed(3);
+    html += statRow('Скорость атаки', heroes, function(h) {
+        return getAttackSpeed(h, level);
     }, true);
-    html += statRow('Скорость', heroes, function(h) { return h.stats.speed; }, false);
-    html += statRow('Дальность', heroes, function(h) { return h.stats.range == 128 ? 'Ближний' : h.stats.range; }, false);
+    html += statRow('Скорость передвижения', heroes, function(h) {
+        return getMovementSpeed(h, level);
+    }, false);
+    html += statRow('Дальность атаки', heroes, function(h) { return h.stats.range == 128 ? 'Ближний' : h.stats.range; }, false);
 
     // ── Прирост ──
     html += sectionRow('Прирост за уровень');
@@ -636,54 +687,225 @@ function renderComparison() {
         return h.stats.intBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.intGain + '</span> <span style="color:#5a7a9a;font-size:0.72rem;">(' + total + ')</span>';
     }, false);
 
-    // ── Способности ──
-    html += sectionRow('Способности');
-    var maxAbilities = Math.max.apply(null, heroes.map(function(h) { return h.abilities.length; }));
-    for (var i = 0; i < maxAbilities; i++) {
-        html += '<tr><td>Способность ' + (i + 1) + '</td>';
-        heroes.forEach(function(h) {
-            var ab = h.abilities[i];
-            if (!ab) {
-                html += '<td>—</td>';
-            } else {
-                html += '<td class="ability-cell">'
-                    + '<div class="ability-name">' + ab.name + (ab.passive ? '<span class="ability-passive">пассивная</span>' : '') + '</div>'
-                    + '<div class="ability-desc">' + ab.desc + '</div>'
-                    + '</td>';
-            }
-        });
-        html += '</tr>';
-    }
-
     html += '</tbody></table></div>';
     container.innerHTML = html;
 }
 
-function calcStat(hero, baseKey, attrBaseKey, attrGainKey, level) {
-    // HP = базовый + (сила_итого) × 20
-    // Мана = базовый + (разум_итого) × 15
-    var base = hero.stats[baseKey];
-    var attrBase = hero.stats[attrBaseKey];
-    var attrGain = hero.stats[attrGainKey];
-    var totalAttr = attrBase + attrGain * (level - 1);
-    var perPoint = baseKey === 'hp' ? 20 : 15;
-    return Math.round(base + totalAttr * perPoint);
+var ITEM_BONUS_CACHE = {};
+var HERO_BUILD_BONUS_CACHE = {};
+
+function getCompareBuildItems(heroId) {
+    var build = (typeof heroBuilds !== 'undefined' && heroBuilds) ? heroBuilds[heroId] : null;
+    if (!build || !Array.isArray(build.items) || typeof itemsDB === 'undefined') return [];
+    return build.items.map(function(entry) {
+        return itemsDB[entry.id] || null;
+    }).filter(Boolean);
+}
+
+function renderCompareBuildItems(heroId) {
+    var items = getCompareBuildItems(heroId);
+    if (!items.length) return '<div class="hero-col-build hero-col-build-empty">—</div>';
+    return '<div class="hero-col-build">' + items.map(function(item) {
+        var icon = (typeof itemIcon === 'function') ? itemIcon(item.id, item.icon, 26, item.type) : item.name;
+        return '<a class="hero-build-item" href="items.html?item=' + item.id + '" title="' + item.name + '">' + icon + '</a>';
+    }).join('') + '</div>';
+}
+
+function createEmptyCompareBonus() {
+    return {
+        allStats: 0,
+        str: 0,
+        agi: 0,
+        int: 0,
+        hp: 0,
+        mp: 0,
+        attack: 0,
+        armor: 0,
+        attackSpeedPct: 0,
+        moveSpeedFlat: 0,
+        moveSpeedPct: 0
+    };
+}
+
+function addParsedBonus(target, key, value) {
+    target[key] += value;
+}
+
+function collectBonusMatch(text, regex, callback) {
+    text.replace(regex, function(match, rawValue) {
+        callback(parseFloat(String(rawValue).replace(',', '.')));
+        return match;
+    });
+}
+
+function getCompareItemBonuses(item) {
+    if (!item) return createEmptyCompareBonus();
+    if (ITEM_BONUS_CACHE[item.id]) return ITEM_BONUS_CACHE[item.id];
+
+    var bonus = createEmptyCompareBonus();
+    var text = (item.description || '').toLowerCase();
+
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+ко всем атрибутам/g, function(value) {
+        bonus.allStats += value;
+    });
+
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+сил[ыи]\/ловкост[ьи]/g, function(value) {
+        bonus.str += value;
+        bonus.agi += value;
+    });
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+ловкост[ьи]\/сил[ыи]/g, function(value) {
+        bonus.str += value;
+        bonus.agi += value;
+    });
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+сил[ыи]\/разум[а]?/g, function(value) {
+        bonus.str += value;
+        bonus.int += value;
+    });
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+разум[а]?\/сил[ыи]/g, function(value) {
+        bonus.str += value;
+        bonus.int += value;
+    });
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+ловкост[ьи]\/разум[а]?/g, function(value) {
+        bonus.agi += value;
+        bonus.int += value;
+    });
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+разум[а]?\/ловкост[ьи]/g, function(value) {
+        bonus.agi += value;
+        bonus.int += value;
+    });
+
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+сил[ыи](?!\/)/g, function(value) {
+        bonus.str += value;
+    });
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+ловкост[ьи](?!\/)/g, function(value) {
+        bonus.agi += value;
+    });
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+разум[а]?(?!\/)/g, function(value) {
+        bonus.int += value;
+    });
+
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+здоровья(?!\s+при)/g, function(value) {
+        bonus.hp += value;
+    });
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+ман[ыа](?:\s+бонус)?(?!\s+при)/g, function(value) {
+        bonus.mp += value;
+    });
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+атаки(?!\s+врага)/g, function(value) {
+        bonus.attack += value;
+    });
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+защиты/g, function(value) {
+        bonus.armor += value;
+    });
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)%\s+скорости (?:боя|атаки)/g, function(value) {
+        bonus.attackSpeedPct += value;
+    });
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+скорости (?:боя|атаки)/g, function(value) {
+        bonus.attackSpeedPct += value;
+    });
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)%\s+скорости (?:бега|передвижения)/g, function(value) {
+        bonus.moveSpeedPct += value;
+    });
+    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+скорости (?:бега|передвижения)/g, function(value) {
+        bonus.moveSpeedFlat += value;
+    });
+
+    ITEM_BONUS_CACHE[item.id] = bonus;
+    return bonus;
+}
+
+function getCompareHeroBuildBonus(heroId) {
+    if (HERO_BUILD_BONUS_CACHE[heroId]) return HERO_BUILD_BONUS_CACHE[heroId];
+
+    var total = createEmptyCompareBonus();
+    getCompareBuildItems(heroId).forEach(function(item) {
+        var bonus = getCompareItemBonuses(item);
+        total.allStats += bonus.allStats;
+        total.str += bonus.str;
+        total.agi += bonus.agi;
+        total.int += bonus.int;
+        total.hp += bonus.hp;
+        total.mp += bonus.mp;
+        total.attack += bonus.attack;
+        total.armor += bonus.armor;
+        total.attackSpeedPct += bonus.attackSpeedPct;
+        total.moveSpeedFlat += bonus.moveSpeedFlat;
+        total.moveSpeedPct += bonus.moveSpeedPct;
+    });
+
+    HERO_BUILD_BONUS_CACHE[heroId] = total;
+    return total;
+}
+
+function getAttrBase(hero, attrKey) {
+    if (attrKey === 'strength') return hero.stats.strBase;
+    if (attrKey === 'agility') return hero.stats.agiBase;
+    if (attrKey === 'intelligence') return hero.stats.intBase;
+    return 0;
+}
+
+function getAttrGain(hero, attrKey) {
+    if (attrKey === 'strength') return hero.stats.strGain;
+    if (attrKey === 'agility') return hero.stats.agiGain;
+    if (attrKey === 'intelligence') return hero.stats.intGain;
+    return 0;
+}
+
+function getAttrTotal(hero, attrKey, level) {
+    return getAttrBase(hero, attrKey) + getAttrGain(hero, attrKey) * (level - 1);
+}
+
+function getAttrTotalWithBuild(hero, attrKey, level) {
+    var total = getAttrTotal(hero, attrKey, level);
+    var bonus = getCompareHeroBuildBonus(hero.id);
+    if (attrKey === 'strength') return total + bonus.allStats + bonus.str;
+    if (attrKey === 'agility') return total + bonus.allStats + bonus.agi;
+    if (attrKey === 'intelligence') return total + bonus.allStats + bonus.int;
+    return total;
 }
 
 function getMainAttrTotal(hero, level) {
-    // Итого главного атрибута на уровне
-    if (hero.attr === 'strength') return hero.stats.strBase + hero.stats.strGain * (level - 1);
-    if (hero.attr === 'agility') return hero.stats.agiBase + hero.stats.agiGain * (level - 1);
-    if (hero.attr === 'intelligence') return hero.stats.intBase + hero.stats.intGain * (level - 1);
-    return 0;
+    return getAttrTotalWithBuild(hero, hero.attr, level);
 }
 
-function getMainAttrGain(hero) {
-    // Прирост главного атрибута за уровень
-    if (hero.attr === 'strength') return hero.stats.strGain;
-    if (hero.attr === 'agility') return hero.stats.agiGain;
-    if (hero.attr === 'intelligence') return hero.stats.intGain;
-    return 0;
+function calcStat(hero, baseKey, attrKey, level, perPoint) {
+    // HP = базовый + сила × 20
+    // Мана = базовый + разум × 15
+    var base = hero.stats[baseKey];
+    var totalAttr = getAttrTotalWithBuild(hero, attrKey, level);
+    var bonus = getCompareHeroBuildBonus(hero.id);
+    var flat = 0;
+    if (baseKey === 'hp') flat = bonus.hp;
+    if (baseKey === 'mp') flat = bonus.mp;
+    return Math.round(base + totalAttr * perPoint + flat);
+}
+
+function getAttackTotal(hero, level) {
+    // Урон растёт от основного атрибута: +1 к урону за 1 пункт основного атрибута
+    // Базовая атака уже включает бонус от базового значения основного атрибута.
+    var bonus = getCompareHeroBuildBonus(hero.id);
+    var mainBase = getAttrBase(hero, hero.attr);
+    var mainTotal = getMainAttrTotal(hero, level);
+    return Math.round(hero.stats.atk + (mainTotal - mainBase) + bonus.attack);
+}
+
+function getArmorTotal(hero, level) {
+    // Игровая формула: 1 броня за каждые 20 ловкости
+    // Базовая броня уже включает бонус от базовой ловкости.
+    var bonus = getCompareHeroBuildBonus(hero.id);
+    var baseAgiArmor = Math.floor(getAttrBase(hero, 'agility') / 20);
+    var totalAgiArmor = Math.floor(getAttrTotalWithBuild(hero, 'agility', level) / 20);
+    return +(hero.stats.def + (totalAgiArmor - baseAgiArmor) + bonus.armor).toFixed(1);
+}
+
+function getAttackSpeed(hero, level) {
+    // Ловкость повышает скорость атаки, предметы могут добавить отдельный процент
+    var bonus = getCompareHeroBuildBonus(hero.id);
+    return +(1 + getAttrTotalWithBuild(hero, 'agility', level) * 0.01 + bonus.attackSpeedPct / 100).toFixed(3);
+}
+
+function getMovementSpeed(hero, level) {
+    var bonus = getCompareHeroBuildBonus(hero.id);
+    return Math.round((hero.stats.speed + bonus.moveSpeedFlat) * (1 + bonus.moveSpeedPct / 100));
 }
 
 function sectionRow(label) {

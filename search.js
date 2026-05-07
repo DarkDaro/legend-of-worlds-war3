@@ -5,7 +5,7 @@
     'use strict';
 
     var searchOverlay = null;
-    var searchInput = null;
+    var globalSearchInput = null;
     var resultsContainer = null;
     var indexBuilt = false;
     var index = { heroes: [], items: [] };
@@ -31,7 +31,7 @@
                     attr: h.attr || '',
                     roleName: h.roleName || '',
                     heroId: h.heroId,
-                    searchText: (h.name + ' ' + (h.title || '') + ' ' + (h.roleName || '')).toLowerCase()
+                    searchText: (h.heroId + ' ' + h.name + ' ' + (h.title || '') + ' ' + (h.roleName || '')).toLowerCase()
                 });
             });
         }
@@ -45,7 +45,14 @@
                     type: item.type || '',
                     cost: item.cost || 0,
                     id: item.id,
-                    searchText: (item.name + ' ' + (item.type || '')).toLowerCase()
+                    searchText: (
+                        item.id + ' ' +
+                        item.name + ' ' +
+                        (item.type || '') + ' ' +
+                        (item.description || '') + ' ' +
+                        (item.activeAbility && item.activeAbility.name ? item.activeAbility.name : '') + ' ' +
+                        (item.activeAbility && item.activeAbility.description ? item.activeAbility.description : '')
+                    ).toLowerCase()
                 });
             });
         }
@@ -177,11 +184,11 @@
 
         document.body.appendChild(searchOverlay);
 
-        searchInput = searchOverlay.querySelector('.gs-input');
+        globalSearchInput = searchOverlay.querySelector('.gs-input');
         resultsContainer = searchOverlay.querySelector('.gs-results');
 
-        searchInput.addEventListener('input', function() {
-            var q = searchInput.value.trim();
+        globalSearchInput.addEventListener('input', function() {
+            var q = globalSearchInput.value.trim();
             if (q.length < 2) {
                 resultsContainer.innerHTML = '';
                 return;
@@ -199,7 +206,7 @@
             if (e.target === searchOverlay) closeSearch();
         });
 
-        searchInput.addEventListener('keydown', function(e) {
+        globalSearchInput.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeSearch();
         });
     }
@@ -209,9 +216,9 @@
         indexBuilt = false;
         searchOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
-        searchInput.value = '';
+        globalSearchInput.value = '';
         resultsContainer.innerHTML = '';
-        setTimeout(function() { searchInput.focus(); }, 50);
+        setTimeout(function() { globalSearchInput.focus(); }, 50);
     }
 
     function closeSearch() {
