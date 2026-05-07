@@ -47,7 +47,7 @@ const heroBuilds = {
     ],
   },
   thunderer: {
-    name: 'Василий',
+    name: 'Громовержец',
     items: [
       { id: 'I08Y', name: 'Посох грома' },
       { id: 'I09R', name: 'Ледяной дух' },
