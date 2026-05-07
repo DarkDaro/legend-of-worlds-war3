@@ -1,11 +1,11 @@
-/* ===== Калькулятор сборок ===== */
+/* ===== Калькулятор сборок предметов ===== */
 
-const CALC_STORAGE_KEY = 'buildCalc';
-let buildSlots = [null, null, null, null, null, null];
+const CALC_STORAGE_KEY = 'buildCalc'; // Ключ в localStorage
+let buildSlots = [null, null, null, null, null, null]; // 6 слотов
 let calcActiveTab = 'all';
 let calcSearchQuery = '';
 
-// === Сохранение / загрузка ===
+// === Сохранение и загрузка из localStorage ===
 
 function saveBuild() {
     localStorage.setItem(CALC_STORAGE_KEY, JSON.stringify(buildSlots));
@@ -17,10 +17,10 @@ function loadBuild() {
         if (Array.isArray(saved) && saved.length === 6) {
             buildSlots = saved.map(id => (id && itemsDB[id]) ? id : null);
         }
-    } catch (e) { /* ignore */ }
+    } catch (e) { /* ошибка чтения — игнорируем */ }
 }
 
-// === Тост-уведомления ===
+// === Всплывающее уведомление ===
 
 function calcToast(message) {
     let toast = document.getElementById('calcToast');
@@ -36,7 +36,7 @@ function calcToast(message) {
     toast._timer = setTimeout(() => { toast.classList.remove('visible'); }, 2000);
 }
 
-// === Действия со слотами ===
+// === Действия со слотами сборки ===
 
 function addToSlot(itemId) {
     const item = itemsDB[itemId];
@@ -68,7 +68,7 @@ function clearBuild() {
     renderCalc();
 }
 
-// === Подсчёт ===
+// === Подсчёт стоимости и статистики ===
 
 function calculateBuildStats() {
     let totalCost = 0;
@@ -102,7 +102,7 @@ function calculateBuildStats() {
     return { totalCost, bossDropCount, bossDropCost, recipeCost, baseCost, items };
 }
 
-// === Дедупликация базовых компонентов ===
+// === Убираем дубли базовых компонентов ===
 
 function collectBaseComponents(itemId, quantity, visited) {
     const item = itemsDB[itemId];
@@ -115,7 +115,7 @@ function collectBaseComponents(itemId, quantity, visited) {
         return [{ itemId, quantity }];
     }
 
-    // Составной — раскрываем дальше
+    // Составной предмет — раскрываем компоненты дальше
     let result = [];
     item.components.forEach(comp => {
         const qty = comp.quantity || 1;
@@ -164,11 +164,11 @@ function getDeduplicatedComponents() {
         });
     });
 
-    // Сортировка по стоимости (дешёвые сначала)
+    // Сортировка: дешёвые сначала
     return Object.values(componentMap).sort((a, b) => a.cost - b.cost);
 }
 
-// === Рендер слотов ===
+// === Отрисовка слотов ===
 
 function getAttrClass(item) {
     const type = item.type || '';
@@ -209,14 +209,14 @@ function renderSlots() {
     });
     container.innerHTML = html;
 
-    // Обновить счётчик слотов
+    // Обновить счётчик заполненных слотов
     const counter = document.getElementById('calcSlotsCounter');
     if (counter) {
         const filled = buildSlots.filter(id => id !== null).length;
         counter.textContent = `${filled}/6`;
     }
 
-    // Обработчики
+    // Обработчики кликов
     container.querySelectorAll('.calc-slot-remove').forEach(btn => {
         btn.addEventListener('click', e => {
             e.stopPropagation();
@@ -230,7 +230,7 @@ function renderSlots() {
     });
 }
 
-// === Рендер результатов ===
+// === Отрисовка результатов (стоимость, разбивка) ===
 
 function renderResults() {
     const container = document.getElementById('calcResults');
@@ -272,7 +272,7 @@ function renderResults() {
         ${renderShoppingList()}`;
 }
 
-// === Лист покупок (дедуплицированный) ===
+// === Лист покупок (без дубликатов) ===
 
 function renderShoppingList() {
     const components = getDeduplicatedComponents();
@@ -294,7 +294,7 @@ function renderShoppingList() {
     return html;
 }
 
-// === Рендер дерева компонентов ===
+// === Отрисовка дерева компонентов ===
 
 function renderBuildTree() {
     const container = document.getElementById('calcTree');
@@ -326,10 +326,10 @@ function renderBuildTree() {
     });
     container.innerHTML = html;
 
-    // Привязка toggle-кнопок дерева компонентов (внутри раскрывшегося)
+    // Привязка интерактивных элементов внутри дерева
     bindItemDetailInteractions(container);
 
-    // Клик по заголовку — раскрыть/свернуть дерево
+    // Клик по заголовку — раскрыть/свернуть
     container.querySelectorAll('.calc-tree-expandable').forEach(header => {
         header.addEventListener('click', () => {
             const treeId = header.dataset.treeId;
@@ -345,7 +345,7 @@ function renderBuildTree() {
     });
 }
 
-// === Каталог выбора ===
+// === Каталог предметов для выбора ===
 
 const CALC_TABS = [
     { key: 'all', label: 'Все' },
@@ -403,7 +403,7 @@ function renderCalcCatalog() {
     } else {
         const gridKey = 'grid-' + calcActiveTab;
         if (gridKey === 'grid-boost') {
-            // Не показываем вкладку boost в калькуляторе
+            // Вкладка boost не показывается в калькуляторе
             itemIds = [];
         } else if (grids[gridKey]) {
             itemIds = grids[gridKey].filter(id => {
@@ -416,7 +416,7 @@ function renderCalcCatalog() {
         }
     }
 
-    // Фильтр по поиску
+    // Фильтр по строке поиска
     if (calcSearchQuery) {
         const q = calcSearchQuery.toLowerCase();
         itemIds = itemIds.filter(id => {
@@ -447,7 +447,7 @@ function renderCalcCatalog() {
     html += '</div>';
     container.innerHTML = html;
 
-    // Обработчики клика
+    // Обработчики клика по предмету каталога
     container.querySelectorAll('.calc-catalog-item').forEach(el => {
         el.addEventListener('click', () => {
             addToSlot(el.dataset.itemId);
@@ -455,7 +455,7 @@ function renderCalcCatalog() {
     });
 }
 
-// === Импорт сборки героя ===
+// === Импорт рекомендуемой сборки героя ===
 
 function populateHeroSelect() {
     const select = document.getElementById('calcHeroSelect');
@@ -482,12 +482,12 @@ function importHeroBuild(heroId) {
     });
     saveBuild();
     renderCalc();
-    // Сбросить селектор, чтобы можно было выбрать того же героя снова
+    // Сбросить селектор, чтобы можно было выбрать того же героя повторно
     const heroSelect = document.getElementById('calcHeroSelect');
     if (heroSelect) heroSelect.value = '';
 }
 
-// === Поделиться сборкой (URL) ===
+// === Поделиться сборкой (ссылка) ===
 
 function getShareUrl() {
     const filled = buildSlots.filter(id => id !== null);
@@ -507,7 +507,7 @@ function copyShareUrl() {
             setTimeout(() => { btn.innerHTML = orig; }, 1500);
         }
     }).catch(() => {
-        // Fallback — выделить URL
+        // Запасной вариант — показать URL в диалоге
         prompt('Скопируйте ссылку:', url);
     });
 }
@@ -517,7 +517,7 @@ function loadFromUrl() {
     const heroParam = params.get('hero');
     const itemsParam = params.get('items');
 
-    // Показать имя героя, если передано
+    // Показать имя героя, если передано в URL
     if (heroParam && typeof heroBuilds !== 'undefined' && heroBuilds[heroParam]) {
         const heroName = heroBuilds[heroParam].name || heroParam;
         const h1 = document.querySelector('h1');
@@ -534,14 +534,14 @@ function loadFromUrl() {
         if (i < 6) buildSlots[i] = id;
     });
     saveBuild();
-    // Очистить URL-параметры, чтобы при обновлении не перезагружать старую сборку
+    // Очистить URL-параметры, чтобы при обновлении страницы не перезагружать старую сборку
     if (window.history.replaceState) {
         window.history.replaceState({}, '', window.location.pathname);
     }
     return true;
 }
 
-// === Общий рендер ===
+// === Общая отрисовка всех секций ===
 
 function renderCalc() {
     renderSlots();
@@ -550,7 +550,7 @@ function renderCalc() {
     renderCalcCatalog();
 }
 
-// === Инициализация ===
+// === Запуск при загрузке страницы ===
 
 document.addEventListener('DOMContentLoaded', () => {
     // Загрузка из URL или localStorage
@@ -561,7 +561,7 @@ document.addEventListener('DOMContentLoaded', () => {
     populateHeroSelect();
     renderCalc();
 
-    // Кнопка очистки
+    // Кнопка «Очистить сборку»
     const clearBtn = document.getElementById('calcClearBtn');
     if (clearBtn) {
         clearBtn.addEventListener('click', clearBuild);
@@ -593,7 +593,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// === Суммарные бонусы сборки ===
+// === Суммарные бонусы всех предметов сборки ===
 
 function renderBuildBonuses() {
     if (typeof ItemBonusParser === 'undefined') return '';

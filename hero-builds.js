@@ -1,4 +1,4 @@
-// hero-builds.js — Рекомендуемые сборки героев
+// hero-builds.js — Рекомендуемые сборки героев (6 предметов)
 // Каждый герой содержит массив предметов с id и названием
 
 const heroBuilds = {
@@ -70,7 +70,7 @@ const heroBuilds = {
   },
 };
 
-// Получить иконку предмета (PNG)
+// Иконка предмета (PNG), при ошибке — SVG-заглушка с emoji
 function getBuildItemIcon(itemId, size) {
   size = size || 48;
   const pngSrc = '../images/items/' + itemId + '.png';
@@ -79,7 +79,7 @@ function getBuildItemIcon(itemId, size) {
   return '<img src="' + pngSrc + '" alt="" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22' + size + '%22 height=%22' + size + '%22 viewBox=%220 0 48 48%22><text x=%2224%22 y=%2236%22 font-size=%2232%22 text-anchor=%22middle%22>' + encodeURIComponent(emoji) + '</text></svg>\';">';
 }
 
-// Рендер сборки для героя
+// Отрисовка сетки сборки для карточки героя
 function renderHeroBuild(heroId) {
   const hero = heroBuilds[heroId];
   if (!hero || !hero.items) return '<p style="color:#6b7c99;">Сборка в разработке...</p>';
@@ -96,7 +96,7 @@ function renderHeroBuild(heroId) {
   return html;
 }
 
-// Emoji для fallback
+// Emoji-заглушки для предметов без иконки
 function getItemEmoji(itemId) {
   const icons = {
     I03G: '🔥🛡️',
