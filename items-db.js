@@ -1092,6 +1092,48 @@ function renderActiveAbility(ability) {
     ${ability.note ? `<div class="ability-note">⚠️ ${ability.note}</div>` : ''}</div>`;
 }
 
+function formatParsedBonusValue(value) {
+  if (!value) return '';
+  const normalized = Number.isInteger(value) ? String(value) : value.toFixed(1).replace(/\.0$/, '');
+  return value > 0 ? `+${normalized}` : normalized;
+}
+
+function renderParsedBonuses(item) {
+  if (!item || typeof ItemBonusParser === 'undefined') return '';
+  const bonus = ItemBonusParser.parseDescription(item.description || '');
+  const chips = [];
+  const addChip = (label, value, suffix = '') => {
+    if (!value) return;
+    chips.push(`<span class="cost-badge">${label}: ${formatParsedBonusValue(value)}${suffix}</span>`);
+  };
+
+  addChip('Все атрибуты', bonus.allStats);
+  addChip('Сила', bonus.strength);
+  addChip('Ловкость', bonus.agility);
+  addChip('Разум', bonus.intelligence);
+  addChip('Жизни', bonus.hp);
+  addChip('Мана', bonus.mana);
+  addChip('Атака', bonus.attack);
+  addChip('Броня', bonus.armor);
+  addChip('Маг. защита', bonus.magicDefenseFlat);
+  addChip('Маг. защита', bonus.magicDefensePct, '%');
+  addChip('Реген HP', bonus.hpRegenFlat);
+  addChip('Реген HP', bonus.hpRegenPct, '%');
+  addChip('Реген маны', bonus.manaRegenFlat);
+  addChip('Реген маны', bonus.manaRegenPct, '%');
+  addChip('Мана при атаке', bonus.manaOnAttack);
+  addChip('Уклонение', bonus.evasionPct, '%');
+  addChip('Крит. шанс', bonus.critChancePct, '%');
+  addChip('Крит. урон', bonus.critDamagePct, '%');
+  addChip('Урон заклинаний', bonus.spellDamagePct, '%');
+  addChip('Скорость атаки', bonus.attackSpeedPct, '%');
+  addChip('Скорость бега', bonus.movementSpeedFlat);
+  addChip('Скорость бега', bonus.movementSpeedPct, '%');
+
+  if (!chips.length) return '';
+  return `<div class="recipe-title">📈 Распознано из описания</div><div class="cost-badges">${chips.join('')}</div>`;
+}
+
 function renderUsedIn(itemId) {
   const ids = findUsedIn(itemId);
   if (!ids.length) return '<p style="color:#8e97aa;">Не используется</p>';
@@ -1165,6 +1207,7 @@ function buildItemDetailHtml(itemId, item, total, recipe, base, includeBackButto
         ${recipe>0?`<span class="cost-badge cost-recipe">📜 Рецепт: ${recipe}</span>`:''}
       </div>
     </div>
+    ${renderParsedBonuses(item)}
     ${item.activeAbility ? renderActiveAbility(item.activeAbility) : ''}
     ${/* renderUpgradeChain(item) — отключено: дублирует «Входит в сборку», которое надёжнее */ ''}
     ${/* renderUpgradeChain(item) */ ''}

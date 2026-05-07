@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="hero-data.js"></script>
     <script src="hero-builds.js"></script>
+    <script src="item-bonus-parser.js"></script>
     <script src="search.js"></script>
     <script src="items-db.js" defer></script>
     <script src="icon-loader.js" defer></script>
@@ -711,104 +712,11 @@ function renderCompareBuildItems(heroId) {
     }).join('') + '</div>';
 }
 
-function createEmptyCompareBonus() {
-    return {
-        allStats: 0,
-        str: 0,
-        agi: 0,
-        int: 0,
-        hp: 0,
-        mp: 0,
-        attack: 0,
-        armor: 0,
-        attackSpeedPct: 0,
-        moveSpeedFlat: 0,
-        moveSpeedPct: 0
-    };
-}
-
-function addParsedBonus(target, key, value) {
-    target[key] += value;
-}
-
-function collectBonusMatch(text, regex, callback) {
-    text.replace(regex, function(match, rawValue) {
-        callback(parseFloat(String(rawValue).replace(',', '.')));
-        return match;
-    });
-}
-
 function getCompareItemBonuses(item) {
-    if (!item) return createEmptyCompareBonus();
+    if (!item || typeof ItemBonusParser === 'undefined') return {};
     if (ITEM_BONUS_CACHE[item.id]) return ITEM_BONUS_CACHE[item.id];
 
-    var bonus = createEmptyCompareBonus();
-    var text = (item.description || '').toLowerCase();
-
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+ко всем атрибутам/g, function(value) {
-        bonus.allStats += value;
-    });
-
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+сил[ыи]\/ловкост[ьи]/g, function(value) {
-        bonus.str += value;
-        bonus.agi += value;
-    });
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+ловкост[ьи]\/сил[ыи]/g, function(value) {
-        bonus.str += value;
-        bonus.agi += value;
-    });
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+сил[ыи]\/разум[а]?/g, function(value) {
-        bonus.str += value;
-        bonus.int += value;
-    });
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+разум[а]?\/сил[ыи]/g, function(value) {
-        bonus.str += value;
-        bonus.int += value;
-    });
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+ловкост[ьи]\/разум[а]?/g, function(value) {
-        bonus.agi += value;
-        bonus.int += value;
-    });
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+разум[а]?\/ловкост[ьи]/g, function(value) {
-        bonus.agi += value;
-        bonus.int += value;
-    });
-
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+сил[ыи](?!\/)/g, function(value) {
-        bonus.str += value;
-    });
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+ловкост[ьи](?!\/)/g, function(value) {
-        bonus.agi += value;
-    });
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+разум[а]?(?!\/)/g, function(value) {
-        bonus.int += value;
-    });
-
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+здоровья(?!\s+при)/g, function(value) {
-        bonus.hp += value;
-    });
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+ман[ыа](?:\s+бонус)?(?!\s+при)/g, function(value) {
-        bonus.mp += value;
-    });
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+атаки(?!\s+врага)/g, function(value) {
-        bonus.attack += value;
-    });
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+защиты/g, function(value) {
-        bonus.armor += value;
-    });
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)%\s+скорости (?:боя|атаки)/g, function(value) {
-        bonus.attackSpeedPct += value;
-    });
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+скорости (?:боя|атаки)/g, function(value) {
-        bonus.attackSpeedPct += value;
-    });
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)%\s+скорости (?:бега|передвижения)/g, function(value) {
-        bonus.moveSpeedPct += value;
-    });
-    collectBonusMatch(text, /\+(\d+(?:[.,]\d+)?)\s+скорости (?:бега|передвижения)/g, function(value) {
-        bonus.moveSpeedFlat += value;
-    });
-
+    var bonus = ItemBonusParser.parseDescription(item.description || '');
     ITEM_BONUS_CACHE[item.id] = bonus;
     return bonus;
 }
@@ -816,20 +724,9 @@ function getCompareItemBonuses(item) {
 function getCompareHeroBuildBonus(heroId) {
     if (HERO_BUILD_BONUS_CACHE[heroId]) return HERO_BUILD_BONUS_CACHE[heroId];
 
-    var total = createEmptyCompareBonus();
+    var total = ItemBonusParser.createEmptyBonus();
     getCompareBuildItems(heroId).forEach(function(item) {
-        var bonus = getCompareItemBonuses(item);
-        total.allStats += bonus.allStats;
-        total.str += bonus.str;
-        total.agi += bonus.agi;
-        total.int += bonus.int;
-        total.hp += bonus.hp;
-        total.mp += bonus.mp;
-        total.attack += bonus.attack;
-        total.armor += bonus.armor;
-        total.attackSpeedPct += bonus.attackSpeedPct;
-        total.moveSpeedFlat += bonus.moveSpeedFlat;
-        total.moveSpeedPct += bonus.moveSpeedPct;
+        ItemBonusParser.mergeBonuses(total, getCompareItemBonuses(item));
     });
 
     HERO_BUILD_BONUS_CACHE[heroId] = total;
@@ -857,9 +754,9 @@ function getAttrTotal(hero, attrKey, level) {
 function getAttrTotalWithBuild(hero, attrKey, level) {
     var total = getAttrTotal(hero, attrKey, level);
     var bonus = getCompareHeroBuildBonus(hero.id);
-    if (attrKey === 'strength') return total + bonus.allStats + bonus.str;
-    if (attrKey === 'agility') return total + bonus.allStats + bonus.agi;
-    if (attrKey === 'intelligence') return total + bonus.allStats + bonus.int;
+    if (attrKey === 'strength') return total + bonus.allStats + bonus.strength;
+    if (attrKey === 'agility') return total + bonus.allStats + bonus.agility;
+    if (attrKey === 'intelligence') return total + bonus.allStats + bonus.intelligence;
     return total;
 }
 
@@ -875,7 +772,7 @@ function calcStat(hero, baseKey, attrKey, level, perPoint) {
     var bonus = getCompareHeroBuildBonus(hero.id);
     var flat = 0;
     if (baseKey === 'hp') flat = bonus.hp;
-    if (baseKey === 'mp') flat = bonus.mp;
+    if (baseKey === 'mp') flat = bonus.mana;
     return Math.round(base + totalAttr * perPoint + flat);
 }
 
@@ -905,7 +802,7 @@ function getAttackSpeed(hero, level) {
 
 function getMovementSpeed(hero, level) {
     var bonus = getCompareHeroBuildBonus(hero.id);
-    return Math.round((hero.stats.speed + bonus.moveSpeedFlat) * (1 + bonus.moveSpeedPct / 100));
+    return Math.round((hero.stats.speed + bonus.movementSpeedFlat) * (1 + bonus.movementSpeedPct / 100));
 }
 
 function sectionRow(label) {
