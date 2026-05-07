@@ -1,5 +1,5 @@
 /**
- * search.js — Глобальный поиск по героям и предметам.
+ * search.js — Глобальный поиск по героям и предметам (Ctrl+K)
  */
 (function() {
     'use strict';
@@ -18,7 +18,7 @@
         return location.pathname.indexOf('/heroes/') !== -1;
     }
 
-    // ── Построение индекса (ленивое) ──
+    // ── Построение индекса (при первом запросе) ──
 
     function buildIndex() {
         index = { heroes: [], items: [] };
@@ -79,7 +79,7 @@
         return results;
     }
 
-    // ── Рендер результатов ──
+    // ── Отрисовка результатов ──
 
     var ATTR_LABELS = { strength: 'Сила', agility: 'Ловкость', intelligence: 'Разум' };
     var ATTR_COLORS = { strength: '#ff5555', agility: '#55ff55', intelligence: '#55aaff' };
@@ -146,7 +146,7 @@
                     return function() {
                         closeSearch();
                         if (isOnItemsPage() && typeof openItemDetail === 'function') {
-                            // Уже на странице предметов — открываем напрямую
+                            // Уже на странице предметов — открываем панель деталей
                             openItemDetail(itemId);
                             if (typeof isItemMobileSurface === 'function' && !isItemMobileSurface()) {
                                 var panel = document.getElementById('itemDetailPanel');
@@ -165,7 +165,7 @@
         }
     }
 
-    // ── UI ──
+    // ── Интерфейс ──
 
     function createOverlay() {
         if (searchOverlay) return;

@@ -1,6 +1,7 @@
 (function (global) {
   'use strict';
 
+  // Пустой объект бонусов — все значения по нулям
   function createEmptyBonus() {
     return {
       allStats: 0,
@@ -36,10 +37,12 @@
     };
   }
 
+  // Нормализация числа: запятая → точка
   function normalizeNumber(rawValue) {
     return parseFloat(String(rawValue).replace(',', '.')) || 0;
   }
 
+  // Распределить бонус по атрибутам по ключевому слову (сила/ловкость/разум)
   function addAttributesByToken(target, token, value) {
     const normalized = String(token).toLowerCase();
     if (normalized.includes('сил')) target.strength += value;
@@ -47,6 +50,7 @@
     if (normalized.includes('разум') || normalized.includes('интел')) target.intelligence += value;
   }
 
+  // Сложить бонусы из source в target
   function mergeBonuses(target, source) {
     Object.keys(target).forEach(function (key) {
       if (typeof source[key] === 'number') {
@@ -56,6 +60,7 @@
     return target;
   }
 
+  // Сумма списка бонусов
   function sumBonuses(list) {
     const total = createEmptyBonus();
     (list || []).forEach(function (bonus) {
@@ -64,13 +69,14 @@
     return total;
   }
 
+  // Парсинг описания предмета → объект бонусов
   function parseDescription(description) {
     const bonus = createEmptyBonus();
     if (!description) return bonus;
 
     var text = String(description).toLowerCase();
 
-    // ── Проход 1: комбинированные бонусы (вырезаем из текста, чтобы не задвоить) ──
+    // ── Проход 1: комбинированные бонусы (вырезаем из текста, чтобы не удвоить) ──
 
     // «+N здоровья и маны» / «+N маны и здоровья»
     text = text.replace(/\+(\d+(?:[.,]\d+)?)\s+здоровья\s+и\s+маны/g, function (_match, value) {
@@ -94,9 +100,9 @@
       return '';
     });
 
-    // ── Проход 2: одиночные бонусы (по очищенному тексту) ──
+    // ── Проход 2: одиночные бонусы (по оставшемуся тексту) ──
 
-    // «+N ко всем атрибутам» (но не «за убийство» и прочие условные)
+    // «+N ко всем атрибутам» (но не «за убийство» и другие условные)
     text.replace(/\+(\d+(?:[.,]\d+)?)\s+ко всем атрибутам(?!\s+за)/g, function (_match, value) {
       bonus.allStats += normalizeNumber(value);
       return _match;
@@ -163,7 +169,7 @@
       return match;
     });
 
-    // Прочие прямые числа
+    // Прочие числовые бонусы
     text.replace(/\+(\d+(?:[.,]\d+)?)%\s+маг\.\s*защита/g, function (_match, value) {
       bonus.magicDefensePct += normalizeNumber(value);
       return _match;
@@ -231,7 +237,7 @@
       return _match;
     });
 
-    // Синоним регена маны: «+N% восстановления маны»
+    // Синоним регена маны: «+N% восстановления маны» = регенерация маны
     text.replace(/\+(\d+(?:[.,]\d+)?)%\s+восстановления\s+маны/g, function (_match, value) {
       bonus.manaRegenPct += normalizeNumber(value);
       return _match;
