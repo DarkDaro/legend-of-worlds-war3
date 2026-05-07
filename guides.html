@@ -13,11 +13,10 @@
     <link rel="stylesheet" href="style.css">
     <script src="hero-data.js"></script>
     <script src="search.js"></script>
-    <script src="items-db.js" defer></script>
     <script src="icon-loader.js" defer></script>
     <script src="analytics.js" defer></script>
 </head>
-<body>
+<body class="page-guides">
     <header class="site-header">
         <a href="index.html" class="logo">
             <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
@@ -41,81 +40,62 @@
         <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><span class="current">Гайды</span></div>
 
         <h1><i class="fas fa-book-open"></i> Гайды</h1>
-        <p style="color:#8aa0c0; margin-bottom:24px; font-size:1.05rem;">Коротко и по делу: как не утонуть в Арене Даро, что купить первым и когда идти на боссов.</p>
+        <p class="info-text" style="margin-bottom:24px;">Коротко и по делу: как не утонуть в Арене Даро, что купить первым и когда идти на боссов.</p>
 
-        <div class="mechanics-grid">
+        <!-- 1. Быстрый старт -->
+        <div class="info-section">
+            <h2 class="section-title"><i class="fas fa-rocket"></i> Быстрый старт</h2>
+            <p class="info-text"><strong>Установка:</strong> Скачай карту, положи её в <code>Maps</code> Warcraft III и запусти матч в локальной сети или Battle.net.</p>
+            <p class="info-text"><strong>Первый герой:</strong> Если хочется простого входа, бери <strong>Паладина</strong> или <strong>Адмирала</strong>. Они прощают ошибки и позволяют спокойно разобраться с картой. Из магов хорошо заходит <strong>Архимаг</strong> — у него понятный урон и контроль.</p>
+            <p class="info-text"><strong>Что важно сразу:</strong> Магазин открыт у фонтана. Предметы собираются автоматически — ты покупаешь не по одной детали, а нажимаешь сборку и герой сам закрывает цепочку.</p>
+        </div>
 
-            <!-- 1. Быстрый старт -->
-            <div class="mechanic-card">
-                <div class="mechanic-icon" style="background:#0a2a1a; border:1px solid #00ff8844; color:#00ff88;">
-                    <i class="fas fa-rocket"></i>
-                </div>
-                <h3>Быстрый старт</h3>
-                <p><strong>Установка:</strong> Скачай карту, положи её в <code>Maps</code> Warcraft III и запусти матч в локальной сети или Battle.net.</p>
-                <p><strong>Первый герой:</strong> Если хочется простого входа, бери <strong>Паладина</strong> или <strong>Адмирала</strong>. Они прощают ошибки и позволяют спокойно разобраться с картой. Из магов хорошо заходит <strong>Архимаг</strong> — у него понятный урон и контроль.</p>
-                <p><strong>Что важно сразу:</strong> Магазин открыт у фонтана. Предметы собираются автоматически — ты покупаешь не по одной детали, а нажимаешь сборку и герой сам закрывает цепочку.</p>
-            </div>
+        <!-- 2. Первый закуп -->
+        <div class="info-section">
+            <h2 class="section-title"><i class="fas fa-coins"></i> Первый закуп</h2>
+            <p class="info-text"><strong>Танки</strong> — <strong>Паладин</strong>, <strong>Адмирал</strong>, <strong>Друид</strong>: щиты, здоровье, броня. Из ранних покупок особенно ценны <strong>Огненный щит</strong> и <strong>Золотой ключ</strong>.</p>
+            <p class="info-text"><strong>Дамагеры</strong> — <strong>Мастер клинка</strong>, <strong>Жрица</strong>, <strong>Самурай</strong>: оружие, атака, вампиризм. Для старта отлично работает <strong>Сфера огня</strong> — это дешёвый прирост атаки и урона.</p>
+            <p class="info-text"><strong>Саппорты</strong> — <strong>Громовержец</strong>, <strong>Лич</strong>, <strong>Архимаг</strong>: мана, усиление заклинаний, магический вампиризм. Здесь чаще заходят предметы на SpellDMG и восстановление ресурсов.</p>
+            <p class="info-text" style="color:#ff7777; font-size:0.85rem; margin-top:8px;"><i class="fas fa-triangle-exclamation"></i> Новичку обычно не нужны дорогие предметы с одним маленьким бонусом — они съедают темп и не дают почувствовать силу героя.</p>
+        </div>
 
-            <!-- 2. Первый закуп -->
-            <div class="mechanic-card">
-                <div class="mechanic-icon" style="background:#2a1a0a; border:1px solid #ff880044; color:#ff8800;">
-                    <i class="fas fa-coins"></i>
-                </div>
-                <h3>Первый закуп</h3>
-                <p><strong>Танки</strong> — <strong>Паладин</strong>, <strong>Адмирал</strong>, <strong>Друид</strong>: щиты, здоровье, броня. Из ранних покупок особенно ценны <strong>Огненный щит</strong> и <strong>Золотой ключ</strong>.</p>
-                <p><strong>Дамагеры</strong> — <strong>Мастер клинка</strong>, <strong>Жрица</strong>, <strong>Самурай</strong>: оружие, атака, вампиризм. Для старта отлично работает <strong>Сфера огня</strong> — это дешёвый прирост атаки и урона.</p>
-                <p><strong>Саппорты</strong> — <strong>Громовержец</strong>, <strong>Лич</strong>, <strong>Архимаг</strong>: мана, усиление заклинаний, магический вампиризм. Здесь чаще заходят предметы на SpellDMG и восстановление ресурсов.</p>
-                <p style="color:#ff7777; font-size:0.85rem; margin-top:8px;"><i class="fas fa-triangle-exclamation"></i> Новичку обычно не нужны дорогие предметы с одним маленьким бонусом — они съедают темп и не дают почувствовать силу героя.</p>
-            </div>
+        <!-- 3. Темп игры -->
+        <div class="info-section">
+            <h2 class="section-title"><i class="fas fa-piggy-bank"></i> Темп игры</h2>
+            <p class="info-text"><strong>Источники золота:</strong> крипы дают стабильный доход, убийства героев — основной рывок, боссы — командную награду и редкий дроп.</p>
+            <p class="info-text"><strong>Когда идти на боссов:</strong> после первой сборки и вместе с командой. Один герой может выиграть драку, но не всегда успеет добежать домой живым.</p>
+            <p class="info-text"><strong>Кристаллы:</strong> это валюта для более серьёзных покупок. Её тоже не стоит сливать в первый попавшийся эффект.</p>
+            <p class="info-text"><strong>ModeGoldLoss:</strong> если режим включён, смерть от вражеского героя бьёт по экономике. В таком матче лишний раз не размениваться на пустой риск — это уже часть игры, а не ошибка интерфейса.</p>
+        </div>
 
-            <!-- 3. Темп игры -->
-            <div class="mechanic-card">
-                <div class="mechanic-icon" style="background:#1a1a2a; border:1px solid #55aaff44; color:#55aaff;">
-                    <i class="fas fa-piggy-bank"></i>
-                </div>
-                <h3>Темп игры</h3>
-                <p><strong>Источники золота:</strong> крипы дают стабильный доход, убийства героев — основной рывок, боссы — командную награду и редкий дроп.</p>
-                <p><strong>Когда идти на боссов:</strong> после первой сборки и вместе с командой. Один герой может выиграть драку, но не всегда успеет добежать домой живым.</p>
-                <p><strong>Кристаллы:</strong> это валюта для более серьёзных покупок. Её тоже не стоит сливать в первый попавшийся эффект.</p>
-                <p><strong>ModeGoldLoss:</strong> если режим включён, смерть от вражеского героя бьёт по экономике. В таком матче лишний раз не размениваться на пустой риск — это уже часть игры, а не ошибка интерфейса.</p>
-            </div>
+        <!-- 4. Бой и позиционирование -->
+        <div class="info-section">
+            <h2 class="section-title"><i class="fas fa-crosshairs"></i> Бой и позиционирование</h2>
+            <p class="info-text"><strong>Мили vs ренж:</strong> мили-герои чаще играют в лоб, ренж — держат дистанцию и давят с безопасного расстояния. Это напрямую влияет на то, как работает баш, урон и выживаемость.</p>
+            <p class="info-text"><strong>Вампиризм:</strong> физический работает от автоатак, магический — от заклинаний. Это разные механики, и считать их нужно отдельно.</p>
+            <p class="info-text"><strong>Когда отступать:</strong> если на тебе стаки урона или эффект на снижение лечения, не пытайся «дожать на характере» — лучше отойти и вернуться живым.</p>
+            <p class="info-text"><strong>Контроль:</strong> оглушение, замедление и безмолвие решают драки сильнее, чем кажется. Иногда один удачный контроль важнее, чем ещё один предмет на урон.</p>
+        </div>
 
-            <!-- 4. Бой и позиционирование -->
-            <div class="mechanic-card">
-                <div class="mechanic-icon" style="background:#2a0a1a; border:1px solid #ff555544; color:#ff5555;">
-                    <i class="fas fa-crosshairs"></i>
-                </div>
-                <h3>Бой и позиционирование</h3>
-                <p><strong>Мили vs ренж:</strong> мили-герои чаще играют в лоб, ренж — держат дистанцию и давят с безопасного расстояния. Это напрямую влияет на то, как работает баш, урон и выживаемость.</p>
-                <p><strong>Вампиризм:</strong> физический работает от автоатак, магический — от заклинаний. Это разные механики, и считать их нужно отдельно.</p>
-                <p><strong>Когда отступать:</strong> если на тебе стаки урона или эффект на снижение лечения, не пытайся «дожать на характере» — лучше отойти и вернуться живым.</p>
-                <p><strong>Контроль:</strong> оглушение, замедление и безмолвие решают драки сильнее, чем кажется. Иногда один удачный контроль важнее, чем ещё один предмет на урон.</p>
-            </div>
+        <!-- 5. Продвинутые механики -->
+        <div class="info-section">
+            <h2 class="section-title"><i class="fas fa-hat-wizard"></i> Продвинутые механики</h2>
+            <p class="info-text"><strong>Удача:</strong> повышает шанс случайных эффектов вроде крита, оглушения и уклонения. Чем выше базовый шанс, тем заметнее рост.</p>
+            <p class="info-text"><strong>Магический крит:</strong> отдельный множитель для заклинаний. Он живёт своей жизнью и не обязан совпадать с физическим критом.</p>
+            <p class="info-text"><strong>Сложение защит:</strong> бонусы такого типа часто складываются не в лоб, а по формуле. Два предмета по 20% могут дать меньше, чем кажется на глаз.</p>
+            <p class="info-text"><strong>Блок и возврат:</strong> блок урона лучше воспринимать как шанс спасти себя в нужный момент, а возврат — как наказание за лишнюю жадность врага.</p>
+            <p class="info-text" style="font-size:0.85rem; color:#6b7c99; margin-top:8px;"><i class="fas fa-calculator"></i> Подробные формулы и калькуляторы — на странице <a href="mechanics.html" style="color:#00e6ff;">Механики</a>.</p>
+        </div>
 
-            <!-- 5. Продвинутые механики -->
-            <div class="mechanic-card">
-                <div class="mechanic-icon" style="background:#1a0a2a; border:1px solid #bf7fff44; color:#bf7fff;">
-                    <i class="fas fa-hat-wizard"></i>
-                </div>
-                <h3>Продвинутые механики</h3>
-                <p><strong>Удача:</strong> повышает шанс случайных эффектов вроде крита, оглушения и уклонения. Чем выше базовый шанс, тем заметнее рост.</p>
-                <p><strong>Магический крит:</strong> отдельный множитель для заклинаний. Он живёт своей жизнью и не обязан совпадать с физическим критом.</p>
-                <p><strong>Сложение защит:</strong> бонусы такого типа часто складываются не в лоб, а по формуле. Два предмета по 20% могут дать меньше, чем кажется на глаз.</p>
-                <p><strong>Блок и возврат:</strong> блок урона лучше воспринимать как шанс спасти себя в нужный момент, а возврат — как наказание за лишнюю жадность врага.</p>
-            </div>
-
-            <!-- 6. Ошибки новичка -->
-            <div class="mechanic-card">
-                <div class="mechanic-icon" style="background:#2a1010; border:1px solid #ff555544; color:#ff7777;">
-                    <i class="fas fa-triangle-exclamation"></i>
-                </div>
-                <h3>Ошибки новичка</h3>
-                <p><strong>Не бери дорогой «красивый» предмет первым.</strong> В Legend of Worlds сила приходит не от цены, а от правильного темпа.</p>
-                <p><strong>Не лезь в боссов один.</strong> Почти все сильные награды здесь рассчитаны на команду, а не на геройский одиночный забег.</p>
-                <p><strong>Не стой на базе слишком долго.</strong> Арена Даро любит тех, кто выходит в поле, фармит и вовремя нажимает на силу.</p>
-                <p><strong>Проверяй предметы перед закупом.</strong> Если не уверен, загляни в раздел предметов — там уже есть готовые теги, сборки и подсказки.</p>
-            </div>
-
+        <!-- 6. Ошибки новичка -->
+        <div class="info-section">
+            <h2 class="section-title"><i class="fas fa-triangle-exclamation" style="color:#ff7777;"></i> Ошибки новичка</h2>
+            <ul class="info-list">
+                <li><i class="fas fa-times-circle" style="color:#ff5555;"></i> <strong>Не бери дорогой «красивый» предмет первым.</strong> В Legend of Worlds сила приходит не от цены, а от правильного темпа.</li>
+                <li><i class="fas fa-times-circle" style="color:#ff5555;"></i> <strong>Не лезь в боссов один.</strong> Почти все сильные награды здесь рассчитаны на команду, а не на геройский одиночный забег.</li>
+                <li><i class="fas fa-times-circle" style="color:#ff5555;"></i> <strong>Не стой на базе слишком долго.</strong> Арена Даро любит тех, кто выходит в поле, фармит и вовремя нажимает на силу.</li>
+                <li><i class="fas fa-times-circle" style="color:#ff5555;"></i> <strong>Проверяй предметы перед закупом.</strong> Если не уверен, загляни в раздел предметов — там уже есть готовые теги, сборки и подсказки.</li>
+            </ul>
         </div>
 
         <div style="margin-top:32px; text-align:center;">

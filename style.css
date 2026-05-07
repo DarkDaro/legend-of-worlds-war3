@@ -3621,6 +3621,19 @@ body.page-calculator {
         radial-gradient(circle at 50% 80%, #182530 0%, #05070a 100%);
 }
 
+body.page-guides,
+body.page-info,
+body.page-support,
+body.page-updates,
+body.page-changelog,
+body.page-modes,
+body.page-faq,
+body.page-compare {
+    background-image:
+        radial-gradient(ellipse at 50% 50%, rgba(0, 230, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 30% 10%, #1a2230 0%, #05070a 100%);
+}
+
 /* ===== Калькулятор сборок ===== */
 
 .calc-intro {
