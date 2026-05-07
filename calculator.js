@@ -514,7 +514,18 @@ function copyShareUrl() {
 
 function loadFromUrl() {
     const params = new URLSearchParams(window.location.search);
+    const heroParam = params.get('hero');
     const itemsParam = params.get('items');
+
+    // Показать имя героя, если передано
+    if (heroParam && typeof heroBuilds !== 'undefined' && heroBuilds[heroParam]) {
+        const heroName = heroBuilds[heroParam].name || heroParam;
+        const h1 = document.querySelector('h1');
+        if (h1) h1.innerHTML = '<i class="fas fa-calculator"></i> Сборка: ' + heroName;
+        const heroSelect = document.getElementById('calcHeroSelect');
+        if (heroSelect) heroSelect.value = heroParam;
+    }
+
     if (!itemsParam) return false;
     const ids = itemsParam.split(',').filter(id => itemsDB[id]);
     if (ids.length === 0) return false;
