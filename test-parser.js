@@ -188,7 +188,14 @@ const unitTests = [
   // Граничные случаи
   { desc: '',    expect: {} },
   { desc: null,  expect: {} },
-  { desc: '10% вампиризм (Орб. эффект)', expect: {} },
+  { desc: '10% вампиризм (Орб. эффект)', expect: { vampirismPct: 10 } },
+  { desc: '+5% магический вампиризм (на урон >10)', expect: { magicVampirismPct: 5 } },
+  { desc: '+5% магический блок (на урон >10)', expect: { magicBlockPct: 5 } },
+  { desc: '+10% сопротивление к оглушению', expect: { stunResistPct: 10 } },
+  { desc: '+15% сопротивление к сожжению маны', expect: { manaBurnResistPct: 15 } },
+  { desc: 'Аура защиты 2 ед. (пассив)', expect: { auraArmor: 2 } },
+  { desc: 'Аура скорости (5% AS, 10% MS)', expect: { auraAttackSpeedPct: 5, auraMoveSpeedPct: 10 } },
+  { desc: '+50% восстановления маны', expect: { manaRegenPct: 50 } },
   { desc: 'Используется для сборки.',   expect: {} },
 ];
 

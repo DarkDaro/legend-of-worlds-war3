@@ -1126,6 +1126,14 @@ function renderParsedBonuses(item) {
   addChip('Крит. шанс', bonus.critChancePct, '%');
   addChip('Крит. урон', bonus.critDamagePct, '%');
   addChip('Урон заклинаний', bonus.spellDamagePct, '%');
+  addChip('Вампиризм', bonus.vampirismPct, '%');
+  addChip('Маг. вампиризм', bonus.magicVampirismPct, '%');
+  addChip('Маг. блок', bonus.magicBlockPct, '%');
+  addChip('Стан-резист', bonus.stunResistPct, '%');
+  addChip('Мана-бёрн резист', bonus.manaBurnResistPct, '%');
+  addChip('Аура брони', bonus.auraArmor);
+  addChip('Аура AS', bonus.auraAttackSpeedPct, '%');
+  addChip('Аура MS', bonus.auraMoveSpeedPct, '%');
   addChip('Скорость атаки', bonus.attackSpeedPct, '%');
   addChip('Скорость бега', bonus.movementSpeedFlat);
   addChip('Скорость бега', bonus.movementSpeedPct, '%');

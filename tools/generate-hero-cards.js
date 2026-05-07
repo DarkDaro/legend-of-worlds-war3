@@ -19,6 +19,12 @@ const DEFAULT_OUTPUT_DIR = 'generated-heroes';
     attribute: 'Сила',
     attributeColor: '#ff5555',
     range: 'Ближний бой (150)',
+    hp: '—',
+    mp: '—',
+    atk: '—',
+    def: '—',
+    atkSpeed: '—',
+    hpRegen: '—',
     speed: 280,
     roleLabel: 'Танк',
     roleClass: 'role-tank',
@@ -302,6 +308,12 @@ function renderHeroPage(hero) {
             <div class="hero-stats">
                 <div class="stat-item"><i class="fas fa-crosshairs"></i> ${escapeHtml(hero.range)}</div>
                 <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:${escapeHtml(hero.attributeColor)};">${escapeHtml(hero.attribute)}</span></div>
+                <div class="stat-item"><i class="fas fa-heart"></i> Жизни: ${escapeHtml(hero.hp || '—')}</div>
+                <div class="stat-item"><i class="fas fa-tint"></i> Мана: ${escapeHtml(hero.mp || '—')}</div>
+                <div class="stat-item"><i class="fas fa-fist-raised"></i> Атака: ${escapeHtml(hero.atk || '—')}</div>
+                <div class="stat-item"><i class="fas fa-shield-alt"></i> Защита: ${escapeHtml(hero.def || '—')}</div>
+                <div class="stat-item"><i class="fas fa-clock"></i> Скорость атаки: ${escapeHtml(hero.atkSpeed || '—')}</div>
+                <div class="stat-item"><i class="fas fa-heartbeat"></i> Реген. здоровья: ${escapeHtml(hero.hpRegen || '—')}</div>
                 <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: ${escapeHtml(hero.speed)}</div>
                 <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="${escapeHtml(hero.roleClass)}">${escapeHtml(hero.roleLabel)}</span></div>
             </div>
