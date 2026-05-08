@@ -16,6 +16,47 @@
     <script src="items-db.js" defer></script>
     <script src="icon-loader.js" defer></script>
     <script src="analytics.js" defer></script>
+    <style>
+        .modes-promo-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin: 24px auto 32px;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, #00e5ff22, #00e5ff11);
+            border: 2px solid #00e5ff;
+            border-radius: 12px;
+            color: #00e5ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            max-width: 400px;
+        }
+        .modes-promo-btn:hover {
+            background: linear-gradient(135deg, #00e5ff33, #00e5ff22);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 229, 255, 0.3);
+        }
+        .modes-promo-btn i {
+            font-size: 1.8rem;
+            margin-bottom: 4px;
+        }
+        .modes-promo-btn span {
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+        .modes-promo-btn small {
+            font-size: 0.82rem;
+            color: #8aa0c0;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            .modes-promo-btn { padding: 16px 24px; margin: 20px 12px 28px; }
+            .modes-promo-btn i { font-size: 1.5rem; }
+            .modes-promo-btn span { font-size: 1rem; }
+        }
+    </style>
 </head>
 <body class="page-info">
     <header class="site-header">
@@ -128,6 +169,13 @@
                 </div>
             </div>
         </div>
+
+        <!-- Кнопка на режимы -->
+        <a href="modes.html" class="modes-promo-btn">
+            <i class="fas fa-gamepad"></i>
+            <span>Игровые режимы</span>
+            <small>9 уникальных режимов: от классического до хаоса</small>
+        </a>
 
         <!-- Как установить -->
         <div class="info-section">
