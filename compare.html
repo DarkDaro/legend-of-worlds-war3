@@ -257,6 +257,90 @@
             color: #1a3a5c;
         }
 
+        /* ── Мобильные карточки (≤700px) ── */
+        .compare-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .compare-card {
+            background: #0a1628;
+            border: 1px solid #1a3a5c;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .compare-card-header {
+            padding: 12px 14px 8px;
+            border-bottom: 1px solid #1a3a5c;
+            background: #0d1f35;
+        }
+        .compare-card-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #e0e8f0;
+            text-decoration: none;
+        }
+        .compare-card-name:hover { color: #00e5ff; }
+        .compare-card-attr {
+            font-size: 0.72rem;
+            margin-top: 2px;
+        }
+        .compare-card-build {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 6px;
+        }
+        .compare-card-body {
+            padding: 4px 0;
+        }
+        .compare-card-section {
+            padding: 6px 14px 2px;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #3a5a7a;
+            border-bottom: 1px solid #1a3a5c;
+            background: #0d1a2a;
+        }
+        .compare-card-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 14px;
+            border-bottom: 1px solid #111e30;
+            font-size: 0.8rem;
+        }
+        .compare-card-row:last-child { border-bottom: none; }
+        .compare-card-label {
+            color: #5a7a9a;
+            font-size: 0.76rem;
+        }
+        .compare-card-value {
+            color: #c0d0e0;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .compare-card-bar {
+            width: 40px;
+            height: 4px;
+            background: #111e30;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .compare-card-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: #1a5a7a;
+            transition: width 0.3s ease;
+        }
+        .compare-card-row.card-best .compare-card-value { color: #00e5ff; font-weight: 600; }
+        .compare-card-row.card-best .compare-card-bar-fill { background: #00e5ff; }
+        .compare-card-row.card-worst .compare-card-value { color: #5a5a7a; }
+        .compare-card-row.card-worst .compare-card-bar-fill { background: #2a2a3a; }
+
         /* ── Мобильная адаптация ── */
         @media (max-width: 800px) {
             .compare-controls {
@@ -555,7 +639,20 @@ if (document.readyState === 'loading') {
     initComparePage();
 }
 
+// Перерендер при смене размера экрана (десктоп ↔ мобильный)
+var COMPARE_RESIZE_TIMER = null;
+window.addEventListener('resize', function() {
+    clearTimeout(COMPARE_RESIZE_TIMER);
+    COMPARE_RESIZE_TIMER = setTimeout(function() {
+        var wasMobile = COMPARE_MOBILE;
+        COMPARE_MOBILE = window.innerWidth <= 700;
+        if (wasMobile !== COMPARE_MOBILE) renderComparison();
+    }, 200);
+});
+
 // ── Рендер таблицы ──
+var COMPARE_MOBILE = window.innerWidth <= 700;
+
 function renderComparison() {
     var ids = SELECT_IDS.map(function(id) { return document.getElementById(id).value; }).filter(Boolean);
     var container = document.getElementById('compareResult');
@@ -576,9 +673,132 @@ function renderComparison() {
     level = Math.max(1, Math.min(500, level));
     levelInput.value = level;
 
+    if (COMPARE_MOBILE) {
+        renderMobileCards(container, heroes, level);
+    } else {
+        renderDesktopTable(container, heroes, level);
+    }
+}
+
+// ── Мобильные карточки ──
+function renderMobileCards(container, heroes, level) {
     var ATTR_COLORS = { strength: '#ff5555', agility: '#55ff55', intelligence: '#55aaff' };
 
-    // Заголовок
+    // Собираем все строки данных для подсветки best/worst
+    var rows = buildCompareRows(heroes, level);
+
+    var html = '<div class="compare-cards">';
+    heroes.forEach(function(h, hi) {
+        var ac = ATTR_COLORS[h.attr] || '#8aa0c0';
+        html += '<div class="compare-card">';
+        html += '<div class="compare-card-header">';
+        html += '<a href="heroes/' + h.id + '.html" class="compare-card-name">' + getCompareHeroLabel(h) + '</a>';
+        html += '<div class="compare-card-attr" style="color:' + ac + '">' + h.attrLabel + ' · ' + h.role + '</div>';
+        html += renderCompareBuildItems(h.id);
+        html += '</div>';
+        html += '<div class="compare-card-body">';
+
+        var currentSection = '';
+        rows.forEach(function(row) {
+            if (row.section) {
+                html += '<div class="compare-card-section">' + row.label + '</div>';
+                currentSection = row.label;
+                return;
+            }
+            var v = row.values[hi];
+            var cls = '';
+            if (row.isNumeric && !row.allSame && heroes.length > 1) {
+                if (v === row.max) cls = 'card-best';
+                else if (v === row.min) cls = 'card-worst';
+            }
+            html += '<div class="compare-card-row ' + cls + '">';
+            html += '<span class="compare-card-label">' + row.label + '</span>';
+            html += '<span class="compare-card-value">';
+            if (row.showBar && row.isNumeric && row.max > 0) {
+                var pct = Math.round((v / row.max) * 100);
+                html += '<span>' + v + '</span><div class="compare-card-bar"><div class="compare-card-bar-fill" style="width:' + pct + '%"></div></div>';
+            } else {
+                html += '' + v;
+            }
+            html += '</span></div>';
+        });
+
+        html += '</div></div>';
+    });
+    html += '</div>';
+    container.innerHTML = html;
+}
+
+// ── Общие данные строк (для best/worst в обоих режимах) ──
+function buildCompareRows(heroes, level) {
+    var rows = [];
+
+    rows.push({ section: true, label: 'Атрибуты с предметами на уровне ' + level });
+    pushStatRow(rows, 'Сила', heroes, function(h) { return Math.round(getAttrTotalWithBuild(h, 'strength', level)); }, true);
+    pushStatRow(rows, 'Ловкость', heroes, function(h) { return Math.round(getAttrTotalWithBuild(h, 'agility', level)); }, true);
+    pushStatRow(rows, 'Разум', heroes, function(h) { return Math.round(getAttrTotalWithBuild(h, 'intelligence', level)); }, true);
+
+    rows.push({ section: true, label: 'Боевые статы с предметами на уровне ' + level });
+    pushStatRow(rows, 'Жизни', heroes, function(h) { return calcStat(h, 'hp', 'strength', level, 20); }, true);
+    pushStatRow(rows, 'Мана', heroes, function(h) { return calcStat(h, 'mp', 'intelligence', level, 15); }, true);
+    pushStatRow(rows, 'Урон', heroes, function(h) { return getAttackTotal(h, level); }, true);
+    pushStatRow(rows, 'Броня', heroes, function(h) { return getArmorTotal(h, level); }, true);
+    pushStatRow(rows, 'Снижение урона от брони', heroes, function(h) {
+        var armor = getArmorTotal(h, level);
+        var reduction = (armor * GAME_CONSTANTS.ARMOR_C) / (1 + armor * GAME_CONSTANTS.ARMOR_C);
+        return (reduction * 100).toFixed(1) + '%';
+    }, false);
+    pushStatRow(rows, 'Скорость атаки', heroes, function(h) { return getAttackSpeed(h, level); }, true);
+    pushStatRow(rows, 'Скорость передвижения', heroes, function(h) { return getMovementSpeed(h, level); }, false);
+    pushStatRow(rows, 'Дальность атаки', heroes, function(h) { return h.stats.range == 128 ? 'Ближний' : h.stats.range; }, false);
+    pushStatRow(rows, 'Реген. здоровья', heroes, function(h) {
+        return +((h.stats.hpRegen || 0) + getAttrTotalWithBuild(h, 'strength', level) * GAME_CONSTANTS.STR_HP_REGEN_FACTOR).toFixed(2);
+    }, true);
+    pushStatRow(rows, 'Реген. маны', heroes, function(h) {
+        return +((h.stats.mpRegen || GAME_CONSTANTS.MP_REGEN_BASE) + getAttrTotalWithBuild(h, 'intelligence', level) * GAME_CONSTANTS.INT_MP_REGEN_FACTOR).toFixed(2);
+    }, true);
+
+    rows.push({ section: true, label: 'Прирост за уровень' });
+    pushStatRow(rows, 'Сила', heroes, function(h) {
+        var total = Math.round(h.stats.strBase + h.stats.strGain * (level - 1));
+        return h.stats.strBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.strGain + '</span> <span style="color:#5a7a9a;font-size:0.72rem;">(' + total + ')</span>';
+    }, false);
+    pushStatRow(rows, 'Ловкость', heroes, function(h) {
+        var total = Math.round(h.stats.agiBase + h.stats.agiGain * (level - 1));
+        return h.stats.agiBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.agiGain + '</span> <span style="color:#5a7a9a;font-size:0.72rem;">(' + total + ')</span>';
+    }, false);
+    pushStatRow(rows, 'Разум', heroes, function(h) {
+        var total = Math.round(h.stats.intBase + h.stats.intGain * (level - 1));
+        return h.stats.intBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.intGain + '</span> <span style="color:#5a7a9a;font-size:0.72rem;">(' + total + ')</span>';
+    }, false);
+
+    return rows;
+}
+
+function pushStatRow(rows, label, heroes, valueFn, showBar) {
+    var values = heroes.map(function(h) { return typeof valueFn(h) === 'number' ? valueFn(h) : null; });
+    var numericValues = values.filter(function(v) { return v !== null; });
+    var max = numericValues.length ? Math.max.apply(null, numericValues) : 0;
+    var min = numericValues.length ? Math.min.apply(null, numericValues) : 0;
+    var allSame = max === min;
+    var isNumeric = numericValues.length > 0;
+
+    rows.push({
+        section: false,
+        label: label,
+        values: heroes.map(function(h) { return valueFn(h); }),
+        max: max,
+        min: min,
+        allSame: allSame,
+        isNumeric: isNumeric,
+        showBar: showBar
+    });
+}
+
+// ── Десктопная таблица (без изменений) ──
+function renderDesktopTable(container, heroes, level) {
+    var ATTR_COLORS = { strength: '#ff5555', agility: '#55ff55', intelligence: '#55aaff' };
+
     var html = '<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>Параметр</th>';
     heroes.forEach(function(h) {
         var ac = ATTR_COLORS[h.attr] || '#8aa0c0';
@@ -590,61 +810,32 @@ function renderComparison() {
     });
     html += '</tr></thead><tbody>';
 
-    // ── Атрибуты ──
-    html += sectionRow('Атрибуты с предметами на уровне ' + level);
-    html += statRow('Сила', heroes, function(h) {
-        return Math.round(getAttrTotalWithBuild(h, 'strength', level));
-    }, true);
-    html += statRow('Ловкость', heroes, function(h) {
-        return Math.round(getAttrTotalWithBuild(h, 'agility', level));
-    }, true);
-    html += statRow('Разум', heroes, function(h) {
-        return Math.round(getAttrTotalWithBuild(h, 'intelligence', level));
-    }, true);
-
-    // ── Статы ──
-    html += sectionRow('Боевые статы с предметами на уровне ' + level);
-    html += statRow('Жизни', heroes, function(h) { return calcStat(h, 'hp', 'strength', level, 20); }, true);
-    html += statRow('Мана', heroes, function(h) { return calcStat(h, 'mp', 'intelligence', level, 15); }, true);
-    html += statRow('Урон', heroes, function(h) {
-        return getAttackTotal(h, level);
-    }, true);
-    html += statRow('Броня', heroes, function(h) {
-        return getArmorTotal(h, level);
-    }, true);
-    html += statRow('Снижение урона от брони', heroes, function(h) {
-        var armor = getArmorTotal(h, level);
-        var reduction = (armor * GAME_CONSTANTS.ARMOR_C) / (1 + armor * GAME_CONSTANTS.ARMOR_C);
-        return (reduction * 100).toFixed(1) + '%';
-    }, false);
-    html += statRow('Скорость атаки', heroes, function(h) {
-        return getAttackSpeed(h, level);
-    }, true);
-    html += statRow('Скорость передвижения', heroes, function(h) {
-        return getMovementSpeed(h, level);
-    }, false);
-    html += statRow('Дальность атаки', heroes, function(h) { return h.stats.range == 128 ? 'Ближний' : h.stats.range; }, false);
-    html += statRow('Реген. здоровья', heroes, function(h) {
-        return +((h.stats.hpRegen || 0) + getAttrTotalWithBuild(h, 'strength', level) * GAME_CONSTANTS.STR_HP_REGEN_FACTOR).toFixed(2);
-    }, true);
-    html += statRow('Реген. маны', heroes, function(h) {
-        return +((h.stats.mpRegen || GAME_CONSTANTS.MP_REGEN_BASE) + getAttrTotalWithBuild(h, 'intelligence', level) * GAME_CONSTANTS.INT_MP_REGEN_FACTOR).toFixed(2);
-    }, true);
-
-    // ── Прирост ──
-    html += sectionRow('Прирост за уровень');
-    html += statRow('Сила', heroes, function(h) {
-        var total = Math.round(h.stats.strBase + h.stats.strGain * (level - 1));
-        return h.stats.strBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.strGain + '</span> <span style="color:#5a7a9a;font-size:0.72rem;">(' + total + ')</span>';
-    }, false);
-    html += statRow('Ловкость', heroes, function(h) {
-        var total = Math.round(h.stats.agiBase + h.stats.agiGain * (level - 1));
-        return h.stats.agiBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.agiGain + '</span> <span style="color:#5a7a9a;font-size:0.72rem;">(' + total + ')</span>';
-    }, false);
-    html += statRow('Разум', heroes, function(h) {
-        var total = Math.round(h.stats.intBase + h.stats.intGain * (level - 1));
-        return h.stats.intBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.intGain + '</span> <span style="color:#5a7a9a;font-size:0.72rem;">(' + total + ')</span>';
-    }, false);
+    var rows = buildCompareRows(heroes, level);
+    rows.forEach(function(row) {
+        if (row.section) {
+            html += sectionRow(row.label);
+            return;
+        }
+        html += '<tr><td>' + row.label + '</td>';
+        heroes.forEach(function(h, i) {
+            var v = row.values[i];
+            var cls = '';
+            if (row.isNumeric && !row.allSame && heroes.length > 1) {
+                if (v === row.max) cls = 'stat-best';
+                else if (v === row.min) cls = 'stat-worst';
+            }
+            if (row.showBar && row.isNumeric && row.max > 0) {
+                var pct = Math.round((v / row.max) * 100);
+                html += '<td class="' + cls + '"><div class="stat-bar-wrap">'
+                    + '<span class="stat-bar-value">' + v + '</span>'
+                    + '<div class="stat-bar"><div class="stat-bar-fill" style="width:' + pct + '%"></div></div>'
+                    + '</div></td>';
+            } else {
+                html += '<td class="' + cls + '">' + v + '</td>';
+            }
+        });
+        html += '</tr>';
+    });
 
     html += '</tbody></table></div>';
     container.innerHTML = html;
@@ -767,37 +958,7 @@ function sectionRow(label) {
     return '<tr class="section-row"><td colspan="10">' + label + '</td></tr>';
 }
 
-// ── Строка с полоской-баром ──
-function statRow(label, heroes, valueFn, showBar) {
-    var values = heroes.map(function(h) { return typeof valueFn(h) === 'number' ? valueFn(h) : null; });
-    var numericValues = values.filter(function(v) { return v !== null; });
-    var max = numericValues.length ? Math.max.apply(null, numericValues) : 0;
-    var min = numericValues.length ? Math.min.apply(null, numericValues) : 0;
-    var allSame = max === min;
 
-    var html = '<tr><td>' + label + '</td>';
-    heroes.forEach(function(h, i) {
-        var v = valueFn(h);
-        var isNumeric = typeof v === 'number';
-        var cls = '';
-        if (isNumeric && !allSame && numericValues.length > 1) {
-            if (v === max) cls = 'stat-best';
-            else if (v === min) cls = 'stat-worst';
-        }
-
-        if (showBar && isNumeric && max > 0) {
-            var pct = Math.round((v / max) * 100);
-            html += '<td class="' + cls + '"><div class="stat-bar-wrap">'
-                + '<span class="stat-bar-value">' + v + '</span>'
-                + '<div class="stat-bar"><div class="stat-bar-fill" style="width:' + pct + '%"></div></div>'
-                + '</div></td>';
-        } else {
-            html += '<td class="' + cls + '">' + v + '</td>';
-        }
-    });
-    html += '</tr>';
-    return html;
-}
 </script>
 </body>
 </html>
