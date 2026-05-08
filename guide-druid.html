@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ДЕМО] Гайд: Друид · Legend of Worlds</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .guide-hero-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 28px;
+            padding: 20px;
+            background: #0a1628;
+            border: 1px solid #1a3a5c;
+            border-radius: 12px;
+        }
+        .guide-hero-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            border: 2px solid #2a5070;
+            object-fit: cover;
+        }
+        .guide-hero-info h1 {
+            font-size: 1.6rem;
+            margin: 0 0 4px;
+            color: #e0e8f0;
+        }
+        .guide-hero-role {
+            font-size: 0.88rem;
+            color: #8aa0c0;
+        }
+        .guide-hero-role .role-support {
+            color: #55ff88;
+            font-weight: 600;
+        }
+        .guide-section {
+            background: #0a1628;
+            border: 1px solid #1a3a5c;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .guide-section h2 {
+            font-size: 1.1rem;
+            margin: 0 0 16px;
+            color: #e0e8f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .guide-section h2 i {
+            color: #00e5ff;
+        }
+        .guide-ability-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.84rem;
+            margin-bottom: 8px;
+        }
+        .guide-ability-table th {
+            text-align: left;
+            padding: 8px 10px;
+            background: #0d1f35;
+            border-bottom: 1px solid #1a3a5c;
+            color: #8aa0c0;
+            font-weight: 600;
+        }
+        .guide-ability-table td {
+            padding: 7px 10px;
+            border-bottom: 1px solid #111e30;
+            color: #c0d0e0;
+        }
+        .guide-ability-table tr:last-child td { border-bottom: none; }
+        .guide-ability-table .hotkey {
+            display: inline-block;
+            background: #1a3a5c;
+            color: #00e5ff;
+            font-weight: 700;
+            font-size: 0.78rem;
+            padding: 1px 7px;
+            border-radius: 4px;
+            min-width: 22px;
+            text-align: center;
+        }
+        .guide-ability-table .dispellable {
+            color: #ff7777;
+            font-size: 0.72rem;
+        }
+        .guide-priority {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #e0e8f0;
+            margin-bottom: 12px;
+        }
+        .guide-priority .arrow { color: #00e5ff; }
+        .guide-priority-explain {
+            font-size: 0.88rem;
+            color: #8aa0c0;
+            line-height: 1.6;
+        }
+        .guide-combo {
+            background: #091421;
+            border: 1px solid #1a3a5c;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 14px;
+        }
+        .guide-combo h3 {
+            font-size: 0.92rem;
+            margin: 0 0 8px;
+            color: #e0e8f0;
+        }
+        .guide-combo-sequence {
+            font-size: 0.88rem;
+            color: #00e5ff;
+            font-family: monospace;
+            margin-bottom: 6px;
+        }
+        .guide-combo-desc {
+            font-size: 0.84rem;
+            color: #8aa0c0;
+            line-height: 1.5;
+        }
+        .guide-buy-phase {
+            margin-bottom: 18px;
+        }
+        .guide-buy-phase h3 {
+            font-size: 0.92rem;
+            margin: 0 0 8px;
+            color: #e0e8f0;
+        }
+        .guide-buy-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .guide-buy-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #091421;
+            border: 1px solid #1a3a5c;
+            border-radius: 6px;
+            padding: 5px 10px;
+            font-size: 0.82rem;
+            color: #c0d0e0;
+        }
+        .guide-buy-item i { color: #00e5ff; }
+        .guide-buy-note {
+            font-size: 0.82rem;
+            color: #8aa0c0;
+            line-height: 1.5;
+        }
+        .guide-key-item {
+            background: #0d1f35;
+            border: 1px solid #00e5ff33;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-top: 14px;
+        }
+        .guide-key-item h3 {
+            font-size: 0.92rem;
+            margin: 0 0 6px;
+            color: #00e5ff;
+        }
+        .guide-key-item p {
+            font-size: 0.84rem;
+            color: #c0d0e0;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .guide-synergy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .guide-synergy-card {
+            background: #091421;
+            border: 1px solid #1a3a5c;
+            border-radius: 8px;
+            padding: 12px;
+        }
+        .guide-synergy-card.ally { border-left: 3px solid #55ff88; }
+        .guide-synergy-card.enemy { border-left: 3px solid #ff5555; }
+        .guide-synergy-name {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #e0e8f0;
+            margin-bottom: 4px;
+        }
+        .guide-synergy-reason {
+            font-size: 0.78rem;
+            color: #8aa0c0;
+            line-height: 1.4;
+        }
+        .guide-mistakes-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .guide-mistakes-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #111e30;
+            font-size: 0.86rem;
+            color: #c0d0e0;
+            line-height: 1.5;
+        }
+        .guide-mistakes-list li:last-child { border-bottom: none; }
+        .guide-mistakes-list li strong {
+            color: #ff7777;
+        }
+        .guide-mistakes-num {
+            display: inline-block;
+            background: #ff555522;
+            color: #ff7777;
+            font-weight: 700;
+            font-size: 0.72rem;
+            padding: 1px 7px;
+            border-radius: 4px;
+            margin-right: 6px;
+        }
+        .guide-position-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .guide-position-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #111e30;
+            font-size: 0.86rem;
+            color: #c0d0e0;
+            line-height: 1.5;
+        }
+        .guide-position-list li:last-child { border-bottom: none; }
+        .guide-position-list li strong { color: #e0e8f0; }
+        @media (max-width: 700px) {
+            .guide-hero-header { flex-direction: column; text-align: center; gap: 12px; }
+            .guide-synergy-grid { grid-template-columns: 1fr; }
+            .guide-hero-icon { width: 64px; height: 64px; }
+        }
+    </style>
+</head>
+<body class="page-guides">
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="guides.html">Гайды</a><span class="sep">›</span><span class="current">Друид</span></div>
+
+        <div class="guide-hero-header">
+            <img src="images/heroes/druid.png" alt="Друид" class="guide-hero-icon" />
+            <div class="guide-hero-info">
+                <h1>Друид — Сильвестр</h1>
+                <div class="guide-hero-role">Сила · <span class="role-support">Саппорт-целитель</span></div>
+            </div>
+        </div>
+
+        <!-- Способности -->
+        <div class="guide-section">
+            <h2><i class="fas fa-magic"></i> Способности</h2>
+            <table class="guide-ability-table">
+                <tr><th>Клавиша</th><th>Название</th><th>Тип</th><th>Развеивается</th></tr>
+                <tr><td><span class="hotkey">Q</span></td><td>Звериный рёв</td><td>Активная</td><td>Нет</td></tr>
+                <tr><td><span class="hotkey">W</span></td><td>Вороны</td><td>Активная</td><td>Нет</td></tr>
+                <tr><td><span class="hotkey">E</span></td><td>Омоложение</td><td>Активная</td><td><span class="dispellable">⚠ Да</span></td></tr>
+                <tr><td><span class="hotkey">R</span></td><td>Покой</td><td>Ультимейт</td><td><span class="dispellable">⚠ Да</span></td></tr>
+                <tr><td><span class="hotkey">F</span></td><td>Кровожадность</td><td>Активная</td><td>Нет</td></tr>
+            </table>
+        </div>
+
+        <!-- Порядок прокачки -->
+        <div class="guide-section">
+            <h2><i class="fas fa-sort-amount-up"></i> Порядок прокачки</h2>
+            <div class="guide-priority">
+                <span class="hotkey">R</span> <span class="arrow">→</span>
+                <span class="hotkey">E</span> <span class="arrow">→</span>
+                <span class="hotkey">Q</span> <span class="arrow">→</span>
+                <span class="hotkey">W</span> <span class="arrow">→</span>
+                <span class="hotkey">F</span>
+            </div>
+            <div class="guide-priority-explain">
+                <strong>R (Покой)</strong> — ультимейт, главный переломный момент в драке. Максим первым.<br>
+                <strong>E (Омоложение)</strong> — основное лечение, чем выше уровень — тем больше % регена.<br>
+                <strong>Q (Звериный рёв)</strong> — бафф на атаку и защиту для команды + урон врагам.<br>
+                <strong>W (Вороны)</strong> — урон масштабируется от уровня, можно докачать позже.<br>
+                <strong>F (Кровожадность)</strong> — бафф фиксированный (+35% скорость боя, +15% бег), не растёт от уровня. Один пункт достаточно.
+            </div>
+        </div>
+
+        <!-- Комбо -->
+        <div class="guide-section">
+            <h2><i class="fas fa-bolt"></i> Комбо</h2>
+
+            <div class="guide-combo">
+                <h3>Инициация драки</h3>
+                <div class="guide-combo-sequence">F → Q → атака → R (если нужно лечение)</div>
+                <div class="guide-combo-desc">F даёт команде скорость для сближения, Q баффает урон и защиту, R — экстренное лечение если драка затяжная.</div>
+            </div>
+
+            <div class="guide-combo">
+                <h3>Спасение союзника</h3>
+                <div class="guide-combo-sequence">E → F (для отхода)</div>
+                <div class="guide-combo-desc">E лечит процент от макс. здоровья — чем больше жизней у цели, тем сильнее отхил. F помогает команде отступить.</div>
+            </div>
+
+            <div class="guide-combo">
+                <h3>Разведка</h3>
+                <div class="guide-combo-sequence">W → смотрим что в тумане</div>
+                <div class="guide-combo-desc">Вороны обнаруживают невидимых юнитов. Используй перед пушем базы или когда враг пропал с радара.</div>
+            </div>
+        </div>
+
+        <!-- Закуп -->
+        <div class="guide-section">
+            <h2><i class="fas fa-coins"></i> Что покупать</h2>
+
+            <div class="guide-buy-phase">
+                <h3>Ранняя игра (1–5 мин)</h3>
+                <div class="guide-buy-items">
+                    <span class="guide-buy-item"><i class="fas fa-fire"></i> Огненный щит</span>
+                    <span class="guide-buy-item"><i class="fas fa-key"></i> Золотой ключ</span>
+                </div>
+                <div class="guide-buy-note">Броня + урон аурой помогает выживать. Ключ ускоряет фарм.</div>
+            </div>
+
+            <div class="guide-buy-phase">
+                <h3>Мидгейм (5–15 мин)</h3>
+                <div class="guide-buy-items">
+                    <span class="guide-buy-item"><i class="fas fa-fire"></i> Сфера огня</span>
+                    <span class="guide-buy-item"><i class="fas fa-snowflake"></i> Сфера льда</span>
+                    <span class="guide-buy-item"><i class="fas fa-tint"></i> Мана / реген</span>
+                    <span class="guide-buy-item"><i class="fas fa-gem"></i> Скипетр Владыки</span>
+                </div>
+                <div class="guide-buy-note">Дополнительный урон с атаки. E и R стоят дорого — нужна мана. Скипетр ради 5% шанса сброса R.</div>
+            </div>
+
+            <div class="guide-buy-phase">
+                <h3>Лейтгейм (15+ мин)</h3>
+                <div class="guide-buy-items">
+                    <span class="guide-buy-item"><i class="fas fa-fist-raised"></i> Сила</span>
+                    <span class="guide-buy-item"><i class="fas fa-heart"></i> Вампиризм</span>
+                    <span class="guide-buy-item"><i class="fas fa-shield-alt"></i> Броня / блок</span>
+                </div>
+                <div class="guide-buy-note">R и Q масштабируются от STR. Вампиризм помогает жить в лоб. Предметы на выживаемость — друид уязвим.</div>
+            </div>
+
+            <div class="guide-key-item">
+                <h3><i class="fas fa-gem"></i> Ключевой предмет: Скипетр Владыки</h3>
+                <p>Ради 5% шанса мгновенного сброса R. Покой — 105 сек кулдаун. Каждый шанс использовать его дважды за драку — это огромно.</p>
+            </div>
+        </div>
+
+        <!-- Позиционирование -->
+        <div class="guide-section">
+            <h2><i class="fas fa-crosshairs"></i> Позиционирование</h2>
+            <ul class="guide-position-list">
+                <li><strong>Сзади команды.</strong> Друид — не танк. Баффы работают на расстоянии, а ты умираешь быстрее, чем кажется.</li>
+                <li><strong>Не стой вплотную к мили-дамагерам.</strong> Если враг прыгнет — у тебя нет эскейпа кроме F.</li>
+                <li><strong>Следи за диспелерами.</strong> E и R развеиваются. Если у врага есть Архимаг, Лич или кто-то с Purge — не трать ману на E вхолостую. Подожди, пока они потратят диспел, и только потом хиль.</li>
+            </ul>
+        </div>
+
+        <!-- Синергии -->
+        <div class="guide-section">
+            <h2><i class="fas fa-handshake"></i> Синергии и контрпики</h2>
+            <div class="guide-synergy-grid">
+                <div class="guide-synergy-card ally">
+                    <div class="guide-synergy-name">Паладин</div>
+                    <div class="guide-synergy-reason">Два хилера = команда почти бессмертна. Q + аура паладина — двойной бафф</div>
+                </div>
+                <div class="guide-synergy-card ally">
+                    <div class="guide-synergy-name">Адмирал</div>
+                    <div class="guide-synergy-reason">F даёт скорость для инициации, Q баффает его урон</div>
+                </div>
+                <div class="guide-synergy-card ally">
+                    <div class="guide-synergy-name">Мастер клинка</div>
+                    <div class="guide-synergy-reason">F (+35% скорость боя) на клинка — он разрывает врагов</div>
+                </div>
+                <div class="guide-synergy-card ally">
+                    <div class="guide-synergy-name">Громовержец</div>
+                    <div class="guide-synergy-reason">Q баффает атаку, E лечит — он дольше стоит в драке</div>
+                </div>
+                <div class="guide-synergy-card enemy">
+                    <div class="guide-synergy-name">Архимаг</div>
+                    <div class="guide-synergy-reason">Диспелит E и R. Без лечения друид бесполезен</div>
+                </div>
+                <div class="guide-synergy-card enemy">
+                    <div class="guide-synergy-name">Лич</div>
+                    <div class="guide-synergy-reason">Развеивает твои хилы — то же самое</div>
+                </div>
+                <div class="guide-synergy-card enemy">
+                    <div class="guide-synergy-name">Некромант</div>
+                    <div class="guide-synergy-reason">Снижение лечения делает E и R слабее</div>
+                </div>
+                <div class="guide-synergy-card enemy">
+                    <div class="guide-synergy-name">Самурай</div>
+                    <div class="guide-synergy-reason">Быстрый урон в спину — друид не выживет</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Частые ошибки -->
+        <div class="guide-section">
+            <h2><i class="fas fa-triangle-exclamation" style="color:#ff7777;"></i> Частые ошибки</h2>
+            <ul class="guide-mistakes-list">
+                <li><span class="guide-mistakes-num">1</span> <strong>Тратить E в начале драки.</strong> Враг тут же диспелит — и мана впустую. Подожди 2–3 секунды, пусть они потратят диспел на что-то другое.</li>
+                <li><span class="guide-mistakes-num">2</span> <strong>Стоять впереди.</strong> Друид умирает за 2 секунды под фокусом. Твоё место — за танком.</li>
+                <li><span class="guide-mistakes-num">3</span> <strong>Забывать про W.</strong> Вороны — бесплатная разведка и обнаружение невидимок. Кулдаун 25 сек — используй регулярно.</li>
+                <li><span class="guide-mistakes-num">4</span> <strong>Не брать F.</strong> Даже один пункт даёт +35% скорость боя всей команде. Лучший бафф инициации в игре.</li>
+                <li><span class="guide-mistakes-num">5</span> <strong>Использовать R без нужды.</strong> Покой — 105 сек кулдаун. Если драка почти выиграна — сохрани его. Если проиграна — уже поздно.</li>
+            </ul>
+        </div>
+
+        <div style="margin-top:24px; text-align:center;">
+            <a href="guides.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> К гайдам</a>
+            <a href="heroes/druid.html" class="btn-secondary" style="margin-left:8px;"><i class="fas fa-user"></i> Карточка героя</a>
+        </div>
+    </div>
+</body>
+</html>
