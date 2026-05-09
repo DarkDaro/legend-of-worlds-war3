@@ -224,6 +224,43 @@ h1 {
     box-shadow: 0 0 30px #00000080, 0 0 0 1px #00e6ff22 inset, 0 0 20px #00e6ff33;
     padding: 25px;
 }
+.hero-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 20px 0 22px;
+}
+.hero-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    border: 1px solid #2a5070;
+    background: rgba(15, 26, 43, 0.9);
+    color: #d0e0ff;
+    text-decoration: none;
+    box-shadow: 0 0 12px #00e6ff22;
+    transition: 0.2s ease;
+    flex: 0 0 auto;
+}
+.hero-nav-btn:hover {
+    border-color: #00e6ff;
+    box-shadow: 0 0 18px #00e6ff55;
+    transform: translateY(-1px);
+}
+.hero-nav-btn i {
+    color: #00e6ff;
+    flex: 0 0 auto;
+    font-size: 0.95rem;
+}
+.hero-nav-next {
+    margin-left: auto;
+}
+.hero-nav-prev {
+    margin-right: auto;
+}
 .breadcrumbs {
     margin-bottom: 20px;
     font-size: 0.9rem;

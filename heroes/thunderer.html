@@ -72,24 +72,9 @@
             <div id="hero-build"></div>
             <a href="../calculator.html?hero=thunderer&items=I08Y,I09R,I0AI,I01I,I0CN,I0EY" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
 
-            <div class="hero-tips">
-                <h4><i class="fas fa-chess"></i> Тактика</h4>
-                <ul>
-                    <li>Громовой скачок (W) — ваш главный инструмент: прыгайте в толпу, замедляйте и сразу бейте Грозой (E)</li>
-                    <li>Разряд молнии (F) оглушает 1.3 сек — используйте на убегающих или чтобы прервать каст врага</li>
-                    <li>Разветвлённая молния (Q) бьёт 25 целей — отлично для зачистки крипов и добивания в драке</li>
-                    <li>Громовой рёв (R) — глобальный ультимейт, бьёт всех вражеских героев в области 3000</li>
-                </ul>
-            </div>
-
-            <div class="hero-tips">
-                <h4><i class="fas fa-lightbulb"></i> Советы</h4>
-                <ul>
-                    <li>Пассивка R (15% шанс молнии при касте) масштабируется от урона ультимейта — чем выше уровень R, тем больнее пассивка</li>
-                    <li>Скипетр Владыки даёт 15% шанс перезарядки R — на высоких уровнях ультимейт может срабатывать дважды подряд</li>
-                    <li>Разряд молнии (F) считается атакой — работает вампиризм и эффекты при ударе</li>
-                    <li>Все способности масштабируются от INT — собирайте предметы на разум и SpellDMG</li>
-                </ul>
+            <div class="hero-nav">
+                <a href="../heroes/admiral.html" class="hero-nav-btn hero-nav-prev" aria-label="Адмирал"><i class="fas fa-chevron-left"></i></a>
+                <a href="../heroes/paladin.html" class="hero-nav-btn hero-nav-next" aria-label="Паладин"><i class="fas fa-chevron-right"></i></a>
             </div>
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
@@ -197,9 +182,8 @@
                 </div>
 
             </div>
-            <div class="back-button" onclick="window.location.href='../heroes.html'"><i class="fas fa-arrow-left"></i> Вернуться к героям</div>
+            <a href="../heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
         </div>
-    </div>
     <script>
         var container = document.getElementById('hero-build');
         if (container && typeof renderHeroBuild === 'function') {

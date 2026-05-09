@@ -5,7 +5,8 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
-const heroes = require('./hero-card-data');
+const heroData = require('./hero-card-data');
+const heroes = heroData.heroes || heroData;
 const DEFAULT_OUTPUT_DIR = 'generated-heroes';
 /*
   paladin: {
@@ -251,11 +252,35 @@ ${rows.map(row => `                <tr><td><span class="${escapeHtml(row.classNa
 }
 
 function renderHeroPage(hero) {
+  const heroId = hero && (hero.id || hero.heroId) ? String(hero.id || hero.heroId) : '';
+  const heroTitle = hero && hero.title ? hero.title : '';
+  const heroPageTitle = hero && hero.pageTitle ? hero.pageTitle : '';
+  const heroOgTitle = hero && hero.ogTitle ? hero.ogTitle : '';
+  const heroOgDescription = hero && hero.ogDescription ? hero.ogDescription : '';
+  const heroBodyClass = hero && hero.bodyClass ? hero.bodyClass : '';
+  const heroCrumb = hero && hero.currentCrumb ? hero.currentCrumb : '';
+  const heroAttribute = hero && hero.attribute ? hero.attribute : '';
+  const heroAttributeColor = hero && hero.attributeColor ? hero.attributeColor : '';
+  const heroRange = hero && hero.range ? hero.range : '—';
+  const heroHp = hero && hero.hp ? hero.hp : '—';
+  const heroMp = hero && hero.mp ? hero.mp : '—';
+  const heroMpRegen = hero && hero.mpRegen ? hero.mpRegen : '0.01/сек';
+  const heroAtk = hero && hero.atk ? hero.atk : '—';
+  const heroDef = hero && hero.def ? hero.def : '—';
+  const heroAtkSpeed = hero && hero.atkSpeed ? hero.atkSpeed : '';
+  const heroHpRegen = hero && hero.hpRegen ? hero.hpRegen : '';
+  const heroSpeed = hero && hero.speed ? hero.speed : '—';
+  const heroRoleClass = hero && hero.roleClass ? hero.roleClass : '';
+  const heroRoleLabel = hero && hero.roleLabel ? hero.roleLabel : '';
+  const heroDescription = hero && hero.description ? hero.description : '';
+  const heroStatsRows = hero && hero.statsRows ? hero.statsRows : [];
+  const heroBuildTitleIcon = hero && hero.buildTitleIcon ? hero.buildTitleIcon : 'fas fa-shield-alt';
+  const heroAbilitiesTitleIcon = hero && hero.abilitiesTitleIcon ? hero.abilitiesTitleIcon : 'fas fa-magic';
   const buildContainerScript = `
     <script>
         var container = document.getElementById('hero-build');
         if (container && typeof renderHeroBuild === 'function') {
-            container.innerHTML = renderHeroBuild('${hero.id}');
+            container.innerHTML = renderHeroBuild('${heroId}');
         } else if (container) {
             container.innerHTML = '<p style="color:#6b7c99;">Сборка загружается...</p>';
         }
@@ -267,9 +292,9 @@ function renderHeroPage(hero) {
     <meta charset="UTF-8">
     <link rel="icon" href="../images/logo.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${escapeHtml(hero.pageTitle)}</title>
-    <meta property="og:title" content="${escapeHtml(hero.ogTitle)}">
-    <meta property="og:description" content="${escapeHtml(hero.ogDescription)}">
+    <title>${escapeHtml(heroPageTitle)}</title>
+    <meta property="og:title" content="${escapeHtml(heroOgTitle)}">
+    <meta property="og:description" content="${escapeHtml(heroOgDescription)}">
     <meta property="og:image" content="../images/preview.png">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -278,7 +303,7 @@ function renderHeroPage(hero) {
     <script src="../hero-builds.js"></script>
     <script src="../analytics.js" defer></script>
 </head>
-<body class="${escapeHtml(hero.bodyClass)}">
+<body class="${escapeHtml(heroBodyClass)}">
     <header class="site-header">
         <a href="../index.html" class="logo">
             <img src="../images/logo.png" alt="Legend of Worlds" class="logo-img" />
@@ -300,43 +325,64 @@ function renderHeroPage(hero) {
         </nav>
     </header>
     <div class="wiki-container">
-        <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="../heroes.html">Герои</a><span class="sep">›</span><span class="current">${escapeHtml(hero.currentCrumb)}</span></div>
-        <div class="hero-page-container">
+        <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="../heroes.html">Герои</a><span class="sep">›</span><span class="current">${escapeHtml(heroCrumb)}</span></div>
+    </div>
+    <div class="hero-page-container">
             <div class="panel-header">
                 <div class="detail-icon"></div>
-                <div class="detail-title">${escapeHtml(hero.title)} <span class="detail-badge">${escapeHtml(hero.attribute)}</span></div>
+                <div class="detail-title">${escapeHtml(heroTitle)} <span class="detail-badge">${escapeHtml(heroAttribute)}</span></div>
             </div>
             <div class="hero-stats">
-                <div class="stat-item"><i class="fas fa-crosshairs"></i> ${escapeHtml(hero.range)}</div>
-                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:${escapeHtml(hero.attributeColor)};">${escapeHtml(hero.attribute)}</span></div>
-                <div class="stat-item"><i class="fas fa-heart"></i> Жизни: ${escapeHtml(hero.hp || '—')}</div>
-                <div class="stat-item"><i class="fas fa-tint"></i> Мана: ${escapeHtml(hero.mp || '—')}</div>
-                <div class="stat-item"><i class="fas fa-tint-slash"></i> Реген. маны: ${escapeHtml(hero.mpRegen || '0.01/сек')}</div>
-                <div class="stat-item"><i class="fas fa-fist-raised"></i> Атака: ${escapeHtml(hero.atk || '—')}</div>
-                <div class="stat-item"><i class="fas fa-shield-alt"></i> Защита: ${escapeHtml(hero.def || '—')}</div>
-                <div class="stat-item"><i class="fas fa-clock"></i> Скорость атаки: ${hero.atkSpeed ? escapeHtml(hero.atkSpeed) + ' сек' : '—'}</div>
-                <div class="stat-item"><i class="fas fa-heartbeat"></i> Реген. здоровья: ${hero.hpRegen ? escapeHtml(hero.hpRegen) + '/сек' : '—'}</div>
-                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: ${escapeHtml(hero.speed)}</div>
-                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="${escapeHtml(hero.roleClass)}">${escapeHtml(hero.roleLabel)}</span></div>
+                <div class="stat-item"><i class="fas fa-crosshairs"></i> ${escapeHtml(heroRange)}</div>
+                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:${escapeHtml(heroAttributeColor)};">${escapeHtml(heroAttribute)}</span></div>
+                <div class="stat-item"><i class="fas fa-heart"></i> Жизни: ${escapeHtml(heroHp)}</div>
+                <div class="stat-item"><i class="fas fa-tint"></i> Мана: ${escapeHtml(heroMp)}</div>
+                <div class="stat-item"><i class="fas fa-tint-slash"></i> Реген. маны: ${escapeHtml(heroMpRegen)}</div>
+                <div class="stat-item"><i class="fas fa-fist-raised"></i> Атака: ${escapeHtml(heroAtk)}</div>
+                <div class="stat-item"><i class="fas fa-shield-alt"></i> Защита: ${escapeHtml(heroDef)}</div>
+                <div class="stat-item"><i class="fas fa-clock"></i> Скорость атаки: ${heroAtkSpeed ? escapeHtml(heroAtkSpeed) + ' сек' : '—'}</div>
+                <div class="stat-item"><i class="fas fa-heartbeat"></i> Реген. здоровья: ${heroHpRegen ? escapeHtml(heroHpRegen) + '/сек' : '—'}</div>
+                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: ${escapeHtml(heroSpeed)}</div>
+                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="${escapeHtml(heroRoleClass)}">${escapeHtml(heroRoleLabel)}</span></div>
             </div>
-${renderStatsTable(hero.statsRows)}
+${renderStatsTable(heroStatsRows)}
             <div class="detail-description">
-                <p>${escapeHtml(hero.description)}</p>
+                <p>${escapeHtml(heroDescription)}</p>
             </div>
 
-            <div class="recipe-title"><i class="${escapeHtml(hero.buildTitleIcon)}"></i> Рекомендуемая сборка</div>
+            <div class="recipe-title"><i class="${escapeHtml(heroBuildTitleIcon)}"></i> Рекомендуемая сборка</div>
             <div id="hero-build"></div>
-${hero.buildItems ? `            <a href="../calculator.html?items=${escapeHtml(hero.buildItems)}" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>` : ''}
+${hero && hero.buildItems ? `            <a href="../calculator.html?items=${escapeHtml(hero.buildItems)}" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>` : ''}
 
-${renderSection('Тактика', hero.tacticsTitleIcon, hero.tactics)}
-${renderSection('Советы', hero.tipsTitleIcon, hero.tips)}
-
-            <div class="recipe-title"><i class="${escapeHtml(hero.abilitiesTitleIcon)}"></i> Способности</div>
-${renderForms(hero)}
-${hero.extraSectionsHtml || ''}
-            <div class="back-button" onclick="window.location.href='../heroes.html'"><i class="fas fa-arrow-left"></i> Вернуться к героям</div>
+            <div class="recipe-title"><i class="${escapeHtml(heroAbilitiesTitleIcon)}"></i> Способности</div>
+${hero ? renderForms(hero) : ''}
+${hero && hero.extraSectionsHtml ? hero.extraSectionsHtml : ''}
+            <a href="../heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
         </div>
-    </div>${buildContainerScript}
+    </div>
+${buildContainerScript}
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><i class="fas fa-shield-alt"></i> Legend of Worlds</span>
+                <p>Уникальная карта для Warcraft III</p>
+            </div>
+            <div class="footer-links">
+                <a href="../updates.html">Обновления</a>
+                <a href="../lore.html">Лор</a>
+                <a href="../support.html">Поддержать</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
+        </div>
+    </footer>
 </body>
 </html>`;
 }
