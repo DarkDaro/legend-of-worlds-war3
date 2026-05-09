@@ -41,7 +41,8 @@
     </header>
     <div class="wiki-container">
         <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="../heroes.html">Герои</a><span class="sep">›</span><span class="current">Адмирал — Прохор</span></div>
-        <div class="hero-page-container">
+    </div>
+    <div class="hero-page-container">
             <div class="panel-header">
                 <div class="detail-icon"></div>
                 <div class="detail-title">Адмирал — Прохор <span class="detail-badge">Сила</span></div>
@@ -73,26 +74,11 @@
             <div id="hero-build"></div>
             <a href="../calculator.html?hero=admiral&items=I03G,I09T,I02B,I04H,I033,I0DB" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
 
-            <div class="hero-tips">
-                <h4><i class="fas fa-chess"></i> Тактика</h4>
-                <ul>
-                    <li>Q (Гейзер) — ваш основной инициатор. Подброс → команда добивает. Задержка 1.2 сек, кидайте с упреждением</li>
-                    <li>W (Меч прилива) — каждая 5-я атака наносит чистый урон и замедляет. Считайте удары, чтобы важный удар пришёлся на героя</li>
-                    <li>E (Призрачный корабль) — отличный пуш и драка. Корабль идёт 1400, оглушает 0.5 сек — прерывает каст врагов</li>
-                    <li>R (Флотилия) — ультимейт, решающий драки. Аура снижает броню врагам на 36 и даёт союзникам +36 — стойте в центре</li>
-                    <li>F (Волны) — дешёвый спам-скилл. 7 волн за 60 маны — используйте для хараса и добивания</li>
-                </ul>
+            <div class="hero-nav">
+                <a href="../heroes/illusionist.html" class="hero-nav-btn hero-nav-prev" aria-label="Иллюзионист"><i class="fas fa-chevron-left"></i></a>
+                <a href="../heroes/thunderer.html" class="hero-nav-btn hero-nav-next" aria-label="Громовержец"><i class="fas fa-chevron-right"></i></a>
             </div>
 
-            <div class="hero-tips">
-                <h4><i class="fas fa-lightbulb"></i> Советы</h4>
-                <ul>
-                    <li>Комбо: Q (подброс) → E (корабль пока летят) → F (волны вдогонку) — максимальный бурст</li>
-                    <li>R даёт ауру 1500 радиуса — стойте рядом с командой, чтобы все получали бонус брони</li>
-                    <li>Скипетр: 10% шанс мгновенной перезарядки R — в лейте это может дать два ультимейта подряд</li>
-                    <li>Адмирал силён в команде, но один уязвим — не уходите далеко от союзников</li>
-                </ul>
-            </div>
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
@@ -201,9 +187,8 @@
                 </div>
 
             </div>
-            <div class="back-button" onclick="window.location.href='../heroes.html'"><i class="fas fa-arrow-left"></i> Вернуться к героям</div>
+            <a href="../heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
         </div>
-    </div>
     <script>
         var container = document.getElementById('hero-build');
         if (container && typeof renderHeroBuild === 'function') {

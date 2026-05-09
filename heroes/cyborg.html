@@ -73,27 +73,11 @@
             <div id="hero-build"></div>
             <a href="../calculator.html?hero=cyborg&items=I03G,I09R,I045,I0AF,I04H,I0DB" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
 
-            <div class="hero-tips">
-                <h4><i class="fas fa-chess"></i> Тактика</h4>
-                <ul>
-                    <li>Киборг — танк с мощным уроном. Врывайтесь в центр драки и включайте Q для массового урона вокруг</li>
-                    <li>W (Техника) пассивно снижает входящий урон — чем выше уровень, тем дольше вы стоите в драке</li>
-                    <li>E (Чакрам) наносит урон на пути туда и обратно — запускайте сквозь линию врагов для двойного урона</li>
-                    <li>R — ключевой ульта. Залп огненной пушкой оглушает на 2.5 сек — используйте для инициации или контратаки</li>
-                    <li>Скипетр даёт 10% шанс мгновенной перезарядки R — это может переломить драку</li>
-                </ul>
+            <div class="hero-nav">
+                <a href="../heroes/druid.html" class="hero-nav-btn hero-nav-prev" aria-label="Друид"><i class="fas fa-chevron-left"></i></a>
+                <a href="../heroes/illusionist.html" class="hero-nav-btn hero-nav-next" aria-label="Иллюзионист"><i class="fas fa-chevron-right"></i></a>
             </div>
 
-            <div class="hero-tips">
-                <h4><i class="fas fa-lightbulb"></i> Советы</h4>
-                <ul>
-                    <li>F (Мины) отлично контролирует территорию — раскидывайте перед дракой или на пути отступающих</li>
-                    <li>Q наносит урон от Силы — собирайте предметы на STR для максимального урона</li>
-                    <li>E возвращается к вам — позиционируйтесь так, чтобы пила прошла через врагов дважды</li>
-                    <li>R оглушает 2.5 сек — комбо R → Q → E может убить всю команду</li>
-                    <li>Худшие враги: герои с дальней атакой и диспелом</li>
-                </ul>
-            </div>
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
@@ -192,7 +176,7 @@
                 </div>
 
             </div>
-            <div class="back-button" onclick="window.location.href='../heroes.html'"><i class="fas fa-arrow-left"></i> Вернуться к героям</div>
+            <a href="../heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
         </div>
     </div>
     <script>
@@ -201,7 +185,6 @@
             container.innerHTML = renderHeroBuild('cyborg');
         }
     </script>
-
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-brand">
