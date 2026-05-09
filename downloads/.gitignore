@@ -1,0 +1,10 @@
+# Файлы скачивания — не коммитить в git
+*.zip
+*.w3x
+*.rar
+*.7z
+*.exe
+*.pkg
+# Но разрешаем README и gitignore
+!README.md
+!.gitignore
