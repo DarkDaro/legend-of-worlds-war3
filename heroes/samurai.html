@@ -67,11 +67,21 @@
             <div class="detail-description">
                 <p>Самурай — странствующий мастер меча, следующий кодексу чести. Его молниеносные удары разят точно в сердце, а несгибаемый дух позволяет выстоять против любого врага.</p>
             </div>
+
+            <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
+            <div id="hero-build"></div>
+            <a href="../calculator.html?hero=samurai" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+
+            <div class="hero-nav">
+                <a href="../heroes/murloc.html" class="hero-nav-btn hero-nav-prev" aria-label="Мурлок"><i class="fas fa-chevron-left"></i></a>
+                <a href="../heroes/blademaster.html" class="hero-nav-btn hero-nav-next" aria-label="Мастер клинка"><i class="fas fa-chevron-right"></i></a>
+            </div>
+
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/samurai_slash.png" alt="Стремительный удар" onerror="this.parentElement.innerHTML='<i class=\'fas fa-bolt\'></i>'"></div>
+                        <div class="ability-icon" data-ability="samurai_slash" data-fallback="bolt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
                             <div class="ability-name">Стремительный удар</div>
@@ -88,7 +98,7 @@
                 </div>
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/samurai_counter.png" alt="Контрудар" onerror="this.parentElement.innerHTML='<i class=\'fas fa-exchange-alt\'></i>'"></div>
+                        <div class="ability-icon" data-ability="samurai_counter" data-fallback="exchange-alt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
                             <div class="ability-name">Контрудар</div>
@@ -103,7 +113,7 @@
                 </div>
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/samurai_kiai.png" alt="Киай" onerror="this.parentElement.innerHTML='<i class=\'fas fa-fire-alt\'></i>'"></div>
+                        <div class="ability-icon" data-ability="samurai_kiai" data-fallback="fire-alt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
                             <div class="ability-name">Киай</div>
@@ -120,7 +130,7 @@
                 </div>
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/samurai_iai.png" alt="Иайдзюцу" onerror="this.parentElement.innerHTML='<i class=\'fas fa-angle-double-right\'></i>'"></div>
+                        <div class="ability-icon" data-ability="samurai_iai" data-fallback="angle-double-right"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
                             <div class="ability-name">Иайдзюцу</div>

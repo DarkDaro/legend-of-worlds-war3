@@ -42,7 +42,7 @@
         <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="../heroes.html">Герои</a><span class="sep">›</span><span class="current">Лучница</span></div>
         <div class="hero-page-container">
             <div class="panel-header">
-                <div class="detail-icon"><img src="images/heroes/DarkRanger.png" alt="Лучница" onerror="this.outerHTML='🏹'"></div>
+                <div class="detail-icon"><i class="fas fa-bow-arrow"></i></div>
                 <div class="detail-title">Лучница <span class="detail-badge">Ловкость</span></div>
             </div>
             <div class="hero-stats">
@@ -67,13 +67,23 @@
             <div class="detail-description">
                 <p>Немногим удаётся спастись от Лучницы. Обезмолвив врагов морозной волной, она накрывает их градом замедляющих ледяных стрел, после которого мало кто способен выжить. Траксекс — изгнанница, чья ледяная ненависть замораживает сердца врагов прежде, чем они успеют её настигнуть.</p>
             </div>
+
+            <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
+            <div id="hero-build"></div>
+            <a href="../calculator.html?hero=drowranger" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+
+            <div class="hero-nav">
+                <a href="../heroes/blademaster.html" class="hero-nav-btn hero-nav-prev" aria-label="Мастер клинка"><i class="fas fa-chevron-left"></i></a>
+                <a href="../heroes/shadowblade.html" class="hero-nav-btn hero-nav-next" aria-label="Теневой клинок"><i class="fas fa-chevron-right"></i></a>
+            </div>
+
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
                 <!-- Q: Frost Arrows -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/drow_frost_arrows.png" alt="Ледяные стрелы" onerror="this.parentElement.innerHTML='<i class=\'fas fa-icicles\'></i>'"></div>
+                        <div class="ability-icon" data-ability="drow_frost_arrows" data-fallback="icicles"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
                             <div class="ability-name">Ледяные стрелы</div>
@@ -93,7 +103,7 @@
                 <!-- W: Gust -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/drow_gust.png" alt="Ветер молчания" onerror="this.parentElement.innerHTML='<i class=\'fas fa-wind\'></i>'"></div>
+                        <div class="ability-icon" data-ability="drow_gust" data-fallback="wind"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
                             <div class="ability-name">Ветер молчания</div>
@@ -113,7 +123,7 @@
                 <!-- E: Marksmanship (passive component) -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/drow_marksmanship.png" alt="Меткость" onerror="this.parentElement.innerHTML='<i class=\'fas fa-bullseye\'></i>'"></div>
+                        <div class="ability-icon" data-ability="drow_marksmanship" data-fallback="bullseye"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
                             <div class="ability-name">Меткость</div>
@@ -130,7 +140,7 @@
                 <!-- R: Multishot -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/drow_multishot.png" alt="Залп стрел" onerror="this.parentElement.innerHTML='<i class=\'fas fa-arrows-alt\'></i>'"></div>
+                        <div class="ability-icon" data-ability="drow_multishot" data-fallback="arrows-alt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
                             <div class="ability-name">Залп стрел</div>

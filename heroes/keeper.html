@@ -67,11 +67,21 @@
             <div class="detail-description">
                 <p>Хранитель рощи — избранник полубога Кенария, наполовину эльф, наполовину олень. Он повелевает корнями и деревьями, призывая энтов на защиту лесов и исцеляя раненых союзников дождём спокойствия.</p>
             </div>
+
+            <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
+            <div id="hero-build"></div>
+            <a href="../calculator.html?hero=keeper" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+
+            <div class="hero-nav">
+                <a href="../heroes/farseer.html" class="hero-nav-btn hero-nav-prev" aria-label="Провидец"><i class="fas fa-chevron-left"></i></a>
+                <a href="../heroes/chronomancer.html" class="hero-nav-btn hero-nav-next" aria-label="Хромомант"><i class="fas fa-chevron-right"></i></a>
+            </div>
+
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/keeper_roots.png" alt="Опутывающие корни" onerror="this.parentElement.innerHTML='<i class=\'fas fa-spa\'></i>'"></div>
+                        <div class="ability-icon" data-ability="keeper_roots" data-fallback="spa"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
                             <div class="ability-name">Опутывающие корни</div>
@@ -88,7 +98,7 @@
                 </div>
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/keeper_treants.png" alt="Сила природы" onerror="this.parentElement.innerHTML='<i class=\'fas fa-tree\'></i>'"></div>
+                        <div class="ability-icon" data-ability="keeper_treants" data-fallback="tree"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
                             <div class="ability-name">Сила природы</div>
@@ -105,7 +115,7 @@
                 </div>
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/keeper_thorns.png" alt="Аура шипов" onerror="this.parentElement.innerHTML='<i class=\'fas fa-shield-alt\'></i>'"></div>
+                        <div class="ability-icon" data-ability="keeper_thorns" data-fallback="shield-alt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
                             <div class="ability-name">Аура шипов</div>
@@ -120,7 +130,7 @@
                 </div>
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/keeper_tranquility.png" alt="Спокойствие" onerror="this.parentElement.innerHTML='<i class=\'fas fa-cloud-rain\'></i>'"></div>
+                        <div class="ability-icon" data-ability="keeper_tranquility" data-fallback="cloud-rain"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
                             <div class="ability-name">Спокойствие</div>

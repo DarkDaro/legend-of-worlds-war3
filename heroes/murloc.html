@@ -67,11 +67,21 @@
             <div class="detail-description">
                 <p>Мурлок — коварный подводный охотник, выходящий из глубин лишь ради добычи. Его быстрые атаки и ядовитые уколы не оставляют жертвам шанса на спасение.</p>
             </div>
+
+            <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
+            <div id="hero-build"></div>
+            <a href="../calculator.html?hero=murloc" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+
+            <div class="hero-nav">
+                <a href="../heroes/illusionist.html" class="hero-nav-btn hero-nav-prev" aria-label="Иллюзионист"><i class="fas fa-chevron-left"></i></a>
+                <a href="../heroes/samurai.html" class="hero-nav-btn hero-nav-next" aria-label="Самурай"><i class="fas fa-chevron-right"></i></a>
+            </div>
+
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/murloc_splash.png" alt="Водяной клинок" onerror="this.parentElement.innerHTML='<i class=\'fas fa-tint\'></i>'"></div>
+                        <div class="ability-icon" data-ability="murloc_splash" data-fallback="tint"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
                             <div class="ability-name">Водяной клинок</div>
@@ -87,7 +97,7 @@
                 </div>
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/murloc_poison.png" alt="Ядовитое жало" onerror="this.parentElement.innerHTML='<i class=\'fas fa-skull-crossbones\'></i>'"></div>
+                        <div class="ability-icon" data-ability="murloc_poison" data-fallback="skull-crossbones"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
                             <div class="ability-name">Ядовитое жало</div>
@@ -104,7 +114,7 @@
                 </div>
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/murloc_dive.png" alt="Погружение" onerror="this.parentElement.innerHTML='<i class=\'fas fa-water\'></i>'"></div>
+                        <div class="ability-icon" data-ability="murloc_dive" data-fallback="water"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
                             <div class="ability-name">Погружение</div>
@@ -121,7 +131,7 @@
                 </div>
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/murloc_tidal.png" alt="Приливная волна" onerror="this.parentElement.innerHTML='<i class=\'fas fa-wave-square\'></i>'"></div>
+                        <div class="ability-icon" data-ability="murloc_tidal" data-fallback="wave-square"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
                             <div class="ability-name">Приливная волна</div>

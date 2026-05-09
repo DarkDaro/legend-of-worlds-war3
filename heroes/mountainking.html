@@ -67,11 +67,21 @@
             <div class="detail-description">
                 <p>Король гор — могучий воин дворфов, владеющий молотом и топором. Его ярость в бою способна сокрушить целые армии. Легенды гласят, что он был выкован из самой горы и несёт в себе силу земли.</p>
             </div>
+
+            <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
+            <div id="hero-build"></div>
+            <a href="../calculator.html?hero=mountainking" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+
+            <div class="hero-nav">
+                <a href="../heroes/flamewarden.html" class="hero-nav-btn hero-nav-prev" aria-label="Огненный страж"><i class="fas fa-chevron-left"></i></a>
+                <a href="../heroes/souleater.html" class="hero-nav-btn hero-nav-next" aria-label="Пожиратель душ"><i class="fas fa-chevron-right"></i></a>
+            </div>
+
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/mk_storm_bolt.png" alt="Громовой удар" onerror="this.parentElement.innerHTML='<i class=\'fas fa-hammer\'></i>'"></div>
+                        <div class="ability-icon" data-ability="mk_storm_bolt" data-fallback="hammer"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
                             <div class="ability-name">Громовой удар</div>
@@ -88,7 +98,7 @@
                 </div>
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/mk_thunder_clap.png" alt="Громовая поступь" onerror="this.parentElement.innerHTML='<i class=\'fas fa-fist-raised\'></i>'"></div>
+                        <div class="ability-icon" data-ability="mk_thunder_clap" data-fallback="fist-raised"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
                             <div class="ability-name">Громовая поступь</div>
@@ -106,7 +116,7 @@
                 </div>
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/mk_bash.png" alt="Оглушающий удар" onerror="this.parentElement.innerHTML='<i class=\'fas fa-bolt\'></i>'"></div>
+                        <div class="ability-icon" data-ability="mk_bash" data-fallback="bolt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
                             <div class="ability-name">Оглушающий удар</div>
@@ -122,7 +132,7 @@
                 </div>
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/mk_avatar.png" alt="Аватара" onerror="this.parentElement.innerHTML='<i class=\'fas fa-user-shield\'></i>'"></div>
+                        <div class="ability-icon" data-ability="mk_avatar" data-fallback="user-shield"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
                             <div class="ability-name">Аватара</div>

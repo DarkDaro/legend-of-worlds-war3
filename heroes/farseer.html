@@ -42,7 +42,7 @@
         <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="../heroes.html">Герои</a><span class="sep">›</span><span class="current">Провидец</span></div>
         <div class="hero-page-container">
             <div class="panel-header">
-                <div class="detail-icon"><img src="images/heroes/FarSeer.png" alt="Провидец" onerror="this.outerHTML='<i class=\'fas fa-eye\'></i>'"></div>
+                <div class="detail-icon"><i class="fas fa-eye"></i></div>
                 <div class="detail-title">Провидец <span class="detail-badge">Разум</span></div>
             </div>
             <div class="hero-stats">
@@ -67,11 +67,21 @@
             <div class="detail-description">
                 <p>Провидец — древний орочий шаман, достигший вершины шаманистической силы. Он видит то, что скрыто от глаз, призывает духов волков и обрушивает на врагов молнии небесные.</p>
             </div>
+
+            <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
+            <div id="hero-build"></div>
+            <a href="../calculator.html?hero=farseer" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+
+            <div class="hero-nav">
+                <a href="../heroes/lich.html" class="hero-nav-btn hero-nav-prev" aria-label="Лич"><i class="fas fa-chevron-left"></i></a>
+                <a href="../heroes/keeper.html" class="hero-nav-btn hero-nav-next" aria-label="Хранитель рощи"><i class="fas fa-chevron-right"></i></a>
+            </div>
+
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/farseer_chain.png" alt="Цепная молния" onerror="this.parentElement.innerHTML='<i class=\'fas fa-bolt\'></i>'"></div>
+                        <div class="ability-icon" data-ability="farseer_chain" data-fallback="bolt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
                             <div class="ability-name">Цепная молния</div>
@@ -88,7 +98,7 @@
                 </div>
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/farseer_sight.png" alt="Дальнее зрение" onerror="this.parentElement.innerHTML='<i class=\'fas fa-binoculars\'></i>'"></div>
+                        <div class="ability-icon" data-ability="farseer_sight" data-fallback="binoculars"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
                             <div class="ability-name">Дальнее зрение</div>
@@ -105,7 +115,7 @@
                 </div>
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/farseer_wolves.png" alt="Духи волков" onerror="this.parentElement.innerHTML='<i class=\'fas fa-paw\'></i>'"></div>
+                        <div class="ability-icon" data-ability="farseer_wolves" data-fallback="paw"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
                             <div class="ability-name">Духи волков</div>
@@ -122,7 +132,7 @@
                 </div>
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/farseer_quake.png" alt="Землетрясение" onerror="this.parentElement.innerHTML='<i class=\'fas fa-mountain\'></i>'"></div>
+                        <div class="ability-icon" data-ability="farseer_quake" data-fallback="mountain"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
                             <div class="ability-name">Землетрясение</div>

@@ -67,13 +67,23 @@
             <div class="detail-description">
                 <p>Хромомант — отступник Кирин-Тора, разгадавший тайну хода времени. Его тело покрыто часовыми механизмами, а глаза видят прошлое и будущее одновременно. Враги замедляются в его присутствии, а союзники обретают невиданную скорость. Говорят, он уже видел собственную смерть — и отвернул её.</p>
             </div>
+
+            <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
+            <div id="hero-build"></div>
+            <a href="../calculator.html?hero=chronomancer" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+
+            <div class="hero-nav">
+                <a href="../heroes/keeper.html" class="hero-nav-btn hero-nav-prev" aria-label="Хранитель рощи"><i class="fas fa-chevron-left"></i></a>
+                <a href="../heroes/bloodshaman.html" class="hero-nav-btn hero-nav-next" aria-label="Шаман крови"><i class="fas fa-chevron-right"></i></a>
+            </div>
+
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
                 <!-- Q: Замедление времени -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/chrono_slow.png" alt="Замедление времени" onerror="this.parentElement.innerHTML='<i class=\'fas fa-hourglass-start\'></i>'"></div>
+                        <div class="ability-icon" data-ability="chrono_slow" data-fallback="hourglass-start"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
                             <div class="ability-name">Замедление времени</div>
@@ -93,7 +103,7 @@
                 <!-- W: Ускорение -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/chrono_haste.png" alt="Ускорение" onerror="this.parentElement.innerHTML='<i class=\'fas fa-forward\'></i>'"></div>
+                        <div class="ability-icon" data-ability="chrono_haste" data-fallback="forward"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
                             <div class="ability-name">Ускорение</div>
@@ -113,7 +123,7 @@
                 <!-- E: Аура временного искажения -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/chrono_aura.png" alt="Аура временного искажения" onerror="this.parentElement.innerHTML='<i class=\'fas fa-clock\'></i>'"></div>
+                        <div class="ability-icon" data-ability="chrono_aura" data-fallback="clock"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
                             <div class="ability-name">Аура временного искажения</div>
@@ -130,7 +140,7 @@
                 <!-- R: Перемотка -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/chrono_rewind.png" alt="Перемотка" onerror="this.parentElement.innerHTML='<i class=\'fas fa-history\'></i>'"></div>
+                        <div class="ability-icon" data-ability="chrono_rewind" data-fallback="history"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
                             <div class="ability-name">Перемотка</div>
