@@ -2,43 +2,48 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="icon" href="../images/logo.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Охотник на демонов · Герои · Legend of Worlds</title>
     <meta property="og:title" content="Охотник на демонов — Legend of Worlds">
     <meta property="og:description" content="Охотник на демонов — герой Арены Миров. Способности, статы, тактика.">
-    <meta property="og:image" content="images/preview.png">
+    <meta property="og:image" content="../images/preview.png">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="../../hero-data.js"></script>
-    <script src="../../search.js"></script>
-    <script src="../../items-db.js" defer></script>
-    <script src="icon-loader.js" defer></script>
-    <script src="analytics.js" defer></script>
+    <link rel="stylesheet" href="../style.css">
+    <script src="../hero-data.js"></script>
+    <script src="../search.js"></script>
+    <script src="../items-db.js" defer></script>
+    <script src="../icon-loader.js" defer></script>
+    <script src="../hero-builds.js"></script>
+    <script src="../analytics.js" defer></script>
 </head>
-<body class="agility">
+<body class="page-heroes agility">
     <header class="site-header">
-        <a href="index.html" class="logo">
-            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+        <a href="../index.html" class="logo">
+            <img src="../images/logo.png" alt="Legend of Worlds" class="logo-img" />
             <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
         </a>
         <nav class="header-nav">
-            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
             <a href="heroes.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
-            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
-            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
-            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
-            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
-            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
-            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
-            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
-
+            <a href="../items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="../mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="../monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="../info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="../lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="../support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="../updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
         </nav>
     </header>
     <div class="wiki-container">
-        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Охотник на демонов</span></div>
+        <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Охотник на демонов</span></div>
         <div class="hero-page-container">
+            <div class="hero-nav">
+                <a href="drowranger.html" class="hero-nav-btn hero-nav-prev" aria-label="Лучница"><i class="fas fa-chevron-left"></i></a>
+                <a href="archmage.html" class="hero-nav-btn hero-nav-next" aria-label="Архимаг"><i class="fas fa-chevron-right"></i></a>
+            </div>
+
             <div class="panel-header">
                 <div class="detail-icon"><i class="fas fa-fire"></i></div>
                 <div class="detail-title">Охотник на демонов <span class="detail-badge">Ловкость</span></div>
@@ -58,6 +63,11 @@
             <div class="detail-description">
                 <p>Охотник на демонов — ночной эльф, заключивший пакт с тёмными силами, чтобы сражаться с ними же. Его выжженные глаза видят сквозь любую иллюзию, а пылающие клинки разят как смертных, так и демонов.</p>
             </div>
+
+            <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
+            <div id="hero-build"></div>
+            <a href="../calculator.html?hero=demonhunter" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="form-tabs">
                 <button class="form-tab active" onclick="switchForm(this, 'base')">🗡️ Основная форма</button>
@@ -69,7 +79,7 @@
                 <div class="abilities-grid">
                     <div class="ability-card active">
                         <div class="ability-header">
-                            <div class="ability-icon"><img src="images/abilities/dh_manaburn.png" alt="Выжигание маны" onerror="this.parentElement.innerHTML='<i class=\'fas fa-fire-alt\'></i>'"></div>
+                            <div class="ability-icon" data-ability="dh_manaburn" data-fallback="fire-alt"></div>
                             <div class="ability-info">
                                 <span class="ability-hotkey">Q</span>
                                 <div class="ability-name">Выжигание маны</div>
@@ -86,7 +96,7 @@
                     </div>
                     <div class="ability-card active">
                         <div class="ability-header">
-                            <div class="ability-icon"><img src="images/abilities/dh_immolation.png" alt="Очищающее пламя" onerror="this.parentElement.innerHTML='<i class=\'fas fa-fire\'></i>'"></div>
+                            <div class="ability-icon" data-ability="dh_immolation" data-fallback="fire"></div>
                             <div class="ability-info">
                                 <span class="ability-hotkey">W</span>
                                 <div class="ability-name">Очищающее пламя</div>
@@ -103,7 +113,7 @@
                     </div>
                     <div class="ability-card passive">
                         <div class="ability-header">
-                            <div class="ability-icon"><img src="images/abilities/dh_evasion.png" alt="Уклонение" onerror="this.parentElement.innerHTML='<i class=\'fas fa-feather-alt\'></i>'"></div>
+                            <div class="ability-icon" data-ability="dh_evasion" data-fallback="feather-alt"></div>
                             <div class="ability-info">
                                 <span class="ability-hotkey">E</span>
                                 <div class="ability-name">Уклонение</div>
@@ -117,7 +127,7 @@
                     </div>
                     <div class="ability-card ultimate">
                         <div class="ability-header">
-                            <div class="ability-icon"><img src="images/abilities/dh_meta.png" alt="Метаморфоза" onerror="this.parentElement.innerHTML='<i class=\'fas fa-dragon\'></i>'"></div>
+                            <div class="ability-icon" data-ability="dh_meta" data-fallback="dragon"></div>
                             <div class="ability-info">
                                 <span class="ability-hotkey">R</span>
                                 <div class="ability-name">Метаморфоза</div>
@@ -140,7 +150,7 @@
                 <div class="abilities-grid">
                     <div class="ability-card active">
                         <div class="ability-header">
-                            <div class="ability-icon"><img src="images/abilities/dh_manaburn.png" alt="Выжигание маны" onerror="this.parentElement.innerHTML='<i class=\'fas fa-fire-alt\'></i>'"></div>
+                            <div class="ability-icon" data-ability="dh_manaburn" data-fallback="fire-alt"></div>
                             <div class="ability-info">
                                 <span class="ability-hotkey">Q</span>
                                 <div class="ability-name">Выжигание маны</div>
@@ -157,7 +167,7 @@
                     </div>
                     <div class="ability-card active">
                         <div class="ability-header">
-                            <div class="ability-icon"><img src="images/abilities/dh_immolation.png" alt="Адское пламя" onerror="this.parentElement.innerHTML='<i class=\'fas fa-fire\'></i>'"></div>
+                            <div class="ability-icon" data-ability="dh_immolation_alt" data-fallback="fire"></div>
                             <div class="ability-info">
                                 <span class="ability-hotkey">W</span>
                                 <div class="ability-name">Адское пламя</div>
@@ -174,7 +184,7 @@
                     </div>
                     <div class="ability-card passive">
                         <div class="ability-header">
-                            <div class="ability-icon"><img src="images/abilities/dh_evasion.png" alt="Уклонение" onerror="this.parentElement.innerHTML='<i class=\'fas fa-feather-alt\'></i>'"></div>
+                            <div class="ability-icon" data-ability="dh_evasion" data-fallback="feather-alt"></div>
                             <div class="ability-info">
                                 <span class="ability-hotkey">E</span>
                                 <div class="ability-name">Уклонение</div>
@@ -188,7 +198,7 @@
                     </div>
                     <div class="ability-card ultimate">
                         <div class="ability-header">
-                            <div class="ability-icon"><img src="images/abilities/dh_meta.png" alt="Обратное превращение" onerror="this.parentElement.innerHTML='<i class=\'fas fa-undo\'></i>'"></div>
+                            <div class="ability-icon" data-ability="dh_undo" data-fallback="undo"></div>
                             <div class="ability-info">
                                 <span class="ability-hotkey">R</span>
                                 <div class="ability-name">Обратное превращение</div>
@@ -212,8 +222,31 @@
                 document.getElementById('form-' + formId).classList.add('active');
             }
             </script>
-            <div class="back-button" onclick="window.location.href='heroes.html'"><i class="fas fa-arrow-left"></i> Вернуться к героям</div>
+            <a href="heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
         </div>
     </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><i class="fas fa-shield-alt"></i> Legend of Worlds</span>
+                <p>Уникальная карта для Warcraft III</p>
+            </div>
+            <div class="footer-links">
+                <a href="../updates.html">Обновления</a>
+                <a href="../lore.html">Лор</a>
+                <a href="../support.html">Поддержать</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025–2026 Legend of Worlds. Все права защищены.</p>
+        </div>
+    </footer>
 </body>
 </html>
