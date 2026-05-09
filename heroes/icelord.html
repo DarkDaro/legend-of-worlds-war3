@@ -67,11 +67,21 @@
             <div class="detail-description">
                 <p>Повелитель Льдов — могущественный маг-криомант, чьи заклинания обращают врагов в лёд. Он замедляет целые армии и сокрушает их ледяными осколками, оставляя после себя лишь замёрзшие руины.</p>
             </div>
+
+            <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
+            <div id="hero-build"></div>
+            <a href="../calculator.html?hero=icelord" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+
+            <div class="hero-nav">
+                <a href="../heroes/thunderer.html" class="hero-nav-btn hero-nav-prev" aria-label="Громовержец"><i class="fas fa-chevron-left"></i></a>
+                <a href="../heroes/archmage.html" class="hero-nav-btn hero-nav-next" aria-label="Архимаг"><i class="fas fa-chevron-right"></i></a>
+            </div>
+
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/icelord_nova.png" alt="Ледяная вспышка" onerror="this.parentElement.innerHTML='<i class=\'fas fa-snowflake\'></i>'"></div>
+                        <div class="ability-icon" data-ability="icelord_nova" data-fallback="snowflake"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
                             <div class="ability-name">Ледяная вспышка</div>
@@ -88,7 +98,7 @@
                 </div>
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/icelord_armor.png" alt="Ледяная броня" onerror="this.parentElement.innerHTML='<i class=\'fas fa-shield-alt\'></i>'"></div>
+                        <div class="ability-icon" data-ability="icelord_armor" data-fallback="shield-alt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
                             <div class="ability-name">Ледяная броня</div>
@@ -105,7 +115,7 @@
                 </div>
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/icelord_ritual.png" alt="Тёмный ритуал" onerror="this.parentElement.innerHTML='<i class=\'fas fa-skull\'></i>'"></div>
+                        <div class="ability-icon" data-ability="icelord_ritual" data-fallback="skull"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
                             <div class="ability-name">Тёмный ритуал</div>
@@ -121,7 +131,7 @@
                 </div>
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/icelord_decay.png" alt="Смерть и разложение" onerror="this.parentElement.innerHTML='<i class=\'fas fa-biohazard\'></i>'"></div>
+                        <div class="ability-icon" data-ability="icelord_decay" data-fallback="biohazard"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
                             <div class="ability-name">Смерть и разложение</div>

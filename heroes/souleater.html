@@ -67,13 +67,23 @@
             <div class="detail-description">
                 <p>Пожиратель душ — порождение Пустоты, голодный дух, заключённый в броню из костей павших. Каждая убитая им жертва питает его силу, делая всё могущественнее и неуязвимее. Там, где он проходит, остаётся лишь тишина и пустые оболочки.</p>
             </div>
+
+            <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
+            <div id="hero-build"></div>
+            <a href="../calculator.html?hero=souleater" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+
+            <div class="hero-nav">
+                <a href="../heroes/mountainking.html" class="hero-nav-btn hero-nav-prev" aria-label="Король гор"><i class="fas fa-chevron-left"></i></a>
+                <a href="../heroes/paladin.html" class="hero-nav-btn hero-nav-next" aria-label="Паладин"><i class="fas fa-chevron-right"></i></a>
+            </div>
+
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
                 <!-- Q: Поглощение души -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/souleater_consume.png" alt="Поглощение души" onerror="this.parentElement.innerHTML='<i class=\'fas fa-hand-holding-magic\'></i>'"></div>
+                        <div class="ability-icon" data-ability="souleater_consume" data-fallback="hand-holding-magic"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
                             <div class="ability-name">Поглощение души</div>
@@ -93,7 +103,7 @@
                 <!-- W: Аура смерти -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/souleater_aura.png" alt="Аура смерти" onerror="this.parentElement.innerHTML='<i class=\'fas fa-skull\'></i>'"></div>
+                        <div class="ability-icon" data-ability="souleater_aura" data-fallback="skull"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
                             <div class="ability-name">Аура смерти</div>
@@ -111,7 +121,7 @@
                 <!-- E: Костяной щит -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/souleater_shield.png" alt="Костяной щит" onerror="this.parentElement.innerHTML='<i class=\'fas fa-shield-alt\'></i>'"></div>
+                        <div class="ability-icon" data-ability="souleater_shield" data-fallback="shield-alt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
                             <div class="ability-name">Костяной щит</div>
@@ -131,7 +141,7 @@
                 <!-- R: Врата Пустоты -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/souleater_void.png" alt="Врата Пустоты" onerror="this.parentElement.innerHTML='<i class=\'fas fa-dungeon\'></i>'"></div>
+                        <div class="ability-icon" data-ability="souleater_void" data-fallback="dungeon"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
                             <div class="ability-name">Врата Пустоты</div>

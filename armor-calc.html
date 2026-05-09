@@ -209,7 +209,7 @@
             <div class="armor-input-group">
                 <label for="armorInput"><i class="fas fa-shield-alt"></i> Броня</label>
                 <div class="armor-input-row">
-                    <input type="number" id="armorInput" value="0" step="1" placeholder="0">
+                    <input type="number" id="armorInput" value="0" min="-500" step="1" placeholder="0">
                     <span class="armor-unit">ед.</span>
                 </div>
             </div>
@@ -348,8 +348,22 @@
         }
 
         armorInput.addEventListener('input', calculate);
+        armorInput.addEventListener('blur', function() {
+            const v = parseFloat(armorInput.value);
+            if (!isNaN(v) && v < -500) armorInput.value = -500;
+            calculate();
+        });
         agiInput.addEventListener('input', calculate);
+        agiInput.addEventListener('blur', function() {
+            if (parseFloat(agiInput.value) < 0) agiInput.value = 0;
+            calculate();
+        });
         hpInput.addEventListener('input', calculate);
+        hpInput.addEventListener('blur', function() {
+            const v = parseFloat(hpInput.value);
+            if (isNaN(v) || v < 1) hpInput.value = 1;
+            calculate();
+        });
         cInput.addEventListener('input', calculate);
 
         // Синхронизируем инпут C с константой

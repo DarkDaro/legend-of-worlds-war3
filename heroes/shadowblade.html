@@ -67,13 +67,23 @@
             <div class="detail-description">
                 <p>Теневой клинок — убийца без лица и имени, порождение Тёмного ковена. Он не существует при свете дня — только в тени, где его клинки беззвучно находят жертвы. Ни один страж не замечал его, пока не становилось слишком поздно.</p>
             </div>
+
+            <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
+            <div id="hero-build"></div>
+            <a href="../calculator.html?hero=shadowblade" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+
+            <div class="hero-nav">
+                <a href="../heroes/drowranger.html" class="hero-nav-btn hero-nav-prev" aria-label="Лучница"><i class="fas fa-chevron-left"></i></a>
+                <a href="../heroes/thunderer.html" class="hero-nav-btn hero-nav-next" aria-label="Громовержец"><i class="fas fa-chevron-right"></i></a>
+            </div>
+
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
                 <!-- Q: Теневой шаг -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/shadow_step.png" alt="Теневой шаг" onerror="this.parentElement.innerHTML='<i class=\'fas fa-people-arrows\'></i>'"></div>
+                        <div class="ability-icon" data-ability="shadow_step" data-fallback="people-arrows"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
                             <div class="ability-name">Теневой шаг</div>
@@ -92,7 +102,7 @@
                 <!-- W: Слепящая тень -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/shadow_blind.png" alt="Слепящая тень" onerror="this.parentElement.innerHTML='<i class=\'fas fa-eye-slash\'></i>'"></div>
+                        <div class="ability-icon" data-ability="shadow_blind" data-fallback="eye-slash"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
                             <div class="ability-name">Слепящая тень</div>
@@ -112,7 +122,7 @@
                 <!-- E: Удар из тени -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/shadow_backstab.png" alt="Удар из тени" onerror="this.parentElement.innerHTML='<i class=\'fas fa-angle-double-right\'></i>'"></div>
+                        <div class="ability-icon" data-ability="shadow_backstab" data-fallback="angle-double-right"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
                             <div class="ability-name">Удар из тени</div>
@@ -129,7 +139,7 @@
                 <!-- R: Метка смерти -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon"><img src="../images/abilities/shadow_mark.png" alt="Метка смерти" onerror="this.parentElement.innerHTML='<i class=\'fas fa-crosshairs\'></i>'"></div>
+                        <div class="ability-icon" data-ability="shadow_mark" data-fallback="crosshairs"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
                             <div class="ability-name">Метка смерти</div>
