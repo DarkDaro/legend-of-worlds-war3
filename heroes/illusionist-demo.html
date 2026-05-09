@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алексей · Герои · Legend of Worlds</title>
+    <meta property="og:title" content="Алексей — Иллюзионист — Legend of Worlds">
+    <meta property="og:description" content="Демо-копия карточки Иллюзиониста с обновлённой структурой.">
+    <meta property="og:image" content="../images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../hero-data.js"></script>
+    <script src="../search.js"></script>
+    <script src="../items-db.js" defer></script>
+    <script src="../icon-loader.js" defer></script>
+    <script src="../hero-builds.js"></script>
+    <script src="../analytics.js" defer></script>
+    <style>`n        .hero-compact-note { margin: 18px 0 0; padding: 14px 16px; border: 1px solid #1a3a5c; border-radius: 12px; background: #0a1628; }`n        .hero-compact-note h4 { margin: 0 0 8px; color: #00e5ff; font-size: 0.95rem; }`n        .hero-compact-note p { margin: 0; color: #a8bbd0; line-height: 1.5; }`n        .scepter-panel { margin: 12px 0 0; padding: 14px 16px; border: 1px solid #2a5070; border-radius: 12px; background: linear-gradient(135deg, #0b1d33, #091421); }`n        .scepter-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 8px; padding: 4px 10px; border-radius: 999px; border: 1px solid #6fdcff55; color: #9beeff; background: #00e5ff14; font-size: 0.82rem; }`n        .scepter-panel p { margin: 0; color: #b5c7d8; line-height: 1.5; }`n    </style>`n</head>
+<body class="agility">
+    <header class="site-header">
+        <a href="../index.html" class="logo">
+            <img src="../images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="../heroes.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
+            <a href="../items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="../mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="../monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="../info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="../guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="../faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
+            <a href="../lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="../support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="../updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="../heroes.html">Герои</a><span class="sep">›</span><span class="current">Алексей — Иллюзионист</span></div>
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"></div>
+                <div class="detail-title">Алексей — Иллюзионист <span class="detail-badge">Ловкость</span></div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><i class="fas fa-crosshairs"></i> Ближний бой (150)</div>
+                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:#55ff55;">Ловкость</span></div>
+                <div class="stat-item"><i class="fas fa-heart"></i> Жизни: 200</div>
+                <div class="stat-item"><i class="fas fa-tint"></i> Мана: 150</div>
+                <div class="stat-item"><i class="fas fa-tint-slash"></i> Реген. маны: 0.01/сек</div>
+                <div class="stat-item"><i class="fas fa-fist-raised"></i> Атака: 70</div>
+                <div class="stat-item"><i class="fas fa-shield-alt"></i> Защита: 4</div>
+                <div class="stat-item"><i class="fas fa-clock"></i> Скорость атаки: 1.7 сек</div>
+                <div class="stat-item"><i class="fas fa-heartbeat"></i> Реген. здоровья: 0.50/сек</div>
+                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: 320</div>
+                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="role-damager">Дамагер</span></div>
+            </div>
+            <table class="hero-stats-table">
+                <tr><th>Характеристика</th><th>Значение</th><th>Прирост</th></tr>
+                <tr><td><span class="stat-strength">Сила</span></td><td>17</td><td>+2</td></tr>
+                <tr><td><span class="stat-agility">Ловкость</span></td><td>22</td><td>+3</td></tr>
+                <tr><td><span class="stat-intelligence">Разум</span></td><td>13</td><td>+2</td></tr>
+            </table>
+            <div class="detail-description">
+                <p>Алексей не выбирал путь иллюзиониста — тень выбрала его сама. Там, где другие видят обман, он видит вторую реальность, не менее настоящую, чем первая. Его клинки находят уязвимые точки прежде, чем враг успевает моргнуть. Его копии бьют с той же уверенностью, что и оригинал. А когда иллюзий недостаточно — Алексей становится тем, кого прячут в кошмарах: демон с хаосным огнём и леденящим криком. Настоящий Алексей — тот, кто стоит перед вами, или тот, кто уже за спиной?</p>
+            </div>
+
+            <div class="hero-compact-note">
+                <h4><i class="fas fa-info-circle"></i> Кратко</h4>
+                <p>Карточка показывает базовые данные, сборку и способности. Полный разбор тактики будет вынесен в отдельный гайд.</p>
+            </div>
+
+            <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
+            <div id="hero-build"></div>
+            <a href="../calculator.html?hero=illusionist&items=I030,I0EO,I03Z,I0B1,I045,I0BV" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+
+            <div class="recipe-title"><i class="fas fa-gem"></i> Скипетр Владыки</div>
+            <div class="scepter-panel">
+                <div class="scepter-tag"><i class="fas fa-skull-crossbones"></i> Отдельное оформление для ультимейта</div>
+                <p>Блок Скипетра Владыки оставлен компактным и не смешан с тактикой. В карточке он должен выглядеть как отдельный элемент, а не как продолжение обычного текста.</p>
+            </div>
+
+            <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
+            <div class="abilities-grid">
+
+                <!-- Q: Иллюзия -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="illusionist_mirror" data-fallback="fas fa-users"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">Q</span>
+                            <div class="ability-name">Иллюзия</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Герой создаёт 3 иллюзии самого себя, которые получают 450% урона, а наносят 25% от атаки героя. Создание иллюзий наносит урон вокруг героя в радиусе 350.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">150/300/450/600/750 + AGI × 0.4/0.8/1.2/1.6/2</span></div>
+                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">350</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">15 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">—</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">18</span></div>
+                    </div>
+                </div>
+
+                <!-- W: Фантомные клинки -->
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="illusionist_blades" data-fallback="fas fa-ghost"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Фантомные клинки</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Атакуя, есть шанс найти слабое место противника и нанести критический удар.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">15%</span></div>
+                        <div class="param-row"><span class="param-label">Множитель</span><span class="param-values">×1.75/2.10/2.45/2.80/3.15</span></div>
+                    </div>
+                </div>
+
+                <!-- E: Отражение души -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="illusionist_confuse" data-fallback="fas fa-random"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Отражение души</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Иллюзионист отрывает частицу души всех юнитов в указанной области. Если частица души принадлежит герою, призывается его копия. Иллюзии наносят 40% урона, а получают 250%.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">275/325/375/425/475</span></div>
+                        <div class="param-row"><span class="param-label">Урон по крипам</span><span class="param-values">20 × уровень героя + 300/500/700/900/1100</span></div>
+                        <div class="param-row"><span class="param-label">Урон по героям</span><span class="param-values">20 × уровень героя + INT × 2</span></div>
+                        <div class="param-row"><span class="param-label">Длительность иллюзий</span><span class="param-values">4 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">—</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Перевоплощение -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="illusionist_mirage" data-fallback="fas fa-magic"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Перевоплощение</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Герой принимает форму ужасного демона, обретая хаосную атаку дальнего боя 600. При применении издаёт леденящий крик, снижающий силу атаки врагов на 40% и защиту на 10 ед.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Здоровье</span><span class="param-values">+1000</span></div>
+                        <div class="param-row"><span class="param-label">Атака</span><span class="param-values">+100</span></div>
+                        <div class="param-row"><span class="param-label">Регенерация</span><span class="param-values">+60 ед/сек</span></div>
+                        <div class="param-row"><span class="param-label">Урон заклинаний</span><span class="param-values">+30%</span></div>
+                        <div class="param-row"><span class="param-label">Дальность атаки</span><span class="param-values">600</span></div>
+                        <div class="param-row"><span class="param-label">Длительность формы</span><span class="param-values">20/25/30/35/40 сек</span></div>
+                        <div class="param-row passive-row"><span class="param-label"><i class="fas fa-skull"></i> Крик</span><span class="param-values">−40% сила атаки, −10 защита врагов (6 сек)</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">—</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">120</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Разящая тень -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="illusionist_shadow" data-fallback="fas fa-bolt"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Разящая тень</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Герой перемещается в указанную точку, оставляя на прежнем месте иллюзию на 10 секунд, затем наносит небольшой урон в области перемещения. Иллюзия наносит 20% урона, а получает 200%.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">300 + AGI × 0.5</span></div>
+                        <div class="param-row"><span class="param-label">Дистанция</span><span class="param-values">1000</span></div>
+                        <div class="param-row"><span class="param-label">Иллюзия</span><span class="param-values">20% урон, 200% получаемый</span></div>
+                        <div class="param-row"><span class="param-label">Длительность иллюзии</span><span class="param-values">10 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">—</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">12</span></div>
+                    </div>
+                </div>
+
+            </div>
+            <a href="../heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
+        </div>
+    </div>
+    <script>
+        var container = document.getElementById('hero-build');
+        if (container && typeof renderHeroBuild === 'function') {
+            container.innerHTML = renderHeroBuild('illusionist');
+        }
+    </script>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><i class="fas fa-shield-alt"></i> Legend of Worlds</span>
+                <p>Уникальная карта для Warcraft III</p>
+            </div>
+            <div class="footer-links">
+                <a href="../updates.html">Обновления</a>
+                <a href="../lore.html">Лор</a>
+                <a href="../support.html">Поддержать</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>
