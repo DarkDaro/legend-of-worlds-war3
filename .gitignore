@@ -37,6 +37,9 @@ images/garb/
 generated-heroes/
 test-item-preview.html
 
+# Dev-утилиты (не часть сайта)
+tools/
+
 # JASS скрипты (не для публикации)
 JassCode/
 
