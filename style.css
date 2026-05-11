@@ -3652,7 +3652,8 @@ body.page-lore {
         radial-gradient(circle at 30% 10%, #182530 0%, #05070a 100%);
 }
 
-body.page-calculator {
+body.page-calculator,
+body.page-build-constructor {
     background-image:
         radial-gradient(ellipse at 60% 30%, rgba(0, 230, 255, 0.05) 0%, transparent 50%),
         radial-gradient(circle at 50% 80%, #182530 0%, #05070a 100%);
@@ -3682,7 +3683,10 @@ body.page-404 {
 }
 
 .calc-top-bar {
+    display: flex;
+    gap: 10px;
     margin-bottom: 8px;
+    flex-wrap: wrap;
 }
 
 .calc-back-link {
@@ -4273,6 +4277,13 @@ body.page-404 {
 }
 
 @media (max-width: 800px) {
+    .calc-top-bar {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .calc-top-bar .calc-back-link {
+        text-align: center;
+    }
     .calc-slots {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -4562,5 +4573,604 @@ body.page-404 {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+}
+
+/* ==========================================================================
+   Конструктор сборок (build-constructor)
+   ========================================================================== */
+
+.bc-intro {
+    color: #8e97aa;
+    margin-bottom: 14px;
+    line-height: 1.4;
+    font-size: 0.88rem;
+}
+
+.bc-top-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+/* Группа */
+.bc-group-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding: 8px 12px;
+    background: rgba(0, 230, 255, 0.04);
+    border: 1px solid rgba(0, 230, 255, 0.1);
+    border-radius: 6px;
+}
+
+.bc-group-label {
+    color: #c0d0e0;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.bc-group-input {
+    width: 50px;
+    padding: 3px 6px;
+    background: #0a1520;
+    border: 1px solid rgba(0, 230, 255, 0.2);
+    border-radius: 4px;
+    color: #e0f0ff;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.bc-group-hint {
+    color: #5a6a7a;
+    font-size: 0.75rem;
+}
+
+/* Стадии */
+.bc-stages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.bc-stage {
+    background: rgba(0, 230, 255, 0.03);
+    border: 1px solid rgba(0, 230, 255, 0.1);
+    border-radius: 6px;
+    padding: 10px 12px;
+}
+
+.bc-stage-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.bc-stage-num {
+    font-weight: 600;
+    color: #00e6ff;
+    font-size: 0.9rem;
+}
+
+.bc-stage-header {
+    cursor: pointer;
+}
+
+.bc-stage-chevron {
+    color: #5a6a80;
+    font-size: 0.7rem;
+    margin-right: 4px;
+    transition: transform 0.15s;
+}
+
+.bc-stage-level {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #8e97aa;
+    font-size: 0.8rem;
+}
+
+.bc-level-input {
+    width: 44px;
+    padding: 2px 4px;
+    background: #0a1520;
+    border: 1px solid rgba(0, 230, 255, 0.2);
+    border-radius: 4px;
+    color: #e0f0ff;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.bc-stage-cost {
+    color: #8e97aa;
+    font-size: 0.8rem;
+    margin-left: auto;
+}
+
+.bc-stage-remove {
+    background: none;
+    border: none;
+    color: #5a3a3a;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+}
+
+.bc-stage-remove:hover {
+    color: #ff4444;
+    background: rgba(255, 68, 68, 0.1);
+}
+
+/* Слоты */
+.bc-stage-slots {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+}
+
+.bc-slot {
+    min-height: 76px;
+    border: 2px dashed rgba(0, 230, 255, 0.15);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+    padding: 4px 2px;
+}
+
+.bc-slot-empty {
+    color: #3a4a5a;
+}
+
+.bc-slot-empty:hover,
+.bc-slot-active {
+    border-color: rgba(0, 230, 255, 0.5);
+    background: rgba(0, 230, 255, 0.05);
+}
+
+.bc-slot-active {
+    border-style: solid;
+    box-shadow: 0 0 8px rgba(0, 230, 255, 0.15);
+}
+
+.bc-slot-filled {
+    border-style: solid;
+    border-color: rgba(0, 230, 255, 0.2);
+    background: rgba(0, 230, 255, 0.03);
+}
+
+.bc-slot-filled:hover {
+    border-color: rgba(0, 230, 255, 0.4);
+}
+
+.bc-slot-boss-drop {
+    border-color: rgba(255, 68, 68, 0.3);
+    background: rgba(255, 68, 68, 0.05);
+}
+
+.bc-slot-boss-craft {
+    border-color: rgba(255, 165, 0, 0.3);
+    background: rgba(255, 165, 0, 0.05);
+}
+
+.bc-slot-icon {
+    margin-bottom: 1px;
+}
+
+.bc-slot-icon img {
+    width: 40px;
+    height: 40px;
+}
+
+.bc-slot-name {
+    font-size: 0.62rem;
+    color: #c0d0e0;
+    text-align: center;
+    line-height: 1.15;
+    max-height: 2.3em;
+    overflow: hidden;
+    word-break: break-word;
+}
+
+.bc-slot-cost {
+    font-size: 0.58rem;
+    color: #8e97aa;
+    margin-top: 1px;
+}
+
+.bc-slot-remove {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #5a3a3a;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 0.65rem;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.bc-slot:hover .bc-slot-remove {
+    opacity: 1;
+}
+
+.bc-slot-remove:hover {
+    color: #ff4444;
+}
+
+/* Кнопка добавления стадии */
+.bc-add-stage-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 8px;
+    background: rgba(0, 230, 255, 0.05);
+    border: 2px dashed rgba(0, 230, 255, 0.2);
+    border-radius: 6px;
+    color: #00e6ff;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    margin-bottom: 16px;
+}
+
+.bc-add-stage-btn:hover {
+    background: rgba(0, 230, 255, 0.1);
+    border-color: rgba(0, 230, 255, 0.4);
+}
+
+/* Превью */
+.bc-preview-section {
+    margin-bottom: 16px;
+    overflow-x: auto;
+}
+
+.bc-preview-empty {
+    color: #5a6a7a;
+    padding: 12px;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.bc-preview-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+}
+
+.bc-preview-table th {
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 1px solid rgba(0, 230, 255, 0.15);
+    color: #00e6ff;
+    font-weight: 600;
+}
+
+.bc-preview-table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid rgba(0, 230, 255, 0.05);
+    vertical-align: top;
+}
+
+.bc-td-stage {
+    color: #00e6ff;
+    font-weight: 600;
+    width: 60px;
+}
+
+.bc-td-level {
+    width: 60px;
+    color: #8e97aa;
+}
+
+.bc-td-cost {
+    width: 120px;
+    color: #8e97aa;
+    text-align: right;
+}
+
+.bc-preview-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 0;
+}
+
+.bc-preview-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+.bc-preview-name {
+    color: #c0d0e0;
+}
+
+.bc-preview-badge {
+    font-size: 0.65rem;
+    padding: 1px 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+
+.bc-badge-drop {
+    background: rgba(255, 68, 68, 0.15);
+    color: #ff6666;
+    border: 1px solid rgba(255, 68, 68, 0.3);
+}
+
+.bc-badge-craft {
+    background: rgba(255, 165, 0, 0.15);
+    color: #ffa500;
+    border: 1px solid rgba(255, 165, 0, 0.3);
+}
+
+.bc-preview-boss-drop .bc-preview-name {
+    color: #ff6666;
+}
+
+.bc-preview-boss-craft .bc-preview-name {
+    color: #ffa500;
+}
+
+/* JASS-код */
+.bc-jass-section {
+    margin-bottom: 16px;
+}
+
+#bcJassToggle {
+    cursor: pointer;
+    user-select: none;
+}
+
+.bc-chevron {
+    margin-left: 6px;
+    font-size: 0.8rem;
+    transition: transform 0.2s;
+}
+
+.bc-jass-content {
+    margin-top: 8px;
+}
+
+.bc-jass-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+}
+
+.bc-copy-btn {
+    padding: 4px 10px;
+    background: rgba(0, 230, 255, 0.1);
+    border: 1px solid rgba(0, 230, 255, 0.3);
+    border-radius: 4px;
+    color: #00e6ff;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: background 0.2s;
+}
+
+.bc-copy-btn:hover {
+    background: rgba(0, 230, 255, 0.2);
+}
+
+.bc-jass-note {
+    color: #5a6a7a;
+    font-size: 0.7rem;
+    font-style: italic;
+}
+
+.bc-jass-code {
+    background: #060d14;
+    border: 1px solid rgba(0, 230, 255, 0.1);
+    border-radius: 4px;
+    padding: 10px 12px;
+    color: #a0c0e0;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    overflow-x: auto;
+    white-space: pre;
+    max-height: 300px;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 720px) {
+    .bc-stage-slots {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .bc-stage-header {
+        flex-wrap: wrap;
+    }
+
+    .bc-stage-cost {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 4px;
+    }
+
+    .bc-group-row {
+        flex-wrap: wrap;
+    }
+
+    .bc-group-hint {
+        width: 100%;
+        margin-top: 4px;
+    }
+
+    .bc-preview-table {
+        font-size: 0.75rem;
+    }
+
+    .bc-preview-table th,
+    .bc-preview-table td {
+        padding: 4px 6px;
+    }
+
+    .bc-td-cost {
+        width: auto;
+    }
+
+    .bc-preview-icon img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .bc-jass-code {
+        font-size: 0.7rem;
+        padding: 10px;
+        max-height: 250px;
+    }
+
+    .bc-jass-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .bc-top-bar {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .bc-top-bar .calc-back-link {
+        text-align: center;
+    }
+
+    .bc-slot {
+        min-height: 72px;
+    }
+
+    .bc-slot-icon img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .bc-slot-name {
+        font-size: 0.58rem;
+    }
+
+    .bc-slot-cost {
+        font-size: 0.54rem;
+    }
+
+    .bc-add-stage-btn {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    /* Каталог — горизонтальный скролл табов */
+    .calc-catalog-section .category-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+    }
+
+    .calc-catalog-section .category-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .calc-catalog-section .tab-btn {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+
+    .calc-catalog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+        gap: 6px;
+    }
+
+    .calc-catalog-item {
+        padding: 6px 3px;
+    }
+
+    .calc-catalog-icon img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .calc-catalog-name {
+        font-size: 0.68rem;
+    }
+
+    .calc-catalog-cost {
+        font-size: 0.6rem;
+    }
+
+    .calc-search {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .bc-stage-slots {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+
+    .bc-slot {
+        min-height: 68px;
+    }
+
+    .bc-slot-icon img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .bc-slot-name {
+        font-size: 0.58rem;
+    }
+
+    .bc-stage {
+        padding: 10px;
+    }
+
+    .bc-stage-num {
+        font-size: 0.9rem;
+    }
+
+    .bc-preview-table {
+        font-size: 0.68rem;
+    }
+
+    .bc-preview-table .bc-td-level {
+        display: none;
+    }
+
+    .bc-preview-badge {
+        font-size: 0.58rem;
+    }
+
+    .bc-jass-code {
+        font-size: 0.65rem;
+        padding: 8px;
+    }
+
+    .calc-catalog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
+    }
+
+    .calc-catalog-icon img {
+        width: 32px;
+        height: 32px;
     }
 }
