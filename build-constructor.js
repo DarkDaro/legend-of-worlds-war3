@@ -70,6 +70,17 @@ function addStage() {
     bcRender();
 }
 
+function bcClearAll() {
+    if (!confirm('Очистить все стадии?')) return;
+    buildStages = [{ level: 1, items: [null, null, null, null, null, null] }];
+    bcClipboard = null;
+    bcCollapsedStages.clear();
+    activeSlot = [0, 0];
+    bcSave();
+    bcRender();
+    bcToast('Конструктор очищен');
+}
+
 function removeStage(index) {
     if (buildStages.length <= 1) return;
     buildStages.splice(index, 1);
@@ -516,6 +527,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const addBtn = document.getElementById('bcAddStageBtn');
     if (addBtn) {
         addBtn.addEventListener('click', addStage);
+    }
+
+    // Кнопка «Очистить»
+    const clearBtn = document.getElementById('bcClearBtn');
+    if (clearBtn) {
+        clearBtn.addEventListener('click', bcClearAll);
     }
 
     // Сворачивание превью

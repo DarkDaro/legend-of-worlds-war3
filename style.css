@@ -4866,6 +4866,27 @@ body.page-404 {
     border-color: rgba(0, 230, 255, 0.4);
 }
 
+.bc-clear-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(255, 80, 80, 0.05);
+    border: 2px dashed rgba(255, 80, 80, 0.2);
+    border-radius: 6px;
+    color: #ff5050;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+}
+
+.bc-clear-btn:hover {
+    background: rgba(255, 80, 80, 0.1);
+    border-color: rgba(255, 80, 80, 0.4);
+}
+
 .bc-stage-copy {
     background: none;
     border: none;
