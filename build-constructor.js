@@ -13,6 +13,8 @@ let bcActiveTab = 'all';
 let bcSearchQuery = '';
 let jassCollapsed = true;
 let bcCollapsedStages = new Set(); // свёрнутые стадии
+let bcPreviewCollapsed = false; // свёрнутое превью
+let bcClipboard = null; // скопированная стадия { level, items }
 
 // === localStorage ===
 
@@ -87,6 +89,32 @@ function setStageLevel(index, level) {
     }
 }
 
+// === Копирование / вставка стадий ===
+
+function bcCopyStage(index) {
+    const stage = buildStages[index];
+    if (!stage) return;
+    bcClipboard = { level: stage.level, items: [...stage.items] };
+    bcToast('Стадия ' + (index + 1) + ' скопирована');
+    bcRender(); // обновить кнопки
+}
+
+function bcPasteStage(afterIndex) {
+    if (!bcClipboard) {
+        bcToast('Сначала скопируйте стадию');
+        return;
+    }
+    const newStage = { level: bcClipboard.level, items: [...bcClipboard.items] };
+    buildStages.splice(afterIndex + 1, 0, newStage);
+    // Корректируем activeSlot
+    if (activeSlot[0] > afterIndex) {
+        activeSlot[0]++;
+    }
+    bcSave();
+    bcRender();
+    bcToast('Стадия вставлена после ' + (afterIndex + 1));
+}
+
 // === Действия со слотами ===
 
 function bcAddToSlot(itemId) {
@@ -149,6 +177,10 @@ function bcRenderSlots() {
         html += `<input type="number" id="bcLevel${si}" class="bc-level-input" value="${stage.level}" min="1" max="25" data-si="${si}">`;
         html += `</div>`;
         html += `<div class="bc-stage-cost">${stageCost.toLocaleString('ru-RU')} 🪙${bossCount > 0 ? ' · 💀 ' + bossCount : ''}</div>`;
+        html += `<button class="bc-stage-copy" data-si="${si}" title="Копировать стадию"><i class="fas fa-copy"></i></button>`;
+        if (bcClipboard) {
+            html += `<button class="bc-stage-paste" data-si="${si}" title="Вставить стадию после"><i class="fas fa-paste"></i></button>`;
+        }
         if (buildStages.length > 1) {
             html += `<button class="bc-stage-remove" data-si="${si}" title="Удалить стадию"><i class="fas fa-times"></i></button>`;
         }
@@ -181,7 +213,7 @@ function bcRenderSlots() {
     // Сворачивание/разворачивание стадии
     container.querySelectorAll('.bc-stage-header').forEach(header => {
         header.addEventListener('click', e => {
-            if (e.target.closest('.bc-level-input') || e.target.closest('.bc-stage-remove')) return;
+            if (e.target.closest('.bc-level-input') || e.target.closest('.bc-stage-remove') || e.target.closest('.bc-stage-copy') || e.target.closest('.bc-stage-paste')) return;
             const si = parseInt(header.dataset.si);
             if (bcCollapsedStages.has(si)) bcCollapsedStages.delete(si);
             else bcCollapsedStages.add(si);
@@ -191,6 +223,18 @@ function bcRenderSlots() {
     container.querySelectorAll('.bc-level-input').forEach(input => {
         input.addEventListener('change', () => {
             setStageLevel(parseInt(input.dataset.si), input.value);
+        });
+    });
+    container.querySelectorAll('.bc-stage-copy').forEach(btn => {
+        btn.addEventListener('click', e => {
+            e.stopPropagation();
+            bcCopyStage(parseInt(btn.dataset.si));
+        });
+    });
+    container.querySelectorAll('.bc-stage-paste').forEach(btn => {
+        btn.addEventListener('click', e => {
+            e.stopPropagation();
+            bcPasteStage(parseInt(btn.dataset.si));
         });
     });
     container.querySelectorAll('.bc-stage-remove').forEach(btn => {
@@ -472,6 +516,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const addBtn = document.getElementById('bcAddStageBtn');
     if (addBtn) {
         addBtn.addEventListener('click', addStage);
+    }
+
+    // Сворачивание превью
+    const previewToggle = document.getElementById('bcPreviewToggle');
+    if (previewToggle) {
+        previewToggle.addEventListener('click', () => {
+            bcPreviewCollapsed = !bcPreviewCollapsed;
+            const content = document.getElementById('bcPreviewContent');
+            const chevron = previewToggle.querySelector('.bc-chevron');
+            if (content) content.style.display = bcPreviewCollapsed ? 'none' : 'block';
+            if (chevron) {
+                chevron.className = bcPreviewCollapsed ? 'fas fa-chevron-down bc-chevron' : 'fas fa-chevron-up bc-chevron';
+            }
+        });
     }
 
     // Поиск

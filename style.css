@@ -4834,6 +4834,75 @@ body.page-404 {
     border-color: rgba(0, 230, 255, 0.4);
 }
 
+.bc-stage-actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.bc-stage-actions .bc-add-stage-btn {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.bc-paste-stage-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(0, 230, 255, 0.05);
+    border: 2px dashed rgba(0, 230, 255, 0.2);
+    border-radius: 6px;
+    color: #00e6ff;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+}
+
+.bc-paste-stage-btn:hover {
+    background: rgba(0, 230, 255, 0.1);
+    border-color: rgba(0, 230, 255, 0.4);
+}
+
+.bc-stage-copy {
+    background: none;
+    border: none;
+    color: #5a6a7a;
+    cursor: pointer;
+    padding: 4px 6px;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+}
+
+.bc-stage-copy:hover {
+    color: #00e6ff;
+}
+
+.bc-stage-paste {
+    background: none;
+    border: none;
+    color: #5a6a7a;
+    cursor: pointer;
+    padding: 4px 6px;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+}
+
+.bc-stage-paste:hover {
+    color: #4caf50;
+}
+
+.bc-section-toggle {
+    cursor: pointer;
+    user-select: none;
+}
+
+.bc-section-toggle:hover {
+    opacity: 0.8;
+}
+
 /* Превью */
 .bc-preview-section {
     margin-bottom: 16px;
