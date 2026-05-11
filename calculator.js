@@ -398,6 +398,8 @@ function renderCalcCatalog() {
             if (id === 'recipe') return false;
             if (item.type === 'recipe') return false;
             if (item.type === 'boost') return false;
+            if (item.type === 'rune') return false;
+            if (item.hidden) return false;
             return true;
         });
     } else {
@@ -411,6 +413,8 @@ function renderCalcCatalog() {
                 if (!item) return false;
                 if (item.type === 'recipe') return false;
                 if (item.type === 'boost') return false;
+                if (item.type === 'rune') return false;
+                if (item.hidden) return false;
                 return true;
             });
         }

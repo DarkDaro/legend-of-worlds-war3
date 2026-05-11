@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конструктор сборок · Legend of Worlds</title>
+    <meta property="og:title" content="Конструктор сборок — Legend of Worlds">
+    <meta property="og:description" content="Создайте многостадийную сборку героя: выберите предметы, укажите уровни, получите читаемую раскладку и JASS-код.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="items-db.js"></script>
+    <script src="jass-data.js"></script>
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+</head>
+<body class="page-build-constructor">
+
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link active"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="items.html">Предметы</a><span class="sep">›</span><span class="current">Конструктор сборок</span></div>
+
+        <h1><i class="fas fa-hammer"></i> Конструктор сборок</h1>
+        <p class="bc-intro">Создайте многостадийную сборку героя: выберите предметы для каждой стадии, укажите требуемый уровень. Босс-предметы определяются автоматически. Результат — читаемая раскладка и JASS-код для карты.</p>
+
+        <div class="bc-top-bar">
+            <a href="items.html" class="calc-back-link"><i class="fas fa-arrow-left"></i> К предметам</a>
+            <a href="calculator.html" class="calc-back-link"><i class="fas fa-calculator"></i> Калькулятор</a>
+        </div>
+
+        <!-- Группа сборки -->
+        <div class="bc-group-row">
+            <label for="bcGroupInput" class="bc-group-label"><i class="fas fa-layer-group"></i> Группа (g)</label>
+            <input type="number" id="bcGroupInput" class="bc-group-input" value="1" min="1" max="50">
+            <span class="bc-group-hint">Номер группы для JASS-кода</span>
+        </div>
+
+        <!-- Стадии -->
+        <div id="bcStages" class="bc-stages"></div>
+
+        <button id="bcAddStageBtn" class="bc-add-stage-btn"><i class="fas fa-plus"></i> Добавить стадию</button>
+
+        <!-- Превью -->
+        <div class="bc-preview-section" id="bcPreviewSection">
+            <h2 class="section-title"><i class="fas fa-eye"></i> Превью сборки</h2>
+            <div id="bcPreview" class="bc-preview"></div>
+        </div>
+
+        <!-- JASS-код -->
+        <div class="bc-jass-section" id="bcJassSection">
+            <h2 class="section-title" id="bcJassToggle"><i class="fas fa-code"></i> JASS-код <i class="fas fa-chevron-down bc-chevron"></i></h2>
+            <div id="bcJassContent" class="bc-jass-content" style="display:none">
+                <div class="bc-jass-toolbar">
+                    <button id="bcCopyJassBtn" class="bc-copy-btn"><i class="fas fa-copy"></i> Скопировать</button>
+                    <span class="bc-jass-note">Имена предметов из jass-data.js (синхронизированы с items-db.js).</span>
+                </div>
+                <pre id="bcJassCode" class="bc-jass-code"></pre>
+            </div>
+        </div>
+
+        <!-- Каталог выбора -->
+        <div class="calc-catalog-section">
+            <h2 class="section-title"><i class="fas fa-flask"></i> Выберите предмет</h2>
+            <div class="calc-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="bcSearch" placeholder="Найти предмет...">
+            </div>
+            <div class="category-tabs" id="bcTabs"></div>
+            <div id="bcCatalog"></div>
+        </div>
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <span>Legend of Worlds — Warcraft III Hero Arena</span>
+            <span class="footer-dot">·</span>
+            <span>Конструктор сборок</span>
+        </div>
+    </footer>
+
+    <script src="build-constructor.js"></script>
+</body>
+</html>
