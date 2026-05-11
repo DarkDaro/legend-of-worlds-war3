@@ -59,12 +59,16 @@
         <!-- Стадии -->
         <div id="bcStages" class="bc-stages"></div>
 
-        <button id="bcAddStageBtn" class="bc-add-stage-btn"><i class="fas fa-plus"></i> Добавить стадию</button>
+        <div class="bc-stage-actions">
+            <button id="bcAddStageBtn" class="bc-add-stage-btn"><i class="fas fa-plus"></i> Добавить стадию</button>
+        </div>
 
         <!-- Превью -->
         <div class="bc-preview-section" id="bcPreviewSection">
-            <h2 class="section-title"><i class="fas fa-eye"></i> Превью сборки</h2>
-            <div id="bcPreview" class="bc-preview"></div>
+            <h2 class="section-title bc-section-toggle" id="bcPreviewToggle"><i class="fas fa-eye"></i> Превью сборки <i class="fas fa-chevron-down bc-chevron"></i></h2>
+            <div id="bcPreviewContent" class="bc-preview-content">
+                <div id="bcPreview" class="bc-preview"></div>
+            </div>
         </div>
 
         <!-- JASS-код -->
