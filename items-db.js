@@ -241,7 +241,7 @@ const itemsDB = {
     activeAbility: { name: 'Размен Душ', description: 'Обмен процентным запасом здоровья с целью', cooldown: 80, manacost: 350, note: null }
   },
   I02N: { id: 'I02N', name: 'Рука тьмы', icon: '🖤🤚', type: 'weapon', cost: 21885,
-    description: '+140 атаки, +40 силы, Баш (15% 1.3 сек 400 урона), Критический удар (20% x1.8), Темный заряд (актив): 900 + 2x STR, стан 1.5 сек',
+    description: '+140 атаки, +40 силы, Баш (15% 1.3 сек 400 урона), Критический удар (20% x1.8), Темный заряд (актив): 900 + 2x наибольший атрибут, стан 1.5 сек',
     components: [ {itemId: 'odef', quantity: 1}, {itemId: 'I00Y', quantity: 1}, {itemId: 'I015', quantity: 1}, {itemId: 'I00M', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 13000} ],
     activeAbility: { name: 'Темный заряд', description: '900 + 2x наибольший атрибут урона, стан 1.5 сек', cooldown: 40, manacost: 150, note: null }
   },
