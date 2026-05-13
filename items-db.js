@@ -243,12 +243,12 @@ const itemsDB = {
   I02N: { id: 'I02N', name: 'Рука тьмы', icon: '🖤🤚', type: 'weapon', cost: 21885,
     description: '+140 атаки, +40 силы, Баш (15% 1.3 сек 400 урона), Критический удар (20% x1.8), Темный заряд (актив): 900 + 2x STR, стан 1.5 сек',
     components: [ {itemId: 'odef', quantity: 1}, {itemId: 'I00Y', quantity: 1}, {itemId: 'I015', quantity: 1}, {itemId: 'I00M', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 13000} ],
-    activeAbility: { name: 'Темный заряд', description: '900 + 2x силы урона, стан 1.5 сек', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Темный заряд', description: '900 + 2x наибольший атрибут урона, стан 1.5 сек', cooldown: 40, manacost: 150, note: null }
   },
   I0EP: { id: 'I0EP', name: 'Лук тьмы', icon: '🏹🌑', type: 'weapon', cost: 40380,
     description: '+280 атаки, +50 силы/ловкости, +60% скорости боя, Баш (17% 1.4 сек 450 урона), Критический удар (22% x2.0), Темный заряд (актив), Темный снаряд (пассив)',
     components: [ {itemId: 'I02N', quantity: 1}, {itemId: 'I013', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 10000} ],
-    activeAbility: { name: 'Темный заряд', description: '900 + 2x силы урона, стан 1.5 сек', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Темный заряд', description: '900 + 2x наибольший атрибут урона, стан 1.5 сек', cooldown: 40, manacost: 150, note: null }
   },
   I0FO: { id: 'I0FO', name: 'Клинок солнца', icon: '☀️🗡️', type: 'weapon', cost: 3850,
     description: '+40 атаки, +15% скорости боя, +600 здоровья, Дар солнца (пассив): +90 физ. урона днем',
