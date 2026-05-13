@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сборка ИИ · Legend of Worlds</title>
+    <meta property="og:title" content="Сборка ИИ — Legend of Worlds">
+    <meta property="og:description" content="Просмотр стадий автосборки ИИ: какие предметы покупает бот на каждом этапе.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="items-db.js"></script>
+    <script src="jass-data.js"></script>
+    <script src="bot-builds.js"></script>
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+    <style>
+        /* === Легенда === */
+        .bb-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 16px 0;
+            padding: 12px 16px;
+            background: rgba(0, 255, 255, 0.04);
+            border: 1px solid rgba(0, 255, 255, 0.12);
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        .bb-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .bb-legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+        .bb-legend-dot.normal { background: rgba(0, 255, 255, 0.15); border: 1px solid rgba(0, 255, 255, 0.3); }
+        .bb-legend-dot.boss { background: rgba(255, 60, 60, 0.15); border: 1px solid rgba(255, 60, 60, 0.4); }
+        .bb-legend-dot.temp { background: rgba(255, 255, 255, 0.06); border: 1px dashed rgba(255, 255, 255, 0.25); opacity: 0.5; }
+
+        /* === Герои в группе === */
+        .bb-heroes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0 20px;
+        }
+        .bb-hero-tag {
+            padding: 4px 10px;
+            background: rgba(0, 255, 255, 0.08);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 6px;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+
+        /* === Стадия === */
+        .bb-stage {
+            margin: 12px 0;
+            border: 1px solid rgba(0, 255, 255, 0.12);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .bb-stage.boss-stage {
+            border-color: rgba(255, 60, 60, 0.3);
+            background: rgba(255, 40, 40, 0.03);
+        }
+        .bb-stage-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            cursor: pointer;
+            user-select: none;
+            background: rgba(0, 255, 255, 0.04);
+            transition: background 0.2s;
+        }
+        .bb-stage.boss-stage .bb-stage-header {
+            background: rgba(255, 40, 40, 0.06);
+        }
+        .bb-stage-header:hover {
+            background: rgba(0, 255, 255, 0.08);
+        }
+        .bb-stage.boss-stage .bb-stage-header:hover {
+            background: rgba(255, 40, 40, 0.1);
+        }
+        .bb-stage-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .bb-stage-num {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+        .bb-stage-boss-badge {
+            padding: 2px 8px;
+            background: rgba(255, 60, 60, 0.15);
+            border: 1px solid rgba(255, 60, 60, 0.3);
+            border-radius: 4px;
+            font-size: 0.72rem;
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+        .bb-stage-cost {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+        .bb-stage-cost .boss-cost {
+            color: #ff6b6b;
+            font-style: italic;
+        }
+        .bb-chevron {
+            color: var(--text-secondary);
+            transition: transform 0.2s;
+            font-size: 0.8rem;
+        }
+        .bb-stage.collapsed .bb-chevron {
+            transform: rotate(-90deg);
+        }
+
+        /* === Слоты стадии === */
+        .bb-stage-items {
+            display: flex;
+            gap: 8px;
+            padding: 12px 14px;
+            flex-wrap: wrap;
+        }
+        .bb-stage.collapsed .bb-stage-items {
+            display: none;
+        }
+        .bb-slot {
+            width: 64px;
+            text-align: center;
+        }
+        .bb-slot-img {
+            width: 64px;
+            height: 64px;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .bb-slot-img img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+        }
+        .bb-slot-img.boss-item {
+            border-color: rgba(255, 60, 60, 0.4);
+            box-shadow: 0 0 6px rgba(255, 60, 60, 0.15);
+        }
+        .bb-slot-img.temp-item {
+            opacity: 0.5;
+            border-style: dashed;
+        }
+        .bb-slot-temp-badge {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            font-size: 0.55rem;
+            padding: 1px 3px;
+            background: rgba(255, 200, 0, 0.2);
+            border: 1px solid rgba(255, 200, 0, 0.4);
+            border-radius: 3px;
+            color: #ffc800;
+            font-weight: 600;
+        }
+        .bb-slot-boss-badge {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            font-size: 0.6rem;
+        }
+        .bb-slot-name {
+            font-size: 0.68rem;
+            margin-top: 4px;
+            color: var(--text-secondary);
+            line-height: 1.2;
+            max-width: 64px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .bb-slot-name.boss-name {
+            color: #ff6b6b;
+        }
+        .bb-slot-name.temp-name {
+            opacity: 0.5;
+            text-decoration: line-through;
+            text-decoration-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* === Итого === */
+        .bb-total {
+            margin-top: 20px;
+            padding: 14px 18px;
+            background: rgba(0, 255, 255, 0.06);
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .bb-total-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .bb-total-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        /* === Выбор группы === */
+        .bb-group-select {
+            margin: 16px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .bb-group-btn {
+            padding: 6px 14px;
+            background: rgba(0, 255, 255, 0.06);
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            border-radius: 6px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.82rem;
+            transition: all 0.2s;
+        }
+        .bb-group-btn:hover {
+            background: rgba(0, 255, 255, 0.12);
+            color: var(--text-primary);
+        }
+        .bb-group-btn.active {
+            background: rgba(0, 255, 255, 0.15);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* === Мобильная адаптация === */
+        @media (max-width: 720px) {
+            .bb-stage-items {
+                gap: 6px;
+                padding: 10px;
+            }
+            .bb-slot {
+                width: 52px;
+            }
+            .bb-slot-img {
+                width: 52px;
+                height: 52px;
+            }
+            .bb-slot-img img {
+                width: 52px;
+                height: 52px;
+            }
+            .bb-slot-name {
+                max-width: 52px;
+                font-size: 0.6rem;
+            }
+            .bb-legend {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body class="page-bot-builds">
+
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link active"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+
+    <div class="wiki-container">
+        <div class="breadcrumbs" id="breadcrumbs"></div>
+        <h1 id="pageTitle"><i class="fas fa-robot"></i> Сборка ИИ</h1>
+        <p class="bc-intro" id="pageIntro">Просмотр стадий автосборки ИИ: какие предметы покупает бот на каждом этапе.</p>
+
+        <div class="bb-legend">
+            <div class="bb-legend-item">
+                <div class="bb-legend-dot normal"></div>
+                <span>Обычная стадия — покупается автосборкой</span>
+            </div>
+            <div class="bb-legend-item">
+                <div class="bb-legend-dot boss"></div>
+                <span>Босс-стадия — требует убийства босса</span>
+            </div>
+            <div class="bb-legend-item">
+                <div class="bb-legend-dot temp"></div>
+                <span>Временный предмет — продаётся при переходе</span>
+            </div>
+        </div>
+
+        <div class="bb-group-select" id="groupSelect"></div>
+        <div class="bb-heroes" id="heroesList"></div>
+        <div id="stagesContainer"></div>
+        <div class="bb-total" id="totalBlock" style="display:none;"></div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <span>© 2025 Legend of Worlds</span>
+            <a href="https://github.com/" target="_blank">GitHub</a>
+        </div>
+    </footer>
+
+<script>
+// === Определение параметров URL ===
+const urlParams = new URLSearchParams(window.location.search);
+const heroRawcode = urlParams.get('rawcode');
+const groupParam = urlParams.get('group');
+
+// === Кэш поиска предмета по имени ===
+let _itemNameCache = null;
+function buildItemNameCache() {
+    _itemNameCache = {};
+    if (!itemsDB) return;
+    for (const [id, item] of Object.entries(itemsDB)) {
+        if (item.name) _itemNameCache[item.name] = item;
+    }
+}
+function findItemByName(name) {
+    if (!_itemNameCache) buildItemNameCache();
+    return _itemNameCache[name] || null;
+}
+
+// === Проверка босс-предмета ===
+function isBossItem(item) {
+    if (!item) return false;
+    return item.type === 'boss_drop' || (item.tags && item.tags.includes('boss'));
+}
+
+// === Проверка босс-стадии ===
+function isBossStage(stage) {
+    return stage.items.some(slot => {
+        const item = findItemByName(slot.name);
+        return isBossItem(item);
+    });
+}
+
+// === Иконка предмета ===
+function renderItemIcon(item, isTemp, isBoss) {
+    if (!item) return '<div class="bb-slot-img"><span style="color:#666;font-size:0.6rem">?</span></div>';
+    const imgSrc = `images/items/${item.id}.png`;
+    const fallback = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><rect fill="none" width="64" height="64"/><path d="M32 8 L56 24 L48 56 L16 56 L8 24Z" fill="none" stroke="rgba(0,255,255,0.2)" stroke-width="1"/></svg>')}`;
+
+    let classes = 'bb-slot-img';
+    if (isTemp) classes += ' temp-item';
+    if (isBoss) classes += ' boss-item';
+
+    let badges = '';
+    if (isTemp) badges += '<span class="bb-slot-temp-badge">⏳</span>';
+    if (isBoss) badges += '<span class="bb-slot-boss-badge">💀</span>';
+
+    return `<div class="${classes}">
+        ${badges}
+        <img src="${imgSrc}" alt="" aria-hidden="true" onerror="this.src='${fallback}'">
+    </div>`;
+}
+
+// === Рендер стадии ===
+// prevItems — Map имя→количество из предыдущей стадии (для расчёта стоимости новых)
+function renderStage(stageData, stageIndex, prevItems) {
+    const boss = isBossStage(stageData);
+    const stageClass = boss ? 'bb-stage boss-stage' : 'bb-stage';
+    const collapsed = stageIndex > 2 ? ' collapsed' : '';
+
+    // Стоимость стадии — только новые предметы (с учётом дубликатов)
+    let stageCost = 0;
+    let bossCost = 0;
+    const currentItems = new Map();
+    const itemsHtml = stageData.items.map(slot => {
+        const item = findItemByName(slot.name);
+        const bItem = isBossItem(item);
+
+        // Подсчёт дубликатов в текущей стадии
+        const prevCount = currentItems.get(slot.name) || 0;
+        currentItems.set(slot.name, prevCount + 1);
+
+        if (bItem) {
+            bossCost += (item ? item.cost : 0) || 0;
+        } else if (item) {
+            // Считаем стоимость если этого предмета меньше в предыдущей стадии
+            const prevHave = prevItems.get(slot.name) || 0;
+            const currentHave = currentItems.get(slot.name) || 0;
+            if (currentHave > prevHave) {
+                stageCost += item.cost || 0;
+            }
+        }
+
+        const nameClass = 'bb-slot-name' + (bItem ? ' boss-name' : '') + (!slot.keep ? ' temp-name' : '');
+
+        return `<div class="bb-slot">
+            ${renderItemIcon(item, !slot.keep, bItem)}
+            <div class="${nameClass}" title="${slot.name}${!slot.keep ? ' (продаётся)' : ''}${bItem ? ' (босс-дроп)' : ''}">${slot.name}</div>
+        </div>`;
+    }).join('');
+
+    // Уровень стадии
+    const level = stageData.bootsLevel;
+    const levelHtml = level >= 100
+        ? `<span style="color:#ff6b6b;font-size:0.75rem;">Ур. ${level}</span>`
+        : `<span style="color:var(--text-secondary);font-size:0.75rem;">Ур. ${level}</span>`;
+
+    // Стоимость
+    let costHtml = '';
+    if (boss && stageCost === 0) {
+        costHtml = `<span class="boss-cost">💀 Босс-дроп</span>`;
+    } else if (boss) {
+        costHtml = `<span>💰 ${stageCost.toLocaleString('ru-RU')} + <span class="boss-cost">💀 босс</span></span>`;
+    } else {
+        costHtml = `<span>💰 ${stageCost.toLocaleString('ru-RU')} золота</span>`;
+    }
+
+    const bossBadge = boss ? '<span class="bb-stage-boss-badge">💀 Босс-стадия</span>' : '';
+
+    return { html: `<div class="${stageClass}${collapsed}" data-stage="${stageData.stage}">
+        <div class="bb-stage-header" onclick="this.parentElement.classList.toggle('collapsed')">
+            <div class="bb-stage-left">
+                <span class="bb-stage-num">Стадия ${stageData.stage}</span>
+                ${levelHtml}
+                ${bossBadge}
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;">
+                <div class="bb-stage-cost">${costHtml}</div>
+                <i class="fas fa-chevron-down bb-chevron"></i>
+            </div>
+        </div>
+        <div class="bb-stage-items">${itemsHtml}</div>
+    </div>`, currentItems: currentItems, stageCost };
+}
+
+// === Рендер группы ===
+function renderGroup(groupId) {
+    const group = botBuildGroups[groupId];
+    if (!group) {
+        document.getElementById('stagesContainer').innerHTML = '<p>Группа не найдена</p>';
+        return;
+    }
+
+    // Герои в группе
+    const heroesInGroup = Object.entries(heroBuildMapping)
+        .filter(([_, data]) => data.group === parseInt(groupId))
+        .map(([rawcode, data]) => data.name);
+
+    const heroesHtml = heroesInGroup.map(name => `<span class="bb-hero-tag">${name}</span>`).join('');
+    document.getElementById('heroesList').innerHTML = heroesHtml;
+
+    // Стадии — считаем стоимость только новых предметов
+    let totalCost = 0;
+    let prevItems = new Map();
+    let stagesHtml = '';
+
+    group.stages.forEach((stage, i) => {
+        const result = renderStage(stage, i, prevItems);
+        stagesHtml += result.html;
+        totalCost += result.stageCost;
+        prevItems = result.currentItems;
+    });
+
+    document.getElementById('stagesContainer').innerHTML = stagesHtml;
+
+    // Итого: стоимость всех покупок (босс-дропы = 0)
+    document.getElementById('totalBlock').style.display = 'flex';
+    document.getElementById('totalBlock').innerHTML = `
+        <div class="bb-total-label">Итого затрат (босс-дропы бесплатны)</div>
+        <div class="bb-total-value">💰 ${totalCost.toLocaleString('ru-RU')} золота</div>
+    `;
+}
+
+// === Инициализация ===
+function init() {
+    let targetGroup = null;
+
+    // Определяем группу из HERO_BUILD_DATA (jass-data.js)
+    if (heroRawcode && typeof HERO_BUILD_DATA !== 'undefined' && HERO_BUILD_DATA[heroRawcode]) {
+        targetGroup = HERO_BUILD_DATA[heroRawcode].group;
+        const heroName = HERO_BUILD_DATA[heroRawcode].name;
+        document.getElementById('pageTitle').innerHTML = `<i class="fas fa-robot"></i> Сборка ИИ: ${heroName}`;
+        document.getElementById('pageIntro').textContent = `Автосборка для ${heroName} — какие предметы покупает ИИ на каждом этапе.`;
+        document.getElementById('breadcrumbs').innerHTML =
+            `<a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Сборка ИИ: ${heroName}</span>`;
+    } else if (groupParam) {
+        targetGroup = parseInt(groupParam);
+        document.getElementById('breadcrumbs').innerHTML =
+            `<a href="index.html">Главная</a><span class="sep">›</span><a href="items.html">Предметы</a><span class="sep">›</span><span class="current">Сборка ИИ: Группа ${targetGroup}</span>`;
+    }
+
+    // Кнопки выбора групп
+    const groupIds = Object.keys(botBuildGroups).sort((a, b) => a - b);
+    const groupBtns = groupIds.map(gid =>
+        `<button class="bb-group-btn${parseInt(gid) === targetGroup ? ' active' : ''}" onclick="selectGroup(${gid})">${gid}</button>`
+    ).join('');
+    document.getElementById('groupSelect').innerHTML = groupBtns;
+
+    if (targetGroup) {
+        renderGroup(targetGroup);
+    } else if (groupIds.length > 0) {
+        renderGroup(groupIds[0]);
+    }
+}
+
+function selectGroup(gid) {
+    // Обновить URL
+    const url = new URL(window.location);
+    url.searchParams.set('group', gid);
+    url.searchParams.delete('rawcode');
+    history.pushState({}, '', url);
+
+    // Обновить кнопки
+    document.querySelectorAll('.bb-group-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent === String(gid));
+    });
+
+    // Обновить заголовок
+    document.getElementById('pageTitle').innerHTML = `<i class="fas fa-robot"></i> Сборка ИИ: Группа ${gid}`;
+    document.getElementById('breadcrumbs').innerHTML =
+        `<a href="index.html">Главная</a><span class="sep">›</span><a href="items.html">Предметы</a><span class="sep">›</span><span class="current">Сборка ИИ: Группа ${gid}</span>`;
+
+    renderGroup(gid);
+}
+
+init();
+</script>
+
+</body>
+</html>
