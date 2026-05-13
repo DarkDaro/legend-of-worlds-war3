@@ -38,7 +38,7 @@ const itemsDB = {
   lhst: { id: 'lhst', name: 'Рог ветров', icon: '📯', type: 'basic', cost: 550, description: 'Аура защиты 2 ед. (пассив)' },
   rhth: { id: 'rhth', name: 'Камень жизни', icon: '❤️', type: 'basic', cost: 500, description: '+300 здоровья' },
   pmna: { id: 'pmna', name: 'Амулет маны', icon: '💙', type: 'basic', cost: 525, description: '+300 маны' },
-  clfm: { id: 'clfm', name: 'Огненный плащ', icon: '🔥🧥', type: 'basic', cost: 800, description: '+5 маны за атаку, Жар преисподней [40 дпс]' },
+  clfm: { id: 'clfm', name: 'Огненный плащ', icon: '🔥🧥', type: 'basic', cost: 800, description: 'Жар преисподней [40 дпс]' },
   desc: { id: 'desc', name: 'Кинжал мага', icon: '🗡️🔮', type: 'basic', cost: 2100, description: 'Скачок (актив) (700)' },
   ajen: { id: 'ajen', name: 'Чаша выносливости', icon: '🏆', type: 'basic', cost: 700, description: 'Аура скорости (5% AS, 10% MS)' },
   evtl: { id: 'evtl', name: 'Талисман защиты', icon: '🛡️📿', type: 'basic', cost: 2000, description: '+10% уклонение' },
@@ -118,12 +118,12 @@ const itemsDB = {
     components: [ {itemId: 'rhth', quantity: 1}, {itemId: 'I00A', quantity: 1}, {itemId: 'lhst', quantity: 1}, {itemId: 'rde2', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 800} ]
   },
   I00S: { id: 'I00S', name: 'Щит смерти', icon: '💀🛡️', type: 'basic_shield', cost: 10550,
-    description: '+1000 здоровья, +15 защиты, +15 маны за атаку, Аура защиты 5 ед., Жар преисподней [200 дпс]',
+    description: '+1000 здоровья, +15 защиты, Аура защиты 5 ед., Жар преисподней [200 дпс]',
     tags: ['shield'],
     components: [ {itemId: 'I00C', quantity: 1}, {itemId: 'clfm', quantity: 1}, {itemId: 'I002', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 6000} ]
   },
   I03G: { id: 'I03G', name: 'Огненный щит', icon: '🔥🛡️', type: 'strength', cost: 29450,
-    description: '+2000 здоровья, +15 защиты, +25 маны за атаку, +15% маг. защита, +20 ко всем атрибутам, Аура защиты 15 ед., Жар преисподней [300 дпс], Отмщение (актив) (500 + 20% от зд, шанс 20%, урон x2)',
+    description: '+2000 здоровья, +15 защиты, +15% маг. защита, +20 ко всем атрибутам, Аура защиты 15 ед., Жар преисподней [300 дпс], Отмщение (актив) (500 + 20% от зд, шанс 20%, урон x2)',
     tags: ['basic', 'shield'],
     components: [ {itemId: 'I036', quantity: 1}, {itemId: 'I00S', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 11000} ],
     activeAbility: { name: 'Отмщение', description: '500 + 20% от здоровья, шанс 20%, урон x2', cooldown: 40, manacost: 150, note: null }
@@ -367,7 +367,7 @@ const itemsDB = {
   I0BV: { id: 'I0BV', name: 'Демоническая сущность', icon: '👹🔮', type: 'magic_vampirism_block', cost: 56450, tags: ['boss'],
     description: '+120 ко всем атрибутам, Магический блок 30% (15% пассив), Магический вампиризм: 30% по героям, 15% по крипам, Поглотить (актив)',
     components: [ {itemId: 'I043', quantity: 1}, {itemId: 'I0B5', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 13500} ],
-    activeAbility: { name: 'Поглотить', description: 'Вживляет предмет в обладателя или союзника', cooldown: 60, manacost: 225, note: null }
+    activeAbility: { name: 'Поглотить', description: 'союзник получает 30% маг. вампиризма и блока на 10 сек', cooldown: 60, manacost: 250, note: null }
   },
   I03C: { id: 'I03C', name: 'Золотая медаль', icon: '🏅', type: 'neutral', cost: 9200,
     description: '+10 ко всем атрибутам, Охота (пассив): золото за убийство крипов (уровень x3)',
@@ -639,7 +639,7 @@ const itemsDB = {
     activeAbility: { name: 'Фростшторм', description: '5000 + 20x осн. атрибут урона', cooldown: 150, manacost: 400, note: null }
   },
   I02D: { id: 'I02D', name: 'Щит джаггернаута', icon: '🛡️💪', type: 'armor', cost: 87050, tags: ['boss'],
-    description: '+80 защиты, +4000 здоровья, +50 маны при атаке, Жар преисподней 600 дпс, +100 регенерации здоровья, +30% маг. защита, Возврат урона 25%, +20 аура защиты, Стойкость Полководца 250',
+    description: '+80 защиты, +4000 здоровья, Жар преисподней 600 дпс, +150 регенерации здоровья, +30% маг. защита, Возврат урона 25%, +20 аура защиты, Стойкость Полководца 250',
     components: [ {itemId: 'I01L', quantity: 1}, {itemId: 'I02B', quantity: 1}, {itemId: 'I00S', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 30000} ]
   },
   I0A5: { id: 'I0A5', name: 'Нерубский доспех', icon: '🕷️🛡️', type: 'armor', cost: 80000, tags: ['boss'],
@@ -653,12 +653,12 @@ const itemsDB = {
     activeAbility: { name: 'Обновление', description: 'Сбрасывает перезарядки всех предметов и способностей', cooldown: 180, manacost: 400, note: null }
   },
   I0B6: { id: 'I0B6', name: 'Щит джаггернаута II', icon: '🛡️💪✨', type: 'armor', cost: 267050, tags: ['boss'],
-    description: '+150 защиты, +20 аура защиты, +10000 здоровья, +450 атаки, +150 регенерации здоровья, +100 маны при атаке, +40% маг. защита, Стойкость Полководца 250, Жар преисподней 800 дпс, Возврат урона 60% пасс, Активно 120% (12 сек)',
+    description: '+150 защиты, +20 аура защиты, +10000 здоровья, +450 атаки, +200 регенерации здоровья, +40% маг. защита, Стойкость Полководца 250, Жар преисподней 800 дпс, Возврат урона 60% пасс, Активно 120% (12 сек)',
     components: [ {itemId: 'I02D', quantity: 1}, {itemId: 'I0A5', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 100000} ],
     activeAbility: { name: 'Возврат урона', description: 'Возвращает 120% получаемого урона 12 сек', cooldown: 40, manacost: 150, note: null }
   },
   I0B4: { id: 'I0B4', name: 'Защита ада', icon: '🔥🛡️', type: 'strength_armor', cost: 106025, tags: ['boss'],
-    description: '+8000 здоровья, +30 защиты, +30% уклонение, +35% маг. защита, +60 мана бонус, +150 силы, +100 ловкости/разума, Мощность драконов 25, Живучесть драконов 25%/450, Жар преисподней 450 дпс, +9% регенерации/сек вне боя, Воля Ада (актив)',
+    description: '+8000 здоровья, +30 защиты, +30% уклонение, +35% маг. защита, +150 силы, +100 ловкости/разума, Мощность драконов 25, Живучесть драконов 25%/450, Жар преисподней 450 дпс, +9% регенерации/сек вне боя, Воля Ада (актив)',
     components: [ {itemId: 'I045', quantity: 1}, {itemId: 'I03G', quantity: 1}, {itemId: 'I0CK', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 40000} ],
     activeAbility: { name: 'Воля Ада', description: 'Мощное усиление', cooldown: 90, manacost: 350, note: null }
   },
