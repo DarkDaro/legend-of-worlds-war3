@@ -46,7 +46,7 @@ const heroBuilds = {
       { id: 'I0DB', name: 'Скипетр Владыки I' },
     ],
   },
-  thunderer: {
+  thundergod: {
     name: 'Громовержец',
     items: [
       { id: 'I08Y', name: 'Посох грома' },

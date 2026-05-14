@@ -363,7 +363,7 @@ const HERO_BUILD_DATA = {
     'O001': { name: 'Громовержец', internal: 'Avatar', group: 7 },
     'O002': { name: 'Призрак', internal: 'SpiritOfVengeance', group: 19 },
     'O003': { name: 'Ночной Всадник', internal: 'Raider', group: 13 },
-    'O004': { name: 'Вождь Орков (альт)', internal: 'ChaosGrom_alt', group: 13 },
+    'O004': { name: 'Ночной Всадник (альт)', internal: 'Raider_alt', group: 13 },
     'O005': { name: 'Морской Страж', internal: 'FacelessOne', group: 6 },
     'O006': { name: 'Вождь Минотавров', internal: 'HeroTaurenChieftain', group: 13 },
     'O007': { name: 'Повелитель Вихрей', internal: 'DruidOfTheTalon', group: 8 },
