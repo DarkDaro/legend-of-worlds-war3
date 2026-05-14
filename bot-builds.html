@@ -278,6 +278,82 @@
                 flex-direction: column;
                 gap: 8px;
             }
+            /* Заголовок стадии — стоимость на новой строке */
+            .bb-stage-header {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .bb-stage-header > div:last-child {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .bb-stage-cost {
+                margin-left: 0;
+            }
+            /* Кнопки групп — горизонтальный скролл */
+            .bb-group-select {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding-bottom: 4px;
+            }
+            .bb-group-select::-webkit-scrollbar {
+                display: none;
+            }
+            .bb-group-btn {
+                flex-shrink: 0;
+                white-space: nowrap;
+            }
+            /* Теги героев — компактнее */
+            .bb-heroes {
+                gap: 6px;
+            }
+            .bb-hero-tag {
+                font-size: 0.75rem;
+                padding: 3px 8px;
+            }
+            /* Итого — в столбик */
+            .bb-total {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bb-slot {
+                width: 44px;
+            }
+            .bb-slot-img {
+                width: 44px;
+                height: 44px;
+            }
+            .bb-slot-img img {
+                width: 44px;
+                height: 44px;
+            }
+            .bb-slot-name {
+                max-width: 44px;
+                font-size: 0.55rem;
+            }
+            .bb-stage-num {
+                font-size: 0.82rem;
+            }
+            .bb-stage-boss-badge {
+                font-size: 0.65rem;
+                padding: 1px 6px;
+            }
+            .bb-slot-temp-badge {
+                font-size: 0.48rem;
+                padding: 0 2px;
+            }
+            .bb-slot-boss-badge {
+                font-size: 0.5rem;
+            }
+            .bb-total-value {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -471,7 +547,7 @@ function renderGroup(groupId) {
     }
 
     // Герои в группе
-    const heroesInGroup = Object.entries(heroBuildMapping)
+    const heroesInGroup = Object.entries(HERO_BUILD_DATA)
         .filter(([_, data]) => data.group === parseInt(groupId))
         .map(([rawcode, data]) => data.name);
 
