@@ -241,6 +241,32 @@
 
     </div>
 
+    <script>
+    // Scroll-reveal для info-section
+    (function() {
+        const sections = document.querySelectorAll('.info-section, .modes-promo-btn');
+        if (!sections.length) return;
+
+        sections.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(el => observer.observe(el));
+    })();
+    </script>
+
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-brand">

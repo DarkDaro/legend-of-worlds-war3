@@ -58,6 +58,10 @@
                     <li class="new">Числа на главной «крутятся» при появлении — от нуля до значения</li>
                     <li class="new">Карточки навигации на главной появляются каскадом при прокрутке</li>
                     <li class="new">Секция «Готов стать Легендой?» — стеклянный фон с движущимся градиентом</li>
+                    <li class="new">Карточки обновлений и поддержки — стеклянный фон и свечение при наведении</li>
+                    <li class="new">Карточки боссов и крипов — стеклянный фон, свечение, красноватое пятно на фоне</li>
+                    <li class="new">Карточки информации и лор — стеклянный фон, плавное появление при прокрутке</li>
+                    <li class="new">Точки на таймлайне лора пульсируют</li>
                     <li class="new">Калькулятор: предметы можно отметить как «продаётся» — возврат 50% стоимости</li>
                     <li class="new">Калькулятор: босс-дропы не дают возврат при продаже (они бесплатные)</li>
                     <li class="new">Ссылка на сборку калькулятора — продающиеся предметы помечены знаком «!»</li>
@@ -282,6 +286,32 @@
         </div>
 
     </div>
+
+    <script>
+    // Scroll-reveal для version-card
+    (function() {
+        const cards = document.querySelectorAll('.version-card');
+        if (!cards.length) return;
+
+        cards.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+
+        cards.forEach(el => observer.observe(el));
+    })();
+    </script>
 
     <footer class="site-footer">
         <div class="footer-content">
