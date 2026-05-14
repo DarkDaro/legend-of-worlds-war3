@@ -407,8 +407,7 @@
 
     <footer class="site-footer">
         <div class="footer-inner">
-            <span>© 2025 Legend of Worlds</span>
-            <a href="https://github.com/" target="_blank">GitHub</a>
+            <span>© 2025–2026 Legend of Worlds</span>
         </div>
     </footer>
 
@@ -512,10 +511,13 @@ function renderStage(stageData, stageIndex, prevItems) {
 
     // Стоимость
     let costHtml = '';
-    if (boss && stageCost === 0) {
-        costHtml = `<span class="boss-cost">💀 Босс-дроп</span>`;
-    } else if (boss) {
-        costHtml = `<span>💰 ${stageCost.toLocaleString('ru-RU')} + <span class="boss-cost">💀 босс</span></span>`;
+    const bossCostStr = bossCost > 0 ? ` + <span class="boss-cost">💀 ${bossCost.toLocaleString('ru-RU')}</span>` : '';
+    if (stageCost === 0 && bossCost === 0) {
+        costHtml = `<span>—</span>`;
+    } else if (stageCost === 0) {
+        costHtml = `<span class="boss-cost">💀 ${bossCost.toLocaleString('ru-RU')}</span>`;
+    } else if (bossCost > 0) {
+        costHtml = `<span>💰 ${stageCost.toLocaleString('ru-RU')}${bossCostStr}</span>`;
     } else {
         costHtml = `<span>💰 ${stageCost.toLocaleString('ru-RU')} золота</span>`;
     }
@@ -535,7 +537,7 @@ function renderStage(stageData, stageIndex, prevItems) {
             </div>
         </div>
         <div class="bb-stage-items">${itemsHtml}</div>
-    </div>`, currentItems: currentItems, stageCost };
+    </div>`, currentItems: currentItems, stageCost, bossCost };
 }
 
 // === Рендер группы ===
@@ -556,6 +558,7 @@ function renderGroup(groupId) {
 
     // Стадии — считаем стоимость только новых предметов
     let totalCost = 0;
+    let totalBossCost = 0;
     let prevItems = new Map();
     let stagesHtml = '';
 
@@ -563,16 +566,20 @@ function renderGroup(groupId) {
         const result = renderStage(stage, i, prevItems);
         stagesHtml += result.html;
         totalCost += result.stageCost;
+        totalBossCost += result.bossCost || 0;
         prevItems = result.currentItems;
     });
 
     document.getElementById('stagesContainer').innerHTML = stagesHtml;
 
-    // Итого: стоимость всех покупок (босс-дропы = 0)
+    // Итого: золото + босс-дропы отдельно
+    const bossStr = totalBossCost > 0
+        ? ` + <span class="boss-cost">💀 ${totalBossCost.toLocaleString('ru-RU')}</span>`
+        : '';
     document.getElementById('totalBlock').style.display = 'flex';
     document.getElementById('totalBlock').innerHTML = `
-        <div class="bb-total-label">Итого затрат (босс-дропы бесплатны)</div>
-        <div class="bb-total-value">💰 ${totalCost.toLocaleString('ru-RU')} золота</div>
+        <div class="bb-total-label">Итого затрат (💀 — босс-дропы, не покупаются)</div>
+        <div class="bb-total-value">💰 ${totalCost.toLocaleString('ru-RU')} золота${bossStr}</div>
     `;
 }
 
