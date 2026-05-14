@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изменения карты · Legend of Worlds</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .mc-section {
+            margin: 24px 0;
+        }
+        .mc-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+        .mc-card {
+            background: rgba(0, 255, 255, 0.03);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .mc-card-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        .mc-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin: 8px 0;
+        }
+        .mc-table th {
+            text-align: left;
+            padding: 6px 12px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .mc-table td {
+            padding: 6px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text-primary);
+        }
+        .mc-table .mc-old {
+            color: #ff6b6b;
+            text-decoration: line-through;
+            text-decoration-color: rgba(255, 107, 107, 0.4);
+        }
+        .mc-table .mc-new {
+            color: #4ecdc4;
+        }
+        .mc-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .mc-tag-balance { background: rgba(255, 200, 0, 0.12); border: 1px solid rgba(255, 200, 0, 0.3); color: #ffc800; }
+        .mc-tag-rework { background: rgba(0, 200, 255, 0.1); border: 1px solid rgba(0, 200, 255, 0.3); color: #00c8ff; }
+        .mc-tag-fix { background: rgba(100, 255, 100, 0.1); border: 1px solid rgba(100, 255, 100, 0.3); color: #64ff64; }
+        .mc-note {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            margin-top: 6px;
+            padding-left: 12px;
+            border-left: 2px solid rgba(0, 255, 255, 0.15);
+        }
+    </style>
+</head>
+<body class="page-map-changes">
+
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+    </header>
+
+    <div class="wiki-container">
+        <h1><i class="fas fa-scroll"></i> Изменения карты</h1>
+        <p style="color:var(--text-secondary); margin-bottom:24px;">Внутренний реестр изменений баланса и механик карты. Источник — правки в items-db.js и JASS-скриптах.</p>
+
+        <!-- 14.05.2026 -->
+        <div class="mc-section">
+            <div class="mc-date">14 мая 2026</div>
+
+            <div class="mc-card">
+                <div class="mc-card-title">
+                    Тёмный заряд: сила → наибольший атрибут
+                    <span class="mc-tag mc-tag-rework">переработка</span>
+                </div>
+                <table class="mc-table">
+                    <tr><th>Предмет</th><th>Было</th><th>Стало</th></tr>
+                    <tr>
+                        <td>Рука тьмы (I02N)</td>
+                        <td class="mc-old">900 + 2× STR</td>
+                        <td class="mc-new">900 + 2× наибольший атрибут</td>
+                    </tr>
+                    <tr>
+                        <td>Лук тьмы (I0EP)</td>
+                        <td class="mc-old">900 + 2× STR</td>
+                        <td class="mc-new">900 + 2× наибольший атрибут</td>
+                    </tr>
+                </table>
+                <div class="mc-note">Ловкачи и маги теперь получают тот же урон, что и силовики. Расчёт берёт максимальный из STR/AGI/INT.</div>
+            </div>
+
+            <div class="mc-card">
+                <div class="mc-card-title">
+                    Демоническая сущность — Поглотить
+                    <span class="mc-tag mc-tag-rework">переработка</span>
+                </div>
+                <table class="mc-table">
+                    <tr><th>Параметр</th><th>Было</th><th>Стало</th></tr>
+                    <tr>
+                        <td>Эффект</td>
+                        <td class="mc-old">Вживляет предмет в обладателя или союзника</td>
+                        <td class="mc-new">Союзник получает 30% маг. вампиризма и блока на 10 сек</td>
+                    </tr>
+                    <tr>
+                        <td>Мана</td>
+                        <td class="mc-old">225</td>
+                        <td class="mc-new">250</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="mc-card">
+                <div class="mc-card-title">
+                    Манабонус при атаке — убран
+                    <span class="mc-tag mc-tag-balance">баланс</span>
+                </div>
+                <table class="mc-table">
+                    <tr><th>Предмет</th><th>Было</th><th>Стало</th></tr>
+                    <tr>
+                        <td>Огненный плащ (clfm)</td>
+                        <td class="mc-old">+5 маны за атаку</td>
+                        <td class="mc-new">—</td>
+                    </tr>
+                    <tr>
+                        <td>Щит смерти (I00S)</td>
+                        <td class="mc-old">+15 маны за атаку</td>
+                        <td class="mc-new">—</td>
+                    </tr>
+                    <tr>
+                        <td>Огненный щит (I03G)</td>
+                        <td class="mc-old">+25 маны за атаку</td>
+                        <td class="mc-new">—</td>
+                    </tr>
+                    <tr>
+                        <td>Щит джаггернаута (I02D)</td>
+                        <td class="mc-old">+50 маны при атаке</td>
+                        <td class="mc-new">— (реген +100→+150)</td>
+                    </tr>
+                    <tr>
+                        <td>Щит джаггернаута II (I0B6)</td>
+                        <td class="mc-old">+100 маны при атаке</td>
+                        <td class="mc-new">— (реген +150→+200)</td>
+                    </tr>
+                    <tr>
+                        <td>Защита ада (I0B4)</td>
+                        <td class="mc-old">+60 мана бонус</td>
+                        <td class="mc-new">—</td>
+                    </tr>
+                </table>
+                <div class="mc-note">Щиты джаггернаута получили компенсацию в виде увеличения регенерации здоровья.</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <span>© 2025–2026 Legend of Worlds</span>
+        </div>
+    </footer>
+
+</body>
+</html>
