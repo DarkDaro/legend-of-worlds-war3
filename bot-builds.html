@@ -118,6 +118,11 @@
             color: #ff6b6b;
             font-style: italic;
         }
+        .bb-stage-delta {
+            color: rgba(0, 230, 255, 0.5);
+            font-size: 0.75em;
+            font-weight: 400;
+        }
         .bb-chevron {
             color: var(--text-secondary);
             transition: transform 0.2s;
@@ -253,6 +258,26 @@
             color: var(--accent);
         }
 
+        /* === Кнопка «Скопировать в конструктор» === */
+        .bb-copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            margin: 12px 0 4px;
+            background: rgba(0, 230, 255, 0.08);
+            border: 1px solid rgba(0, 230, 255, 0.25);
+            border-radius: 6px;
+            color: var(--accent);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .bb-copy-btn:hover {
+            background: rgba(0, 230, 255, 0.15);
+            border-color: var(--accent);
+        }
+
         /* === Мобильная адаптация === */
         @media (max-width: 720px) {
             .bb-stage-items {
@@ -383,6 +408,11 @@
         <div class="breadcrumbs" id="breadcrumbs"></div>
         <h1 id="pageTitle"><i class="fas fa-robot"></i> Сборка ИИ</h1>
         <p class="bc-intro" id="pageIntro">Просмотр стадий автосборки ИИ: какие предметы покупает бот на каждом этапе.</p>
+        <div class="bc-top-bar">
+            <a href="items.html" class="calc-back-link"><i class="fas fa-flask"></i> К предметам</a>
+            <a href="calculator.html" class="calc-back-link"><i class="fas fa-calculator"></i> Калькулятор</a>
+            <a href="build-constructor.html" class="calc-back-link"><i class="fas fa-hammer"></i> Конструктор</a>
+        </div>
 
         <div class="bb-legend">
             <div class="bb-legend-item">
@@ -401,6 +431,9 @@
 
         <div class="bb-group-select" id="groupSelect"></div>
         <div class="bb-heroes" id="heroesList"></div>
+        <button class="bb-copy-btn" id="bbCopyBtn" onclick="copyToConstructor()" style="display:none;">
+            <i class="fas fa-external-link-alt"></i> Скопировать в конструктор
+        </button>
         <div id="stagesContainer"></div>
         <div class="bb-total" id="totalBlock" style="display:none;"></div>
     </div>
@@ -417,19 +450,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const heroRawcode = urlParams.get('rawcode');
 const groupParam = urlParams.get('group');
 
-// === Кэш поиска предмета по имени ===
-let _itemNameCache = null;
-function buildItemNameCache() {
-    _itemNameCache = {};
-    if (!itemsDB) return;
-    for (const [id, item] of Object.entries(itemsDB)) {
-        if (item.name) _itemNameCache[item.name] = item;
-    }
-}
-function findItemByName(name) {
-    if (!_itemNameCache) buildItemNameCache();
-    return _itemNameCache[name] || null;
-}
+// === findItemByName загружен из items-db.js ===
 
 // === Проверка босс-предмета ===
 function isBossItem(item) {
@@ -475,6 +496,7 @@ function renderStage(stageData, stageIndex, prevItems) {
     // Стоимость стадии — только новые предметы (с учётом дубликатов)
     let stageCost = 0;
     let bossCost = 0;
+    let transitionCost = 0; // стоимость перехода с предыдущей стадии
     const currentItems = new Map();
     const itemsHtml = stageData.items.map(slot => {
         const item = findItemByName(slot.name);
@@ -503,6 +525,53 @@ function renderStage(stageData, stageIndex, prevItems) {
         </div>`;
     }).join('');
 
+    // Стоимость перехода: новые предметы + возврат 50% от проданных
+    // Предметы, перенесённые с keep=true из предыдущей стадии — бесплатны
+    if (stageIndex === 0) {
+        transitionCost = stageCost; // первая стадия — полная стоимость
+    } else {
+        // Считаем сколько нужно купить нового
+        const prevKept = new Map(); // предметы с keep=true из предыдущей
+        const prevStage = botBuildGroups[currentGroupId].stages[stageIndex - 1];
+        if (prevStage) {
+            prevStage.items.forEach(s => {
+                if (s && s.keep && s.name) {
+                    const c = prevKept.get(s.name) || 0;
+                    prevKept.set(s.name, c + 1);
+                }
+            });
+        }
+
+        // Новые предметы в текущей стадии (не перенесённые)
+        let buyCost = 0;
+        const bought = new Map();
+        stageData.items.forEach(slot => {
+            if (!slot || !slot.name) return;
+            const item = findItemByName(slot.name);
+            if (!item || isBossItem(item)) return;
+            const keptCount = prevKept.get(slot.name) || 0;
+            const boughtCount = bought.get(slot.name) || 0;
+            if (boughtCount >= keptCount) {
+                // Нужно покупать
+                buyCost += item.cost || 0;
+            }
+            bought.set(slot.name, boughtCount + 1);
+        });
+
+        // Возврат от проданных предметов предыдущей стадии
+        let refund = 0;
+        if (prevStage) {
+            prevStage.items.forEach(slot => {
+                if (!slot || slot.keep || !slot.name) return;
+                const item = findItemByName(slot.name);
+                if (!item || isBossItem(item)) return;
+                refund += Math.floor((item.cost || 0) * 0.5);
+            });
+        }
+
+        transitionCost = Math.max(0, buyCost - refund);
+    }
+
     // Уровень стадии
     const level = stageData.bootsLevel;
     const levelHtml = level >= 100
@@ -512,14 +581,15 @@ function renderStage(stageData, stageIndex, prevItems) {
     // Стоимость
     let costHtml = '';
     const bossCostStr = bossCost > 0 ? ` + <span class="boss-cost">💀 ${bossCost.toLocaleString('ru-RU')}</span>` : '';
+    const deltaStr = `<span class="bb-stage-delta">(+${transitionCost.toLocaleString('ru-RU')})</span>`;
     if (stageCost === 0 && bossCost === 0) {
-        costHtml = `<span>—</span>`;
+        costHtml = `<span>—</span> ${deltaStr}`;
     } else if (stageCost === 0) {
-        costHtml = `<span class="boss-cost">💀 ${bossCost.toLocaleString('ru-RU')}</span>`;
+        costHtml = `<span class="boss-cost">💀 ${bossCost.toLocaleString('ru-RU')}</span> ${deltaStr}`;
     } else if (bossCost > 0) {
-        costHtml = `<span>💰 ${stageCost.toLocaleString('ru-RU')}${bossCostStr}</span>`;
+        costHtml = `<span>💰 ${stageCost.toLocaleString('ru-RU')}${bossCostStr}</span> ${deltaStr}`;
     } else {
-        costHtml = `<span>💰 ${stageCost.toLocaleString('ru-RU')} золота</span>`;
+        costHtml = `<span>💰 ${stageCost.toLocaleString('ru-RU')} золота</span> ${deltaStr}`;
     }
 
     const bossBadge = boss ? '<span class="bb-stage-boss-badge">💀 Босс-стадия</span>' : '';
@@ -537,14 +607,17 @@ function renderStage(stageData, stageIndex, prevItems) {
             </div>
         </div>
         <div class="bb-stage-items">${itemsHtml}</div>
-    </div>`, currentItems: currentItems, stageCost, bossCost };
+    </div>`, currentItems: currentItems, stageCost, bossCost, transitionCost };
 }
 
 // === Рендер группы ===
 function renderGroup(groupId) {
+    currentGroupId = groupId;
     const group = botBuildGroups[groupId];
     if (!group) {
         document.getElementById('stagesContainer').innerHTML = '<p>Группа не найдена</p>';
+        const copyBtn = document.getElementById('bbCopyBtn');
+        if (copyBtn) copyBtn.style.display = 'none';
         return;
     }
 
@@ -581,6 +654,38 @@ function renderGroup(groupId) {
         <div class="bb-total-label">Итого затрат (💀 — босс-дропы, не покупаются)</div>
         <div class="bb-total-value">💰 ${totalCost.toLocaleString('ru-RU')} золота${bossStr}</div>
     `;
+
+    // Показать кнопку копирования
+    const copyBtn = document.getElementById('bbCopyBtn');
+    if (copyBtn) copyBtn.style.display = 'inline-flex';
+}
+
+// === Копирование в конструктор ===
+let currentGroupId = null;
+
+function copyToConstructor() {
+    if (!currentGroupId || !botBuildGroups[currentGroupId]) return;
+    const group = botBuildGroups[currentGroupId];
+
+    // Конвертируем: { name, keep } → { id, keep }
+    const stages = group.stages.map(stage => ({
+        level: stage.bootsLevel,
+        items: stage.items.map(slot => {
+            if (!slot || !slot.name) return null;
+            const item = findItemByName(slot.name);
+            if (!item) return null;
+            return { id: item.id, keep: slot.keep !== false };
+        })
+    }));
+
+    const data = {
+        source: 'bot-builds',
+        groupId: currentGroupId,
+        stages: stages
+    };
+
+    localStorage.setItem('buildConstructorImport', JSON.stringify(data));
+    window.location.href = 'build-constructor.html?import=1';
 }
 
 // === Инициализация ===
@@ -599,6 +704,10 @@ function init() {
         targetGroup = parseInt(groupParam);
         document.getElementById('breadcrumbs').innerHTML =
             `<a href="index.html">Главная</a><span class="sep">›</span><a href="items.html">Предметы</a><span class="sep">›</span><span class="current">Сборка ИИ: Группа ${targetGroup}</span>`;
+    } else {
+        // Дефолтные breadcrumbs
+        document.getElementById('breadcrumbs').innerHTML =
+            `<a href="index.html">Главная</a><span class="sep">›</span><a href="items.html">Предметы</a><span class="sep">›</span><span class="current">Сборка ИИ</span>`;
     }
 
     // Кнопки выбора групп

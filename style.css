@@ -4077,6 +4077,13 @@ body.page-404 {
     margin-bottom: 4px;
 }
 
+.calc-bonuses-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #e0f0ff;
+    margin-bottom: 6px;
+}
+
 .calc-shopping-list {
     display: flex;
     flex-direction: column;
@@ -4818,6 +4825,62 @@ body.page-404 {
     color: #ff4444;
 }
 
+/* Кнопка toggle «продаётся» на слоте */
+.bc-slot-keep-toggle {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #8e97aa;
+    font-size: 0.6rem;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 2;
+}
+
+.bc-slot:hover .bc-slot-keep-toggle {
+    opacity: 1;
+}
+
+.bc-slot-keep-toggle:hover {
+    color: #ffc800;
+}
+
+/* Временный предмет (продаётся при переходе) */
+.bc-slot-temp {
+    border-style: dashed !important;
+    border-color: rgba(255, 200, 0, 0.35) !important;
+    background: rgba(255, 200, 0, 0.03) !important;
+}
+
+.bc-slot-temp .bc-slot-name.temp-name {
+    text-decoration: line-through;
+    text-decoration-color: rgba(255, 200, 0, 0.5);
+    opacity: 0.7;
+}
+
+/* Бейдж «Продаётся» в превью */
+.bc-badge-temp {
+    background: rgba(255, 200, 0, 0.12);
+    border: 1px solid rgba(255, 200, 0, 0.3);
+    color: #ffc800;
+    font-size: 0.65rem;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-left: 4px;
+}
+
+/* Стоимость перехода между стадиями */
+.bc-stage-delta {
+    color: rgba(0, 230, 255, 0.5);
+    font-size: 0.75em;
+    font-weight: 400;
+}
+
 /* Кнопка добавления стадии */
 .bc-add-stage-btn {
     display: flex;
@@ -5168,6 +5231,11 @@ body.page-404 {
         font-size: 0.54rem;
     }
 
+    .bc-slot-keep-toggle {
+        opacity: 1;
+        font-size: 0.55rem;
+    }
+
     .bc-add-stage-btn {
         font-size: 0.85rem;
         padding: 10px;
@@ -5235,6 +5303,11 @@ body.page-404 {
 
     .bc-slot-name {
         font-size: 0.58rem;
+    }
+
+    .bc-slot-keep-toggle {
+        opacity: 1;
+        font-size: 0.55rem;
     }
 
     .bc-stage {

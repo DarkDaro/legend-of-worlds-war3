@@ -40,6 +40,11 @@ test-item-preview.html
 # Dev-утилиты (не часть сайта)
 tools/
 
+# Архив и инструменты графики (не часть сайта)
+archive/
+soft/
+downloads/
+
 # JASS скрипты (не для публикации)
 JassCode/
 
