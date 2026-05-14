@@ -63,22 +63,22 @@
         <section class="stats-section">
             <a href="heroes.html" class="stat-box">
                 <div class="stat-icon"><i class="fas fa-users"></i></div>
-                <div class="stat-number">70+</div>
+                <div class="stat-number" data-target="70">0</div>
                 <div class="stat-label">Героев</div>
             </a>
             <a href="items.html" class="stat-box">
                 <div class="stat-icon"><i class="fas fa-flask"></i></div>
-                <div class="stat-number">120+</div>
+                <div class="stat-number" data-target="120">0</div>
                 <div class="stat-label">Артефактов</div>
             </a>
             <a href="monsters.html" class="stat-box">
                 <div class="stat-icon"><i class="fas fa-dragon"></i></div>
-                <div class="stat-number">8</div>
+                <div class="stat-number" data-target="8">0</div>
                 <div class="stat-label">Боссов</div>
             </a>
             <a href="mechanics.html" class="stat-box">
                 <div class="stat-icon"><i class="fas fa-cogs"></i></div>
-                <div class="stat-number">17+</div>
+                <div class="stat-number" data-target="17">0</div>
                 <div class="stat-label">Механик</div>
             </a>
         </section>
@@ -150,6 +150,18 @@
             <h2 class="section-title"><i class="fas fa-history"></i> Последние обновления</h2>
             <div class="version-card-mini">
                 <div class="version-header">
+                    <span class="version-badge hot">v4.4</span>
+                    <span class="version-title">Неон + стекло: визуальное обновление</span>
+                </div>
+                <ul class="change-list-mini">
+                    <li>Карточки с полупрозрачным фоном и размытием — стекломорфизм</li>
+                    <li>Градиентная рамка при наведении, шиммер-заголовок, анимация чисел</li>
+                    <li>Калькулятор: пометка «продаётся» с возвратом 50% стоимости</li>
+                </ul>
+                <a href="updates.html" class="updates-link">Все обновления →</a>
+            </div>
+            <div class="version-card-mini" style="margin-top:12px;">
+                <div class="version-header">
                     <span class="version-badge hot">v4.3</span>
                     <span class="version-title">Сборка ИИ и баланс предметов</span>
                 </div>
@@ -158,18 +170,6 @@
                     <li>19 групп автосборки с босс-стадиями и стоимостью</li>
                     <li>Тёмный заряд масштабируется от наибольшего атрибута</li>
                     <li>Манабонус при атаке убран из 6 предметов</li>
-                </ul>
-                <a href="updates.html" class="updates-link">Все обновления →</a>
-            </div>
-            <div class="version-card-mini" style="margin-top:12px;">
-                <div class="version-header">
-                    <span class="version-badge hot">v4.2</span>
-                    <span class="version-title">Конструктор сборок и JASS-экспорт</span>
-                </div>
-                <ul class="change-list-mini">
-                    <li>Конструктор сборок с уровнями и JASS-кодом</li>
-                    <li>Босс-предметы определяются автоматически</li>
-                    <li>Стадии сворачиваются кликом по заголовку</li>
                 </ul>
             </div>
         </section>
@@ -210,5 +210,72 @@
             <p>© 2025–2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
+
+    <script>
+    // Counter-анимация чисел при появлении stat-box
+    (function() {
+        const counters = document.querySelectorAll('.stat-number[data-target]');
+        if (!counters.length) return;
+
+        let animated = false;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animated) {
+                    animated = true;
+                    counters.forEach(el => {
+                        const target = parseInt(el.dataset.target);
+                        const suffix = target >= 10 ? '+' : '';
+                        const duration = 1200;
+                        const start = performance.now();
+                        function update(now) {
+                            const progress = Math.min((now - start) / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            el.textContent = Math.floor(target * eased) + (progress >= 1 ? suffix : '');
+                            if (progress < 1) requestAnimationFrame(update);
+                        }
+                        requestAnimationFrame(update);
+                    });
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) observer.observe(statsSection);
+    })();
+
+    // Scroll-reveal для quick-link-card и version-card-mini
+    (function() {
+        const revealElements = document.querySelectorAll('.quick-link-card, .version-card-mini, .cta-section');
+        if (!revealElements.length) return;
+
+        revealElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Stagger-задержка для quick-link-card
+                    const parent = entry.target.closest('.quick-links-grid');
+                    let delay = 0;
+                    if (parent) {
+                        const siblings = Array.from(parent.children);
+                        delay = siblings.indexOf(entry.target) * 60;
+                    }
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, delay);
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    })();
+    </script>
 </body>
 </html>

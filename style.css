@@ -1,4 +1,16 @@
 /* === Неоновая вики героев (совместимо с hero-grid) === */
+:root {
+    /* Стекломорфизм */
+    --glass-bg: rgba(15, 23, 42, 0.5);
+    --glass-bg-hover: rgba(15, 23, 42, 0.65);
+    --glass-blur: 12px;
+    --glass-border: rgba(0, 230, 255, 0.12);
+    --glass-border-hover: rgba(0, 230, 255, 0.35);
+    /* Неоновый glow */
+    --neon-glow: 0 0 20px rgba(0, 230, 255, 0.2), 0 0 60px rgba(0, 230, 255, 0.08);
+    --neon-glow-strong: 0 0 20px rgba(0, 230, 255, 0.4), 0 0 60px rgba(0, 230, 255, 0.15), inset 0 0 15px rgba(0, 230, 255, 0.03);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -89,11 +101,13 @@ h1 {
 /* === Карточка героя === */
 .hero-card {
     position: relative;
-    background: #0f172a;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     border-radius: 12px;
     padding: 8px 8px 8px;
     text-align: center;
-    border: 1px solid #2a5070;
+    border: 1px solid var(--glass-border);
     box-shadow: 0 0 15px #00000080, 0 0 0 1px #00e6ff22 inset;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -103,9 +117,28 @@ h1 {
 }
 .hero-card:hover {
     transform: translateY(-5px);
-    background: #1a2a45;
-    border-color: #00e6ff;
-    box-shadow: 0 0 25px #00e6ffaa, 0 0 0 2px #00e6ff44 inset;
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--neon-glow-strong);
+}
+
+/* Градиентная рамка при hover */
+.hero-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 1px;
+    background: linear-gradient(135deg, #00e6ff, #0080ff, #00e6ff);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+.hero-card:hover::before {
+    opacity: 1;
 }
 
 /* Цветные акценты по атрибуту */
@@ -1015,18 +1048,20 @@ h1 {
     gap: 16px;
 }
 .mode-card {
-    background: rgba(16, 26, 40, 0.6);
-    backdrop-filter: blur(2px);
-    border: 1px solid #2a5070;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: 16px;
     padding: 20px;
     text-align: center;
-    transition: 0.2s;
+    transition: 0.25s ease;
     box-shadow: inset 0 0 15px #00000055, 0 0 15px #00e6ff22;
 }
 .mode-card:hover {
-    border-color: #00e6ff;
-    box-shadow: 0 0 20px #00e6ffaa;
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--neon-glow);
     transform: translateY(-3px);
 }
 .mode-icon {
@@ -1341,15 +1376,18 @@ h1 {
     }
 }
 .mechanic-card {
-    background: #0f172a;
-    border: 1px solid #2a5070;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: 16px;
     padding: 24px;
-    transition: 0.2s;
+    transition: 0.25s ease;
 }
 .mechanic-card:hover {
-    border-color: #00e6ff;
-    box-shadow: 0 0 15px #00e6ff44;
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--neon-glow);
 }
 .mechanic-icon {
     width: 48px;
@@ -1741,6 +1779,11 @@ h1 {
                 radial-gradient(ellipse at 20% 80%, #ff555510 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 70%, #bf7fff10 0%, transparent 50%);
     z-index: 1;
+    animation: auroraBanner 8s ease-in-out infinite;
+}
+@keyframes auroraBanner {
+    0%, 100% { opacity: 1; transform: translateX(0) scale(1); }
+    50% { opacity: 0.7; transform: translateX(-3%) scale(1.05); }
 }
 .hero-banner-bg::after {
     content: '';
@@ -1753,6 +1796,11 @@ h1 {
     position: relative;
     z-index: 3;
     max-width: 800px;
+    animation: bannerFadeIn 1s ease forwards;
+}
+@keyframes bannerFadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 .hero-logo-img {
     width: 120px;
@@ -1777,6 +1825,17 @@ h1 {
     text-shadow: 0 0 30px #00e6ff88, 0 0 60px #00e6ff44, 0 0 100px #00e6ff22;
     margin-bottom: 12px;
     line-height: 1.1;
+    /* Shimmer-эффект на заголовке */
+    background: linear-gradient(90deg, #fff 0%, #00e6ff 40%, #fff 60%, #00e6ff 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleShimmer 6s ease-in-out infinite;
+}
+@keyframes titleShimmer {
+    0%, 100% { background-position: 200% center; }
+    50% { background-position: -200% center; }
 }
 .hero-subtitle {
     font-size: 1.2rem;
@@ -1846,20 +1905,24 @@ h1 {
     margin: 40px 0;
 }
 .stat-box {
-    background: #0f172a;
-    border: 1px solid #2a5070;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: 16px;
     padding: 24px 16px;
     text-align: center;
-    transition: 0.2s;
+    transition: 0.25s ease;
     text-decoration: none;
     display: block;
     color: inherit;
     cursor: pointer;
+    position: relative;
 }
 .stat-box:hover {
-    border-color: #00e6ff;
-    box-shadow: 0 0 15px #00e6ff44;
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--neon-glow);
     transform: translateY(-3px);
 }
 .stat-icon {
@@ -1902,17 +1965,21 @@ h1 {
     margin-bottom: 40px;
 }
 .quick-link-card {
-    background: #0f172a;
-    border: 1px solid #2a5070;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: 16px;
     padding: 24px;
     text-decoration: none;
-    transition: 0.2s;
+    transition: 0.25s ease;
     display: block;
+    position: relative;
 }
 .quick-link-card:hover {
-    border-color: #00e6ff;
-    box-shadow: 0 0 20px #00e6ff44;
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--neon-glow);
     transform: translateY(-4px);
 }
 .quick-link-icon {
@@ -1942,8 +2009,10 @@ h1 {
 
 /* Мини-обновления на главной */
 .version-card-mini {
-    background: #0f172a;
-    border: 1px solid #2a5070;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: 16px;
     padding: 24px;
 }
@@ -1984,8 +2053,10 @@ h1 {
 /* Призыв к действию */
 .cta-section {
     margin: 40px 0;
-    background: linear-gradient(135deg, #0d1a2d, #0a1628);
-    border: 1px solid #2a5070;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: 20px;
     padding: 48px 32px;
     text-align: center;
@@ -1995,8 +2066,24 @@ h1 {
 .cta-section::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 50% 50%, #00e6ff08 0%, transparent 70%);
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(0, 230, 255, 0.06) 35%,
+        rgba(0, 128, 255, 0.04) 40%,
+        transparent 45%
+    );
+    animation: auroraShift 8s ease-in-out infinite;
+    pointer-events: none;
+}
+@keyframes auroraShift {
+    0% { transform: translateX(-30%) translateY(-10%) rotate(0deg); }
+    50% { transform: translateX(30%) translateY(10%) rotate(5deg); }
+    100% { transform: translateX(-30%) translateY(-10%) rotate(0deg); }
 }
 .cta-content {
     position: relative;
@@ -3057,12 +3144,14 @@ body.item-sheet-open {
   }
 }
 .item-card {
-  background: #0f172a;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   border-radius: 16px;
   padding: 12px 8px 8px;
   text-align: center;
-  transition: all 0.15s ease;
-  border: 1px solid #2a5070;
+  transition: all 0.25s ease;
+  border: 1px solid var(--glass-border);
   box-shadow: 0 0 10px #00000080, 0 0 0 1px #00e6ff22 inset;
   cursor: pointer;
   display: block;
@@ -3076,18 +3165,18 @@ body.item-sheet-open {
 .item-card.intelligence  { border-bottom: 4px solid #55aaff; box-shadow: 0 0 15px #55aaff55; }
 .item-card.weapon        { border-bottom: 4px solid #ff8800; box-shadow: 0 0 15px #ff880055; }
 .item-card:hover {
-  background: #1a2a45;
-  border-color: #00e6ff;
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
   transform: translateY(-3px);
-  box-shadow: 0 0 20px #00e6ffaa, 0 0 0 2px #00e6ff44 inset;
+  box-shadow: var(--neon-glow-strong);
 }
-.item-card.strength:hover   { border-color: #ff5555; box-shadow: 0 0 20px #ff5555aa; }
-.item-card.agility:hover    { border-color: #55ff55; box-shadow: 0 0 20px #55ff55aa; }
-.item-card.intelligence:hover { border-color: #55aaff; box-shadow: 0 0 20px #55aaffaa; }
-.item-card.weapon:hover      { border-color: #ff8800; box-shadow: 0 0 20px #ff8800aa; }
-.item-card.boost:hover      { border-color: #ffaa33; box-shadow: 0 0 20px #ffaa33aa; }
-.item-card.neutral:hover    { border-color: #bf7fff; box-shadow: 0 0 20px #bf7fffaa; }
-.item-card.consumable:hover { border-color: #00ffaa; box-shadow: 0 0 20px #00ffaaaa; }
+.item-card.strength:hover   { border-color: #ff5555; box-shadow: 0 0 20px #ff5555aa, 0 0 40px #ff555544; }
+.item-card.agility:hover    { border-color: #55ff55; box-shadow: 0 0 20px #55ff55aa, 0 0 40px #55ff5544; }
+.item-card.intelligence:hover { border-color: #55aaff; box-shadow: 0 0 20px #55aaffaa, 0 0 40px #55aaff44; }
+.item-card.weapon:hover      { border-color: #ff8800; box-shadow: 0 0 20px #ff8800aa, 0 0 40px #ff880044; }
+.item-card.boost:hover      { border-color: #ffaa33; box-shadow: 0 0 20px #ffaa33aa, 0 0 40px #ffaa3344; }
+.item-card.neutral:hover    { border-color: #bf7fff; box-shadow: 0 0 20px #bf7fffaa, 0 0 40px #bf7fff44; }
+.item-card.consumable:hover { border-color: #00ffaa; box-shadow: 0 0 20px #00ffaaaa, 0 0 40px #00ffaa44; }
 /* Редкость предметов по стоимости */
 .item-card.rarity-cheap  { opacity: 0.85; }
 .item-card.rarity-mid    { opacity: 0.92; }
@@ -3095,6 +3184,28 @@ body.item-sheet-open {
 .item-card.rarity-cheap .item-name   { text-shadow: 0 0 4px #00e6ff44; }
 .item-card.rarity-mid .item-name     { text-shadow: 0 0 6px #00e6ff; }
 .item-card.rarity-expensive .item-name { text-shadow: 0 0 8px #00e6ff, 0 0 16px #00e6ff88; }
+
+/* Градиентная рамка при hover — cyan → blue */
+.item-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg, #00e6ff, #0080ff, #00e6ff);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.item-card:hover::before {
+  opacity: 1;
+}
+.item-card {
+  position: relative;
+}
 .item-icon {
   width: 64px;
   height: 64px;
@@ -3623,12 +3734,38 @@ body.page-heroes {
         radial-gradient(ellipse at 70% 80%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
         radial-gradient(circle at 30% 10%, #1c2230 0%, #05070a 100%);
 }
+/* Orb для стекла — правый нижний */
+body.page-heroes::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    right: -5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
 
 /* Предметы — cyan отсвет ниже + лёгкий teal тон */
 body.page-items {
     background-image:
         radial-gradient(ellipse at 50% 90%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
         radial-gradient(circle at 30% 10%, #1a2430 0%, #05070a 100%);
+}
+/* Orb для стекла — левый верхний */
+body.page-items::after {
+    content: '';
+    position: fixed;
+    top: -5%;
+    left: -5%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(0, 128, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* Механики — cyan отсвет левее + лёгкий фиолетовый тон */
@@ -3679,6 +3816,20 @@ body.page-404 {
     background-image:
         radial-gradient(ellipse at 50% 50%, rgba(0, 230, 255, 0.03) 0%, transparent 50%),
         radial-gradient(circle at 30% 10%, #1a2230 0%, #05070a 100%);
+}
+/* Orb для главной — два пятна */
+body.page-home::after {
+    content: '';
+    position: fixed;
+    top: 10%;
+    right: 10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    box-shadow: -200px 300px 0 -100px rgba(0, 128, 255, 0.03);
 }
 
 /* ===== Калькулятор сборок ===== */
@@ -4654,6 +4805,18 @@ body.page-404 {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+}
+
+/* Fallback: устройства без backdrop-filter получают solid фон */
+@supports not (backdrop-filter: blur(1px)) {
+    .item-card,
+    .hero-card,
+    .quick-link-card,
+    .stat-box,
+    .mode-card,
+    .mechanic-card {
+        background: #0f172a !important;
     }
 }
 
