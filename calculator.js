@@ -1,9 +1,37 @@
 /* ===== Калькулятор сборок предметов ===== */
 
 const CALC_STORAGE_KEY = 'buildCalc'; // Ключ в localStorage
-let buildSlots = [null, null, null, null, null, null]; // 6 слотов
+// 6 слотов: null (пустой) или { id: 'I02D', keep: true/false }
+// keep=true — предмет остаётся, keep=false — продаётся (возврат 50%)
+let buildSlots = [null, null, null, null, null, null];
 let calcActiveTab = 'all';
 let calcSearchQuery = '';
+
+// === Вспомогательные функции для слотов ===
+
+function calcSlotId(slot) {
+    if (!slot) return null;
+    if (typeof slot === 'string') return (itemsDB[slot]) ? slot : null;
+    if (typeof slot === 'object' && slot.id) return (itemsDB[slot.id]) ? slot.id : null;
+    return null;
+}
+
+function calcSlotKeep(slot) {
+    if (!slot) return true;
+    if (typeof slot === 'object' && slot.keep === false) return false;
+    return true;
+}
+
+function calcMakeSlot(itemId, keep) {
+    return { id: itemId, keep: keep !== false };
+}
+
+function calcNormalizeSlot(slot) {
+    if (!slot) return null;
+    if (typeof slot === 'string') return itemsDB[slot] ? { id: slot, keep: true } : null;
+    if (typeof slot === 'object' && slot.id && itemsDB[slot.id]) return { id: slot.id, keep: slot.keep !== false };
+    return null;
+}
 
 // === Сохранение и загрузка из localStorage ===
 
@@ -15,7 +43,7 @@ function loadBuild() {
     try {
         const saved = JSON.parse(localStorage.getItem(CALC_STORAGE_KEY));
         if (Array.isArray(saved) && saved.length === 6) {
-            buildSlots = saved.map(id => (id && itemsDB[id]) ? id : null);
+            buildSlots = saved.map(s => calcNormalizeSlot(s));
         }
     } catch (e) { /* ошибка чтения — игнорируем */ }
 }
@@ -42,7 +70,7 @@ function addToSlot(itemId) {
     const item = itemsDB[itemId];
     if (!item) return;
     // Если уже есть — не добавляем дубликат
-    if (buildSlots.includes(itemId)) {
+    if (buildSlots.some(s => calcSlotId(s) === itemId)) {
         calcToast(`${item.name} уже в сборке`);
         return;
     }
@@ -51,13 +79,21 @@ function addToSlot(itemId) {
         calcToast('Все 6 слотов заняты');
         return;
     }
-    buildSlots[emptyIndex] = itemId;
+    buildSlots[emptyIndex] = calcMakeSlot(itemId);
     saveBuild();
     renderCalc();
 }
 
 function removeFromSlot(index) {
     buildSlots[index] = null;
+    saveBuild();
+    renderCalc();
+}
+
+function calcToggleKeep(index) {
+    const slot = buildSlots[index];
+    if (!slot || typeof slot !== 'object') return;
+    slot.keep = !slot.keep;
     saveBuild();
     renderCalc();
 }
@@ -72,13 +108,16 @@ function clearBuild() {
 
 function calculateBuildStats() {
     let totalCost = 0;
+    let refundCost = 0; // возврат от продающихся
     let bossDropCount = 0;
     let bossDropCost = 0;
     let recipeCost = 0;
     let baseCost = 0;
     const items = [];
 
-    buildSlots.forEach(id => {
+    buildSlots.forEach(slot => {
+        const id = calcSlotId(slot);
+        const keep = calcSlotKeep(slot);
         if (!id) return;
         const item = itemsDB[id];
         if (!item) return;
@@ -86,6 +125,12 @@ function calculateBuildStats() {
         totalCost += cost;
 
         const isBossDrop = item.type === 'boss_drop' || (item.tags && item.tags.includes('boss_drop'));
+
+        // Босс-дропы бесплатные — возврат не начисляется
+        if (!keep && !isBossDrop) {
+            refundCost += Math.floor(cost * 0.5);
+        }
+
         if (isBossDrop) {
             bossDropCount++;
             bossDropCost += cost;
@@ -94,12 +139,13 @@ function calculateBuildStats() {
         const recipe = getRecipeCost(item);
         recipeCost += recipe;
 
-        items.push({ id, item, cost, isBossDrop, recipe });
+        items.push({ id, item, cost, isBossDrop, recipe, keep });
     });
 
     baseCost = Math.max(0, totalCost - bossDropCost - recipeCost);
+    const netCost = totalCost - refundCost;
 
-    return { totalCost, bossDropCount, bossDropCost, recipeCost, baseCost, items };
+    return { totalCost, refundCost, netCost, bossDropCount, bossDropCost, recipeCost, baseCost, items };
 }
 
 // === Убираем дубли базовых компонентов ===
@@ -138,7 +184,8 @@ function collectBaseComponents(itemId, quantity, visited) {
 function getDeduplicatedComponents() {
     const componentMap = {};
 
-    buildSlots.forEach(id => {
+    buildSlots.forEach(slot => {
+        const id = calcSlotId(slot);
         if (!id) return;
         const item = itemsDB[id];
         if (!item) return;
@@ -187,17 +234,21 @@ function renderSlots() {
     if (!container) return;
 
     let html = '';
-    buildSlots.forEach((id, index) => {
+    buildSlots.forEach((slot, index) => {
+        const id = calcSlotId(slot);
+        const keep = calcSlotKeep(slot);
         if (id && itemsDB[id]) {
             const item = itemsDB[id];
             const cost = calculateItemCost(id);
             const isBossDrop = item.type === 'boss_drop' || (item.tags && item.tags.includes('boss_drop'));
             const attrClass = getAttrClass(item);
+            const tempClass = !keep ? ' calc-slot-temp' : '';
             html += `
-                <div class="calc-slot calc-slot-filled ${attrClass}" data-index="${index}" title="Убрать ${item.name}">
+                <div class="calc-slot calc-slot-filled ${attrClass}${tempClass}" data-index="${index}" title="${item.name}${!keep ? ' (продаётся)' : ''} — клик для удаления">
                     <div class="calc-slot-icon">${itemIcon(item.id, item.icon, 48, item.type)}</div>
-                    <div class="calc-slot-name">${item.name}</div>
-                    <div class="calc-slot-cost">${isBossDrop ? '💀 Босс' : cost.toLocaleString('ru-RU') + ' 🪙'}</div>
+                    <div class="calc-slot-name${!keep ? ' temp-name' : ''}">${item.name}</div>
+                    <div class="calc-slot-cost">${isBossDrop ? '💀 Босс' : cost.toLocaleString('ru-RU') + ' 🪙'}${!keep ? ' <span class="calc-badge-temp">⏳ Продаётся</span>' : ''}</div>
+                    <button class="calc-slot-keep-toggle" data-index="${index}" title="${keep ? 'Пометить как продающийся' : 'Пометить как остающийся'}"><i class="fas fa-${keep ? 'coins' : 'check-circle'}"></i></button>
                     <button class="calc-slot-remove" data-index="${index}" title="Убрать"><i class="fas fa-times"></i></button>
                 </div>`;
         } else {
@@ -212,7 +263,7 @@ function renderSlots() {
     // Обновить счётчик заполненных слотов
     const counter = document.getElementById('calcSlotsCounter');
     if (counter) {
-        const filled = buildSlots.filter(id => id !== null).length;
+        const filled = buildSlots.filter(s => calcSlotId(s) !== null).length;
         counter.textContent = `${filled}/6`;
     }
 
@@ -223,8 +274,15 @@ function renderSlots() {
             removeFromSlot(parseInt(btn.dataset.index));
         });
     });
+    container.querySelectorAll('.calc-slot-keep-toggle').forEach(btn => {
+        btn.addEventListener('click', e => {
+            e.stopPropagation();
+            calcToggleKeep(parseInt(btn.dataset.index));
+        });
+    });
     container.querySelectorAll('.calc-slot-filled').forEach(slot => {
-        slot.addEventListener('click', () => {
+        slot.addEventListener('click', e => {
+            if (e.target.closest('.calc-slot-remove') || e.target.closest('.calc-slot-keep-toggle')) return;
             removeFromSlot(parseInt(slot.dataset.index));
         });
     });
@@ -263,10 +321,20 @@ function renderResults() {
                 <span class="calc-results-row-label">💀 Босс-дропы (${stats.bossDropCount})</span>
                 <span class="calc-results-row-value">бесплатно</span>
             </div>` : ''}
+            ${stats.refundCost > 0 ? `
+            <div class="calc-results-row calc-results-refund">
+                <span class="calc-results-row-label">💰 Возврат от продажи</span>
+                <span class="calc-results-row-value">−${stats.refundCost.toLocaleString('ru-RU')} 🪙</span>
+            </div>
+            <div class="calc-results-row calc-results-net">
+                <span class="calc-results-row-label">🏷️ Чистые затраты</span>
+                <span class="calc-results-row-value">${stats.netCost.toLocaleString('ru-RU')} 🪙</span>
+            </div>` : ''}
         </div>
         <div class="calc-results-summary">
             Покупок: ${stats.items.length - stats.bossDropCount} | Золота: ${stats.baseCost.toLocaleString('ru-RU')}
             ${stats.bossDropCount > 0 ? ' | Босс-дропов: ' + stats.bossDropCount : ''}
+            ${stats.refundCost > 0 ? ' | Возврат: ' + stats.refundCost.toLocaleString('ru-RU') : ''}
         </div>
         ${renderBuildBonuses()}
         ${renderShoppingList()}`;
@@ -307,16 +375,17 @@ function renderBuildTree() {
     }
 
     let html = '<div class="calc-tree-title">📦 Дерево компонентов</div>';
-    stats.items.forEach(({ id, item }) => {
+    stats.items.forEach(({ id, item, keep }) => {
         const cost = calculateItemCost(id);
         const isBossDrop = item.type === 'boss_drop' || (item.tags && item.tags.includes('boss_drop'));
         const hasComponents = item.components && item.components.length > 0;
+        const tempBadge = !keep ? ' <span class="calc-badge-temp">⏳</span>' : '';
         html += `
             <div class="calc-tree-item">
                 <div class="calc-tree-header ${hasComponents ? 'calc-tree-expandable' : ''}" data-tree-id="${id}">
                     ${hasComponents ? '<i class="fas fa-chevron-right calc-tree-chevron"></i>' : ''}
                     <div class="calc-tree-icon">${itemIcon(item.id, item.icon, 32, item.type)}</div>
-                    <div class="calc-tree-name">${item.name}</div>
+                    <div class="calc-tree-name${!keep ? ' temp-name' : ''}">${item.name}${tempBadge}</div>
                     <div class="calc-tree-cost">${isBossDrop ? '💀 Босс' : cost.toLocaleString('ru-RU') + ' 🪙'}</div>
                 </div>
                 <div class="calc-tree-components" data-tree-content="${id}" style="display:none;">
@@ -440,7 +509,7 @@ function renderCalcCatalog() {
         if (!item) return;
         const cost = calculateItemCost(id);
         const isBossDrop = item.type === 'boss_drop' || (item.tags && item.tags.includes('boss_drop'));
-        const inBuild = buildSlots.includes(id);
+        const inBuild = buildSlots.some(s => calcSlotId(s) === id);
         html += `
             <div class="calc-catalog-item ${inBuild ? 'calc-catalog-in-build' : ''}" data-item-id="${id}" title="${item.name}${inBuild ? ' (уже в сборке)' : ''}">
                 <div class="calc-catalog-icon">${itemIcon(item.id, item.icon, 40, item.type)}</div>
@@ -481,7 +550,7 @@ function importHeroBuild(heroId) {
     buildSlots = [null, null, null, null, null, null];
     hero.items.forEach((item, i) => {
         if (i < 6 && itemsDB[item.id]) {
-            buildSlots[i] = item.id;
+            buildSlots[i] = calcMakeSlot(item.id);
         }
     });
     saveBuild();
@@ -494,10 +563,15 @@ function importHeroBuild(heroId) {
 // === Поделиться сборкой (ссылка) ===
 
 function getShareUrl() {
-    const filled = buildSlots.filter(id => id !== null);
+    const filled = buildSlots.filter(s => calcSlotId(s) !== null);
     if (filled.length === 0) return '';
     const base = window.location.href.split('?')[0];
-    return base + '?items=' + filled.join(',');
+    // Формат: items=I02D,I03G!  (! после id = продаётся)
+    const itemsStr = filled.map(s => {
+        const id = calcSlotId(s);
+        return calcSlotKeep(s) ? id : id + '!';
+    }).join(',');
+    return base + '?items=' + itemsStr;
 }
 
 function copyShareUrl() {
@@ -531,11 +605,18 @@ function loadFromUrl() {
     }
 
     if (!itemsParam) return false;
-    const ids = itemsParam.split(',').filter(id => itemsDB[id]);
-    if (ids.length === 0) return false;
+    // Парсим: I02D,I03G!  (! = продаётся)
+    const parts = itemsParam.split(',');
+    const slots = parts.map(p => {
+        const sold = p.endsWith('!');
+        const id = sold ? p.slice(0, -1) : p;
+        if (!itemsDB[id]) return null;
+        return calcMakeSlot(id, !sold);
+    }).filter(Boolean);
+    if (slots.length === 0) return false;
     buildSlots = [null, null, null, null, null, null];
-    ids.forEach((id, i) => {
-        if (i < 6) buildSlots[i] = id;
+    slots.forEach((slot, i) => {
+        if (i < 6) buildSlots[i] = slot;
     });
     saveBuild();
     // Очистить URL-параметры, чтобы при обновлении страницы не перезагружать старую сборку
@@ -602,7 +683,9 @@ document.addEventListener('DOMContentLoaded', () => {
 function renderBuildBonuses() {
     if (typeof ItemBonusParser === 'undefined') return '';
 
-    const bonuses = buildSlots.filter(Boolean).map(id => {
+    const bonuses = buildSlots.filter(Boolean).map(slot => {
+        const id = calcSlotId(slot);
+        if (!id) return null;
         const item = itemsDB[id];
         return item ? ItemBonusParser.parseDescription(item.description || '') : null;
     }).filter(Boolean);
