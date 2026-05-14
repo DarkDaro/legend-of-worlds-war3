@@ -1143,6 +1143,20 @@ function applyItemView() {
 }
 
 // ========== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ (без изменений) ==========
+
+// Поиск предмета по имени (точное совпадение, с кэшем)
+let _itemNameCache = null;
+function findItemByName(name) {
+    if (!name) return null;
+    if (!_itemNameCache) {
+        _itemNameCache = {};
+        for (const id in itemsDB) {
+            if (itemsDB[id].name) _itemNameCache[itemsDB[id].name] = itemsDB[id];
+        }
+    }
+    return _itemNameCache[name] || null;
+}
+
 function findUsedIn(itemId) {
   const used = [];
   for (const id in itemsDB) {

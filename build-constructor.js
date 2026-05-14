@@ -3,6 +3,8 @@
 const BC_STORAGE_KEY = 'buildConstructor';
 
 // Данные: массив стадий
+// Каждый слот: null (пустой) или { id: 'I02D', keep: true/false }
+// keep=true — предмет остаётся, keep=false — продаётся при переходе
 let buildStages = [
     { level: 1, items: [null, null, null, null, null, null] }
 ];
@@ -16,6 +18,40 @@ let bcCollapsedStages = new Set(); // свёрнутые стадии
 let bcPreviewCollapsed = false; // свёрнутое превью
 let bcClipboard = null; // скопированная стадия { level, items }
 
+// === Вспомогательные функции для слотов ===
+
+// Получить itemId из слота (строка или объект)
+function bcSlotId(slot) {
+    if (!slot) return null;
+    if (typeof slot === 'string') return (itemsDB[slot]) ? slot : null;
+    if (typeof slot === 'object' && slot.id) return (itemsDB[slot.id]) ? slot.id : null;
+    return null;
+}
+
+// Получить keep из слота
+function bcSlotKeep(slot) {
+    if (!slot) return true;
+    if (typeof slot === 'object' && slot.keep === false) return false;
+    return true;
+}
+
+// Создать объект слота
+function bcMakeSlot(itemId, keep) {
+    return { id: itemId, keep: keep !== false };
+}
+
+// Нормализовать слоты при загрузке (старый формат → новый)
+function bcNormalizeSlot(slot) {
+    if (!slot) return null;
+    if (typeof slot === 'string') {
+        return itemsDB[slot] ? { id: slot, keep: true } : null;
+    }
+    if (typeof slot === 'object' && slot.id && itemsDB[slot.id]) {
+        return { id: slot.id, keep: slot.keep !== false };
+    }
+    return null;
+}
+
 // === localStorage ===
 
 function bcSave() {
@@ -28,7 +64,7 @@ function bcLoad() {
         if (Array.isArray(saved) && saved.length > 0) {
             buildStages = saved.map(st => ({
                 level: st.level || 1,
-                items: Array.isArray(st.items) ? st.items.map(id => (id && itemsDB[id]) ? id : null) : [null, null, null, null, null, null]
+                items: Array.isArray(st.items) ? st.items.map(s => bcNormalizeSlot(s)) : [null, null, null, null, null, null]
             }));
         }
     } catch (e) { /* игнорируем */ }
@@ -105,7 +141,7 @@ function setStageLevel(index, level) {
 function bcCopyStage(index) {
     const stage = buildStages[index];
     if (!stage) return;
-    bcClipboard = { level: stage.level, items: [...stage.items] };
+    bcClipboard = { level: stage.level, items: stage.items.map(s => s ? { ...s } : null) };
     bcToast('Стадия ' + (index + 1) + ' скопирована');
     bcRender(); // обновить кнопки
 }
@@ -115,7 +151,7 @@ function bcPasteStage(afterIndex) {
         bcToast('Сначала скопируйте стадию');
         return;
     }
-    const newStage = { level: bcClipboard.level, items: [...bcClipboard.items] };
+    const newStage = { level: bcClipboard.level, items: bcClipboard.items.map(s => s ? { ...s } : null) };
     buildStages.splice(afterIndex + 1, 0, newStage);
     // Корректируем activeSlot
     if (activeSlot[0] > afterIndex) {
@@ -140,10 +176,10 @@ function bcAddToSlot(itemId) {
             bcToast('Все 6 слотов в стадии заняты');
             return;
         }
-        stage.items[emptyIdx] = itemId;
+        stage.items[emptyIdx] = bcMakeSlot(itemId);
         activeSlot = [si, emptyIdx];
     } else {
-        stage.items[sl] = itemId;
+        stage.items[sl] = bcMakeSlot(itemId);
         // Сдвигаем на следующий пустой слот
         const nextEmpty = stage.items.indexOf(null);
         if (nextEmpty !== -1) {
@@ -157,6 +193,17 @@ function bcAddToSlot(itemId) {
 function bcRemoveFromSlot(si, sl) {
     if (buildStages[si]) {
         buildStages[si].items[sl] = null;
+        bcSave();
+        bcRender();
+    }
+}
+
+function bcToggleKeep(si, sl) {
+    const stage = buildStages[si];
+    if (!stage || !stage.items[sl]) return;
+    const slot = stage.items[sl];
+    if (typeof slot === 'object' && slot.id) {
+        slot.keep = !slot.keep;
         bcSave();
         bcRender();
     }
@@ -187,7 +234,7 @@ function bcRenderSlots() {
         html += `<label for="bcLevel${si}">Уровень:</label>`;
         html += `<input type="number" id="bcLevel${si}" class="bc-level-input" value="${stage.level}" min="1" max="25" data-si="${si}">`;
         html += `</div>`;
-        html += `<div class="bc-stage-cost">${stageCost.toLocaleString('ru-RU')} 🪙${bossCount > 0 ? ' · 💀 ' + bossCount : ''}</div>`;
+        html += `<div class="bc-stage-cost">${stageCost.toLocaleString('ru-RU')} 🪙${bossCount > 0 ? ' · 💀 ' + bossCount : ''} <span class="bc-stage-delta">(+${bcCalcTransitionCost(si).toLocaleString('ru-RU')})</span></div>`;
         html += `<button class="bc-stage-copy" data-si="${si}" title="Копировать стадию"><i class="fas fa-copy"></i></button>`;
         if (bcClipboard) {
             html += `<button class="bc-stage-paste" data-si="${si}" title="Вставить стадию после"><i class="fas fa-paste"></i></button>`;
@@ -197,16 +244,20 @@ function bcRenderSlots() {
         }
         html += `</div>`;
         html += `<div class="bc-stage-slots"${collapsed ? ' style="display:none"' : ''}>`;
-        stage.items.forEach((id, sl) => {
+        stage.items.forEach((slot, sl) => {
+            const id = bcSlotId(slot);
+            const keep = bcSlotKeep(slot);
             const isActive = activeSlot[0] === si && activeSlot[1] === sl;
             if (id && itemsDB[id]) {
                 const item = itemsDB[id];
                 const isBoss = bcIsBossItem(item);
                 const isDrop = bcIsBossDrop(item);
-                html += `<div class="bc-slot bc-slot-filled ${isActive ? 'bc-slot-active' : ''} ${isDrop ? 'bc-slot-boss-drop' : isBoss ? 'bc-slot-boss-craft' : ''}" data-si="${si}" data-sl="${sl}" title="${item.name} — клик для выбора, ✕ для удаления">`;
+                const tempClass = !keep ? ' bc-slot-temp' : '';
+                html += `<div class="bc-slot bc-slot-filled ${isActive ? 'bc-slot-active' : ''} ${isDrop ? 'bc-slot-boss-drop' : isBoss ? 'bc-slot-boss-craft' : ''}${tempClass}" data-si="${si}" data-sl="${sl}" title="${item.name}${!keep ? ' (продаётся)' : ''} — клик для выбора">`;
                 html += `<div class="bc-slot-icon">${itemIcon(item.id, item.icon, 40, item.type)}</div>`;
-                html += `<div class="bc-slot-name">${item.name}</div>`;
+                html += `<div class="bc-slot-name${!keep ? ' temp-name' : ''}">${item.name}</div>`;
                 html += `<div class="bc-slot-cost">${isBoss ? '💀' : item.cost.toLocaleString('ru-RU') + ' 🪙'}</div>`;
+                html += `<button class="bc-slot-keep-toggle" data-si="${si}" data-sl="${sl}" title="${keep ? 'Пометить как продающийся' : 'Пометить как остающийся'}"><i class="fas fa-${keep ? 'coins' : 'check-circle'}"></i></button>`;
                 html += `<button class="bc-slot-remove" data-si="${si}" data-sl="${sl}" title="Убрать"><i class="fas fa-times"></i></button>`;
                 html += `</div>`;
             } else {
@@ -256,7 +307,7 @@ function bcRenderSlots() {
     });
     container.querySelectorAll('.bc-slot').forEach(slot => {
         slot.addEventListener('click', e => {
-            if (e.target.closest('.bc-slot-remove')) return;
+            if (e.target.closest('.bc-slot-remove') || e.target.closest('.bc-slot-keep-toggle')) return;
             const si = parseInt(slot.dataset.si);
             const sl = parseInt(slot.dataset.sl);
             bcSetActiveSlot(si, sl);
@@ -268,6 +319,12 @@ function bcRenderSlots() {
             bcRemoveFromSlot(parseInt(btn.dataset.si), parseInt(btn.dataset.sl));
         });
     });
+    container.querySelectorAll('.bc-slot-keep-toggle').forEach(btn => {
+        btn.addEventListener('click', e => {
+            e.stopPropagation();
+            bcToggleKeep(parseInt(btn.dataset.si), parseInt(btn.dataset.sl));
+        });
+    });
 }
 
 // === Подсчёт стоимости стадии ===
@@ -276,7 +333,8 @@ function bcCalcStageCost(si) {
     const stage = buildStages[si];
     if (!stage) return 0;
     let cost = 0;
-    stage.items.forEach(id => {
+    stage.items.forEach(slot => {
+        const id = bcSlotId(slot);
         if (id && itemsDB[id]) {
             const item = itemsDB[id];
             if (!bcIsBossDrop(item)) {
@@ -287,11 +345,60 @@ function bcCalcStageCost(si) {
     return cost;
 }
 
+// Стоимость перехода на стадию si с предыдущей
+// Предметы, перенесённые с keep=true — бесплатны
+// Предметы с keep=false из предыдущей — возврат 50%
+function bcCalcTransitionCost(si) {
+    if (si === 0) return bcCalcStageCost(0); // первая стадия — полная стоимость
+    const prevStage = buildStages[si - 1];
+    const curStage = buildStages[si];
+    if (!prevStage || !curStage) return 0;
+
+    // Предметы, перенесённые с предыдущей стадии (keep=true) — не нужно покупать
+    // Используем Map для подсчёта дубликатов: 2 одинаковых предмета с keep=true → 2 бесплатных
+    const carriedOver = new Map();
+    prevStage.items.forEach(slot => {
+        const id = bcSlotId(slot);
+        const keep = bcSlotKeep(slot);
+        if (id && keep) carriedOver.set(id, (carriedOver.get(id) || 0) + 1);
+    });
+
+    // Считаем стоимость новых предметов (не перенесённых)
+    let buyCost = 0;
+    const usedCarry = new Map(); // сколько переносов уже использовано
+    curStage.items.forEach(slot => {
+        const id = bcSlotId(slot);
+        if (!id || !itemsDB[id]) return;
+        if (bcIsBossDrop(itemsDB[id])) return; // босс-дропы не покупаются
+        const available = carriedOver.get(id) || 0;
+        const used = usedCarry.get(id) || 0;
+        if (used < available) {
+            // Этот экземпляр перенесён — бесплатно
+            usedCarry.set(id, used + 1);
+            return;
+        }
+        buyCost += calculateItemCost(id);
+    });
+
+    // Возврат от проданных предметов предыдущей стадии (50%)
+    let refund = 0;
+    prevStage.items.forEach(slot => {
+        const id = bcSlotId(slot);
+        const keep = bcSlotKeep(slot);
+        if (!id || keep || !itemsDB[id]) return;
+        if (bcIsBossDrop(itemsDB[id])) return; // босс-дропы не продаются
+        refund += Math.floor(calculateItemCost(id) * 0.5);
+    });
+
+    return Math.max(0, buyCost - refund);
+}
+
 function bcCountBossItems(si) {
     const stage = buildStages[si];
     if (!stage) return 0;
     let count = 0;
-    stage.items.forEach(id => {
+    stage.items.forEach(slot => {
+        const id = bcSlotId(slot);
         if (id && itemsDB[id] && bcIsBossItem(itemsDB[id])) count++;
     });
     return count;
@@ -303,7 +410,7 @@ function bcRenderPreview() {
     const container = document.getElementById('bcPreview');
     if (!container) return;
 
-    const hasItems = buildStages.some(st => st.items.some(id => id !== null));
+    const hasItems = buildStages.some(st => st.items.some(s => bcSlotId(s) !== null));
     if (!hasItems) {
         container.innerHTML = '<div class="bc-preview-empty"><i class="fas fa-info-circle"></i> Добавьте предметы в стадии, чтобы увидеть превью</div>';
         return;
@@ -313,7 +420,7 @@ function bcRenderPreview() {
     html += '<thead><tr><th>Стадия</th><th class="bc-td-level">Уровень</th><th>Предметы</th><th>Стоимость</th></tr></thead>';
     html += '<tbody>';
     buildStages.forEach((stage, si) => {
-        const filledItems = stage.items.filter(id => id !== null);
+        const filledItems = stage.items.filter(s => bcSlotId(s) !== null);
         if (filledItems.length === 0) return;
         const cost = bcCalcStageCost(si);
         const bossCount = bcCountBossItems(si);
@@ -321,20 +428,23 @@ function bcRenderPreview() {
         html += `<td class="bc-td-stage">${si + 1}</td>`;
         html += `<td class="bc-td-level">${stage.level}</td>`;
         html += '<td class="bc-td-items">';
-        stage.items.forEach(id => {
+        stage.items.forEach(slot => {
+            const id = bcSlotId(slot);
+            const keep = bcSlotKeep(slot);
             if (!id || !itemsDB[id]) return;
             const item = itemsDB[id];
             const isBoss = bcIsBossItem(item);
             const isDrop = bcIsBossDrop(item);
             html += `<div class="bc-preview-item ${isDrop ? 'bc-preview-boss-drop' : isBoss ? 'bc-preview-boss-craft' : ''}">`;
             html += `<span class="bc-preview-icon">${itemIcon(item.id, item.icon, 24, item.type)}</span>`;
-            html += `<span class="bc-preview-name">${item.name}</span>`;
+            html += `<span class="bc-preview-name${!keep ? ' temp-name' : ''}">${item.name}</span>`;
             if (isDrop) html += '<span class="bc-preview-badge bc-badge-drop">💀 Дроп</span>';
             else if (isBoss) html += '<span class="bc-preview-badge bc-badge-craft">💀 Босс</span>';
+            if (!keep) html += '<span class="bc-preview-badge bc-badge-temp">⏳ Продаётся</span>';
             html += '</div>';
         });
         html += '</td>';
-        html += `<td class="bc-td-cost">${cost.toLocaleString('ru-RU')} 🪙${bossCount > 0 ? '<br><small>💀 ' + bossCount + ' босс</small>' : ''}</td>`;
+        html += `<td class="bc-td-cost">${cost.toLocaleString('ru-RU')} 🪙${bossCount > 0 ? '<br><small>💀 ' + bossCount + ' босс</small>' : ''}<br><small class="bc-stage-delta">+${bcCalcTransitionCost(si).toLocaleString('ru-RU')} переход</small></td>`;
         html += '</tr>';
     });
     html += '</tbody></table>';
@@ -365,19 +475,21 @@ function bcGenerateJass() {
     code += `    local integer g = ${g}\n`;
 
     buildStages.forEach((stage, si) => {
-        const filledItems = stage.items.filter(id => id !== null);
+        const filledItems = stage.items.filter(s => bcSlotId(s) !== null);
         if (filledItems.length === 0) return;
 
         code += `\n    set s = ${si + 1}\n`;
         // Уровень ставится только на первый предмет стадии (как в оригинале)
         let firstItem = true;
-        stage.items.forEach(id => {
+        stage.items.forEach(slot => {
+            const id = bcSlotId(slot);
+            const keep = bcSlotKeep(slot);
             if (!id || !itemsDB[id]) return;
             const item = itemsDB[id];
             const jassName = bcItemNameToJass(id);
             const lvl = firstItem ? stage.level : 0;
-            // Босс-дропы: bool=false (не trade-in), остальные: bool=true
-            const bool = bcIsBossDrop(item) ? 'false' : 'true';
+            // keep=true → trade-in (true), keep=false → продаётся (false)
+            const bool = keep ? 'true' : 'false';
             code += `    call AddItemToBuild(g, s, ${lvl}, GetItemIdName("${jassName}"), ${bool})\n`;
             firstItem = false;
         });
@@ -481,7 +593,7 @@ function bcRenderCatalog() {
 
     // Собираем все предметы во всех стадиях для подсветки
     const allInBuild = new Set();
-    buildStages.forEach(st => st.items.forEach(id => { if (id) allInBuild.add(id); }));
+    buildStages.forEach(st => st.items.forEach(s => { const id = bcSlotId(s); if (id) allInBuild.add(id); }));
 
     let html = '<div class="calc-catalog-grid">';
     itemIds.forEach(id => {
@@ -516,10 +628,78 @@ function bcRender() {
     bcRenderCatalog();
 }
 
+// === Импорт из сборки ИИ ===
+
+const BC_IMPORT_KEY = 'buildConstructorImport';
+
+function bcImportFromBot() {
+    try {
+        const raw = localStorage.getItem(BC_IMPORT_KEY);
+        if (!raw) return false;
+        const data = JSON.parse(raw);
+        if (!data || !Array.isArray(data.stages) || data.stages.length === 0) {
+            localStorage.removeItem(BC_IMPORT_KEY);
+            return false;
+        }
+
+        // Проверяем: текущий конструктор не пустой?
+        const hasExisting = buildStages.some(st => st.items.some(s => bcSlotId(s) !== null));
+        if (hasExisting) {
+            if (!confirm('Загрузить ИИ-сборку? Текущие данные заменятся.')) {
+                // Пользователь отменил — оставляем импорт в localStorage для повторной попытки
+                return false;
+            }
+        }
+
+        // Конвертируем стадии, нормализуем до 6 слотов
+        const EMPTY = [null, null, null, null, null, null];
+        let droppedCount = 0;
+        buildStages = data.stages.map(st => {
+            let items = EMPTY;
+            if (Array.isArray(st.items)) {
+                items = st.items.map(s => {
+                    const normalized = bcNormalizeSlot(s);
+                    // Считаем потерянные предметы (были данные, но не найдены в itemsDB)
+                    if (s && !normalized) droppedCount++;
+                    return normalized;
+                });
+                // Добиваем до 6 слотов
+                while (items.length < 6) items.push(null);
+                if (items.length > 6) items = items.slice(0, 6);
+            }
+            return { level: st.level || 1, items };
+        });
+
+        // Очищаем импорт
+        localStorage.removeItem(BC_IMPORT_KEY);
+        bcCollapsedStages.clear();
+        activeSlot = [0, 0];
+        bcSave();
+        bcRender();
+
+        let msg = 'ИИ-сборка загружена' + (data.groupId ? ' (группа ' + data.groupId + ')' : '');
+        if (droppedCount > 0) msg += ' · ' + droppedCount + ' предм. не найден' + (droppedCount > 1 ? 'о' : '');
+        bcToast(msg);
+        return true;
+    } catch (e) {
+        localStorage.removeItem(BC_IMPORT_KEY);
+        return false;
+    }
+}
+
 // === Инициализация ===
 
 document.addEventListener('DOMContentLoaded', () => {
     bcLoad();
+
+    // Проверяем импорт из сборки ИИ
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('import') === '1') {
+        bcImportFromBot();
+        // Убираем ?import=1 из URL без перезагрузки
+        window.history.replaceState({}, '', 'build-constructor.html');
+    }
+
     bcRenderTabs();
     bcRender();
 
