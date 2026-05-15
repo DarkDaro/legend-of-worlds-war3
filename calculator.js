@@ -604,6 +604,24 @@ function loadFromUrl() {
         if (heroSelect) heroSelect.value = heroParam;
     }
 
+    // Если items не передан, но есть hero — загрузить из heroBuilds
+    if (!itemsParam && heroParam && typeof heroBuilds !== 'undefined' && heroBuilds[heroParam]) {
+        const heroItems = heroBuilds[heroParam].items;
+        if (Array.isArray(heroItems) && heroItems.length > 0) {
+            buildSlots = [null, null, null, null, null, null];
+            heroItems.forEach((item, i) => {
+                if (i < 6 && item && item.id) {
+                    buildSlots[i] = calcMakeSlot(item.id, item.keep !== false);
+                }
+            });
+            saveBuild();
+            if (window.history.replaceState) {
+                window.history.replaceState({}, '', window.location.pathname);
+            }
+            return true;
+        }
+    }
+
     if (!itemsParam) return false;
     // Парсим: I02D,I03G!  (! = продаётся)
     const parts = itemsParam.split(',');

@@ -680,6 +680,13 @@ function bcImportFromBot() {
         let msg = 'ИИ-сборка загружена' + (data.groupId ? ' (группа ' + data.groupId + ')' : '');
         if (droppedCount > 0) msg += ' · ' + droppedCount + ' предм. не найден' + (droppedCount > 1 ? 'о' : '');
         bcToast(msg);
+
+        // Установить номер группы в поле ввода
+        if (data.groupId) {
+            const groupInput = document.getElementById('bcGroupInput');
+            if (groupInput) groupInput.value = data.groupId;
+        }
+
         return true;
     } catch (e) {
         localStorage.removeItem(BC_IMPORT_KEY);

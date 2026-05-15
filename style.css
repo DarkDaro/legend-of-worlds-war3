@@ -1424,6 +1424,8 @@ h1 {
     justify-content: center;
     font-size: 24px;
     margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
 }
 .mechanic-card h3 {
     font-size: 1.1rem;
@@ -1448,6 +1450,496 @@ h1 {
     color: #00e6ff;
     font-size: 0.85rem;
     margin-top: 8px;
+}
+
+/* ===== Уникальные анимации карточек механик ===== */
+
+/* --- Удача — кубик перекатывается --- */
+@keyframes mechDiceRoll {
+    0%   { transform: rotateY(0deg) scale(1); }
+    30%  { transform: rotateY(180deg) scale(1.15); }
+    60%  { transform: rotateY(360deg) scale(1.05); }
+    100% { transform: rotateY(360deg) scale(1); }
+}
+.mech-luck .mechanic-icon i {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.mech-luck:hover .mechanic-icon i {
+    animation: mechDiceRoll 0.6s ease-out;
+}
+.mech-luck .mechanic-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: linear-gradient(120deg, transparent 30%, rgba(0,255,136,0.15) 50%, transparent 70%);
+    background-size: 200% 100%;
+    opacity: 0;
+    pointer-events: none;
+}
+.mech-luck:hover .mechanic-icon::after {
+    opacity: 1;
+    animation: sparkleSweep 0.6s ease-out;
+}
+
+/* --- Магический крит — вспышка молнии --- */
+@keyframes mechLightningFlash {
+    0%   { transform: scale(1); opacity: 1; filter: brightness(1); }
+    15%  { transform: scale(1.35); opacity: 1; filter: brightness(2.5); }
+    30%  { transform: scale(1.1); opacity: 0.8; filter: brightness(1.5); }
+    45%  { transform: scale(1.25); opacity: 1; filter: brightness(2); }
+    100% { transform: scale(1); opacity: 1; filter: brightness(1); }
+}
+.mech-magic-crit .mechanic-icon i {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+.mech-magic-crit:hover .mechanic-icon i {
+    animation: mechLightningFlash 0.5s ease-out;
+}
+.mech-magic-crit:hover .mechanic-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: radial-gradient(circle, rgba(255,85,85,0.3) 0%, transparent 70%);
+    animation: mechFlashFade 0.5s ease-out forwards;
+    pointer-events: none;
+}
+@keyframes mechFlashFade {
+    0%   { opacity: 1; transform: scale(0.8); }
+    100% { opacity: 0; transform: scale(1.4); }
+}
+
+/* --- Магический вампиризм — пульс высасывания --- */
+@keyframes mechDrainPulse {
+    0%   { transform: scale(1); }
+    25%  { transform: scale(0.85); }
+    50%  { transform: scale(1.1); }
+    75%  { transform: scale(0.92); }
+    100% { transform: scale(1); }
+}
+.mech-magic-vamp .mechanic-icon i {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.mech-magic-vamp:hover .mechanic-icon i {
+    animation: mechDrainPulse 0.8s ease-in-out;
+}
+.mech-magic-vamp .mechanic-icon::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 16px;
+    border: 2px solid rgba(191,127,255,0.3);
+    opacity: 0;
+    pointer-events: none;
+}
+.mech-magic-vamp:hover .mechanic-icon::after {
+    opacity: 1;
+    animation: mechDrainRing 0.8s ease-out;
+}
+@keyframes mechDrainRing {
+    0%   { inset: 0; opacity: 0.8; }
+    100% { inset: -10px; opacity: 0; }
+}
+
+/* --- Броня — металлический блик --- */
+@keyframes mechSheenSweep {
+    0%   { left: -100%; }
+    100% { left: 200%; }
+}
+.mech-armor .mechanic-icon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(85,170,255,0.25), transparent);
+    border-radius: 12px;
+    pointer-events: none;
+}
+.mech-armor:hover .mechanic-icon::after {
+    animation: mechSheenSweep 0.5s ease-out;
+}
+.mech-armor .mechanic-icon i {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.mech-armor:hover .mechanic-icon i {
+    transform: scale(1.08);
+}
+
+/* --- Блок урона — тряска от удара --- */
+@keyframes mechBlockShake {
+    0%   { transform: translateX(0); }
+    15%  { transform: translateX(-4px); }
+    30%  { transform: translateX(4px); }
+    45%  { transform: translateX(-3px); }
+    60%  { transform: translateX(2px); }
+    75%  { transform: translateX(-1px); }
+    100% { transform: translateX(0); }
+}
+.mech-block .mechanic-icon i {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+.mech-block:hover .mechanic-icon i {
+    animation: mechBlockShake 0.4s ease-out;
+}
+.mech-block:hover .mechanic-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: radial-gradient(circle, rgba(85,170,255,0.2) 0%, transparent 70%);
+    animation: mechFlashFade 0.4s ease-out forwards;
+    pointer-events: none;
+}
+
+/* --- Сопротивление оглушению — замедляющиеся шестерёнки --- */
+@keyframes mechClockSlowSpin {
+    0%   { transform: rotate(0deg); }
+    20%  { transform: rotate(90deg); }
+    50%  { transform: rotate(150deg); }
+    80%  { transform: rotate(180deg); }
+    100% { transform: rotate(200deg); }
+}
+.mech-stun-resist .mechanic-icon i {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.mech-stun-resist:hover .mechanic-icon i {
+    animation: mechClockSlowSpin 1s ease-out;
+}
+
+/* --- Физический вампиризм — ритм пульса --- */
+@keyframes mechHeartbeat {
+    0%   { transform: scale(1); }
+    10%  { transform: scale(1.2); }
+    20%  { transform: scale(1); }
+    30%  { transform: scale(1.15); }
+    40%  { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+.mech-phys-vamp .mechanic-icon i {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+.mech-phys-vamp:hover .mechanic-icon i {
+    animation: mechHeartbeat 0.8s ease-out;
+}
+.mech-phys-vamp:hover .mechanic-icon::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 14px;
+    box-shadow: 0 0 12px rgba(255,68,68,0.4);
+    animation: mechHeartGlow 0.8s ease-out;
+    pointer-events: none;
+}
+@keyframes mechHeartGlow {
+    0%   { opacity: 0; }
+    10%  { opacity: 1; }
+    20%  { opacity: 0.3; }
+    30%  { opacity: 0.8; }
+    40%  { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* --- Снижение лечения — подавление --- */
+@keyframes mechSuppressDim {
+    0%   { opacity: 1; filter: brightness(1); }
+    30%  { opacity: 0.4; filter: brightness(0.5); }
+    60%  { opacity: 0.7; filter: brightness(0.7); }
+    100% { opacity: 1; filter: brightness(1); }
+}
+.mech-heal-reduce .mechanic-icon i {
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+.mech-heal-reduce:hover .mechanic-icon i {
+    animation: mechSuppressDim 0.6s ease-out;
+}
+.mech-heal-reduce:hover .mechanic-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: rgba(170,170,68,0.15);
+    animation: mechSuppressOverlay 0.6s ease-out;
+    pointer-events: none;
+}
+@keyframes mechSuppressOverlay {
+    0%   { opacity: 0; }
+    30%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* --- Скипетр Владыки — призматический перелив --- */
+@keyframes mechPrismatic {
+    0%   { filter: hue-rotate(0deg); transform: scale(1); }
+    25%  { filter: hue-rotate(90deg); transform: scale(1.1); }
+    50%  { filter: hue-rotate(180deg); transform: scale(1.05); }
+    75%  { filter: hue-rotate(270deg); transform: scale(1.1); }
+    100% { filter: hue-rotate(360deg); transform: scale(1); }
+}
+.mech-scepter .mechanic-icon i {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.mech-scepter:hover .mechanic-icon i {
+    animation: mechPrismatic 1s ease-in-out;
+}
+.mech-scepter .mechanic-icon::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 14px;
+    background: conic-gradient(from 0deg, rgba(191,127,255,0.2), rgba(0,230,255,0.2), rgba(255,85,85,0.2), rgba(0,255,136,0.2), rgba(191,127,255,0.2));
+    opacity: 0;
+    pointer-events: none;
+}
+.mech-scepter:hover .mechanic-icon::after {
+    opacity: 1;
+    animation: mechPrismaticRing 1s linear;
+}
+@keyframes mechPrismaticRing {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Усиление маг. урона — нарастающее пламя --- */
+@keyframes mechFireEscalate {
+    0%   { transform: scale(1); filter: brightness(1); }
+    30%  { transform: scale(1.15); filter: brightness(1.5); }
+    60%  { transform: scale(1.25); filter: brightness(2); }
+    100% { transform: scale(1); filter: brightness(1); }
+}
+.mech-spell-dmg .mechanic-icon i {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.mech-spell-dmg:hover .mechanic-icon i {
+    animation: mechFireEscalate 0.6s ease-out;
+}
+.mech-spell-dmg:hover .mechanic-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: radial-gradient(circle, rgba(255,85,85,0.25) 0%, transparent 70%);
+    animation: mechFireGlow 0.6s ease-out;
+    pointer-events: none;
+}
+@keyframes mechFireGlow {
+    0%   { opacity: 0; transform: scale(0.5); }
+    40%  { opacity: 1; }
+    100% { opacity: 0; transform: scale(1.5); }
+}
+
+/* --- Усиление маг. лечения — мягкое сияние --- */
+@keyframes mechRadiance {
+    0%   { transform: scale(1); box-shadow: 0 0 0 rgba(85,255,136,0); }
+    50%  { transform: scale(1.08); box-shadow: 0 0 20px rgba(85,255,136,0.3); }
+    100% { transform: scale(1); box-shadow: 0 0 0 rgba(85,255,136,0); }
+}
+.mech-heal-amp .mechanic-icon {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.mech-heal-amp:hover .mechanic-icon {
+    animation: mechRadiance 0.8s ease-out;
+}
+.mech-heal-amp .mechanic-icon i {
+    display: inline-block;
+}
+
+/* --- Магическая защита — кольцевой барьер --- */
+@keyframes mechBarrierRing {
+    0%   { inset: 4px; opacity: 0.8; border-width: 2px; }
+    100% { inset: -8px; opacity: 0; border-width: 1px; }
+}
+.mech-magic-resist .mechanic-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    border: 2px solid rgba(85,170,255,0.4);
+    opacity: 0;
+    pointer-events: none;
+}
+.mech-magic-resist:hover .mechanic-icon::after {
+    animation: mechBarrierRing 0.6s ease-out;
+}
+.mech-magic-resist .mechanic-icon i {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.mech-magic-resist:hover .mechanic-icon i {
+    transform: scale(1.05);
+}
+
+/* --- Сборка в 1 клик — клик-нажатие --- */
+@keyframes mechClickPress {
+    0%   { transform: scale(1); }
+    20%  { transform: scale(0.8); }
+    40%  { transform: scale(1.1); }
+    60%  { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+.mech-auto-build .mechanic-icon i {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+.mech-auto-build:hover .mechanic-icon i {
+    animation: mechClickPress 0.4s ease-out;
+}
+.mech-auto-build:hover .mechanic-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: radial-gradient(circle, rgba(255,153,68,0.2) 0%, transparent 70%);
+    animation: mechFlashFade 0.4s ease-out forwards;
+    pointer-events: none;
+}
+
+/* --- Порча — тёмные разводы --- */
+@keyframes mechCorruptSpread {
+    0%   { background-position: 0% 50%; opacity: 0; }
+    30%  { opacity: 1; }
+    100% { background-position: 100% 50%; opacity: 0; }
+}
+.mech-corruption .mechanic-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(170,68,170,0.3), rgba(40,0,40,0.4), rgba(170,68,170,0.3));
+    background-size: 200% 200%;
+    opacity: 0;
+    pointer-events: none;
+}
+.mech-corruption:hover .mechanic-icon::after {
+    animation: mechCorruptSpread 0.8s ease-out;
+}
+.mech-corruption .mechanic-icon i {
+    display: inline-block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.mech-corruption:hover .mechanic-icon i {
+    transform: scale(1.1);
+    filter: brightness(0.7);
+}
+
+/* --- Возврат урона — отскок --- */
+@keyframes mechReflectBounce {
+    0%   { transform: translateX(0); }
+    20%  { transform: translateX(5px); }
+    40%  { transform: translateX(-5px); }
+    60%  { transform: translateX(3px); }
+    80%  { transform: translateX(-2px); }
+    100% { transform: translateX(0); }
+}
+.mech-dmg-return .mechanic-icon i {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+.mech-dmg-return:hover .mechanic-icon i {
+    animation: mechReflectBounce 0.5s ease-out;
+}
+.mech-dmg-return:hover .mechanic-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: radial-gradient(circle at 30% 50%, rgba(255,102,68,0.2) 0%, transparent 70%);
+    animation: mechFlashFade 0.5s ease-out forwards;
+    pointer-events: none;
+}
+
+/* --- Развеивание — колыхание ветра --- */
+@keyframes mechWindSway {
+    0%   { transform: rotate(0deg) translateX(0); }
+    20%  { transform: rotate(5deg) translateX(3px); }
+    40%  { transform: rotate(-3deg) translateX(-2px); }
+    60%  { transform: rotate(4deg) translateX(2px); }
+    80%  { transform: rotate(-2deg) translateX(-1px); }
+    100% { transform: rotate(0deg) translateX(0); }
+}
+.mech-dispel .mechanic-icon i {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.mech-dispel:hover .mechanic-icon i {
+    animation: mechWindSway 0.7s ease-out;
+}
+.mech-dispel:hover .mechanic-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: linear-gradient(90deg, transparent, rgba(85,204,255,0.15), transparent);
+    background-size: 200% 100%;
+    animation: sparkleSweep 0.7s ease-out;
+    pointer-events: none;
+}
+
+/* --- Сопротивление сожжению маны — угасание пламени --- */
+@keyframes mechFireDim {
+    0%   { transform: scale(1); filter: brightness(1); opacity: 1; }
+    30%  { transform: scale(1.1); filter: brightness(1.3); opacity: 1; }
+    60%  { transform: scale(0.85); filter: brightness(0.4); opacity: 0.5; }
+    100% { transform: scale(1); filter: brightness(1); opacity: 1; }
+}
+.mech-mana-burn-resist .mechanic-icon i {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.mech-mana-burn-resist:hover .mechanic-icon i {
+    animation: mechFireDim 0.7s ease-out;
+}
+.mech-mana-burn-resist:hover .mechanic-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: radial-gradient(circle, rgba(85,255,204,0.15) 0%, transparent 70%);
+    animation: mechFlashFade 0.7s ease-out forwards;
+    pointer-events: none;
+}
+
+/* --- Чистый урон — белая вспышка --- */
+@keyframes mechPureFlash {
+    0%   { transform: scale(1); filter: brightness(1); }
+    15%  { transform: scale(1.3); filter: brightness(3); }
+    30%  { transform: scale(1.05); filter: brightness(1.5); }
+    45%  { transform: scale(1.15); filter: brightness(2.5); }
+    100% { transform: scale(1); filter: brightness(1); }
+}
+.mech-pure-dmg .mechanic-icon i {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+.mech-pure-dmg:hover .mechanic-icon i {
+    animation: mechPureFlash 0.5s ease-out;
+}
+.mech-pure-dmg:hover .mechanic-icon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%);
+    animation: mechFlashFade 0.5s ease-out forwards;
+    pointer-events: none;
+}
+
+/* Общий блик-свип для карточек с градиентным пробегом */
+@keyframes sparkleSweep {
+    0%   { background-position: -100% 0; }
+    100% { background-position: 200% 0; }
 }
 
 /* === Поддержать === */
