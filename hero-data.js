@@ -2,13 +2,16 @@
  * hero-data.js — Список всех героев с базовыми характеристиками.
  * Используется на страницах: heroes.html, compare.html, глобальный поиск.
  * Данные из карточек героев. Поля с null — ждут заполнения.
+ *
+ * renderHeroStats(heroId) — рендерит блок статов + таблицу приростов
+ * для карточки героя. Вызывается из HTML: renderHeroStats('paladin').
  */
 var HEROES_DATA = [
     // Сила
     { name: 'Адмирал', title: 'Морской воин', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'admiral', image: 'admiral',
       strBase: 28, strGain: 3, agiBase: 14, agiGain: 2, intBase: 18, intGain: 2,
       hp: 650, mp: 150, atk: 25, def: 2, atkSpeed: 2.0, hpRegen: 1, mpRegen: 0.01, speed: 290, range: 150 },
-    { name: 'Друид', title: 'Хранитель природы', attr: 'strength', role: 'support', roleName: 'Помошник', heroId: 'druid', image: 'druid',
+    { name: 'Друид', title: 'Хранитель природы', attr: 'strength', role: 'support', roleName: 'Помощник', heroId: 'druid', image: 'druid',
       strBase: 25, strGain: 3, agiBase: 12, agiGain: 2, intBase: 23, intGain: 2,
       hp: 660, mp: 150, atk: 20, def: 2, atkSpeed: 2.0, hpRegen: 4, mpRegen: 0.01, speed: 290, range: 150 },
     { name: 'Киборг', title: 'Механический воин', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'cyborg', image: 'cyborg',
@@ -30,46 +33,117 @@ var HEROES_DATA = [
       strBase: 22, strGain: 2.8, agiBase: 14, agiGain: 1.5, intBase: 16, intGain: 1.8,
       hp: null, mp: null, atk: null, def: null, atkSpeed: null, hpRegen: null, mpRegen: 0.01, speed: 290, range: 150 },
     // Ловкость
-    { name: 'Жрица Луны', title: 'Лучница ночи', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'u-priestess', image: 'priestess', unique: true, wip: true },
+    { name: 'Жрица Луны', title: 'Лучница ночи', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'u-priestess', image: 'priestess', unique: true, wip: true,
+      strBase: 18, strGain: 2, agiBase: 28, agiGain: 3.5, intBase: 16, intGain: 1.6,
+      hp: 420, mp: 400, atk: 70, def: 3, atkSpeed: 2.1, hpRegen: 0.6, mpRegen: 0.02, speed: 305, range: 600 },
     { name: 'Иллюзионист', title: 'Мастер обмана', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'illusionist', image: 'illusionist',
       strBase: 17, strGain: 2, agiBase: 17, agiGain: 2, intBase: 13, intGain: 2,
       hp: 200, mp: 150, atk: 70, def: 4, atkSpeed: 1.7, hpRegen: 0.50, mpRegen: 0.01, speed: 320, range: 150 },
     { name: 'Мурлок', title: 'Подводный охотник', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'murloc', image: 'murloc', wip: true,
       strBase: 16, strGain: 1.8, agiBase: 25, agiGain: 3.1, intBase: 14, intGain: 1.4,
-      hp: null, mp: null, atk: null, def: null, atkSpeed: null, hpRegen: null, mpRegen: 0.01, speed: 310, range: 150 },
+      hp: 500, mp: 400, atk: 60, def: 3, atkSpeed: 2.0, hpRegen: 1, mpRegen: 0.02, speed: 310, range: 150 },
     { name: 'Самурай', title: 'Мастер меча', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'samurai', image: 'samurai', wip: true,
       strBase: 17, strGain: 1.8, agiBase: 26, agiGain: 3.2, intBase: 15, intGain: 1.5,
-      hp: null, mp: null, atk: null, def: null, atkSpeed: null, hpRegen: null, mpRegen: 0.01, speed: 310, range: 150 },
+      hp: 480, mp: 380, atk: 65, def: 3, atkSpeed: 2.0, hpRegen: 0.8, mpRegen: 0.02, speed: 310, range: 150 },
     { name: 'Охотник на демонов', title: 'Мститель', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'u-demonhunter', image: 'demonhunter', unique: true, wip: true },
     { name: 'Темная Лучница', title: 'Ледяная охотница', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'dark-archer', image: 'dark-archer', wip: true,
       strBase: 20, strGain: 2.5, agiBase: 31, agiGain: 4, intBase: 18, intGain: 1.7,
-      hp: null, mp: null, atk: null, def: null, atkSpeed: null, hpRegen: null, mpRegen: 0.01, speed: 300, range: 625 },
+      hp: 450, mp: 420, atk: 75, def: 2, atkSpeed: 2.2, hpRegen: 0.5, mpRegen: 0.02, speed: 300, range: 625 },
     { name: 'Теневой клинок', title: 'Убийца из тени', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'u-shadowblade', image: 'shadowblade', unique: true, wip: true,
       strBase: 14, strGain: 1.5, agiBase: 28, agiGain: 3.6, intBase: 14, intGain: 1.3,
       hp: null, mp: null, atk: null, def: null, atkSpeed: null, hpRegen: null, mpRegen: 0.01, speed: 320, range: 128 },
+    { name: 'Мастер клинка', title: 'Блуждающий клинок', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'blademaster', image: 'blademaster', wip: true,
+      strBase: 18, strGain: 2.0, agiBase: 24, agiGain: 3.2, intBase: 16, intGain: 1.7,
+      hp: null, mp: null, atk: null, def: null, atkSpeed: null, hpRegen: null, mpRegen: 0.01, speed: 320, range: 150 },
+    { name: 'Охотник на демонов', title: 'Мститель', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'u-demonhunter', image: 'demonhunter', unique: true, wip: true,
+      strBase: 18, strGain: 2.0, agiBase: 25, agiGain: 3.2, intBase: 15, intGain: 1.5,
+      hp: null, mp: null, atk: null, def: null, atkSpeed: null, hpRegen: null, mpRegen: 0.01, speed: 320, range: 150 },
     // Интеллект
     { name: 'Громовержец', title: 'Повелитель молний', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'thundergod', image: 'thundergod',
       strBase: 24, strGain: 2, agiBase: 12, agiGain: 2, intBase: 24, intGain: 2,
       hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 2, mpRegen: 0.01, speed: 280, range: 600 },
     { name: 'Повелитель Льдов', title: 'Маг холода', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'frost-lord', image: 'frost-lord', wip: true,
       strBase: 16, strGain: 1.8, agiBase: 13, agiGain: 1.4, intBase: 24, intGain: 3.4,
-      hp: null, mp: null, atk: null, def: null, atkSpeed: null, hpRegen: null, mpRegen: 0.01, speed: 270, range: 600 },
+      hp: 300, mp: 500, atk: 50, def: 2, atkSpeed: 2.25, hpRegen: 0.5, mpRegen: 0.03, speed: 270, range: 600 },
     { name: 'Верховный Маг', title: 'Маг воды', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'archmage', image: 'archmage', wip: true,
       strBase: 14, strGain: 1.5, agiBase: 17, agiGain: 1.6, intBase: 25, intGain: 3.5,
-      hp: null, mp: null, atk: null, def: null, atkSpeed: null, hpRegen: null, mpRegen: 0.01, speed: 280, range: 600 },
+      hp: 280, mp: 520, atk: 45, def: 2, atkSpeed: 2.3, hpRegen: 0.4, mpRegen: 0.04, speed: 280, range: 600 },
     { name: 'Провидец', title: 'Шаман', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'u-farseer', image: 'FarSeer', unique: true, wip: true,
       strBase: 16, strGain: 2, agiBase: 15, agiGain: 1.5, intBase: 22, intGain: 3,
       hp: null, mp: null, atk: null, def: null, atkSpeed: null, hpRegen: null, mpRegen: 0.01, speed: 280, range: 600 },
     { name: 'Леший', title: 'Друид', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'leshy', image: 'leshy', wip: true,
       strBase: 17, strGain: 1.8, agiBase: 14, agiGain: 1.5, intBase: 22, intGain: 3.2,
-      hp: null, mp: null, atk: null, def: null, atkSpeed: null, hpRegen: null, mpRegen: 0.01, speed: 280, range: 550 },
+      hp: 350, mp: 480, atk: 40, def: 2, atkSpeed: 2.2, hpRegen: 1.5, mpRegen: 0.03, speed: 280, range: 550 },
     { name: 'Хромомант', title: 'Повелитель времени', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'u-chronomancer', image: 'chronomancer', unique: true, wip: true,
       strBase: 15, strGain: 1.6, agiBase: 16, agiGain: 1.8, intBase: 24, intGain: 3.2,
-      hp: null, mp: null, atk: null, def: null, atkSpeed: null, hpRegen: null, mpRegen: 0.01, speed: 280, range: 550 },
+      hp: 320, mp: 500, atk: 45, def: 2, atkSpeed: 2.2, hpRegen: 0.5, mpRegen: 0.04, speed: 280, range: 550 },
     { name: 'Шаман крови', title: 'Запретная магия', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'u-bloodshaman', image: 'bloodshaman', unique: true, wip: true,
       strBase: 20, strGain: 2.2, agiBase: 13, agiGain: 1.3, intBase: 22, intGain: 3,
-      hp: null, mp: null, atk: null, def: null, atkSpeed: null, hpRegen: null, mpRegen: 0.01, speed: 275, range: 500 },
+      hp: 400, mp: 460, atk: 55, def: 2, atkSpeed: 2.1, hpRegen: 1.0, mpRegen: 0.03, speed: 275, range: 500 },
     { name: 'Некромонгер', title: 'Повелитель мёртвых', attr: 'intelligence', role: 'support', roleName: 'Поддержка', heroId: 'necromonger', image: 'necromonger', wip: true,
       strBase: 16, strGain: 1.8, agiBase: 14, agiGain: 1.5, intBase: 21, intGain: 3,
-      hp: null, mp: null, atk: null, def: null, atkSpeed: null, hpRegen: null, mpRegen: 0.01, speed: 290, range: 600 },
+      hp: 350, mp: 500, atk: 40, def: 2, atkSpeed: 2.3, hpRegen: 0.8, mpRegen: 0.04, speed: 290, range: 600 },
+    { name: 'Лич', title: 'Владыка льдов', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'lich', image: 'lich', wip: true,
+      strBase: 15, strGain: 2.0, agiBase: 14, agiGain: 1.0, intBase: 20, intGain: 3.4,
+      hp: null, mp: null, atk: null, def: null, atkSpeed: null, hpRegen: null, mpRegen: 0.01, speed: 270, range: 500 },
 ];
+
+// Маппинг атрибутов: ключ → (метка, CSS-цвет, CSS-класс body)
+var ATTR_MAP = {
+    strength:     { label: 'Сила',      color: '#ff5555', bodyClass: 'strength' },
+    agility:      { label: 'Ловкость',  color: '#55ff55', bodyClass: 'agility' },
+    intelligence: { label: 'Разум',     color: '#5555ff', bodyClass: 'intelligence' }
+};
+
+// Маппинг ролей: ключ → CSS-класс
+var ROLE_CLASS_MAP = {
+    tank:    'role-tank',
+    damager: 'role-damager',
+    support: 'role-support'
+};
+
+// Найти героя по heroId
+function findHero(heroId) {
+    return HEROES_DATA.find(function(h) { return h.heroId === heroId; }) || null;
+}
+
+// Форматирование значения стата (null → «—»)
+function statVal(v, suffix) {
+    if (v === null || v === undefined) return '—';
+    return suffix ? v + suffix : String(v);
+}
+
+// Рендер блока статов + таблицы приростов для карточки героя
+function renderHeroStats(heroId) {
+    var hero = findHero(heroId);
+    if (!hero) return '<p style="color:#6b7c99;">Данные героя недоступны</p>';
+
+    var attr = ATTR_MAP[hero.attr] || ATTR_MAP.strength;
+    var rangeLabel = (hero.range >= 400) ? 'Дальний бой' : 'Ближний бой';
+    var roleClass = ROLE_CLASS_MAP[hero.role] || 'role-support';
+
+    // Блок hero-stats
+    var html = '<div class="hero-stats">';
+    html += '<div class="stat-item"><i class="fas fa-crosshairs"></i> ' + rangeLabel + ' (' + statVal(hero.range) + ')</div>';
+    html += '<div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:' + attr.color + ';">' + attr.label + '</span></div>';
+    html += '<div class="stat-item"><i class="fas fa-heart"></i> Жизни: ' + statVal(hero.hp) + '</div>';
+    html += '<div class="stat-item"><i class="fas fa-tint"></i> Мана: ' + statVal(hero.mp) + '</div>';
+    html += '<div class="stat-item"><i class="fas fa-tint-slash"></i> Реген. маны: ' + statVal(hero.mpRegen, '/сек') + '</div>';
+    html += '<div class="stat-item"><i class="fas fa-fist-raised"></i> Атака: ' + statVal(hero.atk) + '</div>';
+    html += '<div class="stat-item"><i class="fas fa-shield-alt"></i> Защита: ' + statVal(hero.def) + '</div>';
+    html += '<div class="stat-item"><i class="fas fa-clock"></i> Скорость атаки: ' + statVal(hero.atkSpeed, ' сек') + '</div>';
+    html += '<div class="stat-item"><i class="fas fa-heartbeat"></i> Реген. здоровья: ' + statVal(hero.hpRegen, '/сек') + '</div>';
+    html += '<div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: ' + statVal(hero.speed) + '</div>';
+    html += '<div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="' + roleClass + '">' + hero.roleName + '</span></div>';
+    html += '</div>';
+
+    // Таблица приростов
+    html += '<table class="hero-stats-table">';
+    html += '<tr><th>Характеристика</th><th>Значение</th><th>Прирост</th></tr>';
+    html += '<tr><td><span class="stat-strength">Сила</span></td><td>' + statVal(hero.strBase) + '</td><td>+' + statVal(hero.strGain) + '</td></tr>';
+    html += '<tr><td><span class="stat-intelligence">Разум</span></td><td>' + statVal(hero.intBase) + '</td><td>+' + statVal(hero.intGain) + '</td></tr>';
+    html += '<tr><td><span class="stat-agility">Ловкость</span></td><td>' + statVal(hero.agiBase) + '</td><td>+' + statVal(hero.agiGain) + '</td></tr>';
+    html += '</table>';
+
+    return html;
+}
