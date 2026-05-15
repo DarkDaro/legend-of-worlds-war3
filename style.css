@@ -29,6 +29,14 @@ body {
 .wiki-container {
     max-width: 1400px;
     margin: 0 auto;
+    background: rgba(10, 20, 40, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 230, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-top: 16px;
+    margin-bottom: 24px;
 }
 
 h1 {
@@ -40,6 +48,13 @@ h1 {
     color: #ffffff;
     text-shadow: 0 0 12px #00e6ff88, 0 0 25px #00e6ff44;
     letter-spacing: 1px;
+    /* Shimmer-перелив на заголовках */
+    background: linear-gradient(90deg, #fff 0%, #00e6ff 45%, #fff 55%, #00e6ff 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleShimmer 6s ease-in-out infinite;
 }
 
 /* === Фильтры === */
@@ -4415,6 +4430,107 @@ body.page-home::after {
     box-shadow: -200px 300px 0 -100px rgba(0, 128, 255, 0.03);
 }
 
+/* Orb для калькулятора/конструктора/бот-сборок — правый нижний */
+body.page-calculator::after,
+body.page-build-constructor::after,
+body.page-bot-builds::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    right: -5%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Orb для сравнения — левый нижний */
+body.page-compare::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    left: -5%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(0, 128, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Orb для калькуляторов брони/формул — правый верхний */
+body.page-armor-calc::after,
+body.page-formulas-calc::after {
+    content: '';
+    position: fixed;
+    top: -5%;
+    right: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Orb для режимов — центр-правый */
+body.page-modes::after {
+    content: '';
+    position: fixed;
+    top: 20%;
+    right: -8%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Orb для FAQ — левый верхний */
+body.page-faq::after {
+    content: '';
+    position: fixed;
+    top: -5%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 128, 255, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Orb для гайдов — правый нижний */
+body.page-guides::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    right: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Orb для изменений карты — левый нижний */
+body.page-map-changes::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
 /* ===== Калькулятор сборок ===== */
 
 .calc-intro {
@@ -4569,7 +4685,9 @@ body.page-home::after {
 }
 
 .calc-slot {
-    background: #0f172a;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     border: 2px dashed #2a4060;
     border-radius: 8px;
     padding: 6px 4px;
@@ -4601,7 +4719,7 @@ body.page-home::after {
 .calc-slot-filled {
     border-style: solid;
     border-color: #00e6ff44;
-    background: #101a28;
+    background: var(--glass-bg-hover);
     cursor: default;
 }
 
@@ -5029,8 +5147,10 @@ body.page-home::after {
 }
 
 .calc-catalog-item {
-    background: #0f172a;
-    border: 1px solid #2a4060;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: 6px;
     padding: 6px 3px;
     text-align: center;
@@ -5039,9 +5159,9 @@ body.page-home::after {
 }
 
 .calc-catalog-item:hover {
-    border-color: #00e6ff66;
-    box-shadow: 0 0 8px #00e6ff22;
-    transform: translateY(-1px);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--neon-glow);
+    transform: translateY(-2px);
 }
 
 .calc-catalog-item.calc-catalog-in-build {
@@ -5407,7 +5527,11 @@ body.page-home::after {
     .call-to-action,
     .version-card,
     .support-card,
-    .monster-card {
+    .monster-card,
+    .wiki-container,
+    .calc-slot,
+    .calc-catalog-item,
+    .bc-slot {
         background: #0f172a !important;
     }
 }
@@ -5559,7 +5683,10 @@ body.page-home::after {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
     position: relative;
     padding: 4px 2px;
 }
@@ -5581,12 +5708,13 @@ body.page-home::after {
 
 .bc-slot-filled {
     border-style: solid;
-    border-color: rgba(0, 230, 255, 0.2);
-    background: rgba(0, 230, 255, 0.03);
+    border-color: var(--glass-border-hover);
+    background: var(--glass-bg-hover);
 }
 
 .bc-slot-filled:hover {
-    border-color: rgba(0, 230, 255, 0.4);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--neon-glow);
 }
 
 .bc-slot-boss-drop {

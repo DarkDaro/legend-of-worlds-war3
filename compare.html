@@ -803,7 +803,7 @@ function renderDesktopTable(container, heroes, level) {
     heroes.forEach(function(h) {
         var ac = ATTR_COLORS[h.attr] || '#8aa0c0';
         html += '<th class="hero-col">'
-            + '<a href=\'heroes/' + h.id + '.html\' class="hero-col-name">' + getCompareHeroLabel(h) + '</a>'
+            + '<a href="heroes/' + h.id + '.html" class="hero-col-name">' + getCompareHeroLabel(h) + '</a>'
             + '<div class="hero-col-attr" style="color:' + ac + '">' + h.attrLabel + ' · ' + h.role + '</div>'
             + renderCompareBuildItems(h.id)
             + '</th>';
