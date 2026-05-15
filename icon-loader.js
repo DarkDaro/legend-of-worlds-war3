@@ -175,6 +175,57 @@
         nav.insertBefore(trigger, nav.firstChild);
     }
 
+    // ========== Scroll-reveal ==========
+    // Универсальное появление элементов при прокрутке
+    function initScrollReveal() {
+        var revealTargets = document.querySelectorAll(
+            '.wiki-container > h1, ' +
+            '.wiki-container > h2, ' +
+            '.wiki-container > .filters, ' +
+            '.wiki-container > .hero-grid, ' +
+            '.wiki-container > .item-grid, ' +
+            '.wiki-container > .mechanics-grid, ' +
+            '.wiki-container > .mode-grid, ' +
+            '.wiki-container > .faq-list, ' +
+            '.wiki-container > .guide-list, ' +
+            '.wiki-container > .calc-container, ' +
+            '.wiki-container > .bc-container, ' +
+            '.wiki-container > .bb-container, ' +
+            '.wiki-container > .compare-container, ' +
+            '.wiki-container > .section, ' +
+            '.wiki-container > .support-grid, ' +
+            '.wiki-container > .updates-list, ' +
+            '.wiki-container > .changelog-list, ' +
+            '.wiki-container > .info-section, ' +
+            '.wiki-container > .lore-section, ' +
+            '.wiki-container > .monster-section, ' +
+            '.wiki-container > .map-changes-section, ' +
+            '.wiki-container > .armor-calc-section, ' +
+            '.wiki-container > .formulas-section, ' +
+            '.wiki-container > table'
+        );
+        if (!revealTargets.length) return;
+
+        // Начальное состояние — скрыто
+        revealTargets.forEach(function(el) {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+        revealTargets.forEach(function(el) { observer.observe(el); });
+    }
+
     // ========== INIT ==========
 
     if (document.readyState === 'loading') {
@@ -185,6 +236,7 @@
             initHamburger();
             initScrollToTop();
             initSearchTrigger();
+            initScrollReveal();
         });
     } else {
         initHeroDetailIcon();
@@ -193,5 +245,6 @@
         initHamburger();
         initScrollToTop();
         initSearchTrigger();
+        initScrollReveal();
     }
 })();

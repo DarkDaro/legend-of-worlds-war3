@@ -66,7 +66,10 @@
             border: 1px solid rgba(0, 255, 255, 0.12);
             border-radius: 8px;
             overflow: hidden;
-            transition: border-color 0.2s;
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
         .bb-stage.boss-stage {
             border-color: rgba(255, 60, 60, 0.3);
@@ -151,12 +154,19 @@
             height: 64px;
             border-radius: 6px;
             border: 1px solid rgba(0, 255, 255, 0.15);
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             position: relative;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .bb-slot-img:hover {
+            border-color: rgba(0, 230, 255, 0.35);
+            box-shadow: 0 0 20px rgba(0, 230, 255, 0.2), 0 0 60px rgba(0, 230, 255, 0.08);
         }
         .bb-slot-img img {
             width: 64px;
