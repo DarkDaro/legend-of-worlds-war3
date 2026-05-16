@@ -121,8 +121,10 @@
             color: #00e6ff;
         }
         .formula-results {
-            background: #0f172a;
-            border: 1px solid #2a4060;
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
             border-radius: 12px;
             padding: 20px;
             margin-top: 16px;
@@ -319,6 +321,9 @@
             h1 {
                 font-size: 1.4rem;
             }
+        }
+        @supports not (backdrop-filter: blur(1px)) {
+            .formula-results { background: #0f172a !important; }
         }
     </style>
 </head>

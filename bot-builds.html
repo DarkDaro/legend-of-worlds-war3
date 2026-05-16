@@ -63,12 +63,12 @@
         /* === Стадия === */
         .bb-stage {
             margin: 12px 0;
-            border: 1px solid rgba(0, 255, 255, 0.12);
+            border: 1px solid var(--glass-border);
             border-radius: 8px;
             overflow: hidden;
-            background: rgba(15, 23, 42, 0.45);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
             transition: border-color 0.2s, box-shadow 0.2s;
         }
         .bb-stage.boss-stage {
@@ -389,6 +389,9 @@
             .bb-total-value {
                 font-size: 1rem;
             }
+        }
+        @supports not (backdrop-filter: blur(1px)) {
+            .bb-stage { background: #0f172a !important; }
         }
     </style>
 </head>
