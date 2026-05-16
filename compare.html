@@ -91,8 +91,10 @@
         .compare-table-wrap {
             overflow-x: auto;
             border-radius: 10px;
-            border: 1px solid #1a3a5c;
-            background: #0a1628;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
         }
         .compare-table {
             width: 100%;
@@ -264,10 +266,17 @@
             gap: 16px;
         }
         .compare-card {
-            background: #0a1628;
-            border: 1px solid #1a3a5c;
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
             border-radius: 10px;
             overflow: hidden;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .compare-card:hover {
+            background: var(--glass-bg-hover);
+            border-color: var(--glass-border-hover);
         }
         .compare-card-header {
             padding: 12px 14px 8px;
@@ -401,6 +410,9 @@
             .ability-cell { padding: 6px 4px !important; }
             .ability-cell .ability-passive { font-size: 0.56rem; }
             h1 { font-size: 1.3rem; }
+        }
+        @supports not (backdrop-filter: blur(1px)) {
+            .compare-table-wrap, .compare-card { background: #0f172a !important; }
         }
     </style>
 </head>

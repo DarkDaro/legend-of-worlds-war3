@@ -3250,6 +3250,17 @@ h1 {
 /* === Страница Информация === */
 .info-section {
     margin-bottom: 32px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    transition: background 0.2s, border-color 0.2s;
+}
+.info-section:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
 }
 .info-text {
     color: #c0d0e8;
@@ -6158,6 +6169,7 @@ body.page-map-changes::after {
     .info-guide-card,
     .info-link-card,
     .info-author-card,
+    .info-section,
     .lore-text,
     .call-to-action,
     .version-card,
