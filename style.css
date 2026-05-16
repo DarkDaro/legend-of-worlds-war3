@@ -784,8 +784,10 @@ h1 {
     flex: 1;
     padding: 10px 16px;
     border-radius: 12px;
-    border: 1px solid #2a5070;
-    background: #0f172a;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     color: #8aa0c0;
     font-size: 0.9rem;
     font-weight: 600;
@@ -824,8 +826,10 @@ h1 {
     gap: 8px;
     margin-bottom: 8px;
     padding: 6px 12px;
-    background: #0f172a;
-    border: 1px solid #2a5070;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: 10px;
     font-size: 0.8rem;
     color: #8aa0c0;
@@ -3815,8 +3819,10 @@ body.item-sheet-open {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #0f172a;
-  border: 1px solid #2a4060;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
   border-radius: 30px;
   padding: 10px 20px;
   margin-bottom: 20px;
@@ -3871,8 +3877,10 @@ body.item-sheet-open {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #0f172a;
-  border: 1px solid #2a4060;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
   border-radius: 30px;
   padding: 10px 20px;
   margin-bottom: 20px;
@@ -4460,6 +4468,13 @@ body.page-compare::after {
     z-index: 0;
 }
 
+body.page-armor-calc,
+body.page-formulas-calc {
+    background-image:
+        radial-gradient(ellipse at 70% 20%, rgba(0, 230, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, #182530 0%, #05070a 100%);
+}
+
 /* Orb для калькуляторов брони/формул — правый верхний */
 body.page-armor-calc::after,
 body.page-formulas-calc::after {
@@ -4553,8 +4568,10 @@ body.page-map-changes::after {
     color: #8aa0c0;
     text-decoration: none;
     font-size: 0.8rem;
-    background: #0f172a;
-    border: 1px solid #2a4060;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     padding: 4px 10px;
     border-radius: 6px;
     transition: border-color 0.2s, color 0.2s;
@@ -4581,8 +4598,10 @@ body.page-map-changes::after {
 }
 
 .calc-hero-select {
-    background: #0f172a;
-    border: 1px solid #2a4060;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     color: #e0f0ff;
     padding: 4px 10px;
     border-radius: 6px;
@@ -4874,8 +4893,10 @@ body.page-map-changes::after {
     font-size: 0.75rem;
     font-weight: 700;
     color: #00e6ff;
-    background: #0f172a;
-    border: 1px solid #2a4060;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: 6px;
     padding: 3px 8px;
 }
@@ -4899,8 +4920,10 @@ body.page-map-changes::after {
 
 /* Результаты */
 .calc-results {
-    background: #0f172a;
-    border: 1px solid #2a4060;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: 10px;
     padding: 12px;
     position: sticky;
@@ -5044,8 +5067,10 @@ body.page-map-changes::after {
 }
 
 .calc-tree-item {
-    background: #0f172a;
-    border: 1px solid #1a2a40;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: 8px;
     padding: 8px;
     margin-bottom: 6px;
@@ -5114,8 +5139,10 @@ body.page-map-changes::after {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: #0f172a;
-    border: 1px solid #2a4060;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: 30px;
     padding: 6px 14px;
     margin-bottom: 8px;
@@ -5369,8 +5396,10 @@ body.page-map-changes::after {
 .gs-modal {
     width: 90%;
     max-width: 560px;
-    background: #0f172a;
-    border: 1px solid #2a5070;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: 20px;
     box-shadow: 0 0 40px #000000aa, 0 0 20px #00e6ff33;
     overflow: hidden;
@@ -5531,7 +5560,18 @@ body.page-map-changes::after {
     .wiki-container,
     .calc-slot,
     .calc-catalog-item,
-    .bc-slot {
+    .bc-slot,
+    .calc-results,
+    .calc-tree-item,
+    .gs-modal,
+    .hero-search,
+    .item-search,
+    .calc-search,
+    .form-tab,
+    .cycle-label,
+    .calc-back-link,
+    .calc-hero-select,
+    .calc-slots-counter {
         background: #0f172a !important;
     }
 }
