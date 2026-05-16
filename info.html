@@ -35,8 +35,15 @@
         }
         .modes-promo-btn:hover {
             background: linear-gradient(135deg, #00e5ff33, #00e5ff22);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: 0 8px 24px rgba(0, 229, 255, 0.3);
+        }
+        .modes-promo-btn {
+            animation: modesPromoPulse 3s ease-in-out infinite;
+        }
+        @keyframes modesPromoPulse {
+            0%, 100% { box-shadow: 0 0 0 rgba(0, 229, 255, 0); }
+            50% { box-shadow: 0 0 20px rgba(0, 229, 255, 0.15); }
         }
         .modes-promo-btn i {
             font-size: 1.8rem;
@@ -59,6 +66,7 @@
     </style>
 </head>
 <body class="page-info">
+    <div class="info-orb" aria-hidden="true"></div>
     <header class="site-header">
         <a href="index.html" class="logo">
             <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
@@ -256,6 +264,19 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Stagger для шагов установки
+                    const steps = entry.target.querySelectorAll('.info-steps li');
+                    if (steps.length) {
+                        steps.forEach((li, i) => {
+                            li.style.opacity = '0';
+                            li.style.transform = 'translateX(-10px)';
+                            li.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                            setTimeout(() => {
+                                li.style.opacity = '1';
+                                li.style.transform = 'translateX(0)';
+                            }, i * 120);
+                        });
+                    }
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
                     observer.unobserve(entry.target);

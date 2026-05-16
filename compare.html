@@ -464,7 +464,7 @@
             </div>
         </div>
 
-        <a href="heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> К списку героев</a>
+        <a href="heroes.html" class="btn-secondary" style="display:inline-block; margin-top:32px;"><i class="fas fa-arrow-left"></i> К списку героев</a>
     </div>
 
     <footer class="site-footer">
@@ -739,8 +739,8 @@ function buildCompareRows(heroes, level) {
     pushStatRow(rows, 'Разум', heroes, function(h) { return Math.round(getAttrTotalWithBuild(h, 'intelligence', level)); }, true);
 
     rows.push({ section: true, label: 'Боевые статы с предметами на уровне ' + level });
-    pushStatRow(rows, 'Жизни', heroes, function(h) { return calcStat(h, 'hp', 'strength', level, 20); }, true);
-    pushStatRow(rows, 'Мана', heroes, function(h) { return calcStat(h, 'mp', 'intelligence', level, 15); }, true);
+    pushStatRow(rows, 'Жизни', heroes, function(h) { return calcStat(h, 'hp', 'strength', level, GAME_CONSTANTS.STR_HP_FACTOR); }, true);
+    pushStatRow(rows, 'Мана', heroes, function(h) { return calcStat(h, 'mp', 'intelligence', level, GAME_CONSTANTS.INT_MP_FACTOR); }, true);
     pushStatRow(rows, 'Урон', heroes, function(h) { return getAttackTotal(h, level); }, true);
     pushStatRow(rows, 'Броня', heroes, function(h) { return getArmorTotal(h, level); }, true);
     pushStatRow(rows, 'Снижение урона от брони', heroes, function(h) {
@@ -752,10 +752,14 @@ function buildCompareRows(heroes, level) {
     pushStatRow(rows, 'Скорость передвижения', heroes, function(h) { return getMovementSpeed(h, level); }, false);
     pushStatRow(rows, 'Дальность атаки', heroes, function(h) { return h.stats.range == 128 ? 'Ближний' : h.stats.range; }, false);
     pushStatRow(rows, 'Реген. здоровья', heroes, function(h) {
-        return +((h.stats.hpRegen || 0) + getAttrTotalWithBuild(h, 'strength', level) * GAME_CONSTANTS.STR_HP_REGEN_FACTOR).toFixed(2);
+        var bonus = getCompareHeroBuildBonus(h.id);
+        var base = (h.stats.hpRegen || 0) + getAttrTotalWithBuild(h, 'strength', level) * GAME_CONSTANTS.STR_HP_REGEN_FACTOR + bonus.hpRegenFlat;
+        return +(base * (1 + bonus.hpRegenPct / 100)).toFixed(2);
     }, true);
     pushStatRow(rows, 'Реген. маны', heroes, function(h) {
-        return +((h.stats.mpRegen || GAME_CONSTANTS.MP_REGEN_BASE) + getAttrTotalWithBuild(h, 'intelligence', level) * GAME_CONSTANTS.INT_MP_REGEN_FACTOR).toFixed(2);
+        var bonus = getCompareHeroBuildBonus(h.id);
+        var base = (h.stats.mpRegen || GAME_CONSTANTS.MP_REGEN_BASE) + getAttrTotalWithBuild(h, 'intelligence', level) * GAME_CONSTANTS.INT_MP_REGEN_FACTOR + bonus.manaRegenFlat;
+        return +(base * (1 + bonus.manaRegenPct / 100)).toFixed(2);
     }, true);
 
     rows.push({ section: true, label: 'Прирост за уровень' });
@@ -914,8 +918,8 @@ function getMainAttrTotal(hero, level) {
 }
 
 function calcStat(hero, baseKey, attrKey, level, perPoint) {
-    // HP = базовый + сила × 20
-    // Мана = базовый + разум × 15
+    // HP = базовый + сила × STR_HP_FACTOR
+    // Мана = базовый + разум × INT_MP_FACTOR
     var base = hero.stats[baseKey];
     var totalAttr = getAttrTotalWithBuild(hero, attrKey, level);
     var bonus = getCompareHeroBuildBonus(hero.id);
