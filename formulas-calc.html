@@ -29,8 +29,8 @@
             flex-wrap: wrap;
         }
         .formula-tab {
-            background: #0f172a;
-            border: 1px solid #2a4060;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 8px;
             padding: 8px 16px;
             color: #8ab4f0;
@@ -69,8 +69,8 @@
         }
         .formula-input-row input {
             flex: 1;
-            background: #0f172a;
-            border: 1px solid #2a4060;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 8px;
             padding: 10px 14px;
             color: #e0f0ff;
@@ -93,8 +93,8 @@
             margin-top: 8px;
         }
         .formula-source-chip {
-            background: #0f172a;
-            border: 1px solid #2a4060;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 20px;
             padding: 6px 14px;
             color: #e0f0ff;
@@ -190,8 +190,8 @@
             color: #00e6ff;
         }
         .formula-add-btn {
-            background: #0f172a;
-            border: 1px dashed #2a4060;
+            background: var(--glass-bg);
+            border: 1px dashed var(--glass-border);
             border-radius: 8px;
             padding: 8px 16px;
             color: #6b7c99;
@@ -212,8 +212,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 8px 12px;
-            background: #0f172a;
-            border: 1px solid #2a4060;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 8px;
             margin-bottom: 6px;
         }
@@ -244,8 +244,8 @@
             margin-top: 12px;
         }
         .luck-item-card {
-            background: #0f172a;
-            border: 1px solid #2a4060;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 8px;
             padding: 10px 12px;
             cursor: pointer;
@@ -323,7 +323,7 @@
             }
         }
         @supports not (backdrop-filter: blur(1px)) {
-            .formula-results { background: #0f172a !important; }
+            .formula-results { background: var(--glass-bg) !important; }
         }
     </style>
 </head>
@@ -520,7 +520,7 @@
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-brand">
-                <span class="footer-logo"><img src="images/preview.png" alt="" class="footer-logo-img"> Legend of Worlds</span>
+                <span class="footer-logo"><img src="images/preview.png" alt="" width="28" height="28" class="footer-logo-img"> Legend of Worlds</span>
             </div>
             <div class="footer-social">
                 <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
@@ -623,7 +623,7 @@
             var container = document.getElementById('dimSources');
             container.innerHTML = dimSources.map(function(s, i) {
                 return '<div class="formula-source-item">'
-                    + '<input type="number" value="' + s.value + '" min="0" max="100" step="1" data-dim-idx="' + i + '" style="width:80px;background:#0a1020;border:1px solid #2a4060;border-radius:6px;padding:6px 10px;color:#e0f0ff;font-size:0.9rem;outline:none;">'
+                    + '<input type="number" value="' + s.value + '" min="0" max="100" step="1" data-dim-idx="' + i + '" style="width:80px;background:#0a1020;border:1px solid var(--glass-border);border-radius:6px;padding:6px 10px;color:#e0f0ff;font-size:0.9rem;outline:none;">'
                     + '<span class="source-name">Источник ' + (i + 1) + '</span>'
                     + '<span class="source-value">' + s.value + '%</span>'
                     + '<button class="source-remove" data-dim-rm="' + i + '"><i class="fas fa-times"></i></button>'
@@ -686,7 +686,7 @@
             var container = document.getElementById('addSources');
             container.innerHTML = addSources.map(function(s, i) {
                 return '<div class="formula-source-item">'
-                    + '<input type="number" value="' + s.value + '" min="0" max="500" step="1" data-add-idx="' + i + '" style="width:80px;background:#0a1020;border:1px solid #2a4060;border-radius:6px;padding:6px 10px;color:#e0f0ff;font-size:0.9rem;outline:none;">'
+                    + '<input type="number" value="' + s.value + '" min="0" max="500" step="1" data-add-idx="' + i + '" style="width:80px;background:#0a1020;border:1px solid var(--glass-border);border-radius:6px;padding:6px 10px;color:#e0f0ff;font-size:0.9rem;outline:none;">'
                     + '<span class="source-name">Источник ' + (i + 1) + '</span>'
                     + '<span class="source-value">' + s.value + '%</span>'
                     + '<button class="source-remove" data-add-rm="' + i + '"><i class="fas fa-times"></i></button>'

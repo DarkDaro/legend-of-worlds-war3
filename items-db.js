@@ -1013,7 +1013,7 @@ function injectItemFavoritesStyles() {
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      border: 1px solid #2a4060;
+      border: 1px solid var(--glass-border);
       background: #0f172acc;
       color: #6b7c99;
       display: flex;
