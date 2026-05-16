@@ -3130,20 +3130,29 @@ h1 {
 .site-footer {
     margin-top: 40px;
     border-top: 1px solid #2a4060;
-    padding: 32px 0 16px;
+    padding: 20px 0 12px;
 }
 .footer-content {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 24px;
+    gap: 16px;
     margin-bottom: 24px;
 }
 .footer-brand .footer-logo {
     font-size: 1.2rem;
     font-weight: 700;
     color: #e0f0ff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.footer-logo-img {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    object-fit: contain;
 }
 .footer-brand p {
     color: #5a7a9a;
@@ -3178,7 +3187,7 @@ h1 {
 }
 .footer-bottom {
     text-align: center;
-    padding-top: 16px;
+    padding-top: 20px;
     border-top: 1px solid #1a3050;
 }
 .footer-bottom p {
