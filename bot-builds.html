@@ -24,8 +24,8 @@
             gap: 16px;
             margin: 16px 0;
             padding: 12px 16px;
-            background: rgba(0, 255, 255, 0.04);
-            border: 1px solid rgba(0, 255, 255, 0.12);
+            background: var(--glass-subtle);
+            border: 1px solid var(--glass-border);
             border-radius: 8px;
             font-size: 0.85rem;
         }
@@ -40,7 +40,7 @@
             border-radius: 3px;
             flex-shrink: 0;
         }
-        .bb-legend-dot.normal { background: rgba(0, 255, 255, 0.15); border: 1px solid rgba(0, 255, 255, 0.3); }
+        .bb-legend-dot.normal { background: var(--glass-tag-active); border: 1px solid var(--glass-border-hover); }
         .bb-legend-dot.boss { background: rgba(255, 60, 60, 0.15); border: 1px solid rgba(255, 60, 60, 0.4); }
         .bb-legend-dot.temp { background: rgba(255, 255, 255, 0.06); border: 1px dashed rgba(255, 255, 255, 0.25); opacity: 0.5; }
 
@@ -53,8 +53,8 @@
         }
         .bb-hero-tag {
             padding: 4px 10px;
-            background: rgba(0, 255, 255, 0.08);
-            border: 1px solid rgba(0, 255, 255, 0.2);
+            background: var(--glass-subtle-hover);
+            border: 1px solid var(--glass-tag-border);
             border-radius: 6px;
             font-size: 0.82rem;
             color: var(--text-secondary);
@@ -82,14 +82,14 @@
             padding: 10px 14px;
             cursor: pointer;
             user-select: none;
-            background: rgba(0, 255, 255, 0.04);
+            background: var(--glass-subtle);
             transition: background 0.2s;
         }
         .bb-stage.boss-stage .bb-stage-header {
             background: rgba(255, 40, 40, 0.06);
         }
         .bb-stage-header:hover {
-            background: rgba(0, 255, 255, 0.08);
+            background: var(--glass-subtle-hover);
         }
         .bb-stage.boss-stage .bb-stage-header:hover {
             background: rgba(255, 40, 40, 0.1);
@@ -153,8 +153,8 @@
             width: 64px;
             height: 64px;
             border-radius: 6px;
-            border: 1px solid rgba(0, 255, 255, 0.15);
-            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             display: flex;
@@ -165,7 +165,7 @@
             transition: border-color 0.2s, box-shadow 0.2s;
         }
         .bb-slot-img:hover {
-            border-color: rgba(0, 230, 255, 0.35);
+            border-color: var(--glass-border-hover);
             box-shadow: 0 0 20px rgba(0, 230, 255, 0.2), 0 0 60px rgba(0, 230, 255, 0.08);
         }
         .bb-slot-img img {
@@ -222,8 +222,8 @@
         .bb-total {
             margin-top: 20px;
             padding: 14px 18px;
-            background: rgba(0, 255, 255, 0.06);
-            border: 1px solid rgba(0, 255, 255, 0.15);
+            background: var(--glass-tag-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 8px;
             display: flex;
             justify-content: space-between;
@@ -250,8 +250,8 @@
         }
         .bb-group-btn {
             padding: 6px 14px;
-            background: rgba(0, 255, 255, 0.06);
-            border: 1px solid rgba(0, 255, 255, 0.15);
+            background: var(--glass-tag-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 6px;
             color: var(--text-secondary);
             cursor: pointer;
@@ -259,11 +259,11 @@
             transition: all 0.2s;
         }
         .bb-group-btn:hover {
-            background: rgba(0, 255, 255, 0.12);
+            background: var(--glass-tag-border);
             color: var(--text-primary);
         }
         .bb-group-btn.active {
-            background: rgba(0, 255, 255, 0.15);
+            background: var(--glass-tag-active);
             border-color: var(--accent);
             color: var(--accent);
         }
@@ -454,7 +454,7 @@
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-brand">
-                <span class="footer-logo"><img src="images/preview.png" alt="" class="footer-logo-img"> Legend of Worlds</span>
+                <span class="footer-logo"><img src="images/preview.png" alt="" width="28" height="28" class="footer-logo-img"> Legend of Worlds</span>
             </div>
             <div class="footer-social">
                 <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
