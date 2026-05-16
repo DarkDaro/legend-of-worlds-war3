@@ -257,5 +257,40 @@
             <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
+    <script>
+    // Scroll-reveal — карточки появляются при скролле
+    (function() {
+        const selector = '.hero-card';
+        const revealElements = document.querySelectorAll(selector);
+        if (!revealElements.length) return;
+
+        revealElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Задержка между карточками внутри контейнера
+                    const parent = entry.target.parentElement;
+                    let delay = 0;
+                    if (parent) {
+                        const siblings = Array.from(parent.querySelectorAll(selector));
+                        delay = siblings.indexOf(entry.target) * 60;
+                    }
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, delay);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => observer.observe(el));
+    })();
+    </script>
 </body>
 </html>
