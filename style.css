@@ -2527,6 +2527,35 @@ h1 {
     line-height: 1.5;
 }
 
+/* Вступительный текст на странице монстров */
+.monsters-intro {
+    color: #8aa0c0;
+    margin-bottom: 24px;
+    font-size: 1.05rem;
+}
+
+/* Иконка заголовка "Боссы" */
+.boss-heading-icon {
+    color: #ff5555;
+}
+
+/* Заголовки секций внутри карточки босса */
+.boss-section-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #00e6ff;
+    margin: 16px 0 8px;
+    text-shadow: 0 0 8px #00e6ffaa;
+}
+
+/* Иконка босса/крипа */
+.monster-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
 /* Пассивные способности босса */
 .boss-passive {
     background: #0a1a0a;
