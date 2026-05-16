@@ -61,7 +61,7 @@
                             <div class="monster-stat"><div class="stat-label">Атака (базовая)</div><div class="stat-value">9 999</div></div>
                             <div class="monster-stat"><div class="stat-label">Защита (базовая)</div><div class="stat-value">100</div></div>
                             <div class="monster-stat"><div class="stat-label">Регенерация</div><div class="stat-value">100.00/сек</div></div>
-                            <div class="monster-stat"><div class="stat-label">Маг. защита</div><div class="stat-value">70%</div></div>
+                            <div class="monster-stat"><div class="stat-label">Маг. защита</div><div class="stat-value">50%</div></div>
                         </div>
 
                         <div class="monster-timers">
@@ -79,7 +79,7 @@
                             </div>
                             <div class="boss-passive">
                                 <div class="boss-passive-name">Магическая защита</div>
-                                <div class="boss-passive-desc">Снижает урон от магии на 70%.</div>
+                                <div class="boss-passive-desc">Снижает урон от магии на 50%.</div>
                             </div>
                             <div class="boss-passive">
                                 <div class="boss-passive-name">Аура устрашения</div>
@@ -172,7 +172,14 @@
                                 <div class="boss-passive-name">Магическая защита</div>
                                 <div class="boss-passive-desc">Снижает урон от магии на 70%.</div>
                             </div>
-                            <!-- Дополнительные пассивные способности -->
+                            <div class="boss-passive">
+                                <div class="boss-passive-name">Демоническая сила</div>
+                                <div class="boss-passive-desc">40% наносимого урона передаётся воинам, которые находятся рядом с целью атаки. Область: 350.</div>
+                            </div>
+                            <div class="boss-passive">
+                                <div class="boss-passive-name">Каменные доспехи</div>
+                                <div class="boss-passive-desc">При получении атаки — 20% шанс заблокировать 500 ед. физического урона.</div>
+                            </div>
 
                             <div class="boss-stages">
                                 <div class="boss-section-title"><i class="fas fa-layer-group"></i> Стадии</div>
@@ -184,7 +191,18 @@
                             </div>
 
                             <div class="boss-section-title"><i class="fas fa-magic"></i> Активные способности</div>
-                            <!-- Активные способности -->
+                            <div class="boss-ability">
+                                <div class="boss-ability-name">Бросок булыжника</div>
+                                <div class="boss-ability-desc">Бросок булыжника в указанную цель. Оглушение: 3 сек. Дальнность: 800. Урон: 2000. Перезарядка: 12 сек.</div>
+                            </div>
+                            <div class="boss-ability">
+                                <div class="boss-ability-name">Топот</div>
+                                <div class="boss-ability-desc">Мощный удар об землю, наносящий урон врагам вокруг, оглушающий на 3 сек. и отбрасывающий на 200 ед. Урон: 5000. Перезарядка: 15 сек.</div>
+                            </div>
+                            <div class="boss-ability">
+                                <div class="boss-ability-name">Мощь Гор</div>
+                                <div class="boss-ability-desc">+30 защиты, +10 000 здоровья, +2 000 атаки и невосприимчивость к заклинаниям. Длительность: 10 сек. Перезарядка: 40 сек.</div>
+                            </div>
                         </div>
 
                         <div class="monster-reward">
@@ -214,7 +232,7 @@
                             <div class="monster-stat"><div class="stat-label">Атака (базовая)</div><div class="stat-value">19 500</div></div>
                             <div class="monster-stat"><div class="stat-label">Защита (базовая)</div><div class="stat-value">100</div></div>
                             <div class="monster-stat"><div class="stat-label">Регенерация</div><div class="stat-value">400.00/сек</div></div>
-                            <div class="monster-stat"><div class="stat-label">Маг. защита</div><div class="stat-value">70%</div></div>
+                            <div class="monster-stat"><div class="stat-label">Маг. защита</div><div class="stat-value">50%</div></div>
                         </div>
 
                         <div class="monster-timers">
@@ -232,9 +250,20 @@
                             </div>
                             <div class="boss-passive">
                                 <div class="boss-passive-name">Магическая защита</div>
-                                <div class="boss-passive-desc">Снижает урон от магии на 70%.</div>
+                                <div class="boss-passive-desc">Снижает урон от магии на 50%.</div>
                             </div>
-                            <!-- Дополнительные пассивные способности -->
+                            <div class="boss-passive">
+                                <div class="boss-passive-name">Демоническая сила</div>
+                                <div class="boss-passive-desc">25% наносимого урона передаётся воинам, которые находятся рядом с целью атаки.</div>
+                            </div>
+                            <div class="boss-passive">
+                                <div class="boss-passive-name">Уклонение</div>
+                                <div class="boss-passive-desc">30% шанс уклониться от атаки противника.</div>
+                            </div>
+                            <div class="boss-passive">
+                                <div class="boss-passive-name">Смертельный удар</div>
+                                <div class="boss-passive-desc">10% шанс нанести 3-кратный урон при каждой атаке.</div>
+                            </div>
 
                             <div class="boss-stages">
                                 <div class="boss-section-title"><i class="fas fa-layer-group"></i> Стадии</div>
@@ -246,7 +275,14 @@
                             </div>
 
                             <div class="boss-section-title"><i class="fas fa-magic"></i> Активные способности</div>
-                            <!-- Активные способности -->
+                            <div class="boss-ability">
+                                <div class="boss-ability-name">Водный всплеск</div>
+                                <div class="boss-ability-desc">Испускает вокруг себя 20 морских волн. 50% шанс выпустить волны дважды спустя 2 сек. Всего волн: 20. Дистанция: 1000. Урон от каждой: 3000. Перезарядка: 20 сек.</div>
+                            </div>
+                            <div class="boss-ability">
+                                <div class="boss-ability-name">Гейзеры</div>
+                                <div class="boss-ability-desc">Создаёт 10 гейзеров, которые после паузы 3 сек наносят по 10 000 урона каждый. Область урона: 250. Перезарядка: 20 сек.</div>
+                            </div>
                         </div>
 
                         <div class="monster-reward">
@@ -297,7 +333,18 @@
                                 <div class="boss-passive-name">Магическая защита</div>
                                 <div class="boss-passive-desc">Снижает урон от магии на 70%.</div>
                             </div>
-                            <!-- Дополнительные пассивные способности -->
+                            <div class="boss-passive">
+                                <div class="boss-passive-name">Мультиатака</div>
+                                <div class="boss-passive-desc">Позволяет атаковать сразу 6 целей.</div>
+                            </div>
+                            <div class="boss-passive">
+                                <div class="boss-passive-name">Уклонение</div>
+                                <div class="boss-passive-desc">30% шанс уклониться от атаки противника.</div>
+                            </div>
+                            <div class="boss-passive">
+                                <div class="boss-passive-name">Смертельный удар</div>
+                                <div class="boss-passive-desc">10% шанс нанести 3-кратный урон при каждой атаке.</div>
+                            </div>
 
                             <div class="boss-stages">
                                 <div class="boss-section-title"><i class="fas fa-layer-group"></i> Стадии</div>
@@ -309,7 +356,22 @@
                             </div>
 
                             <div class="boss-section-title"><i class="fas fa-magic"></i> Активные способности</div>
-                            <!-- Активные способности -->
+                            <div class="boss-ability">
+                                <div class="boss-ability-name">Похищение души</div>
+                                <div class="boss-ability-desc">Наносит урон от максимального запаса здоровья противника и восстанавливает его себе. Поглощение здоровья: 20%. Урон от здоровья: 20%. Перезарядка: 20 сек.</div>
+                            </div>
+                            <div class="boss-ability">
+                                <div class="boss-ability-name">Скачок</div>
+                                <div class="boss-ability-desc">Телепортация на небольшое расстояние, позволяющая мгновенно приблизиться к противнику или выйти из боя. Расстояние: 900. Перезарядка: 10 сек.</div>
+                            </div>
+                            <div class="boss-ability">
+                                <div class="boss-ability-name">Массовое очищение</div>
+                                <div class="boss-ability-desc">Массовое очищение всех противников в указанной области. Область: 400. Перезарядка: 20 сек.</div>
+                            </div>
+                            <div class="boss-ability">
+                                <div class="boss-ability-name">Тёмный дождь</div>
+                                <div class="boss-ability-desc">Сверху обрушивается фиолетовый дождь, наносящий урон. Радиус: 250. Урон от каждого: 3000. Длительность: 10 сек. Перезарядка: 25 сек.</div>
+                            </div>
                         </div>
 
                         <div class="monster-reward">
@@ -339,7 +401,7 @@
                             <div class="monster-stat"><div class="stat-label">Атака (базовая)</div><div class="stat-value">10 500</div></div>
                             <div class="monster-stat"><div class="stat-label">Защита (базовая)</div><div class="stat-value">90</div></div>
                             <div class="monster-stat"><div class="stat-label">Регенерация</div><div class="stat-value">100.00/сек</div></div>
-                            <div class="monster-stat"><div class="stat-label">Маг. защита</div><div class="stat-value">70%</div></div>
+                            <div class="monster-stat"><div class="stat-label">Маг. защита</div><div class="stat-value">50%</div></div>
                         </div>
 
                         <div class="monster-timers">
@@ -357,9 +419,20 @@
                             </div>
                             <div class="boss-passive">
                                 <div class="boss-passive-name">Магическая защита</div>
-                                <div class="boss-passive-desc">Снижает урон от магии на 70%.</div>
+                                <div class="boss-passive-desc">Снижает урон от магии на 50%.</div>
                             </div>
-                            <!-- Дополнительные пассивные способности -->
+                            <div class="boss-passive">
+                                <div class="boss-passive-name">Демоническая сила</div>
+                                <div class="boss-passive-desc">25% наносимого урона передаётся воинам, которые находятся рядом с целью атаки.</div>
+                            </div>
+                            <div class="boss-passive">
+                                <div class="boss-passive-name">Уклонение</div>
+                                <div class="boss-passive-desc">30% шанс уклониться от атаки противника.</div>
+                            </div>
+                            <div class="boss-passive">
+                                <div class="boss-passive-name">Смертельный удар</div>
+                                <div class="boss-passive-desc">10% шанс нанести 3-кратный урон при каждой атаке.</div>
+                            </div>
 
                             <div class="boss-stages">
                                 <div class="boss-section-title"><i class="fas fa-layer-group"></i> Стадии</div>
@@ -371,7 +444,14 @@
                             </div>
 
                             <div class="boss-section-title"><i class="fas fa-magic"></i> Активные способности</div>
-                            <!-- Активные способности -->
+                            <div class="boss-ability">
+                                <div class="boss-ability-name">Ледяная вспышка</div>
+                                <div class="boss-ability-desc">Наносит 30 000 урона и замораживает на 3 сек. Область: 2000. Перезарядка: 25 сек.</div>
+                            </div>
+                            <div class="boss-ability">
+                                <div class="boss-ability-name">Снежная буря</div>
+                                <div class="boss-ability-desc">Призывает разрушительный ледяной град. Каждый осколок взрывается при ударе и наносит урон врагам. 20 взрывов в секунду в течение 5 сек. Урон от каждого осколка: 1000. Перезарядка: 30 сек.</div>
+                            </div>
                         </div>
 
                         <div class="monster-reward">
@@ -422,7 +502,10 @@
                                 <div class="boss-passive-name">Магическая защита</div>
                                 <div class="boss-passive-desc">Снижает урон от магии на 70%.</div>
                             </div>
-                            <!-- Дополнительные пассивные способности -->
+                            <div class="boss-passive">
+                                <div class="boss-passive-name">Уклонение</div>
+                                <div class="boss-passive-desc">40% шанс уклониться от атаки противника.</div>
+                            </div>
 
                             <div class="boss-stages">
                                 <div class="boss-section-title"><i class="fas fa-layer-group"></i> Стадии</div>
@@ -484,7 +567,10 @@
                                 <div class="boss-passive-name">Магическая защита</div>
                                 <div class="boss-passive-desc">Снижает урон от магии на 70%.</div>
                             </div>
-                            <!-- Дополнительные пассивные способности -->
+                            <div class="boss-passive">
+                                <div class="boss-passive-name">Уклонение</div>
+                                <div class="boss-passive-desc">40% шанс уклониться от атаки противника.</div>
+                            </div>
 
                             <div class="boss-stages">
                                 <div class="boss-section-title"><i class="fas fa-layer-group"></i> Стадии</div>
