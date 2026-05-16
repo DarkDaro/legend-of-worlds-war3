@@ -533,12 +533,17 @@ function renderCalcCatalog() {
 function populateHeroSelect() {
     const select = document.getElementById('calcHeroSelect');
     if (!select) return;
+    // Имена из HEROES_DATA (hero-data.js)
+    const heroNames = {};
+    if (typeof HEROES_DATA !== 'undefined') {
+        HEROES_DATA.forEach(h => { if (h.heroId) heroNames[h.heroId] = h.name; });
+    }
     Object.keys(heroBuilds).forEach(key => {
         const hero = heroBuilds[key];
         if (hero && hero.items && hero.items.length > 0) {
             const opt = document.createElement('option');
             opt.value = key;
-            opt.textContent = hero.name || key;
+            opt.textContent = heroNames[key] || hero.name || key;
             select.appendChild(opt);
         }
     });

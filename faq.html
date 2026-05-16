@@ -289,5 +289,27 @@ document.querySelectorAll('.faq-question').forEach(function(q) {
     });
 });
 </script>
+<script>
+// Scroll-reveal для faq-секций
+(function() {
+    const els = document.querySelectorAll('.faq-section');
+    if (!els.length) return;
+    els.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    els.forEach(el => obs.observe(el));
+})();
+</script>
 </body>
 </html>

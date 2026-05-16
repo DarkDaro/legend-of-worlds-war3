@@ -1179,18 +1179,54 @@ function getHeroBuildItems(heroId) {
 
 // Какие герои рекомендуют этот предмет
 function findHeroesWithItem(itemId) {
-  if (typeof heroBuilds === 'undefined') return [];
   const result = [];
-  const HERO_NAMES = {
-    paladin: 'Паладин',
-    admiral: 'Адмирал',
-    druid: 'Друид',
-  };
-  for (const heroId in heroBuilds) {
-    const hero = heroBuilds[heroId];
-    const items = getHeroBuildItems(heroId);
-    if (items.some(b => b.id === itemId)) {
-      result.push({ id: heroId, name: HERO_NAMES[heroId] || hero?.name || heroId });
+  // Имена из HEROES_DATA (hero-data.js), fallback на heroId
+  const heroNames = {};
+  if (typeof HEROES_DATA !== 'undefined') {
+    HEROES_DATA.forEach(h => { if (h.heroId) heroNames[h.heroId] = h.name; });
+  }
+  // Имена из HERO_BUILD_DATA (jass-data.js), fallback на rawcode
+  const rawcodeNames = {};
+  if (typeof HERO_BUILD_DATA !== 'undefined') {
+    for (const rc in HERO_BUILD_DATA) {
+      rawcodeNames[rc] = HERO_BUILD_DATA[rc].name;
+    }
+  }
+  // Поиск по heroBuilds (hero-builds.js) — по ID предмета
+  if (typeof heroBuilds !== 'undefined') {
+    for (const heroId in heroBuilds) {
+      const hero = heroBuilds[heroId];
+      const items = getHeroBuildItems(heroId);
+      if (items.some(b => b.id === itemId)) {
+        result.push({ id: heroId, name: heroNames[heroId] || hero?.name || heroId });
+      }
+    }
+  }
+  // Поиск по botBuildGroups (bot-builds.js) — по имени предмета
+  if (typeof botBuildGroups !== 'undefined' && typeof HERO_BUILD_DATA !== 'undefined') {
+    const item = itemsDB[itemId];
+    if (item && item.name) {
+      const itemName = item.name;
+      const seenGroups = new Set();
+      for (const rc in HERO_BUILD_DATA) {
+        const group = HERO_BUILD_DATA[rc].group;
+        if (seenGroups.has(group)) continue;
+        const stages = botBuildGroups[group]?.stages;
+        if (!stages) continue;
+        const found = stages.some(s => s.items.some(it => it.name === itemName));
+        if (found) {
+          seenGroups.add(group);
+          // Собрать всех героев этой группы
+          const heroesInGroup = Object.entries(HERO_BUILD_DATA)
+            .filter(([_, d]) => d.group === group)
+            .map(([rc, d]) => ({ id: rc, name: d.name }));
+          heroesInGroup.forEach(h => {
+            if (!result.some(r => r.id === h.id || r.name === h.name)) {
+              result.push(h);
+            }
+          });
+        }
+      }
     }
   }
   return result;

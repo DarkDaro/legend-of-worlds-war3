@@ -125,5 +125,27 @@
             <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
+<script>
+// Scroll-reveal для секций гайдов
+(function() {
+    const els = document.querySelectorAll('.info-section');
+    if (!els.length) return;
+    els.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    els.forEach(el => obs.observe(el));
+})();
+</script>
 </body>
 </html>
