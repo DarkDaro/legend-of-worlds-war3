@@ -46,10 +46,7 @@
                 <div class="detail-icon"><i class="fas fa-leaf"></i></div>
                 <div class="detail-title">Друид — Сильвестр <span class="detail-badge">Сила</span></div>
             </div>
-                        <div class="hero-nav">
-                <a href="paladin.html" class="hero-nav-btn hero-nav-prev" aria-label="Паладин"><i class="fas fa-chevron-left"></i></a>
-                <a href="cyborg.html" class="hero-nav-btn hero-nav-next" aria-label="Киборг"><i class="fas fa-chevron-right"></i></a>
-            </div>
+            <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Сильвестр — друид, чья связь с природой дарует ему силу исцелять союзников и призывать духов леса. В его присутствии даже самые тяжёлые раны затягиваются, а враги отступают перед лицом разгневанной природы.</p>
@@ -176,13 +173,14 @@
         var container = document.getElementById('hero-build');
         if (container && typeof renderHeroBuild === 'function') {
             container.innerHTML = renderHeroBuild('druid');
+        }
         var statsContainer = document.getElementById('hero-stats');
         if (statsContainer && typeof renderHeroStats === 'function') {
             statsContainer.innerHTML = renderHeroStats('druid');
         }
-        } else {
-            console.log('hero-builds.js не загружен или renderHeroBuild не найден');
-            if (container) container.innerHTML = '<p style="color:var(--text-muted);">Сборка загружается...</p>';
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('druid');
         }
     </script>
     <footer class="site-footer">

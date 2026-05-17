@@ -39,10 +39,7 @@
     <div class="wiki-container">
         <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="../heroes.html">Герои</a><span class="sep">›</span><span class="current">Охотник на демонов</span></div>
         <div class="hero-page-container">
-            <div class="hero-nav">
-                <a href="drowranger.html" class="hero-nav-btn hero-nav-prev" aria-label="Лучница"><i class="fas fa-chevron-left"></i></a>
-                <a href="archmage.html" class="hero-nav-btn hero-nav-next" aria-label="Архимаг"><i class="fas fa-chevron-right"></i></a>
-            </div>
+            <div id="hero-nav"></div>
 
             <div class="panel-header">
                 <div class="detail-icon"><i class="fas fa-fire"></i></div>
@@ -231,5 +228,15 @@
             <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
+    <script>
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('u-demonhunter');
+        }
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('u-demonhunter');
+        }
+    </script>
 </body>
 </html>

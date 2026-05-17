@@ -45,10 +45,7 @@
                 <div class="detail-icon"><i class="fas fa-hourglass-half"></i></div>
                 <div class="detail-title">Хромомант <span class="detail-badge">Разум</span></div>
             </div>
-                        <div class="hero-nav">
-                <a href="keeper.html" class="hero-nav-btn hero-nav-prev" aria-label="Хранитель рощи"><i class="fas fa-chevron-left"></i></a>
-                <a href="bloodshaman.html" class="hero-nav-btn hero-nav-next" aria-label="Шаман крови"><i class="fas fa-chevron-right"></i></a>
-            </div>
+                        <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Хромомант — отступник Кирин-Тора, разгадавший тайну хода времени. Его тело покрыто часовыми механизмами, а глаза видят прошлое и будущее одновременно. Враги замедляются в его присутствии, а союзники обретают невиданную скорость. Говорят, он уже видел собственную смерть — и отвернул её.</p>
@@ -158,5 +155,15 @@
             <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
+    <script>
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('u-chronomancer');
+        }
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('u-chronomancer');
+        }
+    </script>
 </body>
 </html>

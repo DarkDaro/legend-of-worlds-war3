@@ -147,3 +147,27 @@ function renderHeroStats(heroId) {
 
     return html;
 }
+
+// Навигация между героями: prev/next по порядку в HEROES_DATA
+function renderHeroNav(heroId) {
+    var idx = HEROES_DATA.findIndex(function(h) { return h.heroId === heroId; });
+    if (idx === -1) return '';
+
+    var prev = idx > 0 ? HEROES_DATA[idx - 1] : null;
+    var next = idx < HEROES_DATA.length - 1 ? HEROES_DATA[idx + 1] : null;
+
+    var html = '<div class="hero-nav">';
+    if (prev) {
+        html += '<a href="' + prev.heroId + '.html" class="hero-nav-btn hero-nav-prev" aria-label="' + prev.name + '"><i class="fas fa-chevron-left"></i></a>';
+    } else {
+        html += '<span class="hero-nav-btn hero-nav-prev hero-nav-disabled"><i class="fas fa-chevron-left"></i></span>';
+    }
+    if (next) {
+        html += '<a href="' + next.heroId + '.html" class="hero-nav-btn hero-nav-next" aria-label="' + next.name + '"><i class="fas fa-chevron-right"></i></a>';
+    } else {
+        html += '<span class="hero-nav-btn hero-nav-next hero-nav-disabled"><i class="fas fa-chevron-right"></i></span>';
+    }
+    html += '</div>';
+
+    return html;
+}

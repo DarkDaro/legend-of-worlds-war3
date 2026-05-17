@@ -45,10 +45,7 @@
                 <div class="detail-icon"><i class="fas fa-bow-arrow"></i></div>
                 <div class="detail-title">Лучница <span class="detail-badge">Ловкость</span></div>
             </div>
-                        <div class="hero-nav">
-                <a href="blademaster.html" class="hero-nav-btn hero-nav-prev" aria-label="Мастер клинка"><i class="fas fa-chevron-left"></i></a>
-                <a href="shadowblade.html" class="hero-nav-btn hero-nav-next" aria-label="Теневой клинок"><i class="fas fa-chevron-right"></i></a>
-            </div>
+                        <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Немногим удаётся спастись от Лучницы. Обезмолвив врагов морозной волной, она накрывает их градом замедляющих ледяных стрел, после которого мало кто способен выжить. Траксекс — изгнанница, чья ледяная ненависть замораживает сердца врагов прежде, чем они успеют её настигнуть.</p>
@@ -159,5 +156,15 @@
             <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
+    <script>
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('dark-archer');
+        }
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('dark-archer');
+        }
+    </script>
 </body>
 </html>

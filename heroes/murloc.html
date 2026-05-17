@@ -45,10 +45,7 @@
                 <div class="detail-icon"><i class="fas fa-fish"></i></div>
                 <div class="detail-title">Мурлок <span class="detail-badge">Ловкость</span></div>
             </div>
-                        <div class="hero-nav">
-                <a href="illusionist.html" class="hero-nav-btn hero-nav-prev" aria-label="Иллюзионист"><i class="fas fa-chevron-left"></i></a>
-                <a href="samurai.html" class="hero-nav-btn hero-nav-next" aria-label="Самурай"><i class="fas fa-chevron-right"></i></a>
-            </div>
+                        <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Мурлок — коварный подводный охотник, выходящий из глубин лишь ради добычи. Его быстрые атаки и ядовитые уколы не оставляют жертвам шанса на спасение.</p>
@@ -148,5 +145,15 @@
             <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
+    <script>
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('murloc');
+        }
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('murloc');
+        }
+    </script>
 </body>
 </html>

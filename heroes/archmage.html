@@ -45,10 +45,7 @@
                 <div class="detail-icon"><i class="fas fa-hat-wizard"></i></div>
                 <div class="detail-title">Архимаг <span class="detail-badge">Разум</span></div>
             </div>
-                        <div class="hero-nav">
-                <a href="icelord.html" class="hero-nav-btn hero-nav-prev" aria-label="Повелитель Льдов"><i class="fas fa-chevron-left"></i></a>
-                <a href="lich.html" class="hero-nav-btn hero-nav-next" aria-label="Лич"><i class="fas fa-chevron-right"></i></a>
-            </div>
+                        <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Мудрейший из магов Кирин-Тора, Архимаг повелевает стихиями воды и льда, призывая элементалей и обрушивая на врагов разрушительные заклинания.</p>
@@ -146,5 +143,15 @@
             <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
+    <script>
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('archmage');
+        }
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('archmage');
+        }
+    </script>
 </body>
 </html>

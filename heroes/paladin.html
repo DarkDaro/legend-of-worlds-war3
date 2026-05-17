@@ -46,10 +46,7 @@
                 <div class="detail-icon"><i class="fas fa-shield-halved"></i></div>
                 <div class="detail-title">Паладин — Светозар <span class="detail-badge">Сила</span></div>
             </div>
-                        <div class="hero-nav">
-                <a href="souleater.html" class="hero-nav-btn hero-nav-prev" aria-label="Пожиратель душ"><i class="fas fa-chevron-left"></i></a>
-                <a href="admiral.html" class="hero-nav-btn hero-nav-next" aria-label="Адмирал"><i class="fas fa-chevron-right"></i></a>
-            </div>
+                        <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Светозар — паладин, чья вера выдержала испытание тьмой. Когда миры рушились, а боги молчали, он один продолжал нести свет. Его щит не просто защищает — он возвращает удар.</p>
@@ -178,6 +175,10 @@
         var statsContainer = document.getElementById('hero-stats');
         if (statsContainer && typeof renderHeroStats === 'function') {
             statsContainer.innerHTML = renderHeroStats('paladin');
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('paladin');
+        }
         }
         }
     </script>

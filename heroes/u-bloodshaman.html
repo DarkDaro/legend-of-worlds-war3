@@ -45,10 +45,7 @@
                 <div class="detail-icon"><i class="fas fa-tint"></i></div>
                 <div class="detail-title">Шаман крови <span class="detail-badge">Разум</span></div>
             </div>
-                        <div class="hero-nav">
-                <a href="chronomancer.html" class="hero-nav-btn hero-nav-prev" aria-label="Хромомант"><i class="fas fa-chevron-left"></i></a>
-                <a href="necromancer.html" class="hero-nav-btn hero-nav-next" aria-label="Некромант"><i class="fas fa-chevron-right"></i></a>
-            </div>
+                        <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Шаман крови — отступник, отвергший заветы предков ради запретной магии жизненной силы. Он черпает мощь из собственной крови и крови врагов, превращая боль в исцеление, а раны — в оружие. Каждый его ритуал — сделка: жизнь за силу, сила за жизнь.</p>
@@ -161,5 +158,15 @@
             <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
+    <script>
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('u-bloodshaman');
+        }
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('u-bloodshaman');
+        }
+    </script>
 </body>
 </html>
