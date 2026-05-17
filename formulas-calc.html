@@ -393,7 +393,7 @@
                             <span>100%</span>
                         </div>
                         <div class="formula-bar">
-                            <div class="formula-bar-fill cyan" id="luckBar" style="width:23.5%"></div>
+                            <div class="formula-bar-fill cyan" id="luckBar"></div>
                         </div>
                     </div>
                 </div>
@@ -413,7 +413,7 @@
                     </div>
                 </div>
                 <div class="formula-input-group">
-                    <label for="luckHeroValue"><i class="fas fa-dice"></i> Удача героя (без предметов) <span style="color:var(--text-muted); font-weight:400;">— базовый параметр героя</span></label>
+                    <label for="luckHeroValue"><i class="fas fa-dice"></i> Удача героя (без предметов) <span class="calc-inline-note">— базовый параметр героя</span></label>
                     <div class="formula-input-row">
                         <input type="number" id="luckHeroValue" value="0" min="0" step="1">
                         <span class="unit">ед.</span>
@@ -443,7 +443,7 @@
                             <span>100%</span>
                         </div>
                         <div class="formula-bar">
-                            <div class="formula-bar-fill cyan" id="luckItemsBar" style="width:15%"></div>
+                            <div class="formula-bar-fill cyan" id="luckItemsBar"></div>
                         </div>
                     </div>
                 </div>
@@ -455,9 +455,9 @@
 
             <!-- Убывающая полезность (мультипликативная) -->
             <div class="formula-panel" id="panel-diminishing">
-                <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:16px;">Для магической защиты, физического вампиризма, сопротивления сожжению маны. Каждый источник даёт меньше, чем предыдущий.</p>
+                <p class="calc-page-note">Для магической защиты, физического вампиризма, сопротивления сожжению маны. Каждый источник даёт меньше, чем предыдущий.</p>
                 <div class="formula-input-group">
-                    <label><i class="fas fa-layer-group"></i> Источники (в %) <span style="color:var(--text-muted); font-weight:400;">— справа реальный вклад</span></label>
+                    <label><i class="fas fa-layer-group"></i> Источники (в %) <span class="calc-inline-note">— справа реальный вклад</span></label>
                     <div class="formula-source-list" id="dimSources"></div>
                     <button class="formula-add-btn" id="dimAddBtn"><i class="fas fa-plus"></i> Добавить источник</button>
                 </div>
@@ -468,7 +468,7 @@
                     </div>
                     <div class="formula-result-row">
                         <span class="formula-result-label">Потеря от убывания</span>
-                        <span class="formula-result-value" id="dimLoss" style="color:#ff9944;">0%</span>
+                        <span class="formula-result-value formula-result-value--warning" id="dimLoss">0%</span>
                     </div>
                     <div class="formula-bar-container">
                         <div class="formula-bar-label">
@@ -477,7 +477,7 @@
                             <span>100%</span>
                         </div>
                         <div class="formula-bar">
-                            <div class="formula-bar-fill purple" id="dimBar" style="width:0%"></div>
+                            <div class="formula-bar-fill purple" id="dimBar"></div>
                         </div>
                     </div>
                 </div>
@@ -489,7 +489,7 @@
 
             <!-- Аддитивная -->
             <div class="formula-panel" id="panel-additive">
-                <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:16px;">Для усиления маг. урона (SpellDMG), усиления лечения. Все источники складываются напрямую.</p>
+                <p class="calc-page-note">Для усиления маг. урона (SpellDMG), усиления лечения. Все источники складываются напрямую.</p>
                 <div class="formula-input-group">
                     <label><i class="fas fa-layer-group"></i> Источники (в %)</label>
                     <div class="formula-source-list" id="addSources"></div>
@@ -512,8 +512,8 @@
                 </div>
             </div>
 
-            <a href="mechanics.html" style="display:inline-block;margin-top:20px;color:var(--accent-cyan);font-size:0.85rem;text-decoration:none;"><i class="fas fa-arrow-left"></i> К механикам</a>
-            <a href="armor-calc.html" style="display:inline-block;margin-top:20px;margin-left:16px;color:var(--accent-cyan);font-size:0.85rem;text-decoration:none;"><i class="fas fa-shield-alt"></i> Калькулятор брони</a>
+            <a href="mechanics.html" class="calc-page-link"><i class="fas fa-arrow-left"></i> К механикам</a>
+            <a href="armor-calc.html" class="calc-page-link calc-page-link--spaced"><i class="fas fa-shield-alt"></i> Калькулятор брони</a>
         </div>
     </div>
 
@@ -623,7 +623,7 @@
             var container = document.getElementById('dimSources');
             container.innerHTML = dimSources.map(function(s, i) {
                 return '<div class="formula-source-item">'
-                    + '<input type="number" value="' + s.value + '" min="0" max="100" step="1" data-dim-idx="' + i + '" style="width:80px;background:#0a1020;border:1px solid var(--glass-border);border-radius:6px;padding:6px 10px;color:#e0f0ff;font-size:0.9rem;outline:none;">'
+                    + '<input type="number" value="' + s.value + '" min="0" max="100" step="1" data-dim-idx="' + i + '" class="formula-source-input">'
                     + '<span class="source-name">Источник ' + (i + 1) + '</span>'
                     + '<span class="source-value">' + s.value + '%</span>'
                     + '<button class="source-remove" data-dim-rm="' + i + '"><i class="fas fa-times"></i></button>'
@@ -686,7 +686,7 @@
             var container = document.getElementById('addSources');
             container.innerHTML = addSources.map(function(s, i) {
                 return '<div class="formula-source-item">'
-                    + '<input type="number" value="' + s.value + '" min="0" max="500" step="1" data-add-idx="' + i + '" style="width:80px;background:#0a1020;border:1px solid var(--glass-border);border-radius:6px;padding:6px 10px;color:#e0f0ff;font-size:0.9rem;outline:none;">'
+                    + '<input type="number" value="' + s.value + '" min="0" max="500" step="1" data-add-idx="' + i + '" class="formula-source-input">'
                     + '<span class="source-name">Источник ' + (i + 1) + '</span>'
                     + '<span class="source-value">' + s.value + '%</span>'
                     + '<button class="source-remove" data-add-rm="' + i + '"><i class="fas fa-times"></i></button>'

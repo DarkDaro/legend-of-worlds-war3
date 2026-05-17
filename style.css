@@ -1173,6 +1173,54 @@ h1 {
     color: #8aa0c0;
     line-height: 1.4;
 }
+
+/* Цветовые акценты карточек режимов */
+.mode-spell-half .mechanic-icon {
+    background: #2a0a1a;
+    border: 1px solid #ff555544;
+    color: #ff5555;
+}
+.mode-bosses .mechanic-icon {
+    background: #1a0a2a;
+    border: 1px solid #bf7fff44;
+    color: #bf7fff;
+}
+.mode-gold-loss .mechanic-icon {
+    background: #2a1a0a;
+    border: 1px solid #ff994444;
+    color: #ff9944;
+}
+.mode-turbo .mechanic-icon {
+    background: #0a2a1a;
+    border: 1px solid #55ff8844;
+    color: #55ff88;
+}
+.mode-no-books .mechanic-icon {
+    background: #0a1a2a;
+    border: 1px solid #55aaff44;
+    color: #55aaff;
+}
+.mode-team-rewards .mechanic-icon {
+    background: #1a1a0a;
+    border: 1px solid #aaaa4444;
+    color: #aaaa44;
+}
+.mode-solo .mechanic-icon {
+    background: #2a0a0a;
+    border: 1px solid #ff444444;
+    color: #ff4444;
+}
+.mode-hero-ban .mechanic-icon {
+    background: #1a0a1a;
+    border: 1px solid #aa44aa44;
+    color: #aa44aa;
+}
+.mode-random-hero .mechanic-icon {
+    background: #0a1a1a;
+    border: 1px solid #55ffcc44;
+    color: #55ffcc;
+}
+
 .scroll-top-btn {
     position: fixed;
     bottom: 24px;
@@ -1498,6 +1546,103 @@ h1 {
     margin-bottom: 12px;
     position: relative;
     overflow: hidden;
+}
+
+/* Цветные акценты иконок механик */
+.mech-luck .mechanic-icon {
+    background: #1a2a0a;
+    border: 1px solid #00ff8844;
+    color: #00ff88;
+}
+.mech-magic-crit .mechanic-icon {
+    background: #2a0a1a;
+    border: 1px solid #ff555544;
+    color: #ff5555;
+}
+.mech-magic-vamp .mechanic-icon {
+    background: #1a0a2a;
+    border: 1px solid #bf7fff44;
+    color: #bf7fff;
+}
+.mech-armor .mechanic-icon {
+    background: #0a1a2a;
+    border: 1px solid #55aaff44;
+    color: #55aaff;
+}
+.mech-block .mechanic-icon {
+    background: #0a1a2a;
+    border: 1px solid #55aaff44;
+    color: #55aaff;
+}
+.mech-stun-resist .mechanic-icon {
+    background: #2a1a0a;
+    border: 1px solid #ff994444;
+    color: #ff9944;
+}
+.mech-phys-vamp .mechanic-icon {
+    background: #2a0a0a;
+    border: 1px solid #ff444444;
+    color: #ff4444;
+}
+.mech-heal-reduce .mechanic-icon {
+    background: #1a1a0a;
+    border: 1px solid #aaaa4444;
+    color: #aaaa44;
+}
+.mech-scepter .mechanic-icon {
+    background: #1a0a2a;
+    border: 1px solid #bf7fff44;
+    color: #bf7fff;
+}
+.mech-spell-dmg .mechanic-icon {
+    background: #2a0a1a;
+    border: 1px solid #ff555544;
+    color: #ff5555;
+}
+.mech-heal-amp .mechanic-icon {
+    background: #0a2a1a;
+    border: 1px solid #55ff8844;
+    color: #55ff88;
+}
+.mech-magic-resist .mechanic-icon {
+    background: #0a1a2a;
+    border: 1px solid #55aaff44;
+    color: #55aaff;
+}
+.mech-auto-build .mechanic-icon {
+    background: #2a1a0a;
+    border: 1px solid #ff994444;
+    color: #ff9944;
+}
+.mech-corruption .mechanic-icon {
+    background: #1a0a1a;
+    border: 1px solid #aa44aa44;
+    color: #aa44aa;
+}
+.mech-dmg-return .mechanic-icon {
+    background: #2a0a0a;
+    border: 1px solid #ff664444;
+    color: #ff6644;
+}
+.mech-dispel .mechanic-icon {
+    background: #0a1a2a;
+    border: 1px solid #55ccff44;
+    color: #55ccff;
+}
+.mech-mana-burn-resist .mechanic-icon {
+    background: #0a1a1a;
+    border: 1px solid #55ffcc44;
+    color: #55ffcc;
+}
+.mech-pure-dmg .mechanic-icon {
+    background: #1a1a1a;
+    border: 1px solid #ffffff44;
+    color: #ffffff;
+}
+.mech-motivation .mechanic-icon {
+    background: #2a1a2a;
+    border: 1px solid #bf7fff44;
+    color: #bf7fff;
 }
 .mechanic-card h3 {
     font-size: 1.1rem;
@@ -5337,6 +5482,80 @@ body.page-map-changes::after {
     border-color: #00e6ff88;
     box-shadow: 0 0 12px #00e6ff33;
     transform: translateY(-2px);
+}
+
+/* ===== Калькуляторы брони и формул ===== */
+.calc-page-note {
+    color: #b0b9d0;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+.calc-inline-note {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+.formula-result-value--warning {
+    color: #ff9944;
+}
+.formula-source-input {
+    width: 80px;
+    background: #0a1020;
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    color: #e0f0ff;
+    font-size: 0.9rem;
+    outline: none;
+    box-sizing: border-box;
+}
+.formula-source-input:focus {
+    border-color: #00e6ff;
+}
+.calc-page-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--accent-cyan);
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+.calc-page-link--spaced {
+    margin-left: 16px;
+}
+
+/* Отступ для второй ссылки в калькуляторе брони */
+.armor-hero-link--spaced {
+    margin-left: 16px;
+}
+
+/* ===== Сравнение героев ===== */
+.compare-page-note {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+.compare-clear-btn {
+    align-self: flex-end;
+}
+.compare-back-link {
+    margin-top: 32px;
+}
+.compare-attr-strength {
+    color: #ff5555;
+}
+.compare-attr-agility {
+    color: #55ff55;
+}
+.compare-attr-intelligence {
+    color: #55aaff;
+}
+.compare-level-gain {
+    color: #55ff88;
+    font-size: 0.76rem;
+}
+.compare-level-total {
+    color: var(--text-dim);
+    font-size: 0.72rem;
 }
 
 .calc-container {
