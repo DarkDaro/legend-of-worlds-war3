@@ -54,17 +54,6 @@ const heroBuilds = {
       { id: 'I04G', name: 'Меч тьмы' },
     ],
   },
-  'u-priestess': {
-    name: "u-priestess",
-    items: [
-      { id: 'I0GJ', name: 'Клеймор' },
-      { id: 'I0B4', name: 'Защита ада' },
-      { id: 'I0EO', name: 'Нефритовые клинки' },
-      { id: 'I0AI', name: 'Посох разрушения' },
-      { id: 'I0GI', name: 'Адская маска' },
-      { id: 'I0B1', name: 'Звёздный лук' },
-    ],
-  },
   cyborg: {
     name: "cyborg",
     items: [
@@ -142,8 +131,8 @@ const heroBuilds = {
       { id: 'I0CN', name: 'Сфера магии' },
     ],
   },
-  'frost-lord': {
-    name: "frost-lord",
+  'ice-lord': {
+    name: "ice-lord",
     items: [
       { id: 'I0GJ', name: 'Клеймор' },
       { id: 'I0AI', name: 'Посох разрушения' },
@@ -155,13 +144,12 @@ const heroBuilds = {
   },
 };
 
-// Иконка предмета (PNG), при ошибке — SVG-заглушка с emoji
+// Иконка предмета (PNG), при ошибке — SVG-силуэт без эмодзи
 function getBuildItemIcon(itemId, size) {
   size = size || 48;
   const pngSrc = '../images/items/' + itemId + '.png';
-  const emoji = getItemEmoji(itemId);
-  const escaped = emoji.replace(/'/g, "\\'");
-  return '<img src="' + pngSrc + '" alt="" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;" onerror="this.src=\'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22' + size + '%22 height=%22' + size + '%22 viewBox=%220 0 48 48%22><text x=%2224%22 y=%2236%22 font-size=%2232%22 text-anchor=%22middle%22>' + encodeURIComponent(emoji) + '</text></svg>\';">';
+  const svgFallback = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="' + size + '" height="' + size + '" viewBox="0 0 48 48"><path d="M24 8 L36 20 L36 36 L12 36 L12 20 Z" fill="none" stroke="#4a9eff" stroke-width="1.5" opacity="0.4"/></svg>');
+  return '<img src="' + pngSrc + '" alt="" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;" onerror="this.src=\'' + svgFallback + '\';">';
 }
 
 // Отрисовка сетки сборки для карточки героя
@@ -181,22 +169,3 @@ function renderHeroBuild(heroId) {
   return html;
 }
 
-// Emoji-заглушки для предметов без иконки
-function getItemEmoji(itemId) {
-  const icons = {
-    I03G: '🔥🛡️',
-    I045: '🐉🛡️✨',
-    I0AF: '🛡️🚫',
-    I04H: '👹🎭',
-    I0E5: '⚔️✨',
-    I0DB: '👑🔮',
-    I09T: '🛡️⚔️',
-    I02B: '🛡️👑',
-    I033: '⚔️💢',
-    I030: '👢✨',
-    I09R: '❄️👻',
-    I08Y: '🌩️🔮',
-    I01A: '🌑🩸✨',
-  };
-  return icons[itemId] || '📦';
-}
