@@ -724,8 +724,8 @@
 
         revealElements.forEach(el => {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            el.style.transform = 'translateY(12px)';
+            el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
         });
 
         const observer = new IntersectionObserver((entries) => {
@@ -736,7 +736,7 @@
                     let delay = 0;
                     if (parent) {
                         const siblings = Array.from(parent.querySelectorAll(selector));
-                        delay = siblings.indexOf(entry.target) * 60;
+                        delay = siblings.indexOf(entry.target) * 30;
                     }
                     setTimeout(() => {
                         entry.target.style.opacity = '1';
