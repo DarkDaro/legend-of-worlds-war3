@@ -45,25 +45,11 @@
                 <div class="detail-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
                 <div class="detail-title">Алексей — Иллюзионист <span class="detail-badge">Ловкость</span></div>
             </div>
-            <div class="hero-stats">
-                <div class="stat-item"><i class="fas fa-crosshairs"></i> Ближний бой (150)</div>
-                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:#55ff55;">Ловкость</span></div>
-                <div class="stat-item"><i class="fas fa-heart"></i> Жизни: 200</div>
-                <div class="stat-item"><i class="fas fa-tint"></i> Мана: 150</div>
-                <div class="stat-item"><i class="fas fa-tint-slash"></i> Реген. маны: 0.01/сек</div>
-                <div class="stat-item"><i class="fas fa-fist-raised"></i> Атака: 70</div>
-                <div class="stat-item"><i class="fas fa-shield-alt"></i> Защита: 4</div>
-                <div class="stat-item"><i class="fas fa-clock"></i> Скорость атаки: 1.7 сек</div>
-                <div class="stat-item"><i class="fas fa-heartbeat"></i> Реген. здоровья: 0.50/сек</div>
-                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: 320</div>
-                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="role-damager">Дамагер</span></div>
+                        <div class="hero-nav">
+                <a href="cyborg.html" class="hero-nav-btn hero-nav-prev" aria-label="Киборг"><i class="fas fa-chevron-left"></i></a>
+                <a href="murloc.html" class="hero-nav-btn hero-nav-next" aria-label="Мурлок"><i class="fas fa-chevron-right"></i></a>
             </div>
-            <table class="hero-stats-table">
-                <tr><th>Характеристика</th><th>Значение</th><th>Прирост</th></tr>
-                <tr><td><span class="stat-strength">Сила</span></td><td>17</td><td>+2</td></tr>
-                <tr><td><span class="stat-agility">Ловкость</span></td><td>17</td><td>+2</td></tr>
-                <tr><td><span class="stat-intelligence">Разум</span></td><td>13</td><td>+2</td></tr>
-            </table>
+            <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Алексей не выбирал путь иллюзиониста — тень выбрала его сама. Там, где другие видят обман, он видит вторую реальность, не менее настоящую, чем первая. Его клинки находят уязвимые точки прежде, чем враг успевает моргнуть. Его копии бьют с той же уверенностью, что и оригинал. А когда иллюзий недостаточно — Алексей становится тем, кого прячут в кошмарах: демон с хаосным огнём и леденящим криком. Настоящий Алексей — тот, кто стоит перед вами, или тот, кто уже за спиной?</p>
             </div>
@@ -72,11 +58,6 @@
             <div id="hero-build"></div>
             <a href="../calculator.html?hero=illusionist" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
             <a href="../bot-builds.html?rawcode=E000" class="calc-link-btn"><i class="fas fa-robot"></i> Сборка ИИ</a>
-
-            <div class="hero-nav">
-                <a href="cyborg.html" class="hero-nav-btn hero-nav-prev" aria-label="Киборг"><i class="fas fa-chevron-left"></i></a>
-                <a href="murloc.html" class="hero-nav-btn hero-nav-next" aria-label="Мурлок"><i class="fas fa-chevron-right"></i></a>
-            </div>
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
@@ -192,6 +173,10 @@
         var container = document.getElementById('hero-build');
         if (container && typeof renderHeroBuild === 'function') {
             container.innerHTML = renderHeroBuild('illusionist');
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('illusionist');
+        }
         }
     </script>
     <footer class="site-footer">

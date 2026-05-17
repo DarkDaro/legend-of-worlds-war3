@@ -46,25 +46,11 @@
                 <div class="detail-icon"><i class="fas fa-anchor"></i></div>
                 <div class="detail-title">Адмирал — Прохор <span class="detail-badge">Сила</span></div>
             </div>
-            <div class="hero-stats">
-                <div class="stat-item"><i class="fas fa-crosshairs"></i> Ближний бой (150)</div>
-                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:#ff5555;">Сила</span></div>
-                <div class="stat-item"><i class="fas fa-heart"></i> Жизни: 650</div>
-                <div class="stat-item"><i class="fas fa-tint"></i> Мана: 150</div>
-                <div class="stat-item"><i class="fas fa-tint-slash"></i> Реген. маны: 0.01/сек</div>
-                <div class="stat-item"><i class="fas fa-fist-raised"></i> Атака: 25</div>
-                <div class="stat-item"><i class="fas fa-shield-alt"></i> Защита: 2</div>
-                <div class="stat-item"><i class="fas fa-clock"></i> Скорость атаки: 2.0 сек</div>
-                <div class="stat-item"><i class="fas fa-heartbeat"></i> Реген. здоровья: 1/сек</div>
-                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: 290</div>
-                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="role-tank">Танк</span></div>
+                        <div class="hero-nav">
+                <a href="paladin.html" class="hero-nav-btn hero-nav-prev" aria-label="Паладин"><i class="fas fa-chevron-left"></i></a>
+                <a href="druid.html" class="hero-nav-btn hero-nav-next" aria-label="Друид"><i class="fas fa-chevron-right"></i></a>
             </div>
-            <table class="hero-stats-table">
-                <tr><th>Характеристика</th><th>Значение</th><th>Прирост</th></tr>
-                <tr><td><span class="stat-strength">Сила</span></td><td>28</td><td>+3</td></tr>
-                <tr><td><span class="stat-intelligence">Разум</span></td><td>18</td><td>+2</td></tr>
-                <tr><td><span class="stat-agility">Ловкость</span></td><td>14</td><td>+2</td></tr>
-            </table>
+            <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Прохор — легендарный адмирал, чей призрачный флот наводит ужас на врагов. Непоколебимый в бою, он способен переломить ход сражения, призывая на помощь духи погибших кораблей.</p>
             </div>
@@ -73,11 +59,6 @@
             <div id="hero-build"></div>
             <a href="../calculator.html?hero=admiral" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
             <a href="../bot-builds.html?rawcode=H03J" class="calc-link-btn"><i class="fas fa-robot"></i> Сборка ИИ</a>
-
-            <div class="hero-nav">
-                <a href="paladin.html" class="hero-nav-btn hero-nav-prev" aria-label="Паладин"><i class="fas fa-chevron-left"></i></a>
-                <a href="druid.html" class="hero-nav-btn hero-nav-next" aria-label="Друид"><i class="fas fa-chevron-right"></i></a>
-            </div>
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
@@ -194,6 +175,10 @@
         var container = document.getElementById('hero-build');
         if (container && typeof renderHeroBuild === 'function') {
             container.innerHTML = renderHeroBuild('admiral');
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('admiral');
+        }
         }
     </script>
 

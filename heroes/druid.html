@@ -46,25 +46,11 @@
                 <div class="detail-icon"><i class="fas fa-leaf"></i></div>
                 <div class="detail-title">Друид — Сильвестр <span class="detail-badge">Сила</span></div>
             </div>
-            <div class="hero-stats">
-                <div class="stat-item"><i class="fas fa-crosshairs"></i> Ближний бой (150)</div>
-                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:#ff5555;">Сила</span></div>
-                <div class="stat-item"><i class="fas fa-heart"></i> Жизни: 660</div>
-                <div class="stat-item"><i class="fas fa-tint"></i> Мана: 150</div>
-                <div class="stat-item"><i class="fas fa-tint-slash"></i> Реген. маны: 0.01/сек</div>
-                <div class="stat-item"><i class="fas fa-fist-raised"></i> Атака: 20</div>
-                <div class="stat-item"><i class="fas fa-shield-alt"></i> Защита: 2</div>
-                <div class="stat-item"><i class="fas fa-clock"></i> Скорость атаки: 2.0 сек</div>
-                <div class="stat-item"><i class="fas fa-heartbeat"></i> Реген. здоровья: 4/сек</div>
-                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: 290</div>
-                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="role-support">Помощник</span></div>
+                        <div class="hero-nav">
+                <a href="paladin.html" class="hero-nav-btn hero-nav-prev" aria-label="Паладин"><i class="fas fa-chevron-left"></i></a>
+                <a href="cyborg.html" class="hero-nav-btn hero-nav-next" aria-label="Киборг"><i class="fas fa-chevron-right"></i></a>
             </div>
-            <table class="hero-stats-table">
-                <tr><th>Характеристика</th><th>Значение</th><th>Прирост</th></tr>
-                <tr><td><span class="stat-strength">Сила</span></td><td>25</td><td>+3</td></tr>
-                <tr><td><span class="stat-intelligence">Разум</span></td><td>23</td><td>+2</td></tr>
-                <tr><td><span class="stat-agility">Ловкость</span></td><td>12</td><td>+2</td></tr>
-            </table>
+            <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Сильвестр — друид, чья связь с природой дарует ему силу исцелять союзников и призывать духов леса. В его присутствии даже самые тяжёлые раны затягиваются, а враги отступают перед лицом разгневанной природы.</p>
             </div>
@@ -73,11 +59,6 @@
             <div id="hero-build"></div>
             <a href="../calculator.html?hero=druid" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
             <a href="../bot-builds.html?rawcode=E001" class="calc-link-btn"><i class="fas fa-robot"></i> Сборка ИИ</a>
-
-            <div class="hero-nav">
-                <a href="paladin.html" class="hero-nav-btn hero-nav-prev" aria-label="Паладин"><i class="fas fa-chevron-left"></i></a>
-                <a href="cyborg.html" class="hero-nav-btn hero-nav-next" aria-label="Киборг"><i class="fas fa-chevron-right"></i></a>
-            </div>
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
@@ -195,6 +176,10 @@
         var container = document.getElementById('hero-build');
         if (container && typeof renderHeroBuild === 'function') {
             container.innerHTML = renderHeroBuild('druid');
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('druid');
+        }
         } else {
             console.log('hero-builds.js не загружен или renderHeroBuild не найден');
             if (container) container.innerHTML = '<p style="color:var(--text-muted);">Сборка загружается...</p>';

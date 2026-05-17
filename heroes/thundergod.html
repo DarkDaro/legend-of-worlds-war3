@@ -45,25 +45,11 @@
                 <div class="detail-icon"><i class="fas fa-bolt"></i></div>
                 <div class="detail-title">Василий — Громовержец <span class="detail-badge">Разум</span></div>
             </div>
-            <div class="hero-stats">
-                <div class="stat-item"><i class="fas fa-crosshairs"></i> Дальний бой (600)</div>
-                <div class="stat-item"><i class="fas fa-star"></i> Осн. атрибут: <span style="color:#55aaff;">Разум</span></div>
-                <div class="stat-item"><i class="fas fa-heart"></i> Жизни: 250</div>
-                <div class="stat-item"><i class="fas fa-tint"></i> Мана: 150</div>
-                <div class="stat-item"><i class="fas fa-tint-slash"></i> Реген. маны: 0.01/сек</div>
-                <div class="stat-item"><i class="fas fa-fist-raised"></i> Атака: 20</div>
-                <div class="stat-item"><i class="fas fa-shield-alt"></i> Защита: 1</div>
-                <div class="stat-item"><i class="fas fa-clock"></i> Скорость атаки: 2.25 сек</div>
-                <div class="stat-item"><i class="fas fa-heartbeat"></i> Реген. здоровья: 2/сек</div>
-                <div class="stat-item"><i class="fas fa-shoe-prints"></i> Скорость: 280</div>
-                <div class="stat-item"><i class="fas fa-tag"></i> Роль: <span class="role-support">Помощник</span></div>
+                        <div class="hero-nav">
+                <a href="shadowblade.html" class="hero-nav-btn hero-nav-prev" aria-label="Теневой клинок"><i class="fas fa-chevron-left"></i></a>
+                <a href="icelord.html" class="hero-nav-btn hero-nav-next" aria-label="Повелитель Льдов"><i class="fas fa-chevron-right"></i></a>
             </div>
-            <table class="hero-stats-table">
-                <tr><th>Характеристика</th><th>Значение</th><th>Прирост</th></tr>
-                <tr><td><span class="stat-strength">Сила</span></td><td>24</td><td>+2</td></tr>
-                <tr><td><span class="stat-intelligence">Разум</span></td><td>24</td><td>+2</td></tr>
-                <tr><td><span class="stat-agility">Ловкость</span></td><td>12</td><td>+2</td></tr>
-            </table>
+            <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Василий — гном-изобретатель, покоривший молнию. Там, где другие видят грозу, он видит энергию — и направляет её в врагов. Его молнии прыгают между целями, грозовые облака преследуют противников, а громовой рёв сотрясает землю. Каждое заклинание заряжает его атаки электричеством — Василий не просто бьёт током, он бьёт током дважды.</p>
             </div>
@@ -72,11 +58,6 @@
             <div id="hero-build"></div>
             <a href="../calculator.html?hero=thundergod" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
             <a href="../bot-builds.html?rawcode=O001" class="calc-link-btn"><i class="fas fa-robot"></i> Сборка ИИ</a>
-
-            <div class="hero-nav">
-                <a href="shadowblade.html" class="hero-nav-btn hero-nav-prev" aria-label="Теневой клинок"><i class="fas fa-chevron-left"></i></a>
-                <a href="icelord.html" class="hero-nav-btn hero-nav-next" aria-label="Повелитель Льдов"><i class="fas fa-chevron-right"></i></a>
-            </div>
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
@@ -190,6 +171,10 @@
         var container = document.getElementById('hero-build');
         if (container && typeof renderHeroBuild === 'function') {
             container.innerHTML = renderHeroBuild('thundergod');
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('thundergod');
+        }
         }
     </script>
 

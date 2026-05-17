@@ -2,7 +2,7 @@
 
 Сайт-энциклопедия кастомной карты **Legend of Worlds** для Warcraft III.
 
-🔗 [legend-of-worlds-war3.github.io](https://legend-of-worlds-war3.github.io)
+🔗 [darkdaro.github.io/legend-of-worlds-war3](https://darkdaro.github.io/legend-of-worlds-war3)
 
 ## Что на сайте
 
