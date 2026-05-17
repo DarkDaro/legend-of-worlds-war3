@@ -220,7 +220,7 @@
             </div>
 
             <div class="armor-input-group">
-                <label for="agiInput"><i class="fas fa-feather-alt"></i> Ловкость <span class="calc-inline-note">(+0.05 защиты за ед.)</span></label>
+                <label for="agiInput"><i class="fas fa-feather-alt"></i> Ловкость <span class="calc-inline-note" id="agiArmorNote">(+0.05 защиты за ед.)</span></label>
                 <div class="armor-input-row">
                     <input type="number" id="agiInput" value="0" min="0" step="1" placeholder="0">
                     <span class="armor-unit">ед.</span>
@@ -365,9 +365,10 @@
         });
         cInput.addEventListener('input', calculate);
 
-        // Синхронизируем инпут C с константой
+        // Синхронизируем инпут C и лейблы с константами
         cInput.value = GAME_CONSTANTS.ARMOR_C;
         document.getElementById('formulaC').textContent = GAME_CONSTANTS.ARMOR_C;
+        document.getElementById('agiArmorNote').textContent = '(+' + GAME_CONSTANTS.AGI_ARMOR_FACTOR + ' защиты за ед.)';
 
         calculate();
     </script>
