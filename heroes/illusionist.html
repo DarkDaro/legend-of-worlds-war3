@@ -45,7 +45,7 @@
                 <div class="detail-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
                 <div class="detail-title">Иллюзионист <span class="detail-badge">Ловкость</span></div>
             </div>
-                        <div id="hero-nav"></div>
+            <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Алексей не выбирал путь иллюзиониста — тень выбрала его сама. Там, где другие видят обман, он видит вторую реальность, не менее настоящую, чем первая. Его клинки находят уязвимые точки прежде, чем враг успевает моргнуть. Его копии бьют с той же уверенностью, что и оригинал. А когда иллюзий недостаточно — Алексей становится тем, кого прячут в кошмарах: демон с хаосным огнём и леденящим криком. Настоящий Алексей — тот, кто стоит перед вами, или тот, кто уже за спиной?</p>
@@ -167,17 +167,17 @@
         </div>
     </div>
     <script>
-        var container = document.getElementById('hero-build');
-        if (container && typeof renderHeroBuild === 'function') {
-            container.innerHTML = renderHeroBuild('illusionist');
         var statsContainer = document.getElementById('hero-stats');
         if (statsContainer && typeof renderHeroStats === 'function') {
             statsContainer.innerHTML = renderHeroStats('illusionist');
+        }
         var navContainer = document.getElementById('hero-nav');
         if (navContainer && typeof renderHeroNav === 'function') {
             navContainer.innerHTML = renderHeroNav('illusionist');
         }
-        }
+        var buildContainer = document.getElementById('hero-build');
+        if (buildContainer && typeof renderHeroBuild === 'function') {
+            buildContainer.innerHTML = renderHeroBuild('illusionist');
         }
     </script>
     <footer class="site-footer">
