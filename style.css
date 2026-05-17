@@ -5613,18 +5613,18 @@ body.page-map-changes::after {
 }
 
 .calc-results-label {
-    font-size: 0.68rem;
-    color: #5a7a9a;
+    font-size: 0.85rem;
+    color: var(--text-dim);
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
 }
 
 .calc-results-value {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
     font-weight: 800;
-    color: #00e6ff;
-    text-shadow: 0 0 8px #00e6ff66;
+    color: #ffc800;
+    text-shadow: 0 0 12px #ffc80044;
 }
 
 .calc-results-breakdown {
@@ -5993,7 +5993,7 @@ body.page-map-changes::after {
         max-height: 140px;
     }
     .calc-results-value {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
     }
 }
 

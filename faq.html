@@ -20,7 +20,7 @@
         .faq-section { margin-bottom: 32px; }
         .faq-section-title {
             font-size: 1.1rem;
-            color: #00e5ff;
+            color: var(--accent-cyan);
             margin-bottom: 14px;
             padding-bottom: 6px;
             border-bottom: 1px solid var(--glass-border);
@@ -47,39 +47,39 @@
             align-items: center;
             justify-content: space-between;
             gap: 12px;
-            color: #e0e8f0;
+            color: var(--text-primary);
             font-size: 0.92rem;
             font-weight: 500;
             user-select: none;
         }
         .faq-question:hover { background: rgba(0, 229, 255, 0.04); }
         .faq-question i {
-            color: #5a7a9a;
+            color: var(--text-dim);
             font-size: 0.7rem;
             transition: transform 0.2s ease;
             flex-shrink: 0;
         }
         .faq-item.open .faq-question i {
             transform: rotate(90deg);
-            color: #00e5ff;
+            color: var(--accent-cyan);
         }
         .faq-answer {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
             padding: 0 16px;
-            color: #8aa0c0;
+            color: var(--text-secondary);
             font-size: 0.88rem;
             line-height: 1.6;
         }
         .faq-item.open .faq-answer { max-height: 500px; padding: 0 16px 14px; }
-        .faq-answer a { color: #00e5ff; text-decoration: none; }
+        .faq-answer a { color: var(--accent-cyan); text-decoration: none; }
         .faq-answer a:hover { text-decoration: underline; }
         .faq-answer .faq-link {
             display: inline-block;
             margin-top: 6px;
             font-size: 0.8rem;
-            color: #5a7a9a;
+            color: var(--text-dim);
         }
         .faq-answer .faq-link i { margin-right: 4px; font-size: 0.7rem; }
         .faq-answer code {
@@ -140,7 +140,7 @@
         <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><span class="current">ЧаВо</span></div>
 
         <h1><i class="fas fa-question-circle"></i> Часто задаваемые вопросы</h1>
-        <p style="color:#8aa0c0; margin-bottom:24px; font-size:1.05rem;">Быстрые ответы на популярные вопросы. Если здесь нет ответа — подробности на соответствующей странице.</p>
+        <p style="color:var(--text-secondary); margin-bottom:24px; font-size:1.05rem;">Быстрые ответы на популярные вопросы. Если здесь нет ответа — подробности на соответствующей странице.</p>
 
         <!-- Установка и запуск -->
         <div class="faq-section">

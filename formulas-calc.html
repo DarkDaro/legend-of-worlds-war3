@@ -33,19 +33,19 @@
             border: 1px solid var(--glass-border);
             border-radius: 8px;
             padding: 8px 16px;
-            color: #8ab4f0;
+            color: var(--text-secondary);
             font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.2s;
         }
         .formula-tab:hover {
             border-color: #00e6ff;
-            color: #e0f0ff;
+            color: var(--text-primary);
         }
         .formula-tab.active {
             background: #00e6ff22;
             border-color: #00e6ff;
-            color: #00e6ff;
+            color: var(--accent-cyan);
         }
         .formula-panel {
             display: none;
@@ -58,7 +58,7 @@
         }
         .formula-input-group label {
             display: block;
-            color: #8ab4f0;
+            color: var(--text-secondary);
             font-size: 0.85rem;
             margin-bottom: 6px;
         }
@@ -73,7 +73,7 @@
             border: 1px solid var(--glass-border);
             border-radius: 8px;
             padding: 10px 14px;
-            color: #e0f0ff;
+            color: var(--text-primary);
             font-size: 1rem;
             outline: none;
             transition: border-color 0.2s;
@@ -82,7 +82,7 @@
             border-color: #00e6ff;
         }
         .formula-input-row .unit {
-            color: #6b7c99;
+            color: var(--text-muted);
             font-size: 0.85rem;
             white-space: nowrap;
         }
@@ -97,7 +97,7 @@
             border: 1px solid var(--glass-border);
             border-radius: 20px;
             padding: 6px 14px;
-            color: #e0f0ff;
+            color: var(--text-primary);
             font-size: 0.82rem;
             cursor: pointer;
             transition: all 0.2s;
@@ -111,14 +111,14 @@
         .formula-source-chip.selected {
             background: #00e6ff22;
             border-color: #00e6ff;
-            color: #00e6ff;
+            color: var(--accent-cyan);
         }
         .formula-source-chip .chip-value {
             color: #00ffaa;
             font-weight: 600;
         }
         .formula-source-chip.selected .chip-value {
-            color: #00e6ff;
+            color: var(--accent-cyan);
         }
         .formula-results {
             background: var(--glass-bg);
@@ -140,11 +140,11 @@
             border-bottom: none;
         }
         .formula-result-label {
-            color: #8ab4f0;
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
         .formula-result-value {
-            color: #e0f0ff;
+            color: var(--text-primary);
             font-size: 1.1rem;
             font-weight: 600;
         }
@@ -157,7 +157,7 @@
         .formula-bar-label {
             display: flex;
             justify-content: space-between;
-            color: #6b7c99;
+            color: var(--text-muted);
             font-size: 0.8rem;
             margin-bottom: 4px;
         }
@@ -183,18 +183,18 @@
             padding: 14px;
             font-family: monospace;
             font-size: 0.85rem;
-            color: #6b7c99;
+            color: var(--text-muted);
             line-height: 1.6;
         }
         .formula-formula-box strong {
-            color: #00e6ff;
+            color: var(--accent-cyan);
         }
         .formula-add-btn {
             background: var(--glass-bg);
             border: 1px dashed var(--glass-border);
             border-radius: 8px;
             padding: 8px 16px;
-            color: #6b7c99;
+            color: var(--text-muted);
             font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.2s;
@@ -202,7 +202,7 @@
         }
         .formula-add-btn:hover {
             border-color: #00e6ff;
-            color: #00e6ff;
+            color: var(--accent-cyan);
         }
         .formula-source-list {
             margin-top: 8px;
@@ -218,7 +218,7 @@
             margin-bottom: 6px;
         }
         .formula-source-item .source-name {
-            color: #e0f0ff;
+            color: var(--text-primary);
             font-size: 0.9rem;
         }
         .formula-source-item .source-value {
@@ -227,7 +227,7 @@
             font-size: 0.9rem;
         }
         .formula-source-item .source-remove {
-            color: #6b7c99;
+            color: var(--text-muted);
             cursor: pointer;
             padding: 2px 8px;
             border: none;
@@ -268,7 +268,7 @@
             object-fit: contain;
         }
         .luck-item-card .luck-item-name {
-            color: #e0f0ff;
+            color: var(--text-primary);
             font-size: 0.82rem;
             flex: 1;
         }
@@ -278,7 +278,7 @@
             font-size: 0.85rem;
         }
         .luck-item-card.selected .luck-item-value {
-            color: #00e6ff;
+            color: var(--accent-cyan);
         }
         @media (max-width: 600px) {
             .formulas-container {
@@ -413,7 +413,7 @@
                     </div>
                 </div>
                 <div class="formula-input-group">
-                    <label for="luckHeroValue"><i class="fas fa-dice"></i> Удача героя (без предметов) <span style="color:#6b7c99; font-weight:400;">— базовый параметр героя</span></label>
+                    <label for="luckHeroValue"><i class="fas fa-dice"></i> Удача героя (без предметов) <span style="color:var(--text-muted); font-weight:400;">— базовый параметр героя</span></label>
                     <div class="formula-input-row">
                         <input type="number" id="luckHeroValue" value="0" min="0" step="1">
                         <span class="unit">ед.</span>
@@ -455,9 +455,9 @@
 
             <!-- Убывающая полезность (мультипликативная) -->
             <div class="formula-panel" id="panel-diminishing">
-                <p style="color:#8ab4f0; font-size:0.9rem; margin-bottom:16px;">Для магической защиты, физического вампиризма, сопротивления сожжению маны. Каждый источник даёт меньше, чем предыдущий.</p>
+                <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:16px;">Для магической защиты, физического вампиризма, сопротивления сожжению маны. Каждый источник даёт меньше, чем предыдущий.</p>
                 <div class="formula-input-group">
-                    <label><i class="fas fa-layer-group"></i> Источники (в %) <span style="color:#6b7c99; font-weight:400;">— справа реальный вклад</span></label>
+                    <label><i class="fas fa-layer-group"></i> Источники (в %) <span style="color:var(--text-muted); font-weight:400;">— справа реальный вклад</span></label>
                     <div class="formula-source-list" id="dimSources"></div>
                     <button class="formula-add-btn" id="dimAddBtn"><i class="fas fa-plus"></i> Добавить источник</button>
                 </div>
@@ -489,7 +489,7 @@
 
             <!-- Аддитивная -->
             <div class="formula-panel" id="panel-additive">
-                <p style="color:#8ab4f0; font-size:0.9rem; margin-bottom:16px;">Для усиления маг. урона (SpellDMG), усиления лечения. Все источники складываются напрямую.</p>
+                <p style="color:var(--text-secondary); font-size:0.9rem; margin-bottom:16px;">Для усиления маг. урона (SpellDMG), усиления лечения. Все источники складываются напрямую.</p>
                 <div class="formula-input-group">
                     <label><i class="fas fa-layer-group"></i> Источники (в %)</label>
                     <div class="formula-source-list" id="addSources"></div>
@@ -512,8 +512,8 @@
                 </div>
             </div>
 
-            <a href="mechanics.html" style="display:inline-block;margin-top:20px;color:#00e6ff;font-size:0.85rem;text-decoration:none;"><i class="fas fa-arrow-left"></i> К механикам</a>
-            <a href="armor-calc.html" style="display:inline-block;margin-top:20px;margin-left:16px;color:#00e6ff;font-size:0.85rem;text-decoration:none;"><i class="fas fa-shield-alt"></i> Калькулятор брони</a>
+            <a href="mechanics.html" style="display:inline-block;margin-top:20px;color:var(--accent-cyan);font-size:0.85rem;text-decoration:none;"><i class="fas fa-arrow-left"></i> К механикам</a>
+            <a href="armor-calc.html" style="display:inline-block;margin-top:20px;margin-left:16px;color:var(--accent-cyan);font-size:0.85rem;text-decoration:none;"><i class="fas fa-shield-alt"></i> Калькулятор брони</a>
         </div>
     </div>
 

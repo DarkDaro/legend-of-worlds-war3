@@ -116,7 +116,7 @@ function statVal(v, suffix) {
 // Рендер блока статов + таблицы приростов для карточки героя
 function renderHeroStats(heroId) {
     var hero = findHero(heroId);
-    if (!hero) return '<p style="color:#6b7c99;">Данные героя недоступны</p>';
+    if (!hero) return '<p style="color:var(--text-muted);">Данные героя недоступны</p>';
 
     var attr = ATTR_MAP[hero.attr] || ATTR_MAP.strength;
     var rangeLabel = (hero.range >= 400) ? 'Дальний бой' : 'Ближний бой';

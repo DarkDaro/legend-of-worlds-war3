@@ -389,7 +389,7 @@ function renderBuildTree() {
                     <div class="calc-tree-cost">${isBossDrop ? '💀 Босс' : cost.toLocaleString('ru-RU') + ' 🪙'}</div>
                 </div>
                 <div class="calc-tree-components" data-tree-content="${id}" style="display:none;">
-                    ${hasComponents ? renderComponentTree(item.components) : '<p style="color:#8e97aa;">Базовый предмет</p>'}
+                    ${hasComponents ? renderComponentTree(item.components) : '<p style="color:var(--text-muted);">Базовый предмет</p>'}
                 </div>
             </div>`;
     });
@@ -499,7 +499,7 @@ function renderCalcCatalog() {
     }
 
     if (itemIds.length === 0) {
-        container.innerHTML = '<p style="color:#8e97aa; padding: 16px;">Предметы не найдены</p>';
+        container.innerHTML = '<p style="color:var(--text-muted); padding: 16px;">Предметы не найдены</p>';
         return;
     }
 
