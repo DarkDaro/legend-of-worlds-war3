@@ -144,8 +144,8 @@
                 });
 
                 card.addEventListener('click', () => {
-                    // Герои без страницы — не переходим
-                    if (hero.noPage) return;
+                    // Герои без страницы или WIP — не переходим
+                    if (hero.noPage || hero.wip) return;
                     window.location.href = 'heroes/' + hero.heroId + '.html';
                 });
 
@@ -180,10 +180,10 @@
                 const cards = document.querySelectorAll('.hero-card');
                 cards.forEach((card, i) => {
                     const hero = heroesData[i];
-                    let show = filterValue === 'all' && !hero.unique
+                    let show = filterValue === 'all' && !hero.unique && !hero.isAltForm
                         || (filterValue === 'unique' && hero.unique)
                         || (filterValue === 'wip' && hero.wip)
-                        || (hero.attr === filterValue && !hero.unique);
+                        || (hero.attr === filterValue && !hero.unique && !hero.isAltForm);
                     if (filterValue === 'favorites') {
                         show = favorites.includes(hero.heroId);
                     }
@@ -211,15 +211,25 @@
                     '<i class="fas fa-filter"></i> Показано: ' + visible + ' из ' + total;
             }
 
-            // Поиск
+            // Поиск (комбинируется с текущим фильтром)
             const searchInput = document.getElementById('heroSearch');
             searchInput.addEventListener('input', function() {
                 const query = this.value.toLowerCase().trim();
                 document.querySelectorAll('.hero-card').forEach((card, i) => {
-                    const name = heroesData[i].name.toLowerCase();
-                    const title = heroesData[i].title.toLowerCase();
-                    const match = !query || name.includes(query) || title.includes(query);
-                    card.style.display = match ? '' : 'none';
+                    const hero = heroesData[i];
+                    // Проверяем фильтр
+                    let filterOk = currentFilter === 'all' && !hero.unique && !hero.isAltForm
+                        || (currentFilter === 'unique' && hero.unique)
+                        || (currentFilter === 'wip' && hero.wip)
+                        || (hero.attr === currentFilter && !hero.unique && !hero.isAltForm);
+                    if (currentFilter === 'favorites') {
+                        filterOk = favorites.includes(hero.heroId);
+                    }
+                    // Проверяем поиск
+                    const name = hero.name.toLowerCase();
+                    const title = hero.title.toLowerCase();
+                    const searchOk = !query || name.includes(query) || title.includes(query);
+                    card.style.display = (filterOk && searchOk) ? '' : 'none';
                 });
                 updateCount();
             });
@@ -234,6 +244,7 @@
 
             // Первоначальный рендер
             renderHeroes();
+            updateCount();
 
             // Функция для добавления нового героя (можно вызывать из консоли)
             window.addHero = function(heroData) {
