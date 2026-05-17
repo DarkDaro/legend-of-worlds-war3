@@ -37,7 +37,7 @@
             width: 100%;
             padding: 9px 32px 9px 12px;
             background: #0d1b2a;
-            color: #e0e8f0;
+            color: var(--text-primary);
             border: 1px solid var(--glass-border);
             border-radius: 8px;
             font-size: 0.88rem;
@@ -50,19 +50,19 @@
         }
         .compare-slot select:focus {
             outline: none;
-            border-color: #00e5ff;
+            border-color: var(--accent-cyan);
             box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
         }
         .compare-slot select option {
             background: #0d1b2a;
-            color: #e0e8f0;
+            color: var(--text-primary);
         }
         .compare-slot select option:disabled {
             color: #3a4a5a;
         }
         .compare-slot-label {
             font-size: 0.7rem;
-            color: #5a7a9a;
+            color: var(--text-dim);
             margin-bottom: 4px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -75,7 +75,7 @@
             width: 100%;
             padding: 9px 12px;
             background: #0d1b2a;
-            color: #e0e8f0;
+            color: var(--text-primary);
             border: 1px solid var(--glass-border);
             border-radius: 8px;
             font-size: 0.88rem;
@@ -83,7 +83,7 @@
         }
         .compare-level input:focus {
             outline: none;
-            border-color: #00e5ff;
+            border-color: var(--accent-cyan);
             box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
         }
 
@@ -107,27 +107,27 @@
             background: #0d1f35;
             border-bottom: 1px solid var(--glass-border);
             font-weight: 600;
-            color: #8aa0c0;
+            color: var(--text-secondary);
             position: sticky;
             top: 0;
             z-index: 1;
         }
         .compare-table thead th:first-child {
             text-align: left;
-            color: #5a7a9a;
+            color: var(--text-dim);
             font-weight: 400;
             min-width: 110px;
         }
         .compare-table thead th.hero-col {
-            color: #e0e8f0;
+            color: var(--text-primary);
             min-width: 140px;
         }
         .compare-table thead th.hero-col a {
-            color: #e0e8f0;
+            color: var(--text-primary);
             text-decoration: none;
         }
         .compare-table thead th.hero-col a:hover {
-            color: #00e5ff;
+            color: var(--accent-cyan);
         }
         .hero-col-name {
             font-size: 0.92rem;
@@ -168,7 +168,7 @@
         }
         .compare-table tbody td:first-child {
             text-align: left;
-            color: #5a7a9a;
+            color: var(--text-dim);
             font-size: 0.78rem;
         }
         .compare-table tbody tr:last-child td {
@@ -179,7 +179,7 @@
         }
 
         /* Подсветка лучшего/худшего */
-        .stat-best { color: #00e5ff; font-weight: 600; }
+        .stat-best { color: var(--accent-cyan); font-weight: 600; }
         .stat-worst { color: #5a5a7a; }
 
         /* Полоски-бары */
@@ -226,7 +226,7 @@
             padding: 7px 10px !important;
         }
         .ability-cell .ability-name {
-            color: #00e5ff;
+            color: var(--accent-cyan);
             font-size: 0.82rem;
             margin-bottom: 1px;
         }
@@ -286,10 +286,10 @@
         .compare-card-name {
             font-size: 1rem;
             font-weight: 600;
-            color: #e0e8f0;
+            color: var(--text-primary);
             text-decoration: none;
         }
-        .compare-card-name:hover { color: #00e5ff; }
+        .compare-card-name:hover { color: var(--accent-cyan); }
         .compare-card-attr {
             font-size: 0.72rem;
             margin-top: 2px;
@@ -322,7 +322,7 @@
         }
         .compare-card-row:last-child { border-bottom: none; }
         .compare-card-label {
-            color: #5a7a9a;
+            color: var(--text-dim);
             font-size: 0.76rem;
         }
         .compare-card-value {
@@ -345,7 +345,7 @@
             background: #1a5a7a;
             transition: width 0.3s ease;
         }
-        .compare-card-row.card-best .compare-card-value { color: #00e5ff; font-weight: 600; }
+        .compare-card-row.card-best .compare-card-value { color: var(--accent-cyan); font-weight: 600; }
         .compare-card-row.card-best .compare-card-bar-fill { background: #00e5ff; }
         .compare-card-row.card-worst .compare-card-value { color: #5a5a7a; }
         .compare-card-row.card-worst .compare-card-bar-fill { background: #2a2a3a; }
@@ -441,7 +441,7 @@
         <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Сравнение</span></div>
 
         <h1><i class="fas fa-balance-scale"></i> Сравнение героев</h1>
-        <p style="color:#8aa0c0; margin-bottom:20px; font-size:1.05rem;">Выберите до 4 героев, чтобы сравнить их уровень и сборки предметов.</p>
+        <p style="color:var(--text-secondary); margin-bottom:20px; font-size:1.05rem;">Выберите до 4 героев, чтобы сравнить их уровень и сборки предметов.</p>
 
         <!-- Селекты + уровень -->
         <div class="compare-controls">
@@ -771,15 +771,15 @@ function buildCompareRows(heroes, level) {
     rows.push({ section: true, label: 'Прирост за уровень' });
     pushStatRow(rows, 'Сила', heroes, function(h) {
         var total = Math.round(h.stats.strBase + h.stats.strGain * (level - 1));
-        return h.stats.strBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.strGain + '</span> <span style="color:#5a7a9a;font-size:0.72rem;">(' + total + ')</span>';
+        return h.stats.strBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.strGain + '</span> <span style="color:var(--text-dim);font-size:0.72rem;">(' + total + ')</span>';
     }, false);
     pushStatRow(rows, 'Ловкость', heroes, function(h) {
         var total = Math.round(h.stats.agiBase + h.stats.agiGain * (level - 1));
-        return h.stats.agiBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.agiGain + '</span> <span style="color:#5a7a9a;font-size:0.72rem;">(' + total + ')</span>';
+        return h.stats.agiBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.agiGain + '</span> <span style="color:var(--text-dim);font-size:0.72rem;">(' + total + ')</span>';
     }, false);
     pushStatRow(rows, 'Разум', heroes, function(h) {
         var total = Math.round(h.stats.intBase + h.stats.intGain * (level - 1));
-        return h.stats.intBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.intGain + '</span> <span style="color:#5a7a9a;font-size:0.72rem;">(' + total + ')</span>';
+        return h.stats.intBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.intGain + '</span> <span style="color:var(--text-dim);font-size:0.72rem;">(' + total + ')</span>';
     }, false);
 
     return rows;

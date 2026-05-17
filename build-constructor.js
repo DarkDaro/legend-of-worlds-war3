@@ -587,7 +587,7 @@ function bcRenderCatalog() {
     }
 
     if (itemIds.length === 0) {
-        container.innerHTML = '<p style="color:#8e97aa; padding: 16px;">Предметы не найдены</p>';
+        container.innerHTML = '<p style="color:var(--text-muted); padding: 16px;">Предметы не найдены</p>';
         return;
     }
 

@@ -1014,8 +1014,8 @@ function injectItemFavoritesStyles() {
       height: 28px;
       border-radius: 50%;
       border: 1px solid var(--glass-border);
-      background: #0f172acc;
-      color: #6b7c99;
+      background: var(--glass-bg);
+      color: var(--text-muted);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1272,7 +1272,7 @@ function getRecipeCost(item) {
 }
 
 function renderComponentTree(components, visited = new Set()) {
-  if (!components?.length) return '<p style="color:#8e97aa;">Базовый предмет</p>';
+  if (!components?.length) return '<p style="color:var(--text-muted);">Базовый предмет</p>';
   let html = '<div class="component-tree">';
   components.forEach(comp => {
     const item = itemsDB[comp.itemId];
@@ -1364,7 +1364,7 @@ function renderParsedBonuses(item) {
 
 function renderUsedIn(itemId) {
   const ids = findUsedIn(itemId);
-  if (!ids.length) return '<p style="color:#8e97aa;">Не используется</p>';
+  if (!ids.length) return '<p style="color:var(--text-muted);">Не используется</p>';
   return `<div class="used-in-list">${ids.map(id => {
     const it = itemsDB[id];
     return `<span class="used-in-chip" data-item-id="${id}">${itemIcon(it.id, it.icon, 20, it.type)} ${it.name}</span>`;

@@ -167,7 +167,7 @@ function getBuildItemIcon(itemId, size) {
 // Отрисовка сетки сборки для карточки героя
 function renderHeroBuild(heroId) {
   const hero = heroBuilds[heroId];
-  if (!hero || !hero.items) return '<p style="color:#6b7c99;">Сборка в разработке...</p>';
+  if (!hero || !hero.items) return '<p style="color:var(--text-muted);">Сборка в разработке...</p>';
 
   let html = '<div class="hero-build-grid">';
   hero.items.forEach(item => {

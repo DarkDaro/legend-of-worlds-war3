@@ -27,7 +27,7 @@
         }
         .armor-input-group label {
             display: block;
-            color: #8ab4f0;
+            color: var(--text-secondary);
             font-size: 0.9rem;
             margin-bottom: 6px;
         }
@@ -42,7 +42,7 @@
             border: 1px solid var(--glass-border);
             border-radius: 8px;
             padding: 10px 14px;
-            color: #e0f0ff;
+            color: var(--text-primary);
             font-size: 1rem;
             outline: none;
             transition: border-color 0.2s;
@@ -51,7 +51,7 @@
             border-color: #00e6ff;
         }
         .armor-input-row .armor-unit {
-            color: #6b7c99;
+            color: var(--text-muted);
             font-size: 0.85rem;
             white-space: nowrap;
         }
@@ -60,7 +60,7 @@
             align-items: center;
             gap: 8px;
             margin-top: 8px;
-            color: #6b7c99;
+            color: var(--text-muted);
             font-size: 0.82rem;
             cursor: pointer;
         }
@@ -94,11 +94,11 @@
             border-bottom: none;
         }
         .armor-result-label {
-            color: #8ab4f0;
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
         .armor-result-value {
-            color: #e0f0ff;
+            color: var(--text-primary);
             font-size: 1.1rem;
             font-weight: 600;
         }
@@ -114,7 +114,7 @@
         .armor-bar-label {
             display: flex;
             justify-content: space-between;
-            color: #6b7c99;
+            color: var(--text-muted);
             font-size: 0.8rem;
             margin-bottom: 4px;
         }
@@ -138,16 +138,16 @@
             padding: 14px;
             font-family: monospace;
             font-size: 0.85rem;
-            color: #6b7c99;
+            color: var(--text-muted);
             line-height: 1.6;
         }
         .armor-formula strong {
-            color: #00e6ff;
+            color: var(--accent-cyan);
         }
         .armor-hero-link {
             display: inline-block;
             margin-top: 12px;
-            color: #00e6ff;
+            color: var(--accent-cyan);
             font-size: 0.85rem;
             text-decoration: none;
         }
@@ -220,7 +220,7 @@
             </div>
 
             <div class="armor-input-group">
-                <label for="agiInput"><i class="fas fa-feather-alt"></i> Ловкость <span style="color:#6b7c99; font-weight:400;">(+0.05 защиты за ед.)</span></label>
+                <label for="agiInput"><i class="fas fa-feather-alt"></i> Ловкость <span style="color:var(--text-muted); font-weight:400;">(+0.05 защиты за ед.)</span></label>
                 <div class="armor-input-row">
                     <input type="number" id="agiInput" value="0" min="0" step="1" placeholder="0">
                     <span class="armor-unit">ед.</span>
