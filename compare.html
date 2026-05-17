@@ -508,7 +508,7 @@ var ATTR_CLASS_MAP = { strength: 'compare-attr-strength', agility: 'compare-attr
 var ROLE_LABELS = { tank: 'Танк', damager: 'Дамагер', support: 'Помощник' };
 
 HEROES_DATA.forEach(function(hero) {
-    if (hero.isAltForm || hero.wip) return; // пропускаем альт-формы и WIP
+    if (hero.isAltForm || hero.wip || hero.noPage) return; // пропускаем альт-формы, WIP и героев без страницы
     HERO_COMPARE_DATA[hero.heroId] = {
         id: hero.heroId,
         name: hero.name,
@@ -517,14 +517,14 @@ HEROES_DATA.forEach(function(hero) {
         role: hero.roleName || ROLE_LABELS[hero.role] || hero.role,
         image: 'images/heroes/' + hero.image + '.png',
         stats: {
-            hp: hero.hp || 0,
-            mp: hero.mp || 0,
-            atk: hero.atk || 0,
-            def: hero.def || 0,
-            hpRegen: hero.hpRegen || 0,
-            mpRegen: hero.mpRegen || 0.01,
-            speed: hero.speed || 280,
-            range: hero.range || 150,
+            hp: hero.hp != null ? hero.hp : 0,
+            mp: hero.mp != null ? hero.mp : 0,
+            atk: hero.atk != null ? hero.atk : 0,
+            def: hero.def != null ? hero.def : 0,
+            hpRegen: hero.hpRegen != null ? hero.hpRegen : 0,
+            mpRegen: hero.mpRegen != null ? hero.mpRegen : 0,
+            speed: hero.speed != null ? hero.speed : 0,
+            range: hero.range != null ? hero.range : 0,
             strBase: hero.strBase,
             strGain: hero.strGain,
             agiBase: hero.agiBase,
@@ -963,18 +963,18 @@ function getArmorTotal(hero, level) {
     var bonus = getCompareHeroBuildBonus(hero.id);
     var baseAgiArmor = Math.floor(getAttrBase(hero, 'agility') * GAME_CONSTANTS.AGI_ARMOR_FACTOR);
     var totalAgiArmor = Math.floor(getAttrTotalWithBuild(hero, 'agility', level) * GAME_CONSTANTS.AGI_ARMOR_FACTOR);
-    return +(hero.stats.def + (totalAgiArmor - baseAgiArmor) + bonus.armor).toFixed(1);
+    return +(hero.stats.def + (totalAgiArmor - baseAgiArmor) + bonus.armor + (bonus.auraArmor || 0)).toFixed(1);
 }
 
 function getAttackSpeed(hero, level) {
     // Ловкость повышает скорость атаки, предметы могут добавить отдельный процент
     var bonus = getCompareHeroBuildBonus(hero.id);
-    return +(1 + getAttrTotalWithBuild(hero, 'agility', level) * GAME_CONSTANTS.AGI_ATK_SPEED_FACTOR + bonus.attackSpeedPct / 100).toFixed(3);
+    return +(1 + getAttrTotalWithBuild(hero, 'agility', level) * GAME_CONSTANTS.AGI_ATK_SPEED_FACTOR + bonus.attackSpeedPct / 100 + (bonus.auraAttackSpeedPct || 0) / 100).toFixed(3);
 }
 
 function getMovementSpeed(hero, level) {
     var bonus = getCompareHeroBuildBonus(hero.id);
-    return Math.round((hero.stats.speed + bonus.movementSpeedFlat) * (1 + bonus.movementSpeedPct / 100));
+    return Math.round((hero.stats.speed + bonus.movementSpeedFlat) * (1 + bonus.movementSpeedPct / 100 + (bonus.auraMoveSpeedPct || 0) / 100));
 }
 
 function sectionRow(label) {
