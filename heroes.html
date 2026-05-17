@@ -159,10 +159,10 @@
                 heroGrid.innerHTML = '';
                 heroesData.forEach(hero => {
                     const card = createHeroCard(hero);
-                    let show = currentFilter === 'all'
+                    let show = currentFilter === 'all' && !hero.unique
                         || (currentFilter === 'unique' && hero.unique)
                         || (currentFilter === 'wip' && hero.wip)
-                        || (hero.attr === currentFilter);
+                        || (hero.attr === currentFilter && !hero.unique);
                     if (currentFilter === 'favorites') {
                         show = favorites.includes(hero.heroId);
                     }
@@ -177,10 +177,10 @@
                 const cards = document.querySelectorAll('.hero-card');
                 cards.forEach((card, i) => {
                     const hero = heroesData[i];
-                    let show = filterValue === 'all'
+                    let show = filterValue === 'all' && !hero.unique
                         || (filterValue === 'unique' && hero.unique)
                         || (filterValue === 'wip' && hero.wip)
-                        || (hero.attr === filterValue);
+                        || (hero.attr === filterValue && !hero.unique);
                     if (filterValue === 'favorites') {
                         show = favorites.includes(hero.heroId);
                     }
