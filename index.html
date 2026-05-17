@@ -156,6 +156,19 @@
             <h2 class="section-title"><i class="fas fa-history"></i> Последние обновления</h2>
             <div class="version-card-mini">
                 <div class="version-header">
+                    <span class="version-badge hot">v4.6</span>
+                    <span class="version-title">Единый стиль и кросс-ссылки</span>
+                </div>
+                <ul class="change-list-mini">
+                    <li>Единый футер на всех страницах с значком карты</li>
+                    <li>Предметы: русские имена героев и поиск по 19 группам сборок</li>
+                    <li>Каталоги: карточки плавно появляются при скролле</li>
+                    <li>Механики: кнопки расчёта удачи и брони</li>
+                </ul>
+                <a href="updates.html" class="updates-link">Все обновления →</a>
+            </div>
+            <div class="version-card-mini" style="margin-top:12px;">
+                <div class="version-header">
                     <span class="version-badge hot">v4.5</span>
                     <span class="version-title">Живые анимации</span>
                 </div>
@@ -252,8 +265,8 @@
 
         revealElements.forEach(el => {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            el.style.transform = 'translateY(12px)';
+            el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
         });
 
         const revealObserver = new IntersectionObserver((entries) => {
@@ -264,7 +277,7 @@
                     let delay = 0;
                     if (parent) {
                         const siblings = Array.from(parent.children);
-                        delay = siblings.indexOf(entry.target) * 60;
+                        delay = siblings.indexOf(entry.target) * 30;
                     }
                     setTimeout(() => {
                         entry.target.style.opacity = '1';
