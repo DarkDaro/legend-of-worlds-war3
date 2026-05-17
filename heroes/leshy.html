@@ -46,7 +46,7 @@
                 <div class="detail-icon"><i class="fas fa-seedling"></i></div>
                 <div class="detail-title">Леший <span class="detail-badge">Разум</span></div>
             </div>
-                        <div id="hero-nav"></div>
+            <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Хранитель рощи — избранник полубога Кенария, наполовину эльф, наполовину олень. Он повелевает корнями и деревьями, призывая энтов на защиту лесов и исцеляя раненых союзников дождём спокойствия.</p>
@@ -130,6 +130,20 @@
             <a href="../heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
         </div>
     </div>
+    <script>
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('leshy');
+        }
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('leshy');
+        }
+        var buildContainer = document.getElementById('hero-build');
+        if (buildContainer && typeof renderHeroBuild === 'function') {
+            buildContainer.innerHTML = renderHeroBuild('leshy');
+        }
+    </script>
 
     <footer class="site-footer">
         <div class="footer-content">
@@ -147,19 +161,5 @@
             <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
-    <script>
-        var statsContainer = document.getElementById('hero-stats');
-        if (statsContainer && typeof renderHeroStats === 'function') {
-            statsContainer.innerHTML = renderHeroStats('leshy');
-        }
-        var navContainer = document.getElementById('hero-nav');
-        if (navContainer && typeof renderHeroNav === 'function') {
-            navContainer.innerHTML = renderHeroNav('leshy');
-        }
-        var buildContainer = document.getElementById('hero-build');
-        if (buildContainer && typeof renderHeroBuild === 'function') {
-            buildContainer.innerHTML = renderHeroBuild('leshy');
-        }
-    </script>
 </body>
 </html>

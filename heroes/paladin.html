@@ -46,7 +46,7 @@
                 <div class="detail-icon"><i class="fas fa-shield-halved"></i></div>
                 <div class="detail-title">Паладин <span class="detail-badge">Сила</span></div>
             </div>
-                        <div id="hero-nav"></div>
+            <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Светозар — паладин, чья вера выдержала испытание тьмой. Когда миры рушились, а боги молчали, он один продолжал нести свет. Его щит не просто защищает — он возвращает удар.</p>
@@ -169,17 +169,17 @@
         </div>
     </div>
     <script>
-        var container = document.getElementById('hero-build');
-        if (container && typeof renderHeroBuild === 'function') {
-            container.innerHTML = renderHeroBuild('paladin');
         var statsContainer = document.getElementById('hero-stats');
         if (statsContainer && typeof renderHeroStats === 'function') {
             statsContainer.innerHTML = renderHeroStats('paladin');
+        }
         var navContainer = document.getElementById('hero-nav');
         if (navContainer && typeof renderHeroNav === 'function') {
             navContainer.innerHTML = renderHeroNav('paladin');
         }
-        }
+        var buildContainer = document.getElementById('hero-build');
+        if (buildContainer && typeof renderHeroBuild === 'function') {
+            buildContainer.innerHTML = renderHeroBuild('paladin');
         }
     </script>
     <footer class="site-footer">

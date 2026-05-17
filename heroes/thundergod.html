@@ -45,7 +45,7 @@
                 <div class="detail-icon"><i class="fas fa-bolt"></i></div>
                 <div class="detail-title">Громовержец <span class="detail-badge">Разум</span></div>
             </div>
-                        <div id="hero-nav"></div>
+            <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Василий — гном-изобретатель, покоривший молнию. Там, где другие видят грозу, он видит энергию — и направляет её в врагов. Его молнии прыгают между целями, грозовые облака преследуют противников, а громовой рёв сотрясает землю. Каждое заклинание заряжает его атаки электричеством — Василий не просто бьёт током, он бьёт током дважды.</p>
@@ -165,17 +165,17 @@
         </div>
     </div>
     <script>
-        var container = document.getElementById('hero-build');
-        if (container && typeof renderHeroBuild === 'function') {
-            container.innerHTML = renderHeroBuild('thundergod');
         var statsContainer = document.getElementById('hero-stats');
         if (statsContainer && typeof renderHeroStats === 'function') {
             statsContainer.innerHTML = renderHeroStats('thundergod');
+        }
         var navContainer = document.getElementById('hero-nav');
         if (navContainer && typeof renderHeroNav === 'function') {
             navContainer.innerHTML = renderHeroNav('thundergod');
         }
-        }
+        var buildContainer = document.getElementById('hero-build');
+        if (buildContainer && typeof renderHeroBuild === 'function') {
+            buildContainer.innerHTML = renderHeroBuild('thundergod');
         }
     </script>
 
