@@ -79,7 +79,7 @@ var HEROES_DATA = [
       strBase: 32, strGain: 3, agiBase: 0, agiGain: 2, intBase: 0, intGain: 2,
       hp: 750, mp: 150, atk: 30, def: 2, atkSpeed: 2, hpRegen: 0, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
-    { name: 'Всадник', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'rider', image: 'rider',
+    { name: 'Ночной Всадник', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'rider', image: 'rider',
       noPage: true,
       rawcode: 'O003',
       strBase: 25, strGain: 3, agiBase: 19, agiGain: 2, intBase: 0, intGain: 2,
@@ -169,7 +169,7 @@ var HEROES_DATA = [
       strBase: 1, strGain: 3, agiBase: 1, agiGain: 2, intBase: 1, intGain: 2,
       hp: 600, mp: 0, atk: 30, def: 3, atkSpeed: 0, hpRegen: 5, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
-    { name: 'Всадник', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'rider-mounted', image: 'rider-mounted',
+    { name: 'Ночной Всадник', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'rider-mounted', image: 'rider-mounted',
       isAltForm: true,
       rawcode: 'O004',
       strBase: 25, strGain: 3, agiBase: 19, agiGain: 2, intBase: 0, intGain: 2,
