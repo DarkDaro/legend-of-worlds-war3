@@ -441,7 +441,7 @@
         <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Сравнение</span></div>
 
         <h1><i class="fas fa-balance-scale"></i> Сравнение героев</h1>
-        <p style="color:var(--text-secondary); margin-bottom:20px; font-size:1.05rem;">Выберите до 4 героев, чтобы сравнить их уровень и сборки предметов.</p>
+        <p class="compare-page-note">Выберите до 4 героев, чтобы сравнить их уровень и сборки предметов.</p>
 
         <!-- Селекты + уровень -->
         <div class="compare-controls">
@@ -465,7 +465,7 @@
                 <div class="compare-slot-label">Уровень</div>
                 <input type="number" id="heroLevel" value="1" min="1" max="500">
             </div>
-            <button class="filter-btn" onclick="clearCompare()" style="align-self:flex-end;"><i class="fas fa-times"></i> Очистить</button>
+            <button class="filter-btn compare-clear-btn" onclick="clearCompare()"><i class="fas fa-times"></i> Очистить</button>
         </div>
 
         <!-- Результат -->
@@ -476,7 +476,7 @@
             </div>
         </div>
 
-        <a href="heroes.html" class="btn-secondary" style="display:inline-block; margin-top:32px;"><i class="fas fa-arrow-left"></i> К списку героев</a>
+        <a href="heroes.html" class="btn-secondary compare-back-link"><i class="fas fa-arrow-left"></i> К списку героев</a>
     </div>
 
     <footer class="site-footer">
@@ -504,6 +504,7 @@
 // Формируем объект для сравнения, фильтруя героев без атрибутов.
 var HERO_COMPARE_DATA = {};
 var ATTR_LABELS = { strength: 'Сила', agility: 'Ловкость', intelligence: 'Разум' };
+var ATTR_CLASS_MAP = { strength: 'compare-attr-strength', agility: 'compare-attr-agility', intelligence: 'compare-attr-intelligence' };
 var ROLE_LABELS = { tank: 'Танк', damager: 'Дамагер', support: 'Помощник' };
 
 HEROES_DATA.forEach(function(hero) {
@@ -586,6 +587,16 @@ function getCompareHeroes() {
 
 function getCompareHeroLabel(hero) {
     return hero.name;
+}
+
+function getCompareAttrClass(attr) {
+    return ATTR_CLASS_MAP[attr] || '';
+}
+
+function applyCompareBarWidths(container) {
+    container.querySelectorAll('[data-bar-width]').forEach(function(el) {
+        el.style.width = el.dataset.barWidth;
+    });
 }
 
 // ── Очистка ──
@@ -688,27 +699,27 @@ function renderComparison() {
 
 // ── Мобильные карточки ──
 function renderMobileCards(container, heroes, level) {
-    var ATTR_COLORS = { strength: '#ff5555', agility: '#55ff55', intelligence: '#55aaff' };
+
 
     // Собираем все строки данных для подсветки best/worst
     var rows = buildCompareRows(heroes, level);
 
     var html = '<div class="compare-cards">';
     heroes.forEach(function(h, hi) {
-        var ac = ATTR_COLORS[h.attr] || '#8aa0c0';
+        var attrClass = getCompareAttrClass(h.attr);
         html += '<div class="compare-card">';
         html += '<div class="compare-card-header">';
         html += '<a href="heroes/' + h.id + '.html" class="compare-card-name">' + getCompareHeroLabel(h) + '</a>';
-        html += '<div class="compare-card-attr" style="color:' + ac + '">' + h.attrLabel + ' · ' + h.role + '</div>';
+        html += '<div class="compare-card-attr ' + attrClass + '">' + h.attrLabel + ' · ' + h.role + '</div>';
         html += renderCompareBuildItems(h.id);
         html += '</div>';
         html += '<div class="compare-card-body">';
 
-        var currentSection = '';
+
         rows.forEach(function(row) {
             if (row.section) {
                 html += '<div class="compare-card-section">' + row.label + '</div>';
-                currentSection = row.label;
+
                 return;
             }
             var v = row.values[hi];
@@ -722,7 +733,7 @@ function renderMobileCards(container, heroes, level) {
             html += '<span class="compare-card-value">';
             if (row.showBar && row.isNumeric && row.max > 0) {
                 var pct = Math.round((v / row.max) * 100);
-                html += '<span>' + v + '</span><div class="compare-card-bar"><div class="compare-card-bar-fill" style="width:' + pct + '%"></div></div>';
+                html += '<span>' + v + '</span><div class="compare-card-bar"><div class="compare-card-bar-fill" data-bar-width="' + pct + '%"></div></div>';
             } else {
                 html += '' + v;
             }
@@ -733,6 +744,7 @@ function renderMobileCards(container, heroes, level) {
     });
     html += '</div>';
     container.innerHTML = html;
+    applyCompareBarWidths(container);
 }
 
 // ── Общие данные строк (для best/worst в обоих режимах) ──
@@ -771,15 +783,15 @@ function buildCompareRows(heroes, level) {
     rows.push({ section: true, label: 'Прирост за уровень' });
     pushStatRow(rows, 'Сила', heroes, function(h) {
         var total = Math.round(h.stats.strBase + h.stats.strGain * (level - 1));
-        return h.stats.strBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.strGain + '</span> <span style="color:var(--text-dim);font-size:0.72rem;">(' + total + ')</span>';
+        return h.stats.strBase + ' <span class="compare-level-gain">+' + h.stats.strGain + '</span> <span class="compare-level-total">(' + total + ')</span>';
     }, false);
     pushStatRow(rows, 'Ловкость', heroes, function(h) {
         var total = Math.round(h.stats.agiBase + h.stats.agiGain * (level - 1));
-        return h.stats.agiBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.agiGain + '</span> <span style="color:var(--text-dim);font-size:0.72rem;">(' + total + ')</span>';
+        return h.stats.agiBase + ' <span class="compare-level-gain">+' + h.stats.agiGain + '</span> <span class="compare-level-total">(' + total + ')</span>';
     }, false);
     pushStatRow(rows, 'Разум', heroes, function(h) {
         var total = Math.round(h.stats.intBase + h.stats.intGain * (level - 1));
-        return h.stats.intBase + ' <span style="color:#55ff88;font-size:0.76rem;">+' + h.stats.intGain + '</span> <span style="color:var(--text-dim);font-size:0.72rem;">(' + total + ')</span>';
+        return h.stats.intBase + ' <span class="compare-level-gain">+' + h.stats.intGain + '</span> <span class="compare-level-total">(' + total + ')</span>';
     }, false);
 
     return rows;
@@ -807,14 +819,14 @@ function pushStatRow(rows, label, heroes, valueFn, showBar) {
 
 // ── Десктопная таблица (без изменений) ──
 function renderDesktopTable(container, heroes, level) {
-    var ATTR_COLORS = { strength: '#ff5555', agility: '#55ff55', intelligence: '#55aaff' };
+
 
     var html = '<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>Параметр</th>';
     heroes.forEach(function(h) {
-        var ac = ATTR_COLORS[h.attr] || '#8aa0c0';
+        var attrClass = getCompareAttrClass(h.attr);
         html += '<th class="hero-col">'
             + '<a href="heroes/' + h.id + '.html" class="hero-col-name">' + getCompareHeroLabel(h) + '</a>'
-            + '<div class="hero-col-attr" style="color:' + ac + '">' + h.attrLabel + ' · ' + h.role + '</div>'
+            + '<div class="hero-col-attr ' + attrClass + '">' + h.attrLabel + ' · ' + h.role + '</div>'
             + renderCompareBuildItems(h.id)
             + '</th>';
     });
@@ -838,7 +850,7 @@ function renderDesktopTable(container, heroes, level) {
                 var pct = Math.round((v / row.max) * 100);
                 html += '<td class="' + cls + '"><div class="stat-bar-wrap">'
                     + '<span class="stat-bar-value">' + v + '</span>'
-                    + '<div class="stat-bar"><div class="stat-bar-fill" style="width:' + pct + '%"></div></div>'
+                    + '<div class="stat-bar"><div class="stat-bar-fill" data-bar-width="' + pct + '%"></div></div>'
                     + '</div></td>';
             } else {
                 html += '<td class="' + cls + '">' + v + '</td>';
@@ -849,6 +861,7 @@ function renderDesktopTable(container, heroes, level) {
 
     html += '</tbody></table></div>';
     container.innerHTML = html;
+    applyCompareBarWidths(container);
 }
 
 var ITEM_BONUS_CACHE = {};
