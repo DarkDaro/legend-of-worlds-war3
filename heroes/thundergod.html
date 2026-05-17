@@ -45,10 +45,7 @@
                 <div class="detail-icon"><i class="fas fa-bolt"></i></div>
                 <div class="detail-title">Василий — Громовержец <span class="detail-badge">Разум</span></div>
             </div>
-                        <div class="hero-nav">
-                <a href="shadowblade.html" class="hero-nav-btn hero-nav-prev" aria-label="Теневой клинок"><i class="fas fa-chevron-left"></i></a>
-                <a href="icelord.html" class="hero-nav-btn hero-nav-next" aria-label="Повелитель Льдов"><i class="fas fa-chevron-right"></i></a>
-            </div>
+                        <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Василий — гном-изобретатель, покоривший молнию. Там, где другие видят грозу, он видит энергию — и направляет её в врагов. Его молнии прыгают между целями, грозовые облака преследуют противников, а громовой рёв сотрясает землю. Каждое заклинание заряжает его атаки электричеством — Василий не просто бьёт током, он бьёт током дважды.</p>
@@ -174,6 +171,10 @@
         var statsContainer = document.getElementById('hero-stats');
         if (statsContainer && typeof renderHeroStats === 'function') {
             statsContainer.innerHTML = renderHeroStats('thundergod');
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('thundergod');
+        }
         }
         }
     </script>

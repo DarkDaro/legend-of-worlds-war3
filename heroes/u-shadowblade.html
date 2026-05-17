@@ -45,10 +45,7 @@
                 <div class="detail-icon"><i class="fas fa-user-ninja"></i></div>
                 <div class="detail-title">Теневой клинок <span class="detail-badge">Ловкость</span></div>
             </div>
-                        <div class="hero-nav">
-                <a href="drowranger.html" class="hero-nav-btn hero-nav-prev" aria-label="Лучница"><i class="fas fa-chevron-left"></i></a>
-                <a href="thunderer.html" class="hero-nav-btn hero-nav-next" aria-label="Громовержец"><i class="fas fa-chevron-right"></i></a>
-            </div>
+                        <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Теневой клинок — убийца без лица и имени, порождение Тёмного ковена. Он не существует при свете дня — только в тени, где его клинки беззвучно находят жертвы. Ни один страж не замечал его, пока не становилось слишком поздно.</p>
@@ -157,5 +154,15 @@
             <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
+    <script>
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('u-shadowblade');
+        }
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('u-shadowblade');
+        }
+    </script>
 </body>
 </html>

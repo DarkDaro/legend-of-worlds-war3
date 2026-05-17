@@ -45,10 +45,7 @@
                 <div class="detail-icon"><i class="fas fa-ghost"></i></div>
                 <div class="detail-title">Пожиратель душ <span class="detail-badge">Сила</span></div>
             </div>
-                        <div class="hero-nav">
-                <a href="mountainking.html" class="hero-nav-btn hero-nav-prev" aria-label="Король гор"><i class="fas fa-chevron-left"></i></a>
-                <a href="paladin.html" class="hero-nav-btn hero-nav-next" aria-label="Паладин"><i class="fas fa-chevron-right"></i></a>
-            </div>
+                        <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Пожиратель душ — порождение Пустоты, голодный дух, заключённый в броню из костей павших. Каждая убитая им жертва питает его силу, делая всё могущественнее и неуязвимее. Там, где он проходит, остаётся лишь тишина и пустые оболочки.</p>
@@ -160,5 +157,15 @@
             <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
+    <script>
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('u-souleater');
+        }
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('u-souleater');
+        }
+    </script>
 </body>
 </html>

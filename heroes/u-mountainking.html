@@ -45,10 +45,7 @@
                 <div class="detail-icon"><i class="fas fa-mountain"></i></div>
                 <div class="detail-title">Король гор <span class="detail-badge">Сила</span></div>
             </div>
-                        <div class="hero-nav">
-                <a href="flamewarden.html" class="hero-nav-btn hero-nav-prev" aria-label="Огненный страж"><i class="fas fa-chevron-left"></i></a>
-                <a href="souleater.html" class="hero-nav-btn hero-nav-next" aria-label="Пожиратель душ"><i class="fas fa-chevron-right"></i></a>
-            </div>
+                        <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Король гор — могучий воин дворфов, владеющий молотом и топором. Его ярость в бою способна сокрушить целые армии. Легенды гласят, что он был выкован из самой горы и несёт в себе силу земли.</p>
@@ -150,5 +147,15 @@
             <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
+    <script>
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('u-mountainking');
+        }
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('u-mountainking');
+        }
+    </script>
 </body>
 </html>

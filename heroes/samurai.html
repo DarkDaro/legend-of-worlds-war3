@@ -45,10 +45,7 @@
                 <div class="detail-icon"><i class="fas fa-torii-gate"></i></div>
                 <div class="detail-title">Самурай <span class="detail-badge">Ловкость</span></div>
             </div>
-                        <div class="hero-nav">
-                <a href="murloc.html" class="hero-nav-btn hero-nav-prev" aria-label="Мурлок"><i class="fas fa-chevron-left"></i></a>
-                <a href="blademaster.html" class="hero-nav-btn hero-nav-next" aria-label="Мастер клинка"><i class="fas fa-chevron-right"></i></a>
-            </div>
+                        <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Самурай — странствующий мастер меча, следующий кодексу чести. Его молниеносные удары разят точно в сердце, а несгибаемый дух позволяет выстоять против любого врага.</p>
@@ -147,5 +144,15 @@
             <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
+    <script>
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('samurai');
+        }
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('samurai');
+        }
+    </script>
 </body>
 </html>

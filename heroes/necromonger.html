@@ -45,9 +45,7 @@
                 <div class="detail-icon"><i class="fas fa-book-dead"></i></div>
                 <div class="detail-title">Некромант <span class="detail-badge">Разум</span></div>
             </div>
-                        <div class="hero-nav">
-                <a href="bloodshaman.html" class="hero-nav-btn hero-nav-prev" aria-label="Шаман крови"><i class="fas fa-chevron-left"></i></a>
-            </div>
+                        <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div class="detail-description">
                 <p>Некромант владеет запретной магией смерти, вытягивает жизненную силу из врагов и поднимает павших на службу своему повелителю.</p>
@@ -146,5 +144,15 @@
             <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
+    <script>
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('necromonger');
+        }
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('necromonger');
+        }
+    </script>
 </body>
 </html>
