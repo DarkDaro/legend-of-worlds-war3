@@ -15,6 +15,7 @@
     <script src="../search.js"></script>
     <script src="../items-db.js" defer></script>
     <script src="../icon-loader.js" defer></script>
+    <script src="../hero-builds.js"></script>
     <script src="../analytics.js" defer></script>
 </head>
 <body class="page-heroes agility">
@@ -54,6 +55,7 @@
             <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
             <div id="hero-build"></div>
             <a href="../calculator.html?hero=murloc" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+            <a href="../bot-builds.html?rawcode=E004" class="calc-link-btn"><i class="fas fa-robot"></i> Сборка ИИ</a>
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
@@ -153,6 +155,10 @@
         var navContainer = document.getElementById('hero-nav');
         if (navContainer && typeof renderHeroNav === 'function') {
             navContainer.innerHTML = renderHeroNav('murloc');
+        }
+        var buildContainer = document.getElementById('hero-build');
+        if (buildContainer && typeof renderHeroBuild === 'function') {
+            buildContainer.innerHTML = renderHeroBuild('murloc');
         }
     </script>
 </body>

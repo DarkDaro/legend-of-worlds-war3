@@ -508,7 +508,7 @@ var ATTR_CLASS_MAP = { strength: 'compare-attr-strength', agility: 'compare-attr
 var ROLE_LABELS = { tank: 'Танк', damager: 'Дамагер', support: 'Помощник' };
 
 HEROES_DATA.forEach(function(hero) {
-    if (!hero.strBase || !hero.hp) return; // пропускаем героев без полных данных
+    if (hero.isAltForm || hero.wip) return; // пропускаем альт-формы и WIP
     HERO_COMPARE_DATA[hero.heroId] = {
         id: hero.heroId,
         name: hero.name,

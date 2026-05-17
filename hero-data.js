@@ -31,172 +31,200 @@ var HEROES_DATA = [
       strBase: 24, strGain: 3, agiBase: 13, agiGain: 2, intBase: 23, intGain: 2,
       hp: 800, mp: 150, atk: 30, def: 2, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 280, range: 150, sightDay: 1800, sightNight: 800 },
 
-    { name: 'Герой для битья', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: '[hamg', image: '[hamg',
-      rawcode: '[Hamg',
-      strBase: 500, strGain: 100, agiBase: 1, agiGain: 0, intBase: 1, intGain: 0,
-      hp: 999999, mp: 10000, atk: 0, def: 0, atkSpeed: 5, hpRegen: 99999, mpRegen: 100, speed: 1, range: 150, sightDay: 1800, sightNight: 800 },
-
     { name: 'Астральный Палач', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'astral-executioner', image: 'astral-executioner',
+      noPage: true,
       rawcode: 'E011',
       strBase: 25, strGain: 3, agiBase: 18, agiGain: 2, intBase: 17, intGain: 2,
       hp: 650, mp: 150, atk: 20, def: 1, atkSpeed: 2, hpRegen: 1, mpRegen: 0, speed: 290, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Костолом', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'bonebreaker', image: 'bonebreaker',
+      noPage: true,
       rawcode: 'H01U',
       strBase: 28, strGain: 3, agiBase: 12, agiGain: 2, intBase: 20, intGain: 2,
       hp: 650, mp: 150, atk: 45, def: 0, atkSpeed: 2, hpRegen: 1, mpRegen: 0, speed: 295, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Скала', title: '', attr: 'strength', role: 'support', roleName: 'Помощник', heroId: 'rock', image: 'rock',
+      wip: true,
       rawcode: 'H020',
       strBase: 28, strGain: 3, agiBase: 12, agiGain: 2, intBase: 14, intGain: 2,
       hp: 300, mp: 0, atk: 40, def: 0, atkSpeed: 2, hpRegen: 1, mpRegen: 0, speed: 300, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Огненный Рыцарь', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'fire-knight', image: 'fire-knight',
+      noPage: true,
       rawcode: 'H02A',
       strBase: 25, strGain: 3, agiBase: 15, agiGain: 2, intBase: 20, intGain: 2,
       hp: 800, mp: 0, atk: 30, def: 0, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0, speed: 290, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Воин глубин', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'deep-warrior', image: 'deep-warrior',
+      noPage: true,
       rawcode: 'H07A',
       strBase: 32, strGain: 3, agiBase: 16, agiGain: 2, intBase: 12, intGain: 2,
       hp: 600, mp: 150, atk: 35, def: 0, atkSpeed: 2, hpRegen: 2, mpRegen: 0, speed: 305, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Рыцарь Света', title: '', attr: 'strength', role: 'support', roleName: 'Помощник', heroId: 'knight-of-light', image: 'knight-of-light',
+      wip: true,
       rawcode: 'H098',
       strBase: 0, strGain: 3, agiBase: 15, agiGain: 2, intBase: 12, intGain: 2,
       hp: 200, mp: 150, atk: 30, def: 0, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0, speed: 290, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Тирион', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'tyrion', image: 'tyrion',
+      wip: true,
       rawcode: 'H0A7',
       strBase: 24, strGain: 3, agiBase: 0, agiGain: 2, intBase: 23, intGain: 2,
       hp: 800, mp: 150, atk: 55, def: 0, atkSpeed: 2, hpRegen: 2, mpRegen: 0, speed: 280, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Разрушитель', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'destroyer', image: 'destroyer',
+      noPage: true,
       rawcode: 'N00I',
       strBase: 32, strGain: 3, agiBase: 0, agiGain: 2, intBase: 0, intGain: 2,
       hp: 750, mp: 150, atk: 30, def: 2, atkSpeed: 2, hpRegen: 0, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Всадник', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'rider', image: 'rider',
+      noPage: true,
       rawcode: 'O003',
       strBase: 25, strGain: 3, agiBase: 19, agiGain: 2, intBase: 0, intGain: 2,
       hp: 650, mp: 0, atk: 27, def: 1, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Вождь Минотавров', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'minotaur-chief', image: 'minotaur-chief',
+      noPage: true,
       rawcode: 'O006',
       strBase: 30, strGain: 3, agiBase: 16, agiGain: 2, intBase: 0, intGain: 3,
       hp: 700, mp: 150, atk: 25, def: 0, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0, speed: 290, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Вождь Орков', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'orc-chieftain', image: 'orc-chieftain',
+      noPage: true,
       rawcode: 'O00A',
       strBase: 25, strGain: 3, agiBase: 20, agiGain: 2, intBase: 15, intGain: 2,
       hp: 650, mp: 150, atk: 26, def: 1, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0, speed: 305, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Титан', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'titan', image: 'titan',
+      noPage: true,
       rawcode: 'O00B',
       strBase: 27, strGain: 3, agiBase: 18, agiGain: 2, intBase: 0, intGain: 2,
       hp: 750, mp: 150, atk: 25, def: 0, atkSpeed: 2, hpRegen: 1, mpRegen: 0, speed: 290, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Вурдалак', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'vurdalak', image: 'vurdalak',
+      noPage: true,
       rawcode: 'O00D',
       strBase: 30, strGain: 3, agiBase: 14, agiGain: 2, intBase: 0, intGain: 2,
       hp: 650, mp: 0, atk: 30, def: 2, atkSpeed: 2, hpRegen: 3, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Ангел Смерти', title: '', attr: 'strength', role: 'support', roleName: 'Помощник', heroId: 'angel-of-death', image: 'angel-of-death',
+      wip: true,
       rawcode: 'O00Q',
       strBase: 25, strGain: 3, agiBase: 25, agiGain: 2, intBase: 10, intGain: 2,
       hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Мясник', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'butcher', image: 'butcher',
+      noPage: true,
       rawcode: 'U001',
       strBase: 31, strGain: 3, agiBase: 0, agiGain: 2, intBase: 13, intGain: 2,
       hp: 1000, mp: 0, atk: 20, def: 2, atkSpeed: 2, hpRegen: 5, mpRegen: 0, speed: 290, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Огненный Голем', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'fire-golem-hero', image: 'fire-golem-hero',
+      noPage: true,
       rawcode: 'U007',
       strBase: 31, strGain: 3, agiBase: 15, agiGain: 2, intBase: 14, intGain: 2,
       hp: 700, mp: 150, atk: 20, def: 3, atkSpeed: 2, hpRegen: 5, mpRegen: 0, speed: 280, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Король Проклятых', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'king-of-cursed', image: 'king-of-cursed',
+      noPage: true,
       rawcode: 'U009',
       strBase: 25, strGain: 3, agiBase: 15, agiGain: 2, intBase: 20, intGain: 2,
       hp: 650, mp: 200, atk: 20, def: 0, atkSpeed: 2, hpRegen: 0, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Лорд Хаоса', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'chaos-lord', image: 'chaos-lord',
+      noPage: true,
       rawcode: 'U00A',
       strBase: 22, strGain: 3, agiBase: 0, agiGain: 2, intBase: 0, intGain: 2,
       hp: 700, mp: 150, atk: 20, def: 2, atkSpeed: 2, hpRegen: 0, mpRegen: 0, speed: 300, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Повелитель Могил', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'grave-lord', image: 'grave-lord',
+      noPage: true,
       rawcode: 'U01J',
       strBase: 30, strGain: 3, agiBase: 0, agiGain: 2, intBase: 16, intGain: 2,
       hp: 600, mp: 150, atk: 30, def: 2, atkSpeed: 2, hpRegen: 0, mpRegen: 0, speed: 290, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Ледяной рыцарь', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'ice-knight', image: 'ice-knight',
+      noPage: true,
       rawcode: 'U01T',
       strBase: 26, strGain: 3, agiBase: 18, agiGain: 2, intBase: 18, intGain: 2,
       hp: 650, mp: 200, atk: 20, def: 0, atkSpeed: 2, hpRegen: 0, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Хаотическая Форма', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'chaos-lord-chaos', image: 'chaos-lord-chaos',
+      isAltForm: true,
       rawcode: 'H088',
       strBase: 30, strGain: 3, agiBase: 15, agiGain: 2, intBase: 15, intGain: 2,
       hp: 1600, mp: 0, atk: 130, def: 12, atkSpeed: 2, hpRegen: 21, mpRegen: 0, speed: 390, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Привратник Ада', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'hell-gatekeeper', image: 'hell-gatekeeper',
+      isAltForm: true,
       rawcode: 'H08A',
       strBase: 30, strGain: 3, agiBase: 15, agiGain: 2, intBase: 15, intGain: 2,
       hp: 800, mp: 0, atk: 30, def: 0, atkSpeed: 2, hpRegen: 1, mpRegen: 0, speed: 290, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Костолом', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'bonebreaker-alt', image: 'bonebreaker-alt',
+      isAltForm: true,
       rawcode: 'H099',
       strBase: 1, strGain: 3, agiBase: 1, agiGain: 2, intBase: 1, intGain: 2,
       hp: 600, mp: 0, atk: 30, def: 3, atkSpeed: 0, hpRegen: 5, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Всадник', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'rider-mounted', image: 'rider-mounted',
+      isAltForm: true,
       rawcode: 'O004',
       strBase: 25, strGain: 3, agiBase: 19, agiGain: 2, intBase: 0, intGain: 2,
       hp: 1250, mp: 0, atk: 177, def: 1, atkSpeed: 1, hpRegen: 1, mpRegen: 0, speed: 522, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Гнев Титана', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'titan-enraged', image: 'titan-enraged',
+      isAltForm: true,
       rawcode: 'O00C',
       strBase: 27, strGain: 3, agiBase: 18, agiGain: 2, intBase: 0, intGain: 2,
       hp: 1250, mp: 0, atk: 225, def: 21, atkSpeed: 1.7, hpRegen: 15, mpRegen: 0, speed: 350, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Лорд Хаоса', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'chaos-lord-alt', image: 'chaos-lord-alt',
+      isAltForm: true,
       rawcode: 'U00B',
       strBase: 22, strGain: 3, agiBase: 0, agiGain: 2, intBase: 0, intGain: 2,
       hp: 1700, mp: 0, atk: 170, def: 2, atkSpeed: 1.7, hpRegen: 50, mpRegen: 0.5, speed: 522, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Пивовар', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'brewmaster', image: 'brewmaster',
+      noPage: true,
       rawcode: 'N002',
       strBase: 24, strGain: 3, agiBase: 17, agiGain: 2, intBase: 19, intGain: 2,
       hp: 650, mp: 0, atk: 20, def: 2, atkSpeed: 2, hpRegen: 2, mpRegen: 0, speed: 300, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Чародей', title: '', attr: 'strength', role: 'support', roleName: 'Помощник', heroId: 'sorcerer', image: 'sorcerer',
+      noPage: true,
       rawcode: 'H011',
       strBase: 0, strGain: 2, agiBase: 16, agiGain: 2, intBase: 28, intGain: 2,
       hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0.5, mpRegen: 0, speed: 290, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Астральный маг', title: '', attr: 'strength', role: 'support', roleName: 'Помощник', heroId: 'astral-mage', image: 'astral-mage',
+      noPage: true,
       rawcode: 'H055',
       strBase: 0, strGain: 2, agiBase: 0, agiGain: 2, intBase: 28, intGain: 2,
       hp: 200, mp: 150, atk: 25, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Демон', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'demon', image: 'demon',
+      noPage: true,
       rawcode: 'O00M',
       strBase: 25, strGain: 3, agiBase: 22, agiGain: 3, intBase: 13, intGain: 2,
       hp: 500, mp: 150, atk: 46, def: 2, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0, speed: 305, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Пожиратель пламени', title: '', attr: 'strength', role: 'support', roleName: 'Помощник', heroId: 'flame-eater', image: 'flame-eater',
+      noPage: true,
       rawcode: 'H08O',
       strBase: 18, strGain: 2, agiBase: 16, agiGain: 2, intBase: 26, intGain: 2,
       hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0.5, mpRegen: 0, speed: 290, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Темный мастер', title: '', attr: 'strength', role: 'support', roleName: 'Помощник', heroId: 'dark-master', image: 'dark-master',
+      noPage: true,
       rawcode: 'H07E',
       strBase: 20, strGain: 2, agiBase: 20, agiGain: 2, intBase: 20, intGain: 2,
       hp: 200, mp: 500, atk: 50, def: 1, atkSpeed: 2.25, hpRegen: 0.5, mpRegen: 0, speed: 320, range: 700, sightDay: 1800, sightNight: 800 },
 
     { name: 'Вершитель', title: '', attr: 'strength', role: 'support', roleName: 'Помощник', heroId: 'arbiter', image: 'arbiter',
+      noPage: true,
       rawcode: 'H0A6',
       strBase: 0, strGain: 2, agiBase: 16, agiGain: 2, intBase: 28, intGain: 2,
       hp: 200, mp: 0, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
@@ -206,7 +234,7 @@ var HEROES_DATA = [
 
     { name: 'Иллюзионист', title: 'Мастер обмана', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'illusionist', image: 'illusionist',
       rawcode: 'E000',
-      strBase: 17, strGain: 2, agiBase: 17, agiGain: 2, intBase: 13, intGain: 2,
+      strBase: 20, strGain: 2, agiBase: 22, agiGain: 3, intBase: 18, intGain: 2,
       hp: 200, mp: 150, atk: 70, def: 4, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Мурлок', title: 'Подводный охотник', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'murloc', image: 'murloc',
@@ -219,97 +247,110 @@ var HEROES_DATA = [
       strBase: 20, strGain: 2.5, agiBase: 31, agiGain: 4, intBase: 18, intGain: 1.7,
       hp: 450, mp: 420, atk: 75, def: 2, atkSpeed: 2.2, hpRegen: 0.5, mpRegen: 0.02, speed: 300, range: 625, sightDay: 1800, sightNight: 800 },
 
-    { name: 'Мастер клинка', title: 'Блуждающий клинок', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'blademaster', image: 'blademaster',
-      rawcode: 'N01C',
-      strBase: 18, strGain: 2, agiBase: 24, agiGain: 3.2, intBase: 16, intGain: 1.7,
-      hp: null, mp: null, atk: null, def: null, atkSpeed: null, hpRegen: null, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 },
-
     { name: 'Воительница', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'warrioress', image: 'warrioress',
+      noPage: true,
       rawcode: 'E00H',
       strBase: 21, strGain: 2, agiBase: 24, agiGain: 3, intBase: 0, intGain: 0,
       hp: 200, mp: 0, atk: 50, def: 2, atkSpeed: 1.7, hpRegen: 0, mpRegen: 0, speed: 310, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Жрица Луны', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'priestess', image: 'priestess',
+      noPage: true,
       rawcode: 'E010',
       strBase: 0, strGain: 2, agiBase: 27, agiGain: 3, intBase: 16, intGain: 2,
       hp: 200, mp: 150, atk: 60, def: 1, atkSpeed: 1.7, hpRegen: 1, mpRegen: 0, speed: 0, range: 700, sightDay: 1800, sightNight: 800 },
 
     { name: 'Стражница', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'guardian', image: 'guardian',
+      noPage: true,
       rawcode: 'E020',
       strBase: 21, strGain: 2, agiBase: 24, agiGain: 3, intBase: 0, intGain: 0,
       hp: 200, mp: 0, atk: 40, def: 2, atkSpeed: 1.7, hpRegen: 0, mpRegen: 0, speed: 310, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Зодиак', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'zodiac', image: 'zodiac',
+      noPage: true,
       rawcode: 'E02O',
       strBase: 18, strGain: 2, agiBase: 24, agiGain: 3, intBase: 18, intGain: 2,
       hp: 200, mp: 150, atk: 40, def: 1, atkSpeed: 0, hpRegen: 0, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Ночной Хищник', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'night-predator', image: 'night-predator',
+      noPage: true,
       rawcode: 'E03S',
       strBase: 25, strGain: 2, agiBase: 25, agiGain: 3, intBase: 10, intGain: 2,
       hp: 200, mp: 150, atk: 60, def: 1, atkSpeed: 0, hpRegen: 0, mpRegen: 0, speed: 280, range: 150, sightDay: 1800, sightNight: 1800 },
 
     { name: 'Егерь', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'ranger', image: 'ranger',
+      noPage: true,
       rawcode: 'H001',
       strBase: 17, strGain: 2, agiBase: 27, agiGain: 3, intBase: 16, intGain: 2,
       hp: 200, mp: 150, atk: 70, def: 1, atkSpeed: 1.7, hpRegen: 0, mpRegen: 0, speed: 310, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Тень', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'shadow', image: 'shadow',
+      noPage: true,
       rawcode: 'H037',
       strBase: 20, strGain: 2, agiBase: 25, agiGain: 3, intBase: 15, intGain: 2,
       hp: 200, mp: 150, atk: 55, def: 1, atkSpeed: 1.7, hpRegen: 1, mpRegen: 0, speed: 295, range: 700, sightDay: 1800, sightNight: 800 },
 
     { name: 'Десантник', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'marine', image: 'marine',
+      noPage: true,
       rawcode: 'H03H',
       strBase: 18, strGain: 2, agiBase: 25, agiGain: 3, intBase: 0, intGain: 2,
       hp: 250, mp: 150, atk: 40, def: 0, atkSpeed: 1.7, hpRegen: 1, mpRegen: 0, speed: 300, range: 700, sightDay: 1800, sightNight: 800 },
 
     { name: 'Покорительница молний', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'lightning-subjugator', image: 'lightning-subjugator',
+      noPage: true,
       rawcode: 'H046',
       strBase: 16, strGain: 2, agiBase: 28, agiGain: 3, intBase: 16, intGain: 2,
       hp: 200, mp: 150, atk: 45, def: 1, atkSpeed: 1.7, hpRegen: 0, mpRegen: 0, speed: 310, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Отец Тьмы', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'father-of-darkness', image: 'father-of-darkness',
+      noPage: true,
       rawcode: 'H089',
       strBase: 17, strGain: 2, agiBase: 25, agiGain: 3, intBase: 18, intGain: 2,
       hp: 250, mp: 150, atk: 70, def: 0, atkSpeed: 1.7, hpRegen: 2, mpRegen: 0, speed: 305, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Темный Рыцарь', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'dark-knight', image: 'dark-knight',
+      noPage: true,
       rawcode: 'H09N',
       strBase: 20, strGain: 2, agiBase: 26, agiGain: 3, intBase: 14, intGain: 2,
       hp: 200, mp: 150, atk: 70, def: 0, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0, speed: 320, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Астральная Охотница', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'astral-huntress', image: 'astral-huntress',
+      noPage: true,
       rawcode: 'H0AG',
       strBase: 17, strGain: 2, agiBase: 27, agiGain: 3, intBase: 16, intGain: 2,
       hp: 200, mp: 150, atk: 45, def: 0, atkSpeed: 1.7, hpRegen: 0, mpRegen: 0, speed: 290, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Пламенный Берсеркер', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'flame-berserker', image: 'flame-berserker',
+      noPage: true,
       rawcode: 'O008',
       strBase: 17, strGain: 2, agiBase: 29, agiGain: 3, intBase: 0, intGain: 2,
       hp: 300, mp: 150, atk: 65, def: 2, atkSpeed: 1.7, hpRegen: 2, mpRegen: 0, speed: 290, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Грозовой Рыцарь', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'storm-knight', image: 'storm-knight',
+      noPage: true,
       rawcode: 'O00F',
       strBase: 21, strGain: 2, agiBase: 24, agiGain: 3, intBase: 0, intGain: 2,
       hp: 250, mp: 150, atk: 40, def: 0, atkSpeed: 1.7, hpRegen: 2, mpRegen: 0, speed: 310, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Водяной', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'water-spirit', image: 'water-spirit',
+      noPage: true,
       rawcode: 'O00L',
       strBase: 18, strGain: 2, agiBase: 28, agiGain: 3, intBase: 0, intGain: 2,
       hp: 450, mp: 150, atk: 40, def: 2, atkSpeed: 1.7, hpRegen: 2, mpRegen: 0, speed: 300, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Вампир', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'vampire', image: 'vampire',
+      noPage: true,
       rawcode: 'U006',
       strBase: 15, strGain: 2, agiBase: 30, agiGain: 3, intBase: 15, intGain: 2,
       hp: 200, mp: 150, atk: 50, def: 1, atkSpeed: 1.7, hpRegen: 2, mpRegen: 0, speed: 300, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Демоническая Форма', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'illusionist-demon', image: 'illusionist-demon',
+      isAltForm: true,
       rawcode: 'E002',
-      strBase: 20, strGain: 2, agiBase: 0, agiGain: 3, intBase: 18, intGain: 2,
+      strBase: 20, strGain: 2, agiBase: 22, agiGain: 3, intBase: 18, intGain: 2,
       hp: 1200, mp: 0, atk: 170, def: 4, atkSpeed: 0, hpRegen: 60, mpRegen: 0, speed: 0, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Пламенный Берсеркер', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'flame-berserker-alt', image: 'flame-berserker-alt',
+      isAltForm: true,
       rawcode: 'O009',
       strBase: 17, strGain: 2, agiBase: 29, agiGain: 3, intBase: 0, intGain: 2,
       hp: 1300, mp: 150, atk: 165, def: 2, atkSpeed: 1.7, hpRegen: 102, mpRegen: 0, speed: 290, range: 750, sightDay: 1800, sightNight: 800 },
@@ -320,46 +361,55 @@ var HEROES_DATA = [
       hp: 200, mp: 150, atk: 40, def: 1, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Призрак', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'ghost', image: 'ghost',
+      noPage: true,
       rawcode: 'O002',
       strBase: 20, strGain: 2, agiBase: 30, agiGain: 3, intBase: 10, intGain: 2,
       hp: 200, mp: 150, atk: 55, def: 2, atkSpeed: 1.7, hpRegen: 1, mpRegen: 0, speed: 310, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Морской Страж', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'sea-guard', image: 'sea-guard',
+      noPage: true,
       rawcode: 'O005',
       strBase: 20, strGain: 2, agiBase: 26, agiGain: 3, intBase: 14, intGain: 2,
       hp: 200, mp: 150, atk: 45, def: 1, atkSpeed: 1.7, hpRegen: 1, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Звездный Дух', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'star-spirit', image: 'star-spirit',
+      noPage: true,
       rawcode: 'O00K',
       strBase: 19, strGain: 2, agiBase: 25, agiGain: 3, intBase: 0, intGain: 2,
       hp: 250, mp: 150, atk: 50, def: 1, atkSpeed: 1.7, hpRegen: 1, mpRegen: 0, speed: 0, range: 700, sightDay: 1800, sightNight: 800 },
 
     { name: 'Ночная Мстительница', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'night-avenger', image: 'night-avenger',
+      noPage: true,
       rawcode: 'O00O',
       strBase: 15, strGain: 2, agiBase: 30, agiGain: 3, intBase: 15, intGain: 2,
       hp: 200, mp: 150, atk: 50, def: 0, atkSpeed: 1.7, hpRegen: 1, mpRegen: 0, speed: 0, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Скелет', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'skeleton', image: 'skeleton',
+      noPage: true,
       rawcode: 'O00E',
       strBase: 16, strGain: 2, agiBase: 28, agiGain: 3, intBase: 0, intGain: 2,
       hp: 200, mp: 150, atk: 40, def: 1, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Мятежник', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'rebel', image: 'rebel',
+      noPage: true,
       rawcode: 'O00P',
       strBase: 15, strGain: 2, agiBase: 28, agiGain: 3, intBase: 17, intGain: 2,
       hp: 200, mp: 150, atk: 50, def: 1, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Ассасин', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'assassin', image: 'assassin',
+      noPage: true,
       rawcode: 'O010',
       strBase: 20, strGain: 2, agiBase: 25, agiGain: 3, intBase: 15, intGain: 2,
       hp: 200, mp: 150, atk: 50, def: 1, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0, speed: 310, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Огненная Панда', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'fire-panda', image: 'fire-panda',
+      noPage: true,
       rawcode: 'O011',
       strBase: 10, strGain: 2, agiBase: 40, agiGain: 3, intBase: 10, intGain: 2,
       hp: 200, mp: 150, atk: 50, def: 1, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Блудсасир', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'bloodsucker', image: 'bloodsucker',
+      wip: true,
       rawcode: 'H095',
       strBase: 23, strGain: 1.8, agiBase: 24, agiGain: 3, intBase: 18, intGain: 1.696875,
       hp: 150, mp: 0, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
@@ -388,91 +438,104 @@ var HEROES_DATA = [
       hp: 350, mp: 500, atk: 40, def: 2, atkSpeed: 2.3, hpRegen: 0.8, mpRegen: 0.04, speed: 290, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Дух природы', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'spirit-of-nature', image: 'spirit-of-nature',
+      isAltForm: true,
       rawcode: 'E03H',
       strBase: 20, strGain: 2, agiBase: 18, agiGain: 2, intBase: 22, intGain: 3,
       hp: 1250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 51, mpRegen: 0, speed: 0, range: 750, sightDay: 800, sightNight: 800 },
 
     { name: 'Воин Света', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'warrior-of-light', image: 'warrior-of-light',
+      noPage: true,
       rawcode: 'H00F',
       strBase: 21, strGain: 2, agiBase: 0, agiGain: 2, intBase: 26, intGain: 3,
       hp: 200, mp: 150, atk: 20, def: 0, atkSpeed: 2.25, hpRegen: 0.5, mpRegen: 0, speed: 290, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Повелитель Тьмы', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'dark-lord', image: 'dark-lord',
+      noPage: true,
       rawcode: 'H00V',
       strBase: 18, strGain: 2, agiBase: 13, agiGain: 2, intBase: 29, intGain: 3,
       hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 310, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Темный Маг', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'dark-mage', image: 'dark-mage',
+      noPage: true,
       rawcode: 'H02F',
       strBase: 18, strGain: 2, agiBase: 12, agiGain: 2, intBase: 30, intGain: 3,
       hp: 200, mp: 150, atk: 30, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 300, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Волшебница Ветров', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'wind-enchantress', image: 'wind-enchantress',
+      noPage: true,
       rawcode: 'H02G',
       strBase: 15, strGain: 2, agiBase: 15, agiGain: 2, intBase: 30, intGain: 3,
       hp: 200, mp: 150, atk: 25, def: 0, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 290, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Маг Воздуха', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'air-mage', image: 'air-mage',
+      noPage: true,
       rawcode: 'H04E',
       strBase: 15, strGain: 2, agiBase: 18, agiGain: 2, intBase: 27, intGain: 3,
       hp: 200, mp: 150, atk: 25, def: 0, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 310, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Ведьмак Хаоса', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'chaos-witcher', image: 'chaos-witcher',
+      noPage: true,
       rawcode: 'H08T',
       strBase: 18, strGain: 2, agiBase: 16, agiGain: 2, intBase: 26, intGain: 3,
       hp: 200, mp: 250, atk: 25, def: 0, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 310, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Шторм', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'storm', image: 'storm',
+      noPage: true,
       rawcode: 'N00E',
       strBase: 15, strGain: 2, agiBase: 15, agiGain: 2, intBase: 30, intGain: 3,
       hp: 200, mp: 150, atk: 30, def: 0, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 320, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Рыцарь глубин', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'knight-of-depths', image: 'knight-of-depths',
+      noPage: true,
       rawcode: 'O00G',
       strBase: 20, strGain: 2, agiBase: 14, agiGain: 2, intBase: 26, intGain: 3,
       hp: 300, mp: 150, atk: 25, def: 0, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 300, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Гидралиск', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'hydralisk', image: 'hydralisk',
+      noPage: true,
       rawcode: 'O00N',
       strBase: 16, strGain: 2, agiBase: 18, agiGain: 2, intBase: 26, intGain: 3,
       hp: 300, mp: 150, atk: 25, def: 0, atkSpeed: 2, hpRegen: 1, mpRegen: 0, speed: 300, range: 600, sightDay: 1800, sightNight: 800 },
 
-    { name: 'Друид (не используется)', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'e003', image: 'e003',
-      rawcode: 'E003',
-      strBase: 18, strGain: 2, agiBase: 12, agiGain: 2, intBase: 20, intGain: 3,
-      hp: 700, mp: 0, atk: 80, def: 5, atkSpeed: 2, hpRegen: 10, mpRegen: 0, speed: 260, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Повелитель Льдов', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'ice-lord', image: 'ice-lord',
+      noPage: true,
       rawcode: 'U000',
       strBase: 0, strGain: 2, agiBase: 13, agiGain: 2, intBase: 32, intGain: 3,
       hp: 200, mp: 0, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0, mpRegen: 0, speed: 280, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Повелитель Огня ', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'fire-lord', image: 'fire-lord',
+      noPage: true,
       rawcode: 'N005',
       strBase: 16, strGain: 2, agiBase: 17, agiGain: 2, intBase: 27, intGain: 3,
       hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0, mpRegen: 0, speed: 305, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Повелитель Вихрей', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'wind-lord', image: 'wind-lord',
+      noPage: true,
       rawcode: 'O007',
       strBase: 19, strGain: 2, agiBase: 14, agiGain: 2, intBase: 27, intGain: 3,
       hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0.5, mpRegen: 0, speed: 305, range: 750, sightDay: 1800, sightNight: 800 },
 
     { name: 'Владыка Молний', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'lightning-lord', image: 'lightning-lord',
+      noPage: true,
       rawcode: 'O00H',
       strBase: 16, strGain: 2, agiBase: 14, agiGain: 2, intBase: 30, intGain: 3,
       hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 310, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Темный Шаман', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'dark-shaman', image: 'dark-shaman',
+      noPage: true,
       rawcode: 'O00I',
       strBase: 15, strGain: 2, agiBase: 13, agiGain: 2, intBase: 32, intGain: 3,
       hp: 250, mp: 0, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 290, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Снежная Королева', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'snow-queen', image: 'snow-queen',
+      noPage: true,
       rawcode: 'O00J',
       strBase: 15, strGain: 2, agiBase: 15, agiGain: 2, intBase: 30, intGain: 3,
       hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 305, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Владыка Грома', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'thunder-lord-2', image: 'thunder-lord-2',
+      noPage: true,
       rawcode: 'O00X',
       strBase: 13, strGain: 2, agiBase: 14, agiGain: 2, intBase: 28, intGain: 3,
       hp: 250, mp: 0, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
@@ -527,20 +590,28 @@ function renderHeroStats(heroId) {
 
 // Навигация между героями: prev/next по порядку в HEROES_DATA
 function renderHeroNav(heroId) {
-    var idx = HEROES_DATA.findIndex(function(h) { return h.heroId === heroId; });
+    // Герои, у которых есть своя HTML-страница
+    var pageHeroIds = [
+        'paladin', 'admiral', 'druid', 'cyborg', 'thundergod',
+        'illusionist', 'archmage', 'dark-archer', 'leshy',
+        'necromonger', 'samurai', 'murloc'
+    ];
+    var idx = pageHeroIds.indexOf(heroId);
     if (idx === -1) return '';
 
-    var prev = idx > 0 ? HEROES_DATA[idx - 1] : null;
-    var next = idx < HEROES_DATA.length - 1 ? HEROES_DATA[idx + 1] : null;
+    var prevId = idx > 0 ? pageHeroIds[idx - 1] : null;
+    var nextId = idx < pageHeroIds.length - 1 ? pageHeroIds[idx + 1] : null;
+    var prevHero = prevId ? findHero(prevId) : null;
+    var nextHero = nextId ? findHero(nextId) : null;
 
     var html = '<div class="hero-nav">';
-    if (prev) {
-        html += '<a href="' + prev.heroId + '.html" class="hero-nav-btn hero-nav-prev" aria-label="' + prev.name + '"><i class="fas fa-chevron-left"></i></a>';
+    if (prevHero) {
+        html += '<a href="' + prevHero.heroId + '.html" class="hero-nav-btn hero-nav-prev" aria-label="' + prevHero.name + '"><i class="fas fa-chevron-left"></i></a>';
     } else {
         html += '<span class="hero-nav-btn hero-nav-prev hero-nav-disabled"><i class="fas fa-chevron-left"></i></span>';
     }
-    if (next) {
-        html += '<a href="' + next.heroId + '.html" class="hero-nav-btn hero-nav-next" aria-label="' + next.name + '"><i class="fas fa-chevron-right"></i></a>';
+    if (nextHero) {
+        html += '<a href="' + nextHero.heroId + '.html" class="hero-nav-btn hero-nav-next" aria-label="' + nextHero.name + '"><i class="fas fa-chevron-right"></i></a>';
     } else {
         html += '<span class="hero-nav-btn hero-nav-next hero-nav-disabled"><i class="fas fa-chevron-right"></i></span>';
     }

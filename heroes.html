@@ -131,6 +131,7 @@
                     <div class="hero-image">${iconHtml}</div>
                     ${hero.unique ? '<span class="unique-badge"><i class="fas fa-star"></i></span>' : ''}
                     ${hero.wip ? '<span class="wip-badge"><i class="fas fa-hammer"></i> В разработке</span>' : ''}
+                    ${hero.noPage ? '<span class="wip-badge" style="background:rgba(100,100,120,0.5);"><i class="fas fa-file-circle-xmark"></i> Скоро</span>' : ''}
                     <div class="hero-name">${hero.name}</div>
                     <div class="hero-title">${hero.title}</div>
                     <div class="hero-role role-${hero.role}">${roleIcons[hero.role]} ${hero.roleName}</div>
@@ -143,6 +144,8 @@
                 });
 
                 card.addEventListener('click', () => {
+                    // Герои без страницы — не переходим
+                    if (hero.noPage) return;
                     window.location.href = 'heroes/' + hero.heroId + '.html';
                 });
 
@@ -159,10 +162,10 @@
                 heroGrid.innerHTML = '';
                 heroesData.forEach(hero => {
                     const card = createHeroCard(hero);
-                    let show = currentFilter === 'all' && !hero.unique
+                    let show = currentFilter === 'all' && !hero.unique && !hero.isAltForm
                         || (currentFilter === 'unique' && hero.unique)
                         || (currentFilter === 'wip' && hero.wip)
-                        || (hero.attr === currentFilter && !hero.unique);
+                        || (hero.attr === currentFilter && !hero.unique && !hero.isAltForm);
                     if (currentFilter === 'favorites') {
                         show = favorites.includes(hero.heroId);
                     }

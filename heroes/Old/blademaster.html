@@ -15,6 +15,7 @@
     <script src="../search.js"></script>
     <script src="../items-db.js" defer></script>
     <script src="../icon-loader.js" defer></script>
+    <script src="../hero-builds.js"></script>
     <script src="../analytics.js" defer></script>
 </head>
 <body class="page-heroes agility">
@@ -152,6 +153,10 @@
         var navContainer = document.getElementById('hero-nav');
         if (navContainer && typeof renderHeroNav === 'function') {
             navContainer.innerHTML = renderHeroNav('blademaster');
+        }
+        var buildContainer = document.getElementById('hero-build');
+        if (buildContainer && typeof renderHeroBuild === 'function') {
+            buildContainer.innerHTML = renderHeroBuild('blademaster');
         }
     </script>
 </body>
