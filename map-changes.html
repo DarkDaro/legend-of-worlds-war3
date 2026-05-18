@@ -5,8 +5,15 @@
     <link rel="icon" href="images/logo.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Изменения карты · Legend of Worlds</title>
+    <meta property="og:title" content="Изменения карты — Legend of Worlds">
+    <meta property="og:description" content="Реестр изменений баланса и механик карты Legend of Worlds.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="hero-data.js"></script>
+    <script src="search.js"></script>
+    <script src="items-db.js" defer></script>
     <style>
         .mc-section {
             margin: 24px 0;
@@ -81,12 +88,31 @@
             padding-left: 12px;
             border-left: 2px solid var(--glass-border);
         }
+        @media (max-width: 600px) {
+            .mc-card {
+                padding: 12px 14px;
+            }
+            .mc-table {
+                font-size: 0.78rem;
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .mc-table th, .mc-table td {
+                padding: 5px 8px;
+            }
+            .mc-card-title {
+                font-size: 0.92rem;
+            }
+            .mc-date {
+                font-size: 0.8rem;
+            }
+        }
         @supports not (backdrop-filter: blur(1px)) {
             .mc-card { background: #0f172a !important; }
         }
     </style>
     <script src="icon-loader.js" defer></script>
-    <script src="search.js"></script>
     <script src="analytics.js" defer></script>
 </head>
 <body class="page-map-changes">
@@ -211,18 +237,39 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <span class="footer-logo"><img src="images/preview.png" alt="" width="28" height="28" class="footer-logo-img"> Legend of Worlds</span>
+                <p>© 2025 DarkDaro</p>
             </div>
-            <div class="footer-social">
-                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
-                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
-                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
-                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <div class="footer-socials">
+                <a href="https://vk.com/legend_of_worlds" target="_blank" rel="noopener" aria-label="VK"><i class="fab fa-vk"></i></a>
+                <a href="https://t.me/legend_of_worlds_w3" target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                <a href="https://discord.gg/5vXtHnG" target="_blank" rel="noopener" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://www.youtube.com/@DarkDaro" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
+
+<script>
+// Scroll-reveal — карточки изменений появляются при скролле
+(function() {
+    const els = document.querySelectorAll('.mc-card, .mc-section');
+    if (!els.length) return;
+    els.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    els.forEach(el => obs.observe(el));
+})();
+</script>
 
 </body>
 </html>
