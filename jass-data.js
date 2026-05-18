@@ -315,11 +315,11 @@ const BOSS_COMPONENT_ITEMS = [
 // Герой: равкод → имя, внутреннее имя, группа сборки
 // -------------------------------------------------------------------------
 const HERO_BUILD_DATA = {
-    'E000': { name: 'Иллюзионист', internal: 'EvilIllidan', group: 15 },
-    'E001': { name: 'Друид', internal: 'DruidOfTheClaw', group: 5 },
+    'E000': { name: 'Иллюзионист', internal: 'EvilIllidan', group: 15, heroId: 'illusionist' },
+    'E001': { name: 'Друид', internal: 'DruidOfTheClaw', group: 5, heroId: 'druid' },
     'E002': { name: 'Иллюзионист (альт)', internal: 'EvilIllidan_alt', group: 15 },
-    'E004': { name: 'Мурлок', internal: 'MurgulTideWarrior', group: 13 },
-    'E006': { name: 'Леший', internal: 'KeeperOfTheGrove', group: 12 },
+    'E004': { name: 'Мурлок', internal: 'MurgulTideWarrior', group: 13, heroId: 'murloc' },
+    'E006': { name: 'Леший', internal: 'KeeperOfTheGrove', group: 12, heroId: 'leshy' },
     'E00H': { name: 'Воительница', internal: 'HeroWarden', group: 13, heroId: 'warrioress' },
     'E00O': { name: 'Темная Лучница', internal: 'SylvanasWindrunner', group: 11, heroId: 'dark-archer' },
     'E010': { name: 'Жрица Луны', internal: 'PriestessOfTheMoon', group: 15, heroId: 'priestess' },
@@ -358,9 +358,9 @@ const HERO_BUILD_DATA = {
     'N005': { name: 'Шторм', internal: 'StormBrewmaster', group: 4, heroId: 'storm' },
     'N00E': { name: 'Разрушитель', internal: 'PitLord', group: 5, heroId: 'destroyer' },
     'N00I': { name: 'Разрушитель', internal: 'PitLord', group: 5 },
-    'O000': { name: 'Самурай', internal: 'HeroBlademaster', group: 13 },
-    'O001': { name: 'Громовержец', internal: 'Avatar', group: 7 },
-    'O002': { name: 'Призрак', internal: 'SpiritOfVengeance', group: 19 },
+    'O000': { name: 'Самурай', internal: 'HeroBlademaster', group: 13, heroId: 'samurai' },
+    'O001': { name: 'Громовержец', internal: 'Avatar', group: 7, heroId: 'thundergod' },
+    'O002': { name: 'Призрак', internal: 'SpiritOfVengeance', group: 19, heroId: 'ghost' },
     'O003': { name: 'Ночной Всадник', internal: 'Raider', group: 13, heroId: 'rider' },
     'O004': { name: 'Ночной Всадник (альт)', internal: 'Raider_alt', group: 13 },
     'O005': { name: 'Морской Страж', internal: 'FacelessOne', group: 6, heroId: 'sea-guard' },
