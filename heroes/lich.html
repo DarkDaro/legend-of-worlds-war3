@@ -54,12 +54,13 @@
             <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
             <div id="hero-build"></div>
             <a href="../calculator.html?hero=lich" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+            <a href="../bot-builds.html?rawcode=U000" class="calc-link-btn"><i class="fas fa-robot"></i> Сборка ИИ</a>
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="lich_nova" data-fallback="asterisk"></div>
+                        <div class="ability-icon" data-ability="nova" data-fallback="asterisk"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
                             <div class="ability-name">Ледяная вспышка</div>
@@ -76,7 +77,7 @@
                 </div>
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="lich_frostarmor" data-fallback="shield-alt"></div>
+                        <div class="ability-icon" data-ability="frostarmor" data-fallback="shield-alt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
                             <div class="ability-name">Ледяная броня</div>
@@ -93,7 +94,7 @@
                 </div>
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="lich_ritual" data-fallback="skull"></div>
+                        <div class="ability-icon" data-ability="ritual" data-fallback="skull"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
                             <div class="ability-name">Тёмный ритуал</div>
@@ -109,7 +110,7 @@
                 </div>
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="lich_deathdecay" data-fallback="biohazard"></div>
+                        <div class="ability-icon" data-ability="deathdecay" data-fallback="biohazard"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
                             <div class="ability-name">Смерть и разложение</div>
@@ -127,7 +128,7 @@
                 </div>
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="lich_frostaura" data-fallback="snowflake"></div>
+                        <div class="ability-icon" data-ability="frostaura" data-fallback="snowflake"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
                             <div class="ability-name">Аура мороза</div>
@@ -170,6 +171,10 @@
         var navContainer = document.getElementById('hero-nav');
         if (navContainer && typeof renderHeroNav === 'function') {
             navContainer.innerHTML = renderHeroNav('lich');
+        }
+        var buildContainer = document.getElementById('hero-build');
+        if (buildContainer && typeof renderHeroBuild === 'function') {
+            buildContainer.innerHTML = renderHeroBuild('lich');
         }
     </script>
 </body>
