@@ -102,6 +102,9 @@ function clearBuild() {
     buildSlots = [null, null, null, null, null, null];
     saveBuild();
     renderCalc();
+    // Сбросить заголовок на дефолтный
+    const h1 = document.querySelector('h1');
+    if (h1) h1.innerHTML = '<i class="fas fa-calculator"></i> Калькулятор сборок';
 }
 
 // === Подсчёт стоимости и статистики ===
@@ -679,8 +682,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroSelect = document.getElementById('calcHeroSelect');
     if (heroSelect) {
         heroSelect.addEventListener('change', () => {
+            const h1 = document.querySelector('h1');
             if (heroSelect.value) {
                 importHeroBuild(heroSelect.value);
+                const hero = heroBuilds[heroSelect.value];
+                const heroName = hero ? (hero.name || heroSelect.value) : heroSelect.value;
+                if (h1) h1.innerHTML = '<i class="fas fa-calculator"></i> Сборка: ' + heroName;
+            } else {
+                if (h1) h1.innerHTML = '<i class="fas fa-calculator"></i> Калькулятор сборок';
             }
         });
     }
