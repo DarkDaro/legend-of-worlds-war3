@@ -363,6 +363,15 @@
         }, { threshold: 0.08 });
 
         cards.forEach(el => observer.observe(el));
+        // Страховка: если observer не сработал за 3 сек — показать всё
+        setTimeout(function() {
+            cards.forEach(function(el) {
+                if (el.style.opacity === '0') {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }
+            });
+        }, 3000);
     })();
     </script>
 
