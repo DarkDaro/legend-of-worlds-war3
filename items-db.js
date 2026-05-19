@@ -942,9 +942,8 @@ function itemIcon(id, emoji, size, type) {
   }
   const pngSrc = ITEM_ICONS_DIR + id + '.png';
   const jpgSrc = ITEM_ICONS_DIR + id + '.jpg';
-  const fallbackSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + size + '" height="' + size + '" viewBox="0 0 64 64"><g fill="none" stroke="#8ab4f0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 22h24l6 10-18 20-18-20 6-10z"/><path d="M26 22l6 10 6-10"/></g></svg>';
-  const fallbackDataUri = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(fallbackSvg);
-  return '<img src="' + pngSrc + '" alt="" aria-hidden="true" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;" onerror="if(this.src.endsWith(\'.png\')){this.src=\'' + jpgSrc + '\';}else{this.src=\'' + fallbackDataUri + '\';}">';
+  const fallbackSrc = ITEM_ICONS_DIR + 'recipe.png';
+  return '<img src="' + pngSrc + '" alt="" aria-hidden="true" width="' + size + '" height="' + size + '" style="image-rendering:pixelated;object-fit:contain;" onerror="if(this.src.endsWith(\'.png\')){this.src=\'' + jpgSrc + '\';}else{this.src=\'' + fallbackSrc + '\';}">';
 }
 
 const ITEM_FAVORITES_KEY = 'itemFavorites';
@@ -1257,6 +1256,18 @@ function renderBossDrop(itemId) {
   return `<a href="monsters.html?boss=${boss.code}" class="boss-drop-link"><i class="fas fa-skull"></i> ${boss.name}</a>`;
 }
 
+// Раскрыть/свернуть полный список героев в рекомендациях
+function toggleHeroReco(btn) {
+  var hidden = btn.nextElementSibling;
+  if (!hidden) return;
+  hidden.classList.toggle('open');
+  var icon = btn.querySelector('i');
+  if (icon) {
+    icon.style.transform = hidden.classList.contains('open') ? 'rotate(180deg)' : '';
+    icon.style.transition = '0.2s';
+  }
+}
+
 // Рендер: рекомендуется героям (принимает готовый список)
 function renderHeroRecommendationsFromList(heroes) {
   if (!heroes.length) return '';
@@ -1264,7 +1275,7 @@ function renderHeroRecommendationsFromList(heroes) {
   const shown = heroes.slice(0, LIMIT);
   const rest = heroes.slice(LIMIT);
   const restChip = rest.length > 0
-    ? `<button class="hero-reco-chip hero-reco-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.text = this.text.includes('+') ? this.text.replace(/^\+[0-9]+/, '${rest.length}') : '+' + '${rest.length}'"><i class="fas fa-chevron-down" style="font-size:10px"></i> +${rest.length}</button><div class="hero-reco-hidden">${rest.map(h =>
+    ? `<button class="hero-reco-chip hero-reco-toggle" onclick="toggleHeroReco(this)"><i class="fas fa-chevron-down" style="font-size:10px"></i> +${rest.length}</button><div class="hero-reco-hidden">${rest.map(h =>
       `<a href="heroes/${h.id}.html" class="hero-reco-chip"><img src="images/heroes/${h.id}.png" alt="" width="20" height="20" style="image-rendering:pixelated;border-radius:4px;object-fit:contain;"> ${h.name}</a>`
     ).join('')}</div>`
     : '';

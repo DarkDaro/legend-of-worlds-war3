@@ -278,6 +278,16 @@
         }, { threshold: 0.1 });
 
         revealElements.forEach(el => revealObserver.observe(el));
+
+        // Страховка: если observer не сработал за 3 сек — показать всё
+        setTimeout(function() {
+            revealElements.forEach(function(el) {
+                if (el.style.opacity === '0') {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }
+            });
+        }, 3000);
     })();
     </script>
 </body>
