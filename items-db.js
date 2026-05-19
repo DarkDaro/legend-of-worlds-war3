@@ -1180,28 +1180,46 @@ function getHeroBuildItems(heroId) {
 // Какие герои рекомендуют этот предмет
 function findHeroesWithItem(itemId) {
   const result = [];
-  // Имена из HEROES_DATA (hero-data.js), fallback на heroId
+  const seen = new Set(); // по heroId
+
+  // Карта heroId → name из HEROES_DATA
   const heroNames = {};
+  // Множество heroId без флагов (попадают в compare / имеют страницу)
+  const validHeroIds = new Set();
   if (typeof HEROES_DATA !== 'undefined') {
-    HEROES_DATA.forEach(h => { if (h.heroId) heroNames[h.heroId] = h.name; });
+    HEROES_DATA.forEach(h => {
+      if (!h.heroId) return;
+      heroNames[h.heroId] = h.name;
+      // Фильтруем: без isAltForm, wip, noPage
+      if (!h.isAltForm && !h.wip && !h.noPage) {
+        validHeroIds.add(h.heroId);
+      }
+    });
   }
-  // Имена из HERO_BUILD_DATA (jass-data.js), fallback на rawcode
-  const rawcodeNames = {};
+
+  // Карта group → массив {id, name} для героев с heroId
+  const groupHeroes = {};
   if (typeof HERO_BUILD_DATA !== 'undefined') {
     for (const rc in HERO_BUILD_DATA) {
-      rawcodeNames[rc] = HERO_BUILD_DATA[rc].name;
+      const d = HERO_BUILD_DATA[rc];
+      if (!d.group || !d.heroId) continue;
+      if (!groupHeroes[d.group]) groupHeroes[d.group] = [];
+      groupHeroes[d.group].push({ id: d.heroId, name: heroNames[d.heroId] || d.name });
     }
   }
+
   // Поиск по heroBuilds (hero-builds.js) — по ID предмета
   if (typeof heroBuilds !== 'undefined') {
     for (const heroId in heroBuilds) {
-      const hero = heroBuilds[heroId];
+      if (!validHeroIds.has(heroId)) continue;
       const items = getHeroBuildItems(heroId);
-      if (items.some(b => b.id === itemId)) {
-        result.push({ id: heroId, name: heroNames[heroId] || hero?.name || heroId });
+      if (items.some(b => b.id === itemId) && !seen.has(heroId)) {
+        seen.add(heroId);
+        result.push({ id: heroId, name: heroNames[heroId] || heroBuilds[heroId]?.name || heroId });
       }
     }
   }
+
   // Поиск по botBuildGroups (bot-builds.js) — по имени предмета
   if (typeof botBuildGroups !== 'undefined' && typeof HERO_BUILD_DATA !== 'undefined') {
     const item = itemsDB[itemId];
@@ -1209,19 +1227,18 @@ function findHeroesWithItem(itemId) {
       const itemName = item.name;
       const seenGroups = new Set();
       for (const rc in HERO_BUILD_DATA) {
-        const group = HERO_BUILD_DATA[rc].group;
-        if (seenGroups.has(group)) continue;
-        const stages = botBuildGroups[group]?.stages;
+        const d = HERO_BUILD_DATA[rc];
+        if (seenGroups.has(d.group)) continue;
+        const stages = botBuildGroups[d.group]?.stages;
         if (!stages) continue;
         const found = stages.some(s => s.items.some(it => it.name === itemName));
         if (found) {
-          seenGroups.add(group);
-          // Собрать всех героев этой группы
-          const heroesInGroup = Object.entries(HERO_BUILD_DATA)
-            .filter(([_, d]) => d.group === group)
-            .map(([rc, d]) => ({ id: rc, name: d.name }));
+          seenGroups.add(d.group);
+          // Добавляем героев группы с heroId (без флагов)
+          const heroesInGroup = groupHeroes[d.group] || [];
           heroesInGroup.forEach(h => {
-            if (!result.some(r => r.id === h.id || r.name === h.name)) {
+            if (!seen.has(h.id)) {
+              seen.add(h.id);
               result.push(h);
             }
           });
@@ -1229,6 +1246,7 @@ function findHeroesWithItem(itemId) {
       }
     }
   }
+
   return result;
 }
 
@@ -1242,9 +1260,17 @@ function renderBossDrop(itemId) {
 // Рендер: рекомендуется героям (принимает готовый список)
 function renderHeroRecommendationsFromList(heroes) {
   if (!heroes.length) return '';
-  return `<div class="hero-reco-list">${heroes.map(h =>
+  const LIMIT = 6;
+  const shown = heroes.slice(0, LIMIT);
+  const rest = heroes.slice(LIMIT);
+  const restChip = rest.length > 0
+    ? `<button class="hero-reco-chip hero-reco-toggle" onclick="this.nextElementSibling.classList.toggle('open'); this.text = this.text.includes('+') ? this.text.replace(/^\+[0-9]+/, '${rest.length}') : '+' + '${rest.length}'"><i class="fas fa-chevron-down" style="font-size:10px"></i> +${rest.length}</button><div class="hero-reco-hidden">${rest.map(h =>
+      `<a href="heroes/${h.id}.html" class="hero-reco-chip"><img src="images/heroes/${h.id}.png" alt="" width="20" height="20" style="image-rendering:pixelated;border-radius:4px;object-fit:contain;"> ${h.name}</a>`
+    ).join('')}</div>`
+    : '';
+  return `<div class="hero-reco-wrap">${shown.map(h =>
     `<a href="heroes/${h.id}.html" class="hero-reco-chip"><img src="images/heroes/${h.id}.png" alt="" width="20" height="20" style="image-rendering:pixelated;border-radius:4px;object-fit:contain;"> ${h.name}</a>`
-  ).join('')}</div>`;
+  ).join('')}${restChip}</div>`;
 }
 
 function calculateItemCost(itemId, visited = new Set()) {

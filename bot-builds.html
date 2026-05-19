@@ -53,13 +53,35 @@
             gap: 8px;
             margin: 12px 0 20px;
         }
-        .bb-hero-tag {
-            padding: 4px 10px;
-            background: var(--glass-subtle-hover);
-            border: 1px solid var(--glass-tag-border);
-            border-radius: 6px;
-            font-size: 0.82rem;
-            color: var(--text-secondary);
+        .bb-hero-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #162433;
+            border: 1px solid #00e6ffaa;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #d0e4ff;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.15s;
+        }
+        .bb-hero-chip:hover {
+            background: #00e6ff;
+            border-color: #ffffff;
+            color: #0b0e14;
+            box-shadow: 0 0 20px #00e6ff;
+        }
+        .bb-hero-chip-nolink {
+            cursor: default;
+            opacity: 0.6;
+        }
+        .bb-hero-chip-nolink:hover {
+            background: #162433;
+            border-color: #00e6ffaa;
+            color: #d0e4ff;
+            box-shadow: none;
         }
 
         /* === Стадия === */
@@ -346,7 +368,7 @@
             .bb-heroes {
                 gap: 6px;
             }
-            .bb-hero-tag {
+            .bb-hero-chip {
                 font-size: 0.75rem;
                 padding: 3px 8px;
             }
@@ -650,9 +672,21 @@ function renderGroup(groupId) {
     // Герои в группе
     const heroesInGroup = Object.entries(HERO_BUILD_DATA)
         .filter(([_, data]) => data.group === parseInt(groupId))
-        .map(([rawcode, data]) => data.name);
+        .map(([rawcode, data]) => ({
+            heroId: data.heroId || null,
+            name: data.name,
+            rawcode: rawcode
+        }));
 
-    const heroesHtml = heroesInGroup.map(name => `<span class="bb-hero-tag">${name}</span>`).join('');
+    const heroesHtml = heroesInGroup.map(h => {
+        if (h.heroId) {
+            return `<a href="heroes/${h.heroId}.html" class="bb-hero-chip">
+                <img src="images/heroes/${h.heroId}.png" alt="" width="20" height="20" style="image-rendering:pixelated;border-radius:4px;object-fit:contain;">
+                ${h.name}
+            </a>`;
+        }
+        return `<span class="bb-hero-chip bb-hero-chip-nolink">${h.name}</span>`;
+    }).join('');
     document.getElementById('heroesList').innerHTML = heroesHtml;
 
     // Стадии — считаем стоимость только новых предметов

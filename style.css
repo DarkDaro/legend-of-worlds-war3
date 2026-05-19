@@ -4348,6 +4348,41 @@ body.item-sheet-open {
   box-shadow: 0 0 20px #00e6ff;
 }
 
+.hero-reco-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hero-reco-toggle {
+  background: #162433;
+  border: 1px solid #00e6ffaa;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  color: #00e6ff;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.hero-reco-toggle:hover {
+  background: #00e6ff;
+  border-color: #ffffff;
+  color: #0b0e14;
+  box-shadow: 0 0 20px #00e6ff;
+}
+
+.hero-reco-hidden {
+  display: none;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.hero-reco-hidden.open {
+  display: flex;
+}
+
 .upgrade-chain {
   display: flex;
   flex-wrap: wrap;
