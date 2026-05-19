@@ -102,6 +102,26 @@
         });
     }
 
+    // ========== КНОПКА ПОИСКА (мобильный доступ к Ctrl+K) ==========
+
+    function initSearchBtn() {
+        var nav = document.querySelector('.header-nav');
+        if (!nav) return;
+
+        var btn = document.createElement('button');
+        btn.className = 'search-header-btn';
+        btn.setAttribute('aria-label', 'Поиск');
+        btn.title = 'Поиск (Ctrl+K)';
+        btn.innerHTML = '<i class="fas fa-search"></i>';
+        nav.parentNode.insertBefore(btn, nav);
+
+        btn.addEventListener('click', function() {
+            if (window.GlobalSearch) {
+                window.GlobalSearch.open();
+            }
+        });
+    }
+
     // ========== ГАМБУРГЕР-МЕНЮ ==========
 
     function initHamburger() {
@@ -233,6 +253,7 @@
             initHeroDetailIcon();
             initAbilityIcons();
             initParamHighlight();
+            initSearchBtn();
             initHamburger();
             initScrollToTop();
             initSearchTrigger();
@@ -242,6 +263,7 @@
         initHeroDetailIcon();
         initAbilityIcons();
         initParamHighlight();
+        initSearchBtn();
         initHamburger();
         initScrollToTop();
         initSearchTrigger();
