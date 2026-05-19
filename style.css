@@ -6422,6 +6422,12 @@ body.page-map-changes::after {
     font-size: 0.8rem;
     color: #5a7a9a;
 }
+.gs-result-desc {
+    max-width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 /* Пусто */
 .gs-empty {
