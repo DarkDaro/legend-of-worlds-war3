@@ -723,35 +723,8 @@
         renderAddSources();
     </script>
 <script>
-// Scroll-reveal для результатов
-(function() {
-    const els = document.querySelectorAll('.formula-results');
-    if (!els.length) return;
-    els.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    });
-    const obs = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                obs.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-    els.forEach(el => obs.observe(el));
-        // Страховка: если observer не сработал за 3 сек — показать всё
-        setTimeout(function() {
-            els.forEach(function(el) {
-                if (el.style.opacity === '0') {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }
-            });
-        }, 3000);
-})();
+// Scroll-reveal — результаты формул
+document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.formula-results'); });
 </script>
 </body>
 </html>

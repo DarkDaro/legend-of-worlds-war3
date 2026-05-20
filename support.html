@@ -125,38 +125,8 @@
     </div>
 
     <script>
-    // Scroll-reveal для support-card
-    (function() {
-        const cards = document.querySelectorAll('.support-card');
-        if (!cards.length) return;
-
-        cards.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        });
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.08 });
-
-        cards.forEach(el => observer.observe(el));
-        // Страховка: если observer не сработал за 3 сек — показать всё
-        setTimeout(function() {
-            cards.forEach(function(el) {
-                if (el.style.opacity === '0') {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }
-            });
-        }, 3000);
-    })();
+    // Scroll-reveal — карточки поддержки
+    document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.support-card'); });
     </script>
 
     <footer class="site-footer">

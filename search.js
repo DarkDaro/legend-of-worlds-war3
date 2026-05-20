@@ -40,6 +40,7 @@
             Object.keys(itemsDB).forEach(function(key) {
                 var item = itemsDB[key];
                 if (!item || !item.name) return;
+                if (item.hidden || item.type === 'rune') return;
                 index.items.push({
                     name: item.name,
                     type: item.type || '',

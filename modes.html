@@ -143,48 +143,8 @@
         </div>
     </footer>
     <script>
-    // Scroll-reveal — карточки появляются при скролле
-    (function() {
-        const selector = '.mechanic-card';
-        const revealElements = document.querySelectorAll(selector);
-        if (!revealElements.length) return;
-
-        revealElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(12px)';
-            el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        });
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Задержка между карточками внутри контейнера
-                    const parent = entry.target.parentElement;
-                    let delay = 0;
-                    if (parent) {
-                        const siblings = Array.from(parent.querySelectorAll(selector));
-                        delay = siblings.indexOf(entry.target) * 30;
-                    }
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, delay);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        revealElements.forEach(el => observer.observe(el));
-        // Страховка: если observer не сработал за 3 сек — показать всё
-        setTimeout(function() {
-            revealElements.forEach(function(el) {
-                if (el.style.opacity === '0') {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }
-            });
-        }, 3000);
-    })();
+    // Scroll-reveal — карточки режимов
+    document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.mechanic-card'); });
     </script>
 </body>
 </html>
