@@ -140,8 +140,7 @@
             <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
             <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
             <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
-            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
-            <a href="creeps.html" class="nav-link active"><i class="fas fa-spider"></i> Крипы</a>
+            <a href="monsters.html" class="nav-link active"><i class="fas fa-dragon"></i> Монстры</a>
             <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
             <a href="guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
             <a href="faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
@@ -151,7 +150,7 @@
         </nav>
     </header>
     <div class="wiki-container">
-        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><span class="current">Крипы</span></div>
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="monsters.html">Монстры</a><span class="sep">›</span><span class="current">Крипы</span></div>
         <div class="hero-page-container">
             <div class="panel-header">
                 <div class="detail-icon"><i class="fas fa-spider"></i></div>
@@ -171,6 +170,8 @@
                             <th data-col="hp">HP <span class="sort-arrow">▲</span></th>
                             <th data-col="atk">Атака <span class="sort-arrow">▲</span></th>
                             <th data-col="def" class="col-hide-mobile">Броня <span class="sort-arrow">▲</span></th>
+                            <th data-col="regen" class="col-hide-mobile">Реген <span class="sort-arrow">▲</span></th>
+                            <th data-col="magicRes" class="col-hide-mobile">Маг.сопр. <span class="sort-arrow">▲</span></th>
                             <th data-col="gold" class="col-hide-small">Золото <span class="sort-arrow">▲</span></th>
                             <th data-col="xp" class="col-hide-small">Опыт <span class="sort-arrow">▲</span></th>
                             <th data-col="passives">Пассивки <span class="sort-arrow">▲</span></th>
@@ -205,31 +206,31 @@
 
     // Данные крипов — заполняются по мере поступления
     var CREEPS = [
-        { code: 'nban', name: 'Разбойник', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'nanb', name: 'Арахнид', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'nfov', name: 'Дреней', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'ncen', name: 'Кентавр', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'ndtr', name: 'Троль', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'npfm', name: 'Опустошитель', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'nsog', name: 'Мёртвый капитан', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'nslm', name: 'Болотный гад', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'ndtb', name: 'Драконид', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'nogl', name: 'Командир огров', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'n00U', name: 'Гнол каратель', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'n00P', name: 'Повелительница боли', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'h02W', name: 'Нага воин', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'h031', name: 'Чудовище', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'nfra', name: 'Беорн воитель', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'h00R', name: 'Волшебница', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'h02M', name: 'Кентавр лучник', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'h02R', name: 'Маргол', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'h02V', name: 'Мститель', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'h02Y', name: 'Бугай', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'h02Z', name: 'Снежный медведь', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'h02T', name: 'Маргол охотник', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'h02X', name: 'Некромант', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'h0AE', name: 'Зомби', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
-        { code: 'h0AF', name: 'Сатир', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' }
+        { code: 'nban', name: 'Разбойник', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'nanb', name: 'Арахнид', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'nfov', name: 'Дреней', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'ncen', name: 'Кентавр', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'ndtr', name: 'Троль', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'npfm', name: 'Опустошитель', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'nsog', name: 'Мёртвый капитан', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'nslm', name: 'Болотный гад', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'ndtb', name: 'Драконид', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'nogl', name: 'Командир огров', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'n00U', name: 'Гнол каратель', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'n00P', name: 'Повелительница боли', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h02W', name: 'Нага воин', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h031', name: 'Чудовище', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'nfra', name: 'Беорн воитель', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h00R', name: 'Волшебница', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h02M', name: 'Кентавр лучник', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h02R', name: 'Маргол', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h02V', name: 'Мститель', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h02Y', name: 'Бугай', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h02Z', name: 'Снежный медведь', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h02T', name: 'Маргол охотник', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h02X', name: 'Некромант', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h0AE', name: 'Зомби', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h0AF', name: 'Сатир', hp: 0, atk: 0, def: 0, regen: 0, magicRes: 0, gold: 0, xp: 0, passives: '' }
     ];
 
     var searchQuery = '';
@@ -256,7 +257,7 @@
     }
 
     function findExtremes(creeps) {
-        var numCols = ['hp', 'atk', 'def', 'gold', 'xp'];
+        var numCols = ['hp', 'atk', 'def', 'regen', 'magicRes', 'gold', 'xp'];
         var extremes = {};
         numCols.forEach(function(col) {
             var vals = creeps.map(function(c) { return c[col] || 0; });
@@ -283,7 +284,7 @@
         });
 
         if (!sorted.length) {
-            tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--text-muted);padding:24px;">Нет крипов</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;color:var(--text-muted);padding:24px;">Нет крипов</td></tr>';
             return;
         }
 
@@ -301,7 +302,7 @@
 
             return '<tr>' +
                 '<td><div class="creep-name-cell"><div class="creep-icon-placeholder">' + initial + '</div><span>' + c.name + '</span></div></td>' +
-                cell('hp') + cell('atk') + cell('def', 'col-hide-mobile') + cell('gold', 'col-hide-small') + cell('xp', 'col-hide-small') +
+                cell('hp') + cell('atk') + cell('def', 'col-hide-mobile') + cell('regen', 'col-hide-mobile') + cell('magicRes', 'col-hide-mobile') + cell('gold', 'col-hide-small') + cell('xp', 'col-hide-small') +
                 '<td><div class="passive-list">' + (c.passives || '—') + '</div></td>' +
                 '</tr>';
         }).join('');
@@ -326,6 +327,7 @@
 
     renderTable();
 })();
+document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.creep-table-wrap'); });
 </script>
 </body>
 </html>
