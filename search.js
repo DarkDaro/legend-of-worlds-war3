@@ -25,6 +25,8 @@
 
         if (typeof HEROES_DATA !== 'undefined' && Array.isArray(HEROES_DATA)) {
             HEROES_DATA.forEach(function(h) {
+                // Альт-формы и WIP — без страниц, не показываем в поиске
+                if (h.isAltForm || h.wip) return;
                 index.heroes.push({
                     name: h.name,
                     title: h.title || '',

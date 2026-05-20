@@ -1189,8 +1189,8 @@ function findHeroesWithItem(itemId) {
     HEROES_DATA.forEach(h => {
       if (!h.heroId) return;
       heroNames[h.heroId] = h.name;
-      // Фильтруем: без isAltForm, wip, noPage
-      if (!h.isAltForm && !h.wip && !h.noPage) {
+      // Фильтруем: без isAltForm, wip
+      if (!h.isAltForm && !h.wip) {
         validHeroIds.add(h.heroId);
       }
     });
