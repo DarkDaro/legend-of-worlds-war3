@@ -154,18 +154,60 @@ function getBuildItemIcon(itemId, size) {
 
 // Отрисовка сетки сборки для карточки героя
 function renderHeroBuild(heroId) {
+  // Сначала проверяем ручную сборку
   const hero = heroBuilds[heroId];
-  if (!hero || !hero.items) return '<p style="color:var(--text-muted);">Сборка в разработке...</p>';
-
-  let html = '<div class="hero-build-grid">';
-  hero.items.forEach(item => {
-    html += `
+  if (hero && hero.items) {
+    let html = '<div class="hero-build-grid">';
+    hero.items.forEach(item => {
+      html += `
       <a href="../items.html?item=${item.id}" class="build-slot">
         <div class="build-icon">${getBuildItemIcon(item.id)}</div>
         <div class="build-name">${item.name}</div>
       </a>`;
-  });
-  html += '</div>';
-  return html;
+    });
+    html += '</div>';
+    return html;
+  }
+
+  // Fallback: берём последнюю стадию из botBuilds
+  if (typeof HERO_BUILD_DATA !== 'undefined' && typeof botBuildGroups !== 'undefined') {
+    // Находим rawcode героя
+    var rawcode = null;
+    for (var rc in HERO_BUILD_DATA) {
+      if (HERO_BUILD_DATA[rc].heroId === heroId) {
+        rawcode = rc;
+        break;
+      }
+    }
+    if (rawcode) {
+      var group = HERO_BUILD_DATA[rawcode].group;
+      var stages = botBuildGroups[group] && botBuildGroups[group].stages;
+      if (stages && stages.length > 0) {
+        var lastStage = stages[stages.length - 1];
+        var html = '<div class="hero-build-grid">';
+        lastStage.items.forEach(function(slot) {
+          // Ищем предмет по имени в itemsDB
+          var item = null;
+          if (typeof findItemByName === 'function') {
+            item = findItemByName(slot.name);
+          }
+          if (item) {
+            html += '<a href="../items.html?item=' + item.id + '" class="build-slot">' +
+              '<div class="build-icon">' + getBuildItemIcon(item.id) + '</div>' +
+              '<div class="build-name">' + item.name + '</div></a>';
+          } else {
+            html += '<div class="build-slot">' +
+              '<div class="build-icon"><span style="color:#666;font-size:0.7rem;">?</span></div>' +
+              '<div class="build-name">' + slot.name + '</div></div>';
+          }
+        });
+        html += '</div>';
+        html += '<p style="color:var(--text-muted);font-size:0.75rem;margin-top:6px;">Финальная стадия ИИ-сборки · <a href="../bot-builds.html?rawcode=' + rawcode + '" style="color:var(--accent-cyan);">Все стадии →</a></p>';
+        return html;
+      }
+    }
+  }
+
+  return '<p style="color:var(--text-muted);">Сборка в разработке...</p>';
 }
 
