@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Крипы · Legend of Worlds</title>
+    <meta property="og:title" content="Крипы — Legend of Worlds">
+    <meta property="og:description" content="25 типов крипов на арене: статы, золото, опыт, пассивки.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="hero-data.js"></script>
+    <script src="search-index.js"></script>
+    <script src="search.js"></script>
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+    <style>
+        /* ── Фильтры ── */
+        .creep-filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        .creep-search {
+            padding: 7px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            width: 180px;
+        }
+        .creep-search::placeholder { color: var(--text-muted); }
+
+        /* ── Таблица ── */
+        .creep-table-wrap {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            -webkit-overflow-scrolling: touch;
+        }
+        .creep-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            white-space: nowrap;
+        }
+        .creep-table th {
+            padding: 10px 12px;
+            text-align: left;
+            color: var(--text-muted);
+            font-weight: 500;
+            border-bottom: 1px solid var(--glass-border);
+            cursor: pointer;
+            user-select: none;
+            position: sticky;
+            top: 0;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 2;
+        }
+        .creep-table th:hover { color: var(--accent-cyan); }
+        .creep-table th .sort-arrow { margin-left: 4px; font-size: 0.7rem; opacity: 0.4; }
+        .creep-table th.sorted .sort-arrow { opacity: 1; color: var(--accent-cyan); }
+        .creep-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--text-secondary);
+        }
+        .creep-table tr:hover td { background: rgba(0,230,255,0.04); }
+        .creep-table .creep-name-cell {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .creep-table .creep-icon-placeholder {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            background: rgba(0,230,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: var(--accent-cyan);
+            flex-shrink: 0;
+        }
+        .creep-table .creep-name-cell span {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        .creep-table .best-val { color: #ffd43b; font-weight: 600; }
+        .creep-table .worst-val { color: #ff6b6b; opacity: 0.7; }
+        .creep-table .passive-list {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            max-width: 200px;
+            white-space: normal;
+            line-height: 1.4;
+        }
+
+        /* ── Счётчик ── */
+        .creep-count {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+        }
+
+        /* ── Мобильная адаптация ── */
+        @media (max-width: 700px) {
+            .creep-filters { gap: 6px; }
+            .creep-search { width: 100%; order: -1; }
+            .creep-table { font-size: 0.75rem; }
+            .creep-table th, .creep-table td { padding: 6px 8px; }
+            .creep-table .col-hide-mobile { display: none; }
+            .creep-table .passive-list { max-width: 120px; }
+        }
+        @media (max-width: 480px) {
+            .creep-table { font-size: 0.7rem; }
+            .creep-table th, .creep-table td { padding: 5px 6px; }
+            .creep-table .creep-icon-placeholder { display: none; }
+            .creep-table .col-hide-small { display: none; }
+            .creep-table .passive-list { max-width: 80px; }
+        }
+    </style>
+</head>
+<body class="page-creeps">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="creeps.html" class="nav-link active"><i class="fas fa-spider"></i> Крипы</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><span class="current">Крипы</span></div>
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"><i class="fas fa-spider"></i></div>
+                <div class="detail-title">Крипы</div>
+            </div>
+            <p class="detail-description">25 типов крипов на арене. Нажмите на заголовок для сортировки.</p>
+
+            <div class="creep-filters">
+                <input type="text" class="creep-search" id="creepSearch" placeholder="Поиск крипа...">
+            </div>
+            <div class="creep-count" id="creepCount"></div>
+            <div class="creep-table-wrap">
+                <table class="creep-table" id="creepTable">
+                    <thead>
+                        <tr>
+                            <th data-col="name">Крип <span class="sort-arrow">▲</span></th>
+                            <th data-col="hp">HP <span class="sort-arrow">▲</span></th>
+                            <th data-col="atk">Атака <span class="sort-arrow">▲</span></th>
+                            <th data-col="def" class="col-hide-mobile">Броня <span class="sort-arrow">▲</span></th>
+                            <th data-col="gold" class="col-hide-small">Золото <span class="sort-arrow">▲</span></th>
+                            <th data-col="xp" class="col-hide-small">Опыт <span class="sort-arrow">▲</span></th>
+                            <th data-col="passives">Пассивки <span class="sort-arrow">▲</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="creepBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img src="images/preview.png" alt="" width="28" height="28" class="footer-logo-img"> Legend of Worlds</span>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
+        </div>
+    </footer>
+
+<script>
+(function() {
+    'use strict';
+
+    // Данные крипов — заполняются по мере поступления
+    var CREEPS = [
+        { code: 'nban', name: 'Разбойник', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'nanb', name: 'Арахнид', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'nfov', name: 'Дреней', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'ncen', name: 'Кентавр', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'ndtr', name: 'Троль', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'npfm', name: 'Опустошитель', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'nsog', name: 'Мёртвый капитан', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'nslm', name: 'Болотный гад', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'ndtb', name: 'Драконид', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'nogl', name: 'Командир огров', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'n00U', name: 'Гнол каратель', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'n00P', name: 'Повелительница боли', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h02W', name: 'Нага воин', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h031', name: 'Чудовище', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'nfra', name: 'Беорн воитель', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h00R', name: 'Волшебница', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h02M', name: 'Кентавр лучник', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h02R', name: 'Маргол', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h02V', name: 'Мститель', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h02Y', name: 'Бугай', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h02Z', name: 'Снежный медведь', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h02T', name: 'Маргол охотник', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h02X', name: 'Некромант', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h0AE', name: 'Зомби', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' },
+        { code: 'h0AF', name: 'Сатир', hp: 0, atk: 0, def: 0, gold: 0, xp: 0, passives: '' }
+    ];
+
+    var searchQuery = '';
+    var sortCol = 'name';
+    var sortDir = 1;
+
+    function getCreeps() {
+        return CREEPS.filter(function(c) {
+            if (searchQuery && !c.name.toLowerCase().includes(searchQuery) && !c.code.toLowerCase().includes(searchQuery)) return false;
+            return true;
+        });
+    }
+
+    function sortCreeps(creeps) {
+        return creeps.slice().sort(function(a, b) {
+            var va = a[sortCol], vb = b[sortCol];
+            if (sortCol === 'name' || sortCol === 'code' || sortCol === 'passives') {
+                va = (va || '').toLowerCase();
+                vb = (vb || '').toLowerCase();
+                return va.localeCompare(vb) * sortDir;
+            }
+            return ((va || 0) - (vb || 0)) * sortDir;
+        });
+    }
+
+    function findExtremes(creeps) {
+        var numCols = ['hp', 'atk', 'def', 'gold', 'xp'];
+        var extremes = {};
+        numCols.forEach(function(col) {
+            var vals = creeps.map(function(c) { return c[col] || 0; });
+            extremes[col] = { max: Math.max.apply(null, vals), min: Math.min.apply(null, vals) };
+        });
+        return extremes;
+    }
+
+    function renderTable() {
+        var creeps = getCreeps();
+        var sorted = sortCreeps(creeps);
+        var extremes = findExtremes(creeps);
+        var tbody = document.getElementById('creepBody');
+        var countEl = document.getElementById('creepCount');
+
+        countEl.textContent = 'Крипов: ' + sorted.length;
+
+        document.querySelectorAll('.creep-table th').forEach(function(th) {
+            var col = th.dataset.col;
+            if (!col) return;
+            th.classList.toggle('sorted', col === sortCol);
+            var arrow = th.querySelector('.sort-arrow');
+            if (arrow) arrow.textContent = col === sortCol ? (sortDir === 1 ? '▲' : '▼') : '▲';
+        });
+
+        if (!sorted.length) {
+            tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--text-muted);padding:24px;">Нет крипов</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = sorted.map(function(c) {
+            var initial = c.name.charAt(0);
+
+            function cell(col, hideClass) {
+                var v = c[col] || 0;
+                var cls = hideClass || '';
+                if (v === 0) cls += ' zero-val';
+                else if (v === extremes[col] && extremes[col].max !== extremes[col].min && v === extremes[col].max) cls += ' best-val';
+                else if (v === extremes[col] && extremes[col].max !== extremes[col].min && v === extremes[col].min) cls += ' worst-val';
+                return '<td class="' + cls.trim() + '">' + v + '</td>';
+            }
+
+            return '<tr>' +
+                '<td><div class="creep-name-cell"><div class="creep-icon-placeholder">' + initial + '</div><span>' + c.name + '</span></div></td>' +
+                cell('hp') + cell('atk') + cell('def', 'col-hide-mobile') + cell('gold', 'col-hide-small') + cell('xp', 'col-hide-small') +
+                '<td><div class="passive-list">' + (c.passives || '—') + '</div></td>' +
+                '</tr>';
+        }).join('');
+    }
+
+    // Сортировка
+    document.querySelectorAll('.creep-table th').forEach(function(th) {
+        th.addEventListener('click', function() {
+            var col = th.dataset.col;
+            if (!col) return;
+            if (sortCol === col) sortDir *= -1;
+            else { sortCol = col; sortDir = 1; }
+            renderTable();
+        });
+    });
+
+    // Поиск
+    document.getElementById('creepSearch').addEventListener('input', function(e) {
+        searchQuery = e.target.value.toLowerCase().trim();
+        renderTable();
+    });
+
+    renderTable();
+})();
+</script>
+</body>
+</html>

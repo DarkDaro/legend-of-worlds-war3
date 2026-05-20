@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Руны · Legend of Worlds</title>
+    <meta property="og:title" content="Руны — Legend of Worlds">
+    <meta property="og:description" content="16 рун на арене: антимагия, лечение, двойной урон, золото и другие. Подбираемые баффы.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="hero-data.js"></script>
+    <script src="search-index.js"></script>
+    <script src="search.js"></script>
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+    <style>
+        .runes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .rune-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            transition: 0.2s;
+        }
+        .rune-card:hover {
+            border-color: var(--glass-border-hover);
+            box-shadow: var(--neon-glow);
+            transform: translateY(-2px);
+        }
+        .rune-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .rune-info { flex: 1; min-width: 0; }
+        .rune-name {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.92rem;
+            margin-bottom: 4px;
+        }
+        .rune-desc {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+        .rune-duration {
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            margin-top: 4px;
+        }
+
+        /* Цвета иконок по типу */
+        .rune-icon-defense { background: rgba(0, 180, 255, 0.12); color: #00b4ff; }
+        .rune-icon-movement { background: rgba(0, 230, 118, 0.12); color: #00e676; }
+        .rune-icon-heal { background: rgba(255, 82, 82, 0.12); color: #ff5252; }
+        .rune-icon-mana { background: rgba(124, 77, 255, 0.12); color: #7c4dff; }
+        .rune-icon-level { background: rgba(255, 215, 0, 0.12); color: #ffd700; }
+        .rune-icon-stealth { background: rgba(120, 144, 156, 0.12); color: #78909c; }
+        .rune-icon-damage { background: rgba(255, 71, 87, 0.12); color: #ff4757; }
+        .rune-icon-vamp { background: rgba(180, 0, 0, 0.12); color: #cc0000; }
+        .rune-icon-gold { background: rgba(255, 193, 7, 0.12); color: #ffc107; }
+        .rune-icon-stats { background: rgba(0, 230, 255, 0.12); color: #00e6ff; }
+        .rune-icon-illusion { background: rgba(156, 39, 176, 0.12); color: #9c27b0; }
+        .rune-icon-speed { background: rgba(255, 152, 0, 0.12); color: #ff9800; }
+        .rune-icon-crystal { background: rgba(233, 30, 99, 0.12); color: #e91e63; }
+        .rune-icon-refresh { background: rgba(76, 175, 80, 0.12); color: #4caf50; }
+        .rune-icon-wealth { background: rgba(255, 215, 0, 0.15); color: #ffd700; }
+
+        @media (max-width: 700px) {
+            .runes-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .rune-card { padding: 12px; gap: 10px; }
+            .rune-icon { width: 36px; height: 36px; font-size: 1.1rem; border-radius: 8px; }
+            .rune-name { font-size: 0.85rem; }
+            .rune-desc { font-size: 0.75rem; }
+        }
+        @media (max-width: 480px) {
+            .runes-grid { grid-template-columns: 1fr; }
+            .rune-card { padding: 10px; gap: 8px; }
+            .rune-icon { width: 32px; height: 32px; font-size: 1rem; }
+            .rune-name { font-size: 0.82rem; }
+            .rune-desc { font-size: 0.72rem; }
+        }
+    </style>
+</head>
+<body class="page-runes">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link active"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="items.html">Предметы</a><span class="sep">›</span><span class="current">Руны</span></div>
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"><i class="fas fa-gem"></i></div>
+                <div class="detail-title">Руны</div>
+            </div>
+            <p class="detail-description">Подбираемые руны на арене. Появляются в определённых точках карты. Каждая даёт временный бафф герою, который её подобрал.</p>
+
+            <div class="runes-grid" id="runesGrid"></div>
+        </div>
+
+        <div style="margin-top:24px; text-align:center; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+            <a href="items.html" class="btn-secondary"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="btn-secondary"><i class="fas fa-cogs"></i> Механики</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img src="images/preview.png" alt="" width="28" height="28" class="footer-logo-img"> Legend of Worlds</span>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
+        </div>
+    </footer>
+
+<script>
+(function() {
+    'use strict';
+
+    // Руны — баффы на карте
+    var RUNES = [
+        { name: 'Руна антимагии', icon: 'fa-shield-halved', iconClass: 'rune-icon-defense', desc: 'Даёт защиту от магического урона.', duration: '' },
+        { name: 'Руна перемещения', icon: 'fa-bolt', iconClass: 'rune-icon-movement', desc: 'Увеличивает скорость перемещения героя.', duration: '' },
+        { name: 'Руна лечения', icon: 'fa-heart-pulse', iconClass: 'rune-icon-heal', desc: 'Восстанавливает здоровье героя.', duration: '' },
+        { name: 'Руна маны', icon: 'fa-droplet', iconClass: 'rune-icon-mana', desc: 'Восстанавливает ману героя.', duration: '' },
+        { name: 'Руна уровня', icon: 'fa-arrow-up', iconClass: 'rune-icon-level', desc: 'Даёт герою уровень опыта.', duration: '' },
+        { name: 'Руна невидимости', icon: 'fa-eye-slash', iconClass: 'rune-icon-stealth', desc: 'Делает героя невидимым. Снимается при атаке.', duration: '' },
+        { name: 'Руна двойного урона', icon: 'fa-fire', iconClass: 'rune-icon-damage', desc: 'Удваивает наносимый урон.', duration: '' },
+        { name: 'Руна вампиризма', icon: 'fa-skull-crossbones', iconClass: 'rune-icon-vamp', desc: 'Часть нанесённого урона возвращается в виде здоровья.', duration: '' },
+        { name: 'Руна золота', icon: 'fa-coins', iconClass: 'rune-icon-gold', desc: 'Даёт 1000 золота.', duration: '' },
+        { name: 'Руна характеристик', icon: 'fa-chart-line', iconClass: 'rune-icon-stats', desc: 'Увеличивает все характеристики на +10.', duration: '' },
+        { name: 'Руна иллюзий', icon: 'fa-clone', iconClass: 'rune-icon-illusion', desc: 'Создаёт иллюзию героя.', duration: '' },
+        { name: 'Руна скорости боя', icon: 'fa-gauge-high', iconClass: 'rune-icon-speed', desc: 'Увеличивает скорость атаки героя.', duration: '' },
+        { name: 'Руна защиты', icon: 'fa-shield', iconClass: 'rune-icon-defense', desc: 'Увеличивает броню героя.', duration: '' },
+        { name: 'Руна кристаллов', icon: 'fa-gem', iconClass: 'rune-icon-crystal', desc: 'Даёт 5 кристаллов.', duration: '' },
+        { name: 'Руна обновления', icon: 'fa-rotate', iconClass: 'rune-icon-refresh', desc: 'Сбрасывает перезарядки всех способностей.', duration: '' },
+        { name: 'Руна богатства', icon: 'fa-sack-dollar', iconClass: 'rune-icon-wealth', desc: 'Даёт большое количество золота.', duration: '' }
+    ];
+
+    var grid = document.getElementById('runesGrid');
+    grid.innerHTML = RUNES.map(function(r) {
+        var durationHtml = r.duration ? '<div class="rune-duration">' + r.duration + '</div>' : '';
+        return '<div class="rune-card">' +
+            '<div class="rune-icon ' + r.iconClass + '"><i class="fas ' + r.icon + '"></i></div>' +
+            '<div class="rune-info">' +
+                '<div class="rune-name">' + r.name + '</div>' +
+                '<div class="rune-desc">' + r.desc + '</div>' +
+                durationHtml +
+            '</div>' +
+        '</div>';
+    }).join('');
+})();
+</script>
+</body>
+</html>
