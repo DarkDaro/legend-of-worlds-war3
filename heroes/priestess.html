@@ -305,6 +305,10 @@
         if (navContainer && typeof renderHeroNav === 'function') {
             navContainer.innerHTML = renderHeroNav('u-priestess');
         }
+        var buildContainer = document.getElementById('hero-build');
+        if (buildContainer && typeof renderHeroBuild === 'function') {
+            buildContainer.innerHTML = renderHeroBuild('u-priestess');
+        }
     </script>
 </body>
 </html>
