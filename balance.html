@@ -66,11 +66,11 @@
         .balance-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             white-space: nowrap;
         }
         .balance-table th {
-            padding: 10px 12px;
+            padding: 12px 14px;
             text-align: left;
             color: var(--text-muted);
             font-weight: 500;
@@ -87,11 +87,12 @@
         .balance-table th .sort-arrow { margin-left: 4px; font-size: 0.7rem; opacity: 0.4; }
         .balance-table th.sorted .sort-arrow { opacity: 1; color: var(--accent-cyan); }
         .balance-table td {
-            padding: 8px 12px;
+            padding: 10px 14px;
             border-bottom: 1px solid rgba(255,255,255,0.04);
             color: var(--text-secondary);
         }
         .balance-table tr:hover td { background: rgba(0,230,255,0.04); }
+        .balance-table tr:last-child td { border-bottom: 1px solid var(--glass-border); }
         .balance-table .hero-name-cell {
             display: flex;
             align-items: center;
@@ -369,6 +370,7 @@
     // Первый рендер
     renderTable();
 })();
+document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.balance-table-wrap'); });
 </script>
 </body>
 </html>

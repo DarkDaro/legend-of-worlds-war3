@@ -117,12 +117,10 @@
             text-align: left;
             color: var(--text-dim);
             font-weight: 400;
-            min-width: 90px;
-            max-width: 120px;
+            width: 120px;
         }
         .compare-table thead th.hero-col {
             color: var(--text-primary);
-            min-width: 100px;
         }
         .compare-table thead th.hero-col a {
             color: var(--text-primary);
@@ -141,8 +139,8 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 4px;
-            margin-top: 8px;
+            gap: 3px;
+            margin-top: 4px;
         }
         .hero-build-item {
             width: 22px;
@@ -213,7 +211,7 @@
 
         /* Разделитель секций */
         .compare-table tbody tr.section-row td {
-            padding: 8px 16px 4px;
+            padding: 4px 12px 2px;
             font-size: 0.68rem;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -443,7 +441,7 @@
         <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Сравнение</span></div>
 
         <h1><i class="fas fa-balance-scale"></i> Сравнение героев</h1>
-        <p class="compare-page-note">Выберите до 4 героев, чтобы сравнить их уровень и сборки предметов.</p>
+        <p class="compare-page-note">Выберите до 3 героев, чтобы сравнить их уровень и сборки предметов.</p>
 
         <!-- Селекты + уровень -->
         <div class="compare-controls">
@@ -458,10 +456,6 @@
             <div class="compare-slot">
                 <div class="compare-slot-label">Герой 3</div>
                 <select id="hero3"><option value="">— выбрать —</option></select>
-            </div>
-            <div class="compare-slot">
-                <div class="compare-slot-label">Герой 4</div>
-                <select id="hero4"><option value="">— выбрать —</option></select>
             </div>
             <div class="compare-level">
                 <div class="compare-slot-label">Уровень</div>
@@ -537,7 +531,7 @@ HEROES_DATA.forEach(function(hero) {
     };
 });
 
-var SELECT_IDS = ['hero1', 'hero2', 'hero3', 'hero4'];
+var SELECT_IDS = ['hero1', 'hero2', 'hero3'];
 
 // ── 1. Запрет дубликатов ──
 function updateSelectDisables() {
