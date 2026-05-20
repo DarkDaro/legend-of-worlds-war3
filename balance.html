@@ -61,6 +61,7 @@
             border-radius: 12px;
             border: 1px solid var(--glass-border);
             background: var(--glass-bg);
+            -webkit-overflow-scrolling: touch;
         }
         .balance-table {
             width: 100%;
@@ -103,16 +104,27 @@
             object-fit: contain;
             image-rendering: pixelated;
         }
-        .balance-table .hero-name-cell span {
+        .balance-table .hero-name-cell a {
             color: var(--text-primary);
+            text-decoration: none;
             font-weight: 500;
         }
+        .balance-table .hero-name-cell a:hover { text-decoration: underline; }
         .balance-table td.attr-strength { color: #ff6b6b; }
         .balance-table td.attr-agility { color: #51cf66; }
         .balance-table td.attr-intelligence { color: #74c0fc; }
         .balance-table .best-val { color: #ffd43b; font-weight: 600; }
         .balance-table .worst-val { color: #ff6b6b; opacity: 0.7; }
         .balance-table .zero-val { opacity: 0.3; }
+
+        /* Парящая иконка */
+        .balance-page-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-14px); }
+        }
 
         /* ── Счётчик ── */
         .balance-count {
@@ -128,6 +140,14 @@
             .balance-table { font-size: 0.75rem; }
             .balance-table th, .balance-table td { padding: 6px 8px; }
             .balance-table .hero-name-cell img { width: 22px; height: 22px; }
+            /* Скрываем второстепенные столбцы на мобильном */
+            .balance-table .col-hide-mobile { display: none; }
+        }
+        @media (max-width: 480px) {
+            .balance-table { font-size: 0.7rem; }
+            .balance-table th, .balance-table td { padding: 5px 6px; }
+            .balance-table .hero-name-cell img { display: none; }
+            .balance-table .col-hide-small { display: none; }
         }
     </style>
 </head>
@@ -175,20 +195,20 @@
                             <th data-col="name">Герой <span class="sort-arrow">▲</span></th>
                             <th data-col="attr">Атрибут <span class="sort-arrow">▲</span></th>
                             <th data-col="strBase">Сила <span class="sort-arrow">▲</span></th>
-                            <th data-col="strGain">+Сил <span class="sort-arrow">▲</span></th>
+                            <th data-col="strGain" class="col-hide-mobile">+Сил <span class="sort-arrow">▲</span></th>
                             <th data-col="agiBase">Ловк <span class="sort-arrow">▲</span></th>
-                            <th data-col="agiGain">+Ловк <span class="sort-arrow">▲</span></th>
+                            <th data-col="agiGain" class="col-hide-mobile">+Ловк <span class="sort-arrow">▲</span></th>
                             <th data-col="intBase">Разум <span class="sort-arrow">▲</span></th>
-                            <th data-col="intGain">+Разм <span class="sort-arrow">▲</span></th>
+                            <th data-col="intGain" class="col-hide-mobile">+Разм <span class="sort-arrow">▲</span></th>
                             <th data-col="hp">HP <span class="sort-arrow">▲</span></th>
-                            <th data-col="mp">Мана <span class="sort-arrow">▲</span></th>
+                            <th data-col="mp" class="col-hide-mobile">Мана <span class="sort-arrow">▲</span></th>
                             <th data-col="atk">Атака <span class="sort-arrow">▲</span></th>
-                            <th data-col="def">Броня <span class="sort-arrow">▲</span></th>
-                            <th data-col="atkSpeed">AS <span class="sort-arrow">▲</span></th>
-                            <th data-col="hpRegen">РегHP <span class="sort-arrow">▲</span></th>
-                            <th data-col="mpRegen">РегМП <span class="sort-arrow">▲</span></th>
+                            <th data-col="def" class="col-hide-small">Броня <span class="sort-arrow">▲</span></th>
+                            <th data-col="atkSpeed" class="col-hide-small">AS <span class="sort-arrow">▲</span></th>
+                            <th data-col="hpRegen" class="col-hide-mobile">РегHP <span class="sort-arrow">▲</span></th>
+                            <th data-col="mpRegen" class="col-hide-mobile">РегМП <span class="sort-arrow">▲</span></th>
                             <th data-col="speed">Скор <span class="sort-arrow">▲</span></th>
-                            <th data-col="range">Дальн <span class="sort-arrow">▲</span></th>
+                            <th data-col="range" class="col-hide-small">Дальн <span class="sort-arrow">▲</span></th>
                         </tr>
                     </thead>
                     <tbody id="balanceBody"></tbody>
@@ -198,31 +218,33 @@
     </div>
 
     <footer class="site-footer">
-        <div class="footer-links">
-            <a href="heroes.html">Герои</a>
-            <a href="items.html">Предметы</a>
-            <a href="mechanics.html">Механики</a>
-            <a href="monsters.html">Монстры</a>
-            <a href="guides.html">Гайды</a>
-            <a href="info.html">Информация</a>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img src="images/preview.png" alt="" width="28" height="28" class="footer-logo-img"> Legend of Worlds</span>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
-        <div class="footer-social">
-            <a href="#"><i class="fab fa-discord"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-telegram"></i></a>
+        <div class="footer-bottom">
+            <p>&copy; 2025–2026 Legend of Worlds. Все права защищены.</p>
         </div>
-        <div class="footer-copy">&copy; Legend of Worlds · DarkDaro</div>
     </footer>
 
 <script>
 (function() {
     'use strict';
 
-    // Фильтр и сортировка
+    // Столбцы, где меньше = лучше (инвертируем worst-val)
+    const LOWER_IS_BETTER = new Set(['atkSpeed']);
+
     let currentAttr = 'all';
     let searchQuery = '';
     let sortCol = 'name';
-    let sortDir = 1; // 1 = asc, -1 = desc
+    let sortDir = 1;
 
     const ATTR_LABELS = { strength: 'Сила', agility: 'Ловкость', intelligence: 'Разум' };
 
@@ -264,11 +286,12 @@
         const tbody = document.getElementById('balanceBody');
         const countEl = document.getElementById('balanceCount');
 
-        countEl.textContent = `Героев: ${sorted.length}`;
+        countEl.textContent = 'Героев: ' + sorted.length;
 
         // Обновить стрелки в заголовках
         document.querySelectorAll('.balance-table th').forEach(th => {
             const col = th.dataset.col;
+            if (!col) return;
             th.classList.toggle('sorted', col === sortCol);
             const arrow = th.querySelector('.sort-arrow');
             if (arrow) arrow.textContent = col === sortCol ? (sortDir === 1 ? '▲' : '▼') : '▲';
@@ -280,29 +303,35 @@
         }
 
         tbody.innerHTML = sorted.map(h => {
-            const heroPage = h.heroId ? `heroes/${h.heroId}.html` : '#';
-            const iconSrc = h.image ? `images/heroes/${h.image}.png` : '';
+            const heroPage = h.heroId ? 'heroes/' + h.heroId + '.html' : '#';
+            const iconSrc = h.image ? 'images/heroes/' + h.image + '.png' : '';
             const iconHtml = iconSrc
-                ? `<img src="${iconSrc}" alt="" onerror="this.style.display='none'">`
+                ? '<img src="' + iconSrc + '" alt="" onerror="this.style.display=\'none\'">'
                 : '';
-            const attrClass = `attr-${h.attr || ''}`;
+            const attrClass = 'attr-' + (h.attr || '');
             const attrLabel = ATTR_LABELS[h.attr] || h.attr || '—';
 
-            function cell(col) {
+            function cell(col, hideClass) {
                 const v = h[col] || 0;
-                let cls = '';
-                if (v === 0) cls = 'zero-val';
-                else if (v === extremes[col]?.max && extremes[col]?.max !== extremes[col]?.min) cls = 'best-val';
-                else if (v === extremes[col]?.min && extremes[col]?.max !== extremes[col]?.min && col !== 'atkSpeed') cls = 'worst-val';
-                return `<td class="${cls}">${v}</td>`;
+                let cls = hideClass || '';
+                if (v === 0) cls += ' zero-val';
+                else if (v === extremes[col]?.max && extremes[col]?.max !== extremes[col]?.min) cls += ' best-val';
+                else if (v === extremes[col]?.min && extremes[col]?.max !== extremes[col]?.min && !LOWER_IS_BETTER.has(col)) cls += ' worst-val';
+                // Для atkSpeed: минимум = лучший, не подсвечиваем красным
+                return '<td class="' + cls.trim() + '">' + v + '</td>';
             }
 
-            return `<tr>
-                <td><div class="hero-name-cell">${iconHtml}<a href="${heroPage}" style="color:var(--text-primary);text-decoration:none;">${h.name}</a></div></td>
-                <td class="${attrClass}">${attrLabel}</td>
-                ${cell('strBase')}${cell('strGain')}${cell('agiBase')}${cell('agiGain')}${cell('intBase')}${cell('intGain')}
-                ${cell('hp')}${cell('mp')}${cell('atk')}${cell('def')}${cell('atkSpeed')}${cell('hpRegen')}${cell('mpRegen')}${cell('speed')}${cell('range')}
-            </tr>`;
+            return '<tr>' +
+                '<td><div class="hero-name-cell">' + iconHtml + '<a href="' + heroPage + '">' + h.name + '</a></div></td>' +
+                '<td class="' + attrClass + '">' + attrLabel + '</td>' +
+                cell('strBase') + cell('strGain', 'col-hide-mobile') +
+                cell('agiBase') + cell('agiGain', 'col-hide-mobile') +
+                cell('intBase') + cell('intGain', 'col-hide-mobile') +
+                cell('hp') + cell('mp', 'col-hide-mobile') +
+                cell('atk') + cell('def', 'col-hide-small') + cell('atkSpeed', 'col-hide-small') +
+                cell('hpRegen', 'col-hide-mobile') + cell('mpRegen', 'col-hide-mobile') +
+                cell('speed') + cell('range', 'col-hide-small') +
+                '</tr>';
         }).join('');
     }
 
@@ -312,6 +341,7 @@
     document.querySelectorAll('.balance-table th').forEach(th => {
         th.addEventListener('click', () => {
             const col = th.dataset.col;
+            if (!col) return;
             if (sortCol === col) sortDir *= -1;
             else { sortCol = col; sortDir = 1; }
             renderTable();

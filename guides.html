@@ -16,6 +16,157 @@
     <script src="search.js"></script>
     <script src="icon-loader.js" defer></script>
     <script src="analytics.js" defer></script>
+    <style>
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .guide-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: 0.2s;
+        }
+        .guide-card:hover {
+            border-color: var(--glass-border-hover);
+            box-shadow: var(--neon-glow);
+            transform: translateY(-2px);
+        }
+        .guide-card-icon {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .guide-card h3 {
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        .guide-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .guide-card p + p { margin-top: 6px; }
+        .guide-card .guide-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--accent-cyan);
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+        .guide-card .guide-link:hover { text-decoration: underline; }
+
+        .guide-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        .guide-section h2 {
+            font-size: 1.15rem;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .guide-section h2 i { color: var(--accent-cyan); }
+        .guide-section p {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin: 0 0 8px;
+        }
+        .guide-section p:last-child { margin-bottom: 0; }
+        .guide-section strong { color: var(--text-primary); }
+        .guide-section code {
+            background: rgba(0,230,255,0.08);
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 0.82rem;
+            color: var(--accent-cyan);
+        }
+        .guide-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0 0;
+        }
+        .guide-section ul li {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            padding-left: 20px;
+            position: relative;
+        }
+        .guide-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            opacity: 0.6;
+        }
+        .guide-section ul li + li { margin-top: 4px; }
+        .guide-section .warn {
+            color: #ff7777;
+            font-size: 0.82rem;
+            margin-top: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+        .guide-section .warn i { margin-top: 2px; }
+        .guide-section .tip-link {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+        .guide-section .tip-link:hover { text-decoration: underline; }
+
+        .guide-boss-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            margin-top: 8px;
+        }
+        .guide-boss-table th {
+            text-align: left;
+            color: var(--text-muted);
+            font-weight: 500;
+            padding: 6px 10px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .guide-boss-table td {
+            padding: 6px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--text-secondary);
+        }
+        .guide-boss-table tr:hover td { background: rgba(0,230,255,0.04); }
+        .guide-boss-table .item-link { color: #ff6b6b; text-decoration: none; }
+        .guide-boss-table .item-link:hover { text-decoration: underline; }
+        .guide-boss-table .chance { color: var(--accent-cyan); font-weight: 600; }
+        .guide-boss-table .chance-low { color: #ff7777; font-weight: 600; }
+
+        @media (max-width: 700px) {
+            .guides-grid { grid-template-columns: 1fr; }
+            .guide-section { padding: 16px; }
+            .guide-boss-table { font-size: 0.75rem; }
+            .guide-boss-table th, .guide-boss-table td { padding: 4px 6px; }
+        }
+    </style>
 </head>
 <body class="page-guides">
     <header class="site-header">
@@ -41,66 +192,127 @@
         <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><span class="current">Гайды</span></div>
 
         <h1><i class="fas fa-book-open"></i> Гайды</h1>
-        <p class="info-text" style="margin-bottom:24px;">Коротко и по делу: как не утонуть в Арене Даро, что купить первым и когда идти на боссов.</p>
+        <p class="info-text" style="margin-bottom:24px;">Коротко и по делу: как не утонуть на Арене, что купить первым и когда идти на боссов.</p>
+
+        <!-- Быстрые ссылки -->
+        <div class="guides-grid">
+            <div class="guide-card">
+                <span class="guide-card-icon"><i class="fas fa-rocket" style="color:#51cf66;"></i></span>
+                <h3>Быстрый старт</h3>
+                <p>Как установить карту, выбрать первого героя и не потеряться в магазине.</p>
+                <a href="#quick-start" class="guide-link">Читать →</a>
+            </div>
+            <div class="guide-card">
+                <span class="guide-card-icon"><i class="fas fa-coins" style="color:#ffd43b;"></i></span>
+                <h3>Фарм и экономика</h3>
+                <p>Откуда берётся золото, когда идти на крипов и как не просесть по темпу.</p>
+                <a href="#economy" class="guide-link">Читать →</a>
+            </div>
+            <div class="guide-card">
+                <span class="guide-card-icon"><i class="fas fa-crosshairs" style="color:#ff6b6b;"></i></span>
+                <h3>Бой и позиционирование</h3>
+                <p>Мили vs ренж, вампиризм, контроль и когда отступать.</p>
+                <a href="#combat" class="guide-link">Читать →</a>
+            </div>
+            <div class="guide-card">
+                <span class="guide-card-icon"><i class="fas fa-dragon" style="color:#ff922b;"></i></span>
+                <h3>Боссы и дроп</h3>
+                <p>Кто какой предмет даёт, какие шансы и когда имеет смысл идти на босса.</p>
+                <a href="#bosses" class="guide-link">Читать →</a>
+            </div>
+            <div class="guide-card">
+                <span class="guide-card-icon"><i class="fas fa-hat-wizard" style="color:#74c0fc;"></i></span>
+                <h3>Продвинутые механики</h3>
+                <p>Удача, магкрит, сложение защит, блок и возврат урона.</p>
+                <a href="#advanced" class="guide-link">Читать →</a>
+            </div>
+            <div class="guide-card">
+                <span class="guide-card-icon"><i class="fas fa-triangle-exclamation" style="color:#ff5555;"></i></span>
+                <h3>Ошибки новичка</h3>
+                <p>Самые частые промахи и как их избежать.</p>
+                <a href="#mistakes" class="guide-link">Читать →</a>
+            </div>
+        </div>
 
         <!-- 1. Быстрый старт -->
-        <div class="info-section">
-            <h2 class="section-title"><i class="fas fa-rocket"></i> Быстрый старт</h2>
-            <p class="info-text"><strong>Установка:</strong> Скачай карту, положи её в <code>Maps</code> Warcraft III и запусти матч в локальной сети или Battle.net.</p>
-            <p class="info-text"><strong>Первый герой:</strong> Если хочется простого входа, бери <strong>Паладина</strong> или <strong>Адмирала</strong>. Они прощают ошибки и позволяют спокойно разобраться с картой. Из магов хорошо заходит <strong>Архимаг</strong> — у него понятный урон и контроль.</p>
-            <p class="info-text"><strong>Что важно сразу:</strong> Магазин открыт у фонтана. Предметы собираются автоматически — ты покупаешь не по одной детали, а нажимаешь сборку и герой сам закрывает цепочку.</p>
+        <div class="guide-section" id="quick-start">
+            <h2><i class="fas fa-rocket"></i> Быстрый старт</h2>
+            <p><strong>Установка:</strong> Скачай карту, положи в папку <code>Maps</code> Warcraft III и запусти матч в локальной сети или Battle.net.</p>
+            <p><strong>Первый герой:</strong> Если хочется простого входа — <a href="heroes/paladin.html" class="tip-link">Паладин</a> или <a href="heroes/admiral.html" class="tip-link">Адмирал</a>. Они прощают ошибки и позволяют спокойно разобраться с картой. Из магов хорошо заходит <a href="heroes/archmage.html" class="tip-link">Архимаг</a> — понятный урон и контроль.</p>
+            <p><strong>Магазин:</strong> Открыт у фонтана. Предметы собираются автоматически — ты покупаешь не по одной детали, а нажимаешь сборку, и герой сам докупает компоненты.</p>
+            <p><strong>Сборка ИИ:</strong> У каждого героя есть рекомендованная автосборка — это то, что покупает компьютерный игрок. Хороший ориентир для первого матча. Смотри на странице героя или в <a href="bot-builds.html" class="tip-link">Сборках ИИ</a>.</p>
         </div>
 
-        <!-- 2. Первый закуп -->
-        <div class="info-section">
-            <h2 class="section-title"><i class="fas fa-coins"></i> Первый закуп</h2>
-            <p class="info-text"><strong>Танки</strong> — <strong>Паладин</strong>, <strong>Адмирал</strong>, <strong>Друид</strong>: щиты, здоровье, броня. Из ранних покупок особенно ценны <strong>Огненный щит</strong> и <strong>Золотой ключ</strong>.</p>
-            <p class="info-text"><strong>Дамагеры</strong> — <strong>Мастер клинка</strong>, <strong>Жрица</strong>, <strong>Самурай</strong>: оружие, атака, вампиризм. Для старта отлично работает <strong>Сфера огня</strong> — это дешёвый прирост атаки и урона.</p>
-            <p class="info-text"><strong>Саппорты</strong> — <strong>Громовержец</strong>, <strong>Лич</strong>, <strong>Архимаг</strong>: мана, усиление заклинаний, магический вампиризм. Здесь чаще заходят предметы на SpellDMG и восстановление ресурсов.</p>
-            <p class="info-text" style="color:#ff7777; font-size:0.85rem; margin-top:8px;"><i class="fas fa-triangle-exclamation"></i> Новичку обычно не нужны дорогие предметы с одним маленьким бонусом — они съедают темп и не дают почувствовать силу героя.</p>
+        <!-- 2. Фарм и экономика -->
+        <div class="guide-section" id="economy">
+            <h2><i class="fas fa-coins"></i> Фарм и экономика</h2>
+            <p><strong>Крипы</strong> — стабильный доход. Лесные крипы респавнятся каждые 2 минуты, дорожные — чаще. Фармить лес эффективнее, если у тебя есть АоЕ или вампиризм.</p>
+            <p><strong>Убийства героев</strong> — основной рывок золота. В режиме <code>ModeGoldLoss</code> смерть ещё и обходится убитому в часть золота — двойной удар по экономике.</p>
+            <p><strong>Боссы</strong> — командная награда: золото всей команде + шанс на редкий предмет. Идти одному опасно и обычно бессмысленно.</p>
+            <p><strong>Кристаллы</strong> — валюта для серьёзных покупок. Не сливай в первый попавшийся эффект — копи на ключевые предметы.</p>
+            <p><strong>Правило темпа:</strong> лучше купить 3 дешёвых предмета за 30 секунд, чем 1 дорогой за 2 минуты. На Арене Даро тот, кто фармит быстрее, побеждает.</p>
+            <div class="warn"><i class="fas fa-triangle-exclamation"></i> <span>Не стой на базе слишком долго. Каждый потерянный крип — это золото, которое досталось врагу.</span></div>
         </div>
 
-        <!-- 3. Темп игры -->
-        <div class="info-section">
-            <h2 class="section-title"><i class="fas fa-piggy-bank"></i> Темп игры</h2>
-            <p class="info-text"><strong>Источники золота:</strong> крипы дают стабильный доход, убийства героев — основной рывок, боссы — командную награду и редкий дроп.</p>
-            <p class="info-text"><strong>Когда идти на боссов:</strong> после первой сборки и вместе с командой. Один герой может выиграть драку, но не всегда успеет добежать домой живым.</p>
-            <p class="info-text"><strong>Кристаллы:</strong> это валюта для более серьёзных покупок. Её тоже не стоит сливать в первый попавшийся эффект.</p>
-            <p class="info-text"><strong>ModeGoldLoss:</strong> если режим включён, смерть от вражеского героя бьёт по экономике. В таком матче лишний раз не размениваться на пустой риск — это уже часть игры, а не ошибка интерфейса.</p>
+        <!-- 3. Бой и позиционирование -->
+        <div class="guide-section" id="combat">
+            <h2><i class="fas fa-crosshairs"></i> Бой и позиционирование</h2>
+            <p><strong>Мили vs ренж:</strong> мили-герои играют в лоб и зависят от выживаемости, ренж держат дистанцию и давят с безопасного расстояния. Это влияет на выбор предметов: мили нужны броня и HP, ренж — урон и мана.</p>
+            <p><strong>Вампиризм:</strong> физический работает от автоатак, магический — от заклинаний. Это разные механики, считать их нужно отдельно.</p>
+            <p><strong>Когда отступать:</strong> если на тебе стаки урона или эффект на снижение лечения — не пытайся «дожать на характере». Отойди и вернись живым.</p>
+            <p><strong>Контроль:</strong> оглушение, замедление и безмолвие решают драки сильнее, чем кажется. Один удачный стан может стоить дороже, чем предмет на +30 к атаке.</p>
+            <p><strong>Фокус:</strong> в командном бою бей самого опасного, а не самого ближнего. Саппорта без защиты убить проще, чем танка с двумя щитами.</p>
         </div>
 
-        <!-- 4. Бой и позиционирование -->
-        <div class="info-section">
-            <h2 class="section-title"><i class="fas fa-crosshairs"></i> Бой и позиционирование</h2>
-            <p class="info-text"><strong>Мили vs ренж:</strong> мили-герои чаще играют в лоб, ренж — держат дистанцию и давят с безопасного расстояния. Это напрямую влияет на то, как работает баш, урон и выживаемость.</p>
-            <p class="info-text"><strong>Вампиризм:</strong> физический работает от автоатак, магический — от заклинаний. Это разные механики, и считать их нужно отдельно.</p>
-            <p class="info-text"><strong>Когда отступать:</strong> если на тебе стаки урона или эффект на снижение лечения, не пытайся «дожать на характере» — лучше отойти и вернуться живым.</p>
-            <p class="info-text"><strong>Контроль:</strong> оглушение, замедление и безмолвие решают драки сильнее, чем кажется. Иногда один удачный контроль важнее, чем ещё один предмет на урон.</p>
+        <!-- 4. Боссы и дроп -->
+        <div class="guide-section" id="bosses">
+            <h2><i class="fas fa-dragon"></i> Боссы и дроп</h2>
+            <p>Каждый босс гарантированно даёт золото всей команде и с определённым шансом роняет уникальный предмет. Редкий дроп — это не гарантия, а повод идти на босса снова.</p>
+            <table class="guide-boss-table">
+                <thead>
+                    <tr><th>Босс</th><th>Предмет</th><th>Шанс</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Ужасный Вурдалак</td><td><a href="items.html?item=I01N" class="item-link">Когти вурдалака</a></td><td class="chance">70%</td></tr>
+                    <tr><td>Горный Великан</td><td><a href="items.html?item=I01L" class="item-link">Доспехи великана</a></td><td class="chance">50%</td></tr>
+                    <tr><td>Царь-рак</td><td><a href="items.html?item=I0CK" class="item-link">Панцирь рака</a></td><td class="chance">25%</td></tr>
+                    <tr><td>Высший Пустынник</td><td><a href="items.html?item=I02E" class="item-link">Волшебный алмаз</a></td><td class="chance">50%</td></tr>
+                    <tr><td>Низший пустынник</td><td><a href="items.html?item=I0B5" class="item-link">Душа призрака</a></td><td class="chance">70%</td></tr>
+                    <tr><td>Ледяной голем</td><td><a href="items.html?item=I047" class="item-link">Рапира</a></td><td class="chance">25%</td></tr>
+                    <tr><td>Синий Танатос</td><td><a href="items.html?item=I0G4" class="item-link">Голова синего Танатоса</a></td><td class="chance-low">10%</td></tr>
+                    <tr><td>Зелёный Танатос</td><td><a href="items.html?item=I0G3" class="item-link">Голова зелёного Танатоса</a></td><td class="chance-low">10%</td></tr>
+                </tbody>
+            </table>
+            <p style="margin-top:12px;">Подробнее о каждом боссе — на странице <a href="monsters.html" class="tip-link">Монстры</a>.</p>
         </div>
 
         <!-- 5. Продвинутые механики -->
-        <div class="info-section">
-            <h2 class="section-title"><i class="fas fa-hat-wizard"></i> Продвинутые механики</h2>
-            <p class="info-text"><strong>Удача:</strong> повышает шанс случайных эффектов вроде крита, оглушения и уклонения. Чем выше базовый шанс, тем заметнее рост.</p>
-            <p class="info-text"><strong>Магический крит:</strong> отдельный множитель для заклинаний. Он живёт своей жизнью и не обязан совпадать с физическим критом.</p>
-            <p class="info-text"><strong>Сложение защит:</strong> бонусы такого типа часто складываются не в лоб, а по формуле. Два предмета по 20% могут дать меньше, чем кажется на глаз.</p>
-            <p class="info-text"><strong>Блок и возврат:</strong> блок урона лучше воспринимать как шанс спасти себя в нужный момент, а возврат — как наказание за лишнюю жадность врага.</p>
-            <p class="info-text" style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;"><i class="fas fa-calculator"></i> Подробные формулы и калькуляторы — на странице <a href="mechanics.html" style="color:var(--accent-cyan);">Механики</a>.</p>
+        <div class="guide-section" id="advanced">
+            <h2><i class="fas fa-hat-wizard"></i> Продвинутые механики</h2>
+            <p><strong>Удача:</strong> повышает шанс случайных эффектов — крита, оглушения, уклонения. Чем выше базовый шанс, тем заметнее рост от удачи.</p>
+            <p><strong>Магический крит:</strong> отдельный множитель для заклинаний. Не совпадает с физическим критом — это две разные характеристики.</p>
+            <p><strong>Сложение защит:</strong> бонусы складываются не в лоб, а по формуле. Два предмета по 20% магзащиты дают меньше, чем 40%. Проверяй в <a href="armor-calc.html" class="tip-link">калькуляторе брони</a>.</p>
+            <p><strong>Блок и возврат:</strong> блок урона — шанс спасти себя в нужный момент. Возврат — наказание врага за жадность. Работают по-разному, не путай.</p>
+            <p><strong>Основной атрибут:</strong> каждый герой получает +1 к атаке за каждое очко основного атрибута. Герою силы — за силу, ловкости — за ловкость, разума — за разум. Учитывай это при сборке.</p>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;"><i class="fas fa-calculator"></i> Формулы и калькуляторы — на странице <a href="mechanics.html" class="tip-link">Механики</a>.</p>
         </div>
 
         <!-- 6. Ошибки новичка -->
-        <div class="info-section">
-            <h2 class="section-title"><i class="fas fa-triangle-exclamation" style="color:#ff7777;"></i> Ошибки новичка</h2>
-            <ul class="info-list">
-                <li><i class="fas fa-times-circle" style="color:#ff5555;"></i> <strong>Не бери дорогой «красивый» предмет первым.</strong> В Legend of Worlds сила приходит не от цены, а от правильного темпа.</li>
-                <li><i class="fas fa-times-circle" style="color:#ff5555;"></i> <strong>Не лезь в боссов один.</strong> Почти все сильные награды здесь рассчитаны на команду, а не на геройский одиночный забег.</li>
-                <li><i class="fas fa-times-circle" style="color:#ff5555;"></i> <strong>Не стой на базе слишком долго.</strong> Арена Даро любит тех, кто выходит в поле, фармит и вовремя нажимает на силу.</li>
-                <li><i class="fas fa-times-circle" style="color:#ff5555;"></i> <strong>Проверяй предметы перед закупом.</strong> Если не уверен, загляни в раздел предметов — там уже есть готовые теги, сборки и подсказки.</li>
+        <div class="guide-section" id="mistakes">
+            <h2><i class="fas fa-triangle-exclamation" style="color:#ff7777;"></i> Ошибки новичка</h2>
+            <ul>
+                <li><strong>Дорогой предмет первым.</strong> В Legend of Worlds сила приходит не от цены, а от правильного темпа. Три дешёвых предмета лучше одного дорогого.</li>
+                <li><strong>Одиночный забег на босса.</strong> Почти все боссы рассчитаны на команду. Один герой может выиграть драку, но не всегда успеет добежать домой живым.</li>
+                <li><strong>Слишком долго на базе.</strong> Арена Даро любит тех, кто выходит в поле, фармит и давит темпом.</li>
+                <li><strong>Игнорировать контроль.</strong> Один стан в нужный момент решает драку. Способности с оглушением или замедлением — не «второстепенный урон», а ключ к победе.</li>
+                <li><strong>Не проверять сборки.</strong> У каждого героя есть рекомендованная автосборка от ИИ. Это не единственный путь, но хороший старт. Загляни на страницу героя.</li>
             </ul>
         </div>
 
-        <div style="margin-top:32px; text-align:center;">
-            <a href="index.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> На главную</a>
+        <div style="margin-top:24px; text-align:center; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+            <a href="heroes.html" class="btn-secondary"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="btn-secondary"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="btn-secondary"><i class="fas fa-cogs"></i> Механики</a>
         </div>
     </div>
 
@@ -122,7 +334,7 @@
     </footer>
 <script>
 // Scroll-reveal — секции гайдов
-document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.info-section'); });
+document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.guide-section, .guide-card'); });
 </script>
 </body>
 </html>

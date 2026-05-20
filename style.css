@@ -2573,9 +2573,9 @@ h1 {
 }
 .boss-drop-row {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
     background: var(--glass-bg);
     backdrop-filter: blur(var(--glass-blur));
     -webkit-backdrop-filter: blur(var(--glass-blur));
@@ -2589,6 +2589,11 @@ h1 {
 .boss-drop-row:hover {
     border-color: var(--glass-border-hover);
     box-shadow: 0 0 12px #00e6ff33;
+}
+.boss-drop-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 .boss-drop-name {
     font-weight: 600;
@@ -2609,12 +2614,14 @@ h1 {
     color: #ff8888;
 }
 .boss-drop-chance {
-    font-size: 0.7rem;
-    padding: 2px 6px;
+    font-size: 0.75rem;
+    padding: 2px 8px;
     border-radius: 8px;
     background: #00e6ff22;
     color: #00e6ff;
     font-weight: 600;
+    align-self: flex-start;
+    margin-left: 38px;
 }
 .boss-drop-chance-low {
     background: #ff555522;
@@ -2629,7 +2636,7 @@ h1 {
     margin-bottom: 8px;
 }
 @media (max-width: 640px) {
-    .boss-drop-row {
+    .boss-drop-main {
         flex-wrap: wrap;
         gap: 6px;
     }
@@ -2639,6 +2646,9 @@ h1 {
     }
     .boss-drop-arrow {
         display: none;
+    }
+    .boss-drop-chance {
+        margin-left: 0;
     }
 }
 .monster-card {
@@ -5384,6 +5394,9 @@ body.page-changelog,
 body.page-modes,
 body.page-faq,
 body.page-compare,
+body.page-balance,
+body.page-creeps,
+body.page-runes,
 body.page-home,
 body.page-404 {
     background-image:
