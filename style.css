@@ -6670,7 +6670,18 @@ body.page-map-changes::after {
     .cycle-label,
     .calc-back-link,
     .calc-hero-select,
-    .calc-slots-counter {
+    .calc-slots-counter,
+    .guide-card,
+    .guide-section,
+    .faq-item,
+    .faq-section,
+    .compare-table-wrap,
+    .compare-cards,
+    .armor-results,
+    .formula-tab,
+    .formula-panel,
+    .formula-results,
+    .bb-stage {
         background: #0f172a !important;
     }
 }

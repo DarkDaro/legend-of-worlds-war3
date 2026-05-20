@@ -186,7 +186,7 @@
                 heroGrid.innerHTML = '';
                 heroesData.forEach(hero => {
                     const card = createHeroCard(hero);
-                    let show = currentFilter === 'all' && !hero.unique && !hero.isAltForm
+                    let show = currentFilter === 'all' && !hero.unique && !hero.isAltForm && !hero.wip
                         || (currentFilter === 'unique' && hero.unique)
                         || (currentFilter === 'wip' && hero.wip)
                         || (hero.attr === currentFilter && !hero.unique && !hero.isAltForm);
@@ -242,7 +242,7 @@
                 document.querySelectorAll('.hero-card').forEach((card, i) => {
                     const hero = heroesData[i];
                     // Проверяем фильтр
-                    let filterOk = currentFilter === 'all' && !hero.unique && !hero.isAltForm
+                    let filterOk = currentFilter === 'all' && !hero.unique && !hero.isAltForm && !hero.wip
                         || (currentFilter === 'unique' && hero.unique)
                         || (currentFilter === 'wip' && hero.wip)
                         || (hero.attr === currentFilter && !hero.unique && !hero.isAltForm);
