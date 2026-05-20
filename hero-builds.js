@@ -202,7 +202,6 @@ function renderHeroBuild(heroId) {
           }
         });
         html += '</div>';
-        html += '<p style="color:var(--text-muted);font-size:0.75rem;margin-top:6px;">Финальная стадия ИИ-сборки · <a href="../bot-builds.html?rawcode=' + rawcode + '" style="color:var(--accent-cyan);">Все стадии →</a></p>';
         return html;
       }
     }

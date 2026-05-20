@@ -11,6 +11,7 @@
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>.wiki-container { max-width: 1600px; }</style>
     <script src="hero-data.js"></script>
     <script src="search-index.js"></script>
     <script src="search.js"></script>
@@ -60,6 +61,7 @@
             <button class="filter-btn" data-filter="unique"><i class="fas fa-star"></i> Уникальные</button>
             <button class="filter-btn" data-filter="favorites"><i class="fas fa-heart"></i> Избранное</button>
             <button class="filter-btn" data-filter="wip"><i class="fas fa-hammer"></i> В разработке</button>
+            <button class="filter-btn" id="clearFavBtn" style="display:none;" onclick="clearHeroFavorites()"><i class="fas fa-times"></i> Очистить избранное</button>
         </div>
 
         <!-- Сетка героев будет сгенерирована JS -->
@@ -87,7 +89,28 @@
 
             function saveFavorites() {
                 localStorage.setItem('heroFavorites', JSON.stringify(favorites));
+                updateClearBtn();
             }
+
+            function updateClearBtn() {
+                var btn = document.getElementById('clearFavBtn');
+                if (btn) btn.style.display = favorites.length > 0 ? '' : 'none';
+            }
+
+            window.clearHeroFavorites = function() {
+                if (!confirm('Очистить список избранного?')) return;
+                favorites = [];
+                saveFavorites();
+                document.querySelectorAll('.hero-fav-btn i').forEach(function(icon) {
+                    icon.className = 'far fa-heart';
+                });
+                if (currentFilter === 'favorites') {
+                    currentFilter = 'all';
+                    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+                    document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+                    applyFilters();
+                }
+            };
 
             function toggleFavorite(heroId) {
                 if (favorites.includes(heroId)) {
@@ -246,6 +269,7 @@
             // Первоначальный рендер
             renderHeroes();
             updateCount();
+            updateClearBtn();
 
             // Функция для добавления нового героя (можно вызывать из консоли)
             window.addHero = function(heroData) {

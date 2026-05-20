@@ -161,19 +161,21 @@
             <a href="../heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
         </div>
     </div>
-    <script>
-        var statsContainer = document.getElementById('hero-stats');
-        if (statsContainer && typeof renderHeroStats === 'function') {
-            statsContainer.innerHTML = renderHeroStats('cyborg');
-        }
-        var navContainer = document.getElementById('hero-nav');
-        if (navContainer && typeof renderHeroNav === 'function') {
-            navContainer.innerHTML = renderHeroNav('cyborg');
-        }
-        var buildContainer = document.getElementById('hero-build');
-        if (buildContainer && typeof renderHeroBuild === 'function') {
-            buildContainer.innerHTML = renderHeroBuild('cyborg');
-        }
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var statsContainer = document.getElementById('hero-stats');
+            if (statsContainer && typeof renderHeroStats === 'function') {
+                statsContainer.innerHTML = renderHeroStats('cyborg');
+            }
+            var navContainer = document.getElementById('hero-nav');
+            if (navContainer && typeof renderHeroNav === 'function') {
+                navContainer.innerHTML = renderHeroNav('cyborg');
+            }
+            var buildContainer = document.getElementById('hero-build');
+            if (buildContainer && typeof renderHeroBuild === 'function') {
+                buildContainer.innerHTML = renderHeroBuild('cyborg');
+            }
+        });
     </script>
     <footer class="site-footer">
         <div class="footer-content">
