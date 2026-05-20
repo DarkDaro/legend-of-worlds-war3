@@ -541,6 +541,7 @@ function populateHeroSelect() {
     if (typeof HEROES_DATA !== 'undefined') {
         HEROES_DATA.forEach(h => { if (h.heroId) heroNames[h.heroId] = h.name; });
     }
+    // Сначала герои с ручной сборкой
     Object.keys(heroBuilds).forEach(key => {
         const hero = heroBuilds[key];
         if (hero && hero.items && hero.items.length > 0) {
@@ -550,24 +551,67 @@ function populateHeroSelect() {
             select.appendChild(opt);
         }
     });
+    // Затем все остальные герои с ИИ-сборкой
+    if (typeof HERO_BUILD_DATA !== 'undefined' && typeof botBuildGroups !== 'undefined') {
+        var added = new Set(Object.keys(heroBuilds));
+        for (var rc in HERO_BUILD_DATA) {
+            var h = HERO_BUILD_DATA[rc];
+            if (h.heroId && !added.has(h.heroId)) {
+                var group = botBuildGroups[h.group];
+                if (group && group.stages && group.stages.length > 0) {
+                    var opt = document.createElement('option');
+                    opt.value = h.heroId;
+                    opt.textContent = heroNames[h.heroId] || h.name;
+                    opt.setAttribute('data-rawcode', rc);
+                    select.appendChild(opt);
+                    added.add(h.heroId);
+                }
+            }
+        }
+    }
 }
 
 function importHeroBuild(heroId) {
+    // Сначала пробуем ручную сборку
     const hero = heroBuilds[heroId];
-    if (!hero || !hero.items) return;
-    buildSlots = [null, null, null, null, null, null];
-    hero.items.forEach((item, i) => {
-        if (i < 6 && itemsDB[item.id]) {
-            buildSlots[i] = calcMakeSlot(item.id);
+    if (hero && hero.items) {
+        buildSlots = [null, null, null, null, null, null];
+        hero.items.forEach((item, i) => {
+            if (i < 6 && itemsDB[item.id]) {
+                buildSlots[i] = calcMakeSlot(item.id);
+            }
+        });
+        saveBuild();
+        renderCalc();
+        return;
+    }
+
+    // Fallback: ИИ-сборка — последняя стадия
+    if (typeof HERO_BUILD_DATA !== 'undefined' && typeof botBuildGroups !== 'undefined') {
+        var rawcode = null;
+        for (var rc in HERO_BUILD_DATA) {
+            if (HERO_BUILD_DATA[rc].heroId === heroId) { rawcode = rc; break; }
         }
-    });
-    saveBuild();
-    renderCalc();
-    // Обновить заголовок
-    const h1 = document.querySelector('h1');
-    const heroName = hero.name || heroId;
-    if (h1) h1.innerHTML = '<i class="fas fa-calculator"></i> Сборка: ' + heroName;
-    // Не сбрасываем селектор — пользователь должен видеть выбранного героя
+        if (rawcode) {
+            var group = HERO_BUILD_DATA[rawcode].group;
+            var stages = botBuildGroups[group] && botBuildGroups[group].stages;
+            if (stages && stages.length > 0) {
+                var lastStage = stages[stages.length - 1];
+                buildSlots = [null, null, null, null, null, null];
+                lastStage.items.forEach(function(slot, i) {
+                    if (i < 6) {
+                        var item = typeof findItemByName === 'function' ? findItemByName(slot.name) : null;
+                        if (item) {
+                            buildSlots[i] = calcMakeSlot(item.id);
+                        }
+                    }
+                });
+                saveBuild();
+                renderCalc();
+                return;
+            }
+        }
+    }
 }
 
 // === Поделиться сборкой (ссылка) ===
