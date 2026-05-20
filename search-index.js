@@ -141,22 +141,22 @@ var SEARCH_INDEX = {
   },
   {
     "name": "Ледяная вспышка",
-    "heroId": "ice-lord",
+    "heroId": "frost-lord",
     "heroName": "Повелитель Льдов"
   },
   {
     "name": "Ледяная броня",
-    "heroId": "ice-lord",
+    "heroId": "frost-lord",
     "heroName": "Повелитель Льдов"
   },
   {
     "name": "Тёмный ритуал",
-    "heroId": "ice-lord",
+    "heroId": "frost-lord",
     "heroName": "Повелитель Льдов"
   },
   {
     "name": "Смерть и разложение",
-    "heroId": "ice-lord",
+    "heroId": "frost-lord",
     "heroName": "Повелитель Льдов"
   },
   {
@@ -203,31 +203,6 @@ var SEARCH_INDEX = {
     "name": "Спокойствие",
     "heroId": "leshy",
     "heroName": "Леший"
-  },
-  {
-    "name": "Ледяная вспышка",
-    "heroId": "lich",
-    "heroName": "Лич"
-  },
-  {
-    "name": "Ледяная броня",
-    "heroId": "lich",
-    "heroName": "Лич"
-  },
-  {
-    "name": "Тёмный ритуал",
-    "heroId": "lich",
-    "heroName": "Лич"
-  },
-  {
-    "name": "Смерть и разложение",
-    "heroId": "lich",
-    "heroName": "Лич"
-  },
-  {
-    "name": "Аура мороза",
-    "heroId": "lich",
-    "heroName": "Лич"
   },
   {
     "name": "Водяной клинок",

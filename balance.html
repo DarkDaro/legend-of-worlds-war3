@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблица баланса · Legend of Worlds</title>
+    <meta property="og:title" content="Таблица баланса героев — Legend of Worlds">
+    <meta property="og:description" content="Все герои в одной таблице: статы, прирост, дальность, скорость. Сортировка и фильтры.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="hero-data.js"></script>
+    <script src="search-index.js"></script>
+    <script src="search.js"></script>
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+    <style>
+        /* ── Фильтры ── */
+        .balance-filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        .balance-filters .attr-btn {
+            padding: 6px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        .balance-filters .attr-btn:hover,
+        .balance-filters .attr-btn.active {
+            background: rgba(0, 230, 255, 0.12);
+            border-color: var(--accent-cyan);
+            color: var(--text-primary);
+        }
+        .balance-filters .attr-btn.active-strength { border-color: #ff6b6b; color: #ff6b6b; background: rgba(255,107,107,0.1); }
+        .balance-filters .attr-btn.active-agility { border-color: #51cf66; color: #51cf66; background: rgba(81,207,102,0.1); }
+        .balance-filters .attr-btn.active-intelligence { border-color: #74c0fc; color: #74c0fc; background: rgba(116,192,252,0.1); }
+        .balance-search {
+            padding: 7px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            width: 180px;
+        }
+        .balance-search::placeholder { color: var(--text-muted); }
+
+        /* ── Таблица ── */
+        .balance-table-wrap {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+        }
+        .balance-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            white-space: nowrap;
+        }
+        .balance-table th {
+            padding: 10px 12px;
+            text-align: left;
+            color: var(--text-muted);
+            font-weight: 500;
+            border-bottom: 1px solid var(--glass-border);
+            cursor: pointer;
+            user-select: none;
+            position: sticky;
+            top: 0;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 2;
+        }
+        .balance-table th:hover { color: var(--accent-cyan); }
+        .balance-table th .sort-arrow { margin-left: 4px; font-size: 0.7rem; opacity: 0.4; }
+        .balance-table th.sorted .sort-arrow { opacity: 1; color: var(--accent-cyan); }
+        .balance-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--text-secondary);
+        }
+        .balance-table tr:hover td { background: rgba(0,230,255,0.04); }
+        .balance-table .hero-name-cell {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .balance-table .hero-name-cell img {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            object-fit: contain;
+            image-rendering: pixelated;
+        }
+        .balance-table .hero-name-cell span {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        .balance-table td.attr-strength { color: #ff6b6b; }
+        .balance-table td.attr-agility { color: #51cf66; }
+        .balance-table td.attr-intelligence { color: #74c0fc; }
+        .balance-table .best-val { color: #ffd43b; font-weight: 600; }
+        .balance-table .worst-val { color: #ff6b6b; opacity: 0.7; }
+        .balance-table .zero-val { opacity: 0.3; }
+
+        /* ── Счётчик ── */
+        .balance-count {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+        }
+
+        /* ── Мобильная адаптация ── */
+        @media (max-width: 700px) {
+            .balance-filters { gap: 6px; }
+            .balance-search { width: 100%; order: -1; }
+            .balance-table { font-size: 0.75rem; }
+            .balance-table th, .balance-table td { padding: 6px 8px; }
+            .balance-table .hero-name-cell img { width: 22px; height: 22px; }
+        }
+    </style>
+</head>
+<body class="page-balance">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Таблица баланса</span></div>
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"><i class="fas fa-table"></i></div>
+                <div class="detail-title">Таблица баланса героев</div>
+            </div>
+            <p class="detail-description">Все герои в одной таблице — базовые статы, прирост за уровень, дальность атаки, скорость. Сортировка по любому столбцу. Нажмите на заголовок.</p>
+
+            <div class="balance-filters">
+                <input type="text" class="balance-search" id="balanceSearch" placeholder="Поиск героя...">
+                <button class="attr-btn active" data-attr="all">Все</button>
+                <button class="attr-btn" data-attr="strength">💪 Сила</button>
+                <button class="attr-btn" data-attr="agility">🏹 Ловкость</button>
+                <button class="attr-btn" data-attr="intelligence">🧠 Разум</button>
+            </div>
+            <div class="balance-count" id="balanceCount"></div>
+            <div class="balance-table-wrap">
+                <table class="balance-table" id="balanceTable">
+                    <thead>
+                        <tr>
+                            <th data-col="name">Герой <span class="sort-arrow">▲</span></th>
+                            <th data-col="attr">Атрибут <span class="sort-arrow">▲</span></th>
+                            <th data-col="strBase">Сила <span class="sort-arrow">▲</span></th>
+                            <th data-col="strGain">+Сил <span class="sort-arrow">▲</span></th>
+                            <th data-col="agiBase">Ловк <span class="sort-arrow">▲</span></th>
+                            <th data-col="agiGain">+Ловк <span class="sort-arrow">▲</span></th>
+                            <th data-col="intBase">Разум <span class="sort-arrow">▲</span></th>
+                            <th data-col="intGain">+Разм <span class="sort-arrow">▲</span></th>
+                            <th data-col="hp">HP <span class="sort-arrow">▲</span></th>
+                            <th data-col="mp">Мана <span class="sort-arrow">▲</span></th>
+                            <th data-col="atk">Атака <span class="sort-arrow">▲</span></th>
+                            <th data-col="def">Броня <span class="sort-arrow">▲</span></th>
+                            <th data-col="atkSpeed">AS <span class="sort-arrow">▲</span></th>
+                            <th data-col="hpRegen">РегHP <span class="sort-arrow">▲</span></th>
+                            <th data-col="mpRegen">РегМП <span class="sort-arrow">▲</span></th>
+                            <th data-col="speed">Скор <span class="sort-arrow">▲</span></th>
+                            <th data-col="range">Дальн <span class="sort-arrow">▲</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="balanceBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="heroes.html">Герои</a>
+            <a href="items.html">Предметы</a>
+            <a href="mechanics.html">Механики</a>
+            <a href="monsters.html">Монстры</a>
+            <a href="guides.html">Гайды</a>
+            <a href="info.html">Информация</a>
+        </div>
+        <div class="footer-social">
+            <a href="#"><i class="fab fa-discord"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+        <div class="footer-copy">&copy; Legend of Worlds · DarkDaro</div>
+    </footer>
+
+<script>
+(function() {
+    'use strict';
+
+    // Фильтр и сортировка
+    let currentAttr = 'all';
+    let searchQuery = '';
+    let sortCol = 'name';
+    let sortDir = 1; // 1 = asc, -1 = desc
+
+    const ATTR_LABELS = { strength: 'Сила', agility: 'Ловкость', intelligence: 'Разум' };
+
+    function getHeroes() {
+        if (typeof HEROES_DATA === 'undefined') return [];
+        return HEROES_DATA.filter(h => {
+            if (h.isAltForm || h.wip) return false;
+            if (currentAttr !== 'all' && h.attr !== currentAttr) return false;
+            if (searchQuery && !h.name.toLowerCase().includes(searchQuery)) return false;
+            return true;
+        });
+    }
+
+    function sortHeroes(heroes) {
+        return heroes.slice().sort((a, b) => {
+            let va = a[sortCol], vb = b[sortCol];
+            if (sortCol === 'name') { va = va.toLowerCase(); vb = vb.toLowerCase(); }
+            if (sortCol === 'attr') { va = va || ''; vb = vb || ''; }
+            if (typeof va === 'string') return va.localeCompare(vb) * sortDir;
+            return ((va || 0) - (vb || 0)) * sortDir;
+        });
+    }
+
+    // Найти лучшие/худшие значения для подсветки
+    function findExtremes(heroes) {
+        const numCols = ['strBase','strGain','agiBase','agiGain','intBase','intGain','hp','mp','atk','def','atkSpeed','hpRegen','mpRegen','speed','range'];
+        const extremes = {};
+        numCols.forEach(col => {
+            const vals = heroes.map(h => h[col] || 0);
+            extremes[col] = { max: Math.max(...vals), min: Math.min(...vals) };
+        });
+        return extremes;
+    }
+
+    function renderTable() {
+        const heroes = getHeroes();
+        const sorted = sortHeroes(heroes);
+        const extremes = findExtremes(heroes);
+        const tbody = document.getElementById('balanceBody');
+        const countEl = document.getElementById('balanceCount');
+
+        countEl.textContent = `Героев: ${sorted.length}`;
+
+        // Обновить стрелки в заголовках
+        document.querySelectorAll('.balance-table th').forEach(th => {
+            const col = th.dataset.col;
+            th.classList.toggle('sorted', col === sortCol);
+            const arrow = th.querySelector('.sort-arrow');
+            if (arrow) arrow.textContent = col === sortCol ? (sortDir === 1 ? '▲' : '▼') : '▲';
+        });
+
+        if (!sorted.length) {
+            tbody.innerHTML = '<tr><td colspan="17" style="text-align:center;color:var(--text-muted);padding:24px;">Нет героев</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = sorted.map(h => {
+            const heroPage = h.heroId ? `heroes/${h.heroId}.html` : '#';
+            const iconSrc = h.image ? `images/heroes/${h.image}.png` : '';
+            const iconHtml = iconSrc
+                ? `<img src="${iconSrc}" alt="" onerror="this.style.display='none'">`
+                : '';
+            const attrClass = `attr-${h.attr || ''}`;
+            const attrLabel = ATTR_LABELS[h.attr] || h.attr || '—';
+
+            function cell(col) {
+                const v = h[col] || 0;
+                let cls = '';
+                if (v === 0) cls = 'zero-val';
+                else if (v === extremes[col]?.max && extremes[col]?.max !== extremes[col]?.min) cls = 'best-val';
+                else if (v === extremes[col]?.min && extremes[col]?.max !== extremes[col]?.min && col !== 'atkSpeed') cls = 'worst-val';
+                return `<td class="${cls}">${v}</td>`;
+            }
+
+            return `<tr>
+                <td><div class="hero-name-cell">${iconHtml}<a href="${heroPage}" style="color:var(--text-primary);text-decoration:none;">${h.name}</a></div></td>
+                <td class="${attrClass}">${attrLabel}</td>
+                ${cell('strBase')}${cell('strGain')}${cell('agiBase')}${cell('agiGain')}${cell('intBase')}${cell('intGain')}
+                ${cell('hp')}${cell('mp')}${cell('atk')}${cell('def')}${cell('atkSpeed')}${cell('hpRegen')}${cell('mpRegen')}${cell('speed')}${cell('range')}
+            </tr>`;
+        }).join('');
+    }
+
+    // === Обработчики ===
+
+    // Сортировка по клику на заголовок
+    document.querySelectorAll('.balance-table th').forEach(th => {
+        th.addEventListener('click', () => {
+            const col = th.dataset.col;
+            if (sortCol === col) sortDir *= -1;
+            else { sortCol = col; sortDir = 1; }
+            renderTable();
+        });
+    });
+
+    // Фильтр по атрибуту
+    document.querySelectorAll('.attr-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.attr-btn').forEach(b => b.classList.remove('active', 'active-strength', 'active-agility', 'active-intelligence'));
+            const attr = btn.dataset.attr;
+            currentAttr = attr;
+            btn.classList.add('active');
+            if (attr !== 'all') btn.classList.add('active-' + attr);
+            renderTable();
+        });
+    });
+
+    // Поиск
+    document.getElementById('balanceSearch').addEventListener('input', (e) => {
+        searchQuery = e.target.value.toLowerCase().trim();
+        renderTable();
+    });
+
+    // Первый рендер
+    renderTable();
+})();
+</script>
+</body>
+</html>

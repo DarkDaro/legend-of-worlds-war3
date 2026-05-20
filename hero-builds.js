@@ -131,8 +131,8 @@ const heroBuilds = {
       { id: 'I0CN', name: 'Сфера магии' },
     ],
   },
-  'ice-lord': {
-    name: "ice-lord",
+  'frost-lord': {
+    name: "frost-lord",
     items: [
       { id: 'I0GJ', name: 'Клеймор' },
       { id: 'I0AI', name: 'Посох разрушения' },
