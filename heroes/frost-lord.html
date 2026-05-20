@@ -173,6 +173,7 @@
         </div>
     </footer>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
         var statsContainer = document.getElementById('hero-stats');
         if (statsContainer && typeof renderHeroStats === 'function') {
             statsContainer.innerHTML = renderHeroStats('frost-lord');
@@ -185,6 +186,7 @@
         if (buildContainer && typeof renderHeroBuild === 'function') {
             buildContainer.innerHTML = renderHeroBuild('frost-lord');
         }
+    });
     </script>
 </body>
 </html>

@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="style.css">
     <script src="hero-data.js"></script>
     <script src="hero-builds.js"></script>
+    <script src="jass-data.js"></script>
+    <script src="bot-builds.js"></script>
     <script src="item-bonus-parser.js"></script>
     <script src="game-constants.js"></script>
     <script src="search-index.js"></script>
@@ -28,11 +30,11 @@
             flex-wrap: wrap;
             align-items: flex-end;
             margin-bottom: 24px;
+            padding-left: 130px;
         }
         .compare-slot {
             flex: 1;
             min-width: 140px;
-            max-width: 220px;
         }
         .compare-slot select {
             width: 100%;
@@ -118,9 +120,12 @@
             color: var(--text-dim);
             font-weight: 400;
             width: 120px;
+            min-width: 120px;
         }
         .compare-table thead th.hero-col {
             color: var(--text-primary);
+            width: calc((100% - 120px) / 3);
+            min-width: 140px;
         }
         .compare-table thead th.hero-col a {
             color: var(--text-primary);
@@ -353,6 +358,8 @@
         /* ── Мобильная адаптация ── */
         @media (max-width: 900px) {
             .compare-controls {
+                padding-left: 90px;
+            }
                 flex-direction: column;
                 gap: 8px;
             }
@@ -369,11 +376,12 @@
             }
             .compare-table thead th:first-child,
             .compare-table tbody td:first-child {
-                min-width: 60px;
+                width: 80px;
+                min-width: 80px;
                 font-size: 0.7rem;
             }
             .compare-table thead th.hero-col {
-                min-width: 80px;
+                min-width: 100px;
                 font-size: 0.8rem;
             }
             .hero-col-name { font-size: 0.8rem; }
@@ -385,7 +393,7 @@
             .compare-table thead th { padding: 8px 5px; }
         }
         @media (max-width: 480px) {
-            .compare-controls { gap: 6px; }
+            .compare-controls { gap: 6px; padding-left: 68px; }
             .compare-slot select, .compare-level input {
                 padding: 8px 10px;
                 font-size: 0.82rem;
@@ -395,11 +403,12 @@
                 font-size: 0.71rem;
             }
             .compare-table thead th.hero-col {
-                min-width: 82px;
+                min-width: 90px;
             }
             .compare-table thead th:first-child,
             .compare-table tbody td:first-child {
-                min-width: 54px;
+                width: 60px;
+                min-width: 60px;
                 font-size: 0.66rem;
             }
             .stat-bar { display: none; }
@@ -569,9 +578,6 @@ function writeUrlParams() {
 }
 
 function getCompareHeroIds() {
-    var buildIds = (typeof heroBuilds !== 'undefined' && heroBuilds) ? Object.keys(heroBuilds) : [];
-    var compareIds = buildIds.filter(function(id) { return !!HERO_COMPARE_DATA[id]; });
-    if (compareIds.length) return compareIds;
     return Object.keys(HERO_COMPARE_DATA);
 }
 
@@ -631,12 +637,12 @@ function initComparePage() {
     var urlHeroes = readUrlParams();
     if (urlHeroes && urlHeroes.length >= 2) {
         urlHeroes.forEach(function(hid, i) {
-            if (i < 4 && HERO_COMPARE_DATA[hid]) {
+            if (i < 3 && HERO_COMPARE_DATA[hid]) {
                 document.getElementById(SELECT_IDS[i]).value = hid;
             }
         });
     } else {
-        var defaultHeroes = heroes.slice(0, 4);
+        var defaultHeroes = heroes.slice(0, 3);
         defaultHeroes.forEach(function(h, i) {
             document.getElementById(SELECT_IDS[i]).value = h.id;
         });
@@ -864,11 +870,29 @@ var ITEM_BONUS_CACHE = {};
 var HERO_BUILD_BONUS_CACHE = {};
 
 function getCompareBuildItems(heroId) {
+    // Ручная сборка
     var build = (typeof heroBuilds !== 'undefined' && heroBuilds) ? heroBuilds[heroId] : null;
-    if (!build || !Array.isArray(build.items) || typeof itemsDB === 'undefined') return [];
-    return build.items.map(function(entry) {
-        return itemsDB[entry.id] || null;
-    }).filter(Boolean);
+    if (build && Array.isArray(build.items) && typeof itemsDB !== 'undefined') {
+        return build.items.map(function(entry) {
+            return itemsDB[entry.id] || null;
+        }).filter(Boolean);
+    }
+    // Fallback: последняя стадия ИИ-сборки
+    if (typeof HERO_BUILD_DATA !== 'undefined' && typeof botBuildGroups !== 'undefined' && typeof findItemByName === 'function') {
+        for (var rc in HERO_BUILD_DATA) {
+            if (HERO_BUILD_DATA[rc].heroId === heroId) {
+                var group = botBuildGroups[HERO_BUILD_DATA[rc].group];
+                if (group && group.stages && group.stages.length > 0) {
+                    var lastStage = group.stages[group.stages.length - 1];
+                    return lastStage.items.map(function(slot) {
+                        return findItemByName(slot.name) || null;
+                    }).filter(Boolean);
+                }
+                break;
+            }
+        }
+    }
+    return [];
 }
 
 function renderCompareBuildItems(heroId) {

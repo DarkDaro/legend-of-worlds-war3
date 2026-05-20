@@ -55,6 +55,9 @@
         }
         .balance-search::placeholder { color: var(--text-muted); }
 
+        /* ── Шире контейнер для таблицы ── */
+        .hero-page-container { max-width: 1200px; }
+
         /* ── Таблица ── */
         .balance-table-wrap {
             overflow-x: auto;
@@ -62,9 +65,11 @@
             border: 1px solid var(--glass-border);
             background: var(--glass-bg);
             -webkit-overflow-scrolling: touch;
+            padding-bottom: 8px;
         }
         .balance-table {
             width: 100%;
+            min-width: 1100px;
             border-collapse: collapse;
             font-size: 0.85rem;
             white-space: nowrap;

@@ -38,6 +38,7 @@ body {
     line-height: 1.5;
 }
 
+/* === wiki-container: глобальный 1400px, переопределён на heroes.html (1600px), items.html (1600px), index.html (1600px) === */
 .wiki-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -273,7 +274,7 @@ h1 {
     box-shadow: 0 0 8px #ff884466;
 }
 
-/* === Страница героя (панель деталей) === */
+/* === hero-page-container: глобальный 1000px, переопределён на balance.html (1200px) === */
 .hero-page-container {
     max-width: 1000px;
     margin: 0 auto;
@@ -376,7 +377,6 @@ h1 {
     height: 100%;
     object-fit: contain;
     border-radius: 20px;
-    animation: float 3s ease-in-out infinite;
 }
 .detail-title {
     font-size: 2.2rem;
@@ -2620,15 +2620,24 @@ h1 {
     text-decoration: underline;
     color: #ff8888;
 }
+.boss-drop-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+.boss-drop-level {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
 .boss-drop-chance {
-    font-size: 0.75rem;
-    padding: 2px 8px;
-    border-radius: 8px;
+    font-size: 0.68rem;
+    padding: 1px 6px;
+    border-radius: 6px;
     background: #00e6ff22;
     color: #00e6ff;
     font-weight: 600;
-    align-self: flex-start;
-    margin-left: 38px;
 }
 .boss-drop-chance-low {
     background: #ff555522;
