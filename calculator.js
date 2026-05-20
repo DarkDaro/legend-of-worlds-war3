@@ -538,12 +538,20 @@ function populateHeroSelect() {
     if (!select) return;
     // Имена из HEROES_DATA (hero-data.js)
     const heroNames = {};
+    const heroFlags = {}; // wip, isAltForm — для фильтрации
     if (typeof HEROES_DATA !== 'undefined') {
-        HEROES_DATA.forEach(h => { if (h.heroId) heroNames[h.heroId] = h.name; });
+        HEROES_DATA.forEach(h => {
+            if (h.heroId) {
+                heroNames[h.heroId] = h.name;
+                heroFlags[h.heroId] = { wip: h.wip, isAltForm: h.isAltForm };
+            }
+        });
     }
-    // Сначала герои с ручной сборкой
+    // Сначала герои с ручной сборкой (пропускаем WIP и альт-формы)
     Object.keys(heroBuilds).forEach(key => {
         const hero = heroBuilds[key];
+        const flags = heroFlags[key];
+        if (flags && (flags.wip || flags.isAltForm)) return;
         if (hero && hero.items && hero.items.length > 0) {
             const opt = document.createElement('option');
             opt.value = key;
@@ -557,6 +565,8 @@ function populateHeroSelect() {
         for (var rc in HERO_BUILD_DATA) {
             var h = HERO_BUILD_DATA[rc];
             if (h.heroId && !added.has(h.heroId)) {
+                var flags = heroFlags[h.heroId];
+                if (flags && (flags.wip || flags.isAltForm)) continue;
                 var group = botBuildGroups[h.group];
                 if (group && group.stages && group.stages.length > 0) {
                     var opt = document.createElement('option');
