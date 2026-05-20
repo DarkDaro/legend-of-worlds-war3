@@ -216,6 +216,7 @@
 
     <script>
     // Counter-анимация чисел при появлении stat-box
+    // Анимация счётчиков на главной
     (function() {
         const counters = document.querySelectorAll('.stat-number[data-target]');
         if (!counters.length) return;
@@ -247,48 +248,8 @@
         if (statsSection) observer.observe(statsSection);
     })();
 
-    // Scroll-reveal для quick-link-card и version-card-mini
-    (function() {
-        const revealElements = document.querySelectorAll('.quick-link-card, .version-card-mini, .cta-section');
-        if (!revealElements.length) return;
-
-        revealElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(12px)';
-            el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        });
-
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Stagger-задержка для quick-link-card
-                    const parent = entry.target.closest('.quick-links-grid');
-                    let delay = 0;
-                    if (parent) {
-                        const siblings = Array.from(parent.children);
-                        delay = siblings.indexOf(entry.target) * 30;
-                    }
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, delay);
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        revealElements.forEach(el => revealObserver.observe(el));
-
-        // Страховка: если observer не сработал за 3 сек — показать всё
-        setTimeout(function() {
-            revealElements.forEach(function(el) {
-                if (el.style.opacity === '0') {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }
-            });
-        }, 3000);
-    })();
+    // Scroll-reveal — карточки и CTA
+    document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.quick-link-card, .version-card-mini, .cta-section'); });
     </script>
 </body>
 </html>

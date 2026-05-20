@@ -102,26 +102,6 @@
         });
     }
 
-    // ========== КНОПКА ПОИСКА (мобильный доступ к Ctrl+K) ==========
-
-    function initSearchBtn() {
-        var nav = document.querySelector('.header-nav');
-        if (!nav) return;
-
-        var btn = document.createElement('button');
-        btn.className = 'search-header-btn';
-        btn.setAttribute('aria-label', 'Поиск');
-        btn.title = 'Поиск (Ctrl+K)';
-        btn.innerHTML = '<i class="fas fa-search"></i>';
-        nav.parentNode.insertBefore(btn, nav);
-
-        btn.addEventListener('click', function() {
-            if (window.GlobalSearch) {
-                window.GlobalSearch.open();
-            }
-        });
-    }
-
     // ========== ГАМБУРГЕР-МЕНЮ ==========
 
     function initHamburger() {
@@ -196,7 +176,8 @@
     }
 
     // ========== Scroll-reveal ==========
-    // Универсальное появление элементов при прокрутке
+    // Универсальное появление контейнеров при прокрутке
+    // Карточки внутри контейнеров обрабатываются через revealElements() на каждой странице
     function initScrollReveal() {
         var revealTargets = document.querySelectorAll(
             '.wiki-container > h1, ' +
@@ -222,6 +203,8 @@
             '.wiki-container > .map-changes-section, ' +
             '.wiki-container > .armor-calc-section, ' +
             '.wiki-container > .formulas-section, ' +
+            '.wiki-container > .monsters-section, ' +
+            '.wiki-container > .boss-drops-section, ' +
             '.wiki-container > table'
         );
         if (!revealTargets.length) return;
@@ -229,8 +212,8 @@
         // Начальное состояние — скрыто
         revealTargets.forEach(function(el) {
             el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            el.style.transform = 'translateY(12px)';
+            el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
         });
 
         var observer = new IntersectionObserver(function(entries) {
@@ -244,7 +227,82 @@
         }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
         revealTargets.forEach(function(el) { observer.observe(el); });
+
+        // Страховка: если observer не сработал за 3 сек — показать всё
+        setTimeout(function() {
+            revealTargets.forEach(function(el) {
+                if (el.style.opacity === '0') {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }
+            });
+        }, 3000);
     }
+
+    // ========== Общая функция scroll-reveal для inline-скриптов ==========
+    // Вызывается со страниц: revealElements('.hero-card'), revealElements('.item-card', {delay: 200})
+    window.revealElements = function(selector, options) {
+        options = options || {};
+        var delay = options.delay || 0;
+        var stagger = options.stagger !== undefined ? options.stagger : 30;
+
+        function apply() {
+            var elements = document.querySelectorAll(selector);
+            if (!elements.length) return;
+
+            elements.forEach(function(el) {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(12px)';
+                el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            });
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var parent = entry.target.parentElement;
+                        var sibDelay = 0;
+                        if (parent && stagger > 0) {
+                            var siblings = parent.children;
+                            for (var i = 0; i < siblings.length; i++) {
+                                if (siblings[i] === entry.target) {
+                                    sibDelay = i * stagger;
+                                    break;
+                                }
+                            }
+                        }
+                        setTimeout(function() {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, sibDelay);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            elements.forEach(function(el) { observer.observe(el); });
+
+            // Страховка: показать всё через 3 сек
+            setTimeout(function() {
+                elements.forEach(function(el) {
+                    if (el.style.opacity === '0') {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }
+                });
+            }, 3000);
+        }
+
+        // Если нужна задержка (динамический контент) — ждём
+        if (delay > 0) {
+            if (document.readyState === 'complete') {
+                setTimeout(apply, delay);
+            } else {
+                window.addEventListener('load', function() { setTimeout(apply, delay); });
+            }
+        } else {
+            apply();
+        }
+    };
 
     // ========== INIT ==========
 
@@ -253,7 +311,6 @@
             initHeroDetailIcon();
             initAbilityIcons();
             initParamHighlight();
-            initSearchBtn();
             initHamburger();
             initScrollToTop();
             initSearchTrigger();
@@ -263,7 +320,6 @@
         initHeroDetailIcon();
         initAbilityIcons();
         initParamHighlight();
-        initSearchBtn();
         initHamburger();
         initScrollToTop();
         initSearchTrigger();

@@ -208,38 +208,8 @@
 
 
     <script>
-    // Scroll-reveal для lore-section
-    (function() {
-        const sections = document.querySelectorAll('.lore-section, .call-to-action');
-        if (!sections.length) return;
-
-        sections.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        });
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.08 });
-
-        sections.forEach(el => observer.observe(el));
-        // Страховка: если observer не сработал за 3 сек — показать всё
-        setTimeout(function() {
-            sections.forEach(function(el) {
-                if (el.style.opacity === '0') {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }
-            });
-        }, 3000);
-    })();
+    // Scroll-reveal — секции лора
+    document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.lore-section, .call-to-action'); });
     </script>
 
     <footer class="site-footer">

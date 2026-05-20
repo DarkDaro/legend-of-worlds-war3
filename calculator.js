@@ -563,9 +563,11 @@ function importHeroBuild(heroId) {
     });
     saveBuild();
     renderCalc();
-    // Сбросить селектор, чтобы можно было выбрать того же героя повторно
-    const heroSelect = document.getElementById('calcHeroSelect');
-    if (heroSelect) heroSelect.value = '';
+    // Обновить заголовок
+    const h1 = document.querySelector('h1');
+    const heroName = hero.name || heroId;
+    if (h1) h1.innerHTML = '<i class="fas fa-calculator"></i> Сборка: ' + heroName;
+    // Не сбрасываем селектор — пользователь должен видеть выбранного героя
 }
 
 // === Поделиться сборкой (ссылка) ===
@@ -610,6 +612,10 @@ function loadFromUrl() {
         if (h1) h1.innerHTML = '<i class="fas fa-calculator"></i> Сборка: ' + heroName;
         const heroSelect = document.getElementById('calcHeroSelect');
         if (heroSelect) heroSelect.value = heroParam;
+    } else if (heroParam) {
+        // Герой не найден в heroBuilds — сбросить на дефолт
+        const h1 = document.querySelector('h1');
+        if (h1) h1.innerHTML = '<i class="fas fa-calculator"></i> Калькулятор сборок';
     }
 
     // Если items не передан, но есть hero — загрузить из heroBuilds
@@ -682,13 +688,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroSelect = document.getElementById('calcHeroSelect');
     if (heroSelect) {
         heroSelect.addEventListener('change', () => {
-            const h1 = document.querySelector('h1');
             if (heroSelect.value) {
                 importHeroBuild(heroSelect.value);
-                const hero = heroBuilds[heroSelect.value];
-                const heroName = hero ? (hero.name || heroSelect.value) : heroSelect.value;
-                if (h1) h1.innerHTML = '<i class="fas fa-calculator"></i> Сборка: ' + heroName;
             } else {
+                const h1 = document.querySelector('h1');
                 if (h1) h1.innerHTML = '<i class="fas fa-calculator"></i> Калькулятор сборок';
             }
         });
