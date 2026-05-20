@@ -53,7 +53,7 @@
 
             <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
             <div id="hero-build"></div>
-            <a href="../calculator.html?hero=u-priestess" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+            <a href="../calculator.html?hero=priestess" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="form-tabs">
@@ -299,15 +299,15 @@
     <script>
         var statsContainer = document.getElementById('hero-stats');
         if (statsContainer && typeof renderHeroStats === 'function') {
-            statsContainer.innerHTML = renderHeroStats('u-priestess');
+            statsContainer.innerHTML = renderHeroStats('priestess');
         }
         var navContainer = document.getElementById('hero-nav');
         if (navContainer && typeof renderHeroNav === 'function') {
-            navContainer.innerHTML = renderHeroNav('u-priestess');
+            navContainer.innerHTML = renderHeroNav('priestess');
         }
         var buildContainer = document.getElementById('hero-build');
         if (buildContainer && typeof renderHeroBuild === 'function') {
-            buildContainer.innerHTML = renderHeroBuild('u-priestess');
+            buildContainer.innerHTML = renderHeroBuild('priestess');
         }
     </script>
 </body>

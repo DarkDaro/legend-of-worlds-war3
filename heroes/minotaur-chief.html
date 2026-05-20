@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вождь Минотавров · Герои · Legend of Worlds</title>
+    <meta property="og:title" content="Вождь Минотавров — Legend of Worlds">
+    <meta property="og:description" content="Вождь Минотавров — герой Арены Миров. Способности, статы, тактика.">
+    <meta property="og:image" content="../images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../hero-data.js"></script>
+    <script src="../search-index.js"></script>
+    <script src="../search.js"></script>
+    <script src="../items-db.js" defer></script>
+    <script src="../icon-loader.js" defer></script>
+    <script src="../hero-builds.js"></script>
+    <script src="../analytics.js" defer></script>
+</head>
+<body class="page-heroes strength">
+    <header class="site-header">
+        <a href="../index.html" class="logo">
+            <img src="../images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="../heroes.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
+            <a href="../items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="../mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="../monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="../info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="../guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="../faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
+            <a href="../lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="../support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="../updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="../heroes.html">Герои</a><span class="sep">›</span><span class="current">Вождь Минотавров</span></div>
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"><i class="fas fa-fist-raised"></i></div>
+                <div class="detail-title">Вождь Минотавров <span class="detail-badge">Сила</span></div>
+            </div>
+            <div id="hero-nav"></div>
+            <div id="hero-stats"></div>
+            <div class="detail-description">
+                <p>Описание героя появится позже.</p>
+            </div>
+
+            <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
+            <div id="hero-build"></div>
+            <a href="../calculator.html?hero=minotaur-chief" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+            <a href="../bot-builds.html?rawcode=O006" class="calc-link-btn"><i class="fas fa-robot"></i> Сборка ИИ</a>
+
+            <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
+            <div class="abilities-grid">
+
+                <!-- Q -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">Q</span>
+                            <div class="ability-name">???</div>
+                            <div class="ability-type-badge">Тип</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                    </div>
+                </div>
+
+                <!-- W -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">???</div>
+                            <div class="ability-type-badge">Тип</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                    </div>
+                </div>
+
+                <!-- E -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">???</div>
+                            <div class="ability-type-badge">Тип</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                    </div>
+                </div>
+
+                <!-- R -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">???</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                    </div>
+                </div>
+
+                <!-- F -->
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">???</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                    </div>
+                </div>
+
+            </div>
+            <a href="../heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
+        </div>
+    </div>
+    <script>
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('minotaur-chief');
+        }
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('minotaur-chief');
+        }
+        var buildContainer = document.getElementById('hero-build');
+        if (buildContainer && typeof renderHeroBuild === 'function') {
+            buildContainer.innerHTML = renderHeroBuild('minotaur-chief');
+        }
+    </script>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img src="../images/preview.png" alt="" width="28" height="28" class="footer-logo-img"> Legend of Worlds</span>
+            </div>
+            <div class="footer-links">
+                <a href="../info.html">Информация</a>
+                <a href="../support.html">Поддержать</a>
+                <a href="../updates.html">Обновления</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© Legend of Worlds · Warcraft III Custom Map</p>
+        </div>
+    </footer>
+</body>
+</html>
