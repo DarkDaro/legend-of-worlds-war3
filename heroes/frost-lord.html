@@ -55,7 +55,7 @@
 
             <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
             <div id="hero-build"></div>
-            <a href="../calculator.html?hero=ice-lord" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+            <a href="../calculator.html?hero=frost-lord" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
             <a href="../bot-builds.html?rawcode=U000" class="calc-link-btn"><i class="fas fa-robot"></i> Сборка ИИ</a>
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
@@ -173,15 +173,15 @@
     <script>
         var statsContainer = document.getElementById('hero-stats');
         if (statsContainer && typeof renderHeroStats === 'function') {
-            statsContainer.innerHTML = renderHeroStats('ice-lord');
+            statsContainer.innerHTML = renderHeroStats('frost-lord');
         }
         var navContainer = document.getElementById('hero-nav');
         if (navContainer && typeof renderHeroNav === 'function') {
-            navContainer.innerHTML = renderHeroNav('ice-lord');
+            navContainer.innerHTML = renderHeroNav('frost-lord');
         }
         var buildContainer = document.getElementById('hero-build');
         if (buildContainer && typeof renderHeroBuild === 'function') {
-            buildContainer.innerHTML = renderHeroBuild('ice-lord');
+            buildContainer.innerHTML = renderHeroBuild('frost-lord');
         }
     </script>
 </body>

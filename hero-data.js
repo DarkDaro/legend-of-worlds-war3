@@ -395,11 +395,6 @@ var HEROES_DATA = [
       strBase: 20, strGain: 2, agiBase: 15, agiGain: 2, intBase: 25, intGain: 3,
       hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.04, speed: 310, range: 750, sightDay: 1800, sightNight: 800 },
 
-    { name: 'Лич', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'lich', image: 'lich',
-      rawcode: 'U000',
-      strBase: 16, strGain: 2, agiBase: 14, agiGain: 2, intBase: 30, intGain: 3,
-      hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 280, range: 600, sightDay: 1800, sightNight: 800 },
-
     { name: 'Дух Природы', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'spirit-of-nature', image: 'spirit-of-nature',
       isAltForm: true,
       rawcode: 'E03H',
@@ -452,7 +447,7 @@ var HEROES_DATA = [
       hp: 300, mp: 150, atk: 25, def: 0, atkSpeed: 2, hpRegen: 1, mpRegen: 0, speed: 300, range: 600, sightDay: 1800, sightNight: 800 },
 
 
-    { name: 'Повелитель Льдов', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'ice-lord', image: 'ice-lord',
+    { name: 'Повелитель Льдов', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'frost-lord', image: 'frost-lord',
       rawcode: 'U000',
       strBase: 0, strGain: 2, agiBase: 13, agiGain: 2, intBase: 32, intGain: 3,
       hp: 200, mp: 0, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0, mpRegen: 0, speed: 280, range: 150, sightDay: 1800, sightNight: 800 },

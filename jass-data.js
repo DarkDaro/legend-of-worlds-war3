@@ -386,7 +386,7 @@ const HERO_BUILD_DATA = {
     'O00P': { name: 'Мятежник', internal: 'BloodElfPeasant', group: 13, heroId: 'rebel' },
     'O010': { name: 'Ассасин', internal: 'NightRage (3)', group: 13, heroId: 'assassin' },
     'O011': { name: 'Огненная Панда', internal: 'FireBrewmaster', group: 17, heroId: 'fire-panda' },
-    'U000': { name: 'Повелитель Льдов', internal: 'LichVersion2', group: 4, heroId: 'ice-lord' },
+    'U000': { name: 'Повелитель Льдов', internal: 'LichVersion2', group: 4, heroId: 'frost-lord' },
     'U001': { name: 'Мясник', internal: 'Abomination', group: 5, heroId: 'butcher' },
     'U006': { name: 'Вампир', internal: 'HeroDreadLord', group: 6, heroId: 'vampire' },
     'U007': { name: 'Огненный Голем', internal: 'Infernal', group: 5, heroId: 'fire-golem-hero' },

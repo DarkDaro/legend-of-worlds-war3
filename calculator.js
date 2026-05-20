@@ -736,6 +736,24 @@ function renderBuildBonuses() {
         chips.push(`<span class="cost-badge">${label}: +${normalized}${suffix}</span>`);
     };
 
+    // Бонус атаки от основного атрибута героя
+    // В LoW: +1 атака за каждое очко основного атрибута
+    const heroId = getCurrentHeroId();
+    if (heroId && typeof HEROES_DATA !== 'undefined') {
+        const hero = HEROES_DATA.find(h => h.heroId === heroId);
+        if (hero && hero.attr) {
+            // Суммарный бонус атрибута от предметов
+            let attrBonus = 0;
+            if (hero.attr === 'strength') attrBonus = total.strength + total.allStats;
+            else if (hero.attr === 'agility') attrBonus = total.agility + total.allStats;
+            else if (hero.attr === 'intelligence') attrBonus = total.intelligence + total.allStats;
+
+            if (attrBonus > 0) {
+                add('Атака от ' + (hero.attr === 'strength' ? 'Силы' : hero.attr === 'agility' ? 'Ловкости' : 'Разума'), attrBonus);
+            }
+        }
+    }
+
     add('Все атрибуты', total.allStats);
     add('Сила', total.strength);
     add('Ловкость', total.agility);
@@ -770,4 +788,12 @@ function renderBuildBonuses() {
     if (!chips.length) return '';
 
     return `<div class="calc-bonuses-title">📈 Суммарные бонусы</div><div class="cost-badges">${chips.join('')}</div>`;
+}
+
+// Получить текущий heroId из селектора или URL
+function getCurrentHeroId() {
+    const heroSelect = document.getElementById('calcHeroSelect');
+    if (heroSelect && heroSelect.value) return heroSelect.value;
+    const params = new URLSearchParams(window.location.search);
+    return params.get('hero') || null;
 }
