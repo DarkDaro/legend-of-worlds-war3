@@ -1,0 +1,77 @@
+admiral — Адмирал (strength) ✅
+druid — Друид (strength) ✅
+cyborg — Киборг (strength) ✅
+paladin — Паладин (strength) ✅
+astral-executioner — Астральный Палач (strength) ❌ нет
+bonebreaker — Костолом (strength) ❌ нет
+fire-knight — Огненный Рыцарь (strength) ❌ нет
+deep-warrior — Воин Глубин (strength) ❌ нет
+destroyer — Разрушитель (strength) ❌ нет
+rider — Ночной Всадник (strength) ❌ нет
+minotaur-chief — Вождь Минотавров (strength) ❌ нет
+orc-chieftain — Вождь Орков (strength) ❌ нет
+titan — Титан (strength) ❌ нет
+vurdalak — Вурдалак (strength) ❌ нет
+butcher — Мясник (strength) ❌ нет
+fire-golem-hero — Огненный Голем (strength) ❌ нет
+king-of-cursed — Король Проклятых (strength) ❌ нет
+chaos-lord — Лорд Хаоса (strength) ❌ нет
+grave-lord — Повелитель Могил (strength) ❌ нет
+ice-knight — Ледяной Рыцарь (strength) ❌ нет
+brewmaster — Пивовар (strength) ❌ нет
+sorcerer — Чародей (strength) ❌ нет
+astral-mage — Астральный Маг (strength) ❌ нет
+demon — Демон (strength) ❌ нет
+flame-eater — Пожиратель Пламени (strength) ❌ нет
+dark-master — Темный Мастер (strength) ❌ нет
+arbiter — Вершитель (strength) ❌ нет
+illusionist — Иллюзионист (agility) ✅
+murloc — Мурлок (agility) ✅
+dark-archer — Темная Лучница (agility) ✅
+warrioress — Воительница (agility) ❌ нет
+priestess — Жрица Луны (agility) ❌ нет
+guardian — Стражница (agility) ❌ нет
+zodiac — Зодиак (agility) ❌ нет
+night-predator — Ночной Хищник (agility) ❌ нет
+ranger — Егерь (agility) ❌ нет
+shadow — Тень (agility) ❌ нет
+marine — Десантник (agility) ❌ нет
+lightning-subjugator — Покорительница Молний (agility) ❌ нет
+father-of-darkness — Отец Тьмы (agility) ❌ нет
+dark-knight — Темный Рыцарь (agility) ❌ нет
+astral-huntress — Астральная Охотница (agility) ❌ нет
+flame-berserker — Пламенный Берсеркер (agility) ❌ нет
+storm-knight — Грозовой Рыцарь (agility) ❌ нет
+water-spirit — Водяной (agility) ❌ нет
+vampire — Вампир (agility) ❌ нет
+samurai — Самурай (agility) ✅
+blademaster — Мастер клинка (agility) ❌ нет
+ghost — Призрак (agility) ❌ нет
+sea-guard — Морской Страж (agility) ❌ нет
+star-spirit — Звездный Дух (agility) ❌ нет
+night-avenger — Ночная Мстительница (agility) ❌ нет
+skeleton — Скелет (agility) ❌ нет
+rebel — Мятежник (agility) ❌ нет
+assassin — Ассасин (agility) ❌ нет
+fire-panda — Огненная Панда (agility) ❌ нет
+thundergod — Громовержец (intelligence) ✅
+archmage — Верховный Маг (intelligence) ✅
+leshy — Леший (intelligence) ✅
+necromonger — Некромонгер (intelligence) ✅
+lich — Лич (intelligence) ❌ нет
+warrior-of-light — Воин Света (intelligence) ❌ нет
+dark-lord — Повелитель Тьмы (intelligence) ❌ нет
+dark-mage — Темный Маг (intelligence) ❌ нет
+wind-enchantress — Волшебница Ветров (intelligence) ❌ нет
+air-mage — Маг Воздуха (intelligence) ❌ нет
+chaos-witcher — Ведьмак Хаоса (intelligence) ❌ нет
+storm — Шторм (intelligence) ❌ нет
+knight-of-depths — Рыцарь Глубин (intelligence) ❌ нет
+hydralisk — Гидралиск (intelligence) ❌ нет
+ice-lord — Повелитель Льдов (intelligence) ❌ нет
+fire-lord — Повелитель Огня (intelligence) ❌ нет
+wind-lord — Повелитель Вихрей (intelligence) ❌ нет
+lightning-lord — Владыка Молний (intelligence) ❌ нет
+dark-shaman — Темный Шаман (intelligence) ❌ нет
+snow-queen — Снежная Королева (intelligence) ❌ нет
+thunder-lord-2 — Владыка Грома (intelligence) ❌ нет
