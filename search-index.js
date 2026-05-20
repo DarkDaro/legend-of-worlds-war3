@@ -141,22 +141,22 @@ var SEARCH_INDEX = {
   },
   {
     "name": "Ледяная вспышка",
-    "heroId": "frost-lord",
+    "heroId": "ice-lord",
     "heroName": "Повелитель Льдов"
   },
   {
     "name": "Ледяная броня",
-    "heroId": "frost-lord",
+    "heroId": "ice-lord",
     "heroName": "Повелитель Льдов"
   },
   {
     "name": "Тёмный ритуал",
-    "heroId": "frost-lord",
+    "heroId": "ice-lord",
     "heroName": "Повелитель Льдов"
   },
   {
     "name": "Смерть и разложение",
-    "heroId": "frost-lord",
+    "heroId": "ice-lord",
     "heroName": "Повелитель Льдов"
   },
   {
@@ -462,7 +462,7 @@ var SEARCH_INDEX = {
     "page": "mechanics.html"
   },
   {
-    "name": "Сборка предметов в 1 клик",
+    "name": "Автосборка",
     "desc": "Автоматическая стадийная система сборки. Нажмите — и герой сам продаст старые предметы, купит новые на текущую стадию и ",
     "page": "mechanics.html"
   },
