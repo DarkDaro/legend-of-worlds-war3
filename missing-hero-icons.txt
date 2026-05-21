@@ -21,22 +21,25 @@ ice-knight — Ледяной Рыцарь (strength) ❌ нет+
 brewmaster — Пивовар (strength) ❌ нет+
 sorcerer — Чародей (strength) ❌ нет+
 
-astral-mage — Астральный Маг (strength) ❌ нет
-demon — Демон (strength) ❌ нет
+astral-mage — Астральный Маг (strength) ❌ нет+
+demon — Демон (strength) ❌ нет+
 flame-eater — Пожиратель Пламени (strength) ❌ нет
-dark-master — Темный Мастер (strength) ❌ нет
-arbiter — Вершитель (strength) ❌ нет
+dark-master — Темный Мастер (strength) ❌ нет+
+arbiter — Вершитель (strength) ❌ нет нет героя
 illusionist — Иллюзионист (agility) ✅
 murloc — Мурлок (agility) ✅
 dark-archer — Темная Лучница (agility) ✅
-warrioress — Воительница (agility) ❌ нет
-priestess — Жрица Луны (agility) ❌ нет
-guardian — Стражница (agility) ❌ нет
-zodiac — Зодиак (agility) ❌ нет
-night-predator — Ночной Хищник (agility) ❌ нет
-ranger — Егерь (agility) ❌ нет
-shadow — Тень (agility) ❌ нет
-marine — Десантник (agility) ❌ нет
+warrioress — Воительница (agility) ❌ нет+
+
+priestess — Жрица Луны (agility) ❌ нет+
+guardian — Стражница (agility) ❌ нет+
+zodiac — Зодиак (agility) ❌ нет+
+night-predator — Ночной Хищник (agility) ❌ нет+
+
+ranger — Егерь (agility) ❌ нет+
+shadow — Тень (agility) ❌ нет+
+marine — Десантник (agility) ❌ нет+
+
 lightning-subjugator — Покорительница Молний (agility) ❌ нет
 father-of-darkness — Отец Тьмы (agility) ❌ нет
 dark-knight — Темный Рыцарь (agility) ❌ нет
