@@ -4710,9 +4710,12 @@ body.item-sheet-open {
   transform: rotate(-90deg);
 }
 @media (max-width: 600px) {
+  /* Грид предметов: ограничиваем ширину чтобы карточки не выходили за контейнер */
   .items-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px; /* уменьшаем отступы между карточками */
+    gap: 8px;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   /* Адаптив карточек предметов на мобильных */
   .item-card {
@@ -4732,13 +4735,19 @@ body.item-sheet-open {
     margin-top: 4px;
   }
   .category-section h2 {
-    padding-right: 126px;
+    padding-right: 36px; /* освобождаем место для collapse-кнопки */
     min-height: 44px;
   }
+  /* На мобильных кнопка в потоке — не выходит за край грида */
   .category-section h2 .collapse-toggle {
+    position: static;
+    transform: none;
     width: 28px;
     height: 28px;
     font-size: 0.68em;
+  }
+  .category-section h2 .collapse-toggle:hover {
+    transform: none; /* без сдвига на мобильных */
   }
   .item-detail-panel .detail-icon {
     width: 80px;
