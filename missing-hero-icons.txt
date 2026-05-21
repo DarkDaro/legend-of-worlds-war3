@@ -13,13 +13,14 @@ orc-chieftain — Вождь Орков (strength) ❌ нет+
 titan — Титан (strength) ❌ нет+
 vurdalak — Вурдалак (strength) ❌ нет+
 butcher — Мясник (strength) ❌ нет+
-fire-golem-hero — Огненный Голем (strength) ❌ нет
-king-of-cursed — Король Проклятых (strength) ❌ нет
-chaos-lord — Лорд Хаоса (strength) ❌ нет
-grave-lord — Повелитель Могил (strength) ❌ нет
-ice-knight — Ледяной Рыцарь (strength) ❌ нет
-brewmaster — Пивовар (strength) ❌ нет
-sorcerer — Чародей (strength) ❌ нет
+fire-golem-hero — Огненный Голем (strength) ❌ нет+
+king-of-cursed — Король Проклятых (strength) ❌ нет+
+chaos-lord — Лорд Хаоса (strength) ❌ нет+
+grave-lord — Повелитель Могил (strength) ❌ нет+
+ice-knight — Ледяной Рыцарь (strength) ❌ нет+
+brewmaster — Пивовар (strength) ❌ нет+
+sorcerer — Чародей (strength) ❌ нет+
+
 astral-mage — Астральный Маг (strength) ❌ нет
 demon — Демон (strength) ❌ нет
 flame-eater — Пожиратель Пламени (strength) ❌ нет
