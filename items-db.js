@@ -625,9 +625,9 @@ const itemsDB = {
     activeAbility: { name: 'Безмолвие', description: 'В области 800, 3 сек', cooldown: 50, manacost: 175, note: null }
   },
   I04G: { id: 'I04G', name: 'Меч тьмы', icon: '🌑⚔️', type: 'weapon_strength', cost: 103855, tags: ['boss'],
-    description: '+2000 атаки, +200 силы, +100% скорости боя, Баш: 20% шанс стан 1.5 сек и 1000 урона, Критический удар: 30% x2, Темная вспышка (актив): 2000 + 10x STR, стан 3 сек',
+    description: '+2000 атаки, +200 силы, +100% скорости боя, Баш: 20% шанс стан 1.5 сек и 1000 урона, Критический удар: 30% x2, Темная вспышка (актив): 2000 + 10x наибольший атрибут, стан 3 сек',
     components: [ {itemId: 'I01N', quantity: 1}, {itemId: 'I047', quantity: 1}, {itemId: 'I02N', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 22000} ],
-    activeAbility: { name: 'Темная вспышка', description: '2000 + 10x силы урона, стан 3 сек', cooldown: 80, manacost: 350, note: null }
+    activeAbility: { name: 'Темная вспышка', description: '2000 + 10x наибольший атрибут урона, стан 3 сек', cooldown: 80, manacost: 350, note: null }
   },
   I01J: { id: 'I01J', name: 'Ледяной элемент', icon: '❄️🧊', type: 'rare', cost: 60000, tags: ['boss'],
     description: '+500 ко всем атрибутам',

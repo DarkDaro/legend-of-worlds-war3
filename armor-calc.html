@@ -215,7 +215,7 @@
             <div class="armor-input-group">
                 <label for="armorInput"><i class="fas fa-shield-alt"></i> Броня</label>
                 <div class="armor-input-row">
-                    <input type="number" id="armorInput" value="0" min="-500" step="1" placeholder="0">
+                    <input type="number" id="armorInput" value="0" min="-500" max="99999" step="1" placeholder="0">
                     <span class="armor-unit">ед.</span>
                 </div>
             </div>
@@ -223,7 +223,7 @@
             <div class="armor-input-group">
                 <label for="agiInput"><i class="fas fa-feather-alt"></i> Ловкость <span class="calc-inline-note" id="agiArmorNote">(+0.05 защиты за ед.)</span></label>
                 <div class="armor-input-row">
-                    <input type="number" id="agiInput" value="0" min="0" step="1" placeholder="0">
+                    <input type="number" id="agiInput" value="0" min="1" max="99999" step="1" placeholder="0">
                     <span class="armor-unit">ед.</span>
                 </div>
             </div>
