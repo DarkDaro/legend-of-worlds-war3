@@ -178,10 +178,10 @@ var HEROES_DATA = [
       strBase: 24, strGain: 3, agiBase: 17, agiGain: 2, intBase: 19, intGain: 2,
       hp: 650, mp: 0, atk: 20, def: 2, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 },
 
-    { name: 'Чародей', title: '', attr: 'strength', role: 'support', roleName: 'Помощник', heroId: 'sorcerer', image: 'sorcerer',
+    { name: 'Чародей', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'sorcerer', image: 'sorcerer',
       rawcode: 'H011',
       strBase: 16, strGain: 2, agiBase: 16, agiGain: 2, intBase: 28, intGain: 3,
-      hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0.5, mpRegen: 0.01, speed: 290, range: 150, sightDay: 1800, sightNight: 800 },
+      hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0.5, mpRegen: 0.01, speed: 290, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Астральный Маг', title: '', attr: 'strength', role: 'support', roleName: 'Помощник', heroId: 'astral-mage', image: 'astral-mage',
       unique: true,

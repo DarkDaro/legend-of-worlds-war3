@@ -2671,10 +2671,14 @@ h1 {
         width: 48px;
         height: 48px;
     }
-    /* Уменьшаем отступы wiki-container на мобильных — освобождаем место для контента */
+    /* Расширяем wiki-container на мобильных — карточки предметов не обрезаются */
     .wiki-container {
-        padding: 16px 8px;
+        padding: 16px 4px;
         border-radius: 12px;
+        /* Убираем лишние отступы у границы контейнера */
+        margin-left: -8px;
+        margin-right: -8px;
+        width: calc(100% + 16px);
     }
     /* Таблица добычи боссов: предмет переносится на вторую строку */
     .boss-drop-row {

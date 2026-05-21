@@ -2,17 +2,17 @@ admiral — Адмирал (strength) ✅
 druid — Друид (strength) ✅
 cyborg — Киборг (strength) ✅
 paladin — Паладин (strength) ✅
-astral-executioner — Астральный Палач (strength) ❌ нет
-bonebreaker — Костолом (strength) ❌ нет
-fire-knight — Огненный Рыцарь (strength) ❌ нет
-deep-warrior — Воин Глубин (strength) ❌ нет
-destroyer — Разрушитель (strength) ❌ нет
-rider — Ночной Всадник (strength) ❌ нет
-minotaur-chief — Вождь Минотавров (strength) ❌ нет
-orc-chieftain — Вождь Орков (strength) ❌ нет
-titan — Титан (strength) ❌ нет
-vurdalak — Вурдалак (strength) ❌ нет
-butcher — Мясник (strength) ❌ нет
+astral-executioner — Астральный Палач (strength) ❌ нет+
+bonebreaker — Костолом (strength) ❌ нет+
+fire-knight — Огненный Рыцарь (strength) ❌ нет+
+deep-warrior — Воин Глубин (strength) ❌ нет+
+destroyer — Разрушитель (strength) ❌ нет+
+rider — Ночной Всадник (strength) ❌ нет+
+minotaur-chief — Вождь Минотавров (strength) ❌ нет+
+orc-chieftain — Вождь Орков (strength) ❌ нет+
+titan — Титан (strength) ❌ нет+
+vurdalak — Вурдалак (strength) ❌ нет+
+butcher — Мясник (strength) ❌ нет+
 fire-golem-hero — Огненный Голем (strength) ❌ нет
 king-of-cursed — Король Проклятых (strength) ❌ нет
 chaos-lord — Лорд Хаоса (strength) ❌ нет
