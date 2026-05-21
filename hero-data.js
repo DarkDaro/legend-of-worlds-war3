@@ -74,7 +74,7 @@ var HEROES_DATA = [
       strBase: 32, strGain: 3, agiBase: 14, agiGain: 2, intBase: 14, intGain: 2,
       hp: 750, mp: 150, atk: 30, def: 2, atkSpeed: 2, hpRegen: 0, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 },
 
-    { name: 'Ночной Всадник', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'rider', image: 'rider',
+    { name: 'Всадник', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'rider', image: 'rider',
       rawcode: 'O003',
       strBase: 25, strGain: 3, agiBase: 19, agiGain: 2, intBase: 16, intGain: 2,
       hp: 650, mp: 0, atk: 27, def: 1, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 },
@@ -155,7 +155,7 @@ var HEROES_DATA = [
       strBase: 1, strGain: 3, agiBase: 1, agiGain: 2, intBase: 1, intGain: 2,
       hp: 600, mp: 0, atk: 30, def: 3, atkSpeed: 0, hpRegen: 5, mpRegen: 0.01, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
-    { name: 'Ночной Всадник', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'rider-mounted', image: 'rider-mounted',
+    { name: 'Всадник', title: '', attr: 'strength', role: 'tank', roleName: 'Танк', heroId: 'rider-mounted', image: 'rider-mounted',
       isAltForm: true,
       rawcode: 'O004',
       strBase: 25, strGain: 3, agiBase: 19, agiGain: 2, intBase: 0, intGain: 2,
@@ -208,6 +208,7 @@ var HEROES_DATA = [
       hp: 200, mp: 500, atk: 50, def: 1, atkSpeed: 2.25, hpRegen: 0.5, mpRegen: 0.01, speed: 320, range: 700, sightDay: 1800, sightNight: 800 },
 
     { name: 'Вершитель', title: '', attr: 'strength', role: 'support', roleName: 'Помощник', heroId: 'arbiter', image: 'arbiter',
+      wip: true,
       rawcode: 'H0A6',
       strBase: 0, strGain: 2, agiBase: 16, agiGain: 2, intBase: 28, intGain: 2,
       hp: 200, mp: 0, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0, speed: 0.01, range: 150, sightDay: 1800, sightNight: 800 },
