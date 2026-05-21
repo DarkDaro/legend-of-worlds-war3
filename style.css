@@ -2652,6 +2652,35 @@ h1 {
     margin-bottom: 8px;
 }
 @media (max-width: 640px) {
+    /* Адаптив карточек монстров на мобильных */
+    .monster-card {
+        margin-bottom: 6px;
+        border-radius: 12px;
+    }
+    .monster-card .monster-header {
+        padding: 10px 12px;
+    }
+    .monster-card .monster-name {
+        font-size: 0.95rem;
+    }
+    .monster-card .monster-desc {
+        font-size: 0.78rem;
+        -webkit-line-clamp: 2;
+    }
+    .monster-card .monster-icon img {
+        width: 48px;
+        height: 48px;
+    }
+    /* Уменьшаем отступы wiki-container на мобильных — освобождаем место для контента */
+    .wiki-container {
+        padding: 16px 8px;
+        border-radius: 12px;
+    }
+    /* Таблица добычи боссов: предмет переносится на вторую строку */
+    .boss-drop-row {
+        gap: 2px;
+        padding: 8px 10px;
+    }
     .boss-drop-main {
         flex-wrap: wrap;
         gap: 6px;
@@ -2662,6 +2691,14 @@ h1 {
     }
     .boss-drop-arrow {
         display: none;
+    }
+    .boss-drop-item-name {
+        display: block; /* предмет на отдельной строке */
+        width: 100%;
+        margin-left: 0;
+        padding-left: 38px; /* выравнивание под иконку босса */
+        box-sizing: border-box;
+        font-size: 0.82rem;
     }
     .boss-drop-chance {
         margin-left: 0;
@@ -4675,6 +4712,24 @@ body.item-sheet-open {
 @media (max-width: 600px) {
   .items-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 8px; /* уменьшаем отступы между карточками */
+  }
+  /* Адаптив карточек предметов на мобильных */
+  .item-card {
+    padding: 6px 3px 3px;
+    border-radius: 10px;
+  }
+  .item-card .item-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .item-card .item-icon img {
+    width: 40px;
+    height: 40px;
+  }
+  .item-card .item-name {
+    font-size: 0.7rem;
+    margin-top: 4px;
   }
   .category-section h2 {
     padding-right: 126px;
