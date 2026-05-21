@@ -1034,6 +1034,16 @@ function injectItemFavoritesStyles() {
     .item-card.is-favorite .item-name {
       text-shadow: 0 0 8px #ff5555aa;
     }
+    /* Адаптив для мобильных: уменьшаем кнопку избранного */
+    @media (max-width: 600px) {
+      .item-fav-btn {
+        top: 4px;
+        right: 4px;
+        width: 22px;
+        height: 22px;
+        font-size: 12px;
+      }
+    }
     .item-detail-title {
       display: flex;
       align-items: center;

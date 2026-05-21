@@ -70,6 +70,33 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+        /* ── Адаптив для мобильных ── */
+        @media (max-width: 600px) {
+            .compare-controls {
+                padding-left: 0; /* убираем сдвиг — на узком экране не нужен */
+                gap: 8px;
+            }
+            .compare-slot {
+                min-width: 100px;
+            }
+            .compare-slot select {
+                padding: 7px 28px 7px 10px;
+                font-size: 0.8rem;
+            }
+            .compare-level {
+                min-width: 80px;
+                max-width: 100px;
+            }
+            .compare-level input {
+                padding: 7px 8px;
+                font-size: 0.85rem;
+                width: 70px;
+            }
+            .compare-clear-btn {
+                padding: 7px 14px;
+                font-size: 0.8rem;
+            }
+        }
         .compare-level {
             min-width: 90px;
             max-width: 120px;
