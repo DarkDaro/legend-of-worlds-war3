@@ -209,6 +209,7 @@ var HEROES_DATA = [
 
     { name: 'Вершитель', title: '', attr: 'strength', role: 'support', roleName: 'Помощник', heroId: 'arbiter', image: 'arbiter',
       wip: true,
+      wip: true,
       rawcode: 'H0A6',
       strBase: 0, strGain: 2, agiBase: 16, agiGain: 2, intBase: 28, intGain: 2,
       hp: 200, mp: 0, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0, speed: 0.01, range: 150, sightDay: 1800, sightNight: 800 },
@@ -332,6 +333,7 @@ var HEROES_DATA = [
       hp: 200, mp: 150, atk: 40, def: 1, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0.01, speed: 310, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Мастер клинка', title: '', attr: 'agility', role: 'damager', roleName: 'Дамагер', heroId: 'blademaster', image: 'blademaster',
+      wip: true,
       rawcode: 'O00R',
       strBase: 18, strGain: 2, agiBase: 28, agiGain: 3, intBase: 14, intGain: 2,
       hp: 200, mp: 150, atk: 50, def: 1, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0.01, speed: 310, range: 150, sightDay: 1800, sightNight: 800 },
@@ -494,6 +496,7 @@ var HEROES_DATA = [
       hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 305, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Владыка Грома', title: '', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'thunder-lord-2', image: 'thunder-lord-2',
+      wip: true,
       rawcode: 'O00X',
       strBase: 13, strGain: 2, agiBase: 14, agiGain: 2, intBase: 28, intGain: 3,
       hp: 250, mp: 0, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
