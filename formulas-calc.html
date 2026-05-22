@@ -546,6 +546,13 @@
             });
         });
 
+        // === Утилита: ограничение значения input === (защита от 99999999 и отрицательных чисел)
+        function clampInput(el, min, max) {
+            const v = parseFloat(el.value);
+            if (isNaN(v) || v < min) el.value = min;
+            else if (v > max) el.value = max;
+        }
+
         // === Удача (простая) ===
         function calcLuck() {
             const base = parseFloat(document.getElementById('luckBase').value) || 0;
@@ -559,6 +566,8 @@
         }
         document.getElementById('luckBase').addEventListener('input', calcLuck);
         document.getElementById('luckValue').addEventListener('input', calcLuck);
+        document.getElementById('luckBase').addEventListener('blur', function() { clampInput(this, 0, 100); });
+        document.getElementById('luckValue').addEventListener('blur', function() { clampInput(this, 0, 500); });
         calcLuck();
 
         // === Удача + предметы ===
@@ -614,6 +623,8 @@
         }
         document.getElementById('luckBase2').addEventListener('input', calcLuckItems);
         document.getElementById('luckHeroValue').addEventListener('input', calcLuckItems);
+        document.getElementById('luckBase2').addEventListener('blur', function() { clampInput(this, 0, 100); });
+        document.getElementById('luckHeroValue').addEventListener('blur', function() { clampInput(this, 0, 500); });
         renderLuckItems();
         calcLuckItems();
 

@@ -303,6 +303,13 @@
     </footer>
 
     <script>
+        // === Утилита: ограничение значения input === (защита от 99999999 и отрицательных чисел)
+        function clampInput(el, min, max) {
+            const v = parseFloat(el.value);
+            if (isNaN(v) || v < min) el.value = min;
+            else if (v > max) el.value = max;
+        }
+
         const armorInput = document.getElementById('armorInput');
         const agiInput = document.getElementById('agiInput');
         const hpInput = document.getElementById('hpInput');
@@ -349,19 +356,17 @@
 
         armorInput.addEventListener('input', calculate);
         armorInput.addEventListener('blur', function() {
-            const v = parseFloat(armorInput.value);
-            if (!isNaN(v) && v < -500) armorInput.value = -500;
+            clampInput(this, -500, 99999);
             calculate();
         });
         agiInput.addEventListener('input', calculate);
         agiInput.addEventListener('blur', function() {
-            if (parseFloat(agiInput.value) < 0) agiInput.value = 0;
+            clampInput(this, 0, 99999);
             calculate();
         });
         hpInput.addEventListener('input', calculate);
         hpInput.addEventListener('blur', function() {
-            const v = parseFloat(hpInput.value);
-            if (isNaN(v) || v < 1) hpInput.value = 1;
+            clampInput(this, 1, 9999999);
             calculate();
         });
         cInput.addEventListener('input', calculate);
