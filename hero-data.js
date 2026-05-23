@@ -396,7 +396,7 @@ var HEROES_DATA = [
       strBase: 24, strGain: 2, agiBase: 12, agiGain: 2, intBase: 24, intGain: 3,
       hp: 250, mp: 150, atk: 20, def: 0, atkSpeed: 2.25, hpRegen: 2, mpRegen: 0.01, speed: 280, range: 600, sightDay: 1800, sightNight: 800 },
 
-    { name: 'Верховный Маг', title: 'Маг воды', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'archmage', image: 'archmage',
+    { name: 'Верховный Маг', title: 'Маг воды', attr: 'intelligence', role: 'support', roleName: 'Помощник', heroId: 'archmage', image: 'Archmage',
       rawcode: 'H02P',
       strBase: 16, strGain: 2, agiBase: 17, agiGain: 2, intBase: 27, intGain: 3,
       hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 320, range: 600, sightDay: 1800, sightNight: 800 },
