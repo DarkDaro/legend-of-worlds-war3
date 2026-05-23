@@ -61,20 +61,23 @@ const itemsDB = {
   },
   I00Q: { id: 'I00Q', name: 'Сапоги телепортации', icon: '🩼🌀', type: 'basic', cost: 3400,
     description: '+6 ко всем атрибутам, +20 скорости боя, +60 скорости бега, Скачок (актив) (700)',
-    components: [ {itemId: 'I00N', quantity: 1}, {itemId: 'desc', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 200} ]
+    components: [ {itemId: 'I00N', quantity: 1}, {itemId: 'desc', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 200} ],
+    activeAbility: { name: 'Скачок', description: 'Беспрепятственное перемещение на короткую дистанцию', cooldown: 25, manacost: 300, note: null }
   },
   I01C: { id: 'I01C', name: 'Божественные сапоги', icon: '👢✨', type: 'basic', cost: 6600,
     description: '+15 ко всем атрибутам, +20% скорости боя, +90 скорости бега, Аура скорости (5% AS, 10% MS), Скачок (актив) (1000)',
-    components: [ {itemId: 'I00Q', quantity: 1}, {itemId: 'ajen', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 2500} ]
+    components: [ {itemId: 'I00Q', quantity: 1}, {itemId: 'ajen', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 2500} ],
+    activeAbility: { name: 'Скачок', description: 'Беспрепятственное перемещение на короткую дистанцию', cooldown: 25, manacost: 350, note: null }
   },
   I030: { id: 'I030', name: 'Сапоги божественной ловкости', icon: '🏃💨', type: 'agility', cost: 14300,
     description: '+20 ко всем атрибутам, +25% скорости атаки, +120 скорости бега, Аура скорости (15% AS, 15% MS), Скачок (актив) (1300)',
-    components: [ {itemId: 'I01C', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 7700} ]
+    components: [ {itemId: 'I01C', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 7700} ],
+    activeAbility: { name: 'Скачок', description: 'Беспрепятственное перемещение на короткую дистанцию', cooldown: 25, manacost: 400, note: null }
   },
   I0GL: { id: 'I0GL', name: 'Сапоги громовой поступи', icon: '⚡👢', type: 'agility', cost: 4000,
     description: '+12 ко всем атрибутам, +20 скорости боя, +60 скорости бега, Громовая поступь (актив): беспрепятственный бег и макс. скорость на 4.5 сек (кд 20)',
     components: [ {itemId: 'I00N', quantity: 1}, {itemId: 'oli2', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 2500} ],
-    activeAbility: { name: 'Громовая поступь', description: 'Беспрепятственный бег и максимальная скорость на 4.5 сек', cooldown: 20, manacost: 75, note: null }
+    activeAbility: { name: 'Громовая поступь', description: 'Беспрепятственный бег и максимальная скорость на 4.5 сек', cooldown: 20, manacost: 175, note: null }
   },
 
   // ---------- ДРАГОЦЕННОСТИ ----------
@@ -126,19 +129,19 @@ const itemsDB = {
     description: '+2000 здоровья, +15 защиты, +15% маг. защита, +20 ко всем атрибутам, Аура защиты 15 ед., Жар преисподней [300 дпс], Отмщение (актив) (500 + 20% от зд, шанс 20%, урон x2)',
     tags: ['basic', 'shield'],
     components: [ {itemId: 'I036', quantity: 1}, {itemId: 'I00S', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 11000} ],
-    activeAbility: { name: 'Отмщение', description: '500 + 20% от здоровья, шанс 20%, урон x2', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Отмщение', description: '500 + 20% от здоровья, шанс 20%, урон x2', cooldown: 40, manacost: 400, note: null }
   },
   I0BJ: { id: 'I0BJ', name: 'Кристальный щит', icon: '💎🛡️', type: 'basic_shield', cost: 11775,
     description: '+800 здоровья, +1200 маны, +180% регенерации маны, +12 защиты, Кристальная пыль (актив): блокирует 80% урона, возвращает 80% врагу, пока есть мана',
     tags: ['basic', 'shield'],
     components: [ {itemId: 'I0C8', quantity: 1}, {itemId: 'I0C9', quantity: 1}, {itemId: 'rwiz', quantity: 1}, {itemId: 'I00A', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 8000} ],
-    activeAbility: { name: 'Кристальная пыль', description: 'Блокирует 80% входящего урона, возвращает 80% врагу', cooldown: 30, manacost: 100, note: null }
+    activeAbility: { name: 'Кристальная пыль', description: 'Блокирует 80% входящего урона, возвращает 80% врагу', cooldown: 30, manacost: 300, note: null }
   },
   I09T: { id: 'I09T', name: 'Рыцарский щит', icon: '🛡️⚔️', type: 'basic_shield', cost: 15750,
     description: '+1800 здоровья, +10 защиты, +10% маг. защита, +30% сопротивление к оглушению, +10% сопротивление к сожжению маны, Божественная защита (актив): +30 защиты, +70% маг. защиты, +70 лечения на 6 сек',
     tags: ['basic', 'shield'],
     components: [ {itemId: 'I0C9', quantity: 2}, {itemId: 'I01G', quantity: 1}, {itemId: 'I00A', quantity: 1}, {itemId: 'I0FC', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 10400} ],
-    activeAbility: { name: 'Божественная защита', description: '+30 защиты, +70% маг. защиты, +70 лечения на 6 сек', cooldown: 25, manacost: 100, note: null }
+    activeAbility: { name: 'Божественная защита', description: '+30 защиты, +70% маг. защиты, +70 лечения на 6 сек', cooldown: 25, manacost: 400, note: null }
   },
   I0GM: { id: 'I0GM', name: 'Грозовой щит', icon: '⚡🛡️', type: 'basic_shield', cost: 13775,
     description: '+1500 здоровья, +15 защиты, +100 атаки, +100% регенерации маны, Грозовая преграда (пассив): 15% шанс отразить 25% урона +500 урона молнией (кд 3 сек)',
@@ -168,7 +171,7 @@ const itemsDB = {
   I0AF: { id: 'I0AF', name: 'Антимагические доспехи', icon: '🛡️🚫', type: 'magic_immune', cost: 47975,
     description: '+2500 здоровья, +20 защиты (аура), +60 регенерации здоровья, +45 силы, +85 атаки, +30% маг. защита, +15% сопротивление к сожжению маны, Стойкость Полководца (250 урона), Невосприимчивость к магии (актив, 8 сек)',
     components: [ {itemId: 'I0AG', quantity: 1}, {itemId: 'I02B', quantity: 1}, {itemId: 'I08U', quantity: 1} ],
-    activeAbility: { name: 'Невосприимчивость к магии', description: 'Иммунитет к магии на 8 сек', cooldown: 70, manacost: 300, note: null }
+    activeAbility: { name: 'Невосприимчивость к магии', description: 'Иммунитет к магии на 8 сек', cooldown: 70, manacost: 500, note: null }
   },
   I0GN: { id: 'I0GN', name: 'Шлем штормового рыцаря', icon: '🌩️⛑️', type: 'strength', cost: 8450,
     description: '+900 здоровья, +8 защиты, +35 атаки, +20 ко всем атрибутам, +25% сопротивление к оглушению',
@@ -177,12 +180,12 @@ const itemsDB = {
   I0DU: { id: 'I0DU', name: 'Кираса шторма', icon: '🌩️🛡️', type: 'strength', cost: 16300,
     description: '+750 здоровья, +20 защиты, +50 силы, +15 ловкости/разума, Баш: 16% шанс стан 1 сек и 150 урона, Всплеск Молний (актив): 800 + 1.5x STR, 15% шанс при атаке разряд молнии (200 + 2x Уровень героя)',
     components: [ {itemId: 'I00M', quantity: 1}, {itemId: 'I0D0', quantity: 1}, {itemId: 'I00C', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 9000} ],
-    activeAbility: { name: 'Всплеск Молний', description: '800 + 1.5x силы урона', cooldown: 25, manacost: 100, note: null }
+    activeAbility: { name: 'Всплеск Молний', description: '800 + 1.5x силы урона', cooldown: 25, manacost: 700, note: null }
   },
   I0GO: { id: 'I0GO', name: 'Доспехи штормового стража', icon: '🌩️🛡️✨', type: 'strength', cost: 87525,
     description: '+7000 здоровья, +50 защиты, +300 атаки, +100 силы, +50 ловкости/разума, +70 скорости бега, +100% регенерации маны, +45% сопротивление к оглушению, Баш (20%, 1.2 сек, 500 урона), Разряд (15% отразить 50% урона +700 +7x lvl), Шторм (актив): 1500 +3x Сила + доп. удары',
     components: [ {itemId: 'I0DU', quantity: 1}, {itemId: 'I0GM', quantity: 1}, {itemId: 'I0GN', quantity: 1}, {itemId: 'I0GL', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 45000} ],
-    activeAbility: { name: 'Шторм', description: '1500 +3x Сила + до 5 дополнительных ударов (300 +2x Сила), стан 1.5 сек', cooldown: 70, manacost: 300, note: null }
+    activeAbility: { name: 'Шторм', description: '1500 +3x Сила + до 5 дополнительных ударов (300 +2x Сила), стан 1.5 сек', cooldown: 70, manacost: 1000, note: null }
   },
   I0AG: { id: 'I0AG', name: 'Антимагические доспехи (свиток)', icon: '📜', type: 'recipe', cost: 16450, description: 'Свиток для Антимагических доспехов' },
 
@@ -199,17 +202,17 @@ const itemsDB = {
   I01P: { id: 'I01P', name: 'Проклятые когти', icon: '🦴💀', type: 'weapon', cost: 36600, tags: ['boss'],
     description: '+500 атаки, +45 ко всем атрибутам, Критический удар (20% x2.5), Снижение защиты: ближний бой 30 (10 сек), дальний бой 22 (7 сек), Безмолвие (актив): 400 АоЕ, 2 сек',
     components: [ {itemId: 'I035', quantity: 1}, {itemId: 'I00Y', quantity: 1}, {itemId: 'I01N', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 10400} ],
-    activeAbility: { name: 'Безмолвие', description: 'В области 400, 2 сек', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Безмолвие', description: 'В области 400, 2 сек', cooldown: 40, manacost: 400, note: null }
   },
   I03J: { id: 'I03J', name: 'Меч чёрной магии', icon: '⚫⚔️', type: 'weapon', cost: 59400, tags: ['boss'],
     description: '+750 атаки, +80 ко всем атрибутам, Критический удар (30% x3), Снижение защиты: ближний бой 50 (10 сек), дальний бой 37 (7 сек), Безмолвие (актив): 600 АоЕ, 3 сек',
     components: [ {itemId: 'I035', quantity: 1}, {itemId: 'I01P', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 10000} ],
-    activeAbility: { name: 'Безмолвие', description: 'В области 600, 3 сек', cooldown: 50, manacost: 175, note: null }
+    activeAbility: { name: 'Безмолвие', description: 'В области 600, 3 сек', cooldown: 50, manacost: 600, note: null }
   },
   I0GJ: { id: 'I0GJ', name: 'Клеймор', icon: '⚔️💥', type: 'weapon', cost: 45775,
     description: '+230 атаки, +60 силы, +90 ловкости, +40 разума, Аура скорости (35% AS, 20% MS), Снижение защиты: ближний бой 36 (10 сек), дальний бой 27 (7 сек), Невидимость (актив): 2000 подлый удар, снижает атаку на 30%, 5 сек, Замедление (25% шанс)',
     components: [ {itemId: 'I035', quantity: 1}, {itemId: 'I03T', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 18000} ],
-    activeAbility: { name: 'Невидимость', description: 'Подлый удар 2000, снижает атаку на 30%, 5 сек', cooldown: 25, manacost: 100, note: null }
+    activeAbility: { name: 'Невидимость', description: 'Подлый удар 2000, снижает атаку на 30%, 5 сек', cooldown: 45, manacost: 600, note: null }
   },
   I00Y: { id: 'I00Y', name: 'Огненный меч', icon: '🔥⚔️', type: 'weapon', cost: 3400,
     description: '+55 атаки, Критический удар (13% x1.5)',
@@ -218,7 +221,7 @@ const itemsDB = {
   I033: { id: 'I033', name: 'Меч ярости', icon: '😡⚔️', type: 'weapon', cost: 9200,
     description: '+130 атаки, Критический удар (13% x1.5), Активация: 100% критический удар x2.2 (5 сек)',
     components: [ {itemId: 'I00Y', quantity: 2}, {itemId: 'recipe', quantity: 1, costOverride: 3000} ],
-    activeAbility: { name: 'Ярость', description: '100% критический удар x2.2 на 5 сек', cooldown: 20, manacost: 75, note: null }
+    activeAbility: { name: 'Ярость', description: '100% критический удар x2.2 на 5 сек', cooldown: 20, manacost: 200, note: null }
   },
   I0AO: { id: 'I0AO', name: 'Светлый меч', icon: '✨⚔️', type: 'weapon', cost: 8100,
     description: '+125 атаки, +30% скорости боя, Очищение: 20% шанс x2 урона, после герой получает 25% блок урона на 1 сек',
@@ -227,7 +230,7 @@ const itemsDB = {
   I0E5: { id: 'I0E5', name: 'Меч очищения', icon: '🌟⚔️', type: 'weapon', cost: 29050,
     description: '+270 атаки, +30 силы/ловкости, +50% скорости боя, Очищение: 20% шанс x2.5 урона, замедление скорости боя на 40% (3 сек), после блок 50% урона (2 сек), Развеивание (актив)',
     components: [ {itemId: 'I0AO', quantity: 1}, {itemId: 'I03N', quantity: 1}, {itemId: 'I0CQ', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 13000} ],
-    activeAbility: { name: 'Развеивание', description: 'Снимает положительные эффекты', cooldown: 50, manacost: 175, note: null }
+    activeAbility: { name: 'Развеивание', description: 'Снимает положительные эффекты', cooldown: 40, manacost: 300, note: null }
   },
 
   // ---------- ВООРУЖЕНИЕ 2 ----------
@@ -238,17 +241,17 @@ const itemsDB = {
   I0CM: { id: 'I0CM', name: 'Проклятый череп', icon: '💀🔮', type: 'weapon', cost: 21700,
     description: '+200 атаки, +5% множитель маг. вампиризма, +5% множитель маг. блока, +10% Удача, Размен Душ (актив): обмен процентным запасом здоровья с целью',
     components: [ {itemId: 'I0CQ', quantity: 1}, {itemId: 'I03I', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 16600} ],
-    activeAbility: { name: 'Размен Душ', description: 'Обмен процентным запасом здоровья с целью', cooldown: 80, manacost: 350, note: null }
+    activeAbility: { name: 'Размен Душ', description: 'Обмен процентным запасом здоровья с целью', cooldown: 80, manacost: 400, note: null }
   },
   I02N: { id: 'I02N', name: 'Рука тьмы', icon: '🖤🤚', type: 'weapon', cost: 21885,
     description: '+140 атаки, +40 силы, Баш (15% 1.3 сек 400 урона), Критический удар (20% x1.8), Темный заряд (актив): 900 + 2x наибольший атрибут, стан 1.5 сек',
     components: [ {itemId: 'odef', quantity: 1}, {itemId: 'I00Y', quantity: 1}, {itemId: 'I015', quantity: 1}, {itemId: 'I00M', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 13000} ],
-    activeAbility: { name: 'Темный заряд', description: '900 + 2x наибольший атрибут урона, стан 1.5 сек', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Темный заряд', description: '900 + 2x наибольший атрибут урона, стан 1.5 сек', cooldown: 40, manacost: 600, note: null }
   },
   I0EP: { id: 'I0EP', name: 'Лук тьмы', icon: '🏹🌑', type: 'weapon', cost: 40380,
     description: '+280 атаки, +50 силы/ловкости, +60% скорости боя, Баш (17% 1.4 сек 450 урона), Критический удар (22% x2.0), Темный заряд (актив), Темный снаряд (пассив)',
     components: [ {itemId: 'I02N', quantity: 1}, {itemId: 'I013', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 10000} ],
-    activeAbility: { name: 'Темный заряд', description: '900 + 2x наибольший атрибут урона, стан 1.5 сек', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Темный заряд', description: '900 + 2x наибольший атрибут урона, стан 1.5 сек', cooldown: 40, manacost: 600, note: null }
   },
   I0FO: { id: 'I0FO', name: 'Клинок солнца', icon: '☀️🗡️', type: 'weapon', cost: 3850,
     description: '+40 атаки, +15% скорости боя, +600 здоровья, Дар солнца (пассив): +90 физ. урона днем',
@@ -278,12 +281,12 @@ const itemsDB = {
     description: '+120 атаки, +200% восстановления маны, +55 разума, +1300 маны, Цепь молнии (к заклинаниям/атаке): 100% / 25% шанс, 350 + 0.8x INT урона, 5 целей, Щит молний (актив): 500 урона/сек',
     components: [ {itemId: 'mnsf', quantity: 2}, {itemId: 'I01W', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 7050} ],
     upgradesTo: ['I08Y'],
-    activeAbility: { name: 'Щит молний', description: '500 урона в секунду вокруг героя', cooldown: 30, manacost: 100, note: null }
+    activeAbility: { name: 'Щит молний', description: '500 урона в секунду вокруг героя', cooldown: 30, manacost: 350, note: null }
   },
   I08Y: { id: 'I08Y', name: 'Посох грома', icon: '🌩️🔮', type: 'intelligence', cost: 30900,
     description: '+280 атаки, +300% восстановления маны, +80 разума, +2200 маны, Цепь молнии (35% шанс, 500 + 1.2x INT, 7 целей), Щит молний (800 урона/сек), Гром (актив): 500 + 1x INT',
     components: [ {itemId: 'I03R', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 15000} ],
-    activeAbility: { name: 'Гром', description: '500 + 1x INT урона', cooldown: 50, manacost: 175, note: null }
+    activeAbility: { name: 'Гром', description: '500 + 1x INT урона', cooldown: 50, manacost: 700, note: null }
   },
   I02T: { id: 'I02T', name: 'Ледяной меч I', icon: '❄️⚔️', type: 'intelligence', cost: 4325,
     description: '+60 атаки, +600 маны, Ледяная звезда: 10% шанс, 50 + 0.5x осн. атрибут урона',
@@ -312,17 +315,17 @@ const itemsDB = {
   I02Z: { id: 'I02Z', name: 'Ледяное око', icon: '❄️👁️', type: 'intelligence', cost: 6400,
     description: '+35 разума, +1000 маны, +8 защиты, Оледенение (актив): 500 + INTx0.5, стан 1 сек',
     components: [ {itemId: 'I00A', quantity: 1}, {itemId: 'ofro', quantity: 1}, {itemId: 'mnsf', quantity: 1}, {itemId: 'pmna', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 3500} ],
-    activeAbility: { name: 'Оледенение', description: '500 + 0.5x INT урона, стан 1 сек', cooldown: 25, manacost: 100, note: null }
+    activeAbility: { name: 'Оледенение', description: '500 + 0.5x INT урона, стан 1 сек', cooldown: 25, manacost: 350, note: null }
   },
   I01I: { id: 'I01I', name: 'Ледяные доспехи', icon: '❄️🛡️', type: 'intelligence', cost: 10225,
     description: '+15 защиты, +35 разума, Замораживающая аура: 20% AS, 10% MS (пассив), Арктический всплеск (актив): 400 + 4x INT',
     components: [ {itemId: 'ofro', quantity: 1}, {itemId: 'mnsf', quantity: 1}, {itemId: 'I00A', quantity: 1}, {itemId: 'I00C', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 7000} ],
-    activeAbility: { name: 'Арктический всплеск', description: '400 + 4x INT урона', cooldown: 50, manacost: 175, note: null }
+    activeAbility: { name: 'Арктический всплеск', description: '400 + 4x INT урона', cooldown: 50, manacost: 750, note: null }
   },
   I09R: { id: 'I09R', name: 'Ледяной дух', icon: '❄️👻', type: 'intelligence', cost: 43750,
     description: '+200 атаки, +30 защиты, +2500 маны, +75 разума, Замораживающая аура (30% AS, 15% MS), Ледяная звезда (35% шанс, 400 + 1.5x осн. атрибут), Арктический всплеск (актив): 1000 + 6x INT',
     components: [ {itemId: 'I03F', quantity: 1}, {itemId: 'I01I', quantity: 1}, {itemId: 'I02Z', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 14000} ],
-    activeAbility: { name: 'Арктический всплеск', description: '1000 + 6x INT урона', cooldown: 60, manacost: 225, note: null }
+    activeAbility: { name: 'Арктический всплеск', description: '1000 + 6x INT урона', cooldown: 60, manacost: 1000, note: null }
   },
 
   // ---------- МАГИЧЕСКАЯ ЭКИПИРОВКА ----------
@@ -339,12 +342,12 @@ const itemsDB = {
     description: '+65 силы, +60 ловкости, +55 разума, +40 регенерации здоровья, Вампиризм 45% (пассив), Вампиризм (актив, 4 сек): 150%',
     components: [ {itemId: 'I000', quantity: 1}, {itemId: 'I0AL', quantity: 1}, {itemId: 'I014', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 6500} ],
     upgradesTo: ['I0GI'],
-    activeAbility: { name: 'Вампиризм', description: '150% вампиризма на 4 сек', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Вампиризм', description: '150% вампиризма на 4 сек', cooldown: 40, manacost: 450, note: null }
   },
   I0GI: { id: 'I0GI', name: 'Адская маска', icon: '🔥👹', type: 'vampirism', cost: 41325,
     description: '+180 атаки, +90 ко всем атрибутам, +80 регенерации здоровья, Вампиризм 50% (Орб. эффект), Вампиризм (актив, 6 сек): 150% +300 атаки, иммунитет к оглушению, немота',
     components: [ {itemId: 'I04H', quantity: 1}, {itemId: 'I0CQ', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 15900} ],
-    activeAbility: { name: 'Бешенство', description: '150% вампиризма, +300 атаки, иммунитет к оглушению, немота на 6 сек', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Бешенство', description: '150% вампиризма, +300 атаки, иммунитет к оглушению, немота на 6 сек', cooldown: 40, manacost: 450, note: null }
   },
   I01X: { id: 'I01X', name: 'Амулет отрицания', icon: '🚫📿', type: 'magic_block', cost: 11200,
     description: '+20 ко всем атрибутам, Магический блок 10%',
@@ -383,72 +386,72 @@ const itemsDB = {
     description: '+20 атаки, +6 регенерации здоровья, 20% шанс восстановить 150 здоровья при атаке, Спасение (актив): исцеление в области 400 (400 +10x уровень союзника)',
     components: [ {itemId: 'rlif', quantity: 1}, {itemId: 'I007', quantity: 1}, {itemId: 'I004', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 1100} ],
     upgradesTo: ['I0DR'],
-    activeAbility: { name: 'Спасение', description: 'Исцеление в области 400 (400 +10x уровень союзника)', cooldown: 25, manacost: 100, note: null }
+    activeAbility: { name: 'Спасение', description: 'Исцеление в области 400 (400 +10x уровень союзника)', cooldown: 25, manacost: 250, note: null }
   },
   I0DR: { id: 'I0DR', name: 'Печать помощи II', icon: '🆘✨', type: 'neutral', cost: 3400,
     description: '+40 атаки, +12 регенерации здоровья, 20% шанс восстановить 200 здоровья при атаке, Спасение (актив): 600 +10x уровень союзника в области 500',
     components: [ {itemId: 'I0DQ', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 1100} ],
     upgradesTo: ['I0DS'],
-    activeAbility: { name: 'Спасение', description: 'Исцеление в области 500 (600 +10x уровень союзника)', cooldown: 25, manacost: 100, note: null }
+    activeAbility: { name: 'Спасение', description: 'Исцеление в области 500 (600 +10x уровень союзника)', cooldown: 25, manacost: 300, note: null }
   },
   I0DS: { id: 'I0DS', name: 'Печать помощи III', icon: '🆘🌟', type: 'neutral', cost: 4500,
     description: '+60 атаки, +30 регенерации здоровья, 20% шанс восстановить 250 здоровья при атаке, Спасение (актив): 800 +10x уровень союзника в области 600',
     components: [ {itemId: 'I0DR', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 1100} ],
-    activeAbility: { name: 'Спасение', description: 'Исцеление в области 600 (800 +10x уровень союзника)', cooldown: 25, manacost: 100, note: null }
+    activeAbility: { name: 'Спасение', description: 'Исцеление в области 600 (800 +10x уровень союзника)', cooldown: 25, manacost: 350, note: null }
   },
   I04B: { id: 'I04B', name: 'Посох ветров', icon: '💨🔮', type: 'intelligence', cost: 2765,
     description: '+15 разума, +13 ко всем атрибутам, +10 регенерации здоровья, Толчок (актив): 1000 дальность',
     components: [ {itemId: 'I00K', quantity: 1}, {itemId: 'rlif', quantity: 1}, {itemId: 'rnsp', quantity: 1}, {itemId: 'mnsf', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 900} ],
-    activeAbility: { name: 'Толчок', description: 'Отталкивает врагов на 1000 дальности', cooldown: 20, manacost: 75, note: null }
+    activeAbility: { name: 'Толчок', description: 'Отталкивает врагов на 1000 дальности', cooldown: 20, manacost: 150, note: null }
   },
   I0EB: { id: 'I0EB', name: 'Кулон приспешника', icon: '🧑‍🎤', type: 'control', cost: 10250,
     description: '+1200 здоровья, +600 маны, Мрак (актив): снижает маг. защиту цели на 50%, останавливает регенерацию здоровья, снижает лечение на 50% (6 сек)',
     components: [ {itemId: 'I0C9', quantity: 2}, {itemId: 'I0C8', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 6000} ],
-    activeAbility: { name: 'Мрак', description: 'Снижает маг. защиту на 50%, останавливает регенерацию и лечение на 6 сек', cooldown: 32, manacost: 125, note: null }
+    activeAbility: { name: 'Мрак', description: 'Снижает маг. защиту на 50%, останавливает регенерацию и лечение на 6 сек', cooldown: 32, manacost: 500, note: null }
   },
   I04L: { id: 'I04L', name: 'Жезл боли I', icon: '💔🔮', type: 'intelligence_control', cost: 9925,
     description: '+65 разума, +45 силы/ловкости, Заклятье боли (актив): 500 + 150% осн. атрибута чистого урона, стан 1 сек',
     components: [ {itemId: 'I000', quantity: 1}, {itemId: 'I00K', quantity: 1}, {itemId: 'mnsf', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 4500} ],
     upgradesTo: ['I0BG'],
-    activeAbility: { name: 'Заклятье боли', description: '500 + 150% осн. атрибута чистого урона, стан 1 сек', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Заклятье боли', description: '500 + 150% осн. атрибута чистого урона, стан 1 сек', cooldown: 30, manacost: 350, note: null }
   },
   I0BG: { id: 'I0BG', name: 'Жезл боли II', icon: '💔🔮✨', type: 'intelligence_control', cost: 14425,
     description: '+85 разума, +60 силы/ловкости, Заклятье боли: 1000 + 200% осн. атрибута чистого урона, стан 1 сек',
     components: [ {itemId: 'I04L', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 4500} ],
     upgradesTo: ['I0BH'],
-    activeAbility: { name: 'Заклятье боли', description: '1000 + 200% осн. атрибута чистого урона, стан 1 сек', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Заклятье боли', description: '1000 + 200% осн. атрибута чистого урона, стан 1 сек', cooldown: 30, manacost: 500, note: null }
   },
   I0BH: { id: 'I0BH', name: 'Жезл боли III', icon: '💔🔮🌟', type: 'intelligence_control', cost: 18925,
     description: '+105 разума, +75 силы/ловкости, Заклятье боли: 1500 + 250% осн. атрибута чистого урона, стан 1 сек',
     components: [ {itemId: 'I0BG', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 4500} ],
-    activeAbility: { name: 'Заклятье боли', description: '1500 + 250% осн. атрибута чистого урона, стан 1 сек', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Заклятье боли', description: '1500 + 250% осн. атрибута чистого урона, стан 1 сек', cooldown: 30, manacost: 650, note: null }
   },
   I0CN: { id: 'I0CN', name: 'Сфера магии', icon: '✨🔮', type: 'rare', cost: 17850, tags: ['boss'],
     description: '+80 ко всем атрибутам, +1000 здоровья и маны, +10% доп. урон заклинаний, +10% Удача, +30 маны/сек, Благословение (актив): +30% бонус статов на 6 сек',
     components: [ {itemId: 'I0C9', quantity: 1}, {itemId: 'I0C8', quantity: 1}, {itemId: 'I0B5', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 10000} ],
-    activeAbility: { name: 'Благословение', description: '+30% бонус статов на 6 сек', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Благословение', description: '+30% бонус статов на 6 сек', cooldown: 40, manacost: 500, note: null }
   },
   I0D1: { id: 'I0D1', name: 'Посох подавления', icon: '🚷🔮', type: 'intelligence_control', cost: 12200,
     description: '+60 разума, +20 силы/ловкости, +900 здоровья, Безмолвие (актив): запрещает использовать способности на 5 сек, после наносит 30% полученного маг. урона',
     components: [ {itemId: 'I0CP', quantity: 2}, {itemId: 'recipe', quantity: 1, costOverride: 3650} ],
-    activeAbility: { name: 'Безмолвие', description: 'Запрещает способности на 5 сек, наносит 30% полученного маг. урона', cooldown: 25, manacost: 100, note: null }
+    activeAbility: { name: 'Безмолвие', description: 'Запрещает способности на 5 сек, наносит 30% полученного маг. урона', cooldown: 25, manacost: 300, note: null }
   },
   I054: { id: 'I054', name: 'Огненная перчатка I', icon: '🔥🧤', type: 'weapon', cost: 7200,
     description: '+80 атаки, +20% скорости боя, Атака огнём – 20 маг. урона, Магия огня (актив): 350 чистого урона/сек (5 сек), область 300',
     components: [ {itemId: 'gcel', quantity: 1}, {itemId: 'I03I', quantity: 1}, {itemId: 'ofir', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 4500} ],
     upgradesTo: ['I0BE'],
-    activeAbility: { name: 'Магия огня', description: '350 чистого урона/сек (5 сек), область 300', cooldown: 90, manacost: 350, note: null }
+    activeAbility: { name: 'Магия огня', description: '350 чистого урона/сек (5 сек), область 300', cooldown: 90, manacost: 600, note: null }
   },
   I0BE: { id: 'I0BE', name: 'Огненная перчатка II', icon: '🔥🧤✨', type: 'weapon', cost: 11700,
     description: '+100 атаки, +30% скорости боя, Атака огнём – 40 маг. урона, Магия огня (актив): 500 чистого урона/сек (5 сек), область 475',
     components: [ {itemId: 'I054', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 4500} ],
     upgradesTo: ['I0BF'],
-    activeAbility: { name: 'Магия огня', description: '500 чистого урона/сек (5 сек), область 475', cooldown: 90, manacost: 350, note: null }
+    activeAbility: { name: 'Магия огня', description: '500 чистого урона/сек (5 сек), область 475', cooldown: 80, manacost: 800, note: null }
   },
   I0BF: { id: 'I0BF', name: 'Огненная перчатка III', icon: '🔥🧤👑', type: 'weapon', cost: 16200,
     description: '+120 атаки, +40% скорости боя, Атака огнём – 60 маг. урона, Магия огня (актив): 650 чистого урона/сек (5 сек), область 725',
     components: [ {itemId: 'I0BE', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 4500} ],
-    activeAbility: { name: 'Магия огня', description: '650 чистого урона/сек (5 сек), область 725', cooldown: 90, manacost: 350, note: null }
+    activeAbility: { name: 'Магия огня', description: '650 чистого урона/сек (5 сек), область 725', cooldown: 70, manacost: 1000, note: null }
   },
 
   // ---------- ЭЛЕМЕНТ СИЛЫ ----------
@@ -473,12 +476,12 @@ const itemsDB = {
     description: '+20 силы, +45 атаки, +5% сопротивление к сожжению маны, Невосприимчивость к магии (актив): 3 сек',
     components: [ {itemId: 'I006', quantity: 1}, {itemId: 'I005', quantity: 1}, {itemId: 'I015', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 6500} ],
     upgradesTo: ['I08U'],
-    activeAbility: { name: 'Невосприимчивость к магии', description: 'Иммунитет к магии на 3 сек', cooldown: 60, manacost: 225, note: null }
+    activeAbility: { name: 'Невосприимчивость к магии', description: 'Иммунитет к магии на 3 сек', cooldown: 60, manacost: 300, note: null }
   },
   I08U: { id: 'I08U', name: 'Посох разложения II', icon: '☣️🔮✨', type: 'magic_immune', cost: 15025,
     description: '+30 силы, +65 атаки, +10% сопротивление к сожжению маны, Невосприимчивость к магии (актив): 5 сек',
     components: [ {itemId: 'I028', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 6500} ],
-    activeAbility: { name: 'Невосприимчивость к магии', description: 'Иммунитет к магии на 5 сек', cooldown: 60, manacost: 225, note: null }
+    activeAbility: { name: 'Невосприимчивость к магии', description: 'Иммунитет к магии на 5 сек', cooldown: 60, manacost: 400, note: null }
   },
   I04O: { id: 'I04O', name: 'Кровопускатель', icon: '🩸⚔️', type: 'weapon_strength', cost: 7475,
     description: '+100 атаки, +25 силы, Кровоточащий удар (пассив): 50 + STRx0.5 (3 сек), 25% урона в дальнем бою, Замедление бега: 30%, 3 сек',
@@ -491,7 +494,7 @@ const itemsDB = {
   I0DA: { id: 'I0DA', name: 'Алебарда', icon: '⚔️🪓', type: 'strength_control', cost: 13250,
     description: '+150 атаки, +40 силы, +20% уклонение, +10% множитель маг. вампиризма/блока, Обезоруживание (актив): 4/5 сек',
     components: [ {itemId: 'I0CQ', quantity: 1}, {itemId: 'I015', quantity: 1}, {itemId: 'evtl', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 6000} ],
-    activeAbility: { name: 'Обезоруживание', description: 'Противник не может атаковать 4/5 сек', cooldown: 25, manacost: 100, note: null }
+    activeAbility: { name: 'Обезоруживание', description: 'Противник не может атаковать 4/5 сек', cooldown: 25, manacost: 300, note: null }
   },
 
   // ---------- ЭЛЕМЕНТ РАЗУМНЫЙ ----------
@@ -504,32 +507,32 @@ const itemsDB = {
     description: '+65 атаки, +40 ловкости, +25 разума, Сожжение маны: 100 ед., Магический огонь (актив): 600 + 20% от тек. маны жертвы',
     components: [ {itemId: 'I08V', quantity: 1}, {itemId: 'I03I', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 5500} ],
     upgradesTo: ['I08X'],
-    activeAbility: { name: 'Магический огонь', description: '600 + 20% от текущей маны цели', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Магический огонь', description: '600 + 20% от текущей маны цели', cooldown: 40, manacost: 300, note: null }
   },
   I08X: { id: 'I08X', name: 'Клинок ведьмака III', icon: '🧙⚔️🌟', type: 'intelligence', cost: 23975,
     description: '+170 атаки, +50 ловкости, +35 разума, Сожжение маны: 160 ед., Магическое опустошение (актив): 900 + 40% от тек. маны жертвы',
     components: [ {itemId: 'I08W', quantity: 1}, {itemId: 'I03I', quantity: 1}, {itemId: 'mnsf', quantity: 1}, {itemId: 'I010', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 7500} ],
-    activeAbility: { name: 'Магическое опустошение', description: '900 + 40% от текущей маны цели', cooldown: 60, manacost: 225, note: null }
+    activeAbility: { name: 'Магическое опустошение', description: '900 + 40% от текущей маны цели', cooldown: 60, manacost: 600, note: null }
   },
   I0AI: { id: 'I0AI', name: 'Посох разрушения', icon: '💥🔮', type: 'intelligence', cost: 55500,
     description: '+190 атаки, +90 разума, +75 ловкости, +25 силы, +950 здоровья и маны, +15% доп. урон заклинаний, Сожжение маны 300, Магическое разрушение (актив): 1500 + 50% маны жертвы, Массовая немота 6 сек',
     components: [ {itemId: 'I04K', quantity: 1}, {itemId: 'I08X', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 8800} ],
-    activeAbility: { name: 'Магическое разрушение', description: '1500 + 50% маны жертвы + немота 6 сек', cooldown: 80, manacost: 350, note: null }
+    activeAbility: { name: 'Магическое разрушение', description: '1500 + 50% маны жертвы + немота 6 сек', cooldown: 80, manacost: 600, note: null }
   },
   I00R: { id: 'I00R', name: 'Жезл исцеления', icon: '💚🔮', type: 'intelligence', cost: 5725,
     description: '+40 разума, +500 здоровья, Регенерация: 1% от недостающего здоровья/сек, Целительная волна (актив): 1000 +10% здоровья, 2 цели',
     components: [ {itemId: 'rhth', quantity: 1}, {itemId: 'I00K', quantity: 1}, {itemId: 'mnsf', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 3500} ],
-    activeAbility: { name: 'Целительная волна', description: '1000 +10% здоровья, 2 цели', cooldown: 30, manacost: 100, note: null }
+    activeAbility: { name: 'Целительная волна', description: '1000 +10% здоровья, 2 цели', cooldown: 30, manacost: 300, note: null }
   },
   I00W: { id: 'I00W', name: 'Посох восстановления', icon: '💚🔮✨', type: 'intelligence', cost: 15425,
     description: '+80 разума, +50 силы/ловкости, +850 здоровья, Регенерация: 2% от недостающего здоровья/сек, Целительная волна: 1500 +15% здоровья, 4 цели',
     components: [ {itemId: 'I000', quantity: 1}, {itemId: 'I01O', quantity: 1}, {itemId: 'I00R', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 5000} ],
-    activeAbility: { name: 'Целительная волна', description: '1500 +15% здоровья, 4 цели', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Целительная волна', description: '1500 +15% здоровья, 4 цели', cooldown: 40, manacost: 600, note: null }
   },
   I03V: { id: 'I03V', name: 'Посох света', icon: '✨🔮', type: 'intelligence', cost: 27100,
     description: '+110 разума, +60 силы/ловкости, +1200 здоровья, +20% усиление лечения, +5% Удача, Регенерация: 3% от недостающего/сек, Ритуал жизни (актив): 2000 +20% макс. здоровья, 6 целей',
     components: [ {itemId: 'I0CP', quantity: 1}, {itemId: 'I00W', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 7400} ],
-    activeAbility: { name: 'Ритуал жизни', description: '2000 +20% макс. здоровья, 6 целей', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Ритуал жизни', description: '2000 +20% макс. здоровья, 6 целей', cooldown: 40, manacost: 1000, note: null }
   },
   I0DB: { id: 'I0DB', name: 'Скипетр Владыки I', icon: '👑🔮', type: 'intelligence', cost: 19225,
     description: '+1000 маны, +80 разума, +50 силы/ловкости, +600 здоровья, +5% Удача, Пассив: после способностей восстанавливает 3% макс. здоровья раз в 2 сек, шанс мгновенного сброса ульты',
@@ -539,17 +542,17 @@ const itemsDB = {
   I0EY: { id: 'I0EY', name: 'Скипетр Владыки II', icon: '👑🔮✨', type: 'intelligence', cost: 69325,
     description: '+1800 здоровья, +1200 маны, +200 разума, +120 силы/ловкости, +25% лечение, +15% Удача, Регенерация 4%/сек, Ритуал жизни (2500 +25% макс. здоровья, 8 целей), Пассив: 5% здоровья раз в 2 сек, шанс сброса ульты',
     components: [ {itemId: 'I0DB', quantity: 1}, {itemId: 'I03V', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 23000} ],
-    activeAbility: { name: 'Ритуал жизни', description: '2500 +25% макс. здоровья, 8 целей', cooldown: 50, manacost: 175, note: null }
+    activeAbility: { name: 'Ритуал жизни', description: '2500 +25% макс. здоровья, 8 целей', cooldown: 40, manacost: 1200, note: null }
   },
   I04E: { id: 'I04E', name: 'Древний посох', icon: '📜🔮', type: 'intelligence', cost: 9250,
     description: '+500 здоровья и маны, +40 разума, +10 силы/ловкости, Немота (актив): 4 сек',
     components: [ {itemId: 'mnsf', quantity: 1}, {itemId: 'I0CP', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 4000} ],
-    activeAbility: { name: 'Немота', description: 'Цель не может использовать способности 4 сек', cooldown: 30, manacost: 100, note: null }
+    activeAbility: { name: 'Немота', description: 'Цель не может использовать способности 4 сек', cooldown: 30, manacost: 300, note: null }
   },
   I04K: { id: 'I04K', name: 'Древний мистический', icon: '📜🔮✨', type: 'intelligence', cost: 22725,
     description: '+800 здоровья и маны, +55 разума, +25 силы/ловкости, Массовая немота (актив): 700 область, герои, 5 сек',
     components: [ {itemId: 'I04E', quantity: 1}, {itemId: 'I0C8', quantity: 1}, {itemId: 'I0CP', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 9200} ],
-    activeAbility: { name: 'Массовая немота', description: 'В области 700 враги не могут использовать способности 5 сек', cooldown: 70, manacost: 300, note: null }
+    activeAbility: { name: 'Массовая немота', description: 'В области 700 враги не могут использовать способности 5 сек', cooldown: 60, manacost: 800, note: null }
   },
 
   // ---------- ЭЛЕМЕНТ ЛОВКОСТИ ----------
@@ -560,12 +563,12 @@ const itemsDB = {
   I023: { id: 'I023', name: 'Жезл стремительности', icon: '💨🔮', type: 'agility', cost: 5325,
     description: '+30 ловкости, +75 атаки, Аура скорости: 12% AS, 12% MS, Невидимость (актив): 300 ед. подлый удар, 10 сек',
     components: [ {itemId: 'I010', quantity: 1}, {itemId: 'ajen', quantity: 1}, {itemId: 'I009', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 3000} ],
-    activeAbility: { name: 'Невидимость', description: '300 ед. подлый удар, 10 сек', cooldown: 45, manacost: 125, note: null }
+    activeAbility: { name: 'Невидимость', description: '300 ед. подлый удар, 10 сек', cooldown: 45, manacost: 200, note: null }
   },
   I03T: { id: 'I03T', name: 'Кинжал призрака', icon: '👻🗡️', type: 'agility', cost: 14975,
     description: '+50 ловкости, +95 атаки, +25 силы, Аура скорости: 25% AS, 16% MS, Невидимость (актив): 600 ед. подлый удар, 15 сек, Замедление: 25% шанс замедлить скорость атаки на 30% и бега на 8 сек',
     components: [ {itemId: 'I03N', quantity: 1}, {itemId: 'I023', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 5000} ],
-    activeAbility: { name: 'Невидимость', description: '600 ед. подлый удар, 15 сек', cooldown: 45, manacost: 125, note: null }
+    activeAbility: { name: 'Невидимость', description: '600 ед. подлый удар, 15 сек', cooldown: 45, manacost: 300, note: null }
   },
   I02X: { id: 'I02X', name: 'Золотой меч', icon: '🥇⚔️', type: 'agility', cost: 7775,
     description: '+155 атаки, +35 ловкости, Сияние: 150 чистого урона/сек врагам в области 400',
@@ -574,12 +577,12 @@ const itemsDB = {
   I01B: { id: 'I01B', name: 'Клинок убийцы', icon: '🗡️💀', type: 'agility', cost: 28575,
     description: '+70 ловкости, +20 силы, +300 атаки, +100% скорости боя, Критический удар: 25% шанс x2.5 урона, Скорость молнии (актив): 500 + AGIx1.5, стан 1 сек',
     components: [ {itemId: 'I015', quantity: 1}, {itemId: 'I010', quantity: 1}, {itemId: 'I00Y', quantity: 1}, {itemId: 'I013', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 15000} ],
-    activeAbility: { name: 'Скорость молнии', description: '500 + AGIx1.5 урона, стан 1 сек', cooldown: 60, manacost: 225, note: null }
+    activeAbility: { name: 'Скорость молнии', description: '500 + AGIx1.5 урона, стан 1 сек', cooldown: 60, manacost: 500, note: null }
   },
   I03Z: { id: 'I03Z', name: 'Кровавый клинок', icon: '🩸🗡️', type: 'agility', cost: 53300,
     description: '+510 атаки, +130% скорости боя, +120 ловкости, +35 силы, Критический удар: 30% шанс x3 урона, Скорость молнии: 1000 + AGIx3, Сияние крови: 400 чистого урона/сек героям',
     components: [ {itemId: 'I02X', quantity: 1}, {itemId: 'I01B', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 16975} ],
-    activeAbility: { name: 'Скорость молнии', description: '1000 + AGIx3 урона, стан 1 сек', cooldown: 70, manacost: 300, note: null }
+    activeAbility: { name: 'Скорость молнии', description: '1000 + AGIx3 урона, стан 1 сек', cooldown: 60, manacost: 700, note: null }
   },
   I0EL: { id: 'I0EL', name: 'Нефритовый клинок', icon: '💚🗡️', type: 'agility', cost: 10775,
     description: '+120 атаки, +30 ловкости, Нефритовый удар: каждая 4-я атака призывает иллюзию (50% урона, 2 сек)',
@@ -622,12 +625,12 @@ const itemsDB = {
   I0BA: { id: 'I0BA', name: 'Меч падшего', icon: '😈⚔️', type: 'weapon', cost: 189400, tags: ['boss'],
     description: '+2400 атаки, +100 ко всем атрибутам, Критический удар: 30% x4, Снижение защиты: ближний бой 150 (10 сек), дальний 112 (7 сек), Безмолвие (актив): 800 АоЕ, 3 сек, +Безмолвие 5% шанс при атаке 1 сек',
     components: [ {itemId: 'I047', quantity: 1}, {itemId: 'I03J', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 80000} ],
-    activeAbility: { name: 'Безмолвие', description: 'В области 800, 3 сек', cooldown: 50, manacost: 175, note: null }
+    activeAbility: { name: 'Безмолвие', description: 'В области 800, 3 сек', cooldown: 50, manacost: 800, note: null }
   },
   I04G: { id: 'I04G', name: 'Меч тьмы', icon: '🌑⚔️', type: 'weapon_strength', cost: 103855, tags: ['boss'],
     description: '+2000 атаки, +200 силы, +100% скорости боя, Баш: 20% шанс стан 1.5 сек и 1000 урона, Критический удар: 30% x2, Темная вспышка (актив): 2000 + 10x наибольший атрибут, стан 3 сек',
     components: [ {itemId: 'I01N', quantity: 1}, {itemId: 'I047', quantity: 1}, {itemId: 'I02N', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 22000} ],
-    activeAbility: { name: 'Темная вспышка', description: '2000 + 10x наибольший атрибут урона, стан 3 сек', cooldown: 80, manacost: 350, note: null }
+    activeAbility: { name: 'Темная вспышка', description: '2000 + 10x наибольший атрибут урона, стан 3 сек', cooldown: 80, manacost: 2000, note: null }
   },
   I01J: { id: 'I01J', name: 'Ледяной элемент', icon: '❄️🧊', type: 'rare', cost: 60000, tags: ['boss'],
     description: '+500 ко всем атрибутам',
@@ -636,7 +639,7 @@ const itemsDB = {
   I03L: { id: 'I03L', name: 'Меч вечной стужи', icon: '❄️💀⚔️', type: 'weapon_intelligence', cost: 203750, tags: ['boss'],
     description: '+5000 атаки, +3000 маны, +100 разума, +50 защиты, +500 ко всем атрибутам, Ледяная звезда: 50% шанс, 800 + 2.5x осн. атрибут, Замораживающая аура 50%, Фростшторм (актив): 5000 + 20x осн. атрибут',
     components: [ {itemId: 'I01J', quantity: 1}, {itemId: 'I09R', quantity: 1}, {itemId: 'I047', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 50000} ],
-    activeAbility: { name: 'Фростшторм', description: '5000 + 20x осн. атрибут урона', cooldown: 150, manacost: 400, note: null }
+    activeAbility: { name: 'Фростшторм', description: '5000 + 20x осн. атрибут урона', cooldown: 150, manacost: 3000, note: null }
   },
   I02D: { id: 'I02D', name: 'Щит джаггернаута', icon: '🛡️💪', type: 'armor', cost: 87050, tags: ['boss'],
     description: '+80 защиты, +4000 здоровья, Жар преисподней 600 дпс, +150 регенерации здоровья, +30% маг. защита, Возврат урона 25%, +20 аура защиты, Стойкость Полководца 250',
@@ -645,22 +648,22 @@ const itemsDB = {
   I0A5: { id: 'I0A5', name: 'Нерубский доспех', icon: '🕷️🛡️', type: 'armor', cost: 80000, tags: ['boss'],
     description: '+400 атаки, +60 защиты, +5000 здоровья, Пассивный возврат урона 30%, Активный возврат 100% урона (10 сек)',
     components: [ {itemId: 'I01L', quantity: 1}, {itemId: 'I01N', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 40000} ],
-    activeAbility: { name: 'Возврат урона', description: 'Возвращает 100% получаемого урона 10 сек', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Возврат урона', description: 'Возвращает 100% получаемого урона 10 сек', cooldown: 40, manacost: 2000, note: null }
   },
   I0BD: { id: 'I0BD', name: 'Сфера мистицизма', icon: '🔮✨', type: 'rare', cost: 107000, tags: ['boss'],
     description: '+600 ко всем атрибутам, +3000 здоровья и маны, +100% усиление лечения, +30% доп. урон заклинаний, Обновление (актив): сбрасывает перезарядки предметов и способностей (кд 180)',
     components: [ {itemId: 'I02E', quantity: 2}, {itemId: 'recipe', quantity: 1, costOverride: 27000} ],
-    activeAbility: { name: 'Обновление', description: 'Сбрасывает перезарядки всех предметов и способностей', cooldown: 180, manacost: 400, note: null }
+    activeAbility: { name: 'Обновление', description: 'Сбрасывает перезарядки всех предметов и способностей', cooldown: 180, manacost: 600, note: null }
   },
   I0B6: { id: 'I0B6', name: 'Щит джаггернаута II', icon: '🛡️💪✨', type: 'armor', cost: 267050, tags: ['boss'],
     description: '+150 защиты, +20 аура защиты, +10000 здоровья, +450 атаки, +200 регенерации здоровья, +40% маг. защита, Стойкость Полководца 250, Жар преисподней 800 дпс, Возврат урона 60% пасс, Активно 120% (12 сек)',
     components: [ {itemId: 'I02D', quantity: 1}, {itemId: 'I0A5', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 100000} ],
-    activeAbility: { name: 'Возврат урона', description: 'Возвращает 120% получаемого урона 12 сек', cooldown: 40, manacost: 150, note: null }
+    activeAbility: { name: 'Возврат урона', description: 'Возвращает 120% получаемого урона 12 сек', cooldown: 40, manacost: 2000, note: null }
   },
   I0B4: { id: 'I0B4', name: 'Защита ада', icon: '🔥🛡️', type: 'strength_armor', cost: 106025, tags: ['boss'],
     description: '+8000 здоровья, +30 защиты, +30% уклонение, +35% маг. защита, +150 силы, +100 ловкости/разума, Мощность драконов 25, Живучесть драконов 25%/450, Жар преисподней 450 дпс, +9% регенерации/сек вне боя, Воля Ада (актив)',
     components: [ {itemId: 'I045', quantity: 1}, {itemId: 'I03G', quantity: 1}, {itemId: 'I0CK', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 40000} ],
-    activeAbility: { name: 'Воля Ада', description: 'Мощное усиление', cooldown: 90, manacost: 350, note: null }
+    activeAbility: { name: 'Воля Ада', description: 'Мощное усиление', cooldown: 90, manacost: 2000, note: null }
   },
 
   // ---------- НЕЙТРАЛЬНЫЕ ПРЕДМЕТЫ (ВЫПАДАЮТ С БОССОВ) ----------
