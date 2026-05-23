@@ -703,7 +703,7 @@ const itemsDB = {
   I0CD: { id: 'I0CD', name: 'Солнечный камень (свиток)', icon: '📜', type: 'recipe', cost: 400 },
   I0CS: { id: 'I0CS', name: 'Посох колдуна (свиток)', icon: '📜', type: 'recipe', cost: 1600 },
   I021: { id: 'I021', name: 'Сапоги воина (свиток)', icon: '📜', type: 'recipe', cost: 100 },
- I024: { id: 'I024', name: 'Сапоги телепортации (свиток)', icon: '📜', type: 'recipe', cost: 200 },
+I024: { id: 'I024', name: 'Сапоги телепортации (свиток)', icon: '📜', type: 'recipe', cost: 200 },
   I01D: { id: 'I01D', name: 'Божественные сапоги (свиток)', icon: '📜', type: 'recipe', cost: 2500 },
   I031: { id: 'I031', name: 'Сапоги божественной ловкости (свиток)', icon: '📜', type: 'recipe', cost: 7700 },
  I0GS: { id: 'I0GS', name: 'Сапоги громовой поступи (свиток)', icon: '📜', type: 'recipe', cost: 2500 },
