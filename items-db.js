@@ -219,9 +219,9 @@ const itemsDB = {
     components: [ {itemId: 'ofir', quantity: 1}, {itemId: 'I009', quantity: 1}, {itemId: 'I007', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 1900} ]
   },
   I033: { id: 'I033', name: 'Меч ярости', icon: '😡⚔️', type: 'weapon', cost: 9200,
-    description: '+130 атаки, Критический удар (13% x1.5), Активация: 100% критический удар x2.2 (5 сек)',
+    description: '+130 атаки, Критический удар (13% x1.5), Активация: 100% критический удар x1.5 (5 сек)',
     components: [ {itemId: 'I00Y', quantity: 2}, {itemId: 'recipe', quantity: 1, costOverride: 3000} ],
-    activeAbility: { name: 'Ярость', description: '100% критический удар x2.2 на 5 сек', cooldown: 20, manacost: 200, note: null }
+    activeAbility: { name: 'Ярость', description: '100% критический удар x1.5 на 5 сек', cooldown: 20, manacost: 200, note: null }
   },
   I0AO: { id: 'I0AO', name: 'Светлый меч', icon: '✨⚔️', type: 'weapon', cost: 8100,
     description: '+125 атаки, +30% скорости боя, Очищение: 20% шанс x2 урона, после герой получает 25% блок урона на 1 сек',
@@ -236,7 +236,8 @@ const itemsDB = {
   // ---------- ВООРУЖЕНИЕ 2 ----------
   I0C4: { id: 'I0C4', name: 'Жнец душ', icon: '💀🌾', type: 'weapon', cost: 16780,
     description: '+150 атаки, +20% урона в ближнем бою, 35% шанс микростан (300 урона, 0.1 сек), Увечье: 15% шанс снизить атаку врага на 30% (3 сек), Точность (переключаемое): атаки не промахиваются',
-    components: [ {itemId: 'I0CQ', quantity: 1}, {itemId: 'I0FD', quantity: 1}, {itemId: 'odef', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 12000} ]
+    components: [ {itemId: 'I0CQ', quantity: 1}, {itemId: 'I0FD', quantity: 1}, {itemId: 'odef', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 12000} ],
+    activeAbility: { name: 'Жнец душ', description: 'Переключаемое: атаки не промахиваются', cooldown: 4, manacost: 1, note: null }
   },
   I0CM: { id: 'I0CM', name: 'Проклятый череп', icon: '💀🔮', type: 'weapon', cost: 21700,
     description: '+200 атаки, +5% множитель маг. вампиризма, +5% множитель маг. блока, +10% Удача, Размен Душ (актив): обмен процентным запасом здоровья с целью',
@@ -759,7 +760,9 @@ const itemsDB = {
   I07L: { id: 'I07L', name: 'Меч ярости (руна)', icon: '📜', type: 'rune', cost: 0, description: 'Руна для Меч ярости', hidden: true, baseItem: 'I033' },
   I0C7: { id: 'I0C7', name: 'Светлый меч (руна)', icon: '📜', type: 'rune', cost: 0, description: 'Руна для Светлый меч', hidden: true, baseItem: 'I0AO' },
   I0E6: { id: 'I0E6', name: 'Меч очищения (руна)', icon: '📜', type: 'rune', cost: 0, description: 'Руна для Меч очищения', hidden: true, baseItem: 'I0E5' },
-  I0CG: { id: 'I0CG', name: 'Жнец душ (руна)', icon: '📜', type: 'rune', cost: 0, description: 'Руна для Жнец душ', hidden: true, baseItem: 'I0C4' },
+  I0CG: { id: 'I0CG', name: 'Жнец душ (руна)', icon: '📜', type: 'rune', cost: 0, description: 'Руна для Жнец душ', hidden: true, baseItem: 'I0C4',
+    activeAbility: { name: 'Жнец душ', description: 'Переключаемое: атаки не промахиваются', cooldown: 4, manacost: 1, note: null }
+  },
   I0E8: { id: 'I0E8', name: 'Жнец душ (выкл) (руна)', icon: '📜', type: 'rune', cost: 0, description: 'Руна для Жнеца душ (выключенное состояние)', hidden: true, baseItem: 'I0C4' },
   I0CV: { id: 'I0CV', name: 'Проклятый череп (руна)', icon: '📜', type: 'rune', cost: 0, description: 'Руна для Проклятый череп', hidden: true, baseItem: 'I0CM' },
   I07W: { id: 'I07W', name: 'Рука тьмы (руна)', icon: '📜', type: 'rune', cost: 0, description: 'Руна для Рука тьмы', hidden: true, baseItem: 'I02N' },
