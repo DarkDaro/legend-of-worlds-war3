@@ -38,16 +38,16 @@ body {
     line-height: 1.5;
 }
 
-/* === wiki-container: глобальный 1400px, переопределён на heroes.html (1600px), items.html (1600px), index.html (1600px) === */
+/* === wiki-container: глобальный 1600px === */
 .wiki-container {
-    max-width: 1400px;
+    max-width: 1600px;
     margin: 0 auto;
     background: rgba(10, 20, 40, 0.45);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(0, 230, 255, 0.08);
     border-radius: 16px;
-    padding: 24px 28px;
+    padding: 24px 32px;
     margin-top: 16px;
     margin-bottom: 24px;
 }
