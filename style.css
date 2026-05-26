@@ -274,6 +274,18 @@ h1 {
     box-shadow: 0 0 8px #ff884466;
 }
 
+.wip-page-banner {
+    background: rgba(255, 136, 68, 0.1);
+    border: 1px solid #ff8844aa;
+    color: #ff8844;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+}
+
 /* === hero-page-container: глобальный 1000px, переопределён на balance.html (1200px) === */
 .hero-page-container {
     max-width: 1000px;
