@@ -63,86 +63,107 @@
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
+
+                <!-- Q: Корни -->
                 <div class="ability-card active">
                     <div class="ability-header">
                         <div class="ability-icon" data-ability="roots" data-fallback="spa"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">Опутывающие корни</div>
+                            <div class="ability-name">Корни</div>
                             <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Вызывает корни из-под земли, обездвиживая и нанося урон цели.</div>
+                    <div class="ability-desc">Корни деревьев оплетают врагов в указанной области, нанося мгновенный и ежесекундный урон.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">65/70/75/80/85</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10/9/8/7/6</span></div>
-                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">15/25/35/45/55 в сек</span></div>
-                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">3/4/5/6/7</span></div>
-                    </div>
-                </div>
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="treants" data-fallback="tree"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">W</span>
-                            <div class="ability-name">Сила природы</div>
-                            <div class="ability-type-badge">Активная</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Превращает деревья в области в энтов-воинов, сражающихся на стороне героя.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">80/90/100/110/120</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20/18/16/14/12</span></div>
-                        <div class="param-row"><span class="param-label">Энты</span><span class="param-values">1/2/3/4/5</span></div>
-                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">30/40/50/60/70</span></div>
-                    </div>
-                </div>
-                <div class="ability-card passive">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="thorns" data-fallback="shield-alt"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">E</span>
-                            <div class="ability-name">Аура шипов</div>
-                            <div class="ability-type-badge">Пассивная</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Пассивно: возвращает часть урона от ближних атак обратно атакующим союзников.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Возврат урона</span><span class="param-values">4/8/12/16/20</span></div>
-                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">900</span></div>
-                    </div>
-                </div>
-                <div class="ability-card ultimate">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="tranquility" data-fallback="cloud-rain"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">R</span>
-                            <div class="ability-name">Спокойствие</div>
-                            <div class="ability-type-badge">Ультимейт</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Ультимейт: вызывает исцеляющий дождь, восстанавливающий здоровье всем союзникам в области.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/135/145/155/165</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">90/80/70/60/50</span></div>
-                        <div class="param-row"><span class="param-label">Исцеление</span><span class="param-values">25/35/45/55/65 в сек</span></div>
-                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">800</span></div>
-                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">10/12/14/16/18</span></div>
+                        <div class="param-row"><span class="param-label">Базовый урон</span><span class="param-values">INT×2.0</span></div>
+                        <div class="param-row"><span class="param-label">Урон/сек</span><span class="param-values">80/130/180/230/280</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">3 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">375</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">250/300/350/400/450</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15 сек</span></div>
                     </div>
                 </div>
 
-                <!-- F: ??? -->
-                <div class="ability-card active">
+                <!-- W: Аура возмездия -->
+                <div class="ability-card aura">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="star"></div>
+                        <div class="ability-icon" data-ability="retribution_aura" data-fallback="shield-alt"></div>
                         <div class="ability-info">
-                            <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">???</div>
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Аура возмездия</div>
+                            <div class="ability-type-badge">Аура</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание</div>
+                    <div class="ability-desc">Противнику, попытавшемуся атаковать любое дружественное существо рядом с обладателем ауры, возвращается часть урона. Тип урона: чистый.</div>
                     <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Возврат урона</span><span class="param-values">15%/20%/25%/30%/35%</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">600</span></div>
+                    </div>
+                </div>
+
+                <!-- E: Кусты -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="bushes" data-fallback="leaf"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Кусты</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Герой создаёт поле из плотоядных кустов. Кусты наносят мгновенный урон и каждую секунду могут с 30% шансом опутать врагов корнями.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">INT×1.0/1.25/1.5/1.75/2.0 + 40/80/120/160/200</span></div>
+                        <div class="param-row"><span class="param-label">Шанс опутывания</span><span class="param-values">30% на 1 сек</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">475</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">800</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">275/325/375/425/475</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Дух Природы -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="spirit_of_nature" data-fallback="tree"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Дух Природы</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Герой принимает форму духа природы, дарующую невероятную мощь. Дарует способность Гнев Природы.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Здоровье</span><span class="param-values">+1000</span></div>
+                        <div class="param-row"><span class="param-label">Регенерация</span><span class="param-values">+50</span></div>
+                        <div class="param-row"><span class="param-label">Дальность атаки</span><span class="param-values">+150</span></div>
+                        <div class="param-row"><span class="param-label">Урон заклинаний</span><span class="param-values">+30%</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">30 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">550</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">120/110/100/90/80 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Душа Природы -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="nature_soul" data-fallback="leaf"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Душа Природы</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Выпускает снаряд природной энергии, замедляющий задетых противников и наносящий урон. Возвращаясь к герою, снаряд восстанавливает здоровье.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">50%</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">180</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1400/1500/1600</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/200/225</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">14 сек</span></div>
                     </div>
                 </div>
 
