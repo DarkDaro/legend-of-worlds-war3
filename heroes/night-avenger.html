@@ -63,83 +63,110 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Поражающий маневр -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="strike_maneuver" data-fallback="bolt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Поражающий маневр</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Скоростное перемещение с последующим поражением и оглушением врагов магией.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">300/400/500/600/700 + AGI×3</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">1.5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дистанция</span><span class="param-values">1100</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">145/180/215/250/285</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">14 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Очищение -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="purify" data-fallback="moon"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Очищение</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Лунная магия очищает врага, сжигая ману и нанося урон в размере очищенной маны.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон и сожжение маны</span><span class="param-values">AGI + 100/200/300/400/500 + 25% от тек. маны</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">900</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">225/250/275/300/325</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Метка Кошмара -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="nightmare_mark" data-fallback="eye"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Метка Кошмара</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Лунная магия внушает страх, ослабляя атаку и защиту противников.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">100/200/300/400/500 + уровень героя×20</span></div>
+                        <div class="param-row"><span class="param-label">Снижение защиты</span><span class="param-values">10/15/20/25/30</span></div>
+                        <div class="param-row"><span class="param-label">Снижение урона</span><span class="param-values">50%</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">10 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">400</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1200</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/225/275/325/375</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">30/29/28/27/26 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Лунная Кара -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="lunar_wrath" data-fallback="star"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Лунная Кара</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Обрушивает на противников раскалённые астральные звёзды, оглушая и нанося магический урон.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">1500 + AGI×3/6/9/12/15</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">1.5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">1200</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">525/600/675/750/825</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">80 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
-                <div class="ability-card passive">
+                <!-- F: Защита Луны -->
+                <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="moon_protection" data-fallback="shield-halved"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Пассивная</div>
+                            <div class="ability-name">Защита Луны</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Лунный свет увеличивает урон и защиту, оглушая врагов вокруг и нанося им урон.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">175 + AGI</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">1.5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Защита</span><span class="param-values">+10</span></div>
+                        <div class="param-row"><span class="param-label">Увеличение урона</span><span class="param-values">+10%</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">500</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">6 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/150/175</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">26/24/22 сек</span></div>
                     </div>
                 </div>
 

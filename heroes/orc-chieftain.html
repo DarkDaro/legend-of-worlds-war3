@@ -63,83 +63,104 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Рывок -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="dash" data-fallback="person-running"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Рывок</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Врывается в указанную точку, нанося урон всем врагам на пути.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">150/300/450/600/750 + STR×2</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">300</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">700/800/900/1000/1100</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">70/135/200/265/330</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">13 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
-                <div class="ability-card active">
+                <!-- W: Аура крови -->
+                <div class="ability-card aura">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="blood_aura" data-fallback="tint"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Аура крови</div>
+                            <div class="ability-type-badge">Аура</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">При атаке с шансом наносит урон противникам вокруг. Пассивно увеличивает скорость бега и регенерацию союзникам.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">20%</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">60/90/120/150/180 + STR×1</span></div>
+                        <div class="param-row"><span class="param-label">Скорость бега</span><span class="param-values">+6%/9%/12%/15%/18%</span></div>
+                        <div class="param-row"><span class="param-label">Регенерация</span><span class="param-values">+1/2/3/4/5 ед/сек</span></div>
+                        <div class="param-row"><span class="param-label">Область ауры</span><span class="param-values">450</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Кровавый вихрь -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="blood_vortex" data-fallback="tornado"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Кровавый вихрь</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Обращается в смертоносный вихрь из лезвий, нанося урон врагам вокруг каждую секунду. Может быть развеян!</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон в сек</span><span class="param-values">STR×2.0 + 100</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">350</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">4/5/6/7/8 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">325/375/425/475/525</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">30 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Кровавая Буря -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="blood_storm" data-fallback="bolt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Кровавая Буря</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Собирает всю силу и кровь врагов, перемещается в указанную точку, создавая кровавую бурю позади.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">1000 + STR×4/8/12/16/20</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">325</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1200/1400/1600/1800/2000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">550/650/750/850/950</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
+                <!-- F: Удар в спину -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="backstab" data-fallback="user-secret"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Удар в спину</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">С шансом обманывает врага, создавая иллюзию, которая ударяет в спину и оглушает.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">15%</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">200 + STR×0.6</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">0.5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">3 сек</span></div>
                     </div>
                 </div>
 

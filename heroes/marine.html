@@ -63,83 +63,111 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Ракетный выстрел -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="rocket_shot" data-fallback="rocket"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Ракетный выстрел</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Выстрел ракетами в указанную область. Оглушает противников.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">AGI×1.75 + 150/250/350/450/550</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">1.5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">400</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1200</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">140/180/220/260/300</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">12 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Выстрел лазера -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="laser" data-fallback="wand-magic-sparkles"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Выстрел лазера</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Лазерный луч в указанном направлении. Враги промахиваются в 50% случаев.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">275/400/525/650/775 + AGI×3</span></div>
+                        <div class="param-row"><span class="param-label">Промах врагов</span><span class="param-values">50%</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">4 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">200</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1400</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">165/200/235/270/305</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Плазменный обстрел -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="plasma_barrage" data-fallback="burst"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Плазменный обстрел</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Заряжает оружие плазмой, стреляя в ближайших противников каждые 1 сек.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон за снаряд</span><span class="param-values">120/180/240/300/360 + AGI×0.8</span></div>
+                        <div class="param-row"><span class="param-label">Цели</span><span class="param-values">15</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">700</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">4/5/6/7/8 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">160/200/240/280/320</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Баллистическая Ракета -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="ballistic_missile" data-fallback="bomb"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Баллистическая Ракета</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Выпускает баллистическую ракету, наносящую огромный урон в области.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">2000 + AGI×8/12/16/20/24</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">500</span></div>
+                        <div class="param-row"><span class="param-label">Задержка</span><span class="param-values">1.5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1400/1800/2200/2600/3000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">500/600/700/800/900</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
-                <div class="ability-card passive">
+                <!-- F: Ракетница -->
+                <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="rocket_launcher" data-fallback="crosshairs"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Пассивная</div>
+                            <div class="ability-name">Ракетница</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Повышает скорость боя на 40%. При атаке выпускает по 4 ракеты. Может быть развеян полностью!</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Скорость боя</span><span class="param-values">+40%</span></div>
+                        <div class="param-row"><span class="param-label">Урон ракеты</span><span class="param-values">AGI×1 каждая</span></div>
+                        <div class="param-row"><span class="param-label">Ракет за атаку</span><span class="param-values">4</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">7 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">120/140/160</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20/19/18 сек</span></div>
                     </div>
                 </div>
 
