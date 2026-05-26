@@ -977,6 +977,26 @@ function toggleItemFavorite(itemId) {
   updateItemFavoritesTab();
 }
 
+window.clearItemFavorites = function() {
+  if (!confirm('Очистить список избранного?')) return;
+  itemFavorites = [];
+  saveItemFavorites();
+  document.querySelectorAll('.item-fav-btn i').forEach(function(icon) {
+    icon.className = 'far fa-heart';
+  });
+  document.querySelectorAll('.item-card.is-favorite').forEach(function(card) {
+    card.classList.remove('is-favorite');
+  });
+  if (activeItemView === 'favorites') {
+    activeItemView = 'all';
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    var allBtn = document.querySelector('.tab-btn[data-cat="all"]');
+    if (allBtn) allBtn.classList.add('active');
+  }
+  applyItemView();
+  updateItemFavoritesTab();
+};
+
 function updateFavoriteButtonElement(button, itemId) {
   const favorite = isItemFavorite(itemId);
   button.innerHTML = '<i class="' + (favorite ? 'fas' : 'far') + ' fa-heart"></i>';
@@ -1084,6 +1104,8 @@ function updateItemFavoritesTab() {
   itemFavoritesTab.innerHTML = count
     ? '<i class="fas fa-heart"></i> Избранное <span class="item-tab-count">' + count + '</span>'
     : '<i class="fas fa-heart"></i> Избранное';
+  var clearBtn = document.getElementById('clearItemFavBtn');
+  if (clearBtn) clearBtn.style.display = count > 0 ? '' : 'none';
 }
 
 function buildItemFavoriteButton(itemId) {
