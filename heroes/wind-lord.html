@@ -62,87 +62,11 @@
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
-
-                <!-- Q -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- W -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- E -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- R -->
-                <div class="ability-card ultimate">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Ультимейт</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- F -->
-                <div class="ability-card passive">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Пассивная</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
+                <!-- Q: Торнадо --><div class="ability-card active"><div class="ability-header"><div class="ability-icon" data-ability="tornado" data-fallback="tornado"></div><div class="ability-info"><span class="ability-hotkey">Q</span><div class="ability-name">Торнадо</div><div class="ability-type-badge">Активная</div></div></div><div class="ability-desc">Мощное торнадо по линии. 25% шанс сработать дважды (50% урона).</div><div class="ability-params"><div class="param-row"><span class="param-label">Урон</span><span class="param-values">INT×3/3.5/4/4.5/5</span></div><div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1750</span></div><div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/215/255/295/335</span></div><div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">12 сек</span></div></div></div>
+                <!-- W: Доспехи ветра --><div class="ability-card active"><div class="ability-header"><div class="ability-icon" data-ability="wind_armor" data-fallback="shield-alt"></div><div class="ability-info"><span class="ability-hotkey">W</span><div class="ability-name">Доспехи ветра</div><div class="ability-type-badge">Активная</div></div></div><div class="ability-desc">Вихри отталкивают врагов, урон при приближении.</div><div class="ability-params"><div class="param-row"><span class="param-label">Мана</span><span class="param-values">155/205/255/305/355</span></div><div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div></div></div>
+                <!-- E: Аура ветров --><div class="ability-card aura"><div class="ability-header"><div class="ability-icon" data-ability="wind_aura" data-fallback="wind"></div><div class="ability-info"><span class="ability-hotkey">E</span><div class="ability-name">Аура ветров</div><div class="ability-type-badge">Аура</div></div></div><div class="ability-desc">Снижение скорости боя/бега врагам поблизости. Урон под доспехами ветра.</div><div class="ability-params"><div class="param-row"><span class="param-label">Скорость боя</span><span class="param-values">-15/-20/-25/-30/-35%</span></div><div class="param-row"><span class="param-label">Скорость бега</span><span class="param-values">-15/-20/-25/-30/-35%</span></div><div class="param-row"><span class="param-label">Область</span><span class="param-values">700</span></div></div></div>
+                <!-- R: Вихрь --><div class="ability-card ultimate"><div class="ability-header"><div class="ability-icon" data-ability="vortex" data-fallback="spinner"></div><div class="ability-info"><span class="ability-hotkey">R</span><div class="ability-name">Вихрь</div><div class="ability-type-badge">Ультимейт</div><span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span></div></div><div class="ability-desc">Вихрь засасывает врагов, урон в сек.</div><div class="ability-params"><div class="param-row"><span class="param-label">Урон в сек</span><span class="param-values">500 + INT×2/2.5/3/3.5/4</span></div><div class="param-row"><span class="param-label">Область</span><span class="param-values">550</span></div><div class="param-row"><span class="param-label">Длительность</span><span class="param-values">7 сек</span></div><div class="param-row"><span class="param-label">Мана</span><span class="param-values">350/500/650/800/950</span></div><div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100 сек</span></div><div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div></div></div>
+                <!-- F: Смерч — СЛОМАННАЯ --><div class="ability-card active"><div class="ability-header"><div class="ability-icon" data-ability="" data-fallback="question"></div><div class="ability-info"><span class="ability-hotkey">F</span><div class="ability-name">Смерч</div><div class="ability-type-badge">Активная</div><span class="ability-tag" style="background:#c0392b;color:#fff;">⚠ Сломанная кодировка</span></div></div><div class="ability-desc">Подбрасывает цель в воздух.</div><div class="ability-params"><div class="param-row"><span class="param-label">Мана</span><span class="param-values">125</span></div><div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">16 сек</span></div></div></div>
             </div>
             <a href="../heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
         </div>

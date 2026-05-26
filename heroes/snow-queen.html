@@ -63,83 +63,104 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Ледяной дождь -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="ice_rain" data-fallback="cloud-rain"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Ледяной дождь</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Осколки льда обрушиваются с неба, нанося урон всем задетым врагам.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон за осколок</span><span class="param-values">100 + INT×0.7</span></div>
+                        <div class="param-row"><span class="param-label">Осколков</span><span class="param-values">6/9/12/15/18</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">325</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1100</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/220/265/310/355</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Оледенение -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="freeze" data-fallback="snowflake"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
+                            <div class="ability-name">Оледенение</div>
+                            <div class="ability-type-badge">Активная</div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    </div>
+                    <div class="ability-desc">Заковывает противника во льдах, обездвиживает и снижает защиту. По окончании — раскол льда с серьёзным уроном.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">2.5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Снижение защиты</span><span class="param-values">12/16/20/24/28</span></div>
+                        <div class="param-row"><span class="param-label">Урон при расколе</span><span class="param-values">15% макс. HP + INT×5</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">600</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/175/225/275/325</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">26/25/24/23/22 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Ледяная волна -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="ice_wave" data-fallback="icicles"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Ледяная волна</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Поток холода наносит чистый урон всем врагам.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">250/400/550/700/850 + 20× уровень героя (чистый)</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">350</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1100</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/250/325/400/475</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">24 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Ледяной столб -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="ice_pillar" data-fallback="mountain"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Ледяной столб</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Мощная магия взмывает вверх, замораживая врагов и нанося физический урон.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Макс. урон</span><span class="param-values">900 + INT×9/12/15/18/21</span></div>
+                        <div class="param-row"><span class="param-label">Заморозка</span><span class="param-values">3 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">925</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1200</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">600/800/1000/1200/1400</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
+                <!-- F: Ледяная атака -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="ice_attack" data-fallback="snowflake"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Ледяная атака</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Каждая атака снижает скорость бега противника.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">3/4/5 сек</span></div>
                     </div>
                 </div>
 
