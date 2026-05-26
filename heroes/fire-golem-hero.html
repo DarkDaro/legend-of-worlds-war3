@@ -63,83 +63,102 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Всплеск огня -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="fire_burst" data-fallback="fire"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Всплеск огня</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Голем выпускает мощный поток огня, сокрушающий всех врагов вокруг. Снижает скорость бега и боя.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">STR + 275/425/575/725/875</span></div>
+                        <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">50% бега, 50% боя</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">3 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">425</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Метеорный удар -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="meteor_strike" data-fallback="meteor"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Метеорный удар</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Голем обращается в метеор и взлетает в воздух. При падении наносит серьёзный урон по площади и оглушает всех врагов.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">200 + STR×3/4/5/6/7</span></div>
+                        <div class="param-row"><span class="param-label">Горение</span><span class="param-values">60/120/180/240/300 (4 сек)</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">2 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">475</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1000/1200/1400/1600/1800</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/220/265/310/355</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">30 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Живой огонь -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="living_fire" data-fallback="fire-alt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Живой огонь</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Голем, жертвуя своим пламенем, запускает во всех врагов раскалённые сгустки огня.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">250/400/550/700/850 + STR×3.5</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">900</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">225/275/325/375/425</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Огненный доспех -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="fire_armor" data-fallback="shield-alt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Огненный доспех</div>
                             <div class="ability-type-badge">Ультимейт</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Огонь пробуждается в Големе, даруя невероятную мощь и невосприимчивость к магии.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Здоровье</span><span class="param-values">500/1000/1500/2000/2500</span></div>
+                        <div class="param-row"><span class="param-label">Атака</span><span class="param-values">100/200/300/400/500</span></div>
+                        <div class="param-row"><span class="param-label">Защита</span><span class="param-values">20/30/40/50/60</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">8 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">500/650/800/950/1100</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">80 сек</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
+                <!-- F: Осколки метеорита -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="meteor_shards" data-fallback="gem"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Осколки метеорита</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Голем при получении урона раскидывает осколки своей брони. Каждый осколок влетает в случайного врага.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">20% от недостающего HP + 20% от полученного урона</span></div>
                     </div>
                 </div>
 

@@ -63,83 +63,107 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Адский крик -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="hell_scream" data-fallback="volume-up"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Адский крик</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Герой издаёт крик, который увеличивает его ловкость и отбрасывает всех врагов вокруг, нанося им урон.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">AGI×2 + 150/300/450/600/750</span></div>
+                        <div class="param-row"><span class="param-label">Увеличение ловкости</span><span class="param-values">15%/20%/25%/30%/35%</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">8 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">450</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/200/225/250/275</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">16 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Разгон -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="rush" data-fallback="running"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Разгон</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Герой устремляется к указанной цели, достигнув её, оглушает и наносит урон всем вокруг.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">AGI×3 + 125/250/375/500/625</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">1.5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">400</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1400</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">160/200/240/280/320</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Демонические атаки -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="demon_attacks" data-fallback="fist-raised"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Демонические атаки</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Герой совершает серию из пяти быстрых ударов перед собой. Прерываемо!</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон за удар</span><span class="param-values">AGI×2 + 120/240/360/480/600</span></div>
+                        <div class="param-row"><span class="param-label">Ударов</span><span class="param-values">5</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">550</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">260/320/380/440/500</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">30/29/28/27/26 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Танец клинков -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="blade_dance" data-fallback="khanda"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Танец клинков</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Герой прыгает к указанному врагу, атакуя его, а затем перескакивает по противникам неподалёку. Герой неуязвим во время применения!</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Прыжков</span><span class="param-values">7/9/11/13/15</span></div>
+                        <div class="param-row"><span class="param-label">Область прыжков</span><span class="param-values">750</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">450/575/700/825/950</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">130/120/110/100/90 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
+                <!-- F: Линия ярости -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="fury_line" data-fallback="bolt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Линия ярости</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">При атаке есть шанс выпустить волну ярости, наносящую урон по линии и оглушающую врагов.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">20%</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">AGI×1 + 200</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">0.25 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">200</span></div>
+                        <div class="param-row"><span class="param-label">Дистанция</span><span class="param-values">700</span></div>
                     </div>
                 </div>
 

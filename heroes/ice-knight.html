@@ -63,83 +63,105 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Леденящий поток -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="chilling_stream" data-fallback="icicles"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Леденящий поток</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Ледяной поток наносит урон всем врагам по линии и оглушает их.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">225/350/475/600/725 + STR×2</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">1.5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">225</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">800</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">120/160/200/240/280</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">13 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Кольцо холода -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="cold_ring" data-fallback="snowflake"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Кольцо холода</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Герой выпускает кольцо холода, которое увеличивается, если герой жив. Достигнув максимальной дистанции, замораживает всех врагов. Прерывается при смерти.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">STR×3 + 200/400/600/800/1000</span></div>
+                        <div class="param-row"><span class="param-label">Заморозка</span><span class="param-values">2 сек</span></div>
+                        <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">30%</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">700</span></div>
+                        <div class="param-row"><span class="param-label">Дистанция</span><span class="param-values">1400</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">225/275/325/375/425</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Ледяные драконы -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="ice_dragons" data-fallback="dragon"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Ледяные драконы</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Герой выпускает 2 ледяных дракона, которые извиваясь стремятся в указанную точку. При разрушении образуют ледяной всплеск.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">2000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">250/325/400/475/550</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">30 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Дыхание дракона -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="dragon_breath" data-fallback="wind"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Дыхание дракона</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Дракон поражает ледяным дыханием всех противников на пути, оставляя морозный след. Враги получают урон и замораживаются. Герои после заморозки дополнительно замедляются.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Заморозка</span><span class="param-values">герои</span></div>
+                        <div class="param-row"><span class="param-label">Замедление после</span><span class="param-values">60%</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">2000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">450/550/650/750/850</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">140 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
+                <!-- F: Ледяная броня -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="ice_armor" data-fallback="shield-alt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Ледяная броня</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Ледяная броня повышает защиту героя. Есть шанс возвратить урон в виде замораживающей атаки.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Защита</span><span class="param-values">5 ед.</span></div>
+                        <div class="param-row"><span class="param-label">Шанс возврата</span><span class="param-values">20%</span></div>
+                        <div class="param-row"><span class="param-label">Урон возврата</span><span class="param-values">STR×0.4 + 20% от полученного</span></div>
+                        <div class="param-row"><span class="param-label">Дистанция</span><span class="param-values">600</span></div>
                     </div>
                 </div>
 

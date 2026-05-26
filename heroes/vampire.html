@@ -63,83 +63,103 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Ритуал крови -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="blood_ritual" data-fallback="tint"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Ритуал крови</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Герой проводит ритуал, и в указанной области происходят взрывы духов ада, каждый взрыв наносит урон в небольшой области.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">AGI×0.2/0.4/0.6/0.8/1 + 100/200/300/400/500</span></div>
+                        <div class="param-row"><span class="param-label">Количество взрывов</span><span class="param-values">10</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">250</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">750</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/200/275/350/425</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Путь безумия -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="madness_path" data-fallback="brain"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Путь безумия</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Герой впадает в безумие, ускоряя атаку и бег. При движении остаются призраки, наносящие урон при исчезновении.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Скорость боя</span><span class="param-values">20%/25%/30%/35%/40%</span></div>
+                        <div class="param-row"><span class="param-label">Скорость бега</span><span class="param-values">+70%</span></div>
+                        <div class="param-row"><span class="param-label">Урон призрака</span><span class="param-values">50/100/150/200/250 + AGI×0.4</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">15 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">140/180/220/260/300</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Тёмный ритуал -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="dark_ritual" data-fallback="moon"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Тёмный ритуал</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Герой создаёт тёмный ритуал, выпуская шары энергии в разные стороны. Накладывает 40% шанса промахов на противника.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">STR×4 + 200/400/600/800/1000</span></div>
+                        <div class="param-row"><span class="param-label">Шаров</span><span class="param-values">6</span></div>
+                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">600</span></div>
+                        <div class="param-row"><span class="param-label">Шанс промаха</span><span class="param-values">40% на 4 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">180/220/260/300/340</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">30/28/26/24/22 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Похищение Жизни -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="life_drain" data-fallback="heart"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Похищение Жизни</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Вампир похищает жизненную силу у всех врагов вокруг себя. Ежесекундная кража здоровья. Связь разорвётся, если дистанция превышает максимальную.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Базовый урон</span><span class="param-values">500 + AGI×2.5/3/3.5/4/4.5</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">450/550/650/750/850</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">120 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
+                <!-- F: Поглощение крови -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="blood_absorb" data-fallback="tint"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Поглощение крови</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Герой восстанавливает процент от любого нанесённого урона. Пассивно увеличивает скорость бега.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Вампиризм</span><span class="param-values">15%/20%/25% (5%/8%/10% от крипов)</span></div>
+                        <div class="param-row"><span class="param-label">Скорость бега</span><span class="param-values">+10%/15%/20%</span></div>
                     </div>
                 </div>
 

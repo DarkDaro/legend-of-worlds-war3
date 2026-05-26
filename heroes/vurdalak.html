@@ -63,83 +63,108 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Кровавый наскок -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="blood_leap" data-fallback="fist-raised"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Кровавый наскок</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Вурдалак прыгает вперёд и получает дополнительную атаку на время.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">200/300/400/500/600 + STR</span></div>
+                        <div class="param-row"><span class="param-label">Атака</span><span class="param-values">40/100/160/220/280</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">300</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">6 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/165/205/245/285</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">11 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Кровавая ярость -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="blood_fury" data-fallback="tint"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Кровавая ярость</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Высвобождая ярость, Вурдалак выпускает кровавую волну, нанося урон всем врагам.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">STR×4 + 200/400/600/800/1000</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">250</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1100</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">225/260/295/330/365</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Увечье -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="maim" data-fallback="hand-paper"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Увечье</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Скорость бега и боя цели снижается, а сила атаки на 30%. Атакуя жертву, вурдалак наносит доп. урон и восполняет здоровье.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Замедление бега</span><span class="param-values">20%/30%/40%/50%/60%</span></div>
+                        <div class="param-row"><span class="param-label">Замедление боя</span><span class="param-values">25%/35%/45%/55%/65%</span></div>
+                        <div class="param-row"><span class="param-label">Снижение атаки</span><span class="param-values">30%</span></div>
+                        <div class="param-row"><span class="param-label">Доп. урон</span><span class="param-values">STR×0.2/0.4/0.6/0.8/1</span></div>
+                        <div class="param-row"><span class="param-label">Вампиризм</span><span class="param-values">50% от доп. урона</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">700</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">6 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">200/225/250/275/300</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">24 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Неистовствующая Ярость -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="unrelenting_fury" data-fallback="fire"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Неистовствующая Ярость</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag dispellable">⚠ Развеивается</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Вурдалак впадает в неистовую ярость. Получает скорость боя и максимальную скорость бега. Имеет ауру вампиризма. При изучении навсегда получает базовую силу.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Скорость боя</span><span class="param-values">35%/60%/85%/110%/135%</span></div>
+                        <div class="param-row"><span class="param-label">Скорость бега</span><span class="param-values">Максимальная</span></div>
+                        <div class="param-row"><span class="param-label">Вампиризм</span><span class="param-values">35%/45%/55%/65%/75%</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">10/15/20/25/30 сек</span></div>
+                        <div class="param-row"><span class="param-label">Базовая сила при изучении</span><span class="param-values">40/80/120/160/200</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">350</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">80 сек</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
+                <!-- F: Сила вурдалака -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="vurdalak_strength" data-fallback="dumbbell"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Сила вурдалака</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Вурдалак становится сильнее, убивая врагов. Получает силу при убийстве героя или 40 крипов. Есть шанс получить 2 ед. силы вместо 1.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Сила за убийство</span><span class="param-values">1 (герой) / 40 крипов</span></div>
+                        <div class="param-row"><span class="param-label">Шанс двойной силы</span><span class="param-values">10%</span></div>
                     </div>
                 </div>
 
