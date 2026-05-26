@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта арены · Legend of Worlds</title>
+    <meta property="og:title" content="Карта арены — Legend of Worlds">
+    <meta property="og:description" content="Интерактивная карта Арены Даро. Зоны, боссы, магазины, дуэльные арены.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="hero-data.js"></script>
+    <script src="search.js"></script>
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+    <style>
+        .map-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            background: #0a1628;
+            border: 1px solid #1a3a5c;
+            border-radius: 8px;
+        }
+        .map-toolbar-left { display: flex; align-items: center; gap: 12px; }
+        .map-toolbar-right { display: flex; align-items: center; gap: 8px; }
+        .map-legend {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .map-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: #8aa0c0;
+        }
+        .map-legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .map-legend-dot.boss { background: #ff4444; }
+        .map-legend-dot.shop { background: #44ff88; }
+        .map-legend-dot.duel { background: #ffaa44; }
+        .map-legend-dot.spawn { background: #4488ff; }
+        .map-legend-dot.fountain { background: #aa44ff; }
+
+        .map-edit-btn {
+            background: #1a3a5c;
+            color: #8aa0c0;
+            border: 1px solid #2a5070;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .map-edit-btn:hover { background: #2a5070; color: #e0e8f0; }
+        .map-edit-btn.active {
+            background: #00e5ff22;
+            color: #00e5ff;
+            border-color: #00e5ff;
+        }
+
+        .map-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #050a12;
+            border: 1px solid #1a3a5c;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .map-image-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%;
+            overflow: hidden;
+        }
+        .map-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #050a12;
+        }
+        .map-marker {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s;
+            z-index: 10;
+            user-select: none;
+        }
+        .map-marker:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 12px currentColor;
+        }
+        .map-marker.dragging {
+            opacity: 0.8;
+            z-index: 100;
+            cursor: grabbing;
+        }
+        .map-marker.boss { background: #ff4444; color: #fff; border: 2px solid #ff7777; }
+        .map-marker.shop { background: #44ff88; color: #0a1628; border: 2px solid #77ffaa; }
+        .map-marker.duel { background: #ffaa44; color: #0a1628; border: 2px solid #ffcc77; }
+        .map-marker.spawn { background: #4488ff; color: #fff; border: 2px solid #77aaff; }
+        .map-marker.fountain { background: #aa44ff; color: #fff; border: 2px solid #cc77ff; }
+
+        .map-info-panel {
+            padding: 16px 20px;
+            background: #0d1b2a;
+            border-top: 1px solid #1a3a5c;
+            min-height: 80px;
+        }
+        .map-info-panel.empty {
+            color: #5a7a9a;
+            text-align: center;
+            font-size: 0.92rem;
+        }
+        .map-info-panel h3 {
+            margin: 0 0 8px;
+            font-size: 1.1rem;
+            color: #e0e8f0;
+        }
+        .map-info-panel p {
+            margin: 0;
+            font-size: 0.88rem;
+            color: #8aa0c0;
+            line-height: 1.5;
+        }
+        .map-coords-output {
+            margin-top: 12px;
+            padding: 10px 14px;
+            background: #091421;
+            border: 1px solid #1a3a5c;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.82rem;
+            color: #00e5ff;
+            display: none;
+        }
+        .map-coords-output.visible { display: block; }
+
+        @media (max-width: 700px) {
+            .map-image-wrapper { padding-bottom: 100%; }
+            .map-marker { width: 22px; height: 22px; font-size: 0.6rem; }
+            .map-info-panel { padding: 12px 14px; }
+            .map-toolbar { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body class="page-guides">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="guides.html" class="nav-link active"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><span class="current">Карта арены</span></div>
+
+        <h1><i class="fas fa-map"></i> Карта арены</h1>
+        <p style="color:#8aa0c0; margin-bottom:20px;">Кликните на маркер, чтобы узнать о зоне. Центральная арена — основное поле боя, вокруг — дуэльные арены, базы и боссы.</p>
+
+        <div style="margin-bottom:16px; text-align:right;">
+            <button id="editModeBtn" class="btn-secondary" style="font-size:0.82rem; padding:6px 12px;">
+                <i class="fas fa-edit"></i> Режим редактирования
+            </button>
+            <div id="editModeHint" style="display:none; font-size:0.78rem; color:#8aa0c0; margin-top:6px;">
+                Перетаскивайте маркеры мышью. Координаты выводятся в консоль (F12).
+            </div>
+        </div>
+
+        <div style="margin-bottom:16px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button id="editModeBtn" class="btn-secondary" onclick="toggleEditMode()"><i class="fas fa-edit"></i> Режим редактирования</button>
+            <button id="copyCoordsBtn" class="btn-secondary" style="display:none;" onclick="copyCoordinates()"><i class="fas fa-copy"></i> Скопировать координаты</button>
+            <span id="editHint" style="color:#5a7a9a; font-size:0.84rem; align-self:center; display:none;">Перетаскивайте маркеры мышью</span>
+        </div>
+
+        <div class="map-container">
+            <div class="map-image-wrapper" id="mapWrapper">
+                <img src="images/map_preview.PNG" alt="Карта арены" class="map-image" id="mapImage" />
+                <!-- Маркеры добавляются JS -->
+            </div>
+            <div class="map-info-panel empty" id="mapInfoPanel">
+                Кликните на маркер, чтобы узнать о зоне
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Данные маркеров (координаты в % от размера изображения)
+    var MAP_MARKERS = [
+        // Центральная арена
+        { id: 'center', type: 'duel', x: 50, y: 65, label: '1', title: 'Центральная арена', desc: 'Основное поле боя. Здесь проходят массовые драки, фарм крипов и командные столкновения.' },
+        
+        // Базы (углы)
+        { id: 'base1', type: 'spawn', x: 8, y: 8, label: 'B', title: 'База (левый верх)', desc: 'Точка возрождения одной из команд. Рядом фонтан для восстановления здоровья и маны.' },
+        { id: 'base2', type: 'spawn', x: 92, y: 8, label: 'B', title: 'База (правый верх)', desc: 'Точка возрождения другой команды. Фонтан и магазин рядом.' },
+        { id: 'base3', type: 'spawn', x: 8, y: 92, label: 'B', title: 'База (левый низ)', desc: 'Дополнительная точка возрождения для FFA режима или дополнительных команд.' },
+        { id: 'base4', type: 'spawn', x: 92, y: 92, label: 'B', title: 'База (правый низ)', desc: 'Дополнительная точка возрождения. Рядом фонтан и выход в центр.' },
+        
+        // Дуэльные арены (маленькие комнатки)
+        { id: 'duel1', type: 'duel', x: 25, y: 25, label: 'D', title: 'Дуэльная арена 1', desc: 'Арена для одиночных дуэлей 1v1. Здесь игроки решают споры в честном бою.' },
+        { id: 'duel2', type: 'duel', x: 75, y: 25, label: 'D', title: 'Дуэльная арена 2', desc: 'Вторая дуэльная арена. Может использоваться для параллельных дуэлей или командных 2v2.' },
+        { id: 'duel3', type: 'duel', x: 25, y: 75, label: 'D', title: 'Дуэльная арена 3', desc: 'Дополнительная дуэльная зона для FFA режима или очередей на дуэли.' },
+        { id: 'duel4', type: 'duel', x: 75, y: 75, label: 'D', title: 'Дуэльная арена 4', desc: 'Последняя дуэльная арена. Все 4 арены позволяют проводить дуэли одновременно для разных игроков.' },
+        
+        // Боссы (специальные зоны)
+        { id: 'boss1', type: 'boss', x: 50, y: 15, label: '⚔', title: 'Босс-арена (верх)', desc: 'Арена с мощным боссом. Убийство даёт командную награду и редкий дроп. Требует координации.' },
+        { id: 'boss2', type: 'boss', x: 15, y: 50, label: '⚔', title: 'Босс-арена (лево)', desc: 'Левый босс. Имеет особые механики и сильные атаки. Рекомендуется идти вместе с командой.' },
+        { id: 'boss3', type: 'boss', x: 85, y: 50, label: '⚔', title: 'Босс-арена (право)', desc: 'Правый босс. Дропит ценные предметы, но требует подготовки и координации команды.' },
+        { id: 'boss4', type: 'boss', x: 50, y: 85, label: '⚔', title: 'Босс-арена (низ)', desc: 'Нижний босс. Часто контролирует выходы из центральной арены. Важная стратегическая точка.' },
+        
+        // Магазины
+        { id: 'shop1', type: 'shop', x: 50, y: 35, label: '$', title: 'Магазин (центр)', desc: 'Основной магазин предметов. Здесь покупаются базовые предметы и собираются сборки.' },
+        { id: 'shop2', type: 'shop', x: 35, y: 50, label: '$', title: 'Магазин (лево)', desc: 'Дополнительная торговая точка. Может иметь специфический ассортимент или лучшие цены на определённые категории.' },
+        { id: 'shop3', type: 'shop', x: 65, y: 50, label: '$', title: 'Магазин (право)', desc: 'Ещё одна торговая точка. Распределение магазинов по карте позволяет быстро закупаться из любой точки арены.' },
+        
+        // Фонтаны
+        { id: 'fountain1', type: 'fountain', x: 8, y: 12, label: '✦', title: 'Фонтан (левый верх)', desc: 'Восстанавливает здоровье и ману. Безопасная зона рядом с базой.' },
+        { id: 'fountain2', type: 'fountain', x: 92, y: 12, label: '✦', title: 'Фонтан (правый верх)', desc: 'Восстановление ресурсов. Рядом с базой и магазином.' },
+        { id: 'fountain3', type: 'fountain', x: 8, y: 88, label: '✦', title: 'Фонтан (левый низ)', desc: 'Точка восстановления. Важна для FFA режима и длительных боёв.' },
+        { id: 'fountain4', type: 'fountain', x: 92, y: 88, label: '✦', title: 'Фонтан (правый низ)', desc: 'Восстановление здоровья и маны. Стратегическая точка для контроля нижней части карты.' }
+    ];
+
+    // Инициализация маркеров
+    function initMapMarkers() {
+        var wrapper = document.getElementById('mapWrapper');
+        var img = document.getElementById('mapImage');
+        
+        MAP_MARKERS.forEach(function(marker) {
+            var el = document.createElement('div');
+            el.className = 'map-marker ' + marker.type;
+            el.textContent = marker.label;
+            el.style.left = marker.x + '%';
+            el.style.top = marker.y + '%';
+            el.style.transform = 'translate(-50%, -50%)';
+            el.title = marker.title;
+            el.addEventListener('click', function(e) {
+                e.stopPropagation();
+                showMarkerInfo(marker);
+            });
+            wrapper.appendChild(el);
+        });
+        
+        // Клик по фону сбрасывает выбор
+        wrapper.addEventListener('click', function() {
+            document.getElementById('mapInfoPanel').className = 'map-info-panel empty';
+            document.getElementById('mapInfoPanel').innerHTML = 'Кликните на маркер, чтобы узнать о зоне';
+        });
+    }
+
+    function showMarkerInfo(marker) {
+        var panel = document.getElementById('mapInfoPanel');
+        panel.className = 'map-info-panel';
+        
+        var typeLabels = {
+            boss: 'Босс',
+            shop: 'Магазин',
+            duel: 'Арена',
+            spawn: 'База',
+            fountain: 'Фонтан'
+        };
+        
+        panel.innerHTML = 
+            '<h3>' + marker.title + '</h3>' +
+            '<p><span style="color:#00e5ff;">' + (typeLabels[marker.type] || marker.type) + '</span> — ' + marker.desc + '</p>';
+    }
+
+    // Инициализация при загрузке
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMapMarkers);
+    } else {
+        initMapMarkers();
+    }
+    </script>
+</body>
+</html>
