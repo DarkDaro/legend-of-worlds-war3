@@ -209,7 +209,6 @@ var HEROES_DATA = [
 
     { name: 'Вершитель', title: '', attr: 'strength', role: 'support', roleName: 'Помощник', heroId: 'arbiter', image: 'arbiter',
       wip: true,
-      wip: true,
       rawcode: 'H0A6',
       strBase: 0, strGain: 2, agiBase: 16, agiGain: 2, intBase: 28, intGain: 2,
       hp: 200, mp: 0, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0, speed: 0.01, range: 150, sightDay: 1800, sightNight: 800 },
