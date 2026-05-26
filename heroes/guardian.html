@@ -63,83 +63,100 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Сюрикен -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="shuriken" data-fallback="star-of-life"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Сюрикен</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Запускает несколько сюрикенов в разные стороны.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">AGI×3 + 150/300/450/600/750</span></div>
+                        <div class="param-row"><span class="param-label">Дистанция</span><span class="param-values">800</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">1600</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/175/225/275/325</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15/14/13/12/11 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Удар в прыжке -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="jump_strike" data-fallback="arrow-up"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Удар в прыжке</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Прыгает в указанную точку, наносит урон и отталкивает врагов. После приземления уклоняется от всех атак 2.5 сек.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">300/450/600/750/900 + AGI×0.8/1.6/2.4/3.2/4</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">400</span></div>
+                        <div class="param-row"><span class="param-label">Уклонение</span><span class="param-values">100% на 2.5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1500</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/155/185/215/245</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- R -->
-                <div class="ability-card ultimate">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Ультимейт</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- F -->
+                <!-- E: Смертоносные удары -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="deadly_strikes" data-fallback="crosshairs"></div>
                         <div class="ability-info">
-                            <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Смертоносные удары</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Следующая атака наносит дополнительный урон жертве.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">75/150/225/300/375 + AGI×0.3/0.6/0.9/1.2/1.5 + 5% от тек. HP</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">7/6/5/4/3 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Сюрикен смерти -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="death_shuriken" data-fallback="star-of-david"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Сюрикен смерти</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Огромный сюрикен летит в указанную точку, стягивая врагов. Достигнув цели, вращается и разрывает врагов, затем создаёт взрыв.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">450</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">2500</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">450/575/700/825/950</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">80 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Смертоносный кинжал -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="deadly_dagger" data-fallback="dagger"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Смертоносный кинжал</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Бросает кинжал, поражающий каждого врага на пути. При попадании во вражеского героя — мгновенно перемещается к нему, замедляя и нанося доп. урон.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1200</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/150/175</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">13 сек</span></div>
                     </div>
                 </div>
 

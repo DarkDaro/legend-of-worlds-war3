@@ -63,83 +63,106 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Плевок яда -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="acid_spit" data-fallback="droplet"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Плевок яда</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Плюёт кислотой в указанную область. Взрыв наносит урон и снижает броню врагов.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">INT×3 + 300/450/600/750/900</span></div>
+                        <div class="param-row"><span class="param-label">Снижение брони</span><span class="param-values">5/7/9/11/13 на 6 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">400</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1200</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">100/135/170/205/240</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">16 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Ядовитый шар -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="poison_ball" data-fallback="circle"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Ядовитый шар</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Бросает ядовитый шар, который при ударе распадается на мелкие сгустки. Каждый наносит урон при отскоке.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон каждого</span><span class="param-values">INT×0.5 + 250/400/550/700/850</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">225</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">160/200/240/280/320</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Ядовитое кольцо -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="poison_ring" data-fallback="circle-nodes"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Ядовитое кольцо</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Создаёт 20 ядовитых шаров, отскакивающих в разные стороны и наносящих урон.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон каждого</span><span class="param-values">INT×1.5/2.0/2.5/3.0/3.5 + 100/200/300/400/500</span></div>
+                        <div class="param-row"><span class="param-label">Отскоков</span><span class="param-values">3</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">200</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/225/275/325/375</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">30 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Ядовитый всплеск -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="poison_burst" data-fallback="biohazard"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Ядовитый всплеск</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Рассеивает вокруг себя кольцо яда, постепенно наносящего урон.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Основной урон</span><span class="param-values">500 + INT×4/8/12/16/20</span></div>
+                        <div class="param-row"><span class="param-label">Урон в сек</span><span class="param-values">50% от урона, 5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">900</span></div>
+                        <div class="param-row"><span class="param-label">Ширина</span><span class="param-values">250</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">425/550/675/800/925</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">120 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">15% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
+                <!-- F: Ядовитая слюна — НУЖНО РУЧНОЕ ОПИСАНИЕ -->
                 <div class="ability-card passive">
                     <div class="ability-header">
                         <div class="ability-icon" data-ability="" data-fallback="question"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Ядовитая слюна</div>
                             <div class="ability-type-badge">Пассивная</div>
+                            <span class="ability-tag" style="background:#c0392b;color:#fff;">⚠ Сломанная кодировка</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">При каждой атаке есть шанс выделить ядовитую слюну, отравляющую цель и замедляющую её.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">20%</span></div>
+                        <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">20%</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">5 сек</span></div>
                     </div>
                 </div>
 

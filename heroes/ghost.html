@@ -63,83 +63,98 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Обмен -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="swap" data-fallback="repeat"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Обмен</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">После паузы 1 сек Призрак и цель обмениваются позициями. Враг получает урон, союзник — исцеление.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">AGI×3 + 150/300/450/600/750</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">800/950/1100/1250/1400</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/165/205/245/285</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Ускорение -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="haste" data-fallback="bolt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Ускорение</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Увеличивает скорость боя и бега, даёт шанс уклонения. При движении создаются призраки, наносящие урон при исчезновении.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Ускорение</span><span class="param-values">20%/30%/40%/50%/60%</span></div>
+                        <div class="param-row"><span class="param-label">Уклонение</span><span class="param-values">15%/20%/25%/30%/35%</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">115/150/185/220/255</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- R -->
-                <div class="ability-card ultimate">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Ультимейт</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- F -->
+                <!-- E: Кара -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="judgment" data-fallback="skull-crossbones"></div>
                         <div class="ability-info">
-                            <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Кара</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Каждый 4-й удар наносит физический урон врагам рядом с целью.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">75/150/225/300/375 + AGI×2.0/2.25/2.5/2.75/3.0</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">300</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Призрачный удар -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="ghost_strike" data-fallback="burst"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Призрачный удар</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Призрак получает 200% скорости боя и атакует всех врагов вокруг. Выбирает юнитов с наименьшим здоровьем. Нельзя прервать!</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">AGI×2 + 300/400/500/600/700</span></div>
+                        <div class="param-row"><span class="param-label">Прыжков</span><span class="param-values">5/7/9/11/13</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">450</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">325/425/525/625/725</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">40 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Призрачный Щит -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="ghost_shield" data-fallback="shield-halved"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Призрачный Щит</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Окутывает себя призрачным щитом, увеличивая защиту. Каждый, наносящий урон Призраку, получает физический урон в ответ.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Защита</span><span class="param-values">+8</span></div>
+                        <div class="param-row"><span class="param-label">Урон в ответ</span><span class="param-values">90 + AGI×0.5</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">8 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">90/105/120</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">19/17/15 сек</span></div>
                     </div>
                 </div>
 
