@@ -63,83 +63,106 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Печать Огня -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="fire_seal" data-fallback="fire"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Печать Огня</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Печать огня в области. После паузы 1.7 сек — взрыв, урон всем врагам.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">200/325/450/575/700 + INT×3</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">400</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">900</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/165/205/245/285</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Огненный Гейзер -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="fire_geyser" data-fallback="fire-alt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Огненный Гейзер</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Огненные трещины в области, гейзеры пламени каждые 0.25 сек. Поджигает врагов.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон за гейзер</span><span class="param-values">50/100/150/200/250 + уровень героя×INT</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">400</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">800</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/230/285/340/395</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Возгорание -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="ignition" data-fallback="explosion"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Возгорание</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Огненные взрывы вокруг героя. Может быть развеян!</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон за взрыв</span><span class="param-values">200 + INT×1.2</span></div>
+                        <div class="param-row"><span class="param-label">Взрывов</span><span class="param-values">4/6/8/10/12</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">280</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">240/300/360/420/480</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">26 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Полет феникса -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="phoenix_flight" data-fallback="dove"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Полет феникса</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">5 фениксов обжигают всё на пути.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон за феникса</span><span class="param-values">200 + INT×1.0/1.4/1.8/2.2/2.6</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">425</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">2000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">600/800/1000/1200/1400</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
-                <div class="ability-card passive">
+                <!-- F: Огненный щит -->
+                <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="fire_shield" data-fallback="shield-alt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Пассивная</div>
+                            <div class="ability-name">Огненный щит</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">3 огонька вокруг героя, наносят урон при контакте. Бонус защиты. Может быть развеян!</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон в сек</span><span class="param-values">INT</span></div>
+                        <div class="param-row"><span class="param-label">Бонус защиты</span><span class="param-values">8/12/16</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">320</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">8 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/185/220</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20/18/16 сек</span></div>
                     </div>
                 </div>
 

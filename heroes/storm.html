@@ -63,83 +63,75 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Электрический заряд -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
+                        <div class="ability-icon" data-ability="electric_charge" data-fallback="bolt"></div>
+                        <div class="ability-info"><span class="ability-hotkey">Q</span><div class="ability-name">Электрический заряд</div><div class="ability-type-badge">Активная</div></div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Мощный разряд электроэнергии по линии.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">275/400/525/650/775 + INT×2</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1250</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/175/225/275/325</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Шаровые молнии -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
+                        <div class="ability-icon" data-ability="ball_lightning" data-fallback="circle"></div>
+                        <div class="ability-info"><span class="ability-hotkey">W</span><div class="ability-name">Шаровые молнии</div><div class="ability-type-badge">Активная</div></div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">6 шаровых молний вокруг, повышение защиты. Урон в секунду при контакте.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Защита</span><span class="param-values">+8/12/16/20/24</span></div>
+                        <div class="param-row"><span class="param-label">Урон в сек</span><span class="param-values">30/60/90/120/150 + INT×0.5</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">425</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">200/250/300/350/400</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Электрическая кара — СЛОМАННАЯ -->
                 <div class="ability-card active">
                     <div class="ability-header">
                         <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
+                        <div class="ability-info"><span class="ability-hotkey">E</span><div class="ability-name">Электрическая кара</div><div class="ability-type-badge">Активная</div><span class="ability-tag" style="background:#c0392b;color:#fff;">⚠ Сломанная кодировка</span></div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
+                    <div class="ability-desc">Активная способность Шторма.</div>
+                    <div class="ability-params"><div class="param-row"><span class="param-label">Мана</span><span class="param-values">250</span></div><div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">30 сек</span></div></div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Гнев гроз -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Ультимейт</div>
-                        </div>
+                        <div class="ability-icon" data-ability="storm_rage" data-fallback="cloud-bolt"></div>
+                        <div class="ability-info"><span class="ability-hotkey">R</span><div class="ability-name">Гнев гроз</div><div class="ability-type-badge">Ультимейт</div><span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span></div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Накапливает энергию 3 сек, поражает всех врагов в области 2000.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">1000 + INT×10/15/20/25/30</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">500/750/1000/1250/1500</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">130 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
-                <div class="ability-card passive">
+                <!-- F: Скорость молнии -->
+                <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Пассивная</div>
-                        </div>
+                        <div class="ability-icon" data-ability="lightning_speed" data-fallback="person-running"></div>
+                        <div class="ability-info"><span class="ability-hotkey">F</span><div class="ability-name">Скорость молнии</div><div class="ability-type-badge">Активная</div></div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Превращается в шаровую молнию, перемещается в точку.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">200/250/300 + INT×0.5</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">200</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1100</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">160/180/200</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">14 сек</span></div>
                     </div>
                 </div>
 

@@ -62,87 +62,11 @@
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
-
-                <!-- Q -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- W -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- E -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- R -->
-                <div class="ability-card ultimate">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Ультимейт</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- F -->
-                <div class="ability-card passive">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Пассивная</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
+                <!-- Q: Волна --><div class="ability-card active"><div class="ability-header"><div class="ability-icon" data-ability="wave" data-fallback="water"></div><div class="ability-info"><span class="ability-hotkey">Q</span><div class="ability-name">Волна</div><div class="ability-type-badge">Активная</div></div></div><div class="ability-desc">Морская волна, урон и замедление.</div><div class="ability-params"><div class="param-row"><span class="param-label">Урон</span><span class="param-values">150/300/450/600/750 + AGI×3</span></div><div class="param-row"><span class="param-label">Замедление</span><span class="param-values">10/15/20/25/30% на 4 сек</span></div><div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1400</span></div><div class="param-row"><span class="param-label">Область</span><span class="param-values">325</span></div><div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/205/260/315/370</span></div><div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10 сек</span></div></div></div>
+                <!-- W: Морские потоки --><div class="ability-card active"><div class="ability-header"><div class="ability-icon" data-ability="sea_streams" data-fallback="tornado"></div><div class="ability-info"><span class="ability-hotkey">W</span><div class="ability-name">Морские потоки</div><div class="ability-type-badge">Активная</div></div></div><div class="ability-desc">3 нестабильных потока, урон при смене направления.</div><div class="ability-params"><div class="param-row"><span class="param-label">Урон</span><span class="param-values">75/150/225/300/375 + AGI×0.5/1/1.5/2/2.5</span></div><div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1400</span></div><div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/225/275/325/375</span></div><div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20 сек</span></div></div></div>
+                <!-- E: Водяная форма --><div class="ability-card active"><div class="ability-header"><div class="ability-icon" data-ability="water_form" data-fallback="person-running"></div><div class="ability-info"><span class="ability-hotkey">E</span><div class="ability-name">Водяная форма</div><div class="ability-type-badge">Активная</div></div></div><div class="ability-desc">Обращается в волну, перемещается с большой скоростью, урон всем на пути.</div><div class="ability-params"><div class="param-row"><span class="param-label">Урон</span><span class="param-values">200/400/600/800/1000 + AGI×1.8/2.6/3.4/4.2/5</span></div><div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/250/325/400/475</span></div><div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">28 сек</span></div></div></div>
+                <!-- R: Водоворот --><div class="ability-card ultimate"><div class="ability-header"><div class="ability-icon" data-ability="whirlpool" data-fallback="spinner"></div><div class="ability-info"><span class="ability-hotkey">R</span><div class="ability-name">Водоворот</div><div class="ability-type-badge">Ультимейт</div></div></div><div class="ability-desc">Огромный водоворот, засасывает врагов, урон в сек, замедление.</div><div class="ability-params"><div class="param-row"><span class="param-label">Урон в сек</span><span class="param-values">AGI×3/4/5/6/7</span></div><div class="param-row"><span class="param-label">Замедление</span><span class="param-values">скорость бега</span></div><div class="param-row"><span class="param-label">Мана</span><span class="param-values">600/800/1000/1200/1400</span></div><div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">150 сек</span></div></div></div>
+                <!-- F: Водяной барьер --><div class="ability-card active"><div class="ability-header"><div class="ability-icon" data-ability="water_barrier" data-fallback="shield-alt"></div><div class="ability-info"><span class="ability-hotkey">F</span><div class="ability-name">Водяной барьер</div><div class="ability-type-badge">Активная</div></div></div><div class="ability-desc">Барьер вокруг, защита +9/12/15, урон AGI в сек при контакте.</div><div class="ability-params"><div class="param-row"><span class="param-label">Защита</span><span class="param-values">+9/12/15</span></div><div class="param-row"><span class="param-label">Урон в сек</span><span class="param-values">AGI</span></div><div class="param-row"><span class="param-label">Область</span><span class="param-values">450</span></div><div class="param-row"><span class="param-label">Длительность</span><span class="param-values">10 сек</span></div><div class="param-row"><span class="param-label">Мана</span><span class="param-values">160/180/200</span></div><div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20/18/16 сек</span></div></div></div>
             </div>
             <a href="../heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
         </div>

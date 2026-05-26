@@ -63,85 +63,104 @@
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
+
+                <!-- Q: Невидимость -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="invisibility" data-fallback="eye-slash"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">Q</span>
+                            <div class="ability-name">Невидимость</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Невидимость на 5 сек, ускорение +15%. При атаке — доп. урон и видимость. Если рядом &gt;2 вражеских героев — полная невидимость (можно атаковать, оставаясь невидимым).</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Доп. урон</span><span class="param-values">150/300/450/600/750</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/150/175/200/225</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">13 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- W: Мясорубка -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="meat_grinder" data-fallback="tornado"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Мясорубка</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Вихрь + рывок, серьёзный урон врагам на пути.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">100/200/300/400/500 + 10% текущ. HP + AGI×3</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">700/900/1100/1300/1500</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/200/275/350/425</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- E: Световое отражение -->
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="light_reflection" data-fallback="clone"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Световое отражение</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">При атаке создаёт иллюзию, наносящую урон врагам перед собой. Пассивно увеличивает ловкость.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">25%</span></div>
+                        <div class="param-row"><span class="param-label">Урон иллюзии</span><span class="param-values">AGI×2 + 100/150/200/250/300</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">250</span></div>
+                        <div class="param-row"><span class="param-label">Бонус AGI</span><span class="param-values">20/30/40/50/60</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">0.4 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Смертельная атака -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="death_attack" data-fallback="skull-crossbones"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Смертельная атака</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Иллюзии сокрушают врага с воздуха. Последний удар — по всем ближайшим. Если цель умрёт — финальный удар сразу.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон за удар иллюзии</span><span class="param-values">500 + AGI×3</span></div>
+                        <div class="param-row"><span class="param-label">Финальный урон</span><span class="param-values">500 + AGI×3/6/9/12/15</span></div>
+                        <div class="param-row"><span class="param-label">Область финального удара</span><span class="param-values">750</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">500/600/700/800/900</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">120 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Разрез -->
                 <div class="ability-card active">
                     <div class="ability-header">
                         <div class="ability-icon" data-ability="slash" data-fallback="bolt"></div>
                         <div class="ability-info">
-                            <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">Стремительный удар</div>
-                            <div class="ability-type-badge">Активная</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Мгновенно сокращает дистанцию и наносит мощный удар мечом.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">50/55/60/65/70</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">8/7/6/5/4</span></div>
-                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">80/120/160/200/240</span></div>
-                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">600</span></div>
-                    </div>
-                </div>
-                <div class="ability-card passive">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="counter" data-fallback="exchange-alt"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">W</span>
-                            <div class="ability-name">Контрудар</div>
-                            <div class="ability-type-badge">Пассивная</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Пассивно: при уклонении наносит ответный удар с увеличенным уроном.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">10%/15%/20%/25%/30%</span></div>
-                        <div class="param-row"><span class="param-label">Множитель</span><span class="param-values">1.5/2/2.5/3/3.5</span></div>
-                    </div>
-                </div>
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="kiai" data-fallback="fire-alt"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">E</span>
-                            <div class="ability-name">Киай</div>
-                            <div class="ability-type-badge">Активная</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Вопль духа, временно увеличивающий скорость атаки и передвижения.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">70/80/90/100/110</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15/14/13/12/11</span></div>
-                        <div class="param-row"><span class="param-label">Доп. урон</span><span class="param-values">20/35/50/65/80</span></div>
-                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">8</span></div>
-                    </div>
-                </div>
-                <div class="ability-card ultimate">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="iai" data-fallback="angle-double-right"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">R</span>
-                            <div class="ability-name">Иайдзюцу</div>
-                            <div class="ability-type-badge">Ультимейт</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Ультимейт: мгновенное извлечение меча из ножен, критический урон всем врагам перед героем.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/170/190/210/230</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">90/80/70/60/50</span></div>
-                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">250/350/450/550/650</span></div>
-                        <div class="param-row"><span class="param-label">Ширина</span><span class="param-values">300</span></div>
-                    </div>
-                </div>
-
-                <!-- F: ??? -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="star"></div>
-                        <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">???</div>
+                            <div class="ability-name">Разрез</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание</div>
+                    <div class="ability-desc">Воздушный разрез по линии мечом.</div>
                     <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">300/400/500 + 20× уровень героя</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">800</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/150/175</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10 сек</span></div>
                     </div>
                 </div>
 
