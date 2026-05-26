@@ -63,83 +63,96 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Удар морского воина -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="sea_warrior_strike" data-fallback="trident"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Удар морского воина</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Мощный удар трезубцем сотрясает землю, оглушая врагов.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">250/375/500/625/750 + STR×1.5</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">1 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1100</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/200/225/250/275</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">12 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Толчок хвостом -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="tail_push" data-fallback="arrow-up"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Толчок хвостом</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Воин глубин ускоряется, отталкиваясь хвостом. Каждые 2 сек враги вокруг оглушены и получают урон.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Скорость</span><span class="param-values">+50%</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">100/150/200/250/300</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">6 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">225/250/275/300/325</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- R -->
-                <div class="ability-card ultimate">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Ультимейт</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- F -->
+                <!-- E: Волшебный трезубец -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="magic_trident" data-fallback="wand-sparkles"></div>
                         <div class="ability-info">
-                            <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Волшебный трезубец</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Трезубец самостоятельно создаёт заклинания в бою. При каждом ударе применяется случайная способность с определённым шансом.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Девятый вал -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="ninth_wave" data-fallback="water"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Девятый вал</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Могущественная магия обитателей глубин обрушивает огромную волну на врагов.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Начальный урон</span><span class="param-values">600/1200/1800/2400/3000</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">550</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1600</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">475/550/625/700/775</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">110 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Сила обитателей глубины -->
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="deep_power" data-fallback="shield-halved"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Сила обитателей глубины</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Прочная чешуя блокирует физический урон. При использовании способностей сила увеличивается.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Шанс блока</span><span class="param-values">15%</span></div>
+                        <div class="param-row"><span class="param-label">Блок урона</span><span class="param-values">60 физ.</span></div>
+                        <div class="param-row"><span class="param-label">Сила за способность</span><span class="param-values">+5% на 10 сек (5 сек для пассивных)</span></div>
                     </div>
                 </div>
 

@@ -63,83 +63,102 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Темная стая -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="dark_flock" data-fallback="crow"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Темная стая</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Стая летучих мышей, наносящих урон врагам в области 300. В Ярости урон увеличивается.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">STR + 300/550/600/750/900</span></div>
+                        <div class="param-row"><span class="param-label">Урон в Ярости</span><span class="param-values">STR×3 + 300/550/600/750/900</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">900</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">110/150/190/230/270</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">13 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Энергетический удар -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="energy_strike" data-fallback="bolt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Энергетический удар</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Выпускает импульс энергии, затем перемещается за спину врагу с оглушающей атакой. В Ярости урон по области 425.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">900</span></div>
+                        <div class="param-row"><span class="param-label">Область в Ярости</span><span class="param-values">425</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/170/215/260/305</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">18 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Каменный дождь -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="stone_rain" data-fallback="meteor"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Каменный дождь</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Град раскаленных камней вокруг героя, оглушающих врагов и наносящих урон.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">STR×0.5 + 100/200/300/400/500</span></div>
+                        <div class="param-row"><span class="param-label">Камней</span><span class="param-values">8/10/12/14/16</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">0.6 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">500</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/200/250/300/350</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Ярость -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="rage" data-fallback="fist-raised"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Ярость</div>
                             <div class="ability-type-badge">Ультимейт</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Герой впадает в ярость: максимальная скорость бега, хаосная атака. Добавляет способность Бушующее пламя.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Здоровье</span><span class="param-values">+1000</span></div>
+                        <div class="param-row"><span class="param-label">Атака</span><span class="param-values">+100</span></div>
+                        <div class="param-row"><span class="param-label">Регенерация</span><span class="param-values">+50</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">500</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100 сек</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
+                <!-- F: Боевое Превосходство -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="combat_supremacy" data-fallback="shield-halved"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Боевое Превосходство</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Увеличивает силу атаки дружественных войск поблизости. Шанс нанести дополнительный урон.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Усиление атаки</span><span class="param-values">+20%</span></div>
+                        <div class="param-row"><span class="param-label">Шанс доп. урона</span><span class="param-values">20%</span></div>
+                        <div class="param-row"><span class="param-label">Доп. урон</span><span class="param-values">100 + STR</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">900</span></div>
                     </div>
                 </div>
 
