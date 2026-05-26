@@ -63,85 +63,111 @@
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
+
+                <!-- Q: Тёмный поток -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="death_coil" data-fallback="bolt"></div>
+                        <div class="ability-icon" data-ability="dark_stream" data-fallback="water"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">Death Coil</div>
+                            <div class="ability-name">Тёмный поток</div>
                             <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Бросает смертоносный сгусток энергии, исцеляя нежить или нанося урон живым.</div>
+                    <div class="ability-desc">Тёмный поток охватывает случайных врагов в области от первой цели. Противник, попавший под поток, через 2.75 сек получит урон и проклятие, снижающее урон и скорость бега.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">75/80/85/90/95</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">8/7/6/5/4</span></div>
-                        <div class="param-row"><span class="param-label">Исцеление нежити</span><span class="param-values">100/175/250/325/400</span></div>
-                        <div class="param-row"><span class="param-label">Урон живым</span><span class="param-values">50/90/130/170/210</span></div>
-                    </div>
-                </div>
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="dark_ritual" data-fallback="skull"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">W</span>
-                            <div class="ability-name">Dark Ritual</div>
-                            <div class="ability-type-badge">Активная</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Жертвует союзного юнита, превращая часть его жизненной силы в ману.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">25/30/35/40/45</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15/13/11/9/7</span></div>
-                        <div class="param-row"><span class="param-label">Конвертация маны</span><span class="param-values">25%/35%/45%/55%/65%</span></div>
-                    </div>
-                </div>
-                <div class="ability-card passive">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="unholy_aura" data-fallback="wind"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">E</span>
-                            <div class="ability-name">Unholy Aura</div>
-                            <div class="ability-type-badge">Пассивная</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Пассивно усиливает регенерацию здоровья и скорость передвижения ближайших союзников.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Реген HP</span><span class="param-values">0.5/1/1.5/2/2.5 в сек</span></div>
-                        <div class="param-row"><span class="param-label">Скорость</span><span class="param-values">+5%/10%/15%/20%/25%</span></div>
-                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">900</span></div>
-                    </div>
-                </div>
-                <div class="ability-card ultimate">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="animate_dead" data-fallback="cross"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">R</span>
-                            <div class="ability-name">Animate Dead</div>
-                            <div class="ability-type-badge">Ультимейт</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Воскрешает павших юнитов вокруг некроманта и на время поднимает их под его контролем.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/200/225/250/275</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">120/110/100/90/80</span></div>
-                        <div class="param-row"><span class="param-label">Воскрешаемые юниты</span><span class="param-values">4/5/6/7/8</span></div>
-                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">40/50/60/70/80</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">200/400/600/800/1000 + INT×3</span></div>
+                        <div class="param-row"><span class="param-label">Длительность проклятия</span><span class="param-values">6 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">900</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/210/245/280/315</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">12 сек</span></div>
                     </div>
                 </div>
 
-                <!-- F: ??? -->
+                <!-- W: Проклятье -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="star"></div>
+                        <div class="ability-icon" data-ability="curse" data-fallback="book-dead"></div>
                         <div class="ability-info">
-                            <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">???</div>
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Проклятье</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание</div>
+                    <div class="ability-desc">Наносимый урон по проклятым врагам увеличивается на 20%. Наносит единовременный и ежесекундный урон. Бонусный урон и урон в сек. стекается.</div>
                     <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Основной урон</span><span class="param-values">200/350/500/650/800</span></div>
+                        <div class="param-row"><span class="param-label">Урон/сек</span><span class="param-values">INT×0.75</span></div>
+                        <div class="param-row"><span class="param-label">Бонус по проклятым</span><span class="param-values">+20%</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">425</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">220/260/300/340/380</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- E: Лучи тьмы -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="dark_rays" data-fallback="crosshairs"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Лучи тьмы</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Герой выпускает 2 перекрёстных луча тьмы, которые при слиянии образуют взрыв разрушительной силы.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон взрыва</span><span class="param-values">300/500/700/900/1100 + INT×4</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">650</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1500</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">200/300/400/500/600</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Бездна -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="abyss" data-fallback="circle-notch"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Бездна</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Призывает поглощающую бездну, создавая вихрь, затягивающий всех врагов в эпицентр. Во время каста герой защищён от оглушения. Прерываемо!</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">250 + INT×2.2/2.4/2.6/2.8/3.0</span></div>
+                        <div class="param-row"><span class="param-label">Область стягивания</span><span class="param-values">750</span></div>
+                        <div class="param-row"><span class="param-label">Область урона</span><span class="param-values">550</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1500</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">600</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Могущество Некромонгера -->
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="necromonger_power" data-fallback="crown"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Могущество Некромонгера</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Некромонгер, применяя свои способности, с шансом 50% может наносить урон и накладывать проклятие. Проклятье наносит урон, снижает атаку и замедляет.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">50%</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">100/150/200 + INT×0.8 + 8% от текущей маны</span></div>
+                        <div class="param-row"><span class="param-label">Замедление атаки</span><span class="param-values">10%</span></div>
+                        <div class="param-row"><span class="param-label">Снижение атаки</span><span class="param-values">15%</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">600/700/800</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">4 сек</span></div>
                     </div>
                 </div>
 

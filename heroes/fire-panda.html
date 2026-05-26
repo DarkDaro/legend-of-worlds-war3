@@ -63,83 +63,102 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- W -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- E -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- R -->
-                <div class="ability-card ultimate">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Ультимейт</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- F -->
+                <!-- Q: Огненный щит -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="fire_shield" data-fallback="shield-alt"></div>
                         <div class="ability-info">
-                            <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <span class="ability-hotkey">Q</span>
+                            <div class="ability-name">Огненный щит</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Применяя способности, герой получает огненный щит на 5 сек, наносящий урон в области. Каждый стак увеличивает урон на 25% и суммирует длительность.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон/сек</span><span class="param-values">30/60/90/120/150 + AGI×1.5/2/2.5/3/3.5</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">200</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">5 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- W: Сфера пламени -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="flame_sphere" data-fallback="circle"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Сфера пламени</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Обращается в пламя и движется в указанную точку, нанося урон всем задетым противникам. Дополнительно наносит урон по завершении.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">300/350/400/450/500 + AGI×2</span></div>
+                        <div class="param-row"><span class="param-label">Конечный урон</span><span class="param-values">50/100/150/200/250</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">150</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">600/750/900/1050/1200</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">70/135/200/265/330</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">18 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- E: Мастерство огня -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="fire_mastery" data-fallback="fire-alt"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Мастерство огня</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Каждая атака наносит урон врагам вокруг цели. При атаке по герою есть шанс переместиться за спину врага.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">AGI×0.5 + 50/100/150/200/250</span></div>
+                        <div class="param-row"><span class="param-label">Область урона</span><span class="param-values">150/200/250/300/350</span></div>
+                        <div class="param-row"><span class="param-label">Шанс прыжка за спину</span><span class="param-values">8%</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">145/195/245/295/345</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">28 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Огненный танец -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="fire_dance" data-fallback="khanda"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Огненный танец</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Герой обращается в пламя и помечает всех вражеских героев огненной меткой. Преследует каждого, обжигая врагов на пути, пока не поразит все цели.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">600/800/1000/1200/1400</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">130 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Огненное сердце -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="fire_heart" data-fallback="heart"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Огненное сердце</div>
+                            <div class="ability-type-badge">Активная</div>
+                            <span class="ability-tag dispellable">⚠ Развеивается</span>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Увеличивает магический потенциал и удачу владельца на время. Может быть развеян полностью!</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон заклинаний</span><span class="param-values">25%/35%/45%</span></div>
+                        <div class="param-row"><span class="param-label">Удача</span><span class="param-values">25%/35%/45%</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">10 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/150/175</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25/23/21 сек</span></div>
                     </div>
                 </div>
 
