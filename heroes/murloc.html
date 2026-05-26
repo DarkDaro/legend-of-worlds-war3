@@ -63,86 +63,104 @@
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
+
+                <!-- Q: Водяная вспышка -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="splash" data-fallback="tint"></div>
+                        <div class="ability-icon" data-ability="water_flash" data-fallback="tint"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">Водяной клинок</div>
+                            <div class="ability-name">Водяная вспышка</div>
                             <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Наносит удар водяным клинком, замедляя цель.</div>
+                    <div class="ability-desc">Поражает всех врагов в области водяной вспышкой, оглушая на 1 сек.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">60/70/80/90/100</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">7/6/5/4/3</span></div>
-                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">70/100/130/160/190</span></div>
-                    </div>
-                </div>
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="poison" data-fallback="skull-crossbones"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">W</span>
-                            <div class="ability-name">Ядовитое жало</div>
-                            <div class="ability-type-badge">Активная</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Отравляет цель, нанося урон с течением времени.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">50/55/60/65/70</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10/9/8/7/6</span></div>
-                        <div class="param-row"><span class="param-label">Урон в сек</span><span class="param-values">10/18/26/34/42</span></div>
-                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">6</span></div>
-                    </div>
-                </div>
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="dive" data-fallback="water"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">E</span>
-                            <div class="ability-name">Погружение</div>
-                            <div class="ability-type-badge">Активная</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Погружается в воду, становясь невидимым и восстанавливая здоровье.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">70/75/80/85/90</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20/18/16/14/12</span></div>
-                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">4/5/6/7/8</span></div>
-                        <div class="param-row"><span class="param-label">Реген</span><span class="param-values">3%/4%/5%/6%/7% HP в сек</span></div>
-                    </div>
-                </div>
-                <div class="ability-card ultimate">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="tidal" data-fallback="wave-square"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">R</span>
-                            <div class="ability-name">Приливная волна</div>
-                            <div class="ability-type-badge">Ультимейт</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Ультимейт: обрушивает мощную волну, отбрасывая и нанося урон всем врагам на линии.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/170/190/210/230</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100/90/80/70/60</span></div>
-                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">200/300/400/500/600</span></div>
-                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">500</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">150/300/450/600/750 + AGI×2</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">1 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">350</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">700</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">100/150/200/250/300</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10 сек</span></div>
                     </div>
                 </div>
 
-                <!-- F: ??? -->
-                <div class="ability-card active">
+                <!-- W: Ядовитый кинжал -->
+                <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="star"></div>
+                        <div class="ability-icon" data-ability="poison_dagger" data-fallback="skull-crossbones"></div>
                         <div class="ability-info">
-                            <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">???</div>
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Ядовитый кинжал</div>
+                            <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание</div>
+                    <div class="ability-desc">С шансом отравляет жертву, оглушая на 1 сек и нанося доп. урон. Пассивно увеличивает ловкость.</div>
                     <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">15%</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">100/175/250/325/400 + AGI×0.3</span></div>
+                        <div class="param-row"><span class="param-label">Бонус AGI</span><span class="param-values">10/20/30/40/50</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">3 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- E: Дух Воды -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="water_spirit" data-fallback="water"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Дух Воды</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Призывает духа воды, поглощающего весь получённый урон. Увеличивает скорость бега и боя.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Блок урона</span><span class="param-values">100%</span></div>
+                        <div class="param-row"><span class="param-label">Скорость бега</span><span class="param-values">+35%</span></div>
+                        <div class="param-row"><span class="param-label">Скорость боя</span><span class="param-values">+20%</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">3/4/5/6/7 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">200/255/310/365/420</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">30 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Ядовитые шипы — НУЖНО РУЧНОЕ ОПИСАНИЕ -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Ядовитые шипы</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag" style="background:#c0392b;color:#fff;">⚠ Сломанная кодировка</span>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Описание недоступно — сломанная кодировка в базе данных.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">400</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">120 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Девятый вал — НУЖНО РУЧНОЕ ОПИСАНИЕ -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Девятый вал</div>
+                            <div class="ability-type-badge">Активная</div>
+                            <span class="ability-tag" style="background:#c0392b;color:#fff;">⚠ Сломанная кодировка</span>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Огромная волна, наносящая урон всем противникам на пути.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">200 + AGI×2</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">250</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">800</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">100</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10 сек</span></div>
                     </div>
                 </div>
 

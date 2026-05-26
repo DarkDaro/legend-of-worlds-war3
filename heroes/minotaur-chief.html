@@ -63,83 +63,104 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Громовая поступь — НУЖНО РУЧНОЕ ОПИСАНИЕ -->
                 <div class="ability-card active">
                     <div class="ability-header">
                         <div class="ability-icon" data-ability="" data-fallback="question"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Громовая поступь</div>
+                            <div class="ability-type-badge">Активная</div>
+                            <span class="ability-tag" style="background:#c0392b;color:#fff;">⚠ Сломанная кодировка</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Мощный удар сотрясает землю, оглушая противников и нанося урон.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">STR + 250/400/550/750/850</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">2.5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">350</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/175/200/225/250</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">12 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Энергия предков -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="ancestor_energy" data-fallback="bolt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Энергия предков</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Телепортирует к цели, высвобождая энергию в виде трёх волн силы.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон каждой</span><span class="param-values">STR×1.5 + 75/150/225/300/375</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">700/800/900/1000/1100</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/190/230/270/310</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">18 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Сотрясение земли -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="earthquake" data-fallback="mountain"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Сотрясение земли</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Сотрясает землю, создавая волны, наносящие урон противникам вокруг.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">STR×1.4/1.8/2.2/2.6/3.0 + 300/500/700/900/1100</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">600/650/700/750/800</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/175/225/275/325</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Погребение -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="burial" data-fallback="skull"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Погребение</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Бьёт по земле, создавая сокрушительные волны, отбрасывая и оглушая противников.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">400/800/1200/1600/2000 + STR×4/8/12/16/20</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">3 сек</span></div>
+                        <div class="param-row"><span class="param-label">Отбрасывание</span><span class="param-values">600</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">1200</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">450/575/700/825/950</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">120 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">5% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
-                <div class="ability-card passive">
+                <!-- F: Удар топором -->
+                <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="axe_strike" data-fallback="hammer"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Пассивная</div>
+                            <div class="ability-name">Удар топором</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Разбивает жертву топором с огромной силой. Урон считается атакой.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">STR×2 + 200/300/400</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">350</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/175/200</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">8 сек</span></div>
                     </div>
                 </div>
 
