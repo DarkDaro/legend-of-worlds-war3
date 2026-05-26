@@ -63,83 +63,99 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Темные силы -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="dark_forces" data-fallback="circle-nodes"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Темные силы</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Вокруг героя в случайном месте проходят потоки тьмы, наносящие урон противникам.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон от каждого</span><span class="param-values">140/180/220/260/300 + AGI×0.7</span></div>
+                        <div class="param-row"><span class="param-label">Область потока</span><span class="param-values">200</span></div>
+                        <div class="param-row"><span class="param-label">Область появления</span><span class="param-values">250</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/175/200/225/250</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">16 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- E -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- R -->
-                <div class="ability-card ultimate">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Ультимейт</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- F -->
+                <!-- W: Удар тьмы -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="dark_strike" data-fallback="hand-fist"></div>
                         <div class="ability-info">
-                            <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Удар тьмы</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">При атаке имеет шанс нанести противнику дополнительный урон.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">30%</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">75/150/225/300/375 + AGI×1.2</span></div>
+                    </div>
+                </div>
+
+                <!-- E: Поток тьмы -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="dark_stream" data-fallback="water"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Поток тьмы</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Вызывает перед собой поток тьмы, наносящий урон в области перед героем.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">300/450/600/750/900 + AGI×4</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">475</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">225/265/305/345/385</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Мастерство -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="mastery" data-fallback="crown"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Мастерство</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Тёмный рыцарь и союзники получают скорость атаки и бега. При каждой атаке накапливается скорость боя и урон. Пассивно увеличивает ловкость.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Скорость атаки/бега</span><span class="param-values">+20%</span></div>
+                        <div class="param-row"><span class="param-label">Стек за атаку</span><span class="param-values">+8% скорость боя, +8% урон</span></div>
+                        <div class="param-row"><span class="param-label">Длительность стека</span><span class="param-values">8 сек</span></div>
+                        <div class="param-row"><span class="param-label">Макс. стек</span><span class="param-values">40%/80%/120%/160%/200%</span></div>
+                        <div class="param-row"><span class="param-label">Пассивно AGI</span><span class="param-values">+15/30/45/60/75</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">450</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">500</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Сожжение маны -->
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="mana_burn" data-fallback="fire"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Сожжение маны</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Каждая атака сжигает ману врага и наносит столько же урона. Шанс дополнительно сжечь процент текущей маны.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Сжигание маны</span><span class="param-values">25 ед. за атаку</span></div>
+                        <div class="param-row"><span class="param-label">Шанс доп. сжигания</span><span class="param-values">40% (2% от текущей маны)</span></div>
                     </div>
                 </div>
 

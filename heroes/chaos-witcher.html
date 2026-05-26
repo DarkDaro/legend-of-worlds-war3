@@ -63,83 +63,104 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Мистический разряд -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="mystic_discharge" data-fallback="bolt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Мистический разряд</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Запускает молнию, прыгающую по врагам, уменьшая их атаку и нанося урон.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">320/480/640/800/960 + INT×2.0/2.5/3.0/3.5/4.0</span></div>
+                        <div class="param-row"><span class="param-label">Снижение атаки</span><span class="param-values">15%</span></div>
+                        <div class="param-row"><span class="param-label">Скачков</span><span class="param-values">20</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">10 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">800</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/250/325/400/475</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">16/15/14/13/12 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
-                <div class="ability-card active">
+                <!-- W: Аура Сопротивления -->
+                <div class="ability-card aura">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="resistance_aura" data-fallback="shield-halved"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Аура Сопротивления</div>
+                            <div class="ability-type-badge">Аура</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Увеличивает сопротивление магии ближайших союзников. Применяя способности, герой восстанавливает ману.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Маг. защита</span><span class="param-values">7%/14%/21%/28%/35%</span></div>
+                        <div class="param-row"><span class="param-label">Восстановление маны</span><span class="param-values">4%/6%/8%/10%/12% от макс. маны</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">900</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Кровавая кара -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="blood_punishment" data-fallback="skull-crossbones"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Кровавая кара</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Высвобождает энергию хаосной магии в виде сферы. Все на пути поражаются молниями. Достигнув цели, сфера взрывается.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1400</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">300</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">180/240/300/360/420</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Молнии Раздора -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="lightning_discord" data-fallback="bolt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Молнии Раздора</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Телепортируется к цели, испускает множество молний в области 700 с разрушительными взрывами.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Начальный урон</span><span class="param-values">1000 + INT×5</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">700</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1800</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">450/600/750/900/1050</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">80 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
-                <div class="ability-card passive">
+                <!-- F: Телекинез -->
+                <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="telekinesis" data-fallback="hand"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Пассивная</div>
+                            <div class="ability-name">Телекинез</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Поднимает противника в воздух, затем швыряет обратно на землю.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">В воздухе</span><span class="param-values">2 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дальность броска</span><span class="param-values">600/700/800</span></div>
+                        <div class="param-row"><span class="param-label">Дальность применения</span><span class="param-values">600/700/800</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">100/115/130</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">14 сек</span></div>
                     </div>
                 </div>
 

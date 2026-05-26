@@ -63,83 +63,99 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Пылающая дорога -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="blazing_trail" data-fallback="fire"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Пылающая дорога</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Создаёт пламя, охватывающее дорогу перед берсеркером. Враги замедлены.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон в сек</span><span class="param-values">70/140/210/280/350 + AGI×0.8</span></div>
+                        <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">25%</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">200</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">7 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1200</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">200/250/300/350/400</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">19 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- E -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- R -->
-                <div class="ability-card ultimate">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Ультимейт</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- F -->
+                <!-- W: Пламенная агрессия -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="flame_aggression" data-fallback="fire"></div>
                         <div class="ability-info">
-                            <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Пламенная агрессия</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Магия огня наполняет кровь берсеркера, наделяя невероятной силой.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Прибавка к урону</span><span class="param-values">15%/20%/25%/30%/35%</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">100</span></div>
+                    </div>
+                </div>
+
+                <!-- E: Огненный гейзер -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="fire_geyser" data-fallback="volcano"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Огненный гейзер</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Поток огня вырывается из-под земли, окутывает цель, не позволяя сойти с места. Если цель выскочит слишком далеко, магия прекратится.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон в сек</span><span class="param-values">100/200/300/400/500 + AGI×2</span></div>
+                        <div class="param-row"><span class="param-label">АоЕ урона</span><span class="param-values">250</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">3 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">800/850/900/950/1000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">225</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Пламенное усиление -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="flame_boost" data-fallback="shield-halved"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Пламенное усиление</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Древние чары укрепляют тело и повышают силу. Улучшенная версия дополнительной способности.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Здоровье</span><span class="param-values">+1000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">400/475/550/625/700</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">90 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Путь огня -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="fire_path" data-fallback="link"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Путь огня</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Берсеркер хватает цель в лассо и стремительно приближается к ней, оставляя огненный след. Лассо разорвётся при расстоянии более 2200.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">900</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/190/205</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">18 сек</span></div>
                     </div>
                 </div>
 

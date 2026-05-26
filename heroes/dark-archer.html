@@ -64,95 +64,100 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q: Frost Arrows -->
+                <!-- Q: Черная стрела -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="frost_arrows" data-fallback="icicles"></div>
+                        <div class="ability-icon" data-ability="black_arrow" data-fallback="arrow-right"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">Ледяные стрелы</div>
+                            <div class="ability-name">Черная стрела</div>
                             <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Добавляет к атакам героя замораживающий эффект, замедляющий передвижение цели и наносящий дополнительный урон.</div>
+                    <div class="ability-desc">Выстрел черной стрелой в указанном направлении. Наносит урон и оглушает врагов.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Доп. урон</span><span class="param-values">6/12/18/24/30</span></div>
-                        <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">10%/25%/40%/55%/65%</span></div>
-                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">1.5 сек</span></div>
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">0</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">0</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">250/350/450/550/650 + AGI×3</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">1 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">250</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1200</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/175/225/275/325</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">13 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W: Gust -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="gust" data-fallback="wind"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">W</span>
-                            <div class="ability-name">Ветер молчания</div>
-                            <div class="ability-type-badge">Активная</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Выпускает волну, которая отбрасывает вражеских существ и запрещает им колдовать. Чем ближе враг, тем дальше его отбросит.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">70/80/90/100/110</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">19/17/15/13/11</span></div>
-                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">900</span></div>
-                        <div class="param-row"><span class="param-label">Макс. отброс</span><span class="param-values">450</span></div>
-                        <div class="param-row"><span class="param-label">Безмолвие</span><span class="param-values">3/4/5/6/7 сек</span></div>
-                    </div>
-                </div>
-
-                <!-- E: Marksmanship (passive component) -->
+                <!-- W: Зачарованные стрелы -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="marksmanship" data-fallback="bullseye"></div>
+                        <div class="ability-icon" data-ability="enchanted_arrows" data-fallback="hat-wizard"></div>
                         <div class="ability-info">
-                            <span class="ability-hotkey">E</span>
-                            <div class="ability-name">Меткость</div>
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Зачарованные стрелы</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Увеличивает урон от атак Лучницы. Бонус теряется, если рядом есть вражеские герои.</div>
+                    <div class="ability-desc">Атакуя, Тёмная лучница имеет шанс выпустить зачарованную стрелу в ближайшего противника.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Доп. урон</span><span class="param-values">20/40/60/80/100</span></div>
-                        <div class="param-row"><span class="param-label">Радиус потери</span><span class="param-values">400</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">75/150/225/300/375 + AGI×0.8/1.1/1.4/1.7/2.0</span></div>
+                        <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">18/21/24/27/30%</span></div>
+                        <div class="param-row"><span class="param-label">Дистанция</span><span class="param-values">600</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">0.34 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R: Multishot -->
-                <div class="ability-card ultimate">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="multishot" data-fallback="arrows-alt"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">R</span>
-                            <div class="ability-name">Залп стрел</div>
-                            <div class="ability-type-badge">Ультимейт</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Выпускает один залп стрел за другим, нанося врагам увеличенный урон и применяя усиленную Ледяную стрелу. Действует до 1.75 сек.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">50/70/90/110/130</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">24/22/20/18/16</span></div>
-                        <div class="param-row"><span class="param-label">Урон от атаки</span><span class="param-values">100%/120%/140%/160%/180%</span></div>
-                        <div class="param-row"><span class="param-label">Волны</span><span class="param-values">3/4/5/6/7</span></div>
-                        <div class="param-row"><span class="param-label">Стрел за волну</span><span class="param-values">4</span></div>
-                    </div>
-                </div>
-
-                <!-- F: ??? -->
+                <!-- E: Стрелы души -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="star"></div>
+                        <div class="ability-icon" data-ability="soul_arrows" data-fallback="ghost"></div>
                         <div class="ability-info">
-                            <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">???</div>
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Стрелы души</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание</div>
+                    <div class="ability-desc">Выстреливает тремя магическими стрелами, наносящими урон и создающими призрачную оболочку. Героя отбрасывает назад на 300.</div>
                     <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">250</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">250/350/450/550/650</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Падение стрелы -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="arrow_fall" data-fallback="meteor"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Падение стрелы</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Стреляет мощной стрелой в небо, которая попадает в указанную область. Периодический урон в течение 3 сек.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон за всплеск</span><span class="param-values">AGI×2 + 200/400/600/800/1000</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">550</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1400/1600/1800/2000/2200</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">3 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">500/600/700/800/900</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Уклонение -->
+                <div class="ability-card passive">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="evasion" data-fallback="feather-alt"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Уклонение</div>
+                            <div class="ability-type-badge">Пассивная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Шанс уклониться от атаки противника.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Уклонение</span><span class="param-values">15%</span></div>
                     </div>
                 </div>
 

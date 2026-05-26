@@ -63,83 +63,102 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Огненная буря -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="fire_storm" data-fallback="meteor"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Огненная буря</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Призывает огненную бурю в области, нанося урон после паузы 1 сек.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">INT×1 + 250/375/500/625/750</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">350</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">750</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/150/175/200/225</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Огненная кара -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="fire_punishment" data-fallback="crosshairs"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Огненная кара</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Проклинает цель, затем стреляет огненными снарядами каждые 0.5 сек. Прерывается при смерти.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон каждого</span><span class="param-values">INT×0.5 + 75/150/225/300/375</span></div>
+                        <div class="param-row"><span class="param-label">Снарядов</span><span class="param-values">4/6/8/10/12</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">900</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/190/230/270/310</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Зов Пламени -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="call_of_flame" data-fallback="fire"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Зов Пламени</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Взывает к древней силе огня, поджигая врагов вокруг. От каждого поражённого противника летит частица пламени, исцеляя заклинателя.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/225/275/325/375</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">30 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Огненная тропа -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="fire_trail" data-fallback="meteor"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Огненная тропа</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Огромная огненная волна конусовидной формы, сметающая всё на пути.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">INT×4/8/12/16/20 + 600/1000/1400/1800/2200</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">450</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">2000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">450/600/750/900/1050</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
-                <div class="ability-card passive">
+                <!-- F: Огненный диск -->
+                <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="fire_disc" data-fallback="compact-disc"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Пассивная</div>
+                            <div class="ability-name">Огненный диск</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Бросает огненный диск в цель. Диск наносит урон и отбрасывает врагов вокруг.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">120 + INT×1.6</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">250</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">900</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">120/150/180</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20 сек</span></div>
                     </div>
                 </div>
 
