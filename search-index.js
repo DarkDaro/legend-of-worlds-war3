@@ -1505,66 +1505,6 @@ var SEARCH_INDEX = {
     "heroName": "Снежная Королева"
   },
   {
-    "name": "Чародейческая стрела",
-    "heroId": "sorcerer-demo",
-    "heroName": "Жрица Луны"
-  },
-  {
-    "name": "Огненная стрела",
-    "heroId": "sorcerer-demo",
-    "heroName": "Жрица Луны"
-  },
-  {
-    "name": "Ледяная стрела",
-    "heroId": "sorcerer-demo",
-    "heroName": "Жрица Луны"
-  },
-  {
-    "name": "Тёмная стрела",
-    "heroId": "sorcerer-demo",
-    "heroName": "Жрица Луны"
-  },
-  {
-    "name": "Прыжок рысью",
-    "heroId": "sorcerer-demo",
-    "heroName": "Жрица Луны"
-  },
-  {
-    "name": "Меткость",
-    "heroId": "sorcerer-demo",
-    "heroName": "Жрица Луны"
-  },
-  {
-    "name": "Боевые совы",
-    "heroId": "sorcerer-demo",
-    "heroName": "Жрица Луны"
-  },
-  {
-    "name": "Смена стрелы",
-    "heroId": "sorcerer-demo",
-    "heroName": "Жрица Луны"
-  },
-  {
-    "name": "Выпад",
-    "heroId": "sorcerer-demo",
-    "heroName": "Жрица Луны"
-  },
-  {
-    "name": "Охота",
-    "heroId": "sorcerer-demo",
-    "heroName": "Жрица Луны"
-  },
-  {
-    "name": "Чуткий зверь",
-    "heroId": "sorcerer-demo",
-    "heroName": "Жрица Луны"
-  },
-  {
-    "name": "Вернуться в форму",
-    "heroId": "sorcerer-demo",
-    "heroName": "Жрица Луны"
-  },
-  {
     "name": "Печать Огня",
     "heroId": "sorcerer",
     "heroName": "Чародей"
