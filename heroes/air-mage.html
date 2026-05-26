@@ -63,83 +63,104 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Циклон -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="cyclone" data-fallback="tornado"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Циклон</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Маг воздуха создаёт торнадо и запускает его по линии. Все, кто попадёт под него, получат урон и будут подброшены в воздух.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">250/400/550/700/850 + INT×2</span></div>
+                        <div class="param-row"><span class="param-label">Подброс</span><span class="param-values">1 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">300</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1500</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/175/225/275/325</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Мощь ветра -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="wind_power" data-fallback="wind"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Мощь ветра</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Герой перемещается в указанную область, поражая всех врагов ветром и замедляя их. Затем продолжает движение в этом направлении.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">325/400/475/550/625 + INT×0.6/1.2/1.8/2.4/3</span></div>
+                        <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">20%/25%/30%/35%/40%</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">350</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1100</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/225/300/375/450</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Контроль Ветра -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="wind_control" data-fallback="feather-alt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Контроль Ветра</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Маг Воздуха усиливает свои атаки ветром, увеличивая скорость боя. Атакуя, маг создаёт воздушные вихри, наносящие урон рядом с целью.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Скорость боя</span><span class="param-values">20%/30%/40%/50%/60%</span></div>
+                        <div class="param-row"><span class="param-label">Урон вихрей</span><span class="param-values">30% от нанесённого + 50 + INT×1/1.5/2.5/3/3.5</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">160/200/240/280/320</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Ураган -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="hurricane" data-fallback="cloud-showers-heavy"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Ураган</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Герой выпускает сильный ураган, создавая мощные ветряные потоки, сдувающие врагов и замедляющие их скорость передвижения.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">1200 + INT×4/8/12/16/20</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">200 (+75 расширяется)</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1500</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">380/560/740/920/1100</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">140 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
+                <!-- F: Ветер -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="wind" data-fallback="wind"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Ветер</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Атакуя, Маг воздуха с 30% шансом создаёт летящий во врага воздушный смерч, который наносит урон и замедляет на 20%.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">30%</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">70 + INT×0.7</span></div>
+                        <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">20%</span></div>
                     </div>
                 </div>
 

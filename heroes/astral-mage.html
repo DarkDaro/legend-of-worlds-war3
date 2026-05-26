@@ -63,83 +63,106 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Астральный бросок -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="astral_throw" data-fallback="meteor"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Астральный бросок</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Маг кидает в указанную точку магическую сферу, из неё появляются молнии, подбрасывающие всех врагов в воздух, а затем наносят им урон и отбрасывают в разные стороны.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">200/300/400/500/600 + INT×0.5</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">500</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1200</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/225/275/325/375</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">14 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Астральная молния -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="astral_lightning" data-fallback="bolt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
+                            <div class="ability-name">Астральная молния</div>
+                            <div class="ability-type-badge">Активная</div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    </div>
+                    <div class="ability-desc">Заряд астральной энергии, последовательно поражающий несколько противников и наносящий каждому значительный урон. На каждого накладывается оглушение.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">100/200/300/400/500 + INT×3 каждой цели</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">0.7 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">500</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1200</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">180/215/250/285/320</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Астральная сфера -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="astral_sphere" data-fallback="globe"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Астральная сфера</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Герой создаёт сконцентрированный сгусток энергии, который спустя задержку взрывается, нанося огромный урон. Сжигает ману врагам в размере 20% от урона.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">INT×5 + 500/650/800/950/1100</span></div>
+                        <div class="param-row"><span class="param-label">Сжигание маны</span><span class="param-values">20% от урона</span></div>
+                        <div class="param-row"><span class="param-label">Задержка</span><span class="param-values">3.8/3.5/3.2/2.9/2.6 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">725</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1400</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/250/325/400/475</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">30 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Астральный шторм -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="astral_storm" data-fallback="cloud-bolt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Астральный шторм</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">В области 1600 от героя расползаются молнии. Они поднимают вверх каждого встреченного врага, нанося огромный урон. Все схваченные враги висят в воздухе 3 сек.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">900/1350/1800/2250/2700 + INT×5/8/11/14/17</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">1600</span></div>
+                        <div class="param-row"><span class="param-label">Подвес</span><span class="param-values">3 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">400/500/600/700/800</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
+                <!-- F: Астральное Возмездие -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="astral_retribution" data-fallback="shield-alt"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Астральное Возмездие</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Получая урон, есть шанс 30% возвратить часть урона противнику.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">30%</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">100/200 + INT×0.2 + 20%/25% от полученного</span></div>
+                        <div class="param-row"><span class="param-label">Дистанция</span><span class="param-values">750</span></div>
                     </div>
                 </div>
 

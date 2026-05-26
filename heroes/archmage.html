@@ -63,84 +63,108 @@
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
+
+                <!-- Q: Магический шар -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="water_elemental" data-fallback="water"></div>
+                        <div class="ability-icon" data-ability="magic_orb" data-fallback="circle"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">Призыв водяного элементаля</div>
+                            <div class="ability-name">Магический шар</div>
                             <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Призывает могучего элементаля воды, сражающегося на стороне героя.</div>
+                    <div class="ability-desc">Герой выпускает зелёный шар по линии, который наносит урон и замедляет скорость передвижения врагов на 30%.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">120/130/140/150/160</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20/18/16/14/12</span></div>
-                        <div class="param-row"><span class="param-label">HP элементаля</span><span class="param-values">500/700/900/1100/1300</span></div>
-                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">60</span></div>
-                    </div>
-                </div>
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="blizzard" data-fallback="snowflake"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">W</span>
-                            <div class="ability-name">Снежная буря</div>
-                            <div class="ability-type-badge">Активная</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Обрушивает на область ледяные осколки, нанося урон всем врагам в зоне.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">70/80/90/100/110</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">6</span></div>
-                        <div class="param-row"><span class="param-label">Урон в сек</span><span class="param-values">30/45/60/75/90</span></div>
-                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">4/5/6/7/8</span></div>
-                    </div>
-                </div>
-                <div class="ability-card passive">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="aura" data-fallback="crown"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">E</span>
-                            <div class="ability-name">Аура величественности</div>
-                            <div class="ability-type-badge">Пассивная</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Ускоряет восстановление маны союзников поблизости.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Реген маны</span><span class="param-values">0.5/1/1.5/2/2.5</span></div>
-                        <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">900</span></div>
-                    </div>
-                </div>
-                <div class="ability-card ultimate">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="teleport" data-fallback="bolt"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">R</span>
-                            <div class="ability-name">Массовая телепортация</div>
-                            <div class="ability-type-badge">Ультимейт</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Мгновенно перемещает героя и ближайших союзников в любую точку карты.</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">100/110/120/130/140</span></div>
-                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15/13/11/9/7</span></div>
-                        <div class="param-row"><span class="param-label">Макс. целей</span><span class="param-values">24/28/32/36/40</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">200/300/400/500/600 + INT×2</span></div>
+                        <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">30%</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1400</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">225/275/325/375/425</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10 сек</span></div>
                     </div>
                 </div>
 
-                <!-- F: ??? -->
+                <!-- W: Ледяная стрела -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="star"></div>
+                        <div class="ability-icon" data-ability="ice_arrow" data-fallback="icicles"></div>
                         <div class="ability-info">
-                            <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">???</div>
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Ледяная стрела</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание</div>
+                    <div class="ability-desc">Герой формирует шар из холода, затем запускает его во врага, оглушая на 0.2 сек каждые 0.5 секунд. Замедляет скорость боя и бега на 50%.</div>
                     <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">200/300/400/500/600 + INT×3</span></div>
+                        <div class="param-row"><span class="param-label">Замедление</span><span class="param-values">50% боя и бега</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">4 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">900</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/210/245/280/315</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- E: Телекинез -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="telekinesis" data-fallback="hand-rock"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Телекинез</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Герой прикрепляет к цели фиолетовую молнию, а затем подбрасывает цель в воздух и тянет к себе.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">250/350/450/550/650 + INT×4</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">1 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">800/900/1000/1100/1200</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">225/275/325/375/425</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Огненная земля -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="fire_ground" data-fallback="fire"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Огненная земля</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Герой поджигает указанную область. Все враги, оказавшиеся в огне, будут получать урон в секунду.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон/сек</span><span class="param-values">600 + INT×1/2/3/4/5</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">550</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1500</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">6/8/10/12/14 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">350/500/650/800/950</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">90 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">12% шанс мгновенной перезарядки</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Огненная вспышка -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="fire_blast" data-fallback="meteor"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Огненная вспышка</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Герой запускает в противника огненный шар, оглушающий его на 1.25 сек. Наносит урон мгновенно и столько же в течение 3 сек.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">475 + INT (мгновенно + за 3 сек)</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">1.25 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">850</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/160/195</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10 сек</span></div>
                     </div>
                 </div>
 

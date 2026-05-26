@@ -63,83 +63,108 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Магнитный удар -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="magnetic_strike" data-fallback="fist-raised"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Магнитный удар</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Мгновенная атака по цели наносит серьёзный урон, отбрасывает и оглушает.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">300/450/600/750/900 + STR×3</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">2 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">600</span></div>
+                        <div class="param-row"><span class="param-label">Отбрасывание</span><span class="param-values">600</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">105/145/185/225/265</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">8 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Сокрушение -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="crush" data-fallback="hammer"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Сокрушение</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Огромный импульс откидывает всех врагов, нанося им урон и оглушая. При падении они скатятся в образовавшийся кратер.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">STR×2 + 275/450/650/800/975</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">2 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">450</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">800</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/225/275/325/375</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Магическая волна -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="magic_wave" data-fallback="wave-square"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Магическая волна</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Герой высвобождает магическую энергию в виде волны вдоль линии. Все, кто окажутся у неё на пути, получат урон и будут оглушены.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">300/400/500/600/700 + STR×3/3.5/4/4.5/5</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">1.2 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1000</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">350</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/175/200/225/250</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Фатальный удар -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="fatal_strike" data-fallback="skull-crossbones"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Фатальный удар</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Стремительная атака на расстоянии поражает врага и наносит огромный урон. Урон по цели считается атакой.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">1000 + (STR+AGI)×5/10/15/20/25</span></div>
+                        <div class="param-row"><span class="param-label">Урон по области</span><span class="param-values">50% от урона по цели</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">3 сек</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">200</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">450/550/650/750/850</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
+                <!-- F: Перелом -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="fracture" data-fallback="bone"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Перелом</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Каждая четвёртая атака героя оглушает и наносит дополнительный урон противнику.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Ударов для активации</span><span class="param-values">4</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">175 + STR×0.6</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">0.8 сек</span></div>
                     </div>
                 </div>
 
