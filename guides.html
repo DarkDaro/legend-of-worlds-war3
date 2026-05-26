@@ -17,9 +17,10 @@
     <script src="icon-loader.js" defer></script>
     <script src="analytics.js" defer></script>
     <style>
+        /* Карточки-ссылки */
         .guides-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 16px;
             margin-bottom: 24px;
         }
@@ -30,7 +31,7 @@
             border: 1px solid var(--glass-border);
             border-radius: 12px;
             padding: 20px;
-            transition: 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
         }
         .guide-card:hover {
             border-color: var(--glass-border-hover);
@@ -53,7 +54,6 @@
             line-height: 1.5;
             margin: 0;
         }
-        .guide-card p + p { margin-top: 6px; }
         .guide-card .guide-link {
             display: inline-block;
             margin-top: 10px;
@@ -63,6 +63,59 @@
         }
         .guide-card .guide-link:hover { text-decoration: underline; }
 
+        /* Гайды на героев — карточки с иконкой */
+        .hero-guide-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 16px;
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+        .hero-guide-card:hover {
+            border-color: var(--glass-border-hover);
+            box-shadow: var(--neon-glow);
+            transform: translateY(-2px);
+        }
+        .hero-guide-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            border: 1px solid var(--glass-border);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .hero-guide-info h3 {
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin: 0 0 3px;
+        }
+        .hero-guide-info p {
+            color: var(--text-secondary);
+            font-size: 0.82rem;
+            line-height: 1.4;
+            margin: 0;
+        }
+        .hero-guide-arrow {
+            margin-left: auto;
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            opacity: 0.5;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .hero-guide-card:hover .hero-guide-arrow {
+            opacity: 1;
+            transform: translateX(3px);
+        }
+
+        /* Секции-статьи */
         .guide-section {
             background: var(--glass-bg);
             backdrop-filter: blur(var(--glass-blur));
@@ -136,6 +189,7 @@
         }
         .guide-section .tip-link:hover { text-decoration: underline; }
 
+        /* Таблица боссов */
         .guide-boss-table {
             width: 100%;
             border-collapse: collapse;
@@ -160,11 +214,44 @@
         .guide-boss-table .chance { color: var(--accent-cyan); font-weight: 600; }
         .guide-boss-table .chance-low { color: #ff7777; font-weight: 600; }
 
+        /* Разделитель */
+        .guides-divider {
+            border: none;
+            border-top: 1px solid var(--glass-border);
+            margin: 32px 0 28px;
+        }
+
+        /* Кнопки внизу */
+        .guides-bottom {
+            margin-top: 24px;
+            text-align: center;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Адаптив */
         @media (max-width: 700px) {
             .guides-grid { grid-template-columns: 1fr; }
             .guide-section { padding: 16px; }
             .guide-boss-table { font-size: 0.75rem; }
             .guide-boss-table th, .guide-boss-table td { padding: 4px 6px; }
+            .hero-guide-card { padding: 12px; gap: 10px; }
+            .hero-guide-icon { width: 40px; height: 40px; border-radius: 8px; }
+        }
+        @media (max-width: 480px) {
+            .guide-section { padding: 14px 12px; border-radius: 10px; }
+            .guide-section h2 { font-size: 1rem; }
+            .guide-section p { font-size: 0.82rem; }
+            .guide-section ul li { font-size: 0.8rem; }
+            .hero-guide-card { padding: 10px; gap: 8px; }
+            .hero-guide-icon { width: 36px; height: 36px; }
+            .hero-guide-info h3 { font-size: 0.9rem; }
+            .hero-guide-info p { font-size: 0.76rem; }
+            .guide-card { padding: 14px; }
+            .guide-card h3 { font-size: 0.95rem; }
+            .guide-card p { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -194,7 +281,7 @@
         <h1><i class="fas fa-book-open"></i> Гайды</h1>
         <p class="info-text" style="margin-bottom:24px;">Коротко и по делу: как не утонуть на Арене, что купить первым и когда идти на боссов.</p>
 
-        <!-- Быстрые ссылки -->
+        <!-- Быстрые ссылки — общие гайды -->
         <div class="guides-grid">
             <div class="guide-card">
                 <span class="guide-card-icon"><i class="fas fa-rocket" style="color:#51cf66;"></i></span>
@@ -309,7 +396,24 @@
             </ul>
         </div>
 
-        <div style="margin-top:24px; text-align:center; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <!-- Разделитель -->
+        <hr class="guides-divider">
+
+        <!-- Гайды на героев -->
+        <h2 class="section-title"><i class="fas fa-user-shield"></i> Гайды на героев</h2>
+        <p class="info-text" style="margin-bottom:16px;">Детальные гайды: комбо, закуп, позиционирование, синергии и контрпики.</p>
+        <div class="guides-grid">
+            <a href="guide-druid.html" class="hero-guide-card">
+                <img src="images/heroes/druid.png" alt="Друид" class="hero-guide-icon" />
+                <div class="hero-guide-info">
+                    <h3>Друид</h3>
+                    <p>Саппорт-целитель и живучий танк. Комбо, закуп, синергии.</p>
+                </div>
+                <i class="fas fa-chevron-right hero-guide-arrow"></i>
+            </a>
+        </div>
+
+        <div class="guides-bottom">
             <a href="heroes.html" class="btn-secondary"><i class="fas fa-users"></i> Герои</a>
             <a href="items.html" class="btn-secondary"><i class="fas fa-flask"></i> Предметы</a>
             <a href="mechanics.html" class="btn-secondary"><i class="fas fa-cogs"></i> Механики</a>
@@ -333,8 +437,7 @@
         </div>
     </footer>
 <script>
-// Scroll-reveal — секции гайдов
-document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.guide-section, .guide-card'); });
+document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.guide-section, .guide-card, .hero-guide-card'); });
 </script>
 </body>
 </html>

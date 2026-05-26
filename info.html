@@ -11,6 +11,7 @@
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="info-auto-level.css">
     <script src="hero-data.js"></script>
     <script src="search-index.js"></script>
     <script src="search.js"></script>
@@ -59,90 +60,7 @@
             color: var(--text-secondary);
             text-align: center;
         }
-        /* Автопрокачка — карточки слотов */
-        .auto-level-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 14px;
-            margin: 0 auto;
-            max-width: 900px;
-        }
-        .auto-level-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(var(--glass-blur));
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 18px 16px 14px;
-            text-align: center;
-            transition: 0.2s;
-        }
-        .auto-level-card:hover {
-            border-color: var(--glass-border-hover);
-            box-shadow: var(--neon-glow);
-            transform: translateY(-2px);
-        }
-        .auto-level-slot {
-            font-size: 2rem;
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 4px;
-        }
-        .auto-level-type {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
-        }
-        .auto-level-max {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-        }
-        .auto-levels {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .auto-level-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-        }
-        .auto-level-num {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            font-size: 0.8rem;
-            font-weight: 700;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .auto-level-hero {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            font-weight: 600;
-        }
-        /* Цвета слотов */
-        .slot-f .auto-level-slot { color: #ff9800; }
-        .slot-f .auto-level-num { background: rgba(255,152,0,0.15); border-color: rgba(255,152,0,0.3); color: #ff9800; }
-        .slot-q .auto-level-slot { color: #4caf50; }
-        .slot-q .auto-level-num { background: rgba(76,175,80,0.15); border-color: rgba(76,175,80,0.3); color: #4caf50; }
-        .slot-w .auto-level-slot { color: #2196f3; }
-        .slot-w .auto-level-num { background: rgba(33,150,243,0.15); border-color: rgba(33,150,243,0.3); color: #2196f3; }
-        .slot-e .auto-level-slot { color: #9c27b0; }
-        .slot-e .auto-level-num { background: rgba(156,39,176,0.15); border-color: rgba(156,39,176,0.3); color: #9c27b0; }
-        .slot-r .auto-level-slot { color: #f44336; }
-        .slot-r .auto-level-num { background: rgba(244,67,54,0.15); border-color: rgba(244,67,54,0.3); color: #f44336; }
         @media (max-width: 600px) {
-            .auto-level-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .auto-level-slot { font-size: 1.6rem; }
-            .auto-level-num { width: 24px; height: 24px; font-size: 0.7rem; }
             .modes-promo-btn { padding: 16px 24px; margin: 20px 12px 28px; }
             .modes-promo-btn i { font-size: 1.5rem; }
             .modes-promo-btn span { font-size: 1rem; }
@@ -272,7 +190,7 @@
         <!-- Автопрокачка способностей -->
         <div class="info-section" id="auto-level">
             <h2 class="section-title"><i class="fas fa-level-up-alt"></i> Автопрокачка способностей</h2>
-            <p style="color:var(--text-secondary); margin-bottom:20px; font-size:1.05rem;">Все способности героя прокачиваются автоматически при достижении определённого уровня героя. Не нужно тратить очки способностей вручную — система сама повышает уровень способности.</p>
+            <p class="auto-level-intro">Все способности героя прокачиваются автоматически при достижении определённого уровня героя. Не нужно тратить очки способностей вручную — система сама повышает уровень способности.</p>
             <div class="auto-level-grid">
                 <div class="auto-level-card slot-f">
                     <div class="auto-level-slot">F</div>
@@ -333,7 +251,7 @@
                     </div>
                 </div>
             </div>
-            <p style="color:var(--text-secondary); margin-top:16px; font-size:0.9rem; text-align:center;">F-способности — воинские, качаются через <code>SetUnitAbilityLevel</code>, а не через <code>SelectHeroSkill</code>.</p>
+            <p class="auto-level-note">F-способности — воинские, качаются через <code>SetUnitAbilityLevel</code>, а не через <code>SelectHeroSkill</code>.</p>
         </div>
 
         <!-- Как установить -->
