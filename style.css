@@ -737,6 +737,8 @@ h1 {
     line-height: 1.5;
     margin-bottom: 10px;
 }
+/* Удача: зелёный «шанс» в описаниях способностей (из цветокода |c00FF5555) */
+.luck-chance { color: #55ff55; font-weight: 600; }
 .ability-params {
     display: flex;
     flex-wrap: wrap;
