@@ -167,7 +167,6 @@
                 });
 
                 card.addEventListener('click', () => {
-                    // Герои WIP — не переходим
                     if (hero.wip) return;
                     window.location.href = 'heroes/' + hero.heroId + '.html';
                 });
@@ -187,10 +186,10 @@
                     const card = createHeroCard(hero);
                     let show = currentFilter === 'all' && !hero.unique && !hero.isAltForm && !hero.wip
                         || (currentFilter === 'unique' && hero.unique)
-                        || (currentFilter === 'wip' && hero.wip)
-                        || (hero.attr === currentFilter && !hero.unique && !hero.isAltForm);
+                        || (currentFilter === 'wip' && hero.wip && false) // WIP-фильтр: всегда пусто
+                        || (hero.attr === currentFilter && !hero.unique && !hero.isAltForm && !hero.wip);
                     if (currentFilter === 'favorites') {
-                        show = favorites.includes(hero.heroId);
+                        show = favorites.includes(hero.heroId) && !hero.wip;
                     }
                     card.style.display = show ? '' : 'none';
                     heroGrid.appendChild(card);
@@ -203,12 +202,12 @@
                 const cards = document.querySelectorAll('.hero-card');
                 cards.forEach((card, i) => {
                     const hero = heroesData[i];
-                    let show = filterValue === 'all' && !hero.unique && !hero.isAltForm
+                    let show = filterValue === 'all' && !hero.unique && !hero.isAltForm && !hero.wip
                         || (filterValue === 'unique' && hero.unique)
-                        || (filterValue === 'wip' && hero.wip)
-                        || (hero.attr === filterValue && !hero.unique && !hero.isAltForm);
+                        || (filterValue === 'wip' && hero.wip && false) // WIP-фильтр: всегда пусто
+                        || (hero.attr === filterValue && !hero.unique && !hero.isAltForm && !hero.wip);
                     if (filterValue === 'favorites') {
-                        show = favorites.includes(hero.heroId);
+                        show = favorites.includes(hero.heroId) && !hero.wip;
                     }
                     card.style.display = show ? '' : 'none';
                 });
@@ -229,7 +228,7 @@
             // Счётчик героев
             function updateCount() {
                 const visible = [...document.querySelectorAll('.hero-card')].filter(c => c.style.display !== 'none').length;
-                const total = heroesData.length;
+                const total = heroesData.filter(h => !h.wip && !h.isAltForm).length;
                 document.getElementById('heroCount').innerHTML =
                     '<i class="fas fa-filter"></i> Показано: ' + visible + ' из ' + total;
             }
@@ -240,13 +239,12 @@
                 const query = this.value.toLowerCase().trim();
                 document.querySelectorAll('.hero-card').forEach((card, i) => {
                     const hero = heroesData[i];
-                    // Проверяем фильтр
+                    // Проверяем фильтр (WIP всегда скрыт)
                     let filterOk = currentFilter === 'all' && !hero.unique && !hero.isAltForm && !hero.wip
                         || (currentFilter === 'unique' && hero.unique)
-                        || (currentFilter === 'wip' && hero.wip)
-                        || (hero.attr === currentFilter && !hero.unique && !hero.isAltForm);
+                        || (hero.attr === currentFilter && !hero.unique && !hero.isAltForm && !hero.wip);
                     if (currentFilter === 'favorites') {
-                        filterOk = favorites.includes(hero.heroId);
+                        filterOk = favorites.includes(hero.heroId) && !hero.wip;
                     }
                     // Проверяем поиск
                     const name = hero.name.toLowerCase();

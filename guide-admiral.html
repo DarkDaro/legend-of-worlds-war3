@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <link rel="icon" href="images/logo.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Гайд: Друид · Legend of Worlds</title>
-    <meta property="og:title" content="Гайд: Друид — Legend of Worlds">
-    <meta property="og:description" content="Комбо, закуп, позиционирование и синергии саппорт-целителя.">
+    <title>Гайд: Адмирал · Legend of Worlds</title>
+    <meta property="og:title" content="Гайд: Адмирал — Legend of Worlds">
+    <meta property="og:description" content="Комбо, закуп, позиционирование и синергии инициатора-танка.">
     <meta property="og:image" content="images/preview.png">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -47,8 +47,8 @@
             font-size: 0.88rem;
             color: var(--text-secondary);
         }
-        .guide-hero-role .role-support {
-            color: #55ff88;
+        .guide-hero-role .role-initiator {
+            color: #ff922b;
             font-weight: 600;
         }
 
@@ -237,7 +237,6 @@
         }
 
         /* Адаптив */
-        /* Планшет */
         @media (max-width: 700px) {
             .guide-hero-header { flex-direction: column; text-align: center; gap: 12px; }
             .guide-synergy-grid { grid-template-columns: 1fr; }
@@ -248,8 +247,6 @@
             .guide-buy-items { gap: 6px; }
             .guide-key-item { padding: 12px 14px; }
         }
-
-        /* Мобилка */
         @media (max-width: 480px) {
             .guide-hero-header { padding: 14px; margin-bottom: 20px; }
             .guide-hero-info h1 { font-size: 1.3rem; }
@@ -275,8 +272,6 @@
             .guide-list-num { font-size: 0.68rem; }
             .guide-bottom { gap: 8px; }
         }
-
-        /* Маленькая мобилка */
         @media (max-width: 360px) {
             .guide-hero-header { padding: 10px; }
             .guide-hero-info h1 { font-size: 1.15rem; }
@@ -313,13 +308,13 @@
         </nav>
     </header>
     <div class="wiki-container">
-        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="guides.html">Гайды</a><span class="sep">›</span><span class="current">Друид</span></div>
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="guides.html">Гайды</a><span class="sep">›</span><span class="current">Адмирал</span></div>
 
         <div class="guide-hero-header">
-            <img src="images/heroes/druid.png" alt="Друид" class="guide-hero-icon" />
+            <img src="images/heroes/admiral.png" alt="Адмирал" class="guide-hero-icon" />
             <div class="guide-hero-info">
-                <h1>Друид — Сильвестр</h1>
-                <div class="guide-hero-role">Сила · <span class="role-support">Саппорт-целитель</span> · Живучий танк</div>
+                <h1>Адмирал — Прохор</h1>
+                <div class="guide-hero-role">Сила · <span class="role-initiator">Инициатор-танк</span></div>
             </div>
         </div>
 
@@ -327,13 +322,13 @@
         <div class="guide-section">
             <h2><i class="fas fa-magic"></i> Способности</h2>
             <p class="guide-ability-list">
-                <strong>Q Звериный рёв</strong> — бафф атаки и защиты команде + урон врагам в области.<br>
-                <strong>W Вороны</strong> — призывные птицы, атакуют врагов и обнаруживают невидимок.<br>
-                <strong>E Омоложение</strong> — реген HP и маны союзнику. <span class="tag-dispel">⚠ Развеивается</span><br>
-                <strong>R Покой</strong> — мощный АоЕ-хил по области. <span class="tag-dispel">⚠ Развеивается</span> · <span class="tag-scepter">◈ Скипетр</span><br>
-                <strong>F Кровожадность</strong> — +35% скорость боя, +15% скорость бега команде.
+                <strong>Q Гейзер</strong> — АоЕ-подброс с замедлением. Задержка 1.2 сек — нужно прогнозировать.<br>
+                <strong>W Меч прилива</strong> — пассивка: каждая 5-я атака наносит бонусный урон и вешает «очищение» (100% → 50% замедление).<br>
+                <strong>E Призрачный корабль</strong> — корабль плывёт вперёд, оглушает и наносит урон по линии.<br>
+                <strong>R Призрачная Флотилия</strong> — ультимейт: залпы по области + аура (−броня врагам, +броня союзникам). <span class="tag-scepter">◈ Скипетр</span><br>
+                <strong>F Волны</strong> — 7 волн в направлении + взмах мечом. Низкий манакост, быстрый кулдаун.
             </p>
-            <a href="heroes/druid.html" class="guide-ability-link">Все параметры на карточке героя →</a>
+            <a href="heroes/admiral.html" class="guide-ability-link">Все параметры на карточке героя →</a>
         </div>
 
         <!-- Комбо -->
@@ -341,21 +336,21 @@
             <h2><i class="fas fa-bolt"></i> Комбо</h2>
 
             <div class="guide-combo">
-                <h3>Инициация драки</h3>
-                <div class="guide-combo-sequence">F → Q → атака → R (если нужно лечение)</div>
-                <div class="guide-combo-desc">F даёт команде скорость для сближения, Q баффает урон и защиту, R — экстренное лечение если драка затяжная.</div>
+                <h3>Полная инициация</h3>
+                <div class="guide-combo-sequence">E → Q → R → F → атака</div>
+                <div class="guide-combo-desc">E оглушает и собирает врагов, Q подбрасывает на месте (пока они в стане — не уклонятся), R накрывает флотилией, F добивает волнами. Классический «один в поле воин» — если ты всё это попал, драка выиграна.</div>
             </div>
 
             <div class="guide-combo">
-                <h3>Спасение союзника</h3>
-                <div class="guide-combo-sequence">E → F (для отхода)</div>
-                <div class="guide-combo-desc">E лечит процент от макс. здоровья — чем больше жизней у цели, тем сильнее отхил. F помогает команде отступить.</div>
+                <h3>Быстрый пуш</h3>
+                <div class="guide-combo-sequence">Q → F → атака</div>
+                <div class="guide-combo-desc">Если R на кулдауне. Q замедляет, F добивает урон. Экономит ману и время — можно использовать на крипах или для харраса.</div>
             </div>
 
             <div class="guide-combo">
-                <h3>Разведка</h3>
-                <div class="guide-combo-sequence">W → смотрим что в тумане</div>
-                <div class="guide-combo-desc">Вороны обнаруживают невидимых юнитов. Используй перед пушем базы или когда враг пропал с радара.</div>
+                <h3>Защита базы</h3>
+                <div class="guide-combo-sequence">R на подходе → E по куче → Q под ноги</div>
+                <div class="guide-combo-desc">Флотилия даёт ауру брони союзникам — ставь R так, чтобы аура (1500 область) накрывала команду. E и Q не дают врагам подойти.</div>
             </div>
         </div>
 
@@ -366,36 +361,36 @@
             <div class="guide-buy-phase">
                 <h3>Ранняя игра (1–5 мин)</h3>
                 <div class="guide-buy-items">
-                    <span class="guide-buy-item"><i class="fas fa-fire"></i> Огненный щит</span>
+                    <span class="guide-buy-item"><i class="fas fa-shield-alt"></i> Огненный щит</span>
                     <span class="guide-buy-item"><i class="fas fa-key"></i> Золотой ключ</span>
                 </div>
-                <div class="guide-buy-note">Броня + урон аурой помогает выживать. Ключ ускоряет фарм.</div>
+                <div class="guide-buy-note">Щит даёт броню и урон аурой — идеально для мили-танка. Ключ ускоряет фарм, а Q + F быстро чистят крипов.</div>
             </div>
 
             <div class="guide-buy-phase">
                 <h3>Мидгейм (5–15 мин)</h3>
                 <div class="guide-buy-items">
                     <span class="guide-buy-item"><i class="fas fa-fire"></i> Сфера огня</span>
-                    <span class="guide-buy-item"><i class="fas fa-snowflake"></i> Сфера льда</span>
-                    <span class="guide-buy-item"><i class="fas fa-tint"></i> Мана / реген</span>
+                    <span class="guide-buy-item"><i class="fas fa-fist-raised"></i> Сила</span>
                     <span class="guide-buy-item"><i class="fas fa-gem"></i> Скипетр Владыки</span>
+                    <span class="guide-buy-item"><i class="fas fa-tint"></i> Мана</span>
                 </div>
-                <div class="guide-buy-note">Дополнительный урон с атаки. E и R стоят дорого — нужна мана. Скипетр ради 5% шанса сброса R.</div>
+                <div class="guide-buy-note">Все способности масштабируются от STR — сфера и сила дают и урон, и хп. Скипетр ради 10% шанса сброса R (120 сек кулдаун!). Мана нужна — E и R дорогие.</div>
             </div>
 
             <div class="guide-buy-phase">
                 <h3>Лейтгейм (15+ мин)</h3>
                 <div class="guide-buy-items">
-                    <span class="guide-buy-item"><i class="fas fa-fist-raised"></i> Сила</span>
                     <span class="guide-buy-item"><i class="fas fa-heart"></i> Вампиризм</span>
                     <span class="guide-buy-item"><i class="fas fa-shield-alt"></i> Броня / блок</span>
+                    <span class="guide-buy-item"><i class="fas fa-bolt"></i> Скорость боя</span>
                 </div>
-                <div class="guide-buy-note">R и Q масштабируются от STR. Вампиризм помогает жить в лоб. Предметы на выживаемость — друид уязвим.</div>
+                <div class="guide-buy-note">Вампиризм + W = стабильный отхил каждые 5 ударов. Броня держит в лоб. Скорость боя чаще прокает W и быстрее сбивает стаки.</div>
             </div>
 
             <div class="guide-key-item">
                 <h3><i class="fas fa-gem"></i> Ключевой предмет: Скипетр Владыки</h3>
-                <p>Ради 5% шанса мгновенного сброса R. Покой — 105 сек кулдаун. Каждый шанс использовать его дважды за драку — это огромно.</p>
+                <p>10% шанс мгновенной перезарядки R. Флотилия — 120 сек кулдаун. Каждый шанс использовать R дважды за драку — это +1200 урона и +36 брони команде. Скипетр обязателен.</p>
             </div>
         </div>
 
@@ -403,9 +398,10 @@
         <div class="guide-section">
             <h2><i class="fas fa-crosshairs"></i> Позиционирование</h2>
             <ul class="guide-list">
-                <li><strong>Сзади команды — но не обязательно.</strong> Друид — не хрупкий саппорт. Благодаря E и R он отлично держится в лоб, особенно с предметами на STR. Если нужен фронтлайн — стой впереди, хиль себя и баффай команду.</li>
-                <li><strong>Не стой вплотную к мили-дамагерам без нужды.</strong> Да, друид живуч, но фокус — это фокус. Если враг прыгнет всем составом — эскейпа кроме F нет.</li>
-                <li><strong>Следи за диспелерами.</strong> E и R развеиваются. Если у врага есть Верховный Маг или кто-то с Purge — не трать ману на E вхолостую. Подожди, пока они потратят диспел, и только потом хиль.</li>
+                <li><strong>Впереди команды.</strong> Адмирал — инициатор. Ты первым врываешься, оглушаешь и принимаешь урон на себя. Флотилия даёт тебе броню — используй это.</li>
+                <li><strong>Q — предикт.</strong> Гейзер срабатывает через 1.2 сек. Не кидай под ноги стоящему врагу — он уйдёт. Целься туда, куда он побежит, или кидай по застаненным E целям.</li>
+                <li><strong>R — позиция решает.</strong> Ставь флотилию так, чтобы аура (1500) накрывала и врагов (−броня), и союзников (+броня). Идеально — в центре драки.</li>
+                <li><strong>W — не забывай бить.</strong> Меч прилива работает от автоатак. В драке не стой сложа руки после комбо — бей, чтобы прокать пассивку.</li>
             </ul>
         </div>
 
@@ -414,36 +410,36 @@
             <h2><i class="fas fa-handshake"></i> Синергии и контрпики</h2>
             <div class="guide-synergy-grid">
                 <div class="guide-synergy-card ally">
-                    <div class="guide-synergy-name">Паладин</div>
-                    <div class="guide-synergy-reason">Два хилера = команда почти бессмертна. Q + аура паладина — двойной бафф</div>
+                    <div class="guide-synergy-name">Друид</div>
+                    <div class="guide-synergy-reason">F друида даёт скорость для инициации, Q баффает урон. R друида лечит тебя в лоб — ты бессмертен</div>
                 </div>
                 <div class="guide-synergy-card ally">
-                    <div class="guide-synergy-name">Адмирал</div>
-                    <div class="guide-synergy-reason">F даёт скорость для инициации, Q баффает его урон. R друида лечит его в лоб</div>
+                    <div class="guide-synergy-name">Верховный Маг</div>
+                    <div class="guide-synergy-reason">E оглушает → Верховный Маг вливает всё. Q + R — идеальная площадка для его АоЕ</div>
+                </div>
+                <div class="guide-synergy-card ally">
+                    <div class="guide-synergy-name">Паладин</div>
+                    <div class="guide-synergy-reason">Щит паладина + броня от R — команда получает +50+ брони. Два танка не пробиваются</div>
                 </div>
                 <div class="guide-synergy-card ally">
                     <div class="guide-synergy-name">Самурай</div>
-                    <div class="guide-synergy-reason">F (+35% скорость боя) на самурая — он разрывает врагов</div>
-                </div>
-                <div class="guide-synergy-card ally">
-                    <div class="guide-synergy-name">Громовержец</div>
-                    <div class="guide-synergy-reason">Q баффает атаку, E лечит — он дольше стоит в драке</div>
+                    <div class="guide-synergy-reason">E оглушает → самурай врывается. R снижает броню — его урон пробивает ещё сильнее</div>
                 </div>
                 <div class="guide-synergy-card enemy">
-                    <div class="guide-synergy-name">Верховный Маг</div>
-                    <div class="guide-synergy-reason">Диспелит E и R. Без лечения друид бесполезен</div>
+                    <div class="guide-synergy-name">Самурай</div>
+                    <div class="guide-synergy-reason">Быстрый бёрст в спину — ты не успеешь скастовать E. Адмирал уязвим к точечному взрывному урону</div>
                 </div>
                 <div class="guide-synergy-card enemy">
                     <div class="guide-synergy-name">Некромонгер</div>
-                    <div class="guide-synergy-reason">Снижение лечения делает E и R слабее. Мёртвые не хилятся</div>
+                    <div class="guide-synergy-reason">Снижение лечения бьёт по вампиризму. W-прок отхил становится бесполезным</div>
                 </div>
                 <div class="guide-synergy-card enemy">
-                    <div class="guide-synergy-name">Самурай</div>
-                    <div class="guide-synergy-reason">Быстрый урон в спину — друид не выживет под бёрстом</div>
+                    <div class="guide-synergy-name">Ведьмак Хаоса</div>
+                    <div class="guide-synergy-reason">Магический урон игнорирует твою броню. Ты танк — но не от заклинаний</div>
                 </div>
                 <div class="guide-synergy-card enemy">
                     <div class="guide-synergy-name">Ассасин</div>
-                    <div class="guide-synergy-reason">Невидимость + точечный взрыв — ты не увидишь удар, а E не спасёт от бёрста</div>
+                    <div class="guide-synergy-reason">Невидимость + бёрст — ты не видишь инициацию. E не спасёт если тебя уже бьют</div>
                 </div>
             </div>
         </div>
@@ -452,17 +448,17 @@
         <div class="guide-section">
             <h2><i class="fas fa-triangle-exclamation" style="color:#ff7777;"></i> Частые ошибки</h2>
             <ul class="guide-list">
-                <li><span class="guide-list-num">1</span> <strong class="error">Тратить E в начале драки.</strong> Враг тут же диспелит — и мана впустую. Подожди 2–3 секунды, пусть они потратят диспел на что-то другое.</li>
-                <li><span class="guide-list-num">2</span> <strong class="error">Стоять впереди.</strong> Друид умирает за 2 секунды под фокусом. Твоё место — за танком.</li>
-                <li><span class="guide-list-num">3</span> <strong class="error">Забывать про W.</strong> Вороны — бесплатная разведка и обнаружение невидимок. Кулдаун 25 сек — используй регулярно.</li>
-                <li><span class="guide-list-num">4</span> <strong class="error">Не брать F.</strong> Даже один пункт даёт +35% скорость боя всей команде. Лучший бафф инициации в игре.</li>
-                <li><span class="guide-list-num">5</span> <strong class="error">Использовать R без нужды.</strong> Покой — 105 сек кулдаун. Если драка почти выиграна — сохрани его. Если проиграна — уже поздно.</li>
+                <li><span class="guide-list-num">1</span> <strong class="error">Кидать Q по бегущему врагу.</strong> 1.2 сек задержки — враг уйдёт. Кидай по стационарным целям (крипы, застаненные) или предикть траекторию.</li>
+                <li><span class="guide-list-num">2</span> <strong class="error">Тратить R на одного.</strong> Флотилия — 120 сек кулдаун. Один враг не стоит ульты. Жди группу из 2+ целей.</li>
+                <li><span class="guide-list-num">3</span> <strong class="error">Инициация без команды.</strong> Ты врываешься — команда должна быть готова. Если союзники фармят лес, а ты один летишь на E — ты труп.</li>
+                <li><span class="guide-list-num">4</span> <strong class="error">Игнорировать W.</strong> Меч прилива — стабильный урон и замедление. Каждая 5-я атака бесплатна. Бей крипов между драками, чтобы не терять DPS.</li>
+                <li><span class="guide-list-num">5</span> <strong class="error">Не брать Скипетр.</strong> 10% шанс сброса R — это не мало. За 10 драк это в среднем один бесплатный R. Скипетр — не роскошь, а необходимость.</li>
             </ul>
         </div>
 
         <div class="guide-bottom">
             <a href="guides.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> К гайдам</a>
-            <a href="heroes/druid.html" class="btn-secondary"><i class="fas fa-user"></i> Карточка героя</a>
+            <a href="heroes/admiral.html" class="btn-secondary"><i class="fas fa-user"></i> Карточка героя</a>
         </div>
     </div>
 
