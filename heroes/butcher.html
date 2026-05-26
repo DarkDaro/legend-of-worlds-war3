@@ -63,83 +63,101 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Ярость -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="rage" data-fallback="fist-raised"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Ярость</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Мясник впадает в ярость, увеличивая скорость атаки. Атакуя, наносит всем врагам вокруг урон от силы.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Скорость атаки</span><span class="param-values">+20%/30%/40%/50%/60%</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">25/50/75/100/125 + STR×0.8</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">250</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">8 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">225/250/275/300/325</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">16 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- E -->
-                <div class="ability-card active">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- R -->
-                <div class="ability-card ultimate">
-                    <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
-                        <div class="ability-info">
-                            <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Ультимейт</div>
-                        </div>
-                    </div>
-                    <div class="ability-desc">Описание способности</div>
-                    <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
-                    </div>
-                </div>
-
-                <!-- F -->
+                <!-- W: Вампиризм -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="vampirism" data-fallback="tint"></div>
                         <div class="ability-info">
-                            <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Вампиризм</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Мясник становится сильнее, убивая врагов. Получает доп. силу при убийстве героя. Ближайшие дружественные войска получают доп. здоровье за каждый удар в ближнем бою.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Доп. сила за убийство</span><span class="param-values">2/3/4/5/6</span></div>
+                        <div class="param-row"><span class="param-label">Шанс двойного бонуса</span><span class="param-values">5%</span></div>
+                        <div class="param-row"><span class="param-label">Вампиризм</span><span class="param-values">15%/20%/25%/30%/35%</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">600</span></div>
+                    </div>
+                </div>
+
+                <!-- E: Мясной крюк -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="meat_hook" data-fallback="anchor"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Мясной крюк</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Бросает крюк в указанную цель. Крюк зацепится за первого вражеского героя и притащит его.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">2000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">225/275/325/375/425</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">26/24/22/20/18 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Москиты -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="mosquitoes" data-fallback="bugs"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Москиты</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                    </div>
+                    <div class="ability-desc">Рой разъяренных насекомых, набрасывающихся на всех противников поблизости. Москиты восстанавливают здоровье от части нанесённого урона.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Количество</span><span class="param-values">35</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">(250 баз. атака) + 50/100/150/200/250 + STR×0.2/0.4/0.6/0.8/1.0</span></div>
+                        <div class="param-row"><span class="param-label">Лечение</span><span class="param-values">20% от урона за удар</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">2000</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">30 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">400/550/700/850/1000</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">120 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Крюки -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="hooks" data-fallback="link"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Крюки</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Мясник поражает врагов смертоносными крюками, подбрасывая их в воздух на 1 сек.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">300 + STR×1.5</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">350</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">190</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10 сек</span></div>
                     </div>
                 </div>
 
