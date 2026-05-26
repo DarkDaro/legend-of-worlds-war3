@@ -63,83 +63,102 @@
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
 
-                <!-- Q -->
+                <!-- Q: Легкие скачки -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="light_leap" data-fallback="person-running"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">Q</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Легкие скачки</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Рывок в указанном направлении, оглушающий врагов. В течение 5 сек можно сделать ещё 3 скачка (мана ×0.5, урон +25%).</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">0.75/1/1.25/1.5/1.75 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1000</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">170/220/270/320/370</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15 сек</span></div>
                     </div>
                 </div>
 
-                <!-- W -->
+                <!-- W: Коварный бросок -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="cunning_throw" data-fallback="dagger"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Коварный бросок</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Кидает кинжал, поражающий первого врага. Снижает защиту, любой урон по жертве восстанавливает здоровье источнику.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Снижение защиты</span><span class="param-values">5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1500</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">70/110/150/190/230</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">15 сек</span></div>
                     </div>
                 </div>
 
-                <!-- E -->
+                <!-- E: Скрытность -->
                 <div class="ability-card active">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="stealth" data-fallback="eye-slash"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">E</span>
-                            <div class="ability-name">???</div>
-                            <div class="ability-type-badge">Тип</div>
+                            <div class="ability-name">Скрытность</div>
+                            <div class="ability-type-badge">Активная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Невидимость на 10 сек. Удар из невидимости — доп. урон, калечит цель, отключает пассивки на 4 сек.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">10 сек</span></div>
+                        <div class="param-row"><span class="param-label">Истощение</span><span class="param-values">30% замедление бега, 40% шанс промаха</span></div>
+                        <div class="param-row"><span class="param-label">Отключение пассивок</span><span class="param-values">4 сек</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">140/200/260/320/380</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">30/29/28/27/26 сек</span></div>
                     </div>
                 </div>
 
-                <!-- R -->
+                <!-- R: Решающий удар -->
                 <div class="ability-card ultimate">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="decisive_strike" data-fallback="hand-fist"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">R</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Решающий удар</div>
                             <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Мощная серия быстрых ударов по цели. Прерывается, если цель умирает. Герой получает видимость цели.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Ударов</span><span class="param-values">6</span></div>
+                        <div class="param-row"><span class="param-label">Урон за удар</span><span class="param-values">AGI×1.5/2.0/2.5/3.0/3.5</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1500</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">450/525/600/675/750</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100/95/90/85/80 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
                     </div>
                 </div>
 
-                <!-- F -->
+                <!-- F: Ловкий прием -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="trick" data-fallback="user-secret"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">F</span>
-                            <div class="ability-name">???</div>
+                            <div class="ability-name">Ловкий прием</div>
                             <div class="ability-type-badge">Пассивная</div>
                         </div>
                     </div>
-                    <div class="ability-desc">Описание способности</div>
+                    <div class="ability-desc">Следующая атака создаёт иллюзию, проходящую сквозь жертву и оглушающую её.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Параметр</span><span class="param-values">???</span></div>
+                        <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">30%</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">100 + STR×0.8 или AGI×0.8</span></div>
+                        <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">0.5 сек</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">3 сек</span></div>
                     </div>
                 </div>
 
