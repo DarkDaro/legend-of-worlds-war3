@@ -742,10 +742,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroSelect = document.getElementById('calcHeroSelect');
     if (heroSelect) {
         heroSelect.addEventListener('change', () => {
+            const h1 = document.querySelector('h1');
             if (heroSelect.value) {
                 importHeroBuild(heroSelect.value);
+                const sel = heroSelect;
+                const opt = sel.options[sel.selectedIndex];
+                if (h1 && opt) h1.innerHTML = '<i class="fas fa-calculator"></i> Сборка: ' + opt.textContent;
             } else {
-                const h1 = document.querySelector('h1');
                 if (h1) h1.innerHTML = '<i class="fas fa-calculator"></i> Калькулятор сборок';
             }
         });
