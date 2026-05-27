@@ -54,6 +54,7 @@
             <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div id="hero-description"></div>
+            <div id="hero-lore"></div>
 
             <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
             <div id="hero-build"></div>
@@ -180,6 +181,11 @@
             if (descContainer && typeof HERO_LORE !== "undefined" && HERO_LORE["warrioress"]) {
                 descContainer.className = "detail-description";
                 descContainer.innerHTML = "<p>" + HERO_LORE["warrioress"].description + "</p>";
+            }
+            var loreContainer = document.getElementById("hero-lore");
+            if (loreContainer && typeof HERO_LORE !== "undefined" && HERO_LORE["warrioress"] && HERO_LORE["warrioress"].lore) {
+                loreContainer.className = "lore-accordion";
+                loreContainer.innerHTML = '<div class="lore-toggle" onclick="this.parentElement.classList.toggle(\'open\')"><span><i class="fas fa-scroll" style="margin-right:8px"></i>История героя</span><span class="lore-arrow">▼</span></div><div class="lore-content">' + HERO_LORE["warrioress"].lore + '</div>';
             }
         });
     </script>

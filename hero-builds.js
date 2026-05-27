@@ -8,15 +8,15 @@ const heroBuilds = {
   },
   'air-mage': {
     name: 'air-mage',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I04K', name: 'Древний мистический' }, { id: 'I02Z', name: 'Ледяное око' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I03F', name: 'Ледяной меч V' }, { id: 'I03V', name: 'Посох света' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AI', name: 'Посох разрушения' }, { id: 'I09R', name: 'Ледяной дух' }, { id: 'I02D', name: 'Щит джаггернаута' }, { id: 'I0BV', name: 'Демоническая сущность' }, { id: 'I03V', name: 'Посох света' }],
   },
   'archmage': {
     name: 'archmage',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I08Y', name: 'Посох грома' }, { id: 'I04B', name: 'Посох ветров' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I01B', name: 'Клинок убийцы' }, { id: 'I0D1', name: 'Посох подавления' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I08Y', name: 'Посох грома' }, { id: 'I0BH', name: 'Жезл боли III' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0D1', name: 'Посох подавления' }],
   },
   'assassin': {
     name: 'assassin',
-    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02X', name: 'Золотой меч' }, { id: 'I013', name: 'Лук' }, { id: 'I030', name: 'Сапоги божественной ловкости' }],
+    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I0GJ', name: 'Клеймор' }],
   },
   'astral-executioner': {
     name: 'astral-executioner',
@@ -24,11 +24,11 @@ const heroBuilds = {
   },
   'astral-huntress': {
     name: 'astral-huntress',
-    items: [{ id: 'I00N', name: 'Сапоги воина' }, { id: 'I010', name: 'Перчатка ловкости' }, { id: 'I01V', name: 'Чёрная стрела I' }, { id: 'I01O', name: 'Медаль храбрости' }, { id: 'I00P', name: 'Шлем ярости' }, { id: 'I01O', name: 'Медаль храбрости' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0B1', name: 'Звёздный лук' }, { id: 'I02N', name: 'Рука тьмы' }, { id: 'I0GI', name: 'Адская маска' }, { id: 'I02B', name: 'Доспехи полководца' }],
   },
   'astral-mage': {
     name: 'astral-mage',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I04K', name: 'Древний мистический' }, { id: 'I02Z', name: 'Ледяное око' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I03F', name: 'Ледяной меч V' }, { id: 'I03V', name: 'Посох света' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AI', name: 'Посох разрушения' }, { id: 'I09R', name: 'Ледяной дух' }, { id: 'I02D', name: 'Щит джаггернаута' }, { id: 'I0BV', name: 'Демоническая сущность' }, { id: 'I03V', name: 'Посох света' }],
   },
   'bonebreaker': {
     name: 'bonebreaker',
@@ -36,7 +36,7 @@ const heroBuilds = {
   },
   'brewmaster': {
     name: 'brewmaster',
-    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02X', name: 'Золотой меч' }, { id: 'I013', name: 'Лук' }, { id: 'I030', name: 'Сапоги божественной ловкости' }],
+    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I0GJ', name: 'Клеймор' }],
   },
   'butcher': {
     name: 'butcher',
@@ -48,35 +48,35 @@ const heroBuilds = {
   },
   'chaos-witcher': {
     name: 'chaos-witcher',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I04K', name: 'Древний мистический' }, { id: 'I02Z', name: 'Ледяное око' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I03F', name: 'Ледяной меч V' }, { id: 'I03V', name: 'Посох света' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AI', name: 'Посох разрушения' }, { id: 'I09R', name: 'Ледяной дух' }, { id: 'I02D', name: 'Щит джаггернаута' }, { id: 'I0BV', name: 'Демоническая сущность' }, { id: 'I03V', name: 'Посох света' }],
   },
   'cyborg': {
     name: 'cyborg',
-    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02X', name: 'Золотой меч' }, { id: 'I013', name: 'Лук' }, { id: 'I030', name: 'Сапоги божественной ловкости' }],
+    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I0GJ', name: 'Клеймор' }],
   },
   'dark-archer': {
     name: 'dark-archer',
-    items: [{ id: 'I00N', name: 'Сапоги воина' }, { id: 'I00K', name: 'Волшебные ключи' }, { id: 'I00S', name: 'Щит смерти' }, { id: 'I01V', name: 'Чёрная стрела I' }, { id: 'I00C', name: 'Броня' }, { id: 'ajen', name: 'Чаша выносливости' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AF', name: 'Антимагические доспехи' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0B1', name: 'Звёздный лук' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0EP', name: 'Лук тьмы' }],
   },
   'dark-knight': {
     name: 'dark-knight',
-    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0EO', name: 'Нефритовые клинки' }, { id: 'I0AI', name: 'Посох разрушения' }, { id: 'I0GI', name: 'Адская маска' }, { id: 'I013', name: 'Лук' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0EO', name: 'Нефритовые клинки' }, { id: 'I0AI', name: 'Посох разрушения' }, { id: 'I0GI', name: 'Адская маска' }, { id: 'I0B1', name: 'Звёздный лук' }],
   },
   'dark-lord': {
     name: 'dark-lord',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I04K', name: 'Древний мистический' }, { id: 'I02Z', name: 'Ледяное око' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I03F', name: 'Ледяной меч V' }, { id: 'I03V', name: 'Посох света' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AI', name: 'Посох разрушения' }, { id: 'I09R', name: 'Ледяной дух' }, { id: 'I02D', name: 'Щит джаггернаута' }, { id: 'I0BV', name: 'Демоническая сущность' }, { id: 'I03V', name: 'Посох света' }],
   },
   'dark-mage': {
     name: 'dark-mage',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I08Y', name: 'Посох грома' }, { id: 'I04B', name: 'Посох ветров' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I01B', name: 'Клинок убийцы' }, { id: 'I0D1', name: 'Посох подавления' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I08Y', name: 'Посох грома' }, { id: 'I0BH', name: 'Жезл боли III' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0D1', name: 'Посох подавления' }],
   },
   'dark-master': {
     name: 'dark-master',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I08Y', name: 'Посох грома' }, { id: 'I04B', name: 'Посох ветров' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I01B', name: 'Клинок убийцы' }, { id: 'I0D1', name: 'Посох подавления' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I08Y', name: 'Посох грома' }, { id: 'I0BH', name: 'Жезл боли III' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0D1', name: 'Посох подавления' }],
   },
   'dark-shaman': {
     name: 'dark-shaman',
-    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I03V', name: 'Посох света' }, { id: 'I0DB', name: 'Скипетр Владыки I' }, { id: 'I03F', name: 'Ледяной меч V' }, { id: 'I0DT', name: 'Крест' }, { id: 'I0DS', name: 'Печать помощи III' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0CP', name: 'Посох колдуна' }, { id: 'I0EY', name: 'Скипетр Владыки II' }, { id: 'I0CN', name: 'Сфера магии' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I043', name: 'Сердце демона II' }],
   },
   'deep-warrior': {
     name: 'deep-warrior',
@@ -84,7 +84,7 @@ const heroBuilds = {
   },
   'demon': {
     name: 'demon',
-    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02X', name: 'Золотой меч' }, { id: 'I013', name: 'Лук' }, { id: 'I030', name: 'Сапоги божественной ловкости' }],
+    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I0GJ', name: 'Клеймор' }],
   },
   'destroyer': {
     name: 'destroyer',
@@ -96,7 +96,7 @@ const heroBuilds = {
   },
   'father-of-darkness': {
     name: 'father-of-darkness',
-    items: [{ id: 'I00N', name: 'Сапоги воина' }, { id: 'I00K', name: 'Волшебные ключи' }, { id: 'I00S', name: 'Щит смерти' }, { id: 'I01V', name: 'Чёрная стрела I' }, { id: 'I00C', name: 'Броня' }, { id: 'ajen', name: 'Чаша выносливости' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AF', name: 'Антимагические доспехи' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0B1', name: 'Звёздный лук' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0EP', name: 'Лук тьмы' }],
   },
   'fire-golem-hero': {
     name: 'fire-golem-hero',
@@ -104,23 +104,23 @@ const heroBuilds = {
   },
   'fire-knight': {
     name: 'fire-knight',
-    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02X', name: 'Золотой меч' }, { id: 'I013', name: 'Лук' }, { id: 'I030', name: 'Сапоги божественной ловкости' }],
+    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I0GJ', name: 'Клеймор' }],
   },
   'fire-lord': {
     name: 'fire-lord',
-    items: [{ id: 'I00N', name: 'Сапоги воина' }, { id: 'I00K', name: 'Волшебные ключи' }, { id: 'I00S', name: 'Щит смерти' }, { id: 'I01V', name: 'Чёрная стрела I' }, { id: 'I00C', name: 'Броня' }, { id: 'ajen', name: 'Чаша выносливости' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AF', name: 'Антимагические доспехи' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0B1', name: 'Звёздный лук' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0EP', name: 'Лук тьмы' }],
   },
   'fire-panda': {
     name: 'fire-panda',
-    items: [{ id: 'I09T', name: 'Рыцарский щит' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I09R', name: 'Ледяной дух' }, { id: 'I0DB', name: 'Скипетр Владыки I' }, { id: 'I01C', name: 'Божественные сапоги' }, { id: 'I01O', name: 'Медаль храбрости' }],
+    items: [{ id: 'I09T', name: 'Рыцарский щит' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I09R', name: 'Ледяной дух' }, { id: 'I0DB', name: 'Скипетр Владыки I' }, { id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I035', name: 'Призрачный клинок II' }],
   },
   'flame-berserker': {
     name: 'flame-berserker',
-    items: [{ id: 'I00N', name: 'Сапоги воина' }, { id: 'I00K', name: 'Волшебные ключи' }, { id: 'I00S', name: 'Щит смерти' }, { id: 'I01V', name: 'Чёрная стрела I' }, { id: 'I00C', name: 'Броня' }, { id: 'ajen', name: 'Чаша выносливости' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AF', name: 'Антимагические доспехи' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0B1', name: 'Звёздный лук' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0EP', name: 'Лук тьмы' }],
   },
   'flame-eater': {
     name: 'flame-eater',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I04K', name: 'Древний мистический' }, { id: 'I02Z', name: 'Ледяное око' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I03F', name: 'Ледяной меч V' }, { id: 'I03V', name: 'Посох света' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AI', name: 'Посох разрушения' }, { id: 'I09R', name: 'Ледяной дух' }, { id: 'I02D', name: 'Щит джаггернаута' }, { id: 'I0BV', name: 'Демоническая сущность' }, { id: 'I03V', name: 'Посох света' }],
   },
   'frost-lord': {
     name: 'frost-lord',
@@ -128,11 +128,11 @@ const heroBuilds = {
   },
   'ghost': {
     name: 'ghost',
-    items: [{ id: 'I0DT', name: 'Крест' }, { id: 'I0D1', name: 'Посох подавления' }, { id: 'I0C4', name: 'Жнец душ' }, { id: 'I0FA', name: 'Сфера плоти' }, { id: 'I01O', name: 'Медаль храбрости' }, { id: 'I01O', name: 'Медаль храбрости' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0E5', name: 'Меч очищения' }, { id: 'I0C4', name: 'Жнец душ' }, { id: 'I0GI', name: 'Адская маска' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0EO', name: 'Нефритовые клинки' }],
   },
   'grave-lord': {
     name: 'grave-lord',
-    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02X', name: 'Золотой меч' }, { id: 'I013', name: 'Лук' }, { id: 'I030', name: 'Сапоги божественной ловкости' }],
+    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I0GJ', name: 'Клеймор' }],
   },
   'guardian': {
     name: 'guardian',
@@ -140,51 +140,51 @@ const heroBuilds = {
   },
   'hydralisk': {
     name: 'hydralisk',
-    items: [{ id: 'I00N', name: 'Сапоги воина' }, { id: 'I00K', name: 'Волшебные ключи' }, { id: 'I00S', name: 'Щит смерти' }, { id: 'I01V', name: 'Чёрная стрела I' }, { id: 'I00C', name: 'Броня' }, { id: 'ajen', name: 'Чаша выносливости' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AF', name: 'Антимагические доспехи' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0B1', name: 'Звёздный лук' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0EP', name: 'Лук тьмы' }],
   },
   'ice-knight': {
     name: 'ice-knight',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I03V', name: 'Посох света' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I01O', name: 'Медаль храбрости' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I03V', name: 'Посох света' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I00S', name: 'Щит смерти' }],
   },
   'illusionist': {
     name: 'illusionist',
-    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0EO', name: 'Нефритовые клинки' }, { id: 'I0AI', name: 'Посох разрушения' }, { id: 'I0GI', name: 'Адская маска' }, { id: 'I013', name: 'Лук' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0EO', name: 'Нефритовые клинки' }, { id: 'I0AI', name: 'Посох разрушения' }, { id: 'I0GI', name: 'Адская маска' }, { id: 'I0B1', name: 'Звёздный лук' }],
   },
   'king-of-cursed': {
     name: 'king-of-cursed',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I03V', name: 'Посох света' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I01O', name: 'Медаль храбрости' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I03V', name: 'Посох света' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I00S', name: 'Щит смерти' }],
   },
   'knight-of-depths': {
     name: 'knight-of-depths',
-    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I03V', name: 'Посох света' }, { id: 'I0DB', name: 'Скипетр Владыки I' }, { id: 'I03F', name: 'Ледяной меч V' }, { id: 'I0DT', name: 'Крест' }, { id: 'I0DS', name: 'Печать помощи III' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0CP', name: 'Посох колдуна' }, { id: 'I0EY', name: 'Скипетр Владыки II' }, { id: 'I0CN', name: 'Сфера магии' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I043', name: 'Сердце демона II' }],
   },
   'leshy': {
     name: 'leshy',
-    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I03V', name: 'Посох света' }, { id: 'I0DB', name: 'Скипетр Владыки I' }, { id: 'I03F', name: 'Ледяной меч V' }, { id: 'I0DT', name: 'Крест' }, { id: 'I0DS', name: 'Печать помощи III' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0CP', name: 'Посох колдуна' }, { id: 'I0EY', name: 'Скипетр Владыки II' }, { id: 'I0CN', name: 'Сфера магии' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I043', name: 'Сердце демона II' }],
   },
   'lightning-lord': {
     name: 'lightning-lord',
-    items: [{ id: 'I00N', name: 'Сапоги воина' }, { id: 'I00K', name: 'Волшебные ключи' }, { id: 'I00S', name: 'Щит смерти' }, { id: 'I01V', name: 'Чёрная стрела I' }, { id: 'I00C', name: 'Броня' }, { id: 'ajen', name: 'Чаша выносливости' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AF', name: 'Антимагические доспехи' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0B1', name: 'Звёздный лук' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0EP', name: 'Лук тьмы' }],
   },
   'lightning-subjugator': {
     name: 'lightning-subjugator',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I08Y', name: 'Посох грома' }, { id: 'I04B', name: 'Посох ветров' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I01B', name: 'Клинок убийцы' }, { id: 'I0D1', name: 'Посох подавления' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I08Y', name: 'Посох грома' }, { id: 'I0BH', name: 'Жезл боли III' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0D1', name: 'Посох подавления' }],
   },
   'marine': {
     name: 'marine',
-    items: [{ id: 'I00N', name: 'Сапоги воина' }, { id: 'I00K', name: 'Волшебные ключи' }, { id: 'I00S', name: 'Щит смерти' }, { id: 'I01V', name: 'Чёрная стрела I' }, { id: 'I00C', name: 'Броня' }, { id: 'ajen', name: 'Чаша выносливости' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AF', name: 'Антимагические доспехи' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0B1', name: 'Звёздный лук' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0EP', name: 'Лук тьмы' }],
   },
   'minotaur-chief': {
     name: 'minotaur-chief',
-    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02X', name: 'Золотой меч' }, { id: 'I013', name: 'Лук' }, { id: 'I030', name: 'Сапоги божественной ловкости' }],
+    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I0GJ', name: 'Клеймор' }],
   },
   'murloc': {
     name: 'murloc',
-    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02X', name: 'Золотой меч' }, { id: 'I013', name: 'Лук' }, { id: 'I030', name: 'Сапоги божественной ловкости' }],
+    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I0GJ', name: 'Клеймор' }],
   },
   'necromonger': {
     name: 'necromonger',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I08Y', name: 'Посох грома' }, { id: 'I04B', name: 'Посох ветров' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I01B', name: 'Клинок убийцы' }, { id: 'I0D1', name: 'Посох подавления' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I08Y', name: 'Посох грома' }, { id: 'I0BH', name: 'Жезл боли III' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0D1', name: 'Посох подавления' }],
   },
   'night-avenger': {
     name: 'night-avenger',
@@ -192,35 +192,35 @@ const heroBuilds = {
   },
   'night-predator': {
     name: 'night-predator',
-    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02X', name: 'Золотой меч' }, { id: 'I013', name: 'Лук' }, { id: 'I030', name: 'Сапоги божественной ловкости' }],
+    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I0GJ', name: 'Клеймор' }],
   },
   'orc-chieftain': {
     name: 'orc-chieftain',
-    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02X', name: 'Золотой меч' }, { id: 'I013', name: 'Лук' }, { id: 'I030', name: 'Сапоги божественной ловкости' }],
+    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I0GJ', name: 'Клеймор' }],
   },
   'paladin': {
     name: 'paladin',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I03V', name: 'Посох света' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I01O', name: 'Медаль храбрости' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I03V', name: 'Посох света' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I00S', name: 'Щит смерти' }],
   },
   'priestess': {
     name: 'priestess',
-    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0EO', name: 'Нефритовые клинки' }, { id: 'I0AI', name: 'Посох разрушения' }, { id: 'I0GI', name: 'Адская маска' }, { id: 'I013', name: 'Лук' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0EO', name: 'Нефритовые клинки' }, { id: 'I0AI', name: 'Посох разрушения' }, { id: 'I0GI', name: 'Адская маска' }, { id: 'I0B1', name: 'Звёздный лук' }],
   },
   'ranger': {
     name: 'ranger',
-    items: [{ id: 'I00N', name: 'Сапоги воина' }, { id: 'I010', name: 'Перчатка ловкости' }, { id: 'I01V', name: 'Чёрная стрела I' }, { id: 'I01O', name: 'Медаль храбрости' }, { id: 'I00P', name: 'Шлем ярости' }, { id: 'I01O', name: 'Медаль храбрости' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0B1', name: 'Звёздный лук' }, { id: 'I02N', name: 'Рука тьмы' }, { id: 'I0GI', name: 'Адская маска' }, { id: 'I02B', name: 'Доспехи полководца' }],
   },
   'rebel': {
     name: 'rebel',
-    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02X', name: 'Золотой меч' }, { id: 'I013', name: 'Лук' }, { id: 'I030', name: 'Сапоги божественной ловкости' }],
+    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I0GJ', name: 'Клеймор' }],
   },
   'rider': {
     name: 'rider',
-    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02X', name: 'Золотой меч' }, { id: 'I013', name: 'Лук' }, { id: 'I030', name: 'Сапоги божественной ловкости' }],
+    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I0GJ', name: 'Клеймор' }],
   },
   'samurai': {
     name: 'samurai',
-    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02X', name: 'Золотой меч' }, { id: 'I013', name: 'Лук' }, { id: 'I030', name: 'Сапоги божественной ловкости' }],
+    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I0GJ', name: 'Клеймор' }],
   },
   'sea-guard': {
     name: 'sea-guard',
@@ -232,7 +232,7 @@ const heroBuilds = {
   },
   'skeleton': {
     name: 'skeleton',
-    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02X', name: 'Золотой меч' }, { id: 'I013', name: 'Лук' }, { id: 'I030', name: 'Сапоги божественной ловкости' }],
+    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I0GJ', name: 'Клеймор' }],
   },
   'snow-queen': {
     name: 'snow-queen',
@@ -240,11 +240,11 @@ const heroBuilds = {
   },
   'sorcerer': {
     name: 'sorcerer',
-    items: [{ id: 'I00N', name: 'Сапоги воина' }, { id: 'I00K', name: 'Волшебные ключи' }, { id: 'I00S', name: 'Щит смерти' }, { id: 'I01V', name: 'Чёрная стрела I' }, { id: 'I00C', name: 'Броня' }, { id: 'ajen', name: 'Чаша выносливости' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AF', name: 'Антимагические доспехи' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0B1', name: 'Звёздный лук' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0EP', name: 'Лук тьмы' }],
   },
   'star-spirit': {
     name: 'star-spirit',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I04K', name: 'Древний мистический' }, { id: 'I02Z', name: 'Ледяное око' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I03F', name: 'Ледяной меч V' }, { id: 'I03V', name: 'Посох света' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AI', name: 'Посох разрушения' }, { id: 'I09R', name: 'Ледяной дух' }, { id: 'I02D', name: 'Щит джаггернаута' }, { id: 'I0BV', name: 'Демоническая сущность' }, { id: 'I03V', name: 'Посох света' }],
   },
   'storm': {
     name: 'storm',
@@ -252,11 +252,11 @@ const heroBuilds = {
   },
   'storm-knight': {
     name: 'storm-knight',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I08Y', name: 'Посох грома' }, { id: 'I04B', name: 'Посох ветров' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I01B', name: 'Клинок убийцы' }, { id: 'I0D1', name: 'Посох подавления' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I08Y', name: 'Посох грома' }, { id: 'I0BH', name: 'Жезл боли III' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0D1', name: 'Посох подавления' }],
   },
   'thundergod': {
     name: 'thundergod',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I08Y', name: 'Посох грома' }, { id: 'I04B', name: 'Посох ветров' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I01B', name: 'Клинок убийцы' }, { id: 'I0D1', name: 'Посох подавления' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I08Y', name: 'Посох грома' }, { id: 'I0BH', name: 'Жезл боли III' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0D1', name: 'Посох подавления' }],
   },
   'titan': {
     name: 'titan',
@@ -268,7 +268,7 @@ const heroBuilds = {
   },
   'vurdalak': {
     name: 'vurdalak',
-    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02X', name: 'Золотой меч' }, { id: 'I013', name: 'Лук' }, { id: 'I030', name: 'Сапоги божественной ловкости' }],
+    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I0GJ', name: 'Клеймор' }],
   },
   'warrior-of-light': {
     name: 'warrior-of-light',
@@ -276,19 +276,19 @@ const heroBuilds = {
   },
   'warrioress': {
     name: 'warrioress',
-    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I02X', name: 'Золотой меч' }, { id: 'I013', name: 'Лук' }, { id: 'I030', name: 'Сапоги божественной ловкости' }],
+    items: [{ id: 'I0AC', name: 'Коса смерти' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I0GJ', name: 'Клеймор' }],
   },
   'water-spirit': {
     name: 'water-spirit',
-    items: [{ id: 'I00N', name: 'Сапоги воина' }, { id: 'I00K', name: 'Волшебные ключи' }, { id: 'I00S', name: 'Щит смерти' }, { id: 'I01V', name: 'Чёрная стрела I' }, { id: 'I00C', name: 'Броня' }, { id: 'ajen', name: 'Чаша выносливости' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AF', name: 'Антимагические доспехи' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0B1', name: 'Звёздный лук' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0EP', name: 'Лук тьмы' }],
   },
   'wind-enchantress': {
     name: 'wind-enchantress',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I04K', name: 'Древний мистический' }, { id: 'I02Z', name: 'Ледяное око' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I03F', name: 'Ледяной меч V' }, { id: 'I03V', name: 'Посох света' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AI', name: 'Посох разрушения' }, { id: 'I09R', name: 'Ледяной дух' }, { id: 'I02D', name: 'Щит джаггернаута' }, { id: 'I0BV', name: 'Демоническая сущность' }, { id: 'I03V', name: 'Посох света' }],
   },
   'wind-lord': {
     name: 'wind-lord',
-    items: [{ id: 'I030', name: 'Сапоги божественной ловкости' }, { id: 'I04K', name: 'Древний мистический' }, { id: 'I02Z', name: 'Ледяное око' }, { id: 'I02B', name: 'Доспехи полководца' }, { id: 'I03F', name: 'Ледяной меч V' }, { id: 'I03V', name: 'Посох света' }],
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AI', name: 'Посох разрушения' }, { id: 'I09R', name: 'Ледяной дух' }, { id: 'I02D', name: 'Щит джаггернаута' }, { id: 'I0BV', name: 'Демоническая сущность' }, { id: 'I03V', name: 'Посох света' }],
   },
   'zodiac': {
     name: 'zodiac',
