@@ -945,9 +945,8 @@ h1 {
         padding: 12px 16px;
     }
     .hero-stats-table {
-        display: block;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+        width: 100%;
+        table-layout: fixed;
     }
     .ability-card {
         padding: 12px;
@@ -1011,14 +1010,13 @@ h1 {
         font-size: 0.95rem;
     }
     .hero-stats-table {
-        display: block;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+        width: 100%;
+        table-layout: fixed;
         margin: 12px 0;
     }
     .hero-stats-table th,
     .hero-stats-table td {
-        padding: 8px;
+        padding: 6px 4px;
         font-size: 0.8rem;
     }
     .hero-build-grid {
