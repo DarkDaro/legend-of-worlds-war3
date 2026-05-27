@@ -63,11 +63,104 @@
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
-                <!-- Q: Воздушный шторм --><div class="ability-card active"><div class="ability-header"><div class="ability-icon" data-ability="air_storm" data-fallback="wind"></div><div class="ability-info"><span class="ability-hotkey">Q</span><div class="ability-name">Воздушный шторм</div><div class="ability-type-badge">Активная</div></div></div><div class="ability-desc">Вихрь по линии, урон и замедление скорости бега/атаки 30%.</div><div class="ability-params"><div class="param-row"><span class="param-label">Урон</span><span class="param-values">200/300/400/500/600 + INT×2.5</span></div><div class="param-row"><span class="param-label">Область</span><span class="param-values">330</span></div><div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1200</span></div><div class="param-row"><span class="param-label">Мана</span><span class="param-values">135/175/215/255/295</span></div><div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10 сек</span></div></div></div>
-                <!-- W: Ветряные снаряды --><div class="ability-card active"><div class="ability-header"><div class="ability-icon" data-ability="" data-fallback="question"></div><div class="ability-info"><span class="ability-hotkey">W</span><div class="ability-name">Ветряные снаряды</div><div class="ability-type-badge">Активная</div></div></div><div class="ability-desc">Герой выстреливает 5 снарядами из ветра в сторону цели.</div><div class="ability-params"><div class="param-row"><span class="param-label">Мана</span><span class="param-values">175</span></div><div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">14 сек</span></div></div></div>
-                <!-- E: Поток ветра --><div class="ability-card active"><div class="ability-header"><div class="ability-icon" data-ability="wind_stream" data-fallback="wind"></div><div class="ability-info"><span class="ability-hotkey">E</span><div class="ability-name">Поток ветра</div><div class="ability-type-badge">Активная</div></div></div><div class="ability-desc">Мощный поток ветра, магический урон, обезоруживает.</div><div class="ability-params"><div class="param-row"><span class="param-label">Урон</span><span class="param-values">INT×3 + 160/320/480/640/800</span></div><div class="param-row"><span class="param-label">Обезоруживание</span><span class="param-values">1/1.5/2/2.5/3 сек</span></div><div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1500</span></div><div class="param-row"><span class="param-label">Область</span><span class="param-values">325</span></div><div class="param-row"><span class="param-label">Мана</span><span class="param-values">245/315/385/455/525</span></div><div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">22 сек</span></div></div></div>
-                <!-- R: Воздушная стена --><div class="ability-card ultimate"><div class="ability-header"><div class="ability-icon" data-ability="air_wall" data-fallback="tornado"></div><div class="ability-info"><span class="ability-hotkey">R</span><div class="ability-name">Воздушная стена</div><div class="ability-type-badge">Ультимейт</div></div></div><div class="ability-desc">Огромный вихрь, замедление и урон в сек.</div><div class="ability-params"><div class="param-row"><span class="param-label">Урон в сек</span><span class="param-values">200 + INT×2/2.5/3/3.5/4</span></div><div class="param-row"><span class="param-label">Область</span><span class="param-values">825</span></div><div class="param-row"><span class="param-label">Мана</span><span class="param-values">550/700/850/1000/1150</span></div><div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">140 сек</span></div></div></div>
-                <!-- F: Полет --><div class="ability-card active"><div class="ability-header"><div class="ability-icon" data-ability="flight" data-fallback="feather-alt"></div><div class="ability-info"><span class="ability-hotkey">F</span><div class="ability-name">Полет</div><div class="ability-type-badge">Активная</div></div></div><div class="ability-desc">Воздушные потоки поднимают в воздух, уклонение от атак.</div><div class="ability-params"><div class="param-row"><span class="param-label">Уклонение</span><span class="param-values">50%</span></div><div class="param-row"><span class="param-label">Мана</span><span class="param-values">100/125/150</span></div><div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">8 сек</span></div></div></div>
+
+                <!-- Q: Воздушный шторм -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="air_storm" data-fallback="wind"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">Q</span>
+                            <div class="ability-name">Воздушный шторм</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Вихрь по линии, урон и замедление скорости бега/атаки 30%.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">200/300/400/500/600 + INT×2.5</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">330</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1200</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">135/175/215/255/295</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- W: Ветряные снаряды -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">W</span>
+                            <div class="ability-name">Ветряные снаряды</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Герой выстреливает 5 снарядами из ветра в сторону цели.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">14 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- E: Поток ветра -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="wind_stream" data-fallback="wind"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">E</span>
+                            <div class="ability-name">Поток ветра</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Мощный поток ветра, магический урон, обезоруживает.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">INT×3 + 160/320/480/640/800</span></div>
+                        <div class="param-row"><span class="param-label">Обезоруживание</span><span class="param-values">1/1.5/2/2.5/3 сек</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1500</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">325</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">245/315/385/455/525</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">22 сек</span></div>
+                    </div>
+                </div>
+
+                <!-- R: Воздушная стена -->
+                <div class="ability-card ultimate">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="air_wall" data-fallback="tornado"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">R</span>
+                            <div class="ability-name">Воздушная стена</div>
+                            <div class="ability-type-badge">Ультимейт</div>
+                            <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Огромный вихрь, замедление и урон в сек.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Урон в сек</span><span class="param-values">200 + INT×2/2.5/3/3.5/4</span></div>
+                        <div class="param-row"><span class="param-label">Область</span><span class="param-values">825</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">550/700/850/1000/1150</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">140 сек</span></div>
+                        <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
+                    </div>
+                </div>
+
+                <!-- F: Полет -->
+                <div class="ability-card active">
+                    <div class="ability-header">
+                        <div class="ability-icon" data-ability="flight" data-fallback="feather-alt"></div>
+                        <div class="ability-info">
+                            <span class="ability-hotkey">F</span>
+                            <div class="ability-name">Полет</div>
+                            <div class="ability-type-badge">Активная</div>
+                        </div>
+                    </div>
+                    <div class="ability-desc">Воздушные потоки поднимают в воздух, уклонение от атак.</div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Уклонение</span><span class="param-values">50%</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">100/125/150</span></div>
+                        <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">8 сек</span></div>
+                    </div>
+                </div>
+
             </div>
             <a href="../heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
         </div>
