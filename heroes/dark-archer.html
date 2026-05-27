@@ -18,6 +18,7 @@
     <script src="../abilities-db.js" defer></script>
     <script src="../icon-loader.js" defer></script>
     <script src="../hero-builds.js"></script>
+    <script src="../hero-lore.js"></script>
     <script src="../jass-data.js"></script>
     <script src="../bot-builds.js"></script>
     <script src="../analytics.js" defer></script>
@@ -53,9 +54,7 @@
             </div>
             <div id="hero-nav"></div>
             <div id="hero-stats"></div>
-            <div class="detail-description">
-                <p>Лучница — изгнанница, чья ледяная ненависть замораживает сердца врагов прежде, чем они успеют её настигнуть. Обезмолвив противников морозной волной, она накрывает их градом замедляющих ледяных стрел, после которого мало кто способен выжить.</p>
-            </div>
+            <div id="hero-description"></div>
 
             <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
             <div id="hero-build"></div>
@@ -179,6 +178,11 @@
             var buildContainer = document.getElementById('hero-build');
             if (buildContainer && typeof renderHeroBuild === 'function') {
                 buildContainer.innerHTML = renderHeroBuild('dark-archer');
+            }
+            var descContainer = document.getElementById("hero-description");
+            if (descContainer && typeof HERO_LORE !== "undefined" && HERO_LORE["dark-archer"]) {
+                descContainer.className = "detail-description";
+                descContainer.innerHTML = "<p>" + HERO_LORE["dark-archer"].description + "</p>";
             }
         });
     </script>

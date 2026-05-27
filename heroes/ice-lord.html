@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <link rel="icon" href="../images/logo.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Владыка Грома · Герои · Legend of Worlds</title>
-    <meta property="og:title" content="Владыка Грома — Legend of Worlds">
-    <meta property="og:description" content="Владыка Грома — герой Арены Миров. Способности, статы, тактика.">
+    <title>Повелитель Льдов · Герои · Legend of Worlds</title>
+    <meta property="og:title" content="Повелитель Льдов — Legend of Worlds">
+    <meta property="og:description" content="Повелитель Льдов — герой Арены Миров. Способности, статы, тактика.">
     <meta property="og:image" content="../images/preview.png">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -15,14 +15,10 @@
     <script src="../search-index.js"></script>
     <script src="../search.js"></script>
     <script src="../items-db.js" defer></script>
-    <script src="../abilities-db.js" defer></script>
     <script src="../icon-loader.js" defer></script>
     <script src="../hero-builds.js"></script>
     <script src="../hero-lore.js"></script>
-    <script src="../jass-data.js"></script>
-    <script src="../bot-builds.js"></script>
     <script src="../analytics.js" defer></script>
-    <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/heroes/thunder-lord-2.html">
 </head>
 <body class="page-heroes intelligence">
     <header class="site-header">
@@ -45,12 +41,11 @@
         </nav>
     </header>
     <div class="wiki-container">
-        <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="../heroes.html">Герои</a><span class="sep">›</span><span class="current">Владыка Грома</span></div>
-        <div class="wip-page-banner"><i class="fas fa-hammer"></i> Герой в разработке</div>
+        <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="../heroes.html">Герои</a><span class="sep">›</span><span class="current">Повелитель Льдов</span></div>
         <div class="hero-page-container">
             <div class="panel-header">
-                <div class="detail-icon"><img src="../images/heroes/thunder-lord-2.png" alt="" width="96" height="96"></div>
-                <div class="detail-title">Владыка Грома <span class="detail-badge">Разум</span></div>
+                <div class="detail-icon"><i class="fas fa-hat-wizard"></i></div>
+                <div class="detail-title">Повелитель Льдов <span class="detail-badge">Разум</span></div>
             </div>
             <div id="hero-nav"></div>
             <div id="hero-stats"></div>
@@ -58,8 +53,8 @@
 
             <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
             <div id="hero-build"></div>
-            <a href="../calculator.html?hero=thunder-lord-2" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
-            <a href="../bot-builds.html?rawcode=O00X" class="calc-link-btn"><i class="fas fa-robot"></i> Сборка ИИ</a>
+            <a href="../calculator.html?hero=ice-lord" class="calc-link-btn"><i class="fas fa-calculator"></i> Открыть в калькуляторе</a>
+            <a href="../bot-builds.html?rawcode=U000" class="calc-link-btn"><i class="fas fa-robot"></i> Сборка ИИ</a>
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
             <div class="abilities-grid">
@@ -148,26 +143,25 @@
             <a href="../heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
         </div>
     </div>
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var statsContainer = document.getElementById('hero-stats');
-            if (statsContainer && typeof renderHeroStats === 'function') {
-                statsContainer.innerHTML = renderHeroStats('thunder-lord-2');
-            }
-            var navContainer = document.getElementById('hero-nav');
-            if (navContainer && typeof renderHeroNav === 'function') {
-                navContainer.innerHTML = renderHeroNav('thunder-lord-2');
-            }
-            var buildContainer = document.getElementById('hero-build');
-            if (buildContainer && typeof renderHeroBuild === 'function') {
-                buildContainer.innerHTML = renderHeroBuild('thunder-lord-2');
-            }
-            var descContainer = document.getElementById("hero-description");
-            if (descContainer && typeof HERO_LORE !== "undefined" && HERO_LORE["thunder-lord-2"]) {
-                descContainer.className = "detail-description";
-                descContainer.innerHTML = "<p>" + HERO_LORE["thunder-lord-2"].description + "</p>";
-            }
-        });
+    <script>
+        var statsContainer = document.getElementById('hero-stats');
+        if (statsContainer && typeof renderHeroStats === 'function') {
+            statsContainer.innerHTML = renderHeroStats('ice-lord');
+        }
+        var navContainer = document.getElementById('hero-nav');
+        if (navContainer && typeof renderHeroNav === 'function') {
+            navContainer.innerHTML = renderHeroNav('ice-lord');
+        }
+        var buildContainer = document.getElementById('hero-build');
+        if (buildContainer && typeof renderHeroBuild === 'function') {
+            buildContainer.innerHTML = renderHeroBuild('ice-lord');
+        }
+        var descContainer = document.getElementById('hero-description');
+        if (descContainer && typeof HERO_LORE !== 'undefined' && HERO_LORE['ice-lord']) {
+            var lore = HERO_LORE['ice-lord'];
+            descContainer.className = 'detail-description';
+            descContainer.innerHTML = '<p>' + lore.description + '</p>';
+        }
     </script>
     <footer class="site-footer">
         <div class="footer-content">
@@ -178,12 +172,6 @@
                 <a href="../info.html">Информация</a>
                 <a href="../support.html">Поддержать</a>
                 <a href="../updates.html">Обновления</a>
-            </div>
-            <div class="footer-social">
-                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
-                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
-                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
-                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
         <div class="footer-bottom">
