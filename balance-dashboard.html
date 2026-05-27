@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профили баланса · Legend of Worlds</title>
+    <meta property="og:title" content="Профили баланса героев — Legend of Worlds">
+    <meta property="og:description" content="Радар-профили героев: урон, бёрст, живучесть, контроль, мобильность, фарм, скалинг. Сравнение на любом уровне.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="hero-data.js"></script>
+    <script src="abilities-db.js"></script>
+    <script src="ability-stats.js"></script>
+    <script src="ui-effects.js" defer></script>
+    <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/balance-dashboard.html">
+    <style>
+        .dash-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .dash-controls { display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 24px; }
+        .dash-controls .ctrl-group { display: flex; flex-direction: column; gap: 4px; }
+        .dash-controls label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .dash-controls select, .dash-controls input[type=range] {
+            background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-primary);
+            border-radius: 8px; padding: 8px 12px; font-size: 0.9rem; min-width: 180px;
+        }
+        .dash-controls select:focus { outline: none; border-color: var(--accent-cyan); }
+        .level-display { font-size: 1.4rem; font-weight: 700; color: var(--accent-cyan); min-width: 50px; text-align: center; }
+        .level-slider { width: 200px; accent-color: var(--accent-cyan); }
+
+        .radar-wrap { display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start; }
+        .radar-canvas-wrap {
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            border-radius: 16px; padding: 20px; flex-shrink: 0;
+        }
+        .radar-canvas-wrap canvas { display: block; }
+        .radar-values { flex: 1; min-width: 280px; }
+        .radar-values .hero-values {
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            border-radius: 12px; padding: 16px; margin-bottom: 12px;
+        }
+        .radar-values .hero-values h3 { font-size: 0.95rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .radar-values .hero-values h3 .color-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+        .stat-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .stat-row:last-child { border-bottom: none; }
+        .stat-label { color: var(--text-secondary); }
+        .stat-value { color: var(--text-primary); font-weight: 600; }
+        .stat-value.outlier-low { color: #ff6b6b; }
+        .stat-value.outlier-high { color: #ffa500; }
+        .stat-value.best { color: #ffd43b; }
+        .stat-pct { color: var(--text-muted); font-size: 0.75rem; margin-left: 6px; }
+
+        .percentile-table-wrap {
+            margin-top: 32px; overflow-x: auto; max-height: 600px;
+            border-radius: 12px; border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+        }
+        .percentile-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; white-space: nowrap; }
+        .percentile-table th {
+            padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 500;
+            border-bottom: 1px solid var(--glass-border); cursor: pointer; user-select: none;
+            position: sticky; top: 0; background: rgba(13,27,42,0.95); backdrop-filter: blur(8px); z-index: 2;
+        }
+        .percentile-table th:hover { color: var(--accent-cyan); }
+        .percentile-table th .sort-arrow { margin-left: 4px; font-size: 0.7rem; }
+        .percentile-table td { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text-secondary); }
+        .percentile-table tr:hover td { background: rgba(0,230,255,0.04); }
+        .percentile-table .pct-low { color: #ff6b6b; opacity: 0.8; }
+        .percentile-table .pct-high { color: #ffa500; opacity: 0.8; }
+        .percentile-table .pct-best { color: #ffd43b; font-weight: 600; }
+
+        .disclaimer {
+            margin-top: 24px; padding: 16px; border-radius: 10px;
+            background: rgba(255,165,0,0.08); border: 1px solid rgba(255,165,0,0.2);
+            font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6;
+        }
+        .disclaimer strong { color: #ffa500; }
+
+        @media (max-width: 700px) {
+            .radar-wrap { flex-direction: column; align-items: center; }
+            .dash-controls { gap: 10px; }
+            .dash-controls select { min-width: 140px; }
+            .level-slider { width: 140px; }
+        }
+    </style>
+</head>
+<body class="page-balance">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link active"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="heroes.html">Герои</a><span class="sep">›</span><span class="current">Профили баланса</span></div>
+        <div class="dash-container">
+            <div class="panel-header">
+                <div class="detail-icon"><img loading="lazy" src="images/preview.png" alt="" class="detail-logo-img" /></div>
+                <div class="detail-title">Профили баланса героев</div>
+            </div>
+            <p class="detail-description">Радар-профили по 7 осям: урон, бёрст, живучесть, контроль, мобильность, фарм, скалинг. Сравнение на любом уровне 1–150.</p>
+
+            <div class="dash-controls">
+                <div class="ctrl-group">
+                    <label>Герой 1</label>
+                    <select id="hero1"></select>
+                </div>
+                <div class="ctrl-group">
+                    <label>Герой 2</label>
+                    <select id="hero2"><option value="">— не выбран —</option></select>
+                </div>
+                <div class="ctrl-group">
+                    <label>Герой 3</label>
+                    <select id="hero3"><option value="">— не выбран —</option></select>
+                </div>
+                <div class="ctrl-group">
+                    <label>Уровень</label>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                        <input type="range" class="level-slider" id="levelSlider" min="1" max="150" value="25">
+                        <span class="level-display" id="levelDisplay">25</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="radar-wrap">
+                <div class="radar-canvas-wrap">
+                    <canvas id="radarCanvas" width="420" height="420"></canvas>
+                </div>
+                <div class="radar-values" id="radarValues"></div>
+            </div>
+
+            <div class="percentile-table-wrap">
+                <table class="percentile-table" id="percentileTable">
+                    <thead>
+                        <tr>
+                            <th data-col="name">Герой</th>
+                            <th data-col="dps">DPS</th>
+                            <th data-col="burst">Бёрст</th>
+                            <th data-col="surv">Живуч.</th>
+                            <th data-col="cc">Контроль</th>
+                            <th data-col="mob">Мобильн.</th>
+                            <th data-col="farm">Фарм</th>
+                            <th data-col="scaling">Скалинг</th>
+                        </tr>
+                    </thead>
+                    <tbody id="percentileBody"></tbody>
+                </table>
+            </div>
+
+            <div class="disclaimer">
+                <strong>Ограничения:</strong> Инструмент не учитывает синергии способностей, позиционку, командную игру, CC-цепочки.
+                Пассивные способности с шансом (крит, уклонение) усреднены. DOT-урон приведён к суммарному.
+                Это индикатор, не вердикт — если герой в красной зоне, повод присмотреться, а не нерфить.
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img loading="lazy" src="images/preview.png" alt="" width="28" height="28" class="footer-logo-img"> Legend of Worlds</span>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025–2026 Legend of Worlds. Все права защищены.</p>
+        </div>
+    </footer>
+
+<script>
+(function() {
+    'use strict';
+
+    var AXES = ['dps', 'burst', 'surv', 'cc', 'mob', 'farm', 'scaling'];
+    var AXIS_LABELS = { dps: 'Урон (DPS)', burst: 'Бёрст', surv: 'Живучесть', cc: 'Контроль', mob: 'Мобильность', farm: 'Фарм', scaling: 'Скалинг' };
+    var TH_LABELS = { name: 'Герой', dps: 'DPS', burst: 'Бёрст', surv: 'Живуч.', cc: 'Контроль', mob: 'Мобильн.', farm: 'Фарм', scaling: 'Скалинг' };
+    var HERO_COLORS = ['#00e6ff', '#ff6b6b', '#51cf66'];
+
+    // Автопрокачка
+    function abilityLevel(heroLevel, reqLevel, maxLevels) {
+        if (heroLevel < reqLevel) return 0;
+        if (maxLevels <= 0) return Math.min(Math.floor(heroLevel / 25) + 1, 3);
+        var lvl = Math.floor((heroLevel - reqLevel) / 8) + 1;
+        return Math.min(lvl, maxLevels);
+    }
+
+    function heroStatsAtLevel(h, level) {
+        var l = level - 1;
+        return {
+            str: h.strBase + h.strGain * l,
+            agi: h.agiBase + h.agiGain * l,
+            int: h.intBase + h.intGain * l,
+            hp: h.hp + h.strGain * l * 19,
+            mp: h.mp + h.intGain * l * 13,
+            atk: h.atk + (h.attr === 'strength' ? h.strGain : h.attr === 'agility' ? h.agiGain : h.intGain) * l,
+            def: h.def + h.agiGain * l / 3,
+            speed: h.speed,
+            range: h.range
+        };
+    }
+
+    function calcAbilityDamage(abS, heroStats, heroLevel) {
+        if (!abS.damage || !abS.damage.length) return 0;
+        var total = 0;
+        abS.damage.forEach(function(d) {
+            var abD = ABILITIES_DB[abS.rawcode];
+            if (!abD) return;
+            var maxLvl = abD.levels || 3;
+            var reqLvl = abD.reqLevel || 1;
+            var abLvl = abilityLevel(heroLevel, reqLvl, maxLvl);
+            if (abLvl <= 0) return;
+            var idx = Math.min(abLvl, d.base.length) - 1;
+            var base = d.base[idx] || 0;
+            var scaleVal = 0;
+            if (d.statScale && d.statScale.stat) {
+                var stat = d.statScale.stat;
+                var mult = d.statScale.mult;
+                var multVal = Array.isArray(mult) ? (mult[Math.min(idx, mult.length - 1)] || 0) : mult;
+                if (stat === 'STR') scaleVal = heroStats.str * multVal;
+                else if (stat === 'AGI') scaleVal = heroStats.agi * multVal;
+                else if (stat === 'INT') scaleVal = heroStats.int * multVal;
+            }
+            var dmg = base + scaleVal;
+            if (d.isDOT && d.dotDuration) dmg *= (d.dotDuration[Math.min(idx, d.dotDuration.length - 1)] || 1);
+            // hitCount для AoE-рассеивания (звездопад, дождь) — не по одной цели, не умножаем
+            if (d.hitCount && !abS.area) dmg *= (d.hitCount[Math.min(idx, d.hitCount.length - 1)] || 1);
+            total += dmg;
+        });
+        return total;
+    }
+
+    function calcAbilityCC(abS, heroLevel) {
+        if (!abS.cc || !abS.cc.length) return 0;
+        var total = 0;
+        abS.cc.forEach(function(c) {
+            var abD = ABILITIES_DB[abS.rawcode];
+            if (!abD) return;
+            var abLvl = abilityLevel(heroLevel, abD.reqLevel || 1, abD.levels || 3);
+            if (abLvl <= 0) return;
+            var idx = Math.min(abLvl, c.duration.length) - 1;
+            total += (c.duration[idx] || 0) * (c.weight || 1);
+        });
+        return total;
+    }
+
+    function calcAbilityMobility(abS, heroLevel) {
+        if (!abS.dash) return 0;
+        var abD = ABILITIES_DB[abS.rawcode];
+        if (!abD) return 0;
+        var abLvl = abilityLevel(heroLevel, abD.reqLevel || 1, abD.levels || 3);
+        if (abLvl <= 0) return 0;
+        var cool = abS.cool ? (Array.isArray(abS.cool) ? abS.cool[Math.min(abLvl, abS.cool.length) - 1] : abS.cool) : 20;
+        var range = abS.dash.dashRange ? abS.dash.dashRange[Math.min(abLvl, abS.dash.dashRange.length) - 1] : 500;
+        return range / cool;
+    }
+
+    // Профиль героя
+    function calcHeroProfile(hero, level) {
+        var stats = heroStatsAtLevel(hero, level);
+        var abilCodes = HERO_ABILITIES[hero.rawcode] || [];
+        var totalDPS = 0, totalBurst = 0, totalCC = 0, totalMob = 0;
+        var buffHP = 0, buffArmor = 0, evasion = 0, spellDmgPct = 0;
+        var aoeDmg = 0, aoeCount = 0, sustainVal = 0;
+
+        abilCodes.forEach(function(rc) {
+            var abS = ABILITY_STATS[rc];
+            if (!abS) return;
+            var abD = ABILITIES_DB[rc];
+            if (!abD) return;
+            var maxLvl = abD.levels || 3;
+            var reqLvl = abD.reqLevel || 1;
+            var abLvl = abilityLevel(level, reqLvl, maxLvl);
+            if (abLvl <= 0) return;
+
+            var dmg = calcAbilityDamage(abS, stats, level);
+            var cool = abS.cool ? (Array.isArray(abS.cool) ? abS.cool[Math.min(abLvl, abS.cool.length) - 1] : abS.cool) : 1;
+            if (cool < 1) cool = 1;
+
+            var isPassive = abS.type === 'passive' || abD.type === 'passive';
+            if (isPassive) dmg *= 0.2;
+
+            totalDPS += dmg / cool;
+            totalBurst += dmg;
+            totalCC += calcAbilityCC(abS, level);
+            totalMob += calcAbilityMobility(abS, level);
+
+            if (abS.buffs) {
+                if (abS.buffs.hp) { buffHP += abS.buffs.hp[Math.min(abLvl, abS.buffs.hp.length) - 1] || 0; }
+                if (abS.buffs.armor) { buffArmor += abS.buffs.armor[Math.min(abLvl, abS.buffs.armor.length) - 1] || 0; }
+                if (abS.buffs.evasion) { evasion += abS.buffs.evasion[Math.min(abLvl, abS.buffs.evasion.length) - 1] || 0; }
+                if (abS.buffs.spellDmgPct) { spellDmgPct += abS.buffs.spellDmgPct[Math.min(abLvl, abS.buffs.spellDmgPct.length) - 1] || 0; }
+            }
+
+            var isAoE = abS.area > 0 || (abD.area && abD.area > 0);
+            if (isAoE) { aoeDmg += dmg; aoeCount++; }
+
+            if (abS.heal && abS.heal.length) {
+                abS.heal.forEach(function(h) {
+                    var hIdx = Math.min(abLvl, (h.base || [0]).length) - 1;
+                    sustainVal += (h.base || [0])[hIdx] || 0;
+                });
+            }
+        });
+
+        totalDPS *= (1 + spellDmgPct / 100);
+        totalBurst *= (1 + spellDmgPct / 100);
+
+        var totalArmor = stats.def + buffArmor;
+        var ehp = (stats.hp + buffHP) * (1 + totalArmor * 0.06) * (1 + evasion / 100);
+        totalMob = stats.speed + totalMob * 10;
+        var farmScore = aoeDmg * 3 + aoeCount * 200 + totalBurst * 0.5 + totalMob * 0.3 + sustainVal * 0.2;
+
+        // Скалинг: DPS150 / DPS25 (оба уровня — все способности открыты)
+        var dps25 = 0, dps150 = 0;
+        [25, 150].forEach(function(lvl) {
+            var sLvl = heroStatsAtLevel(hero, lvl);
+            var dpsLvl = 0;
+            abilCodes.forEach(function(rc) {
+                var abS2 = ABILITY_STATS[rc];
+                if (!abS2) return;
+                var abD2 = ABILITIES_DB[rc];
+                if (!abD2) return;
+                var abL2 = abilityLevel(lvl, abD2.reqLevel || 1, abD2.levels || 3);
+                if (abL2 <= 0) return;
+                var d2 = calcAbilityDamage(abS2, sLvl, lvl);
+                var c2 = abS2.cool ? (Array.isArray(abS2.cool) ? abS2.cool[Math.min(abL2, abS2.cool.length) - 1] : abS2.cool) : 1;
+                if (c2 < 1) c2 = 1;
+                if (abS2.type === 'passive' || abD2.type === 'passive') d2 *= 0.2;
+                dpsLvl += d2 / c2;
+            });
+            dpsLvl *= (1 + spellDmgPct / 100);
+            if (lvl === 25) dps25 = dpsLvl;
+            else dps150 = dpsLvl;
+        });
+        var scalingVal = dps25 > 0 ? dps150 / dps25 : 1;
+
+        return {
+            dps: Math.round(totalDPS),
+            burst: Math.round(totalBurst),
+            surv: Math.round(ehp),
+            cc: Math.round(totalCC * 10) / 10,
+            mob: Math.round(totalMob),
+            farm: Math.round(farmScore),
+            scaling: Math.round(scalingVal * 10) / 10
+        };
+    }
+
+    // === UI State ===
+    var heroes = HEROES_DATA.filter(function(h) { return !h.wip && !h.isAltForm; });
+    var currentLevel = 25;
+    var profileCache = {};
+    var tableSortCol = null;
+    var tableSortAsc = true;
+    var allTableData = [];
+
+    function getProfile(hero, level) {
+        var key = hero.heroId + '_' + level;
+        if (!profileCache[key]) profileCache[key] = calcHeroProfile(hero, level);
+        return profileCache[key];
+    }
+
+    function populateSelects() {
+        var s1 = document.getElementById('hero1');
+        var s2 = document.getElementById('hero2');
+        var s3 = document.getElementById('hero3');
+        var opts = '<option value="">— не выбран —</option>';
+        heroes.forEach(function(h) { opts += '<option value="' + h.heroId + '">' + h.name + '</option>'; });
+        s2.innerHTML = opts;
+        s3.innerHTML = opts;
+        var opts1 = '';
+        heroes.forEach(function(h) { opts1 += '<option value="' + h.heroId + '">' + h.name + '</option>'; });
+        s1.innerHTML = opts1;
+        s1.value = 'paladin';
+    }
+
+    // === Радар ===
+    function drawRadar(profiles, maxVals) {
+        var canvas = document.getElementById('radarCanvas');
+        var ctx = canvas.getContext('2d');
+        var W = canvas.width, H = canvas.height;
+        var cx = W / 2, cy = H / 2;
+        var R = Math.min(W, H) / 2 - 50;
+        var n = AXES.length;
+
+        ctx.clearRect(0, 0, W, H);
+
+        for (var ring = 1; ring <= 4; ring++) {
+            var r = R * ring / 4;
+            ctx.beginPath();
+            for (var i = 0; i <= n; i++) {
+                var angle = (Math.PI * 2 * i / n) - Math.PI / 2;
+                var x = cx + r * Math.cos(angle);
+                var y = cy + r * Math.sin(angle);
+                if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+            }
+            ctx.strokeStyle = 'rgba(0,230,255,0.1)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        }
+
+        AXES.forEach(function(axis, i) {
+            var angle = (Math.PI * 2 * i / n) - Math.PI / 2;
+            ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + R * Math.cos(angle), cy + R * Math.sin(angle));
+            ctx.strokeStyle = 'rgba(0,230,255,0.15)';
+            ctx.stroke();
+            var lx = cx + (R + 30) * Math.cos(angle);
+            var ly = cy + (R + 30) * Math.sin(angle);
+            ctx.fillStyle = '#8aa0c0';
+            ctx.font = '11px Segoe UI, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(AXIS_LABELS[axis], lx, ly);
+        });
+
+        profiles.forEach(function(p, pi) {
+            ctx.beginPath();
+            AXES.forEach(function(axis, i) {
+                var val = p.profile[axis] || 0;
+                var max = maxVals[axis] || 1;
+                var ratio = Math.min(val / max, 1.2);
+                var r = R * ratio;
+                var angle = (Math.PI * 2 * i / n) - Math.PI / 2;
+                var x = cx + r * Math.cos(angle);
+                var y = cy + r * Math.sin(angle);
+                if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+            });
+            ctx.closePath();
+            ctx.fillStyle = HERO_COLORS[pi] + '20';
+            ctx.fill();
+            ctx.strokeStyle = HERO_COLORS[pi];
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            AXES.forEach(function(axis, i) {
+                var val = p.profile[axis] || 0;
+                var max = maxVals[axis] || 1;
+                var ratio = Math.min(val / max, 1.2);
+                var r = R * ratio;
+                var angle = (Math.PI * 2 * i / n) - Math.PI / 2;
+                ctx.beginPath();
+                ctx.arc(cx + r * Math.cos(angle), cy + r * Math.sin(angle), 3, 0, Math.PI * 2);
+                ctx.fillStyle = HERO_COLORS[pi];
+                ctx.fill();
+            });
+        });
+    }
+
+    function renderValues(profiles, maxVals, percentiles) {
+        var container = document.getElementById('radarValues');
+        container.innerHTML = '';
+        profiles.forEach(function(p, pi) {
+            var div = document.createElement('div');
+            div.className = 'hero-values';
+            var html = '<h3><span class="color-dot" style="background:' + HERO_COLORS[pi] + '"></span>' + p.hero.name + '</h3>';
+            AXES.forEach(function(axis) {
+                var val = p.profile[axis];
+                var max = maxVals[axis];
+                var pct = max > 0 ? Math.round(val / max * 100) : 0;
+                var cls = '';
+                var p10 = percentiles[axis + '_p10'];
+                var p90 = percentiles[axis + '_p90'];
+                if (val <= p10) cls = 'outlier-low';
+                else if (val >= p90) cls = 'outlier-high';
+                if (val === max) cls = 'best';
+                html += '<div class="stat-row"><span class="stat-label">' + AXIS_LABELS[axis] + '</span><span class="stat-value ' + cls + '">' + val.toLocaleString() + '<span class="stat-pct">' + pct + '%</span></span></div>';
+            });
+            div.innerHTML = html;
+            container.appendChild(div);
+        });
+    }
+
+    // === Таблица ===
+    function buildTableData(level) {
+        allTableData = [];
+        heroes.forEach(function(h) {
+            allTableData.push({ hero: h, profile: getProfile(h, level) });
+        });
+    }
+
+    function getMaxVals() {
+        var maxVals = {};
+        AXES.forEach(function(axis) {
+            var vals = allTableData.map(function(d) { return d.profile[axis]; }).sort(function(a, b) { return a - b; });
+            maxVals[axis] = vals[vals.length - 1] || 1;
+        });
+        return maxVals;
+    }
+
+    function getPercentiles() {
+        var p = {};
+        AXES.forEach(function(axis) {
+            var vals = allTableData.map(function(d) { return d.profile[axis]; }).sort(function(a, b) { return a - b; });
+            p[axis + '_p10'] = vals[Math.floor(vals.length * 0.1)] || 0;
+            p[axis + '_p90'] = vals[Math.floor(vals.length * 0.9)] || 0;
+        });
+        return p;
+    }
+
+    function renderTable() {
+        var maxVals = getMaxVals();
+        var data = allTableData.slice();
+
+        if (tableSortCol) {
+            data.sort(function(a, b) {
+                var va, vb;
+                if (tableSortCol === 'name') {
+                    va = a.hero.name; vb = b.hero.name;
+                    return tableSortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+                } else {
+                    va = a.profile[tableSortCol] || 0;
+                    vb = b.profile[tableSortCol] || 0;
+                    return tableSortAsc ? va - vb : vb - va;
+                }
+            });
+        }
+
+        var tbody = document.getElementById('percentileBody');
+        tbody.innerHTML = data.map(function(d) {
+            var p = d.profile;
+            var cells = AXES.map(function(axis) {
+                var val = p[axis];
+                var pct = maxVals[axis] > 0 ? Math.round(val / maxVals[axis] * 100) : 0;
+                var cls = '';
+                if (pct <= 10) cls = 'pct-low';
+                else if (pct >= 90) cls = 'pct-high';
+                else if (pct >= 98) cls = 'pct-best';
+                return '<td class="' + cls + '">' + val.toLocaleString() + '</td>';
+            }).join('');
+            return '<tr><td style="color:var(--text-primary);font-weight:500;">' + d.hero.name + '</td>' + cells + '</tr>';
+        }).join('');
+
+        // Стрелки сортировки
+        document.querySelectorAll('.percentile-table th').forEach(function(th) {
+            var col = th.dataset.col;
+            var arrow = '';
+            if (col === tableSortCol) {
+                arrow = tableSortAsc ? ' ▲' : ' ▼';
+            }
+            th.textContent = TH_LABELS[col] + arrow;
+        });
+    }
+
+    // Сортировка по клику
+    document.querySelectorAll('.percentile-table th').forEach(function(th) {
+        th.addEventListener('click', function() {
+            var col = this.dataset.col;
+            if (tableSortCol === col) {
+                tableSortAsc = !tableSortAsc;
+            } else {
+                tableSortCol = col;
+                tableSortAsc = (col === 'name'); // имя по возрастанию, числа по убыванию
+            }
+            renderTable();
+        });
+    });
+
+    // === Обновить всё ===
+    function update() {
+        var h1Id = document.getElementById('hero1').value;
+        var h2Id = document.getElementById('hero2').value;
+        var h3Id = document.getElementById('hero3').value;
+        var level = currentLevel;
+
+        buildTableData(level);
+        var maxVals = getMaxVals();
+        var percentiles = getPercentiles();
+
+        var selected = [];
+        [h1Id, h2Id, h3Id].forEach(function(id, i) {
+            if (!id) return;
+            var h = heroes.find(function(h) { return h.heroId === id; });
+            if (h) selected.push({ hero: h, profile: getProfile(h, level), colorIdx: i });
+        });
+
+        if (selected.length > 0) {
+            drawRadar(selected, maxVals);
+            renderValues(selected, maxVals, percentiles);
+        } else {
+            var canvas = document.getElementById('radarCanvas');
+            canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+            document.getElementById('radarValues').innerHTML = '';
+        }
+
+        renderTable();
+    }
+
+    // === Инициализация ===
+    populateSelects();
+
+    document.getElementById('hero1').addEventListener('change', update);
+    document.getElementById('hero2').addEventListener('change', update);
+    document.getElementById('hero3').addEventListener('change', update);
+
+    var slider = document.getElementById('levelSlider');
+    var levelDisp = document.getElementById('levelDisplay');
+    slider.addEventListener('input', function() {
+        currentLevel = parseInt(this.value);
+        levelDisp.textContent = currentLevel;
+        profileCache = {};
+        update();
+    });
+
+    update();
+})();
+</script>
+</body>
+</html>
