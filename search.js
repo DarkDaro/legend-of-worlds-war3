@@ -31,9 +31,9 @@
                     name: h.name,
                     title: h.title || '',
                     attr: h.attr || '',
-                    roleName: h.roleName || '',
+                    roleName: h.roleNames ? h.roleNames.join(', ') : (h.roleName || ''),
                     heroId: h.heroId,
-                    searchText: (h.heroId + ' ' + h.name + ' ' + (h.title || '') + ' ' + (h.roleName || '')).toLowerCase()
+                    searchText: (h.heroId + ' ' + h.name + ' ' + (h.title || '') + ' ' + (h.roleNames ? h.roleNames.join(' ') : (h.roleName || ''))).toLowerCase()
                 });
             });
         }

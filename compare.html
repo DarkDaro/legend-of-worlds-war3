@@ -546,7 +546,7 @@ HEROES_DATA.forEach(function(hero) {
         name: hero.name,
         attr: hero.attr,
         attrLabel: ATTR_LABELS[hero.attr] || hero.attr,
-        role: hero.roleName || ROLE_LABELS[hero.role] || hero.role,
+        role: hero.roleNames ? hero.roleNames.join(', ') : (hero.roleName || hero.role),
         image: 'images/heroes/' + hero.image + '.png',
         stats: {
             hp: hero.hp != null ? hero.hp : 0,

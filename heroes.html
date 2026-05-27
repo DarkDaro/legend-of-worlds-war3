@@ -134,8 +134,13 @@
             // Роли и их иконки
             const roleIcons = {
                 tank: '<i class="fas fa-shield-alt"></i>',
-                damager: '<i class="fas fa-crosshairs"></i>',
-                support: '<i class="fas fa-bolt"></i>'
+                bruiser: '<i class="fas fa-fist-raised"></i>',
+                damage: '<i class="fas fa-crosshairs"></i>',
+                assassin: '<i class="fas fa-user-ninja"></i>',
+                initiator: '<i class="fas fa-bolt"></i>',
+                controller: '<i class="fas fa-snowflake"></i>',
+                healer: '<i class="fas fa-heart"></i>',
+                support: '<i class="fas fa-hands-helping"></i>'
             };
 
             // Функция создания карточки героя
@@ -158,7 +163,7 @@
                     ${hero.wip ? '<span class="wip-badge"><i class="fas fa-hammer"></i> В разработке</span>' : ''}
                     <div class="hero-name">${hero.name}</div>
                     <div class="hero-title">${hero.title}</div>
-                    <div class="hero-role role-${hero.role}">${roleIcons[hero.role]} ${hero.roleName}</div>
+                    <div class="hero-role role-${hero.roles[0]}">${roleIcons[hero.roles[0]] || ''} ${hero.roleNames.join(', ')}</div>
                     <span class="hero-attr-badge">${getAttrName(hero.attr)}</span>
                 `;
 
