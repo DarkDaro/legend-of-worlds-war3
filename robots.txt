@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://darkdaro.github.io/legend-of-worlds-war3/sitemap.xml
