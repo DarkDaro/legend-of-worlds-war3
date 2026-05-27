@@ -5211,7 +5211,12 @@ body.item-sheet-open {
 }
 
 .role-tank { color: #ffaa66; border-color: #ffaa66; }
-.role-damager { color: #ff6666; border-color: #ff6666; }
+.role-bruiser { color: #ff8844; border-color: #ff8844; }
+.role-damage { color: #ff6666; border-color: #ff6666; }
+.role-assassin { color: #cc44ff; border-color: #cc44ff; }
+.role-initiator { color: #ffcc00; border-color: #ffcc00; }
+.role-controller { color: #44ccff; border-color: #44ccff; }
+.role-healer { color: #55ff55; border-color: #55ff55; }
 .role-support { color: #66aaff; border-color: #66aaff; }
 
 .hero-stats-table {
