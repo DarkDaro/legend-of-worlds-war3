@@ -18,6 +18,7 @@
     <script src="../abilities-db.js" defer></script>
     <script src="../icon-loader.js" defer></script>
     <script src="../hero-builds.js"></script>
+    <script src="../hero-lore.js"></script>
     <script src="../jass-data.js"></script>
     <script src="../bot-builds.js"></script>
     <script src="../analytics.js" defer></script>
@@ -53,9 +54,7 @@
             </div>
             <div id="hero-nav"></div>
             <div id="hero-stats"></div>
-            <div class="detail-description">
-                <p>Прохор — легендарный адмирал, чей призрачный флот наводит ужас на врагов. Непоколебимый в бою, он способен переломить ход сражения, призывая на помощь духи погибших кораблей.</p>
-            </div>
+            <div id="hero-description"></div>
 
             <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
             <div id="hero-build"></div>
@@ -188,6 +187,11 @@
             var buildContainer = document.getElementById('hero-build');
             if (buildContainer && typeof renderHeroBuild === 'function') {
                 buildContainer.innerHTML = renderHeroBuild('admiral');
+            }
+            var descContainer = document.getElementById("hero-description");
+            if (descContainer && typeof HERO_LORE !== "undefined" && HERO_LORE["admiral"]) {
+                descContainer.className = "detail-description";
+                descContainer.innerHTML = "<p>" + HERO_LORE["admiral"].description + "</p>";
             }
         });
     </script>
