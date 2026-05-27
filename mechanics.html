@@ -14,6 +14,7 @@
     <script src="hero-data.js"></script>
     <script src="search-index.js"></script>
     <script src="search.js"></script>
+    <script src="mechanics-db.js"></script>
     <script src="items-db.js" defer></script>
     <script src="icon-loader.js" defer></script>
     <script src="analytics.js" defer></script>
@@ -51,210 +52,8 @@
             <a href="formulas-calc.html" class="calc-link-btn"><i class="fas fa-calculator"></i> Калькулятор формул</a>
         </div>
 
-        <div class="mechanics-grid">
-
-            <!-- Удача -->
-            <div class="mechanic-card mech-luck">
-                <div class="mechanic-icon">
-                    <i class="fas fa-dice"></i>
-                </div>
-                <h3>Удача</h3>
-                <p>Параметр, влияющий на шанс срабатывания случайных эффектов: критический удар, оглушение, уклонение, срабатование предметов и способностей. Все источники удачи складываются. Чем выше базовый шанс — тем меньше даёт удача.</p>
-                <div class="mechanic-formula">Итог = Базовый% + Удача × (1 − Базовый% / 100)</div>
-                <a href="formulas-calc.html?tab=luck" class="mech-calc-link"><i class="fas fa-calculator"></i> Рассчитать</a>
-            </div>
-
-            <!-- Магический крит -->
-            <div class="mechanic-card mech-magic-crit">
-                <div class="mechanic-icon">
-                    <i class="fas fa-bolt"></i>
-                </div>
-                <h3>Магический крит</h3>
-                <p>Отдельный множитель критического урона для заклинаний. Работает независимо от физического крита. Увеличивает урон способностей при срабатывании.</p>
-                <div class="mechanic-formula">Маг. урон = Базовый урон × Маг. крит (1.5 / 2.0 / 2.5)</div>
-            </div>
-
-            <!-- Магический вампиризм -->
-            <div class="mechanic-card mech-magic-vamp">
-                <div class="mechanic-icon">
-                    <i class="fas fa-tint"></i>
-                </div>
-                <h3>Магический вампиризм</h3>
-                <p>Восстановление здоровья от магического урона, нанесённого способностями. В отличие от физического вампиризма, работает только с заклинаниями.</p>
-                <div class="mechanic-formula">Хил = Маг. урон × Вампиризм%</div>
-            </div>
-
-            <!-- Броня -->
-            <div class="mechanic-card mech-armor">
-                <div class="mechanic-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Броня</h3>
-                <p>Снижает входящий физический урон. Чем больше брони — тем сильнее снижение, но прирост замедляется. Константа C = 0.05 (отличается от стандартного WC3).</p>
-                <div class="mechanic-formula">Снижение = (Броня × C) / (1 + Броня × C)</div>
-                <a href="armor-calc.html" class="mech-calc-link"><i class="fas fa-calculator"></i> Рассчитать</a>
-            </div>
-
-            <!-- Блок урона -->
-            <div class="mechanic-card mech-block">
-                <div class="mechanic-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Блок урона</h3>
-                <p>Шанс полностью заблокировать физическую атаку, получив 0 урона. Срабатывает до расчёта брони. Не складывается — берётся наивысшее значение.</p>
-                <div class="mechanic-formula">Шанс блока = Базовый% + Бонус от предметов</div>
-            </div>
-
-            <!-- Сопротивление оглушению -->
-            <div class="mechanic-card mech-stun-resist">
-                <div class="mechanic-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <h3>Сопротивление оглушению</h3>
-                <p>Снижает длительность оглушения, замедления и контроля. Работает на все типы CC-эффектов. Не снижает урон, только время действия.</p>
-                <div class="mechanic-formula">Длительность = Базовая × (1 - Сопрот.% / 100)</div>
-            </div>
-
-            <!-- Вампиризм (физический) -->
-            <div class="mechanic-card mech-phys-vamp">
-                <div class="mechanic-icon">
-                    <i class="fas fa-heartbeat"></i>
-                </div>
-                <h3>Физический вампиризм</h3>
-                <p>Восстановление здоровья от физического урона автоатаками. Несколько источников складываются мультипликативно.</p>
-                <div class="mechanic-formula">Итого = 1 - (1-a) × (1-b) × (1-c)...</div>
-            </div>
-
-            <!-- Снижение лечения -->
-            <div class="mechanic-card mech-heal-reduce">
-                <div class="mechanic-icon">
-                    <i class="fas fa-ban"></i>
-                </div>
-                <h3>Снижение лечения</h3>
-                <p>Уменьшает входящее исцеление цели. Дебафф 'A13M' снижает лечение на 50%. Несколько источников не складываются — берётся наибольшее значение.</p>
-                <div class="mechanic-formula">Лечение = Базовое × (1 - Снижение%)</div>
-            </div>
-
-            <!-- Скипетр Владыки -->
-            <div class="mechanic-card mech-scepter">
-                <div class="mechanic-icon">
-                    <i class="fas fa-gem"></i>
-                </div>
-                <h3>Скипетр Владыки</h3>
-                <p>Уникальный предмет, усиливающий ультимейт каждого героя. Эффект индивидуален: от дополнительного урона до шанса мгновенной перезарядки способности.</p>
-                <div class="mechanic-formula">Эффект уникален для каждого героя (см. карточку)</div>
-            </div>
-
-            <!-- Усиление магического урона -->
-            <div class="mechanic-card mech-spell-dmg">
-                <div class="mechanic-icon">
-                    <i class="fas fa-fire-alt"></i>
-                </div>
-                <h3>Усиление магического урона</h3>
-                <p>Параметр SpellDMG увеличивает урон всех заклинаний. Все источники складываются аддитивно — каждый новый предмет даёт фиксированный прирост. Действует на все типы магического урона (категории 1 и 2).</p>
-                <div class="mechanic-formula">Маг. урон = Базовый урон × (1 + SpellDMG)</div>
-            </div>
-
-            <!-- Усиление магического лечения -->
-            <div class="mechanic-card mech-heal-amp">
-                <div class="mechanic-icon">
-                    <i class="fas fa-hand-holding-medical"></i>
-                </div>
-                <h3>Усиление магического лечения</h3>
-                <p>Параметр HealBonus увеличивает исцеление от способностей. Применяется до проверки на снижение лечения. Все источники складываются аддитивно — как и SpellDMG, каждый предмет даёт фиксированный бонус.</p>
-                <div class="mechanic-formula">Лечение = Базовое × (1 + HealBonus)</div>
-            </div>
-
-            <!-- Магическая защита -->
-            <div class="mechanic-card mech-magic-resist">
-                <div class="mechanic-icon">
-                    <i class="fas fa-shield-virus"></i>
-                </div>
-                <h3>Магическая защита</h3>
-                <p>Снижает входящий магический урон. Несколько предметов складываются мультипликативно — каждый следующий даёт меньше абсолютного прироста. Это убывающая полезность: два предмета по 20% дают не 40%, а 36%.</p>
-                <div class="mechanic-formula">Защита = 1 − (1−a) × (1−b) × (1−c)...</div>
-            </div>
-
-            <!-- Автосборка -->
-            <div class="mechanic-card mech-auto-build">
-                <div class="mechanic-icon">
-                    <i class="fas fa-mouse-pointer"></i>
-                </div>
-                <h3>Автосборка</h3>
-                <p>Автоматическая стадийная система сборки. Нажмите — и герой сам продаст старые предметы, купит новые на текущую стадию и перейдёт к следующей. Каждая стадия требует определённый уровень героя. Стадии с предметами боссов доступны только при включённом режиме боссов.</p>
-                <div class="mechanic-formula">Стадия → Проверка уровня → Оплата → Сборка</div>
-            </div>
-
-            <!-- Порча -->
-            <div class="mechanic-card mech-corruption">
-                <div class="mechanic-icon">
-                    <i class="fas fa-skull-crossbones"></i>
-                </div>
-                <h3>Порча</h3>
-                <p>Стакающийся дебафф. Каждый стак добавляет +20% бонусного урона по цели — этот урон наносится чистым типом и не усиливается SpellDMG. Также наносит периодический урон, зависящий от интеллекта заклинателя. Стаки складываются, делая цель всё уязвимее.</p>
-                <div class="mechanic-formula">Бонус урон = Полученный урон × 0.20 × Стаки</div>
-            </div>
-
-            <!-- Возврат урона -->
-            <div class="mechanic-card mech-dmg-return">
-                <div class="mechanic-icon">
-                    <i class="fas fa-exchange-alt"></i>
-                </div>
-                <h3>Возврат урона</h3>
-                <p>Некоторые предметы возвращают часть полученного урона атакующему. Возврат наносится чистым типом — он не усиливается SpellDMG, не блокируется маг. защитой и не вызывает срабатываний пассивок. Эффективен против автоатакующих героев.</p>
-                <div class="mechanic-formula">Возврат = Полученный урон × Предмет% (20–60%)</div>
-            </div>
-
-            <!-- Система баффов и развеивание -->
-            <div class="mechanic-card mech-dispel">
-                <div class="mechanic-icon">
-                    <i class="fas fa-wind"></i>
-                </div>
-                <h3>Развеивание баффов</h3>
-                <p>Кастомная система баффов: каждый бафф помечен как положительный или отрицательный и может быть развеян. Развеивание снимает все баффы выбранного типа. Некоторые баффы защищены от развеивания. Баффы могут стакаться по длительности или обновляться.</p>
-                <div class="mechanic-formula">Развеивание → Снятие всех развеиваемых баффов выбранного типа</div>
-            </div>
-
-            <!-- Сопротивление сожжению маны -->
-            <div class="mechanic-card mech-mana-burn-resist">
-                <div class="mechanic-icon">
-                    <i class="fas fa-fire-alt"></i>
-                </div>
-                <h3>Сопротивление сожжению маны</h3>
-                <p>Снижает количество маны, выжигаемой способностями врага. Как и маг. защита, складывается мультипликативно с убывающей полезностью. Каждый следующий предмет даёт меньше абсолютного снижения.</p>
-                <div class="mechanic-formula">Сожжено = Базовое × (1 − Защита от предметов)</div>
-            </div>
-
-            <!-- Чистый урон -->
-            <div class="mechanic-card mech-pure-dmg">
-                <div class="mechanic-icon">
-                    <i class="fas fa-star-of-life"></i>
-                </div>
-                <h3>Чистый урон</h3>
-                <p>Особый тип урона, который не усиливается SpellDMG, не блокируется маг. защитой, не учитывает вампиризм и не вызывает срабатываний пассивок. Используется для возврата урона, порчи и гарантированных эффектов. Нельзя снизить — только избежать.</p>
-                <div class="mechanic-formula">Урон = Фиксированный, без модификаторов</div>
-            </div>
-
-            <!-- Мотивация -->
-            <div class="mechanic-card mech-motivation">
-                <div class="mechanic-icon">
-                    <i class="fas fa-hand-sparkles"></i>
-                </div>
-                <h3>Мотивация</h3>
-                <p>Уникальная характеристика игрока, которая увеличивает шанс выпадения босс-дропов. Чем выше мотивация, тем вероятнее, что при убийстве босса выпадет редкий предмет. Базовый шанс выпадения указан для каждого босса, а мотивация добавляет к нему дополнительную вероятность.</p>
-                <div class="mechanic-formula">Итоговый шанс = Базовый шанс + Мотивация</div>
-            </div>
-
-            <!-- Автопрокачка способностей -->
-            <div class="mechanic-card mech-auto-skill">
-                <div class="mechanic-icon">
-                    <i class="fas fa-level-up-alt"></i>
-                </div>
-                <h3>Автопрокачка способностей</h3>
-                <p>Все способности героя прокачиваются автоматически на нужных уровнях. Q, W, E, R получают 5 уровней, F — 3 уровня. Не нужно тратить очки способностей — герой получает улучшение при достижении порогового уровня.</p>
-                <a href="info.html#auto-level" class="mech-calc-link"><i class="fas fa-info-circle"></i> Таблица уровней</a>
-            </div>
-
+        <div class="mechanics-grid" id="mechanicsGrid">
+            <!-- Генерируется из mechanics-db.js -->
         </div>
 
         <div style="margin-top:32px; text-align:center;">
@@ -280,8 +79,46 @@
         </div>
     </footer>
     <script>
-    // Scroll-reveal — карточки механик
-    document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.mechanic-card'); });
+    // Маппинг: ключ БД → CSS-класс карточки
+    var MECH_CSS = {
+        luck: 'mech-luck', magicCrit: 'mech-magic-crit', magicVampirism: 'mech-magic-vamp',
+        armor: 'mech-armor', block: 'mech-block', stunResist: 'mech-stun-resist',
+        physVampirism: 'mech-phys-vamp', healReduce: 'mech-heal-reduce', scepter: 'mech-scepter',
+        spellDMG: 'mech-spell-dmg', healBonus: 'mech-heal-amp', magicResist: 'mech-magic-resist',
+        autoBuild: 'mech-auto-build', corruption: 'mech-corruption', dmgReturn: 'mech-dmg-return',
+        dispel: 'mech-dispel', manaBurnResist: 'mech-mana-burn-resist', pureDmg: 'mech-pure-dmg',
+        motivation: 'mech-motivation', autoSkill: 'mech-auto-skill'
+    };
+    // Порядок вывода
+    var MECH_ORDER = ['luck','magicCrit','magicVampirism','armor','block','stunResist',
+        'physVampirism','healReduce','scepter','spellDMG','healBonus','magicResist',
+        'autoBuild','corruption','dmgReturn','dispel','manaBurnResist','pureDmg',
+        'motivation','autoSkill'];
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var grid = document.getElementById('mechanicsGrid');
+        if (!grid || typeof MECHANICS_DB === 'undefined') return;
+        var html = '';
+        MECH_ORDER.forEach(function(key) {
+            var m = MECHANICS_DB[key];
+            if (!m) return;
+            var css = MECH_CSS[key] || '';
+            html += '<div class="mechanic-card ' + css + '">';
+            html += '<div class="mechanic-icon"><i class="fas ' + (m.icon || 'fa-cog') + '"></i></div>';
+            html += '<h3>' + m.name + '</h3>';
+            html += '<p>' + m.desc + '</p>';
+            if (m.formula) html += '<div class="mechanic-formula">' + m.formula + '</div>';
+            var link = m.calcLink || m.infoLink;
+            if (link) {
+                var icon = m.calcLink ? 'fa-calculator' : 'fa-info-circle';
+                var label = m.calcLink ? 'Рассчитать' : 'Таблица уровней';
+                html += '<a href="' + link + '" class="mech-calc-link"><i class="fas ' + icon + '"></i> ' + label + '</a>';
+            }
+            html += '</div>';
+        });
+        grid.innerHTML = html;
+        if (typeof revealElements === 'function') revealElements('.mechanic-card');
+    });
     </script>
 </body>
 </html>

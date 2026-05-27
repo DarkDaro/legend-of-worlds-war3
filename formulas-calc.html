@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="hero-data.js"></script>
     <script src="game-constants.js"></script>
+    <script src="mechanics-db.js"></script>
     <script src="search-index.js"></script>
     <script src="search.js"></script>
     <script src="items-db.js" defer></script>
@@ -571,13 +572,15 @@
         calcLuck();
 
         // === Удача + предметы ===
-        var LUCK_ITEMS = [
-            { id: 'I0CM', name: 'Проклятый череп', luck: 10 },
-            { id: 'I0CN', name: 'Сфера магии', luck: 10 },
-            { id: 'I0EY', name: 'Скипетр Владыки II', luck: 15 },
-            { id: 'I03V', name: 'Посох света', luck: 5 },
-            { id: 'I0DB', name: 'Скипетр Владыки I', luck: 5 },
-        ];
+        var LUCK_ITEMS = (typeof MECHANICS_DB !== 'undefined' && MECHANICS_DB.luck && MECHANICS_DB.luck.items)
+            ? MECHANICS_DB.luck.items.map(function(it) { return { id: it.id, name: it.name, luck: it.value }; })
+            : [
+                { id: 'I0CM', name: 'Проклятый череп', luck: 10 },
+                { id: 'I0CN', name: 'Сфера магии', luck: 10 },
+                { id: 'I0EY', name: 'Скипетр Владыки II', luck: 15 },
+                { id: 'I03V', name: 'Посох света', luck: 5 },
+                { id: 'I0DB', name: 'Скипетр Владыки I', luck: 5 }
+            ];
         var selectedLuckItems = {};
 
         function renderLuckItems() {
