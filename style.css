@@ -5212,7 +5212,7 @@ body.item-sheet-open {
 
 .role-tank { color: #ffaa66; border-color: #ffaa66; }
 .role-bruiser { color: #ff8844; border-color: #ff8844; }
-.role-damage { color: #ff6666; border-color: #ff6666; }
+.role-damager { color: #ff6666; border-color: #ff6666; }
 .role-assassin { color: #cc44ff; border-color: #cc44ff; }
 .role-initiator { color: #ffcc00; border-color: #ffcc00; }
 .role-controller { color: #44ccff; border-color: #44ccff; }
