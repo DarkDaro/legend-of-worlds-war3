@@ -8,7 +8,30 @@
     var globalSearchInput = null;
     var resultsContainer = null;
     var indexBuilt = false;
+    var scriptsLoaded = false;
     var index = { heroes: [], items: [], abilities: [], mechanics: [], bosses: [], modes: [] };
+
+    // Lazy-load зависимостей поиска
+    function loadSearchScripts(callback) {
+        if (scriptsLoaded) { callback(); return; }
+        var pending = 0;
+        var done = function() { if (--pending <= 0) { scriptsLoaded = true; callback(); } };
+        if (typeof SEARCH_INDEX === 'undefined') {
+            pending++;
+            var s1 = document.createElement('script');
+            s1.src = (isOnHeroesDir() ? '../' : '') + 'search-index.js';
+            s1.onload = done; s1.onerror = done;
+            document.head.appendChild(s1);
+        }
+        if (typeof itemsDB === 'undefined') {
+            pending++;
+            var s2 = document.createElement('script');
+            s2.src = (isOnHeroesDir() ? '../' : '') + 'items-db.js';
+            s2.onload = done; s2.onerror = done;
+            document.head.appendChild(s2);
+        }
+        if (pending === 0) { scriptsLoaded = true; callback(); }
+    }
 
     function isOnItemsPage() {
         return location.pathname.indexOf('/items.html') !== -1 || location.pathname.endsWith('/items.html');
@@ -367,12 +390,15 @@
 
     function openSearch() {
         createOverlay();
-        indexBuilt = false;
         searchOverlay.classList.add('active');
         document.body.style.overflow = 'hidden';
         globalSearchInput.value = '';
-        resultsContainer.innerHTML = '';
-        setTimeout(function() { globalSearchInput.focus(); }, 50);
+        resultsContainer.innerHTML = '<div class="gs-loading" style="text-align:center;padding:20px;color:var(--text-dim)">Загрузка...</div>';
+        loadSearchScripts(function() {
+            indexBuilt = false;
+            resultsContainer.innerHTML = '';
+            setTimeout(function() { globalSearchInput.focus(); }, 50);
+        });
     }
 
     function closeSearch() {
