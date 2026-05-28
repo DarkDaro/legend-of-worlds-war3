@@ -108,7 +108,7 @@ var HEROES_DATA = [
     { name: 'Мясник', title: '', attr: 'strength', roles: ['bruiser', 'assassin'], roleNames: ['Рубака', 'Убийца'], heroId: 'butcher', image: 'butcher', charName: 'Энди',
       rawcode: 'U001',
       strBase: 31, strGain: 4, agiBase: 16, agiGain: 2.5, intBase: 13, intGain: 1.5,
-      hp: 1000, mp: 0, atk: 20, def: 2, atkSpeed: 2, hpRegen: 5, mpRegen: 0.01, speed: 290, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 1000, mp: 150, atk: 20, def: 2, atkSpeed: 2, hpRegen: 5, mpRegen: 0.01, speed: 290, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Огненный Голем', title: '', attr: 'strength', roles: ['tank', 'initiator'], roleNames: ['Танк', 'Инициатор'], heroId: 'fire-golem-hero', image: 'fire-golem-hero', charName: 'Джек',
       rawcode: 'U007',
@@ -234,7 +234,7 @@ var HEROES_DATA = [
     { name: 'Воительница', title: '', attr: 'agility', roles: ['assassin', 'bruiser'], roleNames: ['Убийца', 'Рубака'], heroId: 'warrioress', image: 'warrioress', charName: 'Лианна',
       rawcode: 'E00H',
       strBase: 21, strGain: 1.5, agiBase: 24, agiGain: 5, intBase: 15, intGain: 1.5,
-      hp: 200, mp: 150, atk: 50, def: 2, atkSpeed: 1.7, hpRegen: 0, mpRegen: 0.01, speed: 310, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 200, mp: 150, atk: 50, def: 2, atkSpeed: 1.7, hpRegen: 0.50, mpRegen: 0.01, speed: 310, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Жрица Луны', title: '', attr: 'agility', roles: ['damager', 'support'], roleNames: ['Дамагер', 'Помощник'], heroId: 'priestess', image: 'priestess', charName: 'Эльвира',
       rawcode: 'E010',
@@ -244,23 +244,23 @@ var HEROES_DATA = [
     { name: 'Стражница', title: '', attr: 'agility', roles: ['assassin', 'initiator'], roleNames: ['Убийца', 'Инициатор'], heroId: 'guardian', image: 'guardian', charName: 'Кристина',
       rawcode: 'E020',
       strBase: 21, strGain: 1.5, agiBase: 24, agiGain: 5, intBase: 15, intGain: 1.5,
-      hp: 200, mp: 150, atk: 40, def: 2, atkSpeed: 1.7, hpRegen: 0, mpRegen: 0.01, speed: 310, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 200, mp: 150, atk: 40, def: 2, atkSpeed: 1.7, hpRegen: 0.50, mpRegen: 0.01, speed: 310, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Зодиак', title: '', attr: 'agility', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'zodiac', image: 'zodiac', charName: 'Глеб',
       unique: true,
       rawcode: 'E02O',
       strBase: 18, strGain: 1.5, agiBase: 24, agiGain: 4.5, intBase: 18, intGain: 2,
-      hp: 200, mp: 150, atk: 40, def: 1, atkSpeed: 1.7, hpRegen: 0, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 200, mp: 150, atk: 40, def: 1, atkSpeed: 1.7, hpRegen: 0.50, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Ночной Хищник', title: '', attr: 'agility', roles: ['assassin', 'initiator'], roleNames: ['Убийца', 'Инициатор'], heroId: 'night-predator', image: 'night-predator', charName: 'Лапа',
       rawcode: 'E03S',
       strBase: 25, strGain: 1.5, agiBase: 25, agiGain: 5, intBase: 10, intGain: 1.5,
-      hp: 200, mp: 150, atk: 60, def: 1, atkSpeed: 1.7, hpRegen: 0, mpRegen: 0.01, speed: 280, range: 150, sightDay: 1800, sightNight: 1800 , attackType: 'melee'},
+      hp: 200, mp: 150, atk: 60, def: 1, atkSpeed: 1.7, hpRegen: 0.50, mpRegen: 0.01, speed: 280, range: 150, sightDay: 1800, sightNight: 1800 , attackType: 'melee'},
 
     { name: 'Егерь', title: '', attr: 'agility', roles: ['damager', 'assassin'], roleNames: ['Дамагер', 'Убийца'], heroId: 'ranger', image: 'ranger', charName: 'Елена',
       rawcode: 'H001',
       strBase: 17, strGain: 1.5, agiBase: 27, agiGain: 5, intBase: 16, intGain: 1.5,
-      hp: 200, mp: 150, atk: 70, def: 1, atkSpeed: 1.7, hpRegen: 0, mpRegen: 0.01, speed: 310, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
+      hp: 200, mp: 150, atk: 70, def: 1, atkSpeed: 1.7, hpRegen: 1.0, mpRegen: 0.01, speed: 310, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
 
     { name: 'Тень', title: '', attr: 'agility', roles: ['assassin', 'controller'], roleNames: ['Убийца', 'Контролёр'], heroId: 'shadow', image: 'shadow', charName: 'Наполеон',
       rawcode: 'H037',
@@ -275,7 +275,7 @@ var HEROES_DATA = [
     { name: 'Покорительница Молний', title: '', attr: 'agility', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'lightning-subjugator', image: 'lightning-subjugator', charName: 'Екатерина',
       rawcode: 'H046',
       strBase: 16, strGain: 1.5, agiBase: 28, agiGain: 4.5, intBase: 16, intGain: 2,
-      hp: 200, mp: 150, atk: 45, def: 1, atkSpeed: 1.7, hpRegen: 0, mpRegen: 0.01, speed: 310, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
+      hp: 200, mp: 150, atk: 45, def: 1, atkSpeed: 1.7, hpRegen: 1.0, mpRegen: 0.01, speed: 310, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
 
     { name: 'Отец Тьмы', title: '', attr: 'agility', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'father-of-darkness', image: 'father-of-darkness', charName: 'Злыдень',
       unique: true,
@@ -291,7 +291,7 @@ var HEROES_DATA = [
     { name: 'Астральная Охотница', title: '', attr: 'agility', roles: ['assassin', 'initiator'], roleNames: ['Убийца', 'Инициатор'], heroId: 'astral-huntress', image: 'astral-huntress', charName: 'Мия',
       rawcode: 'H0AG',
       strBase: 17, strGain: 1.5, agiBase: 27, agiGain: 5, intBase: 16, intGain: 1.5,
-      hp: 200, mp: 150, atk: 45, def: 1, atkSpeed: 1.7, hpRegen: 0, mpRegen: 0.01, speed: 290, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
+      hp: 200, mp: 150, atk: 45, def: 1, atkSpeed: 1.7, hpRegen: 1, mpRegen: 0.01, speed: 290, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
 
     { name: 'Пламенный Берсеркер', title: '', attr: 'agility', roles: ['bruiser', 'initiator'], roleNames: ['Рубака', 'Инициатор'], heroId: 'flame-berserker', image: 'flame-berserker', charName: 'Даниил',
       rawcode: 'O008',
@@ -472,7 +472,7 @@ var HEROES_DATA = [
     { name: 'Повелитель Огня', title: '', attr: 'intelligence', roles: ['damager', 'initiator'], roleNames: ['Дамагер', 'Инициатор'], heroId: 'fire-lord', image: 'fire-lord', charName: 'Михаил',
       rawcode: 'N005',
       strBase: 16, strGain: 1.5, agiBase: 17, agiGain: 2.5, intBase: 27, intGain: 4,
-      hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0, mpRegen: 0.01, speed: 305, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
+      hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1.0, mpRegen: 0.01, speed: 305, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
 
     { name: 'Повелитель Вихрей', title: '', attr: 'intelligence', roles: ['controller', 'damager'], roleNames: ['Контролёр', 'Дамагер'], heroId: 'wind-lord', image: 'wind-lord', charName: 'Григорий',
       rawcode: 'O007',
