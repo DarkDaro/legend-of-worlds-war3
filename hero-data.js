@@ -211,7 +211,7 @@ var HEROES_DATA = [
       wip: true,
       rawcode: 'H0A6',
       strBase: 0, strGain: 2, agiBase: 16, agiGain: 2, intBase: 28, intGain: 2,
-      hp: 200, mp: 0, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0, speed: 0.01, range: 150, sightDay: 1800, sightNight: 800 },
+      hp: 200, mp: 0, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0.01, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
 
     // === ЛОВКОСТЬ ===
@@ -349,43 +349,43 @@ var HEROES_DATA = [
 
     { name: 'Звездный Дух', title: '', attr: 'agility', roles: ['damager', 'support'], roleNames: ['Дамагер', 'Помощник'], heroId: 'star-spirit', image: 'star-spirit', charName: 'Ульяна',
       rawcode: 'O00K',
-      strBase: 19, strGain: 1.5, agiBase: 25, agiGain: 4.5, intBase: 0, intGain: 2,
-      hp: 250, mp: 150, atk: 50, def: 1, atkSpeed: 1.7, hpRegen: 1, mpRegen: 0, speed: 0, range: 700, sightDay: 1800, sightNight: 800 },
+      strBase: 19, strGain: 1.5, agiBase: 25, agiGain: 4.5, intBase: 16, intGain: 2,
+      hp: 250, mp: 150, atk: 50, def: 1, atkSpeed: 1.7, hpRegen: 1, mpRegen: 0.01, speed: 320, range: 700, sightDay: 1800, sightNight: 800 },
 
     { name: 'Ночная Мстительница', title: '', attr: 'agility', roles: ['assassin', 'initiator'], roleNames: ['Убийца', 'Инициатор'], heroId: 'night-avenger', image: 'night-avenger', charName: 'Славянка',
       rawcode: 'O00O',
       strBase: 15, strGain: 1.5, agiBase: 30, agiGain: 5, intBase: 15, intGain: 1.5,
-      hp: 200, mp: 150, atk: 50, def: 0, atkSpeed: 1.7, hpRegen: 1, mpRegen: 0, speed: 0, range: 600, sightDay: 1800, sightNight: 800 },
+      hp: 200, mp: 150, atk: 50, def: 0, atkSpeed: 1.7, hpRegen: 1, mpRegen: 0.01, speed: 320, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Скелет', title: '', attr: 'agility', roles: ['damager', 'assassin'], roleNames: ['Дамагер', 'Убийца'], heroId: 'skeleton', image: 'skeleton', charName: 'Андриан',
       unique: true,
       rawcode: 'O00E',
-      strBase: 16, strGain: 1.5, agiBase: 28, agiGain: 5, intBase: 0, intGain: 1.5,
-      hp: 200, mp: 150, atk: 40, def: 1, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
+      strBase: 16, strGain: 1.5, agiBase: 28, agiGain: 5, intBase: 16, intGain: 1.5,
+      hp: 200, mp: 150, atk: 40, def: 1, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Мятежник', title: '', attr: 'agility', roles: ['bruiser', 'assassin'], roleNames: ['Рубака', 'Убийца'], heroId: 'rebel', image: 'rebel', charName: 'Цицерон',
       unique: true,
       rawcode: 'O00P',
       strBase: 15, strGain: 1.5, agiBase: 28, agiGain: 4.5, intBase: 17, intGain: 2,
-      hp: 200, mp: 150, atk: 50, def: 1, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
+      hp: 200, mp: 150, atk: 50, def: 1, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Ассасин', title: '', attr: 'agility', roles: ['assassin', 'initiator'], roleNames: ['Убийца', 'Инициатор'], heroId: 'assassin', image: 'assassin', charName: 'Яна',
       unique: true,
       rawcode: 'O010',
       strBase: 20, strGain: 1.5, agiBase: 25, agiGain: 5, intBase: 15, intGain: 1.5,
-      hp: 200, mp: 150, atk: 50, def: 1, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0, speed: 310, range: 150, sightDay: 1800, sightNight: 800 },
+      hp: 200, mp: 150, atk: 50, def: 1, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0.01, speed: 310, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Огненная Панда', title: '', attr: 'agility', roles: ['bruiser', 'controller'], roleNames: ['Рубака', 'Контролёр'], heroId: 'fire-panda', image: 'fire-panda', charName: 'Ксин',
       unique: true,
       rawcode: 'O011',
       strBase: 10, strGain: 1.5, agiBase: 40, agiGain: 4, intBase: 10, intGain: 2.5,
-      hp: 200, mp: 150, atk: 50, def: 1, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
+      hp: 200, mp: 150, atk: 50, def: 1, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Искатель крови', title: '', attr: 'agility', roles: ['damager'], roleNames: ['Дамагер'], heroId: 'bloodsucker', image: 'bloodsucker', charName: '',
       wip: true,
       rawcode: 'H095',
       strBase: 23, strGain: 1.8, agiBase: 24, agiGain: 3, intBase: 18, intGain: 1.696875,
-      hp: 150, mp: 0, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
+      hp: 150, mp: 0, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0.01, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
 
     // === РАЗУМ ===
@@ -403,102 +403,102 @@ var HEROES_DATA = [
     { name: 'Леший', title: 'Друид', attr: 'intelligence', roles: ['controller', 'support'], roleNames: ['Контролёр', 'Помощник'], heroId: 'leshy', image: 'leshy', charName: 'Адам',
       rawcode: 'E006',
       strBase: 20, strGain: 1.5, agiBase: 18, agiGain: 1.5, intBase: 22, intGain: 5,
-      hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.03, speed: 320, range: 550, sightDay: 1800, sightNight: 800 },
+      hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 320, range: 550, sightDay: 1800, sightNight: 800 },
 
     { name: 'Некромонгер', title: 'Повелитель мёртвых', attr: 'intelligence', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'necromonger', image: 'necromonger', charName: 'Дармонт',
       rawcode: 'H06G',
       strBase: 20, strGain: 1.5, agiBase: 15, agiGain: 2, intBase: 25, intGain: 4.5,
-      hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.04, speed: 310, range: 750, sightDay: 1800, sightNight: 800 },
+      hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 310, range: 750, sightDay: 1800, sightNight: 800 },
 
     { name: 'Дух Природы', title: '', attr: 'intelligence', roles: ['support'], roleNames: ['Помощник'], heroId: 'spirit-of-nature', image: 'spirit-of-nature', charName: 'Адам',
       isAltForm: true,
       rawcode: 'E03H',
       strBase: 20, strGain: 1.5, agiBase: 18, agiGain: 2, intBase: 22, intGain: 4.5,
-      hp: 1250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 51, mpRegen: 0, speed: 0, range: 750, sightDay: 800, sightNight: 800 },
+      hp: 1250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 51, mpRegen: 0.01, speed: 0, range: 750, sightDay: 800, sightNight: 800 },
 
     { name: 'Воин Света', title: '', attr: 'intelligence', roles: ['healer', 'initiator'], roleNames: ['Целитель', 'Инициатор'], heroId: 'warrior-of-light', image: 'warrior-of-light', charName: 'Дмитрий',
       rawcode: 'H00F',
       strBase: 21, strGain: 2, agiBase: 13, agiGain: 2, intBase: 26, intGain: 4,
-      hp: 200, mp: 150, atk: 20, def: 0, atkSpeed: 2.25, hpRegen: 0.5, mpRegen: 0, speed: 290, range: 600, sightDay: 1800, sightNight: 800 },
+      hp: 200, mp: 150, atk: 20, def: 0, atkSpeed: 2.25, hpRegen: 0.5, mpRegen: 0.01, speed: 290, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Повелитель Тьмы', title: '', attr: 'intelligence', roles: ['controller', 'damager'], roleNames: ['Контролёр', 'Дамагер'], heroId: 'dark-lord', image: 'dark-lord', charName: 'Багратион',
       rawcode: 'H00V',
       strBase: 18, strGain: 1.5, agiBase: 13, agiGain: 1.5, intBase: 29, intGain: 5,
-      hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 310, range: 150, sightDay: 1800, sightNight: 800 },
+      hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 310, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Темный Маг', title: '', attr: 'intelligence', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'dark-mage', image: 'dark-mage', charName: 'Августин',
       rawcode: 'H02F',
       strBase: 18, strGain: 1.5, agiBase: 12, agiGain: 2, intBase: 30, intGain: 4.5,
-      hp: 200, mp: 150, atk: 30, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 300, range: 600, sightDay: 1800, sightNight: 800 },
+      hp: 200, mp: 150, atk: 30, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 300, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Волшебница Ветров', title: '', attr: 'intelligence', roles: ['controller', 'support'], roleNames: ['Контролёр', 'Помощник'], heroId: 'wind-enchantress', image: 'wind-enchantress', charName: 'Виктория',
       rawcode: 'H02G',
       strBase: 15, strGain: 1.5, agiBase: 15, agiGain: 1.5, intBase: 30, intGain: 5,
-      hp: 200, mp: 150, atk: 25, def: 0, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 290, range: 600, sightDay: 1800, sightNight: 800 },
+      hp: 200, mp: 150, atk: 25, def: 0, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 290, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Маг Воздуха', title: '', attr: 'intelligence', roles: ['controller', 'damager'], roleNames: ['Контролёр', 'Дамагер'], heroId: 'air-mage', image: 'air-mage', charName: 'Олег',
       rawcode: 'H04E',
       strBase: 15, strGain: 1.5, agiBase: 18, agiGain: 1.5, intBase: 27, intGain: 5,
-      hp: 200, mp: 150, atk: 25, def: 0, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 310, range: 600, sightDay: 1800, sightNight: 800 },
+      hp: 200, mp: 150, atk: 25, def: 0, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 310, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Ведьмак Хаоса', title: '', attr: 'intelligence', roles: ['damager', 'assassin'], roleNames: ['Дамагер', 'Убийца'], heroId: 'chaos-witcher', image: 'chaos-witcher', charName: 'Игнат',
       unique: true,
       rawcode: 'H08T',
       strBase: 18, strGain: 1.5, agiBase: 16, agiGain: 2, intBase: 26, intGain: 4.5,
-      hp: 200, mp: 250, atk: 25, def: 0, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 310, range: 600, sightDay: 1800, sightNight: 800 },
+      hp: 200, mp: 250, atk: 25, def: 0, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 310, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Шторм', title: '', attr: 'intelligence', roles: ['damager', 'initiator'], roleNames: ['Дамагер', 'Инициатор'], heroId: 'storm', image: 'storm', charName: 'Николай',
       rawcode: 'N00E',
       strBase: 15, strGain: 1.5, agiBase: 15, agiGain: 2.5, intBase: 30, intGain: 4,
-      hp: 200, mp: 150, atk: 30, def: 0, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 320, range: 600, sightDay: 1800, sightNight: 800 },
+      hp: 200, mp: 150, atk: 30, def: 0, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 320, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Рыцарь Глубин', title: '', attr: 'intelligence', roles: ['controller', 'damager'], roleNames: ['Контролёр', 'Дамагер'], heroId: 'knight-of-depths', image: 'knight-of-depths', charName: 'Денис',
       rawcode: 'O00G',
       strBase: 20, strGain: 1.5, agiBase: 14, agiGain: 1.5, intBase: 26, intGain: 5,
-      hp: 300, mp: 150, atk: 25, def: 0, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 300, range: 600, sightDay: 1800, sightNight: 800 },
+      hp: 300, mp: 150, atk: 25, def: 0, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 300, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Гидралиск', title: '', attr: 'intelligence', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'hydralisk', image: 'hydralisk', charName: 'Харитон',
       unique: true,
       rawcode: 'O00N',
       strBase: 16, strGain: 1.5, agiBase: 18, agiGain: 2, intBase: 26, intGain: 4.5,
-      hp: 300, mp: 150, atk: 25, def: 0, atkSpeed: 2, hpRegen: 1, mpRegen: 0, speed: 300, range: 600, sightDay: 1800, sightNight: 800 },
+      hp: 300, mp: 150, atk: 25, def: 0, atkSpeed: 2, hpRegen: 1, mpRegen: 0.01, speed: 300, range: 600, sightDay: 1800, sightNight: 800 },
 
 
     { name: 'Повелитель Льдов', title: '', attr: 'intelligence', roles: ['controller', 'damager'], roleNames: ['Контролёр', 'Дамагер'], heroId: 'frost-lord', image: 'frost-lord', charName: 'Борис',
       rawcode: 'U000',
       strBase: 0, strGain: 1.5, agiBase: 13, agiGain: 1.5, intBase: 32, intGain: 5,
-      hp: 200, mp: 0, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0, mpRegen: 0, speed: 280, range: 150, sightDay: 1800, sightNight: 800 },
+      hp: 200, mp: 0, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0, mpRegen: 0.01, speed: 280, range: 150, sightDay: 1800, sightNight: 800 },
 
     { name: 'Повелитель Огня', title: '', attr: 'intelligence', roles: ['damager', 'initiator'], roleNames: ['Дамагер', 'Инициатор'], heroId: 'fire-lord', image: 'fire-lord', charName: 'Михаил',
       rawcode: 'N005',
       strBase: 16, strGain: 1.5, agiBase: 17, agiGain: 2.5, intBase: 27, intGain: 4,
-      hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0, mpRegen: 0, speed: 305, range: 600, sightDay: 1800, sightNight: 800 },
+      hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0, mpRegen: 0.01, speed: 305, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Повелитель Вихрей', title: '', attr: 'intelligence', roles: ['controller', 'damager'], roleNames: ['Контролёр', 'Дамагер'], heroId: 'wind-lord', image: 'wind-lord', charName: 'Григорий',
       rawcode: 'O007',
       strBase: 19, strGain: 1.5, agiBase: 14, agiGain: 1.5, intBase: 27, intGain: 5,
-      hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0.5, mpRegen: 0, speed: 305, range: 750, sightDay: 1800, sightNight: 800 },
+      hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0.5, mpRegen: 0.01, speed: 305, range: 750, sightDay: 1800, sightNight: 800 },
 
     { name: 'Владыка Молний', title: '', attr: 'intelligence', roles: ['damager', 'initiator'], roleNames: ['Дамагер', 'Инициатор'], heroId: 'lightning-lord', image: 'lightning-lord', charName: 'Альберт',
       rawcode: 'O00H',
       strBase: 16, strGain: 1.5, agiBase: 14, agiGain: 2.5, intBase: 30, intGain: 4,
-      hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 310, range: 600, sightDay: 1800, sightNight: 800 },
+      hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 310, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Темный Шаман', title: '', attr: 'intelligence', roles: ['controller', 'damager'], roleNames: ['Контролёр', 'Дамагер'], heroId: 'dark-shaman', image: 'dark-shaman', charName: 'Августин',
       rawcode: 'O00I',
       strBase: 15, strGain: 1.5, agiBase: 13, agiGain: 1.5, intBase: 32, intGain: 5,
-      hp: 250, mp: 0, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 290, range: 600, sightDay: 1800, sightNight: 800 },
+      hp: 250, mp: 0, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 290, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Снежная Королева', title: '', attr: 'intelligence', roles: ['controller', 'damager'], roleNames: ['Контролёр', 'Дамагер'], heroId: 'snow-queen', image: 'snow-queen', charName: 'Светлана',
       rawcode: 'O00J',
       strBase: 15, strGain: 1.5, agiBase: 15, agiGain: 1.5, intBase: 30, intGain: 5,
-      hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0, speed: 305, range: 600, sightDay: 1800, sightNight: 800 },
+      hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 305, range: 600, sightDay: 1800, sightNight: 800 },
 
     { name: 'Владыка Грома', title: '', attr: 'intelligence', roles: ['support'], roleNames: ['Помощник'], heroId: 'thunder-lord-2', image: 'thunder-lord-2', charName: '',
       wip: true,
       rawcode: 'O00X',
       strBase: 13, strGain: 2, agiBase: 14, agiGain: 2, intBase: 28, intGain: 3,
-      hp: 250, mp: 0, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
+      hp: 250, mp: 0, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0.01, speed: 0, range: 150, sightDay: 1800, sightNight: 800 },
 
 ];
 
