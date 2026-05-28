@@ -90,6 +90,64 @@
             .dash-controls select { min-width: 140px; }
             .level-slider { width: 140px; }
         }
+
+        /* === Мобильный адаптив === */
+        @media (max-width: 900px) {
+            .dash-container { padding: 12px; }
+            .radar-wrap { gap: 16px; }
+            .radar-canvas-wrap { padding: 12px; }
+            .stat-pct-bar { width: 40px; }
+        }
+
+        @media (max-width: 600px) {
+            .dash-container { padding: 8px; }
+
+            /* Панель заголовка */
+            .panel-header { flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+            .detail-icon img { width: 48px; height: 48px; }
+            .detail-title { font-size: 1.1rem; }
+            .detail-description { font-size: 0.85rem; text-align: center; }
+
+            /* Контролы: вертикальная стопка */
+            .dash-controls { flex-direction: column; gap: 8px; align-items: stretch; }
+            .dash-controls .ctrl-group { width: 100%; }
+            .dash-controls select { min-width: 100%; width: 100%; box-sizing: border-box; }
+            .level-slider { width: 100%; }
+            .level-display { font-size: 1.2rem; min-width: 36px; }
+
+            /* Радар: canvas масштабируется через JS */
+            .radar-canvas-wrap { width: 100%; padding: 8px; box-sizing: border-box; }
+            .radar-canvas-wrap canvas { max-width: 100%; margin: 0 auto; display: block; }
+
+            /* Карточки значений */
+            .radar-values { min-width: 0; width: 100%; }
+            .radar-values .hero-values { padding: 12px; }
+            .radar-values .hero-values h3 { font-size: 0.9rem; }
+            .stat-row { font-size: 0.8rem; padding: 4px 0; }
+            .stat-right { gap: 6px; }
+            .stat-pct-bar { width: 36px; height: 5px; }
+            .stat-pct-num { min-width: 24px; font-size: 0.8rem; }
+            .stat-raw { font-size: 0.65rem; }
+
+            /* Таблица: компактная */
+            .percentile-table-wrap { margin-top: 16px; max-height: 50vh; border-radius: 8px; }
+            .percentile-table { font-size: 0.7rem; }
+            .percentile-table th { padding: 6px 6px; font-size: 0.65rem; }
+            .percentile-table td { padding: 5px 6px; }
+
+            /* Disclaimer */
+            .disclaimer { padding: 12px; font-size: 0.75rem; margin-top: 16px; }
+        }
+
+        @media (max-width: 380px) {
+            .dash-container { padding: 4px; }
+            .detail-title { font-size: 1rem; }
+            .radar-canvas-wrap canvas { max-width: 280px; }
+            .stat-pct-bar { display: none; }
+            .stat-raw { display: none; }
+            .percentile-table { font-size: 0.65rem; }
+            .percentile-table th, .percentile-table td { padding: 4px 4px; }
+        }
     </style>
 </head>
 <body class="page-balance">
@@ -169,7 +227,7 @@
             </div>
 
             <div class="disclaimer">
-                <strong>В разработке.</strong> Данные способностей извлекаются из текстовых описаний — многие не распарсены корректно (73 урона, 103 CC, 14 дэшей). Перцентили сдвинуты пропорционально — относительный порядок верен, но абсолютные значения неточны.
+                <strong>В разработке.</strong> Данные извлекаются из карточек героев — формат структурированнее, но некоторые карточки упрощены. Перцентили сдвинуты пропорционально — относительный порядок верен, но абсолютные значения неточны.
                 <br><br>
                 <strong>Ограничения:</strong> Инструмент не учитывает синергии способностей, позиционку, командную игру, CC-цепочки.
                 Пассивные способности с шансом (крит, уклонение) усреднены. DOT-урон приведён к суммарному.
@@ -256,7 +314,7 @@
             }
             var dmg = base + scaleVal;
             if (d.isDOT && d.dotDuration) dmg *= (d.dotDuration[Math.min(idx, d.dotDuration.length - 1)] || 1);
-            if (d.hitCount && !abS.area) dmg *= (d.hitCount[Math.min(idx, d.hitCount.length - 1)] || 1);
+            if (d.hitCount) dmg *= (d.hitCount[Math.min(idx, d.hitCount.length - 1)] || 1);
             total += dmg;
         });
         return total;
@@ -292,7 +350,10 @@
             if (abS.cc && abS.cc.length) {
                 abS.cc.forEach(function(c) {
                     var idx = Math.min(abLvl, c.duration.length) - 1;
-                    totalCC += (c.duration[idx] || 0) * (c.weight || 1);
+                    var dur = c.duration[idx] || 0;
+                    // Замедление без явной длительности: считать 1 сек
+                    if (dur === 0 && c.type === 'slow') dur = 1;
+                    totalCC += dur * (c.weight || 1);
                 });
             }
 
@@ -319,7 +380,9 @@
             if (abS.heal && abS.heal.length) {
                 abS.heal.forEach(function(he) {
                     var hIdx = Math.min(abLvl, (he.base || [0]).length) - 1;
-                    sustainVal += (he.base || [0])[hIdx] || 0;
+                    var healVal = (he.base || [0])[hIdx] || 0;
+                    if (he.isPct) healVal = healVal * (stats.hp + buffHP) / 100;
+                    sustainVal += healVal;
                 });
             }
         });
@@ -334,8 +397,8 @@
         // Мобильность: скорость + дэш
         var mob = stats.speed + totalMob * 10;
 
-        // Фарм: AoE-урон + бонус за количество AoE + часть бёрста
-        var farm = aoeDmg + aoeCount * 150 + totalBurst * 0.3;
+        // Фарм: AoE-урон + бонус за количество AoE
+        var farm = aoeDmg + aoeCount * 150;
 
         // Скалинг: DPS150/DPS25
         var dps25 = 0, dps150 = 0;
@@ -464,7 +527,8 @@
     function drawRadar(selectedHeroes) {
         var canvas = document.getElementById('radarCanvas');
         var ctx = canvas.getContext('2d');
-        var W = canvas.width, H = canvas.height;
+        var W = parseInt(canvas.style.width) || 420;
+        var H = W;
         var cx = W / 2, cy = H / 2;
         var R = Math.min(W, H) / 2 - 50;
         var n = AXES.length;
@@ -651,6 +715,28 @@
         update();
     });
 
+    // === Адаптив canvas ===
+    function resizeCanvas() {
+        var canvas = document.getElementById('radarCanvas');
+        var wrap = canvas.parentElement;
+        var maxW = Math.min(wrap.clientWidth - 16, 420);
+        if (maxW < 100) maxW = 100; // защита от 0
+        var size = maxW < 420 ? maxW : 420;
+        var dpr = window.devicePixelRatio || 1;
+        canvas.width = Math.round(size * dpr);
+        canvas.height = Math.round(size * dpr);
+        canvas.style.width = size + 'px';
+        canvas.style.height = size + 'px';
+        var ctx = canvas.getContext('2d');
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() { resizeCanvas(); update(); }, 100);
+    });
+
+    resizeCanvas();
     update();
 })();
 </script>
