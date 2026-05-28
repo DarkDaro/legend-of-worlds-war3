@@ -50,7 +50,7 @@ var HEROES_DATA = [
     { name: 'Огненный Рыцарь', title: '', attr: 'strength', roles: ['bruiser', 'initiator'], roleNames: ['Рубака', 'Инициатор'], heroId: 'fire-knight', image: 'fire-knight', charName: 'Мстислав',
       rawcode: 'H02A',
       strBase: 25, strGain: 4.5, agiBase: 15, agiGain: 2, intBase: 20, intGain: 1.5,
-      hp: 800, mp: 0, atk: 30, def: 2, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0.01, speed: 290, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 800, mp: 150, atk: 30, def: 2, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0.01, speed: 290, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Воин Глубин', title: '', attr: 'strength', roles: ['tank', 'initiator'], roleNames: ['Танк', 'Инициатор'], heroId: 'deep-warrior', image: 'deep-warrior', charName: 'Тихон',
       rawcode: 'H07A',
@@ -72,12 +72,12 @@ var HEROES_DATA = [
     { name: 'Разрушитель', title: '', attr: 'strength', roles: ['bruiser', 'initiator'], roleNames: ['Рубака', 'Инициатор'], heroId: 'destroyer', image: 'destroyer', charName: 'Кузьма',
       rawcode: 'N00I',
       strBase: 32, strGain: 4.5, agiBase: 14, agiGain: 2, intBase: 14, intGain: 1.5,
-      hp: 750, mp: 150, atk: 30, def: 2, atkSpeed: 2, hpRegen: 0, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 750, mp: 150, atk: 30, def: 2, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Всадник', title: '', attr: 'strength', roles: ['bruiser', 'initiator'], roleNames: ['Рубака', 'Инициатор'], heroId: 'rider', image: 'rider', charName: 'Ромео',
       rawcode: 'O003',
       strBase: 25, strGain: 4.5, agiBase: 19, agiGain: 2, intBase: 16, intGain: 1.5,
-      hp: 650, mp: 0, atk: 27, def: 1, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 650, mp: 150, atk: 27, def: 1, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Вождь Минотавров', title: '', attr: 'strength', roles: ['bruiser', 'initiator'], roleNames: ['Рубака', 'Инициатор'], heroId: 'minotaur-chief', image: 'minotaur-chief', charName: 'Марк',
       rawcode: 'O006',
@@ -97,7 +97,7 @@ var HEROES_DATA = [
     { name: 'Вурдалак', title: '', attr: 'strength', roles: ['assassin', 'bruiser'], roleNames: ['Убийца', 'Рубака'], heroId: 'vurdalak', image: 'vurdalak', charName: 'Вадик',
       rawcode: 'O00D',
       strBase: 30, strGain: 3.5, agiBase: 14, agiGain: 3, intBase: 16, intGain: 1.5,
-      hp: 650, mp: 0, atk: 30, def: 2, atkSpeed: 2, hpRegen: 3, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 650, mp: 150, atk: 30, def: 2, atkSpeed: 2, hpRegen: 3, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Ангел Смерти', title: '', attr: 'strength', roles: ['support'], roleNames: ['Помощник'], heroId: 'angel-of-death', image: 'angel-of-death', charName: '',
       wip: true,
@@ -118,23 +118,23 @@ var HEROES_DATA = [
     { name: 'Король Проклятых', title: '', attr: 'strength', roles: ['controller', 'tank'], roleNames: ['Контролёр', 'Танк'], heroId: 'king-of-cursed', image: 'king-of-cursed', charName: 'Сергей',
       rawcode: 'U009',
       strBase: 25, strGain: 3, agiBase: 15, agiGain: 1.5, intBase: 20, intGain: 3.5,
-      hp: 650, mp: 200, atk: 20, def: 1, atkSpeed: 2, hpRegen: 0, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 650, mp: 200, atk: 20, def: 1, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Лорд Хаоса', title: '', attr: 'strength', roles: ['bruiser', 'initiator'], roleNames: ['Рубака', 'Инициатор'], heroId: 'chaos-lord', image: 'chaos-lord', charName: 'Даркдарон',
       rawcode: 'U00A',
       strBase: 22, strGain: 4.5, agiBase: 16, agiGain: 2, intBase: 18, intGain: 1.5,
-      hp: 700, mp: 150, atk: 20, def: 2, atkSpeed: 2, hpRegen: 0, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 700, mp: 150, atk: 20, def: 2, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Повелитель Могил', title: '', attr: 'strength', roles: ['controller', 'bruiser'], roleNames: ['Контролёр', 'Рубака'], heroId: 'grave-lord', image: 'grave-lord', charName: 'Рикардо',
       unique: true,
       rawcode: 'U01J',
       strBase: 30, strGain: 3.5, agiBase: 14, agiGain: 1.5, intBase: 16, intGain: 3,
-      hp: 600, mp: 150, atk: 30, def: 2, atkSpeed: 2, hpRegen: 0, mpRegen: 0.01, speed: 290, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 600, mp: 150, atk: 30, def: 2, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 290, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Ледяной Рыцарь', title: '', attr: 'strength', roles: ['tank', 'controller'], roleNames: ['Танк', 'Контролёр'], heroId: 'ice-knight', image: 'ice-knight', charName: 'Маркус',
       rawcode: 'U01T',
       strBase: 26, strGain: 4.5, agiBase: 18, agiGain: 1.5, intBase: 18, intGain: 2,
-      hp: 650, mp: 200, atk: 20, def: 1, atkSpeed: 2, hpRegen: 0, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 650, mp: 200, atk: 20, def: 1, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Хаотическая Форма', title: '', attr: 'strength', roles: ['tank'], roleNames: ['Танк'], heroId: 'chaos-lord-chaos', image: 'chaos-lord-chaos', charName: 'Родион',
       isAltForm: true,
@@ -159,7 +159,7 @@ var HEROES_DATA = [
       isAltForm: true,
       rawcode: 'O004',
       strBase: 25, strGain: 5, agiBase: 19, agiGain: 1.5, intBase: 0, intGain: 1.5,
-      hp: 1250, mp: 0, atk: 177, def: 1, atkSpeed: 1, hpRegen: 1, mpRegen: 0.01, speed: 522, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 1250, mp: 150, atk: 177, def: 1, atkSpeed: 1, hpRegen: 1, mpRegen: 0.01, speed: 522, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Гнев Титана', title: '', attr: 'strength', roles: ['tank'], roleNames: ['Танк'], heroId: 'titan-enraged', image: 'titan-enraged', charName: 'Андрей',
       isAltForm: true,
@@ -170,13 +170,13 @@ var HEROES_DATA = [
     { name: 'Лорд Хаоса', title: '', attr: 'strength', roles: ['tank'], roleNames: ['Танк'], heroId: 'chaos-lord-alt', image: 'chaos-lord-alt', charName: 'Даркдарон',
       isAltForm: true,
       rawcode: 'U00B',
-      strBase: 22, strGain: 5, agiBase: 0, agiGain: 1.5, intBase: 0, intGain: 1.5,
-      hp: 1700, mp: 0, atk: 170, def: 2, atkSpeed: 1.7, hpRegen: 50, mpRegen: 0.01, speed: 522, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      strBase: 22, strGain: 5, agiBase: 16, agiGain: 1.5, intBase: 18, intGain: 1.5,
+      hp: 1700, mp: 150, atk: 170, def: 2, atkSpeed: 1.7, hpRegen: 52, mpRegen: 0.01, speed: 522, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Пивовар', title: '', attr: 'strength', roles: ['bruiser', 'controller'], roleNames: ['Рубака', 'Контролёр'], heroId: 'brewmaster', image: 'brewmaster', charName: 'Артур',
       rawcode: 'N002',
       strBase: 24, strGain: 4, agiBase: 17, agiGain: 2, intBase: 19, intGain: 2,
-      hp: 650, mp: 0, atk: 20, def: 2, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 650, mp: 150, atk: 20, def: 2, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Чародей', title: '', attr: 'intelligence', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'sorcerer', image: 'sorcerer', charName: 'Кайл',
       rawcode: 'H011',
@@ -234,7 +234,7 @@ var HEROES_DATA = [
     { name: 'Воительница', title: '', attr: 'agility', roles: ['assassin', 'bruiser'], roleNames: ['Убийца', 'Рубака'], heroId: 'warrioress', image: 'warrioress', charName: 'Лианна',
       rawcode: 'E00H',
       strBase: 21, strGain: 1.5, agiBase: 24, agiGain: 5, intBase: 15, intGain: 1.5,
-      hp: 200, mp: 0, atk: 50, def: 2, atkSpeed: 1.7, hpRegen: 0, mpRegen: 0.01, speed: 310, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 200, mp: 150, atk: 50, def: 2, atkSpeed: 1.7, hpRegen: 0, mpRegen: 0.01, speed: 310, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Жрица Луны', title: '', attr: 'agility', roles: ['damager', 'support'], roleNames: ['Дамагер', 'Помощник'], heroId: 'priestess', image: 'priestess', charName: 'Эльвира',
       rawcode: 'E010',
@@ -244,7 +244,7 @@ var HEROES_DATA = [
     { name: 'Стражница', title: '', attr: 'agility', roles: ['assassin', 'initiator'], roleNames: ['Убийца', 'Инициатор'], heroId: 'guardian', image: 'guardian', charName: 'Кристина',
       rawcode: 'E020',
       strBase: 21, strGain: 1.5, agiBase: 24, agiGain: 5, intBase: 15, intGain: 1.5,
-      hp: 200, mp: 0, atk: 40, def: 2, atkSpeed: 1.7, hpRegen: 0, mpRegen: 0.01, speed: 310, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 200, mp: 150, atk: 40, def: 2, atkSpeed: 1.7, hpRegen: 0, mpRegen: 0.01, speed: 310, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Зодиак', title: '', attr: 'agility', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'zodiac', image: 'zodiac', charName: 'Глеб',
       unique: true,
@@ -466,8 +466,8 @@ var HEROES_DATA = [
 
     { name: 'Повелитель Льдов', title: '', attr: 'intelligence', roles: ['controller', 'damager'], roleNames: ['Контролёр', 'Дамагер'], heroId: 'frost-lord', image: 'frost-lord', charName: 'Борис',
       rawcode: 'U000',
-      strBase: 0, strGain: 1.5, agiBase: 13, agiGain: 1.5, intBase: 32, intGain: 5,
-      hp: 200, mp: 0, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0, mpRegen: 0.01, speed: 280, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
+      strBase: 15, strGain: 1.5, agiBase: 13, agiGain: 1.5, intBase: 32, intGain: 5,
+      hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 2, mpRegen: 0.01, speed: 280, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
 
     { name: 'Повелитель Огня', title: '', attr: 'intelligence', roles: ['damager', 'initiator'], roleNames: ['Дамагер', 'Инициатор'], heroId: 'fire-lord', image: 'fire-lord', charName: 'Михаил',
       rawcode: 'N005',
@@ -487,7 +487,7 @@ var HEROES_DATA = [
     { name: 'Темный Шаман', title: '', attr: 'intelligence', roles: ['controller', 'damager'], roleNames: ['Контролёр', 'Дамагер'], heroId: 'dark-shaman', image: 'dark-shaman', charName: 'Августин',
       rawcode: 'O00I',
       strBase: 15, strGain: 1.5, agiBase: 13, agiGain: 1.5, intBase: 32, intGain: 5,
-      hp: 250, mp: 0, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 290, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
+      hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 290, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
 
     { name: 'Снежная Королева', title: '', attr: 'intelligence', roles: ['controller', 'damager'], roleNames: ['Контролёр', 'Дамагер'], heroId: 'snow-queen', image: 'snow-queen', charName: 'Светлана',
       rawcode: 'O00J',
