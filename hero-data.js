@@ -24,7 +24,7 @@ var HEROES_DATA = [
     { name: 'Киборг', title: 'Механический воин', attr: 'strength', roles: ['tank', 'bruiser'], roleNames: ['Танк', 'Рубака'], heroId: 'cyborg', image: 'cyborg', charName: 'Алекс',
       rawcode: 'H000',
       strBase: 20, strGain: 5, agiBase: 16, agiGain: 1.5, intBase: 24, intGain: 1.5,
-      hp: 650, mp: 150, atk: 25, def: 2, atkSpeed: 2, hpRegen: 1, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 650, mp: 200, atk: 25, def: 2, atkSpeed: 2, hpRegen: 1, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Паладин', title: 'Святой рыцарь', attr: 'strength', roles: ['tank', 'healer'], roleNames: ['Танк', 'Целитель'], heroId: 'paladin', image: 'paladin', charName: 'Светозар',
       rawcode: 'H00H',
