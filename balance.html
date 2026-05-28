@@ -399,6 +399,8 @@
                 cell('speed') + cell('range', 'col-hide-small') +
                 '</tr>';
         }).join('');
+        // Применить видимость колонок после перерисовки
+        if (typeof updateColumnVisibility === 'function') updateColumnVisibility();
     }
 
     // === Обработчики ===
