@@ -42,19 +42,16 @@
             <a href="../lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
             <a href="../support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
             <a href="../updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
-            <a href="../support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
-            <a href="../updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
         </nav>
     </header>
     <div class="wiki-container">
         <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="../heroes.html">Герои</a><span class="sep">›</span><span class="current">Жрица Луны</span></div>
         <div class="hero-page-container">
-            <div id="hero-nav"></div>
-
             <div class="panel-header">
                 <div class="detail-icon"><img loading="lazy" src="../images/heroes/priestess.png" alt="" width="96" height="96"></div>
                 <div class="detail-title">Жрица Луны <span class="detail-badge">Ловкость</span></div>
             </div>
+            <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div id="hero-description"></div>
             <div id="hero-lore"></div>
@@ -90,7 +87,7 @@
                 <!-- W: Меткость — СЛОМАННАЯ -->
                 <div class="ability-card passive">
                     <div class="ability-header">
-                        <div class="ability-icon" data-ability="" data-fallback="question"></div>
+                        <div class="ability-icon" data-ability="precision" data-fallback="bullseye"></div>
                         <div class="ability-info">
                             <span class="ability-hotkey">W</span>
                             <div class="ability-name">Меткость</div>
@@ -98,7 +95,12 @@
                         </div>
                     </div>
                     <div class="ability-desc">Наносит дополнительный урон пропорционально расстоянию от жрицы до цели. Пассивно увеличивает атаку героя.</div>
-                    <div class="ability-params"></div>
+                    <div class="ability-params">
+                        <div class="param-row"><span class="param-label">Базовый урон</span><span class="param-values">(4× уровень героя) + 50/100/150/200/250</span></div>
+                        <div class="param-row"><span class="param-label">Максимальный урон</span><span class="param-values">Базовый × (расстояние / 700)</span></div>
+                        <div class="param-row"><span class="param-label">Максимальная дистанция</span><span class="param-values">2100</span></div>
+                        <div class="param-row"><span class="param-label">Пассивно: атака</span><span class="param-values">+20/60/100/140/180</span></div>
+                    </div>
                 </div>
 
                 <!-- E: Прыжок рысью -->

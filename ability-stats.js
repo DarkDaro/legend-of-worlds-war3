@@ -1,437 +1,9400 @@
-// Автогенерировано из abilities-db.js парсером parse-ability-stats.js
-// Запуск: node tools/parse-ability-stats.js
-
 var ABILITY_STATS = {
-  'A001': {"rawcode":"A001","name":"Разрез","hotkey":"F","type":"active","cool":[10],"cost":[125,150,175],"damage":[{"base":[500],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[800]},
-  'A00A': {"rawcode":"A00A","name":"Фантомные Клинки","hotkey":"W","type":"passive"},
-  'A00B': {"rawcode":"A00B","name":"Подкоп","hotkey":"E","type":"active","cool":[25],"cost":[150,225,300,375,450],"damage":[{"base":[360,520,680,840,1000],"statScale":{"stat":"STR","mult":[4]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[1.5],"weight":1}],"dash":{"isDash":true,"dashRange":[1500]},"range":[1500]},
-  'A00C': {"rawcode":"A00C","name":"Перевоплощение","hotkey":"R","type":"ultimate","cool":[120],"cost":[550],"buffs":{"hp":[1000],"spellDmgPct":[30]}},
-  'A00F': {"rawcode":"A00F","name":"Техника","hotkey":"W","type":"passive","damage":[{"base":[5],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A00L': {"rawcode":"A00L","name":"Вампиризм","hotkey":"W","type":"passive","area":500},
-  'A00N': {"rawcode":"A00N","name":"Москиты","hotkey":"R","type":"ultimate","cool":[120],"cost":[400,550,700,850,1000],"heal":[{"base":[20],"statScale":null}],"area":2000},
-  'A00Q': {"rawcode":"A00Q","name":"Аура меткости","hotkey":"W","type":"passive","area":800},
-  'A00T': {"rawcode":"A00T","name":"Взрывные снаряды","hotkey":"Q","type":"active","cool":[15],"cost":[175,210,245,280,315],"damage":[{"base":[50,100,150,200,250],"statScale":{"stat":"STR","mult":[0.5]},"isDOT":false,"dotDuration":null,"hitCount":[20,25,30,35,40]}]},
-  'A00V': {"rawcode":"A00V","name":"Кровожадность ","hotkey":"V","type":"passive","range":[9999]},
-  'A00W': {"rawcode":"A00W","name":"Вороны","hotkey":"W","type":"active","cool":[25],"cost":[230,280,330,380,430],"area":1000},
-  'A00Y': {"rawcode":"A00Y","name":"Огненный поток","hotkey":"Q","type":"active","cool":[15],"cost":[175,225,275,325,375],"damage":[{"base":[100,150,200,250,300],"statScale":{"stat":"INT","mult":[1]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1300]},
-  'A00Z': {"rawcode":"A00Z","name":"Покой","hotkey":"R","type":"ultimate","cool":[105],"cost":[550,700,850,1000,1150],"damage":[{"base":[125,250,375,500,625],"statScale":{"stat":"STR","mult":[0.4,0.8,1.2,1.6,2]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A011': {"rawcode":"A011","name":"Сила Проклятых","hotkey":"F","type":"passive","buffs":{"armor":[20]}},
-  'A012': {"rawcode":"A012","name":"Оледенение","hotkey":"Q","type":"active","cool":[10],"cost":[150,190,230,270,310],"damage":[{"base":[250,350,450,550,650],"statScale":{"stat":"INT","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"area":1},
-  'A015': {"rawcode":"A015","name":"Ледниковый Период","hotkey":"R","type":"ultimate","cool":[80],"cost":[600,800,1000,1200,1400],"damage":[{"base":[400,500,600,700,800],"statScale":{"stat":"INT","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1200],"area":500},
-  'A01A': {"rawcode":"A01A","name":"Пьяный мастер.","hotkey":"F","type":"passive","damage":[{"base":[100],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A01D': {"rawcode":"A01D","name":"Шаровые молнии","hotkey":"W","type":"active","cool":[25],"cost":[200,250,300,350,400],"damage":[{"base":[30,60,90,120,150],"statScale":{"stat":"INT","mult":[1.5]},"isDOT":true,"dotDuration":null,"hitCount":null}],"buffs":{"armor":[8,12,16,20,24]}},
-  'A01L': {"rawcode":"A01L","name":"Огненный доспех","hotkey":"R","type":"ultimate","cool":[80],"cost":[500,650,800,950,1100],"buffs":{"hp":[500,1000,1500,2000,2500],"armor":[20,30,40,50,60]}},
-  'A01M': {"rawcode":"A01M","name":"Всплеск огня","hotkey":"Q","type":"active","cool":[10],"cost":[150],"damage":[{"base":[275,425,575,725,875],"statScale":{"stat":"STR","mult":1},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A01O': {"rawcode":"A01O","name":"Огненные легкие","hotkey":"R","type":"ultimate","cool":[100],"cost":[350,450,550,650,750],"damage":[{"base":[200,300,400,500,600],"statScale":{"stat":"STR","mult":[1.5,2,2.5,3,3.5]},"isDOT":false,"dotDuration":null,"hitCount":[5]}],"range":[1300]},
-  'A01P': {"rawcode":"A01P","name":"Живой огонь","hotkey":"E","type":"active","cool":[25],"cost":[225,275,325,375,425],"damage":[{"base":[250,400,550,700,850],"statScale":{"stat":"STR","mult":[3.5]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A01R': {"rawcode":"A01R","name":"Ядовитый кинжал","hotkey":"W","type":"passive","damage":[{"base":[100,175,250,325,400],"statScale":{"stat":"AGI","mult":[0.3]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A01S': {"rawcode":"A01S","name":"Дух Воды","hotkey":"E","type":"active","cool":[30],"cost":[200,255,310,365,420],"damage":[{"base":[100],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A01T': {"rawcode":"A01T","name":"Ядовитые шипы","hotkey":"R","type":"ultimate","cool":[120],"cost":[400]},
-  'A01X': {"rawcode":"A01X","name":"Девятый вал","hotkey":"F","type":"active","cool":[10],"cost":[100],"range":[800]},
-  'A028': {"rawcode":"A028","name":"Сила вурдалака","hotkey":"F","type":"passive"},
-  'A02B': {"rawcode":"A02B","name":"Мастерство","hotkey":"R","type":"ultimate","cool":[100],"cost":[500],"area":450},
-  'A02C': {"rawcode":"A02C","name":"Темные силы","hotkey":"Q","type":"active","cool":[16],"cost":[150,175,200,225,250],"damage":[{"base":[140,180,220,260,300],"statScale":{"stat":"AGI","mult":[0.7]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A02D': {"rawcode":"A02D","name":"Удар тьмы","hotkey":"W","type":"passive"},
-  'A02G': {"rawcode":"A02G","name":"Невидимость","hotkey":"F","type":"active","cool":[25],"cost":[75,110,145]},
-  'A02L': {"rawcode":"A02L","name":"Безмолвие","hotkey":"Q","type":"active","cool":[10],"cost":[175,210,245,280,315],"damage":[{"base":[200,350,500,650,800],"statScale":{"stat":"AGI","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[700],"area":350},
-  'A02M': {"rawcode":"A02M","name":"Мощная стрельба","hotkey":"R","type":"ultimate","cool":[100],"cost":[550,750,950,1150,1350],"damage":[{"base":[900],"statScale":{"stat":"AGI","mult":[0.8,1.6,2.4,3.2,4]},"isDOT":false,"dotDuration":null,"hitCount":[10]}],"range":[3000]},
-  'A03O': {"rawcode":"A03O","name":"Аура защиты","hotkey":"F","type":"aura","damage":[{"base":[75],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"area":800},
-  'A03U': {"rawcode":"A03U","name":"Воля Света","hotkey":"W","type":"active","cool":[15],"cost":[150,200,250,300,350],"damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"INT","mult":[1.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"heal":[{"base":[200,400,600,800,1000],"statScale":{"stat":"INT","mult":[1.5]}}],"range":[800]},
-  'A03V': {"rawcode":"A03V","name":"Всплеск тьмы","hotkey":"F","type":"active","cool":[10],"cost":[100,125,150],"damage":[{"base":[150],"statScale":{"stat":"INT","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"slow","duration":[3],"slowPercent":30,"weight":0.5}],"range":[600]},
-  'A03Y': {"rawcode":"A03Y","name":"Световое отражение","hotkey":"E","type":"passive","damage":[{"base":[100,150,200,250,300],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A046': {"rawcode":"A046","name":"Мясорубка","hotkey":"W","type":"active","cool":[15],"cost":[125,200,275,350,425],"damage":[{"base":[100,200,300,400,500],"statScale":{"stat":"AGI","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[2],"weight":1}],"dash":{"isDash":true,"dashRange":null},"range":[700,900,1100,1300,1500],"area":1},
-  'A047': {"rawcode":"A047","name":"Огненное сердце","hotkey":"F","type":"active","cool":[25,23,21],"cost":[125,150,175],"buffs":{"spellDmgPct":[25]}},
-  'A04F': {"rawcode":"A04F","name":"Громовой скачок","hotkey":"W","type":"active","cool":[20],"cost":[200,275,350,425,500],"damage":[{"base":[150,300,450,600,750],"statScale":{"stat":"INT","mult":[4]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"slow","duration":[3],"slowPercent":50,"weight":0.5}],"dash":{"isDash":true,"dashRange":[700,900,1100,1300,1500]},"range":[700,900,1100,1300,1500]},
-  'A04H': {"rawcode":"A04H","name":"Громовой Рев","hotkey":"R","type":"ultimate","cool":[130],"cost":[600,850,1100,1350,1600],"damage":[{"base":[1000],"statScale":{"stat":"INT","mult":[4,8,12,16,20]},"isDOT":false,"dotDuration":null,"hitCount":null},{"base":[30],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A04N': {"rawcode":"A04N","name":"Темная стая ","hotkey":"Q","type":"active","cool":[13],"cost":[110,150,190,230,270],"damage":[{"base":[300,550,600,750,900],"statScale":{"stat":"STR","mult":1},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[900],"area":1},
-  'A04P': {"rawcode":"A04P","name":"Сила света","hotkey":"R","type":"ultimate","cool":[90],"cost":[600,800,1000,1200,1400],"heal":[{"base":[75,150,225,300,375],"statScale":null},{"base":[0],"statScale":{"stat":"PCT_HP","mult":2},"isPctPerSec":true}],"buffs":{"armor":[20,40,60,80,100]},"area":5000},
-  'A04R': {"rawcode":"A04R","name":"Ярость","hotkey":"R","type":"ultimate","cool":[100],"cost":[500],"buffs":{"hp":[1000],"spellDmgPct":[30]}},
-  'A04V': {"rawcode":"A04V","name":"Волны Света","hotkey":"E","type":"active","cool":[25],"cost":[200,255,310,365,420],"damage":[{"base":[100,175,250,325,400],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":[10]}],"range":[1400]},
-  'A04W': {"rawcode":"A04W","name":"Священная Защита","hotkey":"F","type":"passive"},
-  'A04X': {"rawcode":"A04X","name":"Каменный дождь","hotkey":"E","type":"active","cool":[25],"cost":[150,200,250,300,350],"damage":[{"base":[100,200,300,400,500],"statScale":{"stat":"STR","mult":[0.5]},"isDOT":false,"dotDuration":null,"hitCount":[8,10,12,14,16]}],"cc":[{"type":"stun","duration":[0.6],"weight":1}],"area":1},
-  'A051': {"rawcode":"A051","name":"Корни","hotkey":"Q","type":"active","cool":[15],"cost":[250,300,350,400,450],"damage":[{"base":[0],"statScale":{"stat":"INT","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null},{"base":[80,130,180,230,280],"statScale":null,"isDOT":true,"dotDuration":[3],"hitCount":null}],"cc":[{"type":"root","duration":[2],"weight":0.8}],"range":[1000],"area":375},
-  'A054': {"rawcode":"A054","name":"Разветвленная молния ","hotkey":"Q","type":"active","cool":[10],"cost":[150,200,250,300,350],"damage":[{"base":[275,400,525,650,775],"statScale":{"stat":"INT","mult":[1.4]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[800],"area":400},
-  'A058': {"rawcode":"A058","name":"Гроза","hotkey":"E","type":"active","cool":[22],"cost":[275],"damage":[{"base":[150,200,250,300,350],"statScale":{"stat":"INT","mult":[0.5]},"isDOT":false,"dotDuration":null,"hitCount":[4,6,8,10,12]}],"area":450},
-  'A05B': {"rawcode":"A05B","name":"Ледяной дождь","hotkey":"Q","type":"active","cool":[15],"cost":[175,220,265,310,355],"damage":[{"base":[100],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":[6,9,12,15,18]}],"range":[1100],"area":400},
-  'A05C': {"rawcode":"A05C","name":"Ярость","hotkey":"Q","type":"active","cool":[16],"cost":[225,250,275,300,325],"damage":[{"base":[25,50,75,100,125],"statScale":{"stat":"STR","mult":[0.8]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A05F': {"rawcode":"A05F","name":"Демоническая сила","hotkey":"F","type":"passive"},
-  'A05G': {"rawcode":"A05G","name":"Полет феникса","hotkey":"R","type":"ultimate","cool":[100],"cost":[600,800,1000,1200,1400],"damage":[{"base":[200],"statScale":{"stat":"INT","mult":[1,1.4,1.8,2.2,2.6]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[2000]},
-  'A05I': {"rawcode":"A05I","name":"Агония","hotkey":"E","type":"active","cool":[30],"cost":[225,275,325,375,425],"damage":[{"base":[0],"statScale":{"stat":"STR","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null},{"base":[90,180,270,360,450],"statScale":null,"isDOT":true,"dotDuration":null,"hitCount":null}]},
-  'A05J': {"rawcode":"A05J","name":"Колья","hotkey":"R","type":"ultimate","cool":[100],"cost":[525,650,775,900,1025],"damage":[{"base":[1500],"statScale":{"stat":"STR","mult":[7,9,11,13,15]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[1.5],"weight":1}],"range":[1200],"area":750},
-  'A05K': {"rawcode":"A05K","name":"Магический круг","hotkey":"Q","type":"active","cool":[16],"cost":[125,160,195,230,265],"damage":[{"base":[150,250,350,450,550],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[800]},
-  'A05L': {"rawcode":"A05L","name":"Огненный дождь","hotkey":"W","type":"active","cool":[20],"cost":[120,180,240,300,360],"damage":[{"base":[80,140,200,260,320],"statScale":{"stat":"STR","mult":[0.8]},"isDOT":false,"dotDuration":null,"hitCount":[5,7,9,11,13]}]},
-  'A05Q': {"rawcode":"A05Q","name":"Давление тьмы","hotkey":"W","type":"active","cool":[20],"cost":[160,210,260,310,360],"damage":[{"base":[200,350,500,650,800],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[0.5],"weight":1}]},
-  'A05R': {"rawcode":"A05R","name":"Пришествие Тьмы","hotkey":"R","type":"ultimate","cool":[90],"cost":[500,625,750,875,1000],"damage":[{"base":[150,300,450,600,750],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A05S': {"rawcode":"A05S","name":"Пульс тьмы","hotkey":"E","type":"active","cool":[20],"cost":[180,240,300,360,420],"damage":[{"base":[200,350,500,650,800],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[0.5],"weight":1}]},
-  'A06D': {"rawcode":"A06D","name":"Черная Дыра","hotkey":"R","type":"ultimate","cool":[140],"cost":[600,800,1000,1200,1400],"damage":[{"base":[120,240,360,480,600],"statScale":{"stat":"STR","mult":[2.5,3,3.5,4,4.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[5],"weight":1}],"range":[1000],"area":700},
-  'A06F': {"rawcode":"A06F","name":"Возгорание","hotkey":"E","type":"active","cool":[30],"cost":[240,300,360,420,480],"damage":[{"base":[200],"statScale":{"stat":"INT","mult":[1.2]},"isDOT":false,"dotDuration":null,"hitCount":[4,6,8,10,12]}]},
-  'A06L': {"rawcode":"A06L","name":"Скачок","hotkey":"F","type":"active","cool":[15],"cost":[145,160,175],"dash":{"isDash":true,"dashRange":null},"range":[1000,1150,1300]},
-  'A06O': {"rawcode":"A06O","name":"Выброс Тьмы","hotkey":"W","type":"active","cool":[20],"cost":[300],"area":400},
-  'A06Q': {"rawcode":"A06Q","name":"Волна Мороза","hotkey":"Q","type":"active","cool":[15],"cost":[250,285,320,355,390],"damage":[{"base":[150,300,450,600,750],"statScale":{"stat":"STR","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1400]},
-  'A06R': {"rawcode":"A06R","name":"Ярость Фростморна","hotkey":"E","type":"active","cool":[30],"cost":[150,175,200,225,250],"damage":[{"base":[75,200,325,450,575],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A06V': {"rawcode":"A06V","name":"Ускорение","hotkey":"W","type":"active","cool":[20],"cost":[115,150,185,220,255],"damage":[{"base":[50,100,150,200,250],"statScale":{"stat":"AGI","mult":[0.4]},"isDOT":false,"dotDuration":null,"hitCount":null}],"buffs":{"evasion":[15]}},
-  'A06X': {"rawcode":"A06X","name":"Призрачный Щит","hotkey":"F","type":"active","cool":[19,17,15],"cost":[90,105,120],"damage":[{"base":[90],"statScale":{"stat":"AGI","mult":[0.5]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A06Y': {"rawcode":"A06Y","name":"Призрачный удар старый","hotkey":"E","type":"active","cool":[30],"cost":[145,195,245,295,345],"damage":[{"base":[100],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"dash":{"isDash":true,"dashRange":null}},
-  'A07O': {"rawcode":"A07O","name":"Ловкий удар","hotkey":"E","type":"passive","damage":[{"base":[30,60,90,120,150],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"buffs":{"hp":[50]},"area":50},
-  'A07Q': {"rawcode":"A07Q","name":"Дождь из лезвий","hotkey":"R","type":"ultimate","cool":[120],"cost":[500,600,700,800,900],"area":1},
-  'A07S': {"rawcode":"A07S","name":"Проклятье","hotkey":"W","type":"active","cool":[25],"cost":[220,260,300,340,380],"damage":[{"base":[0],"statScale":{"stat":"INT","mult":[0.75]},"isDOT":true,"dotDuration":[5],"hitCount":null}],"range":[1000],"area":425},
-  'A07Y': {"rawcode":"A07Y","name":"Огненная кровь","hotkey":"R","type":"ultimate","cool":[130,120,110,100,90],"cost":[450],"buffs":{"hp":[1000],"spellDmgPct":[20]}},
-  'A07Z': {"rawcode":"A07Z","name":"Волна ярости","hotkey":"Q","type":"active","cool":[11],"cost":[175,215,255,295,335],"damage":[{"base":[240,380,520,660,800],"statScale":{"stat":"STR","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1200],"area":250},
-  'A080': {"rawcode":"A080","name":"Аура ярости","hotkey":"W","type":"aura","area":500},
-  'A081': {"rawcode":"A081","name":"Сеть","hotkey":"F","type":"active","cool":[14],"cost":[15],"cc":[{"type":"root","duration":[2.5],"weight":0.8}],"range":[1200],"area":425},
-  'A08E': {"rawcode":"A08E","name":"Огненная пушка","hotkey":"R","type":"ultimate","cool":[100],"cost":[500,600,700,800,900],"damage":[{"base":[1500],"statScale":{"stat":"STR","mult":[4,8,12,16,20]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1800],"area":1},
-  'A08K': {"rawcode":"A08K","name":"Блок","hotkey":"W","type":"passive"},
-  'A08M': {"rawcode":"A08M","name":"Молот правосудия","hotkey":"Q","type":"active","cool":[15],"cost":[175,225,275,325,375],"damage":[{"base":[250,375,500,625,750],"statScale":{"stat":"INT","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[2],"weight":1}],"range":[800,1000,1200,1400,1600]},
-  'A08N': {"rawcode":"A08N","name":"Морская волна","hotkey":"Q","type":"active","cool":[10],"cost":[175,215,255,295,335],"damage":[{"base":[300,450,600,750,900],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1200],"area":400},
-  'A08P': {"rawcode":"A08P","name":"Удар топором","hotkey":"R","type":"active","cool":[8],"cost":[150,175,200],"damage":[{"base":[200],"statScale":{"stat":"STR","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[350]},
-  'A08S': {"rawcode":"A08S","name":"Энергия предков","hotkey":"W","type":"active","cool":[18],"cost":[150,190,230,270,310],"dash":{"isDash":true,"dashRange":[900]},"range":[700,800,900,1000,1100],"area":1},
-  'A08T': {"rawcode":"A08T","name":"Погребение","hotkey":"R","type":"ultimate","cool":[120],"cost":[450,575,700,825,950],"damage":[{"base":[400,800,1200,1600,2000],"statScale":{"stat":"STR","mult":[4,8,12,16,20]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[3],"weight":1}],"area":1},
-  'A08U': {"rawcode":"A08U","name":"Сотрясение земли","hotkey":"E","type":"active","cool":[25],"cost":[125,175,225,275,325],"damage":[{"base":[300,500,700,900,1100],"statScale":{"stat":"STR","mult":[1.4,1.8,2.2,2.6,3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"area":1},
-  'A08V': {"rawcode":"A08V","name":"Громовая поступь","hotkey":"Q","type":"active","cool":[12],"cost":[150,175,200,225,250],"damage":[{"base":[250,400,550,750,850],"statScale":{"stat":"STR","mult":1},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[2.5],"weight":1}]},
-  'A08X': {"rawcode":"A08X","name":"Смерч.","hotkey":"F","type":"active","cool":[16],"cost":[125],"range":[700]},
-  'A08Z': {"rawcode":"A08Z","name":"Вихрь","hotkey":"R","type":"ultimate","cool":[100],"cost":[350,500,650,800,950],"damage":[{"base":[500],"statScale":{"stat":"INT","mult":[2,2.5,3,3.5,4]},"isDOT":true,"dotDuration":[7],"hitCount":null}],"cc":[{"type":"stun","duration":[7],"weight":1}],"range":[1500]},
-  'A090': {"rawcode":"A090","name":"Доспехи ветра","hotkey":"W","type":"active","cool":[25],"cost":[155,205,255,305,355],"damage":[{"base":[50,75,100,125,150],"statScale":null,"isDOT":true,"dotDuration":[10],"hitCount":null}],"buffs":{"armor":[8,10,12,14,16]}},
-  'A093': {"rawcode":"A093","name":"Морские потоки","hotkey":"W","type":"active","cool":[20],"cost":[175,225,275,325,375],"damage":[{"base":[75,150,225,300,375],"statScale":{"stat":"AGI","mult":[0.5,1,1.5,2,2.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1000]},
-  'A09B': {"rawcode":"A09B","name":"Пылающая дорога","hotkey":"Q","type":"active","cool":[19],"cost":[200,250,300,350,400],"damage":[{"base":[70,140,210,280,350],"statScale":null,"isDOT":true,"dotDuration":[7],"hitCount":null}],"range":[1200]},
-  'A09E': {"rawcode":"A09E","name":"Огненный гейзер","hotkey":"E","type":"active","cool":[20],"cost":[225],"damage":[{"base":[100,200,300,400,500],"statScale":{"stat":"AGI","mult":[2]},"isDOT":true,"dotDuration":[3],"hitCount":null}],"cc":[{"type":"root","duration":[3],"weight":0.8}],"range":[800,850,900,950,1000]},
-  'A09G': {"rawcode":"A09G","name":"Пламенная агрессия","hotkey":"W","type":"passive","area":100},
-  'A0A0': {"rawcode":"A0A0","name":"Звериный рев","hotkey":"Q","type":"active","cool":[15],"cost":[175,235,295,355,415],"damage":[{"base":[200,300,400,500,600],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"buffs":{"armor":[2,5,8,11,14]},"area":400},
-  'A0A6': {"rawcode":"A0A6","name":"Плазменный Дождь","hotkey":"Q","type":"active","cool":[15],"cost":[175,220,265,310,355],"damage":[{"base":[150,200,250,300,350],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":[5,8,11,14,17]}],"range":[700],"area":300},
-  'A0AB': {"rawcode":"A0AB","name":"Поток ветра","hotkey":"E","type":"active","cool":[22],"cost":[245,315,385,455,525],"damage":[{"base":[160,320,480,640,800],"statScale":{"stat":"INT","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"disarm","duration":[1,1.5,2,2.5,3],"weight":0.6}],"range":[1500]},
-  'A0AX': {"rawcode":"A0AX","name":"Зов магии","hotkey":"F","type":"passive","area":700},
-  'A0B6': {"rawcode":"A0B6","name":"Пламенное усиление","hotkey":"R","type":"ultimate","cool":[90],"cost":[400,475,550,625,700],"buffs":{"spellDmgPct":[30]}},
-  'A0BH': {"rawcode":"A0BH","name":"Удар в спину","hotkey":"F","type":"passive","damage":[{"base":[200],"statScale":{"stat":"STR","mult":[0.6]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0BK': {"rawcode":"A0BK","name":"Древняя мощь","hotkey":"W","type":"active","cool":[25],"cost":[80,120,160,200,240],"damage":[{"base":[100],"statScale":{"stat":"STR","mult":[0.2,0.4,0.6,0.8,1]},"isDOT":true,"dotDuration":null,"hitCount":null}]},
-  'A0BL': {"rawcode":"A0BL","name":"Серия Ударов","hotkey":"E","type":"active","cool":[30],"cost":[160,200,240,280,320],"damage":[{"base":[125,250,375,500,625],"statScale":{"stat":"STR","mult":[0.4,0.8,1.2,1.6,2]},"isDOT":false,"dotDuration":null,"hitCount":[3,5,7,9,11]}],"range":[700]},
-  'A0BM': {"rawcode":"A0BM","name":"Ангельское благословение","hotkey":"F","type":"active","cool":[14],"cost":[125],"area":1},
-  'A0BN': {"rawcode":"A0BN","name":"Воздушная коса","hotkey":"Q","type":"active","cool":[15],"cost":[175,215,255,295,335],"damage":[{"base":[240,380,520,660,800],"statScale":{"stat":"STR","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1200]},
-  'A0BO': {"rawcode":"A0BO","name":"Гнев Титана","hotkey":"R","type":"ultimate","cool":[120],"cost":[550],"buffs":{"hp":[500],"armor":[20],"spellDmgPct":[20]}},
-  'A0BR': {"rawcode":"A0BR","name":"Свирепый молот","hotkey":"R","type":"ultimate","cool":[25],"cost":[125,250,375,500,625],"damage":[{"base":[600,800,1000,1200,1400],"statScale":{"stat":"STR","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[800,900,1000,1100,1200]},
-  'A0BS': {"rawcode":"A0BS","name":"Плазменный выстрел","hotkey":"E","type":"active","cool":[28],"cost":[225,285,345,405,465],"damage":[{"base":[250,400,550,700,850],"statScale":{"stat":"AGI","mult":[1.2,2.4,3.6,4.8,6]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1600]},
-  'A0BU': {"rawcode":"A0BU","name":"Магнитный удар","hotkey":"Q","type":"active","cool":[8],"cost":[105,145,185,225,265],"damage":[{"base":[300,450,600,750,900],"statScale":{"stat":"STR","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[2],"weight":1}],"range":[600]},
-  'A0C0': {"rawcode":"A0C0","name":"Падение стрелы","hotkey":"R","type":"ultimate","cool":[100],"cost":[500,600,700,800,900],"range":[1400,1600,1800,2000,2200],"area":550},
-  'A0C3': {"rawcode":"A0C3","name":"Меткость","hotkey":"W","type":"passive"},
-  'A0C4': {"rawcode":"A0C4","name":"Черная стрела","hotkey":"Q","type":"active","cool":[13],"cost":[125,175,225,275,325],"damage":[{"base":[250,350,450,550,650],"statScale":{"stat":"AGI","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[1],"weight":1}],"range":[1200]},
-  'A0CB': {"rawcode":"A0CB","name":"Кровавая ярость","hotkey":"W","type":"active","cool":[15],"cost":[225,260,295,330,365],"damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"STR","mult":[4]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1100]},
-  'A0D3': {"rawcode":"A0D3","name":"Аура крови","hotkey":"W","type":"aura","damage":[{"base":[60,90,120,150,180],"statScale":{"stat":"STR","mult":[1]},"isDOT":false,"dotDuration":null,"hitCount":null}],"buffs":{"speedPct":[6]},"area":450},
-  'A0D6': {"rawcode":"A0D6","name":"Кровавый вихрь","hotkey":"E","type":"active","cool":[30],"cost":[325,375,425,475,525],"damage":[{"base":[100],"statScale":{"stat":"STR","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[4,5,6,7,8],"weight":1}],"area":1},
-  'A0D8': {"rawcode":"A0D8","name":"Рывок","hotkey":"Q","type":"active","cool":[13],"cost":[70,135,200,265,330],"damage":[{"base":[150,300,450,600,750],"statScale":{"stat":"STR","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"dash":{"isDash":true,"dashRange":[700,800,900,1000,1100]},"range":[700,800,900,1000,1100]},
-  'A0DE': {"rawcode":"A0DE","name":"Плазменное поле","hotkey":"Q","type":"active","cool":[16],"cost":[125,155,185,215,245],"damage":[{"base":[200,300,400,500,600],"statScale":{"stat":"AGI","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0DF': {"rawcode":"A0DF","name":"Удар молнией","hotkey":"E","type":"active","cool":[25],"cost":[190,230,270,310,350],"damage":[{"base":[150],"statScale":{"stat":"AGI","mult":[1]},"isDOT":false,"dotDuration":null,"hitCount":[5,6,7,8,9]}],"range":[700]},
-  'A0DG': {"rawcode":"A0DG","name":"Большой взрыв","hotkey":"W","type":"active","cool":[20],"cost":[160,195,230,265,300],"damage":[{"base":[250,350,450,550,650],"statScale":{"stat":"AGI","mult":[2.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"slow","duration":[2],"slowPercent":30,"weight":0.5}],"range":[900],"area":450},
-  'A0DH': {"rawcode":"A0DH","name":"Грозовое облако","hotkey":"F","type":"active","cool":[16],"cost":[150,175,200],"damage":[{"base":[180],"statScale":{"stat":"AGI","mult":[0.6]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[900]},
-  'A0DN': {"rawcode":"A0DN","name":"Дух грозы","hotkey":"R","type":"ultimate","cool":[120],"cost":[400]},
-  'A0DY': {"rawcode":"A0DY","name":"Сожжение маны","hotkey":"F","type":"passive"},
-  'A0E2': {"rawcode":"A0E2","name":"Темный лик","hotkey":"W","type":"active","cool":[11],"cost":[175]},
-  'A0E3': {"rawcode":"A0E3","name":"Сгусток яда","hotkey":"F","type":"active","cool":[15],"cost":[200,215,230],"damage":[{"base":[500],"statScale":{"stat":"INT","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"silence","duration":[0.5],"weight":0.7},{"type":"silence","duration":[0.75],"weight":0.7},{"type":"silence","duration":[1],"weight":0.7}]},
-  'A0E5': {"rawcode":"A0E5","name":"Вулканический удар","hotkey":"E","type":"active","cool":[20],"cost":[225,275,325,375,425],"damage":[{"base":[250,400,550,700,850],"statScale":{"stat":"INT","mult":[1.5,2,2.5,3,3.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1200]},
-  'A0E8': {"rawcode":"A0E8","name":"Взрыв Глубины","hotkey":"R","type":"ultimate","cool":[100],"cost":[400,550,700,850,1000],"damage":[{"base":[800],"statScale":{"stat":"INT","mult":[4,8,12,16,20]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1600],"area":650},
-  'A0EE': {"rawcode":"A0EE","name":"Бросок молота","hotkey":"F","type":"active","cool":[10,15,15],"cost":[200,225,250],"damage":[{"base":[600],"statScale":{"stat":"INT","mult":[0.7]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[1.5],"weight":1},{"type":"stun","duration":[1.5],"weight":1},{"type":"stun","duration":[1.5],"weight":1}],"range":[800]},
-  'A0EJ': {"rawcode":"A0EJ","name":"Перелом","hotkey":"F","type":"passive","damage":[{"base":[175],"statScale":{"stat":"STR","mult":[0.6]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[0.8],"weight":1}]},
-  'A0EK': {"rawcode":"A0EK","name":"Боевые совы","hotkey":"F","type":"active","cool":[15],"cost":[140,185,230]},
-  'A0EL': {"rawcode":"A0EL","name":"Стрелы","hotkey":"Q","type":"active","cool":[13],"cost":[110,170,230,290,350],"damage":[{"base":[150,225,300,375,450],"statScale":{"stat":"AGI","mult":[1]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1200],"area":1},
-  'A0EM': {"rawcode":"A0EM","name":"Скорость молнии","hotkey":"F","type":"active","cool":[14],"cost":[160,180,200],"damage":[{"base":[400],"statScale":{"stat":"INT","mult":[0.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1100,1200,1300]},
-  'A0EN': {"rawcode":"A0EN","name":"Звездопад","hotkey":"R","type":"ultimate","cool":[120],"cost":[600,700,800,900,1000],"damage":[{"base":[75,150,225,300,375],"statScale":{"stat":"AGI","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":[60,80,100,120,140]}],"area":1},
-  'A0EO': {"rawcode":"A0EO","name":"Плазменный луч","hotkey":"R","type":"ultimate","cool":[100],"cost":[350,425,500,575,650],"cc":[{"type":"stun","duration":[0.8],"weight":1}],"range":[1600],"area":475},
-  'A0EP': {"rawcode":"A0EP","name":"Фатальный удар","hotkey":"R","type":"ultimate","cool":[100],"cost":[450,550,650,750,850],"damage":[{"base":[1000],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[3],"weight":1}],"range":[1000]},
-  'A0ES': {"rawcode":"A0ES","name":"Сокрушение","hotkey":"W","type":"active","cool":[15],"cost":[175,225,275,325,375],"cc":[{"type":"stun","duration":[2],"weight":1}],"range":[800],"area":450},
-  'A0EW': {"rawcode":"A0EW","name":"Огненный щит","hotkey":"F","type":"active","cool":[20,18,16],"cost":[150,185,220],"buffs":{"armor":[8,10,12]}},
-  'A0EZ': {"rawcode":"A0EZ","name":"Чакрам","hotkey":"E","type":"active","cool":[15],"cost":[275,310,345,380,415],"damage":[{"base":[200,300,400,500,600],"statScale":{"stat":"STR","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1200,1400,1600,1800,2000]},
-  'A0F0': {"rawcode":"A0F0","name":"Невидимость","hotkey":"Q","type":"active","cool":[13],"cost":[125,150,175,200,225],"damage":[{"base":[150,300,450,600,750],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0F2': {"rawcode":"A0F2","name":"Астральная Сфера","hotkey":"R","type":"ultimate","cool":[140],"cost":[450,650,850,1050,1250],"damage":[{"base":[120,240,360,480,600],"statScale":{"stat":"STR","mult":[2.5,3,3.5,4,4.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[700],"area":450},
-  'A0F4': {"rawcode":"A0F4","name":"Телепортация","hotkey":"F","type":"active","cool":[10],"cost":[100]},
-  'A0F5': {"rawcode":"A0F5","name":"Астральная мощь","hotkey":"W","type":"passive","damage":[{"base":[150,225,300,375,450],"statScale":{"stat":"STR","mult":[0.8]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0F7': {"rawcode":"A0F7","name":"Проклятый меч","hotkey":"F","type":"passive","damage":[{"base":[210],"statScale":{"stat":"STR","mult":[0.5]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0F9': {"rawcode":"A0F9","name":"Огненный круг","hotkey":"W","type":"active","cool":[20],"cost":[175,225,275,325,375],"damage":[{"base":[300,475,650,825,1000],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null},{"base":[0],"statScale":{"stat":"STR","mult":[1]},"isDOT":true,"dotDuration":null,"hitCount":null}]},
-  'A0FA': {"rawcode":"A0FA","name":"Пекло","hotkey":"Q","type":"active","cool":[10],"cost":[160,200,240,280,320],"damage":[{"base":[250,400,550,700,850],"statScale":{"stat":"STR","mult":[1.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[800],"area":400},
-  'A0FB': {"rawcode":"A0FB","name":"Взрывная волна","hotkey":"E","type":"active","cool":[25],"cost":[225,300,375,450,525],"damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"STR","mult":[5]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0FC': {"rawcode":"A0FC","name":"Метеорит","hotkey":"R","type":"ultimate","cool":[100],"cost":[450,625,800,975,1150],"damage":[{"base":[1000],"statScale":{"stat":"STR","mult":[5,10,15,20,25]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[2],"weight":1}],"range":[1500],"area":750},
-  'A0FF': {"rawcode":"A0FF","name":"Электрическая кара","hotkey":"E","type":"active","cool":[30],"cost":[250],"area":1000},
-  'A0FK': {"rawcode":"A0FK","name":"Всплекс смерти","hotkey":"Q","type":"active","cool":[10],"cost":[175,225,275,325,375],"damage":[{"base":[350,550,750,950,1150],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0FN': {"rawcode":"A0FN","name":"Темная энергия","hotkey":"R","type":"ultimate","cool":[90],"cost":[450,600,750,900,1050],"damage":[{"base":[0],"statScale":{"stat":"INT","mult":[3.5,5,6.5,8,9.5]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0FQ': {"rawcode":"A0FQ","name":"Темная аура","hotkey":"F","type":"aura","heal":[{"base":[0],"statScale":{"stat":"PCT_HP","mult":1},"isPctPerSec":true}],"area":600},
-  'A0FR': {"rawcode":"A0FR","name":"Полет","hotkey":"F","type":"active","cool":[8],"cost":[100,125,150],"cc":[{"type":"stun","duration":[2],"weight":1}],"buffs":{"evasion":[50]}},
-  'A0FS': {"rawcode":"A0FS","name":"Воздушный шторм","hotkey":"Q","type":"active","cool":[10],"cost":[135,175,215,255,295],"damage":[{"base":[200,300,400,500,600],"statScale":{"stat":"INT","mult":[2.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[2],"weight":1}],"range":[1200]},
-  'A0FT': {"rawcode":"A0FT","name":"Воздушная стена","hotkey":"R","type":"ultimate","cool":[140],"cost":[550,700,850,1000,1150],"damage":[{"base":[200],"statScale":{"stat":"INT","mult":[2,2.5,3,3.5,4]},"isDOT":true,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[8],"weight":1}],"range":[1300]},
-  'A0FU': {"rawcode":"A0FU","name":"Ветряные снаряды","hotkey":"W","type":"active","cool":[14],"cost":[175]},
-  'A0G1': {"rawcode":"A0G1","name":"Мгновенное перемещение","hotkey":"R","type":"ultimate","cool":[80],"cost":[500,575,650,725,800],"damage":[{"base":[1000],"statScale":{"stat":"AGI","mult":[8,11,14,17,20]},"isDOT":false,"dotDuration":null,"hitCount":null}],"dash":{"isDash":true,"dashRange":[1400,1800,2200,2600,3000]},"range":[1400,1800,2200,2600,3000]},
-  'A0G4': {"rawcode":"A0G4","name":"Магический шар","hotkey":"Q","type":"active","cool":[10],"cost":[225,275,325,375,425],"damage":[{"base":[200,300,400,500,600],"statScale":{"stat":"INT","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"slow","duration":[3],"slowPercent":30,"weight":0.5}],"range":[1400]},
-  'A0G5': {"rawcode":"A0G5","name":"Телекинез","hotkey":"E","type":"active","cool":[25],"cost":[225,275,325,375,425],"damage":[{"base":[250,350,450,550,650],"statScale":{"stat":"INT","mult":[4]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[1],"weight":1}],"range":[800,900,1000,1100,1200]},
-  'A0G6': {"rawcode":"A0G6","name":"Огненная земля","hotkey":"R","type":"ultimate","cool":[90],"cost":[350,500,650,800,950],"damage":[{"base":[600],"statScale":{"stat":"INT","mult":[1,2,3,4,5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1500],"area":550},
-  'A0GB': {"rawcode":"A0GB","name":"Водяной барьер","hotkey":"F","type":"active","cool":[20,18,16],"cost":[160,180,200]},
-  'A0GH': {"rawcode":"A0GH","name":"Астральная вспышка","hotkey":"Q","type":"active","cool":[10],"cost":[225,250,275,300,325],"damage":[{"base":[300,450,550,650,750],"statScale":{"stat":"STR","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[900],"area":450},
-  'A0GV': {"rawcode":"A0GV","name":"Гроза","hotkey":"R","type":"ultimate","cool":[160],"cost":[500,600,700,800,900],"damage":[{"base":[350],"statScale":{"stat":"INT","mult":[1.25,1.5,1.75,2,2.25]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[2000],"area":800},
-  'A0GW': {"rawcode":"A0GW","name":"Поражение молнией","hotkey":"W","type":"active","cool":[20],"cost":[175,230,285,340,395],"cc":[{"type":"slow","duration":[3],"slowPercent":50,"weight":0.5}],"range":[800]},
-  'A0GX': {"rawcode":"A0GX","name":"Разряд молнии","hotkey":"Q","type":"active","cool":[13],"cost":[125,180,235,290,345],"damage":[{"base":[125,250,375,500,625],"statScale":{"stat":"INT","mult":[1.75]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1375]},
-  'A0GY': {"rawcode":"A0GY","name":"Электрический шар","hotkey":"E","type":"active","cool":[30],"cost":[225,300,375,450,525],"damage":[{"base":[275,425,575,725,875],"statScale":{"stat":"INT","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1500]},
-  'A0H5': {"rawcode":"A0H5","name":"Смертельная атака","hotkey":"R","type":"ultimate","cool":[120],"cost":[500,600,700,800,900],"range":[1000]},
-  'A0H6': {"rawcode":"A0H6","name":"Метеоритный дождь","hotkey":"W","type":"active","cool":[20],"cost":[225,265,305,345,385],"damage":[{"base":[120,140,160,180,200],"statScale":{"stat":"INT","mult":[0.6,0.7,0.8,0.9,1]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[800],"area":450},
-  'A0H7': {"rawcode":"A0H7","name":"Крюки","hotkey":"F","type":"active","cool":[10],"cost":[190],"damage":[{"base":[300,400,500],"statScale":{"stat":"STR","mult":[1.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[2],"weight":1}]},
-  'A0H9': {"rawcode":"A0H9","name":"Высасывание жизни","hotkey":"E","type":"active","cool":[30,29,28,27,26],"cost":[155,210,265,320,375]},
-  'A0HA': {"rawcode":"A0HA","name":"Массовая немота","hotkey":"W","type":"active","cool":[20],"cost":[165,225,285,345,405],"damage":[{"base":[200,350,500,650,800],"statScale":{"stat":"INT","mult":[3.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[900],"area":400},
-  'A0HB': {"rawcode":"A0HB","name":"Перст боли","hotkey":"Q","type":"active","cool":[10],"cost":[145,190,235,280,325],"damage":[{"base":[300,450,600,750,900],"statScale":{"stat":"INT","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[800]},
-  'A0HC': {"rawcode":"A0HC","name":"Столб боли","hotkey":"R","type":"ultimate","cool":[120],"cost":[450,600,750,900,1050],"cc":[{"type":"slow","duration":[3],"slowPercent":50,"weight":0.5}],"range":[900]},
-  'A0HG': {"rawcode":"A0HG","name":"Рывок","hotkey":"F","type":"active","cool":[15],"cost":[120,140,160],"range":[9999]},
-  'A0HL': {"rawcode":"A0HL","name":"Шары Смерти","hotkey":"Q","type":"active","cool":[10],"cost":[140,180,220,260,300],"damage":[{"base":[300,450,600,750,900],"statScale":{"stat":"INT","mult":[1.5]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0HO': {"rawcode":"A0HO","name":"Ярость тьмы","hotkey":"F","type":"active","cool":[15],"cost":[95,110,125]},
-  'A0HQ': {"rawcode":"A0HQ","name":"Тёмная атака","hotkey":"W","type":"active","cool":[20],"cost":[170],"damage":[{"base":[250,400,550,700,850],"statScale":{"stat":"AGI","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0HS': {"rawcode":"A0HS","name":"Теневой взрыв","hotkey":"Q","type":"active","cool":[14],"cost":[125,150,175,200,225],"damage":[{"base":[150,300,450,600,750],"statScale":{"stat":"AGI","mult":[2.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[800,1000,1200,1400,1600]},
-  'A0HU': {"rawcode":"A0HU","name":"Волна","hotkey":"Q","type":"active","cool":[10],"cost":[150,205,260,315,370],"damage":[{"base":[150,300,450,600,750],"statScale":{"stat":"AGI","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"slow","duration":[4],"slowPercent":10,"weight":0.5}],"range":[1400]},
-  'A0HV': {"rawcode":"A0HV","name":"Поток тьмы","hotkey":"E","type":"active","cool":[25],"cost":[225,265,305,345,385],"damage":[{"base":[300,450,600,750,900],"statScale":{"stat":"AGI","mult":[4]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0I2': {"rawcode":"A0I2","name":"Ядовитый всплеск","hotkey":"R","type":"ultimate","cool":[120],"cost":[425,550,675,800,925],"damage":[{"base":[50],"statScale":null,"isDOT":true,"dotDuration":[5],"hitCount":null}]},
-  'A0I4': {"rawcode":"A0I4","name":"Путь тьмы","hotkey":"R","type":"ultimate","cool":[120],"cost":[600,675,750,825,900],"damage":[{"base":[400,600,800,1000,1200],"statScale":{"stat":"AGI","mult":[4,8,12,16,20]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1800]},
-  'A0I6': {"rawcode":"A0I6","name":"Выстрел лазера","hotkey":"W","type":"active","cool":[20],"cost":[165,200,235,270,305],"damage":[{"base":[275,400,525,650,775],"statScale":{"stat":"AGI","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1400]},
-  'A0I9': {"rawcode":"A0I9","name":"Ракетный выстрел","hotkey":"Q","type":"active","cool":[12],"cost":[140,180,220,260,300],"damage":[{"base":[150,250,350,450,550],"statScale":{"stat":"AGI","mult":[1.75]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[1.5],"weight":1}],"range":[1200],"area":400},
-  'A0IB': {"rawcode":"A0IB","name":"Баллистическая Ракета","hotkey":"R","type":"ultimate","cool":[100],"cost":[500,600,700,800,900],"damage":[{"base":[2000],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1400,1800,2200,2600,3000],"area":500},
-  'A0IC': {"rawcode":"A0IC","name":"Плазменный обстрел","hotkey":"E","type":"active","cool":[25],"cost":[160,200,240,280,320],"damage":[{"base":[120,180,240,300,360],"statScale":{"stat":"AGI","mult":[0.8]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0IH': {"rawcode":"A0IH","name":"Кровавая Буря","hotkey":"R","type":"ultimate","cool":[100],"cost":[550,650,750,850,950],"damage":[{"base":[1000],"statScale":{"stat":"STR","mult":[4,8,12,16,20]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1200,1400,1600,1800,2000]},
-  'A0IJ': {"rawcode":"A0IJ","name":"Волны","hotkey":"F","type":"active","cool":[14],"cost":[200,215,230],"range":[900]},
-  'A0IK': {"rawcode":"A0IK","name":"Стрелы души","hotkey":"E","type":"active","cool":[25],"cost":[250,350,450,550,650]},
-  'A0IN': {"rawcode":"A0IN","name":"Гейзер","hotkey":"Q","type":"active","cool":[15],"cost":[125,175,225,275,325],"damage":[{"base":[175,350,525,700,875],"statScale":{"stat":"STR","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"slow","duration":[2],"slowPercent":30,"weight":0.5}],"range":[1200],"area":300},
-  'A0IO': {"rawcode":"A0IO","name":"Призрачная Флотилия","hotkey":"R","type":"ultimate","cool":[120],"cost":[550,600,650,700,750],"range":[3000],"area":1},
-  'A0IP': {"rawcode":"A0IP","name":"Призрачный корабль","hotkey":"E","type":"active","cool":[25],"cost":[125,200,275,350,425],"damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"STR","mult":[4]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1400],"area":300},
-  'A0IQ': {"rawcode":"A0IQ","name":"Призрачный меч","hotkey":"W","type":"passive"},
-  'A0IR': {"rawcode":"A0IR","name":"Прыжок рысью","hotkey":"E","type":"active","cool":[24],"cost":[150,225,300,375,450],"damage":[{"base":[325,450,575,700,825],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[700,900,1100,1300,1500]},
-  'A0IS': {"rawcode":"A0IS","name":"Ледяная атака","hotkey":"F","type":"passive"},
-  'A0IT': {"rawcode":"A0IT","name":"Оледенение","hotkey":"W","type":"active","cool":[26,25,24,23,22],"cost":[125,175,225,275,325],"damage":[{"base":[15],"statScale":{"stat":"INT","mult":[5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"root","duration":[2.5],"weight":0.8}],"range":[600]},
-  'A0IU': {"rawcode":"A0IU","name":"Ледяная волна","hotkey":"E","type":"active","cool":[24],"cost":[175,250,325,400,475],"damage":[{"base":[250,400,550,700,850],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1100]},
-  'A0IV': {"rawcode":"A0IV","name":"Ледяной столб","hotkey":"R","type":"ultimate","cool":[100],"cost":[600,800,1000,1200,1400],"damage":[{"base":[900],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1200]},
-  'A0IY': {"rawcode":"A0IY","name":"Метеоритная буря","hotkey":"R","type":"ultimate","cool":[100],"cost":[500,580,660,740,820],"range":[1500]},
-  'A0J0': {"rawcode":"A0J0","name":"Энергетический щит","hotkey":"W","type":"active","cool":[20],"cost":[250,300,350,400,450]},
-  'A0J1': {"rawcode":"A0J1","name":"Энергетические вихри","hotkey":"Q","type":"active","cool":[12],"cost":[125,190,255,320,385],"range":[1400]},
-  'A0J2': {"rawcode":"A0J2","name":"Энергетический выстрел","hotkey":"F","type":"active","cool":[10],"cost":[85,120,155],"cc":[{"type":"stun","duration":[1],"weight":1}],"range":[3000],"area":325},
-  'A0J4': {"rawcode":"A0J4","name":"Кусты","hotkey":"E","type":"active","cool":[25],"cost":[275,325,375,425,475],"damage":[{"base":[40,80,120,160,200],"statScale":{"stat":"INT","mult":[1,1.25,1.5,1.75,2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[800],"area":475},
-  'A0J5': {"rawcode":"A0J5","name":"Омоложение","hotkey":"E","type":"active","cool":[20],"cost":[200,250,300,350,400],"heal":[{"base":[0],"statScale":{"stat":"PCT_HP","mult":2},"isPctPerSec":true}],"buffs":{"hp":[2]},"range":[800]},
-  'A0JD': {"rawcode":"A0JD","name":"Водяная форма","hotkey":"E","type":"active","cool":[28],"cost":[175,250,325,400,475],"damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"AGI","mult":[1.8,2.6,3.4,4.2,5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[800,1100,1400,1700,2000]},
-  'A0JE': {"rawcode":"A0JE","name":"Водоворот","hotkey":"R","type":"ultimate","cool":[150],"cost":[600,800,1000,1200,1400],"range":[1200],"area":800},
-  'A0JI': {"rawcode":"A0JI","name":"Молниеносный скачок","hotkey":"R","type":"ultimate","cool":[100],"cost":[500,600,700,800,900],"damage":[{"base":[2000],"statScale":{"stat":"AGI","mult":[4,8,12,16,20]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[2.5],"weight":1}],"range":[1200,1400,1600,1800,2000]},
-  'A0JJ': {"rawcode":"A0JJ","name":"Подчинение молний","hotkey":"E","type":"passive"},
-  'A0JK': {"rawcode":"A0JK","name":"Цепной прыжок","hotkey":"W","type":"active","cool":[25],"cost":[175,225,275,325,375],"damage":[{"base":[400,550,700,850,1000],"statScale":{"stat":"AGI","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"slow","duration":[3],"slowPercent":10,"weight":0.5}]},
-  'A0JL': {"rawcode":"A0JL","name":"Шаровые молнии","hotkey":"Q","type":"active","cool":[15],"cost":[150,200,250,300,350],"damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"slow","duration":[3],"slowPercent":10,"weight":0.5}],"range":[1000],"area":350},
-  'A0JO': {"rawcode":"A0JO","name":"Выстрел молнией","hotkey":"F","type":"active","cool":[10,9,8],"cost":[150,175,200],"damage":[{"base":[300],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1200],"area":350},
-  'A0JT': {"rawcode":"A0JT","name":"Ураган","hotkey":"R","type":"ultimate","cool":[140],"cost":[380,560,740,920,1100],"damage":[{"base":[1200],"statScale":{"stat":"INT","mult":[4,8,12,16,20]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1500]},
-  'A0JZ': {"rawcode":"A0JZ","name":"Контроль ветра отлов урона","hotkey":"E","type":"passive"},
-  'A0K2': {"rawcode":"A0K2","name":"Циклон","hotkey":"Q","type":"active","cool":[15],"cost":[125,175,225,275,325],"damage":[{"base":[250,400,550,700,850],"statScale":{"stat":"INT","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[2],"weight":1}],"range":[1500]},
-  'A0K3': {"rawcode":"A0K3","name":"Мощь ветра","hotkey":"W","type":"active","cool":[25],"cost":[150,225,300,375,450],"cc":[{"type":"slow","duration":[5],"slowPercent":20,"weight":0.5}],"range":[1100],"area":350},
-  'A0K5': {"rawcode":"A0K5","name":"Контроль Ветра","hotkey":"E","type":"active","cool":[25],"cost":[160,200,240,280,320]},
-  'A0KB': {"rawcode":"A0KB","name":"Ветер","hotkey":"F","type":"passive","damage":[{"base":[210],"statScale":{"stat":"INT","mult":[0.7]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"slow","duration":[3],"slowPercent":20,"weight":0.5},{"type":"slow","duration":[3],"slowPercent":20,"weight":0.5},{"type":"slow","duration":[3],"slowPercent":20,"weight":0.5},{"type":"stun","duration":[2],"weight":1}]},
-  'A0KG': {"rawcode":"A0KG","name":"Электрический заряд","hotkey":"Q","type":"active","cool":[15],"cost":[125,175,225,275,325],"damage":[{"base":[275,400,525,650,775],"statScale":{"stat":"INT","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1250]},
-  'A0KH': {"rawcode":"A0KH","name":"Гнев гроз","hotkey":"R","type":"ultimate","cool":[130],"cost":[500,750,1000,1250,1500],"damage":[{"base":[1000],"statScale":{"stat":"INT","mult":[10,15,20,25,30]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0KJ': {"rawcode":"A0KJ","name":"Мины","hotkey":"F","type":"active","cool":[10],"cost":[200,250,300],"damage":[{"base":[50],"statScale":{"stat":"STR","mult":[0.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1000]},
-  'A0KK': {"rawcode":"A0KK","name":"Прыжок","hotkey":"E","type":"active","cool":[25],"cost":[175,225,275,325,375],"damage":[{"base":[325,450,575,700,825],"statScale":{"stat":"STR","mult":[4]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[2],"weight":1}],"range":[1500],"area":400},
-  'A0KW': {"rawcode":"A0KW","name":"Разящая тень","hotkey":"F","type":"active","cool":[12],"cost":[100,135,170],"damage":[{"base":[650],"statScale":{"stat":"AGI","mult":[0.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1000]},
-  'A0KX': {"rawcode":"A0KX","name":"Яростный удар (в спеллбуке)","hotkey":"E","type":"passive"},
-  'A0KY': {"rawcode":"A0KY","name":"Кровавый наскок","hotkey":"Q","type":"active","cool":[11],"cost":[125,165,205,245,285],"damage":[{"base":[200,300,400,500,600],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0L5': {"rawcode":"A0L5","name":"Ледяной шар","hotkey":"E","type":"active","cool":[30],"cost":[275,325,375,425,475],"range":[1000]},
-  'A0LE': {"rawcode":"A0LE","name":"Ледяная звезда (воин) Даммикаст холод","hotkey":"W","type":"active","cool":[10],"range":[99999]},
-  'A0LK': {"rawcode":"A0LK","name":"Темный поток","hotkey":"Q","type":"active","cool":[12],"cost":[175,210,245,280,315],"damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"INT","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[900]},
-  'A0LV': {"rawcode":"A0LV","name":"Размашистый Удар","hotkey":"F","type":"active","cool":[12,11,10],"cost":[125,150,175],"damage":[{"base":[400],"statScale":{"stat":"AGI","mult":[0.5]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0LX': {"rawcode":"A0LX","name":"Волновая атака","hotkey":"Q","type":"active","cool":[14],"cost":[80,120,160,200,240]},
-  'A0LY': {"rawcode":"A0LY","name":"Резня","hotkey":"E","type":"active","cool":[25],"cost":[170,220,270,320,370],"damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"AGI","mult":[0.8,1.6,2.4,3.2,4]},"isDOT":false,"dotDuration":null,"hitCount":null}],"buffs":{"evasion":[100]}},
-  'A0M0': {"rawcode":"A0M0","name":"Кровавый прыжок","hotkey":"W","type":"active","cool":[18],"cost":[125,175,225,275,325],"range":[700,900,1100,1300,1500]},
-  'A0M4': {"rawcode":"A0M4","name":"Танец клинков","hotkey":"R","type":"ultimate","cool":[130,120,110,100,90],"cost":[450,575,700,825,950],"dash":{"isDash":true,"dashRange":null},"range":[1000]},
-  'A0MB': {"rawcode":"A0MB","name":"Астральная молния","hotkey":"W","type":"active","cool":[20],"cost":[180,215,250,285,320],"damage":[{"base":[100,200,300,400,500],"statScale":{"stat":"INT","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1200],"area":500},
-  'A0ME': {"rawcode":"A0ME","name":"Астральный бросок","hotkey":"Q","type":"active","cool":[14],"cost":[175,225,275,325,375],"damage":[{"base":[200,300,400,500,600],"statScale":{"stat":"INT","mult":[0.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[2],"weight":1}],"range":[1200],"area":500},
-  'A0MF': {"rawcode":"A0MF","name":"Астральный шторм","hotkey":"R","type":"ultimate","cool":[100],"cost":[400,500,600,700,800],"damage":[{"base":[900,1350,1800,2250,2700],"statScale":{"stat":"INT","mult":[5,8,11,14,17]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"root","duration":[2],"weight":0.8},{"type":"stun","duration":[2],"weight":1}]},
-  'A0MG': {"rawcode":"A0MG","name":"Ядовитое кольцо","hotkey":"E","type":"active","cool":[30],"cost":[175,225,275,325,375],"damage":[{"base":[100,200,300,400,500],"statScale":{"stat":"INT","mult":[1.5,2,2.5,3,3.5]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0MH': {"rawcode":"A0MH","name":"Ядовитый шар","hotkey":"W","type":"active","cool":[20],"cost":[160,200,240,280,320],"damage":[{"base":[250,400,550,700,850],"statScale":{"stat":"INT","mult":[0.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1000]},
-  'A0MI': {"rawcode":"A0MI","name":"Астральное Возмездие","hotkey":"F","type":"passive","damage":[{"base":[100],"statScale":{"stat":"INT","mult":[0.2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"area":1},
-  'A0MQ': {"rawcode":"A0MQ","name":"Линия ярости","hotkey":"F","type":"passive","damage":[{"base":[400],"statScale":{"stat":"AGI","mult":[1]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0MR': {"rawcode":"A0MR","name":"Разгон","hotkey":"W","type":"active","cool":[20],"cost":[160,200,240,280,320],"damage":[{"base":[125,250,375,500,625],"statScale":{"stat":"AGI","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[1.5],"weight":1}],"range":[1400]},
-  'A0MS': {"rawcode":"A0MS","name":"Демонические атаки","hotkey":"E","type":"active","cool":[30,29,28,27,26],"cost":[260,320,380,440,500]},
-  'A0MT': {"rawcode":"A0MT","name":"Адский крик","hotkey":"Q","type":"active","cool":[16],"cost":[175,200,225,250,275],"damage":[{"base":[150,300,450,600,750],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0MU': {"rawcode":"A0MU","name":"Сюрикен назад","hotkey":"Q","type":"active","cool":[10],"cost":[100]},
-  'A0N1': {"rawcode":"A0N1","name":"Удар в прыжке","hotkey":"W","type":"active","cool":[20],"cost":[125,155,185,215,245],"damage":[{"base":[300,450,600,750,900],"statScale":{"stat":"AGI","mult":[0.8,1.6,2.4,3.2,4]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1500]},
-  'A0N2': {"rawcode":"A0N2","name":"Сюрикен","hotkey":"Q","type":"active","cool":[15,14,13,12,11],"cost":[125,175,225,275,325],"damage":[{"base":[150,300,450,600,750],"statScale":{"stat":"AGI","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0N3': {"rawcode":"A0N3","name":"Смертоносные удары","hotkey":"E","type":"passive"},
-  'A0N4': {"rawcode":"A0N4","name":"Смертоносный кинжал","hotkey":"F","type":"active","cool":[13],"cost":[125,150,175],"range":[1200]},
-  'A0NI': {"rawcode":"A0NI","name":"Кольцо холода","hotkey":"W","type":"active","cool":[20],"cost":[225,275,325,375,425],"damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"STR","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"slow","duration":[3],"slowPercent":30,"weight":0.5}]},
-  'A0NJ': {"rawcode":"A0NJ","name":"Ледяная броня","hotkey":"F","type":"passive","damage":[{"base":[20],"statScale":{"stat":"STR","mult":[0.4]},"isDOT":false,"dotDuration":null,"hitCount":null}],"buffs":{"armor":[5]},"area":1},
-  'A0NV': {"rawcode":"A0NV","name":"Душа Природы","hotkey":"F","type":"active","cool":[14],"cost":[175,200,225],"damage":[{"base":[200],"statScale":{"stat":"INT","mult":[0.6]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"slow","duration":[3],"slowPercent":50,"weight":0.5}],"range":[1400,1500,1600]},
-  'A0NZ': {"rawcode":"A0NZ","name":"Уклонение","hotkey":"F","type":"passive"},
-  'A0O0': {"rawcode":"A0O0","name":"Неистовствующая Ярость","hotkey":"R","type":"ultimate","cool":[80],"cost":[350]},
-  'A0O3': {"rawcode":"A0O3","name":"Огненная Броня","hotkey":"F","type":"active","cool":[18,17,16],"cost":[160,220,280],"heal":[{"base":[0],"statScale":{"stat":"PCT_HP","mult":2},"isPctPerSec":true}]},
-  'A0O8': {"rawcode":"A0O8","name":"Дыхание дракона","hotkey":"R","type":"ultimate","cool":[140],"cost":[450,550,650,750,850],"damage":[{"base":[800,1200,1600,2000,2400],"statScale":{"stat":"STR","mult":[4,8,12,16,20]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"slow","duration":[3],"slowPercent":25,"weight":0.5}],"range":[2000]},
-  'A0OK': {"rawcode":"A0OK","name":"Огненный Гейзер","hotkey":"W","type":"active","cool":[20],"cost":[175,230,285,340,395],"range":[800]},
-  'A0OO': {"rawcode":"A0OO","name":"Бездна","hotkey":"R","type":"ultimate","cool":[100],"cost":[600],"damage":[{"base":[250],"statScale":{"stat":"INT","mult":[2.2,2.4,2.6,2.8,3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[6],"weight":1}],"range":[1500]},
-  'A0OQ': {"rawcode":"A0OQ","name":"Ледяные драконы","hotkey":"E","type":"active","cool":[30],"cost":[250,325,400,475,550],"damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"STR","mult":[2.5,3,3.5,4,4.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[2000]},
-  'A0OR': {"rawcode":"A0OR","name":"Помощь [|cffffcc00R|r]","hotkey":"R","type":"ultimate","cool":[1]},
-  'A0OW': {"rawcode":"A0OW","name":"Путь огня","hotkey":"F","type":"active","cool":[18],"cost":[175,190,205],"damage":[{"base":[400],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[900]},
-  'A0P2': {"rawcode":"A0P2","name":"Плевок яда","hotkey":"Q","type":"active","cool":[16],"cost":[100,135,170,205,240],"damage":[{"base":[300,450,600,750,900],"statScale":{"stat":"INT","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1200],"area":400},
-  'A0P3': {"rawcode":"A0P3","name":"Ядовитая слюна","hotkey":"F","type":"passive"},
-  'A0P8': {"rawcode":"A0P8","name":"Скрытность","hotkey":"E","type":"active","cool":[30,29,28,27,26],"cost":[140,200,260,320,380],"buffs":{"speedPct":[20]}},
-  'A0PN': {"rawcode":"A0PN","name":"Иллюзия","hotkey":"Q","type":"active","cool":[18],"cost":[125,165,205,245,285],"damage":[{"base":[150,300,450,600,750],"statScale":{"stat":"AGI","mult":[0.4,0.8,1.2,1.6,2]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0PP': {"rawcode":"A0PP","name":"Сюрикен смерти","hotkey":"R","type":"ultimate","cool":[80],"cost":[450,575,700,825,950],"damage":[{"base":[300],"statScale":{"stat":"AGI","mult":[3,4,5,6,7]},"isDOT":false,"dotDuration":null,"hitCount":null}],"dash":{"isDash":true,"dashRange":null},"range":[2500]},
-  'A0Q6': {"rawcode":"A0Q6","name":"Астральная сфера","hotkey":"E","type":"active","cool":[30],"cost":[175,250,325,400,475],"damage":[{"base":[500,650,800,950,1100],"statScale":{"stat":"INT","mult":[5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1400],"area":725},
-  'A0QF': {"rawcode":"A0QF","name":"Боевое Превосходство","hotkey":"F","type":"passive","damage":[{"base":[100],"statScale":{"stat":"STR","mult":[0.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"area":900},
-  'A0QL': {"rawcode":"A0QL","name":"Водный всплеск","hotkey":"Q","type":"active","cool":[20],"cost":[5000]},
-  'A0QR': {"rawcode":"A0QR","name":"Столб смерти","hotkey":"E","type":"active","cool":[25],"cost":[225,300,375,450,525],"damage":[{"base":[150,300,450,600,750],"statScale":{"stat":"INT","mult":[2,2.5,3,3.5,4]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[2000]},
-  'A0QW': {"rawcode":"A0QW","name":"Поток Душ","hotkey":"R","type":"ultimate","cool":[120],"cost":[500,575,650,725,800],"damage":[{"base":[175],"statScale":{"stat":"AGI","mult":[0.5,1,1.5,2,2.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1500],"area":400},
-  'A0R1': {"rawcode":"A0R1","name":"Защита Луны","hotkey":"F","type":"active","cool":[26,24,22],"cost":[125,150,175],"damage":[{"base":[175],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0R2': {"rawcode":"A0R2","name":"Лунная Кара","hotkey":"R","type":"ultimate","cool":[80],"cost":[525,600,675,750,825],"range":[100]},
-  'A0R3': {"rawcode":"A0R3","name":"Метка Кошмара","hotkey":"E","type":"active","cool":[30,29,28,27,26],"cost":[175,225,275,325,375],"damage":[{"base":[100,200,300,400,500],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1200],"area":400},
-  'A0R4': {"rawcode":"A0R4","name":"Очищение","hotkey":"W","type":"active","cool":[10],"cost":[225,250,275,300,325],"range":[900],"area":100},
-  'A0R5': {"rawcode":"A0R5","name":"Поражающий маневр","hotkey":"Q","type":"active","cool":[14],"cost":[145,180,215,250,285],"damage":[{"base":[300,400,500,600,700],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[100]},
-  'A0R9': {"rawcode":"A0R9","name":"Огненный шар","hotkey":"Q","type":"active","cool":[10],"cost":[225,275,325,375,425],"damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"STR","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[900,1000,1100,1200,1300],"area":400},
-  'A0RA': {"rawcode":"A0RA","name":"Легкие скачки","hotkey":"Q","type":"active","cool":[15],"cost":[170,220,270,320,370],"damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"AGI","mult":[1.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"dash":{"isDash":true,"dashRange":[1000]},"range":[1000]},
-  'A0RB': {"rawcode":"A0RB","name":"Коварный бросок","hotkey":"W","type":"active","cool":[15],"cost":[70,110,150,190,230],"damage":[{"base":[200,300,400,500,600],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1500]},
-  'A0RC': {"rawcode":"A0RC","name":"Решающий удар","hotkey":"R","type":"ultimate","cool":[100,95,90,85,80],"cost":[450,525,600,675,750],"range":[1200]},
-  'A0RG': {"rawcode":"A0RG","name":"Ловкий прием","hotkey":"F","type":"passive"},
-  'A0RH': {"rawcode":"A0RH","name":"Легкие скачки","hotkey":"Q","type":"active","cool":[1],"cost":[85,110,135,160,185],"damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"AGI","mult":[1.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"dash":{"isDash":true,"dashRange":[1000]},"range":[1000]},
-  'A0RJ': {"rawcode":"A0RJ","name":"Могущество Некромонгера","hotkey":"F","type":"passive"},
-  'A0RN': {"rawcode":"A0RN","name":"Магическое усиление","hotkey":"E","type":"active","cool":[30],"cost":[100,160,220,280,340]},
-  'A0RO': {"rawcode":"A0RO","name":"Кристаллы","hotkey":"Q","type":"active","cool":[10],"cost":[125,175,225,275,325],"damage":[{"base":[250,325,400,475,550],"statScale":{"stat":"AGI","mult":1},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"slow","duration":[3],"slowPercent":20,"weight":0.5}],"range":[1500],"area":250},
-  'A0RP': {"rawcode":"A0RP","name":"Магическая сила","hotkey":"W","type":"passive"},
-  'A0RQ': {"rawcode":"A0RQ","name":"Электрическая цепь","hotkey":"F","type":"active","cool":[14],"cost":[160,205,250],"damage":[{"base":[500],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[1],"weight":1},{"type":"stun","duration":[1.25],"weight":1},{"type":"stun","duration":[1.5],"weight":1}],"range":[1500]},
-  'A0RW': {"rawcode":"A0RW","name":"Оторвать плоть","hotkey":"F","type":"active","cool":[10],"cost":[100,125,150],"range":[300,350,400]},
-  'A0RZ': {"rawcode":"A0RZ","name":"Похищение Жизни","hotkey":"R","type":"ultimate","cool":[120],"cost":[450,550,650,750,850],"damage":[{"base":[500],"statScale":{"stat":"AGI","mult":[2.5,3]},"isDOT":false,"dotDuration":null,"hitCount":null},{"base":[0],"statScale":{"stat":"AGI","mult":[1]},"isDOT":true,"dotDuration":null,"hitCount":null}]},
-  'A0S0': {"rawcode":"A0S0","name":"Поглощение крови","hotkey":"F","type":"passive","area":1},
-  'A0S1': {"rawcode":"A0S1","name":"Путь безумия","hotkey":"W","type":"active","cool":[25],"cost":[140,180,220,260,300],"damage":[{"base":[50,100,150,200,250],"statScale":{"stat":"AGI","mult":[0.4]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0S2': {"rawcode":"A0S2","name":"Ритуал крови","hotkey":"Q","type":"active","cool":[15],"cost":[125,200,275,350,425],"damage":[{"base":[100,200,300,400,500],"statScale":{"stat":"AGI","mult":[0.2,0.4,0.6,0.8,1]},"isDOT":false,"dotDuration":null,"hitCount":[10]}],"range":[750]},
-  'A0S3': {"rawcode":"A0S3","name":"Туман","hotkey":"E","type":"active","cool":[25],"cost":[200,235,270,305,340],"damage":[{"base":[100,150,200,250,300],"statScale":{"stat":"AGI","mult":[0.6,0.7,0.8,0.9,1.1]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1000],"area":500},
-  'A0S5': {"rawcode":"A0S5","name":"Темный ритуал","hotkey":"E","type":"active","cool":[30,28,26,24,22],"cost":[180,220,260,300,340],"damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"STR","mult":[4]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0S6': {"rawcode":"A0S6","name":"Торнадо","hotkey":"Q","type":"active","cool":[12],"cost":[175,215,255,295,335],"damage":[{"base":[250,400,550,700,850],"statScale":{"stat":"INT","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1750]},
-  'A0S7': {"rawcode":"A0S7","name":"Заражение","hotkey":"E","type":"active","cool":[25],"cost":[170,220,270,320,370],"damage":[{"base":[120,180,240,300,360],"statScale":{"stat":"INT","mult":[1.2,1.4,1.6,1.8,2]},"isDOT":true,"dotDuration":[4,5,6,7,8],"hitCount":null}],"cc":[{"type":"slow","duration":[3],"slowPercent":40,"weight":0.5}],"range":[1400],"area":450},
-  'A0S9': {"rawcode":"A0S9","name":"Сила обитателей глубины","hotkey":"F","type":"passive"},
-  'A0SB': {"rawcode":"A0SB","name":"Волшебный трезубец","hotkey":"E","type":"passive"},
-  'A0SC': {"rawcode":"A0SC","name":"Девятый вал","hotkey":"R","type":"ultimate","cool":[110],"cost":[475,550,625,700,775],"range":[1600]},
-  'A0SD': {"rawcode":"A0SD","name":"Толчок хвостом","hotkey":"W","type":"active","cool":[20],"cost":[225,250,275,300,325],"damage":[{"base":[100,150,200,250,300],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[0.25],"weight":1}]},
-  'A0SE': {"rawcode":"A0SE","name":"Удар морского воина","hotkey":"Q","type":"active","cool":[12],"cost":[175,200,225,250,275],"cc":[{"type":"stun","duration":[1],"weight":1}],"range":[100]},
-  'A0SH': {"rawcode":"A0SH","name":"Сфера смерти","hotkey":"W","type":"active","cool":[18],"cost":[175,215,255,295,335],"damage":[{"base":[50],"statScale":{"stat":"INT","mult":[0.5,0.7,0.9,1.1,1.3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[900]},
-  'A0SJ': {"rawcode":"A0SJ","name":"Аура ветров","hotkey":"E","type":"aura","area":700},
-  'A0SK': {"rawcode":"A0SK","name":"Метеорный удар","hotkey":"W","type":"active","cool":[30],"cost":[175,220,265,310,355],"cc":[{"type":"stun","duration":[2],"weight":1}],"range":[1000,1200,1400,1600,1800],"area":475},
-  'A0T1': {"rawcode":"A0T1","name":"Сюрикен","hotkey":"Q","type":"active","cool":[15],"cost":[175,215,255,295,335],"damage":[{"base":[150,300,450,600,750],"statScale":{"stat":"AGI","mult":[1.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1300]},
-  'A0T2': {"rawcode":"A0T2","name":"Пронзающая Смерть","hotkey":"Q","type":"active","cool":[14],"cost":[175,210,245,280,315],"damage":[{"base":[240,380,520,660,800],"statScale":{"stat":"STR","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[1],"weight":1}],"range":[700,900,1100,1300,1500]},
-  'A0T6': {"rawcode":"A0T6","name":"Панцирь с шипами","hotkey":"W","type":"passive","buffs":{"armor":[3,6,9,12,15]}},
-  'A0T7': {"rawcode":"A0T7","name":"Мощь древних","hotkey":"F","type":"passive"},
-  'A0T9': {"rawcode":"A0T9","name":"Исцеляющая Сфера","hotkey":"Q","type":"active","cool":[15],"cost":[140,180,220,260,300],"damage":[{"base":[250,400,550,700,850],"statScale":{"stat":"STR","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"heal":[{"base":[12],"statScale":null}],"range":[1300],"area":325},
-  'A0TK': {"rawcode":"A0TK","name":"Истощение(мятежник)","hotkey":"W","type":"active","cool":[15],"range":[99999],"area":1},
-  'A0TQ': {"rawcode":"A0TQ","name":"Ракетница","hotkey":"F","type":"active","cool":[20,19,18],"cost":[120,140,160]},
-  'A0U2': {"rawcode":"A0U2","name":"Щит молний","hotkey":"F","type":"active","cool":[12],"cost":[80,100,120],"damage":[{"base":[240],"statScale":{"stat":"INT","mult":[0.2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[800]},
-  'A0U7': {"rawcode":"A0U7","name":"Отражение души","hotkey":"E","type":"active","cool":[25],"cost":[170,210,250,290,330],"range":[800],"area":[275,325,375,425,475]},
-  'A0U9': {"rawcode":"A0U9","name":"Телекинез Бросок","hotkey":"F","type":"active","cool":[14],"cost":[100,115,130],"cc":[{"type":"stun","duration":[1.25],"weight":1},{"type":"stun","duration":[1.25],"weight":1},{"type":"stun","duration":[1.25],"weight":1}],"range":[99999]},
-  'A0UE': {"rawcode":"A0UE","name":"Мистический разряд","hotkey":"Q","type":"active","cool":[16,15,14,13,12],"cost":[175,250,325,400,475],"damage":[{"base":[320,480,640,800,960],"statScale":{"stat":"INT","mult":[2,2.5,3,3.5,4]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[800]},
-  'A0UF': {"rawcode":"A0UF","name":"Аура Сопротивления","hotkey":"W","type":"aura","buffs":{"armor":[7]},"area":900},
-  'A0UG': {"rawcode":"A0UG","name":"Кровавая кара","hotkey":"E","type":"active","cool":[25],"cost":[180,240,300,360,420],"damage":[{"base":[1400],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null},{"base":[300,400,500,600,700],"statScale":{"stat":"INT","mult":[3,3.5,4,4.5,5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1400]},
-  'A0UI': {"rawcode":"A0UI","name":"Телекинез","hotkey":"F","type":"active","cool":[14],"cost":[100,115,130],"cc":[{"type":"stun","duration":[2],"weight":1}],"range":[600,700,800]},
-  'A0UJ': {"rawcode":"A0UJ","name":"Путь огня","hotkey":"F","type":"active","cool":[8],"cost":[175,190,205],"damage":[{"base":[400],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1500]},
-  'A0UU': {"rawcode":"A0UU","name":"Вихрь Крови","hotkey":"R","type":"ultimate","cool":[100],"cost":[450,550,650,750,850],"damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"AGI","mult":[3,4,5,6,7]},"isDOT":true,"dotDuration":[6,7,8,9,10],"hitCount":null}],"cc":[{"type":"slow","duration":[3],"slowPercent":50,"weight":0.5},{"type":"stun","duration":[6,7,8,9,10],"weight":1}]},
-  'A0UW': {"rawcode":"A0UW","name":"Огненная вспышка","hotkey":"F","type":"active","cool":[10],"cost":[125,160,195],"damage":[{"base":[475],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[850]},
-  'A0UZ': {"rawcode":"A0UZ","name":"Печать Огня","hotkey":"Q","type":"active","cool":[15],"cost":[125,165,205,245,285],"damage":[{"base":[200,325,450,575,700],"statScale":{"stat":"INT","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1400],"area":400},
-  'A0V1': {"rawcode":"A0V1","name":"Землетрясение","hotkey":"R","type":"ultimate","cool":[100],"cost":[425]},
-  'A0V2': {"rawcode":"A0V2","name":"Мясной крюк","hotkey":"E","type":"active","cool":[26,24,22,20,18],"cost":[225,275,325,375,425],"cc":[{"type":"stun","duration":[2],"weight":1}],"range":[2000]},
-  'A0V4': {"rawcode":"A0V4","name":"Теневая хватка","hotkey":"E","type":"active","cool":[30],"cost":[225,275,325,375,425],"damage":[{"base":[300,450,600,750,900],"statScale":{"stat":"AGI","mult":[4]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[800,900,1000,1100,1200]},
-  'A0V6': {"rawcode":"A0V6","name":"Хаотическая форма","hotkey":"E","type":"active","cool":[33],"cost":[350],"buffs":{"hp":[800],"armor":[10],"spellDmgPct":[15]}},
-  'A0V9': {"rawcode":"A0V9","name":"Огненный меч","hotkey":"F","type":"passive"},
-  'A0VB': {"rawcode":"A0VB","name":"Молнии Раздора","hotkey":"R","type":"ultimate","cool":[80],"cost":[450,600,750,900,1050],"dash":{"isDash":true,"dashRange":null},"range":[1800]},
-  'A0VD': {"rawcode":"A0VD","name":"Ледяная стрела","hotkey":"W","type":"active","cool":[15],"cost":[175,210,245,280,315],"damage":[{"base":[200,300,400,500,600],"statScale":{"stat":"INT","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[900]},
-  'A0VI': {"rawcode":"A0VI","name":"Включить автосборку [|cffffcc00R|r]","hotkey":"R","type":"ultimate","cool":[30]},
-  'A0VJ': {"rawcode":"A0VJ","name":"Огненный диск","hotkey":"F","type":"active","cool":[20],"cost":[120,150,180],"damage":[{"base":[360],"statScale":{"stat":"INT","mult":[1.6]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[900]},
-  'A0VK': {"rawcode":"A0VK","name":"Зов Пламени","hotkey":"E","type":"active","cool":[30],"cost":[175,225,275,325,375]},
-  'A0VL': {"rawcode":"A0VL","name":"Скачок огня","hotkey":"Q","type":"active","cool":[14],"cost":[150,190,230,270,310],"damage":[{"base":[150,300,450,600,750],"statScale":{"stat":"INT","mult":[1.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[700,800,900,1000,1100]},
-  'A0VM': {"rawcode":"A0VM","name":"Огненная кара","hotkey":"W","type":"active","cool":[20],"cost":[150,190,230,270,310],"damage":[{"base":[75,150,225,300,375],"statScale":{"stat":"INT","mult":[0.5]},"isDOT":false,"dotDuration":null,"hitCount":[4,6,8,10,12]}],"range":[900]},
-  'A0VN': {"rawcode":"A0VN","name":"Рывок огня","hotkey":"W","type":"active","cool":[25],"cost":[170]},
-  'A0VQ': {"rawcode":"A0VQ","name":"Огненная тропа","hotkey":"R","type":"ultimate","cool":[100],"cost":[450,600,750,900,1050],"damage":[{"base":[600,1000,1400,1800,2200],"statScale":{"stat":"INT","mult":[4,8,12,16,20]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[2000]},
-  'A0VZ': {"rawcode":"A0VZ","name":"Ледяная стрела","hotkey":"Q","type":"active","cool":[10],"cost":[100,125,150,175,200],"damage":[{"base":[100,200,300,400,500],"statScale":{"stat":"AGI","mult":[3,4,5,6,7]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[700]},
-  'A0W1': {"rawcode":"A0W1","name":"Огненная стрела","hotkey":"Q","type":"active","cool":[10],"cost":[100,125,150,175,200],"damage":[{"base":[100,200,300,400,500],"statScale":{"stat":"STR","mult":[3,4,5,6,7]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[700]},
-  'A0W4': {"rawcode":"A0W4","name":"Сменить стрелу","hotkey":"F","type":"active","cool":[2],"cost":[75,50,25]},
-  'A0W5': {"rawcode":"A0W5","name":"Темная стрела","hotkey":"Q","type":"active","cool":[10],"cost":[100,125,150,175,200],"damage":[{"base":[100,200,300,400,500],"statScale":{"stat":"INT","mult":[3,4,5,6,7]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[1.2],"weight":1}],"range":[700]},
-  'A0W6': {"rawcode":"A0W6","name":"Чародейская стрела","hotkey":"Q","type":"active","cool":[10],"cost":[100,125,150,175,200],"damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"INT","mult":[4]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[700]},
-  'A0W7': {"rawcode":"A0W7","name":"Стихийный Удар","hotkey":"R","type":"ultimate","cool":[80],"cost":[600,750,900,1050,1200],"damage":[{"base":[2000],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"silence","duration":[2],"weight":0.7}],"range":[1500]},
-  'A0W8': {"rawcode":"A0W8","name":"Магический обстрел","hotkey":"E","type":"active","cool":[25],"cost":[250,325,400,475,550],"damage":[{"base":[60],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[1.2],"weight":1}],"range":[1200]},
-  'A0WB': {"rawcode":"A0WB","name":"Поглощение маны","hotkey":"W","type":"passive","buffs":{"spellDmgPct":[10]}},
-  'A0WC': {"rawcode":"A0WC","name":"Чародейская стрела","hotkey":"Q","type":"passive","damage":[{"base":[200,400,600,800,1000],"statScale":{"stat":"INT","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0WK': {"rawcode":"A0WK","name":"Высвобождение Душ","hotkey":"E","type":"active","cool":[30,29,28,27,26],"cost":[120,200,280,360,440]},
-  'A0WM': {"rawcode":"A0WM","name":"Всплеск тьмы Q 200","hotkey":"Q","type":"active","cool":[10],"cost":[70,100,130,160,190],"damage":[{"base":[170,340,510,680,850],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0WN': {"rawcode":"A0WN","name":"Всплеск тьмы Q 450","hotkey":"Q","type":"active","cool":[10],"cost":[70,100,130,160,190],"damage":[{"base":[170,340,510,680,850],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0WO': {"rawcode":"A0WO","name":"Всплеск тьмы Q 700","hotkey":"Q","type":"active","cool":[10],"cost":[70,100,130,160,190],"damage":[{"base":[170,340,510,680,850],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0WY': {"rawcode":"A0WY","name":"Древняя мощь","hotkey":"W","type":"passive","damage":[{"base":[100],"statScale":{"stat":"STR","mult":[0.2,0.4,0.6,0.8,1]},"isDOT":true,"dotDuration":null,"hitCount":null}]},
-  'A0XU': {"rawcode":"A0XU","name":"Кровожадность","hotkey":"F","type":"active","cool":[14],"cost":[150,185,220],"damage":[{"base":[150],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"buffs":{"speedPct":[15]},"range":[600],"area":300},
-  'A0Y8': {"rawcode":"A0Y8","name":"Водяной Щит","hotkey":"F","type":"active","cool":[14,13,12],"cost":[100,125,150],"range":[600]},
-  'A0Z8': {"rawcode":"A0Z8","name":"Бросок Чакрама","hotkey":"Q","type":"active","cool":[15],"cost":[130,200,270,340,410,480],"damage":[{"base":[120,180,240,300,360,420],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1000]},
-  'A0ZA': {"rawcode":"A0ZA","name":"Немота","hotkey":"W","type":"passive","range":[99999],"area":1},
-  'A0ZG': {"rawcode":"A0ZG","name":"Осколки метеорита","hotkey":"F","type":"passive","damage":[{"base":[30],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A0ZM': {"rawcode":"A0ZM","name":"Впитывание боли","hotkey":"F","type":"active","cool":[12],"cost":[80,100,120],"range":[600]},
-  'A107': {"rawcode":"A107","name":"Святой Щит","hotkey":"R","type":"ultimate","cool":[100],"cost":[500,575,650,725,800],"damage":[{"base":[1000,2000,3000,4000,5000],"statScale":{"stat":"STR","mult":[5,10,15,20,25]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A10C': {"rawcode":"A10C","name":"Яростные Удары","hotkey":"E","type":"active","cool":[20],"cost":[120,160,200,240,280]},
-  'A10F': {"rawcode":"A10F","name":"Выключить автосборку [|cffffcc00R|r]","hotkey":"R","type":"ultimate","cool":[30]},
-  'A10P': {"rawcode":"A10P","name":"Водяная вспышка","hotkey":"Q","type":"active","cool":[10],"cost":[100,150,200,250,300],"damage":[{"base":[150,300,450,600,750],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[700],"area":350},
-  'A10S': {"rawcode":"A10S","name":"Отключить сборку одним кликом [|cffffcc00R|r]","hotkey":"R","type":"ultimate","cool":[0.5]},
-  'A10T': {"rawcode":"A10T","name":"Включить сборку одним кликом [|cffffcc00R|r]","hotkey":"R","type":"ultimate","cool":[10]},
-  'A11F': {"rawcode":"A11F","name":"Кровоток","hotkey":"W","type":"active","cost":[1000],"range":[600]},
-  'A11Q': {"rawcode":"A11Q","name":"Всплеск тьмы","hotkey":"Q","type":"passive","damage":[{"base":[170,340,510,680,850],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A120': {"rawcode":"A120","name":"Древняя мощь","hotkey":"Q","type":"passive"},
-  'A121': {"rawcode":"A121","name":"Всплеск тьмы (волна)","hotkey":"Q","type":"active","cool":[20],"cost":[70,100,130,160,190],"damage":[{"base":[170,340,510,680,850],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A122': {"rawcode":"A122","name":"Сменить всплеск тьмы","hotkey":"F","type":"active","cool":[1],"cost":[75,50,25]},
-  'A12B': {"rawcode":"A12B","name":"Тёмная аура","hotkey":"W","type":"aura","area":1200},
-  'A12E': {"rawcode":"A12E","name":"Бочонок с пивом","hotkey":"W","type":"active","cool":[20],"cost":[100,135,170,205,240],"damage":[{"base":[100,200,300,400,500],"statScale":{"stat":"STR","mult":[1]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1000],"area":300},
-  'A12G': {"rawcode":"A12G","name":"Ледяной Щит","hotkey":"W","type":"active","cool":[16],"cost":[225,265,305,345,385],"damage":[{"base":[80,160,240,320,400],"statScale":{"stat":"INT","mult":[0.2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"heal":[{"base":[40,80,120,160,200],"statScale":null}],"buffs":{"armor":[4,8,12,16,20]},"range":[900]},
-  'A12I': {"rawcode":"A12I","name":"Дух Зеры","hotkey":"E","type":"passive","damage":[{"base":[50],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"slow","duration":[3],"slowPercent":50,"weight":0.5}]},
-  'A130': {"rawcode":"A130","name":"Дух Зеры","hotkey":"E","type":"passive","damage":[{"base":[50],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"slow","duration":[3],"slowPercent":50,"weight":0.5}],"area":1},
-  'A131': {"rawcode":"A131","name":"Иллюзорный скачок","hotkey":"W","type":"active","cool":[14],"cost":[125,150,175,200,225],"damage":[{"base":[250,350,450,550,700],"statScale":{"stat":"AGI","mult":[1.5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1500]},
-  'A132': {"rawcode":"A132","name":"Иллюзорный скачок","hotkey":"W","type":"active","cool":[14],"cost":[125,150,175,200,225],"damage":[{"base":[250,350,450,550,700],"statScale":{"stat":"AGI","mult":[1.5]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A133': {"rawcode":"A133","name":"Нагината","hotkey":"R","type":"ultimate","cool":[90],"cost":[325,375,425,475,525]},
-  'A137': {"rawcode":"A137","name":"Темный дождь","hotkey":"Q","type":"active","cool":[15],"cost":[175,220,265,310,355],"damage":[{"base":[150,200,250,300,350],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":[5,8,11,14,17]}],"range":[700],"area":300},
-  'A13A': {"rawcode":"A13A","name":"Зов возмездия","hotkey":"F","type":"passive","damage":[{"base":[100],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"heal":[{"base":[50],"statScale":null}]},
-  'A13G': {"rawcode":"A13G","name":"Леденящий поток","hotkey":"Q","type":"active","cool":[13],"cost":[120,160,200,240,280],"damage":[{"base":[225,350,475,600,725],"statScale":{"stat":"STR","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[800]},
-  'A144': {"rawcode":"A144","name":"Сожжение души","hotkey":"Q","type":"passive","range":[900]},
-  'A145': {"rawcode":"A145","name":"Скрытый клинок","hotkey":"W","type":"active","cool":[20],"cost":[160]},
-  'A146': {"rawcode":"A146","name":"Огненная буря","hotkey":"Q","type":"active","cool":[10],"cost":[125,150,175,200,225],"damage":[{"base":[250,375,500,625,750],"statScale":{"stat":"INT","mult":[1]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[750],"area":350},
-  'A14G': {"rawcode":"A14G","name":"Огненный танец","hotkey":"R","type":"ultimate","cool":[130],"cost":[600,800,1000,1200,1400],"damage":[{"base":[0],"statScale":{"stat":"AGI","mult":[3,6,9,12,15]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A14H': {"rawcode":"A14H","name":"Огненный щит 12 секунд","hotkey":"Q","type":"passive","damage":[{"base":[30,60,90,120,150],"statScale":null,"isDOT":true,"dotDuration":null,"hitCount":null}],"buffs":{"armor":[10]}},
-  'A14I': {"rawcode":"A14I","name":"Сфера пламени","hotkey":"W","type":"active","cool":[18],"cost":[70,135,200,265,330],"damage":[{"base":[300,350,400,450,500],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[600,750,900,1050,1200]},
-  'A14K': {"rawcode":"A14K","name":"Мастерство огня","hotkey":"E","type":"active","cool":[35],"cost":[70,110,150,190,230],"damage":[{"base":[50,100,150,200,250],"statScale":{"stat":"AGI","mult":[0.5]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A14P': {"rawcode":"A14P","name":"Мастерство огня","hotkey":"E","type":"active","cool":[28],"cost":[145,195,245,295,345],"damage":[{"base":[50,100,150,200,250],"statScale":{"stat":"AGI","mult":[0.5]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A14R': {"rawcode":"A14R","name":"Огненный щит","hotkey":"Q","type":"passive","damage":[{"base":[30,60,90,120,150],"statScale":null,"isDOT":true,"dotDuration":null,"hitCount":null}]},
-  'A14S': {"rawcode":"A14S","name":"Вулкан","hotkey":"R","type":"ultimate","cool":[120],"cost":[600,800,1000,1200,1400],"damage":[{"base":[100,200,300,400,500],"statScale":{"stat":"INT","mult":[1,1.5,2,2.5,3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[2000],"area":650},
-  'A15K': {"rawcode":"A15K","name":"Призрачность","hotkey":"F","type":"active","cool":[30,26,22],"cost":[120,135,150],"buffs":{"evasion":[50,50,50]}},
-  'A15N': {"rawcode":"A15N","name":"Дух Природы","hotkey":"R","type":"ultimate","cool":[120,110,100,90,80],"cost":[550],"buffs":{"hp":[1000],"spellDmgPct":[30]}},
-  'A15O': {"rawcode":"A15O","name":"Меч прилива старый","hotkey":"W","type":"passive"},
-  'A15R': {"rawcode":"A15R","name":"Меч прилива","hotkey":"W","type":"passive","damage":[{"base":[150,225,300,375,450],"statScale":{"stat":"STR","mult":[0.7]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A15S': {"rawcode":"A15S","name":"Вампиризм","hotkey":"W","type":"passive","area":600},
-  'A161': {"rawcode":"A161","name":"Кара","hotkey":"E","type":"passive","damage":[{"base":[75,150,225,300,375],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A162': {"rawcode":"A162","name":"Призрачный удар","hotkey":"R","type":"ultimate","cool":[40],"cost":[325,425,525,625,725],"damage":[{"base":[300,400,500,600,700],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A16Q': {"rawcode":"A16Q","name":"Астральный удар","hotkey":"E","type":"active","cool":[20],"cost":[160,200,240,280,320],"damage":[{"base":[15],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null},{"base":[200,300,400,500,600],"statScale":{"stat":"STR","mult":[1,2,3,4,5]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[2],"weight":1}],"range":[700]},
-  'A16R': {"rawcode":"A16R","name":"Энергетический удар","hotkey":"W","type":"active","cool":[18],"cost":[125,170,215,260,305],"damage":[{"base":[250,375,500,625,750],"statScale":{"stat":"STR","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"stun","duration":[1.25,1.5,1.75,2,2.25],"weight":1}],"range":[900]},
-  'A178': {"rawcode":"A178","name":"Электрический разряд","hotkey":"F","type":"active","cool":[15,14,13],"cost":[120,145,170],"damage":[{"base":[300],"statScale":{"stat":"INT","mult":[1.3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[700]},
-  'A179': {"rawcode":"A179","name":"Магическая волна","hotkey":"E","type":"active","cool":[20],"cost":[150,175,200,225,250],"cc":[{"type":"stun","duration":[1.2],"weight":1}],"range":[1000]},
-  'A17A': {"rawcode":"A17A","name":"Лучи тьмы","hotkey":"E","type":"active","cool":[25],"cost":[200,300,400,500,600],"damage":[{"base":[0],"statScale":{"stat":"INT","mult":[4]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1500]},
-  'A17E': {"rawcode":"A17E","name":"Убрал Бросок шара","hotkey":"Q","type":"passive","range":[600],"area":100},
-  'A17F': {"rawcode":"A17F","name":"Усиленный шторм","hotkey":"E","type":"active","cool":[25],"cost":[5000],"range":[600]},
-  'A17H': {"rawcode":"A17H","name":"Разбивающий столб","hotkey":"Q","type":"active","cool":[10],"cost":[1000],"damage":[{"base":[20000],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1800]},
-  'A17I': {"rawcode":"A17I","name":"Смертельный топот","hotkey":"W","type":"active","cool":[10],"cost":[2000],"range":[600],"area":100},
-  'A17Y': {"rawcode":"A17Y","name":"Благодать","hotkey":"Q","type":"active","cool":[15],"range":[700],"area":425},
-  'A180': {"rawcode":"A180","name":"Взрыв Священного Огня","hotkey":"R","type":"ultimate","cool":[150],"cost":[750]},
-  'A188': {"rawcode":"A188","name":"Испепеляющий след","hotkey":"E","type":"active","cool":[30],"cost":[150,225,300,375,450],"range":[1200]},
-  'A197': {"rawcode":"A197","name":"Зачарованные стрелы","hotkey":"W","type":"passive","damage":[{"base":[75,150,225,300,375],"statScale":{"stat":"AGI","mult":[0.8,1.1,1.4,1.7,2]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A19A': {"rawcode":"A19A","name":"Волна света","hotkey":"Q","type":"active","cool":[10],"damage":[{"base":[50],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1000]},
-  'A19B': {"rawcode":"A19B","name":"Духи падших","hotkey":"F","type":"active","cool":[40],"cost":[300]},
-  'A19C': {"rawcode":"A19C","name":"Святой дух","hotkey":"W","type":"active","cool":[10],"cost":[100],"heal":[{"base":[0],"statScale":{"stat":"PCT_HP","mult":20},"isPctPerSec":true}]},
-  'A19D': {"rawcode":"A19D","name":"Святой дух","hotkey":"W","type":"active","cool":[10],"cost":[100],"heal":[{"base":[0],"statScale":{"stat":"PCT_HP","mult":20},"isPctPerSec":true}]},
-  'A19K': {"rawcode":"A19K","name":"Гейзеры","hotkey":"W","type":"active","cool":[20],"cost":[2000]},
-  'A19L': {"rawcode":"A19L","name":"Темный выстрел","hotkey":"Q","type":"active","cool":[10],"cost":[100,175,250,325,400],"damage":[{"base":[150,300,450,600,750],"statScale":{"stat":"INT","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1400]},
-  'A19N': {"rawcode":"A19N","name":"Молитва свету","hotkey":"E","type":"active","cool":[25],"cost":[200,240,280,320,360],"damage":[{"base":[200,300,400,500,600],"statScale":{"stat":"STR","mult":[1.25,1.5,1.75,2,2.25]},"isDOT":false,"dotDuration":null,"hitCount":[11,14,17,20,23]}]},
-  'A19O': {"rawcode":"A19O","name":"Дары света","hotkey":"W","type":"active","cool":[26,25,24,23,22],"cost":[140,170,200,230,260],"heal":[{"base":[2],"statScale":null}],"range":[1000]},
-  'A19T': {"rawcode":"A19T","name":"Огненный Рев","hotkey":"R","type":"ultimate","cool":[130],"cost":[450,550,650,750,850],"damage":[{"base":[750],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"cc":[{"type":"slow","duration":[3],"slowPercent":100,"weight":0.5},{"type":"stun","duration":[3],"weight":1}],"range":[1600]},
-  'A19X': {"rawcode":"A19X","name":"Обмен","hotkey":"Q","type":"active","cool":[10],"cost":[125,165,205,245,285],"damage":[{"base":[150,300,450,600,750],"statScale":{"stat":"AGI","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[800,950,1100,1250,1400]},
-  'A19Z': {"rawcode":"A19Z","name":"Бочонок с пивом","hotkey":"W","type":"active","cool":[20],"cost":[100,135,170,205,240],"damage":[{"base":[100,200,300,400,500],"statScale":{"stat":"STR","mult":[1]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1000],"area":300},
-  'A1AA': {"rawcode":"A1AA","name":"Огненное дыхание","hotkey":"Q","type":"active","cool":[10],"cost":[175,220,265,310,355],"damage":[{"base":[250,400,550,700,850],"statScale":{"stat":"STR","mult":[3]},"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[1000]},
-  'A1AD': {"rawcode":"A1AD","name":"Прицельная стрельба","hotkey":"E","type":"passive"},
-  'A1AE': {"rawcode":"A1AE","name":"Астральная стрела","hotkey":"W","type":"active","cool":[20],"cost":[150,175,200,225,250],"damage":[{"base":[400,600,800,1000,1200],"statScale":{"stat":"AGI","mult":[2]},"isDOT":false,"dotDuration":null,"hitCount":null}],"dash":{"isDash":true,"dashRange":null},"range":[1100,1250,1400,1550,1700]},
-  'A1AG': {"rawcode":"A1AG","name":"Поиск жертвы","hotkey":"F","type":"active","cool":[25,22.5,20],"cost":[125]},
-  'A1AI': {"rawcode":"A1AI","name":"Паралич","hotkey":"Q","type":"active","cool":[15],"cost":[125,165,205,245,285],"damage":[{"base":[300,400,500,600,700],"statScale":{"stat":"AGI","mult":[0.5]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A1AJ': {"rawcode":"A1AJ","name":"Астральная телепортация","hotkey":"W","type":"active","cool":[4],"cost":[75],"dash":{"isDash":true,"dashRange":null}},
-  'A1AK': {"rawcode":"A1AK","name":"Астральный разрыв","hotkey":"E","type":"active","cool":[24],"cost":[275,300,325,350,375],"damage":[{"base":[100,150,200,250,300],"statScale":{"stat":"AGI","mult":[2.5]},"isDOT":true,"dotDuration":null,"hitCount":null}],"range":[900],"area":250},
-  'A1AM': {"rawcode":"A1AM","name":"Астральная охота","hotkey":"R","type":"ultimate","cool":[10],"cost":[325]},
-  'A1AO': {"rawcode":"A1AO","name":"Астральное погружение","hotkey":"V","type":"active","cool":[3],"cost":[125],"range":[99999]},
-  'A1AP': {"rawcode":"A1AP","name":"Зов Луны","hotkey":"F","type":"passive"},
-  'A1AT': {"rawcode":"A1AT","name":"Удар когтями","hotkey":"Q","type":"active","cool":[13],"cost":[175,200,225,250,275],"damage":[{"base":[300,400,500,600,700],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[700]},
-  'A1AV': {"rawcode":"A1AV","name":"Бушующее пламя","hotkey":"R","type":"ultimate","cool":[100],"cost":[500],"damage":[{"base":[600,800,1000,1200,1400],"statScale":{"stat":"STR","mult":[6,8,10,12,14]},"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'A1B4': {"rawcode":"A1B4","name":"Волчий голод","hotkey":"W","type":"active","cool":[25],"cost":[175,220,265,310,355]},
-  'A1BB': {"rawcode":"A1BB","name":"Аура возмездия","hotkey":"W","type":"aura"},
-  'A1BH': {"rawcode":"A1BH","name":"Волчья охота","hotkey":"E","type":"active","cool":[30],"cost":[275,310,345,380,415],"range":[1000]},
-  'A1BK': {"rawcode":"A1BK","name":"Волчья стая","hotkey":"R","type":"ultimate"},
-  'A1CL': {"rawcode":"A1CL","name":"Удар когтями","hotkey":"Q","type":"active","cool":[13],"cost":[175,200,225,250,275],"damage":[{"base":[300,400,500,600,700],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}],"range":[800]},
-  'A1CM': {"rawcode":"A1CM","name":"Удар когтями","hotkey":"Q","type":"passive","damage":[{"base":[300,400,500,600,700],"statScale":null,"isDOT":false,"dotDuration":null,"hitCount":null}]},
-  'S000': {"rawcode":"S000","name":"Увечье","hotkey":"E","type":"active","cool":[24],"cost":[200,225,250,275,300],"buffs":{"hp":[50]},"range":[700]}
+  "A0IJ": {
+    "rawcode": "A0IJ",
+    "name": "Гейзер",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          175,
+          350,
+          525,
+          700,
+          875
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "area": 450
+  },
+  "A0IN": {
+    "rawcode": "A0IN",
+    "name": "Меч прилива",
+    "hotkey": "W",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          150,
+          225,
+          300,
+          375,
+          450
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.7
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ]
+  },
+  "A15R": {
+    "rawcode": "A15R",
+    "name": "Призрачный корабль",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          400,
+          600,
+          800,
+          1000
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 4
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          0.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 400
+  },
+  "A0IP": {
+    "rawcode": "A0IP",
+    "name": "Призрачная Флотилия",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          400,
+          600,
+          800,
+          1000,
+          1200
+        ]
+      }
+    ],
+    "cool": [
+      120
+    ],
+    "area": 1500
+  },
+  "A0IO": {
+    "rawcode": "A0IO",
+    "name": "Волны",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          70
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.5
+        }
+      }
+    ],
+    "cool": [
+      14
+    ]
+  },
+  "A0KB": {
+    "rawcode": "A0KB",
+    "name": "Циклон",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          400,
+          550,
+          700,
+          850
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "airborne",
+        "duration": [
+          1
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "area": 300
+  },
+  "A0K2": {
+    "rawcode": "A0K2",
+    "name": "Мощь ветра",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          325,
+          400,
+          475,
+          550,
+          625,
+          1.2,
+          1.8,
+          2.4,
+          3
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 0.6
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 350,
+    "dash": {
+      "dashRange": [
+        1100
+      ]
+    }
+  },
+  "A0K3": {
+    "rawcode": "A0K3",
+    "name": "Контроль Ветра",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          30,
+          1.5,
+          2.5,
+          3,
+          3.5
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1
+        }
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "buffs": {
+      "atkSpeed": [
+        20,
+        30,
+        40,
+        50,
+        60
+      ]
+    }
+  },
+  "A0K5": {
+    "rawcode": "A0K5",
+    "name": "Ураган",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          1200,
+          8,
+          12,
+          16,
+          20
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 4
+        }
+      }
+    ],
+    "cool": [
+      140
+    ],
+    "area": 20075
+  },
+  "A0JT": {
+    "rawcode": "A0JT",
+    "name": "Ветер",
+    "hotkey": "F",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          70
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 0.7
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ]
+  },
+  "arbiter_1": {
+    "rawcode": "arbiter_1",
+    "name": "???",
+    "hotkey": "Q",
+    "type": "active"
+  },
+  "arbiter_2": {
+    "rawcode": "arbiter_2",
+    "name": "???",
+    "hotkey": "W",
+    "type": "active"
+  },
+  "arbiter_3": {
+    "rawcode": "arbiter_3",
+    "name": "???",
+    "hotkey": "E",
+    "type": "active"
+  },
+  "arbiter_4": {
+    "rawcode": "arbiter_4",
+    "name": "???",
+    "hotkey": "R",
+    "type": "ultimate"
+  },
+  "arbiter_5": {
+    "rawcode": "arbiter_5",
+    "name": "???",
+    "hotkey": "F",
+    "type": "passive"
+  },
+  "A0UW": {
+    "rawcode": "A0UW",
+    "name": "Магический шар",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          300,
+          400,
+          500,
+          600
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      10
+    ]
+  },
+  "A0G4": {
+    "rawcode": "A0G4",
+    "name": "Ледяная стрела",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          300,
+          400,
+          500,
+          600
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 3
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      15
+    ]
+  },
+  "A0VD": {
+    "rawcode": "A0VD",
+    "name": "Телекинез",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          350,
+          450,
+          550,
+          650
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 4
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      25
+    ]
+  },
+  "A0G5": {
+    "rawcode": "A0G5",
+    "name": "Огненная земля",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          600,
+          2,
+          3,
+          4,
+          5
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1
+        },
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      90
+    ],
+    "area": 550
+  },
+  "A0G6": {
+    "rawcode": "A0G6",
+    "name": "Огненная вспышка",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          475
+        ]
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1.25
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "dash": {
+      "dashRange": [
+        850
+      ]
+    }
+  },
+  "A15K": {
+    "rawcode": "A15K",
+    "name": "Тёмный дождь",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          200,
+          250,
+          300,
+          350
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.5
+        },
+        "hitCount": [
+          5,
+          8,
+          11,
+          14,
+          17
+        ]
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "area": 300,
+    "dash": {
+      "dashRange": [
+        700
+      ]
+    }
+  },
+  "A137": {
+    "rawcode": "A137",
+    "name": "Иллюзорный скачок",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          350,
+          450,
+          550,
+          700
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 1.5
+        }
+      }
+    ],
+    "cool": [
+      14
+    ],
+    "dash": {
+      "dashRange": [
+        1500
+      ]
+    }
+  },
+  "A131": {
+    "rawcode": "A131",
+    "name": "Дух Зеры",
+    "hotkey": "E",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          50
+        ]
+      }
+    ]
+  },
+  "A12I": {
+    "rawcode": "A12I",
+    "name": "Нагината",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ]
+      }
+    ],
+    "cool": [
+      90
+    ],
+    "area": 175,
+    "buffs": {
+      "atkSpeed": [
+        90,
+        120,
+        150,
+        180,
+        210
+      ]
+    }
+  },
+  "A133": {
+    "rawcode": "A133",
+    "name": "Призрачность",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      30,
+      26,
+      22
+    ],
+    "buffs": {
+      "evasion": [
+        50
+      ]
+    }
+  },
+  "A0F4": {
+    "rawcode": "A0F4",
+    "name": "Астральная вспышка",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          450,
+          550,
+          650,
+          750
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 450
+  },
+  "A0GH": {
+    "rawcode": "A0GH",
+    "name": "Астральная мощь",
+    "hotkey": "W",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          150,
+          225,
+          300,
+          375,
+          450
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.8
+        }
+      }
+    ],
+    "buffs": {
+      "evasion": [
+        10,
+        15,
+        20,
+        25,
+        30
+      ]
+    }
+  },
+  "A0F5": {
+    "rawcode": "A0F5",
+    "name": "Астральный удар",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          15
+        ]
+      },
+      {
+        "base": [
+          200,
+          300,
+          400,
+          500,
+          600,
+          2,
+          3,
+          4,
+          5
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 1
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          2
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      20
+    ]
+  },
+  "A16Q": {
+    "rawcode": "A16Q",
+    "name": "Астральная Сфера",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          120,
+          240,
+          360,
+          480,
+          600,
+          3,
+          3.5,
+          4,
+          4.5
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 2.5
+        }
+      }
+    ],
+    "cool": [
+      140
+    ],
+    "area": 450
+  },
+  "A0F2": {
+    "rawcode": "A0F2",
+    "name": "Телепортация",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.5
+        }
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 250
+  },
+  "A1AG": {
+    "rawcode": "A1AG",
+    "name": "Паралич",
+    "hotkey": "Q",
+    "type": "active",
+    "cool": [
+      15
+    ],
+    "area": 700
+  },
+  "A1AI": {
+    "rawcode": "A1AI",
+    "name": "Астральная стрела",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      20
+    ],
+    "dash": {
+      "dashRange": [
+        1100,
+        1250,
+        1400,
+        1550,
+        1700
+      ]
+    }
+  },
+  "A1AE": {
+    "rawcode": "A1AE",
+    "name": "Астральный разрыв",
+    "hotkey": "E",
+    "type": "active",
+    "cool": [
+      24
+    ],
+    "area": 250
+  },
+  "A1AK": {
+    "rawcode": "A1AK",
+    "name": "Астральная охота",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": [
+      12
+    ]
+  },
+  "A1AM": {
+    "rawcode": "A1AM",
+    "name": "Поиск жертвы",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      25,
+      22.5,
+      20
+    ]
+  },
+  "A0MI": {
+    "rawcode": "A0MI",
+    "name": "Астральный бросок",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          300,
+          400,
+          500,
+          600
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 0.5
+        }
+      }
+    ],
+    "cool": [
+      14
+    ],
+    "area": 500
+  },
+  "A0ME": {
+    "rawcode": "A0ME",
+    "name": "Астральная молния",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100,
+          200,
+          300,
+          400,
+          500
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 3
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          0.7
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 500
+  },
+  "A0MB": {
+    "rawcode": "A0MB",
+    "name": "Астральная сфера",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          500,
+          650,
+          800,
+          950,
+          1100
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 5
+        }
+      }
+    ],
+    "cool": [
+      30
+    ],
+    "area": 725
+  },
+  "A0Q6": {
+    "rawcode": "A0Q6",
+    "name": "Астральный шторм",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          900,
+          1350,
+          1800,
+          2250,
+          2700,
+          8,
+          11,
+          14,
+          17
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 5
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          3
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 1600
+  },
+  "A0MF": {
+    "rawcode": "A0MF",
+    "name": "Астральное Возмездие",
+    "hotkey": "F",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          100,
+          200,
+          25
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 0.2
+        }
+      }
+    ]
+  },
+  "blademaster_1": {
+    "rawcode": "blademaster_1",
+    "name": "Вихрь",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          50,
+          70,
+          90,
+          110,
+          130
+        ]
+      }
+    ],
+    "cool": [
+      15,
+      13,
+      11,
+      9,
+      7
+    ]
+  },
+  "blademaster_2": {
+    "rawcode": "blademaster_2",
+    "name": "Зеркальное отражение",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          30,
+          40,
+          50,
+          60,
+          70
+        ]
+      }
+    ],
+    "cool": [
+      25,
+      22,
+      19,
+      16,
+      13
+    ]
+  },
+  "blademaster_3": {
+    "rawcode": "blademaster_3",
+    "name": "Критический удар",
+    "hotkey": "E",
+    "type": "passive"
+  },
+  "blademaster_4": {
+    "rawcode": "blademaster_4",
+    "name": "Танец клинков",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          75,
+          95,
+          115,
+          135,
+          155
+        ],
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      120,
+      110,
+      100,
+      90,
+      80
+    ]
+  },
+  "A0EJ": {
+    "rawcode": "A0EJ",
+    "name": "Магнитный удар",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          450,
+          600,
+          750,
+          900
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 3
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          2
+        ],
+        "weight": 1
+      },
+      {
+        "type": "knockback",
+        "duration": [
+          0.3
+        ],
+        "weight": 0.3
+      }
+    ],
+    "cool": [
+      8
+    ],
+    "dash": {
+      "dashRange": [
+        600
+      ]
+    }
+  },
+  "A0BU": {
+    "rawcode": "A0BU",
+    "name": "Сокрушение",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          275,
+          450,
+          650,
+          800,
+          975
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          2
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "area": 450
+  },
+  "A0ES": {
+    "rawcode": "A0ES",
+    "name": "Магическая волна",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          400,
+          500,
+          600,
+          700,
+          3.5,
+          4,
+          4.5,
+          5
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 3
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1.2
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 350
+  },
+  "A179": {
+    "rawcode": "A179",
+    "name": "Фатальный удар",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          1000,
+          10,
+          15,
+          20,
+          25
+        ]
+      },
+      {
+        "base": [
+          50
+        ]
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          3
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 200
+  },
+  "A0EP": {
+    "rawcode": "A0EP",
+    "name": "Перелом",
+    "hotkey": "F",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          175
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.6
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          0.8
+        ],
+        "weight": 1
+      }
+    ]
+  },
+  "A01A": {
+    "rawcode": "A01A",
+    "name": "Огненное дыхание",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          400,
+          550,
+          700,
+          850
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 3
+        }
+      },
+      {
+        "base": [
+          80,
+          110,
+          140,
+          170,
+          200
+        ],
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 150400
+  },
+  "A1AA": {
+    "rawcode": "A1AA",
+    "name": "Бочонок с пивом",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100,
+          200,
+          300,
+          400,
+          500
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 1
+        }
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 300,
+    "dash": {
+      "dashRange": [
+        1000
+      ]
+    }
+  },
+  "A12E": {
+    "rawcode": "A12E",
+    "name": "Прыжок",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          325,
+          450,
+          575,
+          700,
+          825
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 4
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          2
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 400,
+    "dash": {
+      "dashRange": [
+        1500
+      ]
+    }
+  },
+  "A0KK": {
+    "rawcode": "A0KK",
+    "name": "Огненные легкие",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          200,
+          300,
+          400,
+          500,
+          600,
+          2,
+          2.5,
+          3,
+          3.5
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 1.5
+        },
+        "hitCount": [
+          5
+        ]
+      }
+    ],
+    "cool": [
+      100
+    ]
+  },
+  "A01O": {
+    "rawcode": "A01O",
+    "name": "Пьяный мастер",
+    "hotkey": "F",
+    "type": "passive",
+    "buffs": {
+      "evasion": [
+        15
+      ]
+    }
+  },
+  "A0H7": {
+    "rawcode": "A0H7",
+    "name": "Ярость",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          25,
+          50,
+          75,
+          100,
+          125
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.8
+        }
+      }
+    ],
+    "cool": [
+      16
+    ],
+    "area": 250,
+    "buffs": {
+      "atkSpeed": [
+        20,
+        30,
+        40,
+        50,
+        60
+      ]
+    }
+  },
+  "A05C": {
+    "rawcode": "A05C",
+    "name": "Вампиризм",
+    "hotkey": "W",
+    "type": "passive",
+    "heal": [
+      {
+        "base": [
+          15,
+          20,
+          25,
+          30,
+          35
+        ],
+        "isPct": true
+      }
+    ],
+    "area": 600
+  },
+  "A15S": {
+    "rawcode": "A15S",
+    "name": "Мясной крюк",
+    "hotkey": "E",
+    "type": "active",
+    "cool": [
+      26,
+      24,
+      22,
+      20,
+      18
+    ]
+  },
+  "A0V2": {
+    "rawcode": "A0V2",
+    "name": "Москиты",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.2
+        }
+      }
+    ],
+    "heal": [
+      {
+        "base": [
+          20
+        ],
+        "isPct": true
+      }
+    ],
+    "cool": [
+      120
+    ],
+    "area": 2000
+  },
+  "A00N": {
+    "rawcode": "A00N",
+    "name": "Крюки",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 1.5
+        }
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 350
+  },
+  "A0QF": {
+    "rawcode": "A0QF",
+    "name": "Темная стая",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          550,
+          600,
+          750,
+          900
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      13
+    ]
+  },
+  "A04N": {
+    "rawcode": "A04N",
+    "name": "Энергетический удар",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      18
+    ],
+    "dash": {
+      "dashRange": [
+        900
+      ]
+    }
+  },
+  "A16R": {
+    "rawcode": "A16R",
+    "name": "Каменный дождь",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100,
+          200,
+          300,
+          400,
+          500
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.5
+        },
+        "hitCount": [
+          8,
+          10,
+          12,
+          14,
+          16
+        ]
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          0.6
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 500
+  },
+  "A04X": {
+    "rawcode": "A04X",
+    "name": "Ярость",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": [
+      100
+    ],
+    "buffs": {
+      "hp": [
+        1000
+      ],
+      "hpRegen": [
+        50
+      ]
+    }
+  },
+  "A04R": {
+    "rawcode": "A04R",
+    "name": "Боевое Превосходство",
+    "hotkey": "F",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          100
+        ]
+      }
+    ],
+    "area": 900
+  },
+  "A0UI": {
+    "rawcode": "A0UI",
+    "name": "Мистический разряд",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          320,
+          480,
+          640,
+          800,
+          960,
+          2.5,
+          3,
+          3.5,
+          4
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2
+        },
+        "hitCount": [
+          20
+        ]
+      }
+    ],
+    "cool": [
+      16,
+      15,
+      14,
+      13,
+      12
+    ]
+  },
+  "A0UE": {
+    "rawcode": "A0UE",
+    "name": "Аура Сопротивления",
+    "hotkey": "W",
+    "type": "active",
+    "area": 900,
+    "buffs": {
+      "magicResist": [
+        7,
+        14,
+        21,
+        28,
+        35
+      ],
+      "manaRegenPct": [
+        4,
+        6,
+        8,
+        10,
+        12
+      ]
+    }
+  },
+  "A0UF": {
+    "rawcode": "A0UF",
+    "name": "Кровавая кара",
+    "hotkey": "E",
+    "type": "active",
+    "cool": [
+      25
+    ],
+    "area": 300
+  },
+  "A0UG": {
+    "rawcode": "A0UG",
+    "name": "Молнии Раздора",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          1000
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 5
+        }
+      }
+    ],
+    "cool": [
+      80
+    ],
+    "area": 700
+  },
+  "A0VB": {
+    "rawcode": "A0VB",
+    "name": "Телекинез",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      14
+    ]
+  },
+  "A0KJ": {
+    "rawcode": "A0KJ",
+    "name": "Взрывные снаряды",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          50,
+          100,
+          150,
+          200,
+          250
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.5
+        }
+      }
+    ],
+    "cool": [
+      15
+    ]
+  },
+  "A00T": {
+    "rawcode": "A00T",
+    "name": "Техника",
+    "hotkey": "W",
+    "type": "passive"
+  },
+  "A00F": {
+    "rawcode": "A00F",
+    "name": "Чакрам",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          300,
+          400,
+          500,
+          600
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      15
+    ]
+  },
+  "A0EZ": {
+    "rawcode": "A0EZ",
+    "name": "Ракетный залп",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          1500,
+          8,
+          12,
+          16,
+          20
+        ]
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          2.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 450
+  },
+  "A08E": {
+    "rawcode": "A08E",
+    "name": "Мины",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          50
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.5
+        }
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 200
+  },
+  "A0NZ": {
+    "rawcode": "A0NZ",
+    "name": "Черная стрела",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          350,
+          450,
+          550,
+          650
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      13
+    ],
+    "area": 250
+  },
+  "A0C4": {
+    "rawcode": "A0C4",
+    "name": "Зачарованные стрелы",
+    "hotkey": "W",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          75,
+          150,
+          225,
+          300,
+          375,
+          1.1,
+          1.4,
+          1.7,
+          2
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.8
+        }
+      }
+    ],
+    "cool": [
+      0.34
+    ]
+  },
+  "A197": {
+    "rawcode": "A197",
+    "name": "Стрелы души",
+    "hotkey": "E",
+    "type": "active",
+    "cool": [
+      25
+    ],
+    "area": 250
+  },
+  "A0IK": {
+    "rawcode": "A0IK",
+    "name": "Падение стрелы",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          200,
+          400,
+          600,
+          800,
+          1000
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 550
+  },
+  "A0C0": {
+    "rawcode": "A0C0",
+    "name": "Уклонение",
+    "hotkey": "F",
+    "type": "passive",
+    "buffs": {
+      "evasion": [
+        15
+      ]
+    }
+  },
+  "A0DY": {
+    "rawcode": "A0DY",
+    "name": "Темные силы",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          140,
+          180,
+          220,
+          260,
+          300
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.7
+        }
+      }
+    ],
+    "cool": [
+      16
+    ]
+  },
+  "A02C": {
+    "rawcode": "A02C",
+    "name": "Удар тьмы",
+    "hotkey": "W",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          75,
+          150,
+          225,
+          300,
+          375
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 1.2
+        }
+      }
+    ]
+  },
+  "A02D": {
+    "rawcode": "A02D",
+    "name": "Поток тьмы",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          450,
+          600,
+          750,
+          900
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 4
+        }
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 475
+  },
+  "A0HV": {
+    "rawcode": "A0HV",
+    "name": "Мастерство",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": [
+      100
+    ],
+    "area": 450,
+    "buffs": {
+      "agi": [
+        15,
+        30,
+        45,
+        60,
+        75
+      ]
+    }
+  },
+  "A02B": {
+    "rawcode": "A02B",
+    "name": "Сожжение маны",
+    "hotkey": "F",
+    "type": "passive"
+  },
+  "A03V": {
+    "rawcode": "A03V",
+    "name": "Тёмный выстрел",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 300
+  },
+  "A19L": {
+    "rawcode": "A19L",
+    "name": "Давление тьмы",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          350,
+          500,
+          650,
+          800
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          0.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 600
+  },
+  "A05Q": {
+    "rawcode": "A05Q",
+    "name": "Пульс тьмы",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          350,
+          500,
+          650,
+          800
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          0.5
+        ],
+        "weight": 1
+      },
+      {
+        "type": "knockback",
+        "duration": [
+          0.3
+        ],
+        "weight": 0.3
+      }
+    ],
+    "cool": [
+      20
+    ]
+  },
+  "A05S": {
+    "rawcode": "A05S",
+    "name": "Пришествие Тьмы",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      90
+    ],
+    "area": 450
+  },
+  "A05R": {
+    "rawcode": "A05R",
+    "name": "Всплеск тьмы",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          3
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 350
+  },
+  "A0AX": {
+    "rawcode": "A0AX",
+    "name": "Всплеск смерти",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          350,
+          550,
+          750,
+          950,
+          1150
+        ]
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 700
+  },
+  "A0FK": {
+    "rawcode": "A0FK",
+    "name": "Сфера смерти",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          50,
+          0.7,
+          0.9,
+          1.1,
+          1.3
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 0.5
+        },
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      18
+    ]
+  },
+  "A0SH": {
+    "rawcode": "A0SH",
+    "name": "Столб смерти",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750,
+          2.5,
+          3,
+          3.5,
+          4
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      25
+    ]
+  },
+  "A0QR": {
+    "rawcode": "A0QR",
+    "name": "Тёмная энергия",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 3.5
+        }
+      }
+    ],
+    "cool": [
+      90
+    ],
+    "area": 1500
+  },
+  "A0FN": {
+    "rawcode": "A0FN",
+    "name": "Зов магии",
+    "hotkey": "F",
+    "type": "passive",
+    "area": 700,
+    "buffs": {
+      "manaRegenPct": [
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "A0W4": {
+    "rawcode": "A0W4",
+    "name": "Чародейская стрела",
+    "hotkey": "Q",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          200,
+          400,
+          600,
+          800,
+          1000
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      10
+    ]
+  },
+  "A0WB": {
+    "rawcode": "A0WB",
+    "name": "Магический обстрел",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          60,
+          70,
+          80,
+          90,
+          100
+        ]
+      }
+    ],
+    "cool": [
+      25
+    ]
+  },
+  "A0W8": {
+    "rawcode": "A0W8",
+    "name": "Стихийный Удар",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          2000,
+          10,
+          12,
+          14,
+          16
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 8
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "silence",
+        "duration": [
+          2
+        ],
+        "weight": 0.8
+      }
+    ],
+    "cool": [
+      80
+    ],
+    "area": 925
+  },
+  "A0W7": {
+    "rawcode": "A0W7",
+    "name": "Сменить стрелу",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      2
+    ]
+  },
+  "A0HG": {
+    "rawcode": "A0HG",
+    "name": "Перст боли",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          450,
+          600,
+          750,
+          900
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          0.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      10
+    ]
+  },
+  "A0HB": {
+    "rawcode": "A0HB",
+    "name": "Массовая немота",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          350,
+          500,
+          650,
+          800
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 3.5
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "silence",
+        "duration": [
+          1.5,
+          1.75,
+          2,
+          2.25,
+          2.5
+        ],
+        "weight": 0.8
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 400
+  },
+  "A0HA": {
+    "rawcode": "A0HA",
+    "name": "Высасывание жизни",
+    "hotkey": "E",
+    "type": "active",
+    "cool": [
+      30,
+      29,
+      28,
+      27,
+      26
+    ]
+  },
+  "A0H9": {
+    "rawcode": "A0H9",
+    "name": "Столб боли",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          500,
+          12,
+          15,
+          18,
+          21
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 9
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      120
+    ],
+    "area": 900
+  },
+  "A0HC": {
+    "rawcode": "A0HC",
+    "name": "Рывок",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      15
+    ],
+    "dash": {
+      "dashRange": [
+        900,
+        1100,
+        1300
+      ]
+    }
+  },
+  "A0S9": {
+    "rawcode": "A0S9",
+    "name": "Удар морского воина",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          375,
+          500,
+          625,
+          750
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 1.5
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      12
+    ]
+  },
+  "A0SE": {
+    "rawcode": "A0SE",
+    "name": "Толчок хвостом",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100,
+          150,
+          200,
+          250,
+          300
+        ]
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "buffs": {
+      "moveSpeed": [
+        50
+      ]
+    }
+  },
+  "A0SB": {
+    "rawcode": "A0SB",
+    "name": "Девятый вал",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          600,
+          1200,
+          1800,
+          2400,
+          3000
+        ]
+      }
+    ],
+    "cool": [
+      110
+    ],
+    "area": 550
+  },
+  "A0SC": {
+    "rawcode": "A0SC",
+    "name": "Сила обитателей глубины",
+    "hotkey": "F",
+    "type": "passive",
+    "buffs": {
+      "evasion": [
+        15
+      ]
+    }
+  },
+  "A0MQ": {
+    "rawcode": "A0MQ",
+    "name": "Адский крик",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      16
+    ],
+    "area": 450
+  },
+  "A0MT": {
+    "rawcode": "A0MT",
+    "name": "Разгон",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          125,
+          250,
+          375,
+          500,
+          625
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 400
+  },
+  "A0MR": {
+    "rawcode": "A0MR",
+    "name": "Демонические атаки",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          120,
+          240,
+          360,
+          480,
+          600
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2
+        },
+        "hitCount": [
+          5
+        ]
+      }
+    ],
+    "cool": [
+      30,
+      29,
+      28,
+      27,
+      26
+    ],
+    "area": 550
+  },
+  "A0MS": {
+    "rawcode": "A0MS",
+    "name": "Танец клинков",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": [
+      130,
+      120,
+      110,
+      100,
+      90
+    ],
+    "area": 750
+  },
+  "A0M4": {
+    "rawcode": "A0M4",
+    "name": "Линия ярости",
+    "hotkey": "F",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          200
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 1
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          0.25
+        ],
+        "weight": 1
+      }
+    ],
+    "area": 200
+  },
+  "A05F": {
+    "rawcode": "A05F",
+    "name": "Магический круг",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          250,
+          350,
+          450,
+          550
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      16
+    ],
+    "area": 400
+  },
+  "A05K": {
+    "rawcode": "A05K",
+    "name": "Огненный дождь",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          80,
+          140,
+          200,
+          260,
+          320
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.8
+        },
+        "hitCount": [
+          5,
+          7,
+          9,
+          11,
+          13
+        ]
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          0.2
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 300
+  },
+  "A05L": {
+    "rawcode": "A05L",
+    "name": "Агония",
+    "hotkey": "E",
+    "type": "active",
+    "cool": [
+      30
+    ],
+    "area": 750
+  },
+  "A05I": {
+    "rawcode": "A05I",
+    "name": "Колья",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          1500,
+          9,
+          11,
+          13,
+          15
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 7
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 750
+  },
+  "A05J": {
+    "rawcode": "A05J",
+    "name": "Демоническая сила",
+    "hotkey": "F",
+    "type": "passive",
+    "area": 300
+  },
+  "A0XU": {
+    "rawcode": "A0XU",
+    "name": "Звериный рев",
+    "hotkey": "Q",
+    "type": "active",
+    "cool": [
+      15
+    ],
+    "area": 400
+  },
+  "A0A0": {
+    "rawcode": "A0A0",
+    "name": "Вороны",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      25
+    ],
+    "area": 1000
+  },
+  "A00W": {
+    "rawcode": "A00W",
+    "name": "Омоложение",
+    "hotkey": "E",
+    "type": "active",
+    "cool": [
+      20
+    ],
+    "buffs": {
+      "hpRegenPct": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "manaRegenPct": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  "A0J5": {
+    "rawcode": "A0J5",
+    "name": "Покой",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.4
+        }
+      }
+    ],
+    "cool": [
+      105
+    ],
+    "area": 700
+  },
+  "A00Z": {
+    "rawcode": "A00Z",
+    "name": "Кровожадность",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150
+        ]
+      }
+    ],
+    "cool": [
+      14
+    ],
+    "area": 300,
+    "buffs": {
+      "atkSpeed": [
+        35
+      ],
+      "moveSpeed": [
+        15
+      ]
+    }
+  },
+  "A122": {
+    "rawcode": "A122",
+    "name": "Всплеск тьмы",
+    "hotkey": "Q",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          170,
+          340,
+          510,
+          680,
+          850
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      10,
+      10,
+      10,
+      20
+    ],
+    "area": 350
+  },
+  "A11Q": {
+    "rawcode": "A11Q",
+    "name": "Тёмная аура",
+    "hotkey": "W",
+    "type": "active",
+    "area": 1200
+  },
+  "A12B": {
+    "rawcode": "A12B",
+    "name": "Высвобождение Душ",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.4
+        },
+        "hitCount": [
+          20
+        ]
+      }
+    ],
+    "cool": [
+      30,
+      29,
+      28,
+      27,
+      26
+    ]
+  },
+  "A0WK": {
+    "rawcode": "A0WK",
+    "name": "Путь тьмы",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 4
+        }
+      }
+    ],
+    "cool": [
+      120
+    ],
+    "area": 450
+  },
+  "A0I4": {
+    "rawcode": "A0I4",
+    "name": "Сменить всплеск тьмы",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      1
+    ]
+  },
+  "A0ZG": {
+    "rawcode": "A0ZG",
+    "name": "Всплеск огня",
+    "hotkey": "Q",
+    "type": "active",
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 425
+  },
+  "A01M": {
+    "rawcode": "A01M",
+    "name": "Метеорный удар",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          4,
+          5,
+          6,
+          7
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 3
+        }
+      },
+      {
+        "base": [
+          60,
+          120,
+          180,
+          240,
+          300
+        ],
+        "isDOT": true
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          2
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      30
+    ],
+    "area": 475
+  },
+  "A0SK": {
+    "rawcode": "A0SK",
+    "name": "Живой огонь",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          400,
+          550,
+          700,
+          850
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 3.5
+        }
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 900
+  },
+  "A01P": {
+    "rawcode": "A01P",
+    "name": "Огненный доспех",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": [
+      80
+    ],
+    "buffs": {
+      "hp": [
+        500,
+        1000,
+        1500,
+        2000,
+        2500
+      ],
+      "armor": [
+        20,
+        30,
+        40,
+        50,
+        60
+      ]
+    }
+  },
+  "A01L": {
+    "rawcode": "A01L",
+    "name": "Осколки метеорита",
+    "hotkey": "F",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          20
+        ]
+      }
+    ]
+  },
+  "A0O3": {
+    "rawcode": "A0O3",
+    "name": "Пекло",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          400,
+          550,
+          700,
+          850
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 1.5
+        }
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 450
+  },
+  "A0FA": {
+    "rawcode": "A0FA",
+    "name": "Огненный круг",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          475,
+          650,
+          825,
+          1000
+        ]
+      },
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 1
+        },
+        "isDOT": true
+      },
+      {
+        "base": [
+          3
+        ],
+        "isDOT": true
+      }
+    ],
+    "cc": [
+      {
+        "type": "silence",
+        "duration": [
+          2
+        ],
+        "weight": 0.8
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 500
+  },
+  "A0F9": {
+    "rawcode": "A0F9",
+    "name": "Взрывная волна",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          400,
+          600,
+          800,
+          1000
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 5
+        }
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 300
+  },
+  "A0FB": {
+    "rawcode": "A0FB",
+    "name": "Метеорит",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          1000,
+          10,
+          15,
+          20,
+          25
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 5
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          2
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 750
+  },
+  "A0FC": {
+    "rawcode": "A0FC",
+    "name": "Огненная Броня",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          10
+        ],
+        "isDOT": true
+      },
+      {
+        "base": [
+          200
+        ],
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      18,
+      17,
+      16
+    ],
+    "area": 300,
+    "buffs": {
+      "armor": [
+        12
+      ]
+    }
+  },
+  "A0EE": {
+    "rawcode": "A0EE",
+    "name": "Огненный поток",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100,
+          150,
+          200,
+          250,
+          300
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1
+        }
+      }
+    ],
+    "cool": [
+      15
+    ]
+  },
+  "A00Y": {
+    "rawcode": "A00Y",
+    "name": "Метеоритный дождь",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          120,
+          140,
+          160,
+          180,
+          200,
+          0.7,
+          0.8,
+          0.9,
+          1
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 0.6
+        },
+        "hitCount": [
+          8
+        ]
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 450
+  },
+  "A0H6": {
+    "rawcode": "A0H6",
+    "name": "Вулканический удар",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          400,
+          550,
+          700,
+          850,
+          2,
+          2.5,
+          3,
+          3.5
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1.5
+        }
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 300
+  },
+  "A0E5": {
+    "rawcode": "A0E5",
+    "name": "Вулкан",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          100,
+          200,
+          300,
+          400,
+          500,
+          1.5,
+          2,
+          2.5,
+          3
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1
+        }
+      },
+      {
+        "base": [
+          10
+        ],
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      120
+    ],
+    "area": 650
+  },
+  "A14S": {
+    "rawcode": "A14S",
+    "name": "Бросок молота",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          400
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 0.7
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      10,
+      15,
+      15
+    ],
+    "area": 350
+  },
+  "A047": {
+    "rawcode": "A047",
+    "name": "Огненный щит",
+    "hotkey": "Q",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          30,
+          60,
+          90,
+          120,
+          150,
+          2,
+          2.5,
+          3,
+          3.5
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 1.5
+        },
+        "isDOT": true
+      }
+    ],
+    "area": 200
+  },
+  "A14R": {
+    "rawcode": "A14R",
+    "name": "Сфера пламени",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          350,
+          400,
+          450,
+          500
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2
+        }
+      },
+      {
+        "base": [
+          50,
+          100,
+          150,
+          200,
+          250
+        ]
+      }
+    ],
+    "cool": [
+      18
+    ],
+    "area": 150
+  },
+  "A14I": {
+    "rawcode": "A14I",
+    "name": "Мастерство огня",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          50,
+          100,
+          150,
+          200,
+          250
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.5
+        }
+      }
+    ],
+    "cool": [
+      28
+    ],
+    "area": 150
+  },
+  "A14P": {
+    "rawcode": "A14P",
+    "name": "Огненный танец",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": [
+      130
+    ]
+  },
+  "A14G": {
+    "rawcode": "A14G",
+    "name": "Огненное сердце",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      25,
+      23,
+      21
+    ],
+    "buffs": {
+      "spellDmgPct": [
+        25,
+        35,
+        45
+      ]
+    }
+  },
+  "A0OW": {
+    "rawcode": "A0OW",
+    "name": "Пылающая дорога",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          70,
+          140,
+          210,
+          280,
+          350
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.8
+        },
+        "isDOT": true
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      19
+    ],
+    "area": 200
+  },
+  "A09B": {
+    "rawcode": "A09B",
+    "name": "Пламенная агрессия",
+    "hotkey": "W",
+    "type": "passive",
+    "area": 100
+  },
+  "A09G": {
+    "rawcode": "A09G",
+    "name": "Огненный гейзер",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100,
+          200,
+          300,
+          400,
+          500
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2
+        },
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 250
+  },
+  "A09E": {
+    "rawcode": "A09E",
+    "name": "Пламенное усиление",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": [
+      90
+    ],
+    "buffs": {
+      "hp": [
+        1000
+      ]
+    }
+  },
+  "A0B6": {
+    "rawcode": "A0B6",
+    "name": "Путь огня",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      18
+    ]
+  },
+  "A0VJ": {
+    "rawcode": "A0VJ",
+    "name": "Огненная буря",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          375,
+          500,
+          625,
+          750
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1
+        }
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 350
+  },
+  "A146": {
+    "rawcode": "A146",
+    "name": "Огненная кара",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          75,
+          150,
+          225,
+          300,
+          375
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 0.5
+        },
+        "hitCount": [
+          4,
+          6,
+          8,
+          10,
+          12
+        ]
+      }
+    ],
+    "cool": [
+      20
+    ]
+  },
+  "A0VM": {
+    "rawcode": "A0VM",
+    "name": "Зов Пламени",
+    "hotkey": "E",
+    "type": "active",
+    "cool": [
+      30
+    ]
+  },
+  "A0VK": {
+    "rawcode": "A0VK",
+    "name": "Огненная тропа",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 4
+        }
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 450
+  },
+  "A0VQ": {
+    "rawcode": "A0VQ",
+    "name": "Огненный диск",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          120
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1.6
+        }
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 250
+  },
+  "A011": {
+    "rawcode": "A011",
+    "name": "Оледенение",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          350,
+          450,
+          550,
+          650
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "freeze",
+        "duration": [
+          2
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 800
+  },
+  "A012": {
+    "rawcode": "A012",
+    "name": "Ледяной Щит",
+    "hotkey": "W",
+    "type": "active",
+    "heal": [
+      {
+        "base": [
+          1
+        ],
+        "isPct": true
+      }
+    ],
+    "cool": [
+      16
+    ],
+    "area": 300,
+    "buffs": {
+      "armor": [
+        4,
+        8,
+        12,
+        16,
+        20
+      ]
+    }
+  },
+  "A12G": {
+    "rawcode": "A12G",
+    "name": "Ледяной шар",
+    "hotkey": "E",
+    "type": "active",
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          4
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      30
+    ]
+  },
+  "A0L5": {
+    "rawcode": "A0L5",
+    "name": "Ледниковый Период",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          400,
+          500,
+          600,
+          700,
+          800
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      80
+    ],
+    "area": 500
+  },
+  "A015": {
+    "rawcode": "A015",
+    "name": "Сила Проклятых",
+    "hotkey": "F",
+    "type": "passive",
+    "buffs": {
+      "magicResist": [
+        20
+      ]
+    }
+  },
+  "A06X": {
+    "rawcode": "A06X",
+    "name": "Обмен",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      10
+    ]
+  },
+  "A19X": {
+    "rawcode": "A19X",
+    "name": "Ускорение",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      20
+    ],
+    "buffs": {
+      "moveSpeed": [
+        20,
+        30,
+        40,
+        50,
+        60
+      ],
+      "evasion": [
+        15,
+        20,
+        25,
+        30,
+        35
+      ]
+    }
+  },
+  "A06V": {
+    "rawcode": "A06V",
+    "name": "Кара",
+    "hotkey": "E",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          75,
+          150,
+          225,
+          300,
+          375,
+          2.25,
+          2.5,
+          2.75,
+          3
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2
+        }
+      }
+    ],
+    "area": 300
+  },
+  "A161": {
+    "rawcode": "A161",
+    "name": "Призрачный удар",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          300,
+          400,
+          500,
+          600,
+          700
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2
+        },
+        "hitCount": [
+          5,
+          7,
+          9,
+          11,
+          13
+        ]
+      }
+    ],
+    "cool": [
+      40
+    ],
+    "area": 450
+  },
+  "A162": {
+    "rawcode": "A162",
+    "name": "Призрачный Щит",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      19,
+      17,
+      15
+    ],
+    "buffs": {
+      "armor": [
+        8
+      ]
+    }
+  },
+  "A0T7": {
+    "rawcode": "A0T7",
+    "name": "Пронзающая Смерть",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          240,
+          380,
+          520,
+          660,
+          800
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      14
+    ]
+  },
+  "A0T2": {
+    "rawcode": "A0T2",
+    "name": "Панцирь с шипами",
+    "hotkey": "W",
+    "type": "passive",
+    "buffs": {
+      "armor": [
+        3,
+        6,
+        9,
+        12,
+        15
+      ]
+    }
+  },
+  "A0T6": {
+    "rawcode": "A0T6",
+    "name": "Подкоп",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          360,
+          520,
+          680,
+          840,
+          1000
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 4
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 400
+  },
+  "A00B": {
+    "rawcode": "A00B",
+    "name": "Землетрясение",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          1250,
+          10,
+          15,
+          20,
+          25
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 5
+        }
+      }
+    ],
+    "cool": [
+      100
+    ]
+  },
+  "A0V1": {
+    "rawcode": "A0V1",
+    "name": "Мощь древних",
+    "hotkey": "F",
+    "type": "passive"
+  },
+  "A0N4": {
+    "rawcode": "A0N4",
+    "name": "Сюрикен",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      15,
+      14,
+      13,
+      12,
+      11
+    ],
+    "area": 1600
+  },
+  "A0N2": {
+    "rawcode": "A0N2",
+    "name": "Удар в прыжке",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          450,
+          600,
+          750,
+          900,
+          1.6,
+          2.4,
+          3.2,
+          4
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.8
+        }
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 400,
+    "buffs": {
+      "evasion": [
+        100
+      ]
+    }
+  },
+  "A0N1": {
+    "rawcode": "A0N1",
+    "name": "Смертоносные удары",
+    "hotkey": "E",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          75,
+          150,
+          225,
+          300,
+          375,
+          0.6,
+          0.9,
+          1.2,
+          1.5
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.3
+        }
+      }
+    ],
+    "cool": [
+      7,
+      6,
+      5,
+      4,
+      3
+    ]
+  },
+  "A0N3": {
+    "rawcode": "A0N3",
+    "name": "Сюрикен смерти",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": [
+      80
+    ],
+    "area": 450
+  },
+  "A0PP": {
+    "rawcode": "A0PP",
+    "name": "Смертоносный кинжал",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      13
+    ],
+    "dash": {
+      "dashRange": [
+        1200
+      ]
+    }
+  },
+  "hell-gatekeeper_1": {
+    "rawcode": "hell-gatekeeper_1",
+    "name": "Огненный шар",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          400,
+          600,
+          800,
+          1000
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 450,
+    "dash": {
+      "dashRange": [
+        900,
+        1000,
+        1100,
+        1200,
+        1300
+      ]
+    }
+  },
+  "hell-gatekeeper_2": {
+    "rawcode": "hell-gatekeeper_2",
+    "name": "Рывок огня",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      25
+    ]
+  },
+  "hell-gatekeeper_3": {
+    "rawcode": "hell-gatekeeper_3",
+    "name": "Хаотическая форма",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100
+        ]
+      }
+    ],
+    "cool": [
+      33
+    ],
+    "buffs": {
+      "armor": [
+        10
+      ],
+      "moveSpeedFlat": [
+        100
+      ],
+      "hp": [
+        800
+      ],
+      "hpRegen": [
+        20
+      ],
+      "spellDmgPct": [
+        15
+      ]
+    }
+  },
+  "hell-gatekeeper_4": {
+    "rawcode": "hell-gatekeeper_4",
+    "name": "Огненный Рев",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": [
+      130
+    ],
+    "area": 425100
+  },
+  "hell-gatekeeper_5": {
+    "rawcode": "hell-gatekeeper_5",
+    "name": "Огненный меч",
+    "hotkey": "F",
+    "type": "passive"
+  },
+  "A0P3": {
+    "rawcode": "A0P3",
+    "name": "Плевок яда",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          450,
+          600,
+          750,
+          900
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      16
+    ],
+    "area": 400
+  },
+  "A0P2": {
+    "rawcode": "A0P2",
+    "name": "Ядовитый шар",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          400,
+          550,
+          700,
+          850
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 0.5
+        }
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 225
+  },
+  "A0MH": {
+    "rawcode": "A0MH",
+    "name": "Ядовитое кольцо",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1.5
+        },
+        "hitCount": [
+          3
+        ]
+      }
+    ],
+    "cool": [
+      30
+    ],
+    "area": 200
+  },
+  "A0MG": {
+    "rawcode": "A0MG",
+    "name": "Ядовитый всплеск",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          500,
+          8,
+          12,
+          16,
+          20
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 4
+        }
+      },
+      {
+        "base": [
+          50
+        ],
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      120
+    ],
+    "area": 900
+  },
+  "A0I2": {
+    "rawcode": "A0I2",
+    "name": "Ядовитая слюна",
+    "hotkey": "F",
+    "type": "passive",
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ]
+  },
+  "A0NJ": {
+    "rawcode": "A0NJ",
+    "name": "Леденящий поток",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          225,
+          350,
+          475,
+          600,
+          725
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      13
+    ],
+    "area": 225
+  },
+  "A13G": {
+    "rawcode": "A13G",
+    "name": "Кольцо холода",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          400,
+          600,
+          800,
+          1000
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 3
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "freeze",
+        "duration": [
+          2
+        ],
+        "weight": 1
+      },
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 700
+  },
+  "A0NI": {
+    "rawcode": "A0NI",
+    "name": "Ледяные драконы",
+    "hotkey": "E",
+    "type": "active",
+    "cool": [
+      30
+    ]
+  },
+  "A0OQ": {
+    "rawcode": "A0OQ",
+    "name": "Дыхание дракона",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cc": [
+      {
+        "type": "freeze",
+        "duration": [
+          0.3
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      140
+    ]
+  },
+  "A0O8": {
+    "rawcode": "A0O8",
+    "name": "Ледяная броня",
+    "hotkey": "F",
+    "type": "passive",
+    "buffs": {
+      "armor": [
+        5
+      ]
+    }
+  },
+  "ice-lord_1": {
+    "rawcode": "ice-lord_1",
+    "name": "???",
+    "hotkey": "Q",
+    "type": "active"
+  },
+  "ice-lord_2": {
+    "rawcode": "ice-lord_2",
+    "name": "???",
+    "hotkey": "W",
+    "type": "active"
+  },
+  "ice-lord_3": {
+    "rawcode": "ice-lord_3",
+    "name": "???",
+    "hotkey": "E",
+    "type": "active"
+  },
+  "ice-lord_4": {
+    "rawcode": "ice-lord_4",
+    "name": "???",
+    "hotkey": "R",
+    "type": "ultimate"
+  },
+  "ice-lord_5": {
+    "rawcode": "ice-lord_5",
+    "name": "???",
+    "hotkey": "F",
+    "type": "passive"
+  },
+  "A0KW": {
+    "rawcode": "A0KW",
+    "name": "Иллюзия",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750,
+          0.8,
+          1.2,
+          1.6,
+          2
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.4
+        }
+      }
+    ],
+    "cool": [
+      18
+    ],
+    "area": 350
+  },
+  "A0PN": {
+    "rawcode": "A0PN",
+    "name": "Фантомные клинки",
+    "hotkey": "W",
+    "type": "passive"
+  },
+  "A00A": {
+    "rawcode": "A00A",
+    "name": "Отражение души",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          20,
+          500,
+          700,
+          900,
+          1100
+        ]
+      },
+      {
+        "base": [
+          20
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 275
+  },
+  "A0U7": {
+    "rawcode": "A0U7",
+    "name": "Перевоплощение",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": [
+      120
+    ],
+    "buffs": {
+      "hp": [
+        1000
+      ],
+      "hpRegen": [
+        60
+      ],
+      "spellDmgPct": [
+        30
+      ]
+    }
+  },
+  "A00C": {
+    "rawcode": "A00C",
+    "name": "Разящая тень",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.5
+        }
+      }
+    ],
+    "cool": [
+      12
+    ],
+    "dash": {
+      "dashRange": [
+        1000
+      ]
+    }
+  },
+  "A0F7": {
+    "rawcode": "A0F7",
+    "name": "Волна Мороза",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "freeze",
+        "duration": [
+          1.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "area": 325
+  },
+  "A06Q": {
+    "rawcode": "A06Q",
+    "name": "Выброс Тьмы",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      20
+    ],
+    "area": 400
+  },
+  "A06O": {
+    "rawcode": "A06O",
+    "name": "Ярость Фростморна",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          75,
+          200,
+          325,
+          450,
+          575
+        ]
+      },
+      {
+        "base": [
+          75,
+          150,
+          225,
+          300
+        ]
+      }
+    ],
+    "cool": [
+      30
+    ],
+    "area": 1,
+    "buffs": {
+      "atkSpeed": [
+        15,
+        20,
+        25,
+        30,
+        35
+      ]
+    }
+  },
+  "A06R": {
+    "rawcode": "A06R",
+    "name": "Черная Дыра",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          120,
+          240,
+          360,
+          480,
+          600,
+          3,
+          3.5,
+          4,
+          4.5
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 2.5
+        },
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      140
+    ],
+    "area": 700
+  },
+  "A06D": {
+    "rawcode": "A06D",
+    "name": "Проклятый меч",
+    "hotkey": "F",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          70
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.5
+        }
+      }
+    ]
+  },
+  "A0E3": {
+    "rawcode": "A0E3",
+    "name": "Шары Смерти",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          450,
+          600,
+          750,
+          900
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1.5
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          0.7
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 1000
+  },
+  "A0HL": {
+    "rawcode": "A0HL",
+    "name": "Тёмный лик",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      11
+    ]
+  },
+  "A0E2": {
+    "rawcode": "A0E2",
+    "name": "Заражение",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          120,
+          180,
+          240,
+          300,
+          360,
+          1.4,
+          1.6,
+          1.8,
+          2
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1.2
+        },
+        "isDOT": true
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          4
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 450
+  },
+  "A0S7": {
+    "rawcode": "A0S7",
+    "name": "Взрыв Глубины",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          800,
+          8,
+          12,
+          16,
+          20
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 4
+        }
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 650
+  },
+  "A0E8": {
+    "rawcode": "A0E8",
+    "name": "Сгусток яда",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "silence",
+        "duration": [
+          0.5
+        ],
+        "weight": 0.8
+      }
+    ],
+    "cool": [
+      15
+    ]
+  },
+  "A0NV": {
+    "rawcode": "A0NV",
+    "name": "Корни",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2
+        }
+      },
+      {
+        "base": [
+          80,
+          130,
+          180,
+          230,
+          280
+        ],
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "area": 375,
+    "dash": {
+      "dashRange": [
+        1000
+      ]
+    }
+  },
+  "A051": {
+    "rawcode": "A051",
+    "name": "Аура возмездия",
+    "hotkey": "W",
+    "type": "active",
+    "area": 600
+  },
+  "A1BB": {
+    "rawcode": "A1BB",
+    "name": "Кусты",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1
+        }
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 475,
+    "dash": {
+      "dashRange": [
+        800
+      ]
+    }
+  },
+  "A0J4": {
+    "rawcode": "A0J4",
+    "name": "Дух Природы",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": [
+      120,
+      110,
+      100,
+      90,
+      80
+    ],
+    "buffs": {
+      "hp": [
+        1000
+      ],
+      "hpRegen": [
+        50
+      ],
+      "spellDmgPct": [
+        30
+      ]
+    }
+  },
+  "A15N": {
+    "rawcode": "A15N",
+    "name": "Душа Природы",
+    "hotkey": "F",
+    "type": "active",
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      14
+    ],
+    "area": 180
+  },
+  "A0U2": {
+    "rawcode": "A0U2",
+    "name": "Разряд молнии",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          125,
+          250,
+          375,
+          500,
+          625
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1.75
+        }
+      }
+    ],
+    "cool": [
+      13
+    ]
+  },
+  "A0GX": {
+    "rawcode": "A0GX",
+    "name": "Поражение молнией",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100,
+          200,
+          300,
+          400,
+          500
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1.75
+        },
+        "isDOT": true
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      20
+    ]
+  },
+  "A0GW": {
+    "rawcode": "A0GW",
+    "name": "Электрический шар",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          275,
+          425,
+          575,
+          725,
+          875
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      30
+    ],
+    "area": 725
+  },
+  "A0GY": {
+    "rawcode": "A0GY",
+    "name": "Гроза",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          350,
+          1.5,
+          1.75,
+          2,
+          2.25
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1.25
+        },
+        "hitCount": [
+          80
+        ]
+      }
+    ],
+    "cool": [
+      160
+    ],
+    "area": 325
+  },
+  "A0GV": {
+    "rawcode": "A0GV",
+    "name": "Щит молний",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          80
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 0.2
+        }
+      }
+    ],
+    "cool": [
+      12
+    ],
+    "area": 250
+  },
+  "A0JO": {
+    "rawcode": "A0JO",
+    "name": "Шаровые молнии",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          400,
+          600,
+          800,
+          1000
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "area": 400,
+    "dash": {
+      "dashRange": [
+        1000
+      ]
+    }
+  },
+  "A0JL": {
+    "rawcode": "A0JL",
+    "name": "Цепной прыжок",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          40,
+          1,
+          1.5,
+          2,
+          2.5
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.5
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 300,
+    "dash": {
+      "dashRange": [
+        750
+      ]
+    }
+  },
+  "A0JJ": {
+    "rawcode": "A0JJ",
+    "name": "Молниеносный скачок",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          2000,
+          8,
+          12,
+          16,
+          20
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 4
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          2.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 750
+  },
+  "A0JI": {
+    "rawcode": "A0JI",
+    "name": "Выстрел молнией",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100,
+          200,
+          300
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      10,
+      9,
+      8
+    ],
+    "area": 300
+  },
+  "A0TQ": {
+    "rawcode": "A0TQ",
+    "name": "Ракетный выстрел",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          250,
+          350,
+          450,
+          550
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 1.75
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      12
+    ],
+    "area": 400
+  },
+  "A0I9": {
+    "rawcode": "A0I9",
+    "name": "Выстрел лазера",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          275,
+          400,
+          525,
+          650,
+          775
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "blind",
+        "duration": [
+          0
+        ],
+        "weight": 0.3
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 200
+  },
+  "A0I6": {
+    "rawcode": "A0I6",
+    "name": "Плазменный обстрел",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          120,
+          180,
+          240,
+          300,
+          360
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.8
+        }
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 700
+  },
+  "A0IC": {
+    "rawcode": "A0IC",
+    "name": "Баллистическая Ракета",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          2000,
+          12,
+          16,
+          20,
+          24
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 8
+        }
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 500
+  },
+  "A0IB": {
+    "rawcode": "A0IB",
+    "name": "Ракетница",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 1
+        }
+      }
+    ],
+    "cool": [
+      20,
+      19,
+      18
+    ],
+    "buffs": {
+      "atkSpeed": [
+        40
+      ]
+    }
+  },
+  "A08P": {
+    "rawcode": "A08P",
+    "name": "Громовая поступь",
+    "hotkey": "Q",
+    "type": "active",
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          2.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      12
+    ],
+    "area": 350
+  },
+  "A08V": {
+    "rawcode": "A08V",
+    "name": "Энергия предков",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          75,
+          150,
+          225,
+          300,
+          375
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 1.5
+        }
+      }
+    ],
+    "cool": [
+      18
+    ],
+    "dash": {
+      "dashRange": [
+        700,
+        800,
+        900,
+        1000,
+        1100
+      ]
+    }
+  },
+  "A08S": {
+    "rawcode": "A08S",
+    "name": "Сотрясение земли",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 1.4
+        }
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 600
+  },
+  "A08U": {
+    "rawcode": "A08U",
+    "name": "Погребение",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          400,
+          800,
+          1200,
+          1600,
+          2000,
+          8,
+          12,
+          16,
+          20
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 4
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          3
+        ],
+        "weight": 1
+      },
+      {
+        "type": "knockback",
+        "duration": [
+          0.3
+        ],
+        "weight": 0.3
+      }
+    ],
+    "cool": [
+      120
+    ],
+    "area": 1200
+  },
+  "A08T": {
+    "rawcode": "A08T",
+    "name": "Удар топором",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          300,
+          400
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      8
+    ]
+  },
+  "A01X": {
+    "rawcode": "A01X",
+    "name": "Водяная вспышка",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 350
+  },
+  "A10P": {
+    "rawcode": "A10P",
+    "name": "Ядовитый кинжал",
+    "hotkey": "W",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          100,
+          175,
+          250,
+          325,
+          400
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.3
+        }
+      }
+    ],
+    "cool": [
+      3
+    ],
+    "buffs": {
+      "agi": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ]
+    }
+  },
+  "A01R": {
+    "rawcode": "A01R",
+    "name": "Дух Воды",
+    "hotkey": "E",
+    "type": "active",
+    "cool": [
+      30
+    ],
+    "buffs": {
+      "moveSpeed": [
+        35
+      ],
+      "atkSpeed": [
+        20
+      ]
+    }
+  },
+  "A01S": {
+    "rawcode": "A01S",
+    "name": "Ядовитые шипы",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          90,
+          180,
+          270,
+          360,
+          450,
+          4,
+          5,
+          6,
+          7
+        ],
+        "isDOT": true
+      },
+      {
+        "base": [
+          25
+        ]
+      }
+    ],
+    "cool": [
+      120
+    ]
+  },
+  "A01T": {
+    "rawcode": "A01T",
+    "name": "Девятый вал",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 250
+  },
+  "A0RJ": {
+    "rawcode": "A0RJ",
+    "name": "Тёмный поток",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          400,
+          600,
+          800,
+          1000
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      12
+    ]
+  },
+  "A0LK": {
+    "rawcode": "A0LK",
+    "name": "Проклятье",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          350,
+          500,
+          650,
+          800
+        ]
+      },
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 0.75
+        },
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 425
+  },
+  "A07S": {
+    "rawcode": "A07S",
+    "name": "Лучи тьмы",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          500,
+          700,
+          900,
+          1100
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 4
+        }
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 650
+  },
+  "A17A": {
+    "rawcode": "A17A",
+    "name": "Бездна",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          250,
+          2.4,
+          2.6,
+          2.8,
+          3
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2.2
+        }
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 550
+  },
+  "A0OO": {
+    "rawcode": "A0OO",
+    "name": "Могущество Некромонгера",
+    "hotkey": "F",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          100,
+          150,
+          200
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 0.8
+        }
+      }
+    ],
+    "area": 600
+  },
+  "A0R1": {
+    "rawcode": "A0R1",
+    "name": "Поражающий маневр",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          400,
+          500,
+          600,
+          700
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      14
+    ],
+    "dash": {
+      "dashRange": [
+        1100
+      ]
+    }
+  },
+  "A0R5": {
+    "rawcode": "A0R5",
+    "name": "Очищение",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      10
+    ]
+  },
+  "A0R4": {
+    "rawcode": "A0R4",
+    "name": "Метка Кошмара",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100,
+          200,
+          300,
+          400,
+          500
+        ]
+      }
+    ],
+    "cool": [
+      30,
+      29,
+      28,
+      27,
+      26
+    ],
+    "area": 400,
+    "buffs": {
+      "dmgReduction": [
+        50
+      ]
+    }
+  },
+  "A0R3": {
+    "rawcode": "A0R3",
+    "name": "Лунная Кара",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          1500,
+          6,
+          9,
+          12,
+          15
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      80
+    ],
+    "area": 1200
+  },
+  "A0R2": {
+    "rawcode": "A0R2",
+    "name": "Защита Луны",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          175
+        ]
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      26,
+      24,
+      22
+    ],
+    "area": 500,
+    "buffs": {
+      "armor": [
+        10
+      ]
+    }
+  },
+  "A1AP": {
+    "rawcode": "A1AP",
+    "name": "Удар когтями",
+    "hotkey": "Q",
+    "type": "passive"
+  },
+  "A1CM": {
+    "rawcode": "A1CM",
+    "name": "Волчий голод",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      25
+    ],
+    "buffs": {
+      "atkSpeed": [
+        50
+      ]
+    }
+  },
+  "A1B4": {
+    "rawcode": "A1B4",
+    "name": "Волчья охота",
+    "hotkey": "E",
+    "type": "active",
+    "cool": [
+      30
+    ]
+  },
+  "A1BH": {
+    "rawcode": "A1BH",
+    "name": "Волчья стая",
+    "hotkey": "R",
+    "type": "ultimate"
+  },
+  "A1BK": {
+    "rawcode": "A1BK",
+    "name": "Зов Луны",
+    "hotkey": "F",
+    "type": "passive"
+  },
+  "A0BH": {
+    "rawcode": "A0BH",
+    "name": "Рывок",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      13
+    ],
+    "area": 300,
+    "dash": {
+      "dashRange": [
+        700,
+        800,
+        900,
+        1000,
+        1100
+      ]
+    }
+  },
+  "A0D8": {
+    "rawcode": "A0D8",
+    "name": "Аура крови",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          60,
+          90,
+          120,
+          150,
+          180
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 1
+        }
+      }
+    ],
+    "area": 450,
+    "buffs": {
+      "moveSpeed": [
+        6,
+        9,
+        12,
+        15,
+        18
+      ],
+      "hpRegen": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "A0D3": {
+    "rawcode": "A0D3",
+    "name": "Кровавый вихрь",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 2
+        },
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      30
+    ],
+    "area": 350
+  },
+  "A0D6": {
+    "rawcode": "A0D6",
+    "name": "Кровавая Буря",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          1000,
+          8,
+          12,
+          16,
+          20
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 4
+        }
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 325
+  },
+  "A0IH": {
+    "rawcode": "A0IH",
+    "name": "Удар в спину",
+    "hotkey": "F",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          200
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.6
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          0.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      3
+    ]
+  },
+  "A03O": {
+    "rawcode": "A03O",
+    "name": "Исцеляющая Сфера",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          400,
+          550,
+          700,
+          850
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 3
+        }
+      }
+    ],
+    "heal": [
+      {
+        "base": [
+          12,
+          14,
+          16,
+          18,
+          20
+        ],
+        "isPct": true
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "area": 325
+  },
+  "A0T9": {
+    "rawcode": "A0T9",
+    "name": "Дары света",
+    "hotkey": "W",
+    "type": "active",
+    "heal": [
+      {
+        "base": [
+          2
+        ],
+        "isPct": true
+      }
+    ],
+    "cool": [
+      26,
+      25,
+      24,
+      23,
+      22
+    ],
+    "area": 600
+  },
+  "A19O": {
+    "rawcode": "A19O",
+    "name": "Молитва свету",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          300,
+          400,
+          500,
+          600,
+          1.5,
+          1.75,
+          2,
+          2.25
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 1.25
+        },
+        "hitCount": [
+          11,
+          14,
+          17,
+          20,
+          23
+        ]
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 200
+  },
+  "A19N": {
+    "rawcode": "A19N",
+    "name": "Святой Щит",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": [
+      120
+    ],
+    "area": 375
+  },
+  "A107": {
+    "rawcode": "A107",
+    "name": "Аура защиты",
+    "hotkey": "F",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          25
+        ]
+      }
+    ],
+    "area": 800,
+    "buffs": {
+      "armor": [
+        10
+      ]
+    }
+  },
+  "A0EK": {
+    "rawcode": "A0EK",
+    "name": "Стрелы",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          225,
+          300,
+          375,
+          450
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 1
+        }
+      }
+    ],
+    "cool": [
+      13
+    ],
+    "area": 250
+  },
+  "A0C3": {
+    "rawcode": "A0C3",
+    "name": "Прыжок рысью",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          325,
+          450,
+          575,
+          700,
+          825
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      24
+    ],
+    "area": 375,
+    "dash": {
+      "dashRange": [
+        700,
+        900,
+        1100,
+        1300,
+        1500
+      ]
+    },
+    "buffs": {
+      "atkSpeed": [
+        30
+      ],
+      "moveSpeed": [
+        50
+      ]
+    }
+  },
+  "A0IR": {
+    "rawcode": "A0IR",
+    "name": "Звездопад",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          75,
+          150,
+          225,
+          300,
+          375
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        },
+        "hitCount": [
+          60,
+          80,
+          100,
+          120,
+          140
+        ]
+      }
+    ],
+    "cool": [
+      120
+    ]
+  },
+  "A0EN": {
+    "rawcode": "A0EN",
+    "name": "Боевые совы",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      15
+    ]
+  },
+  "A02G": {
+    "rawcode": "A02G",
+    "name": "Безмолвие",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          350,
+          500,
+          650,
+          800
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "silence",
+        "duration": [
+          1,
+          1.5,
+          2,
+          2.5,
+          3
+        ],
+        "weight": 0.8
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 350
+  },
+  "A02L": {
+    "rawcode": "A02L",
+    "name": "Аура меткости",
+    "hotkey": "W",
+    "type": "active",
+    "area": 800,
+    "buffs": {
+      "agi": [
+        15,
+        30,
+        45,
+        60,
+        75
+      ]
+    }
+  },
+  "A00Q": {
+    "rawcode": "A00Q",
+    "name": "Прицельная стрельба",
+    "hotkey": "E",
+    "type": "passive"
+  },
+  "A1AD": {
+    "rawcode": "A1AD",
+    "name": "Мощная стрельба",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          900,
+          1.6,
+          2.4,
+          3.2,
+          4
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.8
+        },
+        "hitCount": [
+          10
+        ]
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 300
+  },
+  "A02M": {
+    "rawcode": "A02M",
+    "name": "Невидимость",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      25
+    ],
+    "buffs": {
+      "moveSpeed": [
+        30
+      ]
+    }
+  },
+  "A0RG": {
+    "rawcode": "A0RG",
+    "name": "Легкие скачки",
+    "hotkey": "Q",
+    "type": "active",
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          0.75,
+          1,
+          1.25,
+          1.5,
+          1.75
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "dash": {
+      "dashRange": [
+        1000
+      ]
+    }
+  },
+  "A0RA": {
+    "rawcode": "A0RA",
+    "name": "Коварный бросок",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      15
+    ]
+  },
+  "A0RB": {
+    "rawcode": "A0RB",
+    "name": "Скрытность",
+    "hotkey": "E",
+    "type": "active",
+    "cc": [
+      {
+        "type": "exhaust",
+        "duration": [
+          0
+        ],
+        "weight": 0.5
+      },
+      {
+        "type": "break",
+        "duration": [
+          4
+        ],
+        "weight": 0.6
+      }
+    ],
+    "cool": [
+      30,
+      29,
+      28,
+      27,
+      26
+    ]
+  },
+  "A0P8": {
+    "rawcode": "A0P8",
+    "name": "Решающий удар",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 1.5
+        }
+      }
+    ],
+    "cool": [
+      100,
+      95,
+      90,
+      85,
+      80
+    ]
+  },
+  "A0RC": {
+    "rawcode": "A0RC",
+    "name": "Ловкий прием",
+    "hotkey": "F",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          100
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.8
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          0.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      3
+    ]
+  },
+  "A081": {
+    "rawcode": "A081",
+    "name": "Волна ярости",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          240,
+          380,
+          520,
+          660,
+          800
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      11
+    ],
+    "area": 350
+  },
+  "A07Z": {
+    "rawcode": "A07Z",
+    "name": "Аура ярости",
+    "hotkey": "W",
+    "type": "active",
+    "area": 500,
+    "buffs": {
+      "atkSpeed": [
+        20,
+        25,
+        30,
+        35,
+        40
+      ],
+      "moveSpeed": [
+        4,
+        8,
+        16,
+        24,
+        32
+      ]
+    }
+  },
+  "A080": {
+    "rawcode": "A080",
+    "name": "Яростные Удары",
+    "hotkey": "E",
+    "type": "active",
+    "cool": [
+      20
+    ]
+  },
+  "A10C": {
+    "rawcode": "A10C",
+    "name": "Огненная кровь",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": [
+      130,
+      120,
+      110,
+      100,
+      90
+    ],
+    "buffs": {
+      "hp": [
+        1000
+      ],
+      "spellDmgPct": [
+        20
+      ]
+    }
+  },
+  "A07Y": {
+    "rawcode": "A07Y",
+    "name": "Сеть",
+    "hotkey": "F",
+    "type": "active",
+    "cc": [
+      {
+        "type": "root",
+        "duration": [
+          2.5,
+          3,
+          3.5
+        ],
+        "weight": 0.7
+      }
+    ],
+    "cool": [
+      14
+    ],
+    "area": 425
+  },
+  "A001": {
+    "rawcode": "A001",
+    "name": "Невидимость",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750
+        ]
+      }
+    ],
+    "cool": [
+      13
+    ]
+  },
+  "A0F0": {
+    "rawcode": "A0F0",
+    "name": "Мясорубка",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100,
+          200,
+          300,
+          400,
+          500
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "dash": {
+      "dashRange": [
+        700,
+        900,
+        1100,
+        1300,
+        1500
+      ]
+    }
+  },
+  "A046": {
+    "rawcode": "A046",
+    "name": "Световое отражение",
+    "hotkey": "E",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          100,
+          150,
+          200,
+          250,
+          300
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      0.4
+    ],
+    "area": 250,
+    "buffs": {
+      "agi": [
+        20,
+        30,
+        40,
+        50,
+        60
+      ]
+    }
+  },
+  "A03Y": {
+    "rawcode": "A03Y",
+    "name": "Смертельная атака",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          500
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        }
+      },
+      {
+        "base": [
+          500,
+          6,
+          9,
+          12,
+          15
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      120
+    ],
+    "area": 750
+  },
+  "A0H5": {
+    "rawcode": "A0H5",
+    "name": "Разрез",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          400,
+          500
+        ]
+      }
+    ],
+    "cool": [
+      10
+    ]
+  },
+  "A0Y8": {
+    "rawcode": "A0Y8",
+    "name": "Морская волна",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          450,
+          600,
+          750,
+          900
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 400
+  },
+  "A08N": {
+    "rawcode": "A08N",
+    "name": "Блок",
+    "hotkey": "W",
+    "type": "passive",
+    "buffs": {
+      "evasion": [
+        10,
+        15,
+        20,
+        25,
+        30
+      ]
+    }
+  },
+  "A08K": {
+    "rawcode": "A08K",
+    "name": "Туман",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100,
+          150,
+          200,
+          250,
+          300,
+          0.7,
+          0.8,
+          0.9,
+          1.1
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.6
+        },
+        "isDOT": true
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      },
+      {
+        "type": "blind",
+        "duration": [
+          4
+        ],
+        "weight": 0.3
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 500,
+    "dash": {
+      "dashRange": [
+        1000
+      ]
+    }
+  },
+  "A0S3": {
+    "rawcode": "A0S3",
+    "name": "Мгновенное перемещение",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          1000,
+          11,
+          14,
+          17,
+          20
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 8
+        }
+      }
+    ],
+    "cool": [
+      80
+    ],
+    "area": 650
+  },
+  "A0G1": {
+    "rawcode": "A0G1",
+    "name": "Водяной Щит",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      14,
+      13,
+      12
+    ],
+    "buffs": {
+      "armor": [
+        13
+      ],
+      "hpRegenPct": [
+        2
+      ]
+    }
+  },
+  "A0HO": {
+    "rawcode": "A0HO",
+    "name": "Теневой взрыв",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2.5
+        }
+      }
+    ],
+    "cool": [
+      14
+    ],
+    "area": 450,
+    "dash": {
+      "dashRange": [
+        800,
+        1000,
+        1200,
+        1400,
+        1600
+      ]
+    }
+  },
+  "A0HS": {
+    "rawcode": "A0HS",
+    "name": "Тёмная атака",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      20
+    ]
+  },
+  "A0HQ": {
+    "rawcode": "A0HQ",
+    "name": "Теневая хватка",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          450,
+          600,
+          750,
+          900
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 4
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          2
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      30
+    ],
+    "area": 350
+  },
+  "A0V4": {
+    "rawcode": "A0V4",
+    "name": "Поток Душ",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          175,
+          1,
+          1.5,
+          2,
+          2.5
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.5
+        },
+        "hitCount": [
+          50,
+          60,
+          70,
+          80,
+          90
+        ]
+      }
+    ],
+    "cool": [
+      120
+    ],
+    "area": 400
+  },
+  "A0QW": {
+    "rawcode": "A0QW",
+    "name": "Ярость тьмы",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      15
+    ],
+    "buffs": {
+      "atkSpeed": [
+        25
+      ],
+      "moveSpeed": [
+        15
+      ]
+    }
+  },
+  "A0LV": {
+    "rawcode": "A0LV",
+    "name": "Волновая атака",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          175,
+          350,
+          525,
+          700,
+          875
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.5
+        }
+      },
+      {
+        "base": [
+          250
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 1.5
+        }
+      }
+    ],
+    "cool": [
+      14
+    ]
+  },
+  "A0LX": {
+    "rawcode": "A0LX",
+    "name": "Кровавый прыжок",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          350,
+          450,
+          550,
+          650
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 1.5
+        }
+      }
+    ],
+    "cool": [
+      18
+    ],
+    "dash": {
+      "dashRange": [
+        1100
+      ]
+    }
+  },
+  "A0M0": {
+    "rawcode": "A0M0",
+    "name": "Резня",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          400,
+          600,
+          800,
+          1000,
+          1.6,
+          2.4,
+          3.2,
+          4
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.8
+        }
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 850,
+    "buffs": {
+      "evasion": [
+        100
+      ]
+    }
+  },
+  "A0LY": {
+    "rawcode": "A0LY",
+    "name": "Вихрь Крови",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          200,
+          400,
+          600,
+          800,
+          1000,
+          4,
+          5,
+          6,
+          7
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        },
+        "isDOT": true
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 450
+  },
+  "A0UU": {
+    "rawcode": "A0UU",
+    "name": "Размашистый Удар",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          300,
+          400
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.5
+        }
+      },
+      {
+        "base": [
+          5,
+          5
+        ],
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      12,
+      11,
+      10
+    ],
+    "area": 350
+  },
+  "A0IS": {
+    "rawcode": "A0IS",
+    "name": "Ледяной дождь",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 0.7
+        },
+        "hitCount": [
+          6,
+          9,
+          12,
+          15,
+          18
+        ]
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "area": 325
+  },
+  "A05B": {
+    "rawcode": "A05B",
+    "name": "Оледенение",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          15
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 5
+        }
+      }
+    ],
+    "cool": [
+      26,
+      25,
+      24,
+      23,
+      22
+    ]
+  },
+  "A0IT": {
+    "rawcode": "A0IT",
+    "name": "Ледяная волна",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          400,
+          550,
+          700,
+          850
+        ]
+      }
+    ],
+    "cool": [
+      24
+    ],
+    "area": 350
+  },
+  "A0IU": {
+    "rawcode": "A0IU",
+    "name": "Ледяной столб",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cc": [
+      {
+        "type": "freeze",
+        "duration": [
+          3
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 925
+  },
+  "A0IV": {
+    "rawcode": "A0IV",
+    "name": "Ледяная атака",
+    "hotkey": "F",
+    "type": "passive",
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          3,
+          4,
+          5
+        ],
+        "weight": 0.4
+      }
+    ]
+  },
+  "sorcerer-demo_1": {
+    "rawcode": "sorcerer-demo_1",
+    "name": "Чародейческая стрела",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          60,
+          90,
+          120,
+          150,
+          180
+        ]
+      }
+    ],
+    "cool": [
+      8,
+      7,
+      6,
+      5,
+      4
+    ]
+  },
+  "sorcerer-demo_2": {
+    "rawcode": "sorcerer-demo_2",
+    "name": "Огненная стрела",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          40,
+          60,
+          80,
+          100,
+          120
+        ]
+      },
+      {
+        "base": [
+          15,
+          20,
+          25,
+          30,
+          35
+        ],
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      8,
+      7,
+      6,
+      5,
+      4
+    ]
+  },
+  "sorcerer-demo_3": {
+    "rawcode": "sorcerer-demo_3",
+    "name": "Ледяная стрела",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          40,
+          60,
+          80,
+          100,
+          120
+        ]
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      8,
+      7,
+      6,
+      5,
+      4
+    ]
+  },
+  "sorcerer-demo_4": {
+    "rawcode": "sorcerer-demo_4",
+    "name": "Тёмная стрела",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          50,
+          75,
+          100,
+          125,
+          150
+        ]
+      }
+    ],
+    "cc": [
+      {
+        "type": "silence",
+        "duration": [
+          1,
+          1.5,
+          2,
+          2.5,
+          3
+        ],
+        "weight": 0.8
+      }
+    ],
+    "cool": [
+      8,
+      7,
+      6,
+      5,
+      4
+    ]
+  },
+  "sorcerer-demo_5": {
+    "rawcode": "sorcerer-demo_5",
+    "name": "Прыжок рысью",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      20,
+      18,
+      16,
+      14,
+      12
+    ],
+    "buffs": {
+      "atkSpeed": [
+        15,
+        20,
+        25,
+        30,
+        35
+      ]
+    }
+  },
+  "sorcerer-demo_6": {
+    "rawcode": "sorcerer-demo_6",
+    "name": "Меткость",
+    "hotkey": "E",
+    "type": "passive"
+  },
+  "sorcerer-demo_7": {
+    "rawcode": "sorcerer-demo_7",
+    "name": "Боевые совы",
+    "hotkey": "R",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          15,
+          25,
+          35,
+          45,
+          55
+        ]
+      }
+    ]
+  },
+  "sorcerer-demo_8": {
+    "rawcode": "sorcerer-demo_8",
+    "name": "Смена стрелы",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      1
+    ]
+  },
+  "sorcerer-demo_9": {
+    "rawcode": "sorcerer-demo_9",
+    "name": "Выпад",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100,
+          140,
+          180,
+          220,
+          260
+        ]
+      }
+    ],
+    "cool": [
+      12,
+      11,
+      10,
+      9,
+      8
+    ]
+  },
+  "sorcerer-demo_10": {
+    "rawcode": "sorcerer-demo_10",
+    "name": "Охота",
+    "hotkey": "W",
+    "type": "active",
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      20,
+      18,
+      16,
+      14,
+      12
+    ]
+  },
+  "sorcerer-demo_11": {
+    "rawcode": "sorcerer-demo_11",
+    "name": "Чуткий зверь",
+    "hotkey": "E",
+    "type": "passive",
+    "buffs": {
+      "moveSpeed": [
+        10,
+        15,
+        20,
+        25,
+        30
+      ],
+      "hpRegen": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  },
+  "sorcerer-demo_12": {
+    "rawcode": "sorcerer-demo_12",
+    "name": "Вернуться в форму",
+    "hotkey": "R",
+    "type": "ultimate",
+    "heal": [
+      {
+        "base": [
+          15,
+          20,
+          25,
+          30,
+          35
+        ],
+        "isPct": true
+      }
+    ],
+    "cool": [
+      30,
+      25,
+      20,
+      15,
+      10
+    ]
+  },
+  "A0EW": {
+    "rawcode": "A0EW",
+    "name": "Печать Огня",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          325,
+          450,
+          575,
+          700
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "area": 400
+  },
+  "A0UZ": {
+    "rawcode": "A0UZ",
+    "name": "Огненный Гейзер",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          50,
+          100,
+          150,
+          200,
+          250
+        ]
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 400
+  },
+  "A0OK": {
+    "rawcode": "A0OK",
+    "name": "Возгорание",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1.2
+        },
+        "hitCount": [
+          4,
+          6,
+          8,
+          10,
+          12
+        ]
+      }
+    ],
+    "cool": [
+      26
+    ],
+    "area": 280
+  },
+  "A06F": {
+    "rawcode": "A06F",
+    "name": "Полет феникса",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          200,
+          1.4,
+          1.8,
+          2.2,
+          2.6
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1
+        }
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 425
+  },
+  "A05G": {
+    "rawcode": "A05G",
+    "name": "Огненный щит",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      20,
+      18,
+      16
+    ],
+    "area": 320
+  },
+  "A0J2": {
+    "rawcode": "A0J2",
+    "name": "Энергетические вихри",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          285,
+          445,
+          605,
+          765,
+          925
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      12
+    ]
+  },
+  "A0J1": {
+    "rawcode": "A0J1",
+    "name": "Энергетический щит",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      20
+    ],
+    "area": 600,
+    "buffs": {
+      "hpRegenPct": [
+        2.5,
+        3,
+        3.5,
+        4,
+        4.5
+      ]
+    }
+  },
+  "A0J0": {
+    "rawcode": "A0J0",
+    "name": "Плазменный выстрел",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          400,
+          550,
+          700,
+          850,
+          2.4,
+          3.6,
+          4.8,
+          6
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 1.2
+        }
+      }
+    ],
+    "cool": [
+      28
+    ],
+    "area": 325
+  },
+  "A0BS": {
+    "rawcode": "A0BS",
+    "name": "Метеоритная буря",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          300,
+          1.2,
+          1.8,
+          2.4,
+          3
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.6
+        },
+        "hitCount": [
+          80
+        ]
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 275
+  },
+  "A0IY": {
+    "rawcode": "A0IY",
+    "name": "Энергетический выстрел",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300,
+          400,
+          500
+        ]
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 325
+  },
+  "A0DH": {
+    "rawcode": "A0DH",
+    "name": "Плазменное поле",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          300,
+          400,
+          500,
+          600
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      16
+    ],
+    "area": 1400
+  },
+  "A0DE": {
+    "rawcode": "A0DE",
+    "name": "Большой взрыв",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          350,
+          450,
+          550,
+          650
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2.5
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "area": 450
+  },
+  "A0DG": {
+    "rawcode": "A0DG",
+    "name": "Удар молнией",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 1
+        }
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 400
+  },
+  "A0DF": {
+    "rawcode": "A0DF",
+    "name": "Дух грозы",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": [
+      120
+    ]
+  },
+  "A0DN": {
+    "rawcode": "A0DN",
+    "name": "Грозовое облако",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          60
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.6
+        }
+      }
+    ],
+    "cool": [
+      16
+    ],
+    "area": 550
+  },
+  "A0EM": {
+    "rawcode": "A0EM",
+    "name": "Электрический заряд",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          275,
+          400,
+          525,
+          650,
+          775
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2
+        }
+      }
+    ],
+    "cool": [
+      15
+    ]
+  },
+  "A0KG": {
+    "rawcode": "A0KG",
+    "name": "Шаровые молнии",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          30,
+          60,
+          90,
+          120,
+          150
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 0.5
+        },
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "area": 425,
+    "buffs": {
+      "armor": [
+        8,
+        12,
+        16,
+        20,
+        24
+      ]
+    }
+  },
+  "A01D": {
+    "rawcode": "A01D",
+    "name": "Электрическая кара",
+    "hotkey": "E",
+    "type": "active",
+    "cool": [
+      30
+    ]
+  },
+  "A0FF": {
+    "rawcode": "A0FF",
+    "name": "Гнев гроз",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          1000,
+          15,
+          20,
+          25,
+          30
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 10
+        }
+      }
+    ],
+    "cool": [
+      130
+    ]
+  },
+  "A0KH": {
+    "rawcode": "A0KH",
+    "name": "Скорость молнии",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          250,
+          300
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 0.5
+        }
+      }
+    ],
+    "cool": [
+      14
+    ],
+    "area": 200,
+    "dash": {
+      "dashRange": [
+        1100
+      ]
+    }
+  },
+  "thunder-lord-2_1": {
+    "rawcode": "thunder-lord-2_1",
+    "name": "???",
+    "hotkey": "Q",
+    "type": "active"
+  },
+  "thunder-lord-2_2": {
+    "rawcode": "thunder-lord-2_2",
+    "name": "???",
+    "hotkey": "W",
+    "type": "active"
+  },
+  "thunder-lord-2_3": {
+    "rawcode": "thunder-lord-2_3",
+    "name": "???",
+    "hotkey": "E",
+    "type": "active"
+  },
+  "thunder-lord-2_4": {
+    "rawcode": "thunder-lord-2_4",
+    "name": "???",
+    "hotkey": "R",
+    "type": "ultimate"
+  },
+  "thunder-lord-2_5": {
+    "rawcode": "thunder-lord-2_5",
+    "name": "???",
+    "hotkey": "F",
+    "type": "passive"
+  },
+  "A178": {
+    "rawcode": "A178",
+    "name": "Разветвленная молния",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          275,
+          400,
+          525,
+          650,
+          775
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1.4
+        }
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 400,
+    "dash": {
+      "dashRange": [
+        800
+      ]
+    }
+  },
+  "A054": {
+    "rawcode": "A054",
+    "name": "Громовой скачок",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 4
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      20
+    ],
+    "dash": {
+      "dashRange": [
+        700,
+        900,
+        1100,
+        1300,
+        1500
+      ]
+    }
+  },
+  "A04F": {
+    "rawcode": "A04F",
+    "name": "Гроза",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          200,
+          250,
+          300,
+          350
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 0.5
+        }
+      }
+    ],
+    "cool": [
+      22
+    ],
+    "area": 450
+  },
+  "A058": {
+    "rawcode": "A058",
+    "name": "Громовой рёв",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          1000,
+          8,
+          12,
+          16,
+          20
+        ]
+      }
+    ],
+    "cool": [
+      130
+    ],
+    "area": 3000
+  },
+  "A04H": {
+    "rawcode": "A04H",
+    "name": "Разряд молнии",
+    "hotkey": "F",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          300
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1.3
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1.3
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      15,
+      14,
+      13
+    ]
+  },
+  "A0BM": {
+    "rawcode": "A0BM",
+    "name": "Воздушная коса",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          240,
+          380,
+          520,
+          660,
+          800
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "area": 250
+  },
+  "A0BN": {
+    "rawcode": "A0BN",
+    "name": "Древняя мощь",
+    "hotkey": "W",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.5
+        },
+        "isDOT": true
+      }
+    ]
+  },
+  "A0WY": {
+    "rawcode": "A0WY",
+    "name": "Серия Ударов",
+    "hotkey": "E",
+    "type": "active",
+    "cool": [
+      30
+    ],
+    "dash": {
+      "dashRange": [
+        2000
+      ]
+    }
+  },
+  "A0BL": {
+    "rawcode": "A0BL",
+    "name": "Гнев Титана",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": [
+      120
+    ],
+    "buffs": {
+      "armor": [
+        20
+      ],
+      "hp": [
+        500
+      ],
+      "moveSpeedFlat": [
+        60
+      ]
+    }
+  },
+  "A0BO": {
+    "rawcode": "A0BO",
+    "name": "Ангельское благословение",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      14
+    ]
+  },
+  "A0S0": {
+    "rawcode": "A0S0",
+    "name": "Ритуал крови",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.2
+        }
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "area": 250
+  },
+  "A0S2": {
+    "rawcode": "A0S2",
+    "name": "Путь безумия",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          50,
+          100,
+          150,
+          200,
+          250
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.4
+        }
+      }
+    ],
+    "cool": [
+      25
+    ],
+    "buffs": {
+      "atkSpeed": [
+        20,
+        25,
+        30,
+        35,
+        40
+      ],
+      "moveSpeed": [
+        70
+      ]
+    }
+  },
+  "A0S1": {
+    "rawcode": "A0S1",
+    "name": "Тёмный ритуал",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          400,
+          600,
+          800,
+          1000
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 4
+        },
+        "hitCount": [
+          6
+        ]
+      }
+    ],
+    "cc": [
+      {
+        "type": "blind",
+        "duration": [
+          4
+        ],
+        "weight": 0.3
+      }
+    ],
+    "cool": [
+      30,
+      28,
+      26,
+      24,
+      22
+    ],
+    "area": 600
+  },
+  "A0S5": {
+    "rawcode": "A0S5",
+    "name": "Похищение Жизни",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          500,
+          3,
+          3.5,
+          4,
+          4.5
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 2.5
+        }
+      }
+    ],
+    "cool": [
+      120
+    ]
+  },
+  "A0RZ": {
+    "rawcode": "A0RZ",
+    "name": "Поглощение крови",
+    "hotkey": "F",
+    "type": "passive",
+    "heal": [
+      {
+        "base": [
+          15,
+          20,
+          25,
+          5,
+          8,
+          10
+        ],
+        "isPct": true
+      }
+    ],
+    "buffs": {
+      "moveSpeed": [
+        10,
+        15,
+        20
+      ]
+    }
+  },
+  "A028": {
+    "rawcode": "A028",
+    "name": "Кровавый наскок",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          300,
+          400,
+          500,
+          600
+        ]
+      }
+    ],
+    "cool": [
+      11
+    ],
+    "area": 300
+  },
+  "A0KY": {
+    "rawcode": "A0KY",
+    "name": "Кровавая ярость",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          400,
+          600,
+          800,
+          1000
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 4
+        }
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "area": 250
+  },
+  "A0CB": {
+    "rawcode": "A0CB",
+    "name": "Увечье",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "STR",
+          "mult": 0.2
+        }
+      }
+    ],
+    "heal": [
+      {
+        "base": [
+          50
+        ],
+        "isPct": true
+      }
+    ],
+    "cool": [
+      24
+    ]
+  },
+  "S000": {
+    "rawcode": "S000",
+    "name": "Неистовствующая Ярость",
+    "hotkey": "R",
+    "type": "ultimate",
+    "heal": [
+      {
+        "base": [
+          35,
+          45,
+          55,
+          65,
+          75
+        ],
+        "isPct": true
+      }
+    ],
+    "cool": [
+      80
+    ],
+    "buffs": {
+      "atkSpeed": [
+        35,
+        60,
+        85,
+        110,
+        135
+      ]
+    }
+  },
+  "A0O0": {
+    "rawcode": "A0O0",
+    "name": "Сила вурдалака",
+    "hotkey": "F",
+    "type": "passive"
+  },
+  "A04W": {
+    "rawcode": "A04W",
+    "name": "Молот правосудия",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          250,
+          375,
+          500,
+          625,
+          750
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1.5
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          2
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "area": 400
+  },
+  "A08M": {
+    "rawcode": "A08M",
+    "name": "Воля Света",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          400,
+          600,
+          800,
+          1000
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1.5
+        }
+      }
+    ],
+    "heal": [
+      {
+        "base": [
+          50
+        ],
+        "isPct": true
+      }
+    ],
+    "cool": [
+      15
+    ],
+    "area": 425
+  },
+  "A03U": {
+    "rawcode": "A03U",
+    "name": "Волны Света",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100,
+          175,
+          250,
+          325,
+          400,
+          1.25,
+          1.5,
+          1.75,
+          2
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 1
+        },
+        "hitCount": [
+          10
+        ]
+      }
+    ],
+    "cool": [
+      25
+    ]
+  },
+  "A04V": {
+    "rawcode": "A04V",
+    "name": "Сила света",
+    "hotkey": "R",
+    "type": "ultimate",
+    "heal": [
+      {
+        "base": [
+          2
+        ],
+        "isPct": true
+      }
+    ],
+    "cool": [
+      90
+    ],
+    "area": 5000
+  },
+  "A04P": {
+    "rawcode": "A04P",
+    "name": "Священная Защита",
+    "hotkey": "F",
+    "type": "passive",
+    "buffs": {
+      "evasion": [
+        15,
+        18,
+        21
+      ]
+    }
+  },
+  "A06L": {
+    "rawcode": "A06L",
+    "name": "Сюрикен",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 1.5
+        }
+      }
+    ],
+    "cool": [
+      15
+    ]
+  },
+  "A0T1": {
+    "rawcode": "A0T1",
+    "name": "Скрытый клинок",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      20
+    ]
+  },
+  "A145": {
+    "rawcode": "A145",
+    "name": "Ловкий удар",
+    "hotkey": "E",
+    "type": "passive",
+    "damage": [
+      {
+        "base": [
+          30,
+          60,
+          90,
+          120,
+          150,
+          0.4,
+          0.6,
+          0.8,
+          1
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.2
+        }
+      }
+    ],
+    "heal": [
+      {
+        "base": [
+          50
+        ],
+        "isPct": true
+      }
+    ]
+  },
+  "A07O": {
+    "rawcode": "A07O",
+    "name": "Дождь из лезвий",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          650,
+          8.5,
+          11,
+          13.5,
+          16
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 6
+        }
+      }
+    ],
+    "cool": [
+      120
+    ],
+    "area": 650
+  },
+  "A07Q": {
+    "rawcode": "A07Q",
+    "name": "Скачок",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      15
+    ],
+    "dash": {
+      "dashRange": [
+        1000
+      ]
+    },
+    "buffs": {
+      "atkSpeed": [
+        100
+      ]
+    }
+  },
+  "A0GB": {
+    "rawcode": "A0GB",
+    "name": "Волна",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          4
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 325
+  },
+  "A0HU": {
+    "rawcode": "A0HU",
+    "name": "Морские потоки",
+    "hotkey": "W",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          75,
+          150,
+          225,
+          300,
+          375,
+          1,
+          1.5,
+          2,
+          2.5
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.5
+        }
+      }
+    ],
+    "cool": [
+      20
+    ]
+  },
+  "A093": {
+    "rawcode": "A093",
+    "name": "Водяная форма",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          400,
+          600,
+          800,
+          1000,
+          2.6,
+          3.4,
+          4.2,
+          5
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 1.8
+        }
+      }
+    ],
+    "cool": [
+      28
+    ]
+  },
+  "A0JD": {
+    "rawcode": "A0JD",
+    "name": "Водоворот",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        },
+        "isDOT": true
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          0.3
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      150
+    ]
+  },
+  "A0JE": {
+    "rawcode": "A0JE",
+    "name": "Водяной барьер",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      20,
+      18,
+      16
+    ],
+    "area": 450,
+    "buffs": {
+      "armor": [
+        9,
+        12,
+        15
+      ]
+    }
+  },
+  "A0FR": {
+    "rawcode": "A0FR",
+    "name": "Воздушный шторм",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          200,
+          300,
+          400,
+          500,
+          600
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2.5
+        }
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 330
+  },
+  "A0FS": {
+    "rawcode": "A0FS",
+    "name": "Ветряные снаряды",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      14
+    ]
+  },
+  "A0FU": {
+    "rawcode": "A0FU",
+    "name": "Поток ветра",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          160,
+          320,
+          480,
+          640,
+          800
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 3
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "disarm",
+        "duration": [
+          1,
+          1.5,
+          2,
+          2.5,
+          3
+        ],
+        "weight": 0.8
+      }
+    ],
+    "cool": [
+      22
+    ],
+    "area": 325
+  },
+  "A0AB": {
+    "rawcode": "A0AB",
+    "name": "Воздушная стена",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          200,
+          2.5,
+          3,
+          3.5,
+          4
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2
+        },
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      140
+    ],
+    "area": 825
+  },
+  "A0FT": {
+    "rawcode": "A0FT",
+    "name": "Полет",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      8
+    ],
+    "buffs": {
+      "evasion": [
+        50
+      ]
+    }
+  },
+  "A08X": {
+    "rawcode": "A08X",
+    "name": "Торнадо",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          0
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      12
+    ]
+  },
+  "A0S6": {
+    "rawcode": "A0S6",
+    "name": "Доспехи ветра",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      25
+    ]
+  },
+  "A090": {
+    "rawcode": "A090",
+    "name": "Аура ветров",
+    "hotkey": "E",
+    "type": "active",
+    "area": 700,
+    "buffs": {
+      "atkSpeed": [
+        35
+      ],
+      "moveSpeed": [
+        35
+      ]
+    }
+  },
+  "A0SJ": {
+    "rawcode": "A0SJ",
+    "name": "Вихрь",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          500,
+          2.5,
+          3,
+          3.5,
+          4
+        ],
+        "statScale": {
+          "stat": "INT",
+          "mult": 2
+        },
+        "isDOT": true
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 550
+  },
+  "A08Z": {
+    "rawcode": "A08Z",
+    "name": "Смерч",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      16
+    ]
+  },
+  "A0RQ": {
+    "rawcode": "A0RQ",
+    "name": "Кристаллы",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          100,
+          200,
+          300,
+          400,
+          500
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 1.5
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "slow",
+        "duration": [
+          3
+        ],
+        "weight": 0.4
+      }
+    ],
+    "cool": [
+      10
+    ],
+    "area": 300
+  },
+  "A0RP": {
+    "rawcode": "A0RP",
+    "name": "Магическое усиление",
+    "hotkey": "E",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          80,
+          120,
+          160,
+          200,
+          240
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 0.5
+        }
+      }
+    ],
+    "cool": [
+      30
+    ],
+    "buffs": {
+      "atkSpeed": [
+        70
+      ]
+    }
+  },
+  "A0RN": {
+    "rawcode": "A0RN",
+    "name": "Плазменный луч",
+    "hotkey": "R",
+    "type": "ultimate",
+    "damage": [
+      {
+        "base": [
+          1000,
+          6,
+          8,
+          10
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 4
+        }
+      }
+    ],
+    "cc": [
+      {
+        "type": "stun",
+        "duration": [
+          1.5
+        ],
+        "weight": 1
+      }
+    ],
+    "cool": [
+      100
+    ],
+    "area": 475
+  },
+  "A0EO": {
+    "rawcode": "A0EO",
+    "name": "Электрическая цепь",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      14
+    ]
+  }
 };
