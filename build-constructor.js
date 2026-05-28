@@ -234,7 +234,7 @@ function bcRenderSlots() {
         html += `<label for="bcLevel${si}">Уровень:</label>`;
         html += `<input type="number" id="bcLevel${si}" class="bc-level-input" value="${stage.level}" min="1" max="25" data-si="${si}">`;
         html += `</div>`;
-        html += `<div class="bc-stage-cost">${stageCost.toLocaleString('ru-RU')} 🪙${bossCount > 0 ? ' · 💀 ' + bossCount : ''} <span class="bc-stage-delta">(+${bcCalcTransitionCost(si).toLocaleString('ru-RU')})</span></div>`;
+        html += `<div class="bc-stage-cost">${stageCost.toLocaleString('ru-RU')} <i class="fas fa-coins"></i>${bossCount > 0 ? ' · <i class="fas fa-skull"></i> ' + bossCount : ''} <span class="bc-stage-delta">(+${bcCalcTransitionCost(si).toLocaleString('ru-RU')})</span></div>`;
         html += `<button class="bc-stage-copy" data-si="${si}" title="Копировать стадию"><i class="fas fa-copy"></i></button>`;
         if (bcClipboard) {
             html += `<button class="bc-stage-paste" data-si="${si}" title="Вставить стадию после"><i class="fas fa-paste"></i></button>`;
@@ -256,7 +256,7 @@ function bcRenderSlots() {
                 html += `<div class="bc-slot bc-slot-filled ${isActive ? 'bc-slot-active' : ''} ${isDrop ? 'bc-slot-boss-drop' : isBoss ? 'bc-slot-boss-craft' : ''}${tempClass}" data-si="${si}" data-sl="${sl}" title="${item.name}${!keep ? ' (продаётся)' : ''} — клик для выбора">`;
                 html += `<div class="bc-slot-icon">${itemIcon(item.id, item.icon, 40, item.type)}</div>`;
                 html += `<div class="bc-slot-name${!keep ? ' temp-name' : ''}">${item.name}</div>`;
-                html += `<div class="bc-slot-cost">${isBoss ? '💀' : item.cost.toLocaleString('ru-RU') + ' 🪙'}</div>`;
+                html += `<div class="bc-slot-cost">${isBoss ? '<i class="fas fa-skull"></i>' : item.cost.toLocaleString('ru-RU') + ' <i class="fas fa-coins"></i>'}</div>`;
                 html += `<button class="bc-slot-keep-toggle" data-si="${si}" data-sl="${sl}" title="${keep ? 'Пометить как продающийся' : 'Пометить как остающийся'}"><i class="fas fa-${keep ? 'coins' : 'check-circle'}"></i></button>`;
                 html += `<button class="bc-slot-remove" data-si="${si}" data-sl="${sl}" title="Убрать"><i class="fas fa-times"></i></button>`;
                 html += `</div>`;
@@ -438,13 +438,13 @@ function bcRenderPreview() {
             html += `<div class="bc-preview-item ${isDrop ? 'bc-preview-boss-drop' : isBoss ? 'bc-preview-boss-craft' : ''}">`;
             html += `<span class="bc-preview-icon">${itemIcon(item.id, item.icon, 24, item.type)}</span>`;
             html += `<span class="bc-preview-name${!keep ? ' temp-name' : ''}">${item.name}</span>`;
-            if (isDrop) html += '<span class="bc-preview-badge bc-badge-drop">💀 Дроп</span>';
-            else if (isBoss) html += '<span class="bc-preview-badge bc-badge-craft">💀 Босс</span>';
+            if (isDrop) html += '<span class="bc-preview-badge bc-badge-drop"><i class="fas fa-skull"></i> Дроп</span>';
+            else if (isBoss) html += '<span class="bc-preview-badge bc-badge-craft"><i class="fas fa-skull"></i> Босс</span>';
             if (!keep) html += '<span class="bc-preview-badge bc-badge-temp">⏳ Продаётся</span>';
             html += '</div>';
         });
         html += '</td>';
-        html += `<td class="bc-td-cost">${cost.toLocaleString('ru-RU')} 🪙${bossCount > 0 ? '<br><small>💀 ' + bossCount + ' босс</small>' : ''}<br><small class="bc-stage-delta">+${bcCalcTransitionCost(si).toLocaleString('ru-RU')} переход</small></td>`;
+        html += `<td class="bc-td-cost">${cost.toLocaleString('ru-RU')} <i class="fas fa-coins"></i>${bossCount > 0 ? '<br><small><i class="fas fa-skull"></i> ' + bossCount + ' босс</small>' : ''}<br><small class="bc-stage-delta">+${bcCalcTransitionCost(si).toLocaleString('ru-RU')} переход</small></td>`;
         html += '</tr>';
     });
     html += '</tbody></table>';
@@ -605,7 +605,7 @@ function bcRenderCatalog() {
         html += `<div class="calc-catalog-item ${inBuild ? 'calc-catalog-in-build' : ''}" data-item-id="${id}" title="${item.name}${inBuild ? ' (уже в сборке)' : ''}">`;
         html += `<div class="calc-catalog-icon">${itemIcon(item.id, item.icon, 40, item.type)}</div>`;
         html += `<div class="calc-catalog-name">${item.name}</div>`;
-        html += `<div class="calc-catalog-cost">${isBoss ? '💀 Босс' : cost.toLocaleString('ru-RU') + ' 🪙'}</div>`;
+        html += `<div class="calc-catalog-cost">${isBoss ? '<i class="fas fa-skull"></i> Босс' : cost.toLocaleString('ru-RU') + ' <i class="fas fa-coins"></i>'}</div>`;
         html += '</div>';
     });
     html += '</div>';
