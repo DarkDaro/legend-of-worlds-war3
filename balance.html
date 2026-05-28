@@ -120,6 +120,8 @@
         .balance-table td.attr-strength { color: #ff6b6b; }
         .balance-table td.attr-agility { color: #51cf66; }
         .balance-table td.attr-intelligence { color: #74c0fc; }
+        .balance-table td.type-melee { color: #adb5bd; }
+        .balance-table td.type-ranged { color: #74c0fc; }
         .balance-table .best-val { color: #ffd43b; font-weight: 600; }
         .balance-table .worst-val { color: #ff6b6b; opacity: 0.7; }
         .balance-table .zero-val { opacity: 0.3; }
@@ -140,6 +142,37 @@
             margin-bottom: 12px;
         }
 
+        /* ── Переключатели колонок ── */
+        .balance-col-toggles {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+            align-items: center;
+        }
+        .col-toggle-label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-right: 4px;
+        }
+        .col-toggle {
+            padding: 5px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.78rem;
+        }
+        .col-toggle:hover { border-color: var(--accent-cyan); color: var(--text-primary); }
+        .col-toggle.active {
+            background: rgba(0, 230, 255, 0.12);
+            border-color: var(--accent-cyan);
+            color: var(--text-primary);
+        }
+        .col-toggle:not(.active) { opacity: 0.5; }
+
         /* ── Мобильная адаптация ── */
         @media (max-width: 700px) {
             .balance-filters { gap: 6px; }
@@ -147,14 +180,18 @@
             .balance-table { font-size: 0.75rem; }
             .balance-table th, .balance-table td { padding: 6px 8px; }
             .balance-table .hero-name-cell img { width: 22px; height: 22px; }
-            /* Скрываем второстепенные столбцы на мобильном */
             .balance-table .col-hide-mobile { display: none; }
+            .balance-col-toggles { gap: 5px; }
+            .col-toggle { font-size: 0.72rem; padding: 4px 8px; }
         }
         @media (max-width: 480px) {
             .balance-table { font-size: 0.7rem; }
             .balance-table th, .balance-table td { padding: 5px 6px; }
             .balance-table .hero-name-cell img { display: none; }
             .balance-table .col-hide-small { display: none; }
+            .balance-col-toggles { gap: 4px; }
+            .col-toggle-label { display: none; }
+            .col-toggle { font-size: 0.68rem; padding: 3px 6px; }
         }
     </style>
     <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/balance.html">
@@ -195,6 +232,13 @@
                 <button class="attr-btn" data-attr="agility"><i class="fas fa-bullseye"></i> Ловкость</button>
                 <button class="attr-btn" data-attr="intelligence"><i class="fas fa-brain"></i> Разум</button>
             </div>
+            <div class="balance-col-toggles">
+                <span class="col-toggle-label">Колонки:</span>
+                <button class="col-toggle active" data-group="stats"><i class="fas fa-chart-bar"></i> Статы</button>
+                <button class="col-toggle active" data-group="combat"><i class="fas fa-swords"></i> Бой</button>
+                <button class="col-toggle active" data-group="regen"><i class="fas fa-heartbeat"></i> Реген</button>
+                <button class="col-toggle active" data-group="move"><i class="fas fa-running"></i> Движение</button>
+            </div>
             <div class="balance-count" id="balanceCount"></div>
             <div class="balance-table-wrap">
                 <table class="balance-table" id="balanceTable">
@@ -202,21 +246,22 @@
                         <tr>
                             <th data-col="name">Герой <span class="sort-arrow">▲</span></th>
                             <th data-col="attr">Атрибут <span class="sort-arrow">▲</span></th>
-                            <th data-col="strBase">Сила <span class="sort-arrow">▲</span></th>
-                            <th data-col="strGain" class="col-hide-mobile">+Сил <span class="sort-arrow">▲</span></th>
-                            <th data-col="agiBase">Ловк <span class="sort-arrow">▲</span></th>
-                            <th data-col="agiGain" class="col-hide-mobile">+Ловк <span class="sort-arrow">▲</span></th>
-                            <th data-col="intBase">Разум <span class="sort-arrow">▲</span></th>
-                            <th data-col="intGain" class="col-hide-mobile">+Разм <span class="sort-arrow">▲</span></th>
-                            <th data-col="hp">HP <span class="sort-arrow">▲</span></th>
-                            <th data-col="mp" class="col-hide-mobile">Мана <span class="sort-arrow">▲</span></th>
-                            <th data-col="atk">Атака <span class="sort-arrow">▲</span></th>
-                            <th data-col="def" class="col-hide-small">Броня <span class="sort-arrow">▲</span></th>
-                            <th data-col="atkSpeed" class="col-hide-small">AS <span class="sort-arrow">▲</span></th>
-                            <th data-col="hpRegen" class="col-hide-mobile">РегHP <span class="sort-arrow">▲</span></th>
-                            <th data-col="mpRegen" class="col-hide-mobile">РегМП <span class="sort-arrow">▲</span></th>
-                            <th data-col="speed">Скор <span class="sort-arrow">▲</span></th>
-                            <th data-col="range" class="col-hide-small">Дальн <span class="sort-arrow">▲</span></th>
+                            <th data-col="attackType" data-group="move" class="col-hide-mobile">Тип <span class="sort-arrow">▲</span></th>
+                            <th data-col="strBase" data-group="stats">Сила <span class="sort-arrow">▲</span></th>
+                            <th data-col="strGain" data-group="stats" class="col-hide-mobile">+Сил <span class="sort-arrow">▲</span></th>
+                            <th data-col="agiBase" data-group="stats">Ловк <span class="sort-arrow">▲</span></th>
+                            <th data-col="agiGain" data-group="stats" class="col-hide-mobile">+Ловк <span class="sort-arrow">▲</span></th>
+                            <th data-col="intBase" data-group="stats">Разум <span class="sort-arrow">▲</span></th>
+                            <th data-col="intGain" data-group="stats" class="col-hide-mobile">+Разм <span class="sort-arrow">▲</span></th>
+                            <th data-col="hp" data-group="combat">HP <span class="sort-arrow">▲</span></th>
+                            <th data-col="mp" data-group="combat" class="col-hide-mobile">Мана <span class="sort-arrow">▲</span></th>
+                            <th data-col="atk" data-group="combat">Атака <span class="sort-arrow">▲</span></th>
+                            <th data-col="def" data-group="combat" class="col-hide-small">Броня <span class="sort-arrow">▲</span></th>
+                            <th data-col="atkSpeed" data-group="combat" class="col-hide-small">AS <span class="sort-arrow">▲</span></th>
+                            <th data-col="hpRegen" data-group="regen" class="col-hide-mobile">РегHP <span class="sort-arrow">▲</span></th>
+                            <th data-col="mpRegen" data-group="regen" class="col-hide-mobile">РегМП <span class="sort-arrow">▲</span></th>
+                            <th data-col="speed" data-group="move">Скор <span class="sort-arrow">▲</span></th>
+                            <th data-col="range" data-group="move" class="col-hide-small">Дальн <span class="sort-arrow">▲</span></th>
                         </tr>
                     </thead>
                     <tbody id="balanceBody"></tbody>
@@ -255,6 +300,16 @@
     let sortDir = 1;
 
     const ATTR_LABELS = { strength: 'Сила', agility: 'Ловкость', intelligence: 'Разум' };
+    const TYPE_LABELS = { melee: '<i class="fas fa-fist-raised"></i> Ближний', ranged: '<i class="fas fa-bullseye"></i> Дальний' };
+
+    // Группы колонок: col → group
+    const COL_GROUPS = {
+        strBase: 'stats', strGain: 'stats', agiBase: 'stats', agiGain: 'stats', intBase: 'stats', intGain: 'stats',
+        hp: 'combat', mp: 'combat', atk: 'combat', def: 'combat', atkSpeed: 'combat',
+        hpRegen: 'regen', mpRegen: 'regen',
+        speed: 'move', range: 'move', attackType: 'move'
+    };
+    const activeGroups = new Set(['stats', 'combat', 'regen', 'move']);
 
     function getHeroes() {
         if (typeof HEROES_DATA === 'undefined') return [];
@@ -318,20 +373,23 @@
                 : '';
             const attrClass = 'attr-' + (h.attr || '');
             const attrLabel = ATTR_LABELS[h.attr] || h.attr || '—';
+            const typeClass = 'type-' + (h.attackType || 'melee');
+            const typeLabel = TYPE_LABELS[h.attackType] || h.attackType || '—';
 
             function cell(col, hideClass) {
                 const v = h[col] || 0;
                 let cls = hideClass || '';
                 if (v === 0) cls += ' zero-val';
-                else if (v === extremes[col]?.max && extremes[col]?.max !== extremes[col]?.min) cls += ' best-val';
-                else if (v === extremes[col]?.min && extremes[col]?.max !== extremes[col]?.min && !LOWER_IS_BETTER.has(col)) cls += ' worst-val';
-                // Для atkSpeed: минимум = лучший, не подсвечиваем красным
-                return '<td class="' + cls.trim() + '">' + v + '</td>';
+                else if (extremes[col]?.max && extremes[col]?.max !== extremes[col]?.min && v === extremes[col].max) cls += ' best-val';
+                else if (extremes[col]?.min && extremes[col]?.max !== extremes[col]?.min && v === extremes[col].min && !LOWER_IS_BETTER.has(col)) cls += ' worst-val';
+                const group = COL_GROUPS[col] || '';
+                return '<td class="' + cls.trim() + '" data-group="' + group + '">' + v + '</td>';
             }
 
             return '<tr>' +
                 '<td><div class="hero-name-cell">' + iconHtml + '<a href="' + heroPage + '">' + h.name + '</a></div></td>' +
                 '<td class="' + attrClass + '">' + attrLabel + '</td>' +
+                '<td class="' + typeClass + '" data-group="move">' + typeLabel + '</td>' +
                 cell('strBase') + cell('strGain', 'col-hide-mobile') +
                 cell('agiBase') + cell('agiGain', 'col-hide-mobile') +
                 cell('intBase') + cell('intGain', 'col-hide-mobile') +
@@ -374,8 +432,36 @@
         renderTable();
     });
 
+    // Переключатели групп колонок
+    function updateColumnVisibility() {
+        const table = document.getElementById('balanceTable');
+        // th
+        table.querySelectorAll('th[data-group]').forEach(th => {
+            th.style.display = activeGroups.has(th.dataset.group) ? '' : 'none';
+        });
+        // td
+        table.querySelectorAll('td[data-group]').forEach(td => {
+            td.style.display = activeGroups.has(td.dataset.group) ? '' : 'none';
+        });
+    }
+
+    document.querySelectorAll('.col-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const group = btn.dataset.group;
+            if (activeGroups.has(group)) {
+                activeGroups.delete(group);
+                btn.classList.remove('active');
+            } else {
+                activeGroups.add(group);
+                btn.classList.add('active');
+            }
+            updateColumnVisibility();
+        });
+    });
+
     // Первый рендер
     renderTable();
+    updateColumnVisibility();
 })();
 document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.balance-table-wrap'); });
 </script>

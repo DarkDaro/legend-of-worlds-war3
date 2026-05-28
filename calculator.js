@@ -250,7 +250,7 @@ function renderSlots() {
                 <div class="calc-slot calc-slot-filled ${attrClass}${tempClass}" data-index="${index}" title="${item.name}${!keep ? ' (продаётся)' : ''} — клик для удаления">
                     <div class="calc-slot-icon">${itemIcon(item.id, item.icon, 48, item.type)}</div>
                     <div class="calc-slot-name${!keep ? ' temp-name' : ''}">${item.name}</div>
-                    <div class="calc-slot-cost">${isBossDrop ? '💀 Босс' : cost.toLocaleString('ru-RU') + ' 🪙'}${!keep ? ' <span class="calc-badge-temp">⏳ Продаётся</span>' : ''}</div>
+                    <div class="calc-slot-cost">${isBossDrop ? '<i class="fas fa-skull"></i> Босс' : cost.toLocaleString('ru-RU') + ' <i class="fas fa-coins"></i>'}${!keep ? ' <span class="calc-badge-temp"><i class="fas fa-hourglass-half"></i> Продаётся</span>' : ''}</div>
                     <button class="calc-slot-keep-toggle" data-index="${index}" title="${keep ? 'Пометить как продающийся' : 'Пометить как остающийся'}"><i class="fas fa-${keep ? 'coins' : 'check-circle'}"></i></button>
                     <button class="calc-slot-remove" data-index="${index}" title="Убрать"><i class="fas fa-times"></i></button>
                 </div>`;
@@ -308,30 +308,30 @@ function renderResults() {
     container.innerHTML = `
         <div class="calc-results-total">
             <div class="calc-results-label">Итого</div>
-            <div class="calc-results-value">${stats.totalCost.toLocaleString('ru-RU')} 🪙</div>
+            <div class="calc-results-value">${stats.totalCost.toLocaleString('ru-RU')} <i class="fas fa-coins"></i></div>
         </div>
         <div class="calc-results-breakdown">
             <div class="calc-results-row">
-                <span class="calc-results-row-label">📦 Базовые покупки</span>
-                <span class="calc-results-row-value">${stats.baseCost.toLocaleString('ru-RU')} 🪙</span>
+                <span class="calc-results-row-label"><i class="fas fa-box"></i> Базовые покупки</span>
+                <span class="calc-results-row-value">${stats.baseCost.toLocaleString('ru-RU')} <i class="fas fa-coins"></i></span>
             </div>
             <div class="calc-results-row">
-                <span class="calc-results-row-label">📜 Рецепты</span>
-                <span class="calc-results-row-value">${stats.recipeCost.toLocaleString('ru-RU')} 🪙</span>
+                <span class="calc-results-row-label"><i class="fas fa-scroll"></i> Рецепты</span>
+                <span class="calc-results-row-value">${stats.recipeCost.toLocaleString('ru-RU')} <i class="fas fa-coins"></i></span>
             </div>
             ${stats.bossDropCount > 0 ? `
             <div class="calc-results-row calc-results-boss">
-                <span class="calc-results-row-label">💀 Босс-дропы (${stats.bossDropCount})</span>
+                <span class="calc-results-row-label"><i class="fas fa-skull"></i> Босс-дропы (${stats.bossDropCount})</span>
                 <span class="calc-results-row-value">бесплатно</span>
             </div>` : ''}
             ${stats.refundCost > 0 ? `
             <div class="calc-results-row calc-results-refund">
-                <span class="calc-results-row-label">💰 Возврат от продажи</span>
-                <span class="calc-results-row-value">−${stats.refundCost.toLocaleString('ru-RU')} 🪙</span>
+                <span class="calc-results-row-label"><i class="fas fa-coins"></i> Возврат от продажи</span>
+                <span class="calc-results-row-value">−${stats.refundCost.toLocaleString('ru-RU')} <i class="fas fa-coins"></i></span>
             </div>
             <div class="calc-results-row calc-results-net">
-                <span class="calc-results-row-label">🏷️ Чистые затраты</span>
-                <span class="calc-results-row-value">${stats.netCost.toLocaleString('ru-RU')} 🪙</span>
+                <span class="calc-results-row-label"><i class="fas fa-tag"></i> Чистые затраты</span>
+                <span class="calc-results-row-value">${stats.netCost.toLocaleString('ru-RU')} <i class="fas fa-coins"></i></span>
             </div>` : ''}
         </div>
         <div class="calc-results-summary">
@@ -349,7 +349,7 @@ function renderShoppingList() {
     const components = getDeduplicatedComponents();
     if (components.length === 0) return '';
 
-    let html = '<div class="calc-shopping-title">🛒 Лист покупок</div>';
+    let html = '<div class="calc-shopping-title"><i class="fas fa-shopping-cart"></i> Лист покупок</div>';
     html += '<div class="calc-shopping-list">';
     components.forEach(comp => {
         const totalCost = comp.cost * comp.quantity;
@@ -358,7 +358,7 @@ function renderShoppingList() {
             <div class="calc-shopping-row">
                 <div class="calc-shopping-icon">${itemIcon(comp.itemId, comp.icon, 24, comp.type)}</div>
                 <div class="calc-shopping-name">${comp.name}${qtyStr}</div>
-                <div class="calc-shopping-cost">${totalCost.toLocaleString('ru-RU')} 🪙</div>
+                <div class="calc-shopping-cost">${totalCost.toLocaleString('ru-RU')} <i class="fas fa-coins"></i></div>
             </div>`;
     });
     html += '</div>';
@@ -377,19 +377,19 @@ function renderBuildTree() {
         return;
     }
 
-    let html = '<div class="calc-tree-title">📦 Дерево компонентов</div>';
+    let html = '<div class="calc-tree-title"><i class="fas fa-box"></i> Дерево компонентов</div>';
     stats.items.forEach(({ id, item, keep }) => {
         const cost = calculateItemCost(id);
         const isBossDrop = item.type === 'boss_drop' || (item.tags && item.tags.includes('boss_drop'));
         const hasComponents = item.components && item.components.length > 0;
-        const tempBadge = !keep ? ' <span class="calc-badge-temp">⏳</span>' : '';
+        const tempBadge = !keep ? ' <span class="calc-badge-temp"><i class="fas fa-hourglass-half"></i></span>' : '';
         html += `
             <div class="calc-tree-item">
                 <div class="calc-tree-header ${hasComponents ? 'calc-tree-expandable' : ''}" data-tree-id="${id}">
                     ${hasComponents ? '<i class="fas fa-chevron-right calc-tree-chevron"></i>' : ''}
                     <div class="calc-tree-icon">${itemIcon(item.id, item.icon, 32, item.type)}</div>
                     <div class="calc-tree-name${!keep ? ' temp-name' : ''}">${item.name}${tempBadge}</div>
-                    <div class="calc-tree-cost">${isBossDrop ? '💀 Босс' : cost.toLocaleString('ru-RU') + ' 🪙'}</div>
+                    <div class="calc-tree-cost">${isBossDrop ? '<i class="fas fa-skull"></i> Босс' : cost.toLocaleString('ru-RU') + ' <i class="fas fa-coins"></i>'}</div>
                 </div>
                 <div class="calc-tree-components" data-tree-content="${id}" style="display:none;">
                     ${hasComponents ? renderComponentTree(item.components) : '<p style="color:var(--text-muted);">Базовый предмет</p>'}
@@ -517,7 +517,7 @@ function renderCalcCatalog() {
             <div class="calc-catalog-item ${inBuild ? 'calc-catalog-in-build' : ''}" data-item-id="${id}" title="${item.name}${inBuild ? ' (уже в сборке)' : ''}">
                 <div class="calc-catalog-icon">${itemIcon(item.id, item.icon, 40, item.type)}</div>
                 <div class="calc-catalog-name">${item.name}</div>
-                <div class="calc-catalog-cost">${isBossDrop ? '💀 Босс' : cost.toLocaleString('ru-RU') + ' 🪙'}</div>
+                <div class="calc-catalog-cost">${isBossDrop ? '<i class="fas fa-skull"></i> Босс' : cost.toLocaleString('ru-RU') + ' <i class="fas fa-coins"></i>'}</div>
             </div>`;
     });
     html += '</div>';
@@ -844,7 +844,7 @@ function renderBuildBonuses() {
 
     if (!chips.length) return '';
 
-    return `<div class="calc-bonuses-title">📈 Суммарные бонусы</div><div class="cost-badges">${chips.join('')}</div>`;
+    return `<div class="calc-bonuses-title"><i class="fas fa-chart-line"></i> Суммарные бонусы</div><div class="cost-badges">${chips.join('')}</div>`;
 }
 
 // Получить текущий heroId из селектора или URL

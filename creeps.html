@@ -27,6 +27,22 @@
             margin-bottom: 20px;
             align-items: center;
         }
+        .creep-filters .passive-btn {
+            padding: 6px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        .creep-filters .passive-btn:hover,
+        .creep-filters .passive-btn.active {
+            background: rgba(0, 230, 255, 0.12);
+            border-color: var(--accent-cyan);
+            color: var(--text-primary);
+        }
         .creep-search {
             padding: 7px 12px;
             border-radius: 8px;
@@ -38,6 +54,9 @@
         }
         .creep-search::placeholder { color: var(--text-muted); }
 
+        /* ── Шире контейнер для таблицы ── */
+        .hero-page-container { max-width: 1200px; }
+
         /* ── Таблица ── */
         .creep-table-wrap {
             overflow-x: auto;
@@ -45,15 +64,16 @@
             border: 1px solid var(--glass-border);
             background: var(--glass-bg);
             -webkit-overflow-scrolling: touch;
+            padding-bottom: 8px;
         }
         .creep-table {
             width: 100%;
+            min-width: 900px;
             border-collapse: collapse;
-            font-size: 0.82rem;
-            white-space: nowrap;
+            font-size: 0.85rem;
         }
         .creep-table th {
-            padding: 10px 12px;
+            padding: 12px 14px;
             text-align: left;
             color: var(--text-muted);
             font-weight: 500;
@@ -65,16 +85,19 @@
             background: rgba(13, 27, 42, 0.95);
             backdrop-filter: blur(8px);
             z-index: 2;
+            white-space: nowrap;
         }
         .creep-table th:hover { color: var(--accent-cyan); }
         .creep-table th .sort-arrow { margin-left: 4px; font-size: 0.7rem; opacity: 0.4; }
         .creep-table th.sorted .sort-arrow { opacity: 1; color: var(--accent-cyan); }
         .creep-table td {
-            padding: 8px 12px;
+            padding: 10px 14px;
             border-bottom: 1px solid rgba(255,255,255,0.04);
             color: var(--text-secondary);
+            white-space: nowrap;
         }
         .creep-table tr:hover td { background: rgba(0,230,255,0.04); }
+        .creep-table tr:last-child td { border-bottom: 1px solid var(--glass-border); }
         .creep-table .creep-name-cell {
             display: flex;
             align-items: center;
@@ -98,12 +121,23 @@
         }
         .creep-table .best-val { color: #ffd43b; font-weight: 600; }
         .creep-table .worst-val { color: #ff6b6b; opacity: 0.7; }
+        .creep-table .zero-val { opacity: 0.3; }
         .creep-table .passive-list {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
-            max-width: 200px;
             white-space: normal;
             line-height: 1.4;
+            min-width: 100px;
+        }
+        .creep-table .passive-tag {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(0,230,255,0.08);
+            color: var(--accent-cyan);
+            font-size: 0.75rem;
+            margin: 1px 2px;
+            white-space: nowrap;
         }
 
         /* ── Счётчик ── */
@@ -113,6 +147,37 @@
             margin-bottom: 12px;
         }
 
+        /* ── Переключатели колонок ── */
+        .creep-col-toggles {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+            align-items: center;
+        }
+        .col-toggle-label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-right: 4px;
+        }
+        .col-toggle {
+            padding: 5px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.78rem;
+        }
+        .col-toggle:hover { border-color: var(--accent-cyan); color: var(--text-primary); }
+        .col-toggle.active {
+            background: rgba(0, 230, 255, 0.12);
+            border-color: var(--accent-cyan);
+            color: var(--text-primary);
+        }
+        .col-toggle:not(.active) { opacity: 0.5; }
+
         /* ── Мобильная адаптация ── */
         @media (max-width: 700px) {
             .creep-filters { gap: 6px; }
@@ -120,14 +185,17 @@
             .creep-table { font-size: 0.75rem; }
             .creep-table th, .creep-table td { padding: 6px 8px; }
             .creep-table .col-hide-mobile { display: none; }
-            .creep-table .passive-list { max-width: 120px; }
+            .creep-col-toggles { gap: 5px; }
+            .col-toggle { font-size: 0.72rem; padding: 4px 8px; }
         }
         @media (max-width: 480px) {
             .creep-table { font-size: 0.7rem; }
             .creep-table th, .creep-table td { padding: 5px 6px; }
             .creep-table .creep-icon-placeholder { display: none; }
             .creep-table .col-hide-small { display: none; }
-            .creep-table .passive-list { max-width: 80px; }
+            .creep-col-toggles { gap: 4px; }
+            .col-toggle-label { display: none; }
+            .col-toggle { font-size: 0.68rem; padding: 3px 6px; }
         }
     </style>
     <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/creeps.html">
@@ -156,13 +224,22 @@
         <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="monsters.html">Монстры</a><span class="sep">›</span><span class="current">Крипы</span></div>
         <div class="hero-page-container">
             <div class="panel-header">
-                <div class="detail-icon"><i class="fas fa-spider"></i></div>
+                <div class="detail-icon"><img loading="lazy" src="images/preview.png" alt="" class="detail-logo-img" /></div>
                 <div class="detail-title">Крипы</div>
             </div>
             <p class="detail-description">25 типов крипов на арене. Нажмите на заголовок для сортировки.</p>
 
             <div class="creep-filters">
                 <input type="text" class="creep-search" id="creepSearch" placeholder="Поиск крипа...">
+                <button class="passive-btn active" data-passive="all">Все</button>
+                <button class="passive-btn" data-passive="has"><i class="fas fa-bolt"></i> С пассивками</button>
+                <button class="passive-btn" data-passive="none"><i class="fas fa-minus"></i> Без пассивок</button>
+            </div>
+            <div class="creep-col-toggles">
+                <span class="col-toggle-label">Колонки:</span>
+                <button class="col-toggle active" data-group="defense"><i class="fas fa-shield-alt"></i> Защита</button>
+                <button class="col-toggle active" data-group="reward"><i class="fas fa-coins"></i> Награда</button>
+                <button class="col-toggle active" data-group="passives"><i class="fas fa-bolt"></i> Пассивки</button>
             </div>
             <div class="creep-count" id="creepCount"></div>
             <div class="creep-table-wrap">
@@ -170,14 +247,15 @@
                     <thead>
                         <tr>
                             <th data-col="name">Крип <span class="sort-arrow">▲</span></th>
+                            <th data-col="level">Ур. <span class="sort-arrow">▲</span></th>
                             <th data-col="hp">HP <span class="sort-arrow">▲</span></th>
                             <th data-col="atk">Атака <span class="sort-arrow">▲</span></th>
-                            <th data-col="def" class="col-hide-mobile">Броня <span class="sort-arrow">▲</span></th>
-                            <th data-col="regen" class="col-hide-mobile">Реген <span class="sort-arrow">▲</span></th>
-                            <th data-col="magicRes" class="col-hide-mobile">Маг.сопр. <span class="sort-arrow">▲</span></th>
-                            <th data-col="gold" class="col-hide-small">Золото <span class="sort-arrow">▲</span></th>
-                            <th data-col="xp" class="col-hide-small">Опыт <span class="sort-arrow">▲</span></th>
-                            <th data-col="passives">Пассивки <span class="sort-arrow">▲</span></th>
+                            <th data-col="def" data-group="defense" class="col-hide-mobile">Броня <span class="sort-arrow">▲</span></th>
+                            <th data-col="regen" data-group="defense" class="col-hide-mobile">Реген <span class="sort-arrow">▲</span></th>
+                            <th data-col="magicRes" data-group="defense" class="col-hide-mobile">Маг.сопр. <span class="sort-arrow">▲</span></th>
+                            <th data-col="gold" data-group="reward" class="col-hide-small">Золото <span class="sort-arrow">▲</span></th>
+                            <th data-col="xp" data-group="reward" class="col-hide-small">Опыт <span class="sort-arrow">▲</span></th>
+                            <th data-col="passives" data-group="passives">Пассивки <span class="sort-arrow">▲</span></th>
                         </tr>
                     </thead>
                     <tbody id="creepBody"></tbody>
@@ -207,16 +285,22 @@
 (function() {
     'use strict';
 
-    // Данные из creeps-db.js
     var CREEPS = typeof CREEPS_DB !== 'undefined' ? CREEPS_DB : [];
 
     var searchQuery = '';
+    var passiveFilter = 'all';
     var sortCol = 'name';
     var sortDir = 1;
+
+    // Группы колонок
+    var COL_GROUPS = { def: 'defense', regen: 'defense', magicRes: 'defense', gold: 'reward', xp: 'reward', passives: 'passives' };
+    var activeGroups = { defense: true, reward: true, passives: true };
 
     function getCreeps() {
         return CREEPS.filter(function(c) {
             if (searchQuery && !c.name.toLowerCase().includes(searchQuery) && !c.code.toLowerCase().includes(searchQuery)) return false;
+            if (passiveFilter === 'has' && (!c.passives || !c.passives.length)) return false;
+            if (passiveFilter === 'none' && c.passives && c.passives.length) return false;
             return true;
         });
     }
@@ -234,7 +318,7 @@
     }
 
     function findExtremes(creeps) {
-        var numCols = ['hp', 'atk', 'def', 'regen', 'magicRes', 'gold', 'xp'];
+        var numCols = ['level', 'hp', 'atk', 'def', 'regen', 'magicRes', 'gold', 'xp'];
         var extremes = {};
         numCols.forEach(function(col) {
             var vals = creeps.map(function(c) { return c[col] || 0; });
@@ -272,15 +356,24 @@
                 var v = c[col] || 0;
                 var cls = hideClass || '';
                 if (v === 0) cls += ' zero-val';
-                else if (v === extremes[col] && extremes[col].max !== extremes[col].min && v === extremes[col].max) cls += ' best-val';
-                else if (v === extremes[col] && extremes[col].max !== extremes[col].min && v === extremes[col].min) cls += ' worst-val';
-                return '<td class="' + cls.trim() + '">' + v + '</td>';
+                else if (extremes[col] && extremes[col].max !== extremes[col].min && v === extremes[col].max) cls += ' best-val';
+                else if (extremes[col] && extremes[col].max !== extremes[col].min && v === extremes[col].min) cls += ' worst-val';
+                var group = COL_GROUPS[col] || '';
+                return '<td class="' + cls.trim() + '" data-group="' + group + '">' + v + '</td>';
+            }
+
+            var passiveHtml = '—';
+            if (Array.isArray(c.passives) && c.passives.length) {
+                passiveHtml = c.passives.map(function(p) {
+                    return '<span class="passive-tag">' + (CREEP_PASSIVE_LABELS[p] || p) + '</span>';
+                }).join('');
             }
 
             return '<tr>' +
                 '<td><div class="creep-name-cell"><div class="creep-icon-placeholder">' + initial + '</div><span>' + c.name + '</span></div></td>' +
+                cell('level') +
                 cell('hp') + cell('atk') + cell('def', 'col-hide-mobile') + cell('regen', 'col-hide-mobile') + cell('magicRes', 'col-hide-mobile') + cell('gold', 'col-hide-small') + cell('xp', 'col-hide-small') +
-                '<td><div class="passive-list">' + (Array.isArray(c.passives) && c.passives.length ? c.passives.map(function(p) { return CREEP_PASSIVE_LABELS[p] || p; }).join(', ') : (c.passives || '—')) + '</div></td>' +
+                '<td data-group="passives"><div class="passive-list">' + passiveHtml + '</div></td>' +
                 '</tr>';
         }).join('');
     }
@@ -296,6 +389,36 @@
         });
     });
 
+    // Фильтр по пассивкам
+    document.querySelectorAll('.passive-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.passive-btn').forEach(function(b) { b.classList.remove('active'); });
+            passiveFilter = btn.dataset.passive;
+            btn.classList.add('active');
+            renderTable();
+        });
+    });
+
+    // Переключатели групп колонок
+    function updateColumnVisibility() {
+        var table = document.getElementById('creepTable');
+        table.querySelectorAll('th[data-group]').forEach(function(th) {
+            th.style.display = activeGroups[th.dataset.group] ? '' : 'none';
+        });
+        table.querySelectorAll('td[data-group]').forEach(function(td) {
+            td.style.display = activeGroups[td.dataset.group] ? '' : 'none';
+        });
+    }
+
+    document.querySelectorAll('.col-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var group = btn.dataset.group;
+            activeGroups[group] = !activeGroups[group];
+            btn.classList.toggle('active', activeGroups[group]);
+            updateColumnVisibility();
+        });
+    });
+
     // Поиск
     document.getElementById('creepSearch').addEventListener('input', function(e) {
         searchQuery = e.target.value.toLowerCase().trim();
@@ -303,6 +426,7 @@
     });
 
     renderTable();
+    updateColumnVisibility();
 })();
 document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.creep-table-wrap'); });
 </script>
