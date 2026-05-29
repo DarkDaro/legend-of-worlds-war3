@@ -68,7 +68,6 @@
         }
         .creep-table {
             width: 100%;
-            min-width: 900px;
             border-collapse: collapse;
             font-size: 0.85rem;
         }
@@ -179,20 +178,22 @@
         .col-toggle:not(.active) { opacity: 0.5; }
 
         /* ── Мобильная адаптация ── */
+        @media (max-width: 900px) {
+            .creep-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .creep-table { min-width: 800px; }
+        }
         @media (max-width: 700px) {
             .creep-filters { gap: 6px; }
             .creep-search { width: 100%; order: -1; }
-            .creep-table { font-size: 0.75rem; }
+            .creep-table { min-width: 600px; font-size: 0.75rem; }
             .creep-table th, .creep-table td { padding: 6px 8px; }
-            .creep-table .col-hide-mobile { display: none; }
             .creep-col-toggles { gap: 5px; }
             .col-toggle { font-size: 0.72rem; padding: 4px 8px; }
         }
         @media (max-width: 480px) {
-            .creep-table { font-size: 0.7rem; }
+            .creep-table { min-width: 380px; font-size: 0.7rem; }
             .creep-table th, .creep-table td { padding: 5px 6px; }
             .creep-table .creep-icon-placeholder { display: none; }
-            .creep-table .col-hide-small { display: none; }
             .creep-col-toggles { gap: 4px; }
             .col-toggle-label { display: none; }
             .col-toggle { font-size: 0.68rem; padding: 3px 6px; }
@@ -359,7 +360,8 @@
                 else if (extremes[col] && extremes[col].max !== extremes[col].min && v === extremes[col].max) cls += ' best-val';
                 else if (extremes[col] && extremes[col].max !== extremes[col].min && v === extremes[col].min) cls += ' worst-val';
                 var group = COL_GROUPS[col] || '';
-                return '<td class="' + cls.trim() + '" data-group="' + group + '">' + v + '</td>';
+                if (group && !activeGroups[group]) return '';
+                return '<td class="' + cls.trim() + '">' + v + '</td>';
             }
 
             var passiveHtml = '—';
@@ -368,16 +370,17 @@
                     return '<span class="passive-tag">' + (CREEP_PASSIVE_LABELS[p] || p) + '</span>';
                 }).join('');
             }
+            var passiveTd = activeGroups.passives
+                ? '<td><div class="passive-list">' + passiveHtml + '</div></td>'
+                : '';
 
             return '<tr>' +
                 '<td><div class="creep-name-cell"><div class="creep-icon-placeholder">' + initial + '</div><span>' + c.name + '</span></div></td>' +
                 cell('level') +
                 cell('hp') + cell('atk') + cell('def', 'col-hide-mobile') + cell('regen', 'col-hide-mobile') + cell('magicRes', 'col-hide-mobile') + cell('gold', 'col-hide-small') + cell('xp', 'col-hide-small') +
-                '<td data-group="passives"><div class="passive-list">' + passiveHtml + '</div></td>' +
+                passiveTd +
                 '</tr>';
         }).join('');
-        // Применить видимость колонок после перерисовки
-        if (typeof updateColumnVisibility === 'function') updateColumnVisibility();
     }
 
     // Сортировка
@@ -402,22 +405,17 @@
     });
 
     // Переключатели групп колонок
-    function updateColumnVisibility() {
-        var table = document.getElementById('creepTable');
-        table.querySelectorAll('th[data-group]').forEach(function(th) {
-            th.style.display = activeGroups[th.dataset.group] ? '' : 'none';
-        });
-        table.querySelectorAll('td[data-group]').forEach(function(td) {
-            td.style.display = activeGroups[td.dataset.group] ? '' : 'none';
-        });
-    }
-
     document.querySelectorAll('.col-toggle').forEach(function(btn) {
         btn.addEventListener('click', function() {
             var group = btn.dataset.group;
             activeGroups[group] = !activeGroups[group];
             btn.classList.toggle('active', activeGroups[group]);
-            updateColumnVisibility();
+            // Обновить thead
+            document.querySelectorAll('.creep-table th[data-group]').forEach(function(th) {
+                th.style.display = activeGroups[th.dataset.group] ? '' : 'none';
+            });
+            // Перерисовать tbody с учётом групп
+            renderTable();
         });
     });
 
@@ -428,7 +426,6 @@
     });
 
     renderTable();
-    updateColumnVisibility();
 })();
 document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.creep-table-wrap'); });
 </script>
