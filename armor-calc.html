@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="hero-data.js" defer></script>
-    <script src="game-constants.js"></script>
+    <script src="game-constants.js" defer"></script>
     <script src="search-index.js" defer></script>
     <script src="search.js" defer></script>
     <script src="items-db.js" defer></script>
@@ -306,6 +306,7 @@
     </footer>
 
     <script>
+    document.addEventListener('DOMContentLoaded', function() {
         // === Утилита: ограничение значения input === (защита от 99999999 и отрицательных чисел)
         function clampInput(el, min, max) {
             const v = parseFloat(el.value);
@@ -380,6 +381,7 @@
         document.getElementById('agiArmorNote').textContent = '(+' + GAME_CONSTANTS.AGI_ARMOR_FACTOR + ' защиты за ед.)';
 
         calculate();
+    });
     </script>
 <script>
 // Scroll-reveal — результаты калькулятора брони

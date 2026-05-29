@@ -290,6 +290,7 @@
     </footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
 (function() {
     'use strict';
 
@@ -464,7 +465,7 @@
     // Первый рендер
     renderTable();
 })();
-document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.balance-table-wrap'); });
+}); // end DOMContentLoaded
 </script>
 </body>
 </html>

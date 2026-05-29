@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="hero-data.js" defer></script>
-    <script src="hero-builds.js"></script>
-    <script src="jass-data.js"></script>
-    <script src="bot-builds.js"></script>
-    <script src="item-bonus-parser.js"></script>
-    <script src="game-constants.js"></script>
+    <script src="hero-builds.js" defer"></script>
+    <script src="jass-data.js" defer"></script>
+    <script src="bot-builds.js" defer"></script>
+    <script src="item-bonus-parser.js" defer"></script>
+    <script src="game-constants.js" defer"></script>
     <script src="search-index.js" defer></script>
     <script src="search.js" defer></script>
     <script src="items-db.js" defer></script>
@@ -541,6 +541,8 @@ var ATTR_LABELS = { strength: 'Сила', agility: 'Ловкость', intellige
 var ATTR_CLASS_MAP = { strength: 'compare-attr-strength', agility: 'compare-attr-agility', intelligence: 'compare-attr-intelligence' };
 var ROLE_LABELS = { tank: 'Танк', bruiser: 'Рубака', damager: 'Дамагер', assassin: 'Убийца', initiator: 'Инициатор', controller: 'Контролёр', healer: 'Целитель', support: 'Помощник' };
 
+document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
 HEROES_DATA.forEach(function(hero) {
     if (hero.isAltForm || hero.wip || hero.noPage) return; // пропускаем альт-формы, WIP и героев без страницы
     HERO_COMPARE_DATA[hero.heroId] = {
@@ -568,6 +570,7 @@ HEROES_DATA.forEach(function(hero) {
         }
     };
 });
+}); // end DOMContentLoaded for HEROES_DATA
 
 var SELECT_IDS = ['hero1', 'hero2', 'hero3'];
 
