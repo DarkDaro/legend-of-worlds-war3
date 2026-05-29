@@ -1,0 +1,278 @@
+/* ========== Карта арены ========== */
+
+/* Тулбар */
+.map-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: var(--glass-bg, rgba(13, 27, 42, 0.6));
+    border: 1px solid var(--glass-border, rgba(0, 229, 255, 0.12));
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.map-toolbar-left { display: flex; align-items: center; gap: 12px; }
+.map-toolbar-right { display: flex; align-items: center; gap: 8px; }
+
+/* Легенда */
+.map-legend {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.map-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: #8aa0c0;
+}
+.map-legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.map-legend-dot.boss { background: #ff4444; }
+.map-legend-dot.shop { background: #44ff88; }
+.map-legend-dot.duel { background: #ffaa44; }
+.map-legend-dot.spawn { background: #4488ff; }
+.map-legend-dot.fountain { background: #aa44ff; }
+.map-legend-dot.creep { background: #88aacc; }
+.map-legend-dot.teleport { background: #00e5ff; }
+.map-legend-dot.teleport-out { background: #44ff88; border: 2px dashed #77ffaa; }
+.map-legend-dot.megacreep { background: #ff66aa; }
+
+/* Кнопки редактирования */
+.map-edit-btn {
+    background: #1a3a5c;
+    color: #8aa0c0;
+    border: 1px solid #2a5070;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.map-edit-btn:hover { background: #2a5070; color: #e0e8f0; }
+.map-edit-btn.active {
+    background: #00e5ff22;
+    color: #00e5ff;
+    border-color: #00e5ff;
+}
+#copyCoordsBtn { display: none; }
+#copyCoordsBtn.visible { display: inline-flex; }
+
+/* Панель выбора типа */
+.map-type-selector {
+    display: none;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+    padding: 10px 14px;
+    background: var(--glass-bg, rgba(13, 27, 42, 0.6));
+    border: 1px solid var(--glass-border, rgba(0, 229, 255, 0.12));
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.map-type-selector.visible {
+    display: flex;
+}
+.map-type-selector-label {
+    font-size: 0.78rem;
+    color: #5a7a9a;
+    width: 100%;
+    margin-bottom: 4px;
+}
+.map-type-btn {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    border: 1px solid #2a5070;
+    background: #1a3a5c;
+    color: #8aa0c0;
+    transition: all 0.2s;
+}
+.map-type-btn:hover { background: #2a5070; color: #e0e8f0; }
+.map-type-btn.active { border-color: #00e5ff; color: #00e5ff; background: #00e5ff22; }
+.map-type-btn.type-boss { border-color: #ff4444; }
+.map-type-btn.type-boss.active { color: #ff4444; background: #ff444422; border-color: #ff4444; }
+.map-type-btn.type-shop { border-color: #44ff88; }
+.map-type-btn.type-shop.active { color: #44ff88; background: #44ff8822; border-color: #44ff88; }
+.map-type-btn.type-duel { border-color: #ffaa44; }
+.map-type-btn.type-duel.active { color: #ffaa44; background: #ffaa4422; border-color: #ffaa44; }
+.map-type-btn.type-spawn { border-color: #4488ff; }
+.map-type-btn.type-spawn.active { color: #4488ff; background: #4488ff22; border-color: #4488ff; }
+.map-type-btn.type-fountain { border-color: #aa44ff; }
+.map-type-btn.type-fountain.active { color: #aa44ff; background: #aa44ff22; border-color: #aa44ff; }
+.map-type-btn.type-creep { border-color: #88aacc; }
+.map-type-btn.type-creep.active { color: #88aacc; background: #88aacc22; border-color: #88aacc; }
+.map-type-btn.type-teleport { border-color: #00e5ff; }
+.map-type-btn.type-teleport.active { color: #00e5ff; background: #00e5ff22; border-color: #00e5ff; }
+.map-type-btn.type-teleport-out { border-color: #44ff88; border-style: dashed; }
+.map-type-btn.type-teleport-out.active { color: #44ff88; background: #44ff8822; border-color: #44ff88; }
+.map-type-btn.type-megacreep { border-color: #ff66aa; }
+.map-type-btn.type-megacreep.active { color: #ff66aa; background: #ff66aa22; border-color: #ff66aa; }
+
+/* Контейнер карты — стекломорфизм + свечение */
+.map-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--glass-bg, rgba(13, 27, 42, 0.6));
+    border: 1px solid var(--glass-border, rgba(0, 229, 255, 0.12));
+    border-radius: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+        0 0 80px rgba(0, 229, 255, 0.07),
+        0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Обёртка картинки + фоновое свечение */
+.map-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 97.4%;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 50%, rgba(0, 229, 255, 0.06) 0%, transparent 60%);
+}
+
+.map-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Маркеры */
+.map-marker {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 10;
+    user-select: none;
+}
+.map-marker:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+    box-shadow: 0 0 12px currentColor;
+}
+.map-marker.dragging {
+    opacity: 0.8;
+    z-index: 100;
+    cursor: grabbing;
+}
+.map-marker.boss {
+    background: #ff4444; color: #fff; border: 2px solid #ff7777;
+    box-shadow: 0 0 6px rgba(255, 68, 68, 0.35);
+    animation: markerPulseRed 3s ease-in-out infinite;
+}
+.map-marker.shop { background: #44ff88; color: #0a1628; border: 2px solid #77ffaa; box-shadow: 0 0 4px rgba(68, 255, 136, 0.2); }
+.map-marker.duel { background: #ffaa44; color: #0a1628; border: 2px solid #ffcc77; box-shadow: 0 0 4px rgba(255, 170, 68, 0.2); }
+.map-marker.spawn { background: #4488ff; color: #fff; border: 2px solid #77aaff; box-shadow: 0 0 4px rgba(68, 136, 255, 0.2); }
+.map-marker.fountain { background: #aa44ff; color: #fff; border: 2px solid #cc77ff; box-shadow: 0 0 4px rgba(170, 68, 255, 0.2); }
+.map-marker.creep { background: #88aacc; color: #0a1628; border: 2px solid #aaccee; width: 20px; height: 20px; font-size: 0.6rem; }
+.map-marker.teleport {
+    background: #00e5ff; color: #0a1628; border: 2px solid #66f0ff;
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.35);
+    animation: markerPulseCyan 2.5s ease-in-out infinite;
+    width: 22px; height: 22px; font-size: 0.6rem;
+}
+.map-marker.teleport-out { background: transparent; color: #44ff88; border: 2px dashed #77ffaa; box-shadow: 0 0 5px rgba(68, 255, 136, 0.2); width: 22px; height: 22px; font-size: 0.6rem; }
+.map-marker.megacreep {
+    background: #ff66aa; color: #0a1628; border: 2px solid #ff99cc;
+    box-shadow: 0 0 6px rgba(255, 102, 170, 0.3);
+}
+
+@keyframes markerPulseRed {
+    0%, 100% { box-shadow: 0 0 6px rgba(255, 68, 68, 0.35); }
+    50% { box-shadow: 0 0 14px rgba(255, 68, 68, 0.6); }
+}
+@keyframes markerPulseCyan {
+    0%, 100% { box-shadow: 0 0 8px rgba(0, 229, 255, 0.35); }
+    50% { box-shadow: 0 0 16px rgba(0, 229, 255, 0.6); }
+}
+
+/* Инфо-панель */
+.map-info-panel {
+    padding: 16px 20px;
+    background: rgba(13, 27, 42, 0.7);
+    border-top: 1px solid var(--glass-border, rgba(0, 229, 255, 0.12));
+    min-height: 80px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.map-info-panel.empty {
+    color: #5a7a9a;
+    text-align: center;
+    font-size: 0.92rem;
+}
+.map-info-panel h3 {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+    color: #e0e8f0;
+}
+.map-info-panel p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: #8aa0c0;
+    line-height: 1.5;
+}
+
+/* Вывод координат */
+.map-coords-output {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: rgba(13, 27, 42, 0.6);
+    border: 1px solid var(--glass-border, rgba(0, 229, 255, 0.12));
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.82rem;
+    color: #00e5ff;
+    display: none;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.map-coords-output.visible { display: block; }
+
+/* ── Мобильная адаптация ── */
+@media (max-width: 900px) {
+    .map-image-wrapper { padding-bottom: 97.4%; }
+}
+@media (max-width: 700px) {
+    .map-toolbar { flex-direction: column; gap: 10px; align-items: stretch; }
+    .map-toolbar-right { justify-content: flex-end; }
+    .map-legend { gap: 8px; }
+    .map-legend-item { font-size: 0.72rem; }
+    .map-marker { width: 24px; height: 24px; font-size: 0.65rem; }
+    .map-info-panel { padding: 12px 14px; min-height: 60px; }
+    .map-info-panel h3 { font-size: 0.95rem; }
+    .map-info-panel p { font-size: 0.82rem; }
+    .map-edit-btn { font-size: 0.75rem; padding: 5px 10px; }
+}
+@media (max-width: 480px) {
+    .map-legend { gap: 6px; }
+    .map-legend-item { font-size: 0.65rem; }
+    .map-legend-dot { width: 8px; height: 8px; }
+    .map-marker { width: 20px; height: 20px; font-size: 0.55rem; }
+    .map-info-panel { padding: 10px 12px; min-height: 50px; }
+    .map-info-panel h3 { font-size: 0.88rem; }
+    .map-info-panel p { font-size: 0.78rem; }
+    .map-coords-output { font-size: 0.72rem; padding: 8px 10px; }
+    .detail-description { font-size: 0.82rem; }
+}
