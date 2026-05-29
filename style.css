@@ -119,6 +119,10 @@ h1 {
     margin-top: 20px;
     padding-top: 24px;
 }
+.hero-page-links .calc-link-btn {
+    margin-bottom: 20px;
+    white-space: nowrap;
+}
 @media (max-width: 1200px) {
     .hero-grid { grid-template-columns: repeat(5, 1fr); }
 }
@@ -3504,6 +3508,9 @@ h1 {
     border-radius: 16px;
     padding: 24px;
 }
+.version-card-mini + .version-card-mini {
+    margin-top: 12px;
+}
 .change-list-mini {
     list-style: none;
     padding: 0;
@@ -4162,6 +4169,11 @@ h1 {
     text-align: center;
     overflow: hidden;
     margin: -24px -32px 0;
+}
+
+.page-support .wiki-container {
+    overflow: hidden;
+}
     padding: 60px 32px;
 }
 .support-banner-bg {
@@ -5907,6 +5919,52 @@ body.page-map-changes::after {
     box-shadow: 0 0 12px #00e6ff33;
     transform: translateY(-2px);
 }
+
+.cross-links {
+    margin-top: 24px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Иконки с цветами */
+.icon-green { color: #51cf66; }
+.icon-gold { color: #ffd43b; }
+.icon-red { color: #ff6b6b; }
+.icon-orange { color: #ff922b; }
+.icon-blue { color: #74c0fc; }
+.icon-danger { color: #ff5555; }
+.icon-warn { color: #ff7777; }
+
+/* Утилиты */
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.mt-8 { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+.text-muted-sm { font-size: 0.85rem; color: var(--text-muted); }
+
+/* Цвета атрибутов */
+.attr-str { color: #ff5555; }
+.attr-agi { color: #55ff55; }
+.attr-int { color: #55aaff; }
+.attr-chaos { color: #bf7fff; }
+.attr-mech { color: #ff9944; }
+.attr-gold { color: #ffcc00; }
+
+/* Соцсети — брендовые цвета */
+.social-vk { color: #4a76a8; }
+.social-tg { color: #26a5e4; }
+.social-dc { color: #5865f2; }
+.social-yt { color: #ff0000; }
+.social-bolt { color: #ff8800; }
+
+/* Иконки методов поддержки */
+.method-icon i { font-size: 2rem; }
+.method-icon .fa-credit-card { color: var(--accent-cyan); }
+
+/* Bot builds */
+.bb-slot-empty { color: #666; font-size: 0.6rem; }
+.bb-level-badge { color: #ff6b6b; font-size: 0.75rem; }
 
 /* ===== Калькуляторы брони и формул ===== */
 .calc-page-note {
