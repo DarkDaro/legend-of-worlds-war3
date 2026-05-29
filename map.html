@@ -11,160 +11,11 @@
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="map-data.js"></script>
+    <link rel="stylesheet" href="map.css">
+    <script src="map-data.js" defer></script>
     <script src="icon-loader.js" defer></script>
     <script src="analytics.js" defer></script>
     <script src="ui-effects.js" defer></script>
-    <style>
-        .map-toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            padding: 12px 16px;
-            background: #0a1628;
-            border: 1px solid #1a3a5c;
-            border-radius: 8px;
-        }
-        .map-toolbar-left { display: flex; align-items: center; gap: 12px; }
-        .map-toolbar-right { display: flex; align-items: center; gap: 8px; }
-        .map-legend {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .map-legend-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            color: #8aa0c0;
-        }
-        .map-legend-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-        .map-legend-dot.boss { background: #ff4444; }
-        .map-legend-dot.shop { background: #44ff88; }
-        .map-legend-dot.duel { background: #ffaa44; }
-        .map-legend-dot.spawn { background: #4488ff; }
-        .map-legend-dot.fountain { background: #aa44ff; }
-
-        .map-edit-btn {
-            background: #1a3a5c;
-            color: #8aa0c0;
-            border: 1px solid #2a5070;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.82rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .map-edit-btn:hover { background: #2a5070; color: #e0e8f0; }
-        .map-edit-btn.active {
-            background: #00e5ff22;
-            color: #00e5ff;
-            border-color: #00e5ff;
-        }
-
-        .map-container {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            background: #050a12;
-            border: 1px solid #1a3a5c;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .map-image-wrapper {
-            position: relative;
-            width: 100%;
-            padding-bottom: 97.4%;
-            overflow: hidden;
-        }
-        .map-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: #050a12;
-        }
-        .map-marker {
-            position: absolute;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.72rem;
-            font-weight: 700;
-            transition: transform 0.2s, box-shadow 0.2s;
-            z-index: 10;
-            user-select: none;
-        }
-        .map-marker:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 12px currentColor;
-        }
-        .map-marker.dragging {
-            opacity: 0.8;
-            z-index: 100;
-            cursor: grabbing;
-        }
-        .map-marker.boss { background: #ff4444; color: #fff; border: 2px solid #ff7777; }
-        .map-marker.shop { background: #44ff88; color: #0a1628; border: 2px solid #77ffaa; }
-        .map-marker.duel { background: #ffaa44; color: #0a1628; border: 2px solid #ffcc77; }
-        .map-marker.spawn { background: #4488ff; color: #fff; border: 2px solid #77aaff; }
-        .map-marker.fountain { background: #aa44ff; color: #fff; border: 2px solid #cc77ff; }
-
-        .map-info-panel {
-            padding: 16px 20px;
-            background: #0d1b2a;
-            border-top: 1px solid #1a3a5c;
-            min-height: 80px;
-        }
-        .map-info-panel.empty {
-            color: #5a7a9a;
-            text-align: center;
-            font-size: 0.92rem;
-        }
-        .map-info-panel h3 {
-            margin: 0 0 8px;
-            font-size: 1.1rem;
-            color: #e0e8f0;
-        }
-        .map-info-panel p {
-            margin: 0;
-            font-size: 0.88rem;
-            color: #8aa0c0;
-            line-height: 1.5;
-        }
-        .map-coords-output {
-            margin-top: 12px;
-            padding: 10px 14px;
-            background: #091421;
-            border: 1px solid #1a3a5c;
-            border-radius: 6px;
-            font-family: monospace;
-            font-size: 0.82rem;
-            color: #00e5ff;
-            display: none;
-        }
-        .map-coords-output.visible { display: block; }
-
-        @media (max-width: 700px) {
-            .map-image-wrapper { padding-bottom: 100%; }
-            .map-marker { width: 22px; height: 22px; font-size: 0.6rem; }
-            .map-info-panel { padding: 12px 14px; }
-            .map-toolbar { flex-direction: column; gap: 10px; }
-        }
-    </style>
     <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/map.html">
 </head>
 <body class="page-guides">
@@ -180,7 +31,7 @@
             <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
             <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
             <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
-            <a href="guides.html" class="nav-link active"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="map.html" class="nav-link active"><i class="fas fa-map"></i> Карта</a>
             <a href="faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
             <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
             <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
@@ -193,7 +44,7 @@
 
         <div class="hero-page-container">
             <div class="panel-header">
-                <div class="detail-icon"><i class="fas fa-map"></i></div>
+                <div class="detail-icon"><img loading="lazy" src="images/preview.png" alt="" class="detail-logo-img" /></div>
                 <div class="detail-title">Карта арены</div>
             </div>
             <p class="detail-description">Интерактивная карта Арены Даро. Кликните на маркер для информации. Включите режим редактирования, чтобы перетаскивать маркеры.</p>
@@ -206,24 +57,58 @@
                         <div class="map-legend-item"><div class="map-legend-dot duel"></div> Арена</div>
                         <div class="map-legend-item"><div class="map-legend-dot spawn"></div> База</div>
                         <div class="map-legend-item"><div class="map-legend-dot fountain"></div> Фонтан</div>
+                        <div class="map-legend-item"><div class="map-legend-dot creep"></div> Крипы</div>
+                        <div class="map-legend-item"><div class="map-legend-dot teleport"></div> Телепорт (вход)</div>
+                        <div class="map-legend-item"><div class="map-legend-dot teleport-out"></div> Телепорт (выход)</div>
+                        <div class="map-legend-item"><div class="map-legend-dot megacreep"></div> Мегакрип</div>
                     </div>
                 </div>
                 <div class="map-toolbar-right">
                     <button id="editModeBtn" class="map-edit-btn"><i class="fas fa-edit"></i> Редактирование</button>
-                    <button id="copyCoordsBtn" class="map-edit-btn" style="display:none;"><i class="fas fa-copy"></i> Копировать</button>
+                    <button id="copyCoordsBtn" class="map-edit-btn"><i class="fas fa-copy"></i> Копировать</button>
                 </div>
+            </div>
+
+            <div class="map-type-selector" id="typeSelector">
+                <div class="map-type-selector-label">Тип нового маркера (клик на карту = добавить):</div>
+                <button class="map-type-btn type-boss active" data-type="boss"><i class="fas fa-skull-crossbones"></i> Босс</button>
+                <button class="map-type-btn type-shop" data-type="shop">$ Магазин</button>
+                <button class="map-type-btn type-duel" data-type="duel">D Арена</button>
+                <button class="map-type-btn type-spawn" data-type="spawn">B База</button>
+                <button class="map-type-btn type-fountain" data-type="fountain"><i class="fas fa-tint"></i> Фонтан</button>
+                <button class="map-type-btn type-creep" data-type="creep">C Крипы</button>
+                <button class="map-type-btn type-teleport" data-type="teleport"><i class="fas fa-bolt"></i> Телепорт (вход)</button>
+                <button class="map-type-btn type-teleport-out" data-type="teleport-out"><i class="fas fa-location-arrow"></i> Телепорт (выход)</button>
+                <button class="map-type-btn type-megacreep" data-type="megacreep">M Мегакрип</button>
             </div>
 
             <div class="map-container">
                 <div class="map-image-wrapper" id="mapWrapper">
-                    <img loading="lazy" src="images/maplows.png" alt="Карта арены" class="map-image" id="mapImage" />
+                    <img src="images/maplows.png" alt="Карта арены" class="map-image" id="mapImage" />
                 </div>
                 <div class="map-info-panel empty" id="mapInfoPanel">
                     Кликните на маркер, чтобы узнать о зоне
                 </div>
-                <div class="map-coords-output" id="coordsOutput"></div>
             </div>
+            <div class="map-coords-output" id="coordsOutput"></div>
         </div>
     </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img loading="lazy" src="images/preview.png" alt="" width="28" height="28" class="footer-logo-img"> Legend of Worlds</span>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
+        </div>
+    </footer>
 </body>
 </html>
