@@ -70,7 +70,6 @@
         }
         .balance-table {
             width: 100%;
-            min-width: 1100px;
             border-collapse: collapse;
             font-size: 0.85rem;
             white-space: nowrap;
@@ -174,21 +173,23 @@
         .col-toggle:not(.active) { opacity: 0.5; }
 
         /* ── Мобильная адаптация ── */
+        @media (max-width: 900px) {
+            .balance-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .balance-table { min-width: 900px; }
+        }
         @media (max-width: 700px) {
             .balance-filters { gap: 6px; }
             .balance-search { width: 100%; order: -1; }
-            .balance-table { font-size: 0.75rem; }
+            .balance-table { min-width: 700px; font-size: 0.75rem; }
             .balance-table th, .balance-table td { padding: 6px 8px; }
             .balance-table .hero-name-cell img { width: 22px; height: 22px; }
-            .balance-table .col-hide-mobile { display: none; }
             .balance-col-toggles { gap: 5px; }
             .col-toggle { font-size: 0.72rem; padding: 4px 8px; }
         }
         @media (max-width: 480px) {
-            .balance-table { font-size: 0.7rem; }
+            .balance-table { min-width: 500px; font-size: 0.7rem; }
             .balance-table th, .balance-table td { padding: 5px 6px; }
             .balance-table .hero-name-cell img { display: none; }
-            .balance-table .col-hide-small { display: none; }
             .balance-col-toggles { gap: 4px; }
             .col-toggle-label { display: none; }
             .col-toggle { font-size: 0.68rem; padding: 3px 6px; }
@@ -383,13 +384,20 @@
                 else if (extremes[col]?.max && extremes[col]?.max !== extremes[col]?.min && v === extremes[col].max) cls += ' best-val';
                 else if (extremes[col]?.min && extremes[col]?.max !== extremes[col]?.min && v === extremes[col].min && !LOWER_IS_BETTER.has(col)) cls += ' worst-val';
                 const group = COL_GROUPS[col] || '';
-                return '<td class="' + cls.trim() + '" data-group="' + group + '">' + v + '</td>';
+                if (group && !activeGroups.has(group)) return '';
+                return '<td class="' + cls.trim() + '">' + v + '</td>';
             }
+
+            // Атрибут — всегда видимый
+            // Тип атаки — группа move
+            var typeHtml = activeGroups.has('move')
+                ? '<td class="' + typeClass + '">' + typeLabel + '</td>'
+                : '';
 
             return '<tr>' +
                 '<td><div class="hero-name-cell">' + iconHtml + '<a href="' + heroPage + '">' + h.name + '</a></div></td>' +
                 '<td class="' + attrClass + '">' + attrLabel + '</td>' +
-                '<td class="' + typeClass + '" data-group="move">' + typeLabel + '</td>' +
+                typeHtml +
                 cell('strBase') + cell('strGain', 'col-hide-mobile') +
                 cell('agiBase') + cell('agiGain', 'col-hide-mobile') +
                 cell('intBase') + cell('intGain', 'col-hide-mobile') +
@@ -399,8 +407,6 @@
                 cell('speed') + cell('range', 'col-hide-small') +
                 '</tr>';
         }).join('');
-        // Применить видимость колонок после перерисовки
-        if (typeof updateColumnVisibility === 'function') updateColumnVisibility();
     }
 
     // === Обработчики ===
@@ -435,18 +441,6 @@
     });
 
     // Переключатели групп колонок
-    function updateColumnVisibility() {
-        const table = document.getElementById('balanceTable');
-        // th
-        table.querySelectorAll('th[data-group]').forEach(th => {
-            th.style.display = activeGroups.has(th.dataset.group) ? '' : 'none';
-        });
-        // td
-        table.querySelectorAll('td[data-group]').forEach(td => {
-            td.style.display = activeGroups.has(td.dataset.group) ? '' : 'none';
-        });
-    }
-
     document.querySelectorAll('.col-toggle').forEach(btn => {
         btn.addEventListener('click', () => {
             const group = btn.dataset.group;
@@ -457,13 +451,17 @@
                 activeGroups.add(group);
                 btn.classList.add('active');
             }
-            updateColumnVisibility();
+            // Обновить thead
+            document.querySelectorAll('.balance-table th[data-group]').forEach(th => {
+                th.style.display = activeGroups.has(th.dataset.group) ? '' : 'none';
+            });
+            // Перерисовать tbody с учётом групп
+            renderTable();
         });
     });
 
     // Первый рендер
     renderTable();
-    updateColumnVisibility();
 })();
 document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.balance-table-wrap'); });
 </script>
