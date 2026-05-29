@@ -83,7 +83,11 @@
         document.addEventListener('DOMContentLoaded', function() {
         // ========== БАЗА ГЕРОЕВ ==========
         // Данные загружены из hero-data.js (глобальная переменная HEROES_DATA)
-            const heroesData = typeof HEROES_DATA !== 'undefined' ? HEROES_DATA : [];
+            if (typeof HEROES_DATA === 'undefined') {
+                console.error('hero-data.js not loaded — HEROES_DATA undefined');
+                return;
+            }
+            const heroesData = HEROES_DATA;
 
             const heroGrid = document.getElementById('heroGrid');
             const filterBtns = document.querySelectorAll('.filter-btn');
@@ -270,7 +274,6 @@
                 renderHeroes();
                 console.log(`Герой ${heroData.name} добавлен!`);
             };
-        });
         });
     </script>
 
