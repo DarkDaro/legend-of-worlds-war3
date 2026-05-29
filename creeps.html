@@ -138,6 +138,17 @@
             margin: 1px 2px;
             white-space: nowrap;
         }
+        .creep-table .def-type-tag {
+            display: inline-block;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-size: 0.72rem;
+            opacity: 0.7;
+        }
+        .def-type-small { background: rgba(0,150,255,0.12); color: #5cb8ff; }
+        .def-type-medium { background: rgba(255,200,0,0.12); color: #ffc800; }
+        .def-type-heavy { background: rgba(255,80,80,0.12); color: #ff6b6b; }
+        .def-type-flesh { background: rgba(150,150,150,0.12); color: #999; }
 
         /* ── Счётчик ── */
         .creep-count {
@@ -180,18 +191,18 @@
         /* ── Мобильная адаптация ── */
         @media (max-width: 900px) {
             .creep-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-            .creep-table { min-width: 800px; }
+            .creep-table { min-width: 900px; }
         }
         @media (max-width: 700px) {
             .creep-filters { gap: 6px; }
             .creep-search { width: 100%; order: -1; }
-            .creep-table { min-width: 600px; font-size: 0.75rem; }
+            .creep-table { min-width: 700px; font-size: 0.75rem; }
             .creep-table th, .creep-table td { padding: 6px 8px; }
             .creep-col-toggles { gap: 5px; }
             .col-toggle { font-size: 0.72rem; padding: 4px 8px; }
         }
         @media (max-width: 480px) {
-            .creep-table { min-width: 380px; font-size: 0.7rem; }
+            .creep-table { min-width: 500px; font-size: 0.7rem; }
             .creep-table th, .creep-table td { padding: 5px 6px; }
             .creep-table .creep-icon-placeholder { display: none; }
             .creep-col-toggles { gap: 4px; }
@@ -240,6 +251,7 @@
             <div class="creep-col-toggles">
                 <span class="col-toggle-label">Колонки:</span>
                 <button class="col-toggle active" data-group="defense"><i class="fas fa-shield-alt"></i> Защита</button>
+                <button class="col-toggle active" data-group="combat"><i class="fas fa-crosshairs"></i> Бой</button>
                 <button class="col-toggle active" data-group="reward"><i class="fas fa-coins"></i> Награда</button>
                 <button class="col-toggle active" data-group="passives"><i class="fas fa-bolt"></i> Пассивки</button>
             </div>
@@ -252,11 +264,14 @@
                             <th data-col="level">Ур. <span class="sort-arrow">▲</span></th>
                             <th data-col="hp">HP <span class="sort-arrow">▲</span></th>
                             <th data-col="atk">Атака <span class="sort-arrow">▲</span></th>
-                            <th data-col="def" data-group="defense" class="col-hide-mobile">Броня <span class="sort-arrow">▲</span></th>
-                            <th data-col="regen" data-group="defense" class="col-hide-mobile">Реген <span class="sort-arrow">▲</span></th>
-                            <th data-col="magicRes" data-group="defense" class="col-hide-mobile">Маг.сопр. <span class="sort-arrow">▲</span></th>
-                            <th data-col="gold" data-group="reward" class="col-hide-small">Золото <span class="sort-arrow">▲</span></th>
-                            <th data-col="xp" data-group="reward" class="col-hide-small">Опыт <span class="sort-arrow">▲</span></th>
+                            <th data-col="def" data-group="defense">Броня <span class="sort-arrow">▲</span></th>
+                            <th data-col="defType" data-group="defense">Тип брони <span class="sort-arrow">▲</span></th>
+                            <th data-col="regen" data-group="defense">Реген <span class="sort-arrow">▲</span></th>
+                            <th data-col="magicRes" data-group="defense">Маг.сопр. <span class="sort-arrow">▲</span></th>
+                            <th data-col="cool" data-group="combat">Перезарядка <span class="sort-arrow">▲</span></th>
+                            <th data-col="spd" data-group="combat">Скорость <span class="sort-arrow">▲</span></th>
+                            <th data-col="gold" data-group="reward">Золото <span class="sort-arrow">▲</span></th>
+                            <th data-col="xp" data-group="reward">Опыт <span class="sort-arrow">▲</span></th>
                             <th data-col="passives" data-group="passives">Пассивки <span class="sort-arrow">▲</span></th>
                         </tr>
                     </thead>
@@ -291,12 +306,16 @@
 
     var searchQuery = '';
     var passiveFilter = 'all';
-    var sortCol = 'name';
-    var sortDir = 1;
+    var sortCol = 'level';
+    var sortDir = -1;
 
     // Группы колонок
-    var COL_GROUPS = { def: 'defense', regen: 'defense', magicRes: 'defense', gold: 'reward', xp: 'reward', passives: 'passives' };
-    var activeGroups = { defense: true, reward: true, passives: true };
+    var COL_GROUPS = { def: 'defense', defType: 'defense', regen: 'defense', magicRes: 'defense', cool: 'combat', spd: 'combat', gold: 'reward', xp: 'reward', passives: 'passives' };
+    var activeGroups = { defense: true, combat: true, reward: true, passives: true };
+
+    // Маппинг типов брони → CSS-класс
+    var DEF_TYPE_CLASS = { small: 'def-type-small', medium: 'def-type-medium', heavy: 'def-type-heavy', Flesh: 'def-type-flesh' };
+    var DEF_TYPE_LABEL = { small: 'Лёгкая', medium: 'Средняя', heavy: 'Тяжёлая', Flesh: 'Плоть' };
 
     function getCreeps() {
         return CREEPS.filter(function(c) {
@@ -310,17 +329,22 @@
     function sortCreeps(creeps) {
         return creeps.slice().sort(function(a, b) {
             var va = a[sortCol], vb = b[sortCol];
-            if (sortCol === 'name' || sortCol === 'code' || sortCol === 'passives') {
-                va = (va || '').toLowerCase();
-                vb = (vb || '').toLowerCase();
+            if (sortCol === 'name' || sortCol === 'code' || sortCol === 'defType') {
+                va = (va || '').toString().toLowerCase();
+                vb = (vb || '').toString().toLowerCase();
                 return va.localeCompare(vb) * sortDir;
+            }
+            if (sortCol === 'passives') {
+                va = (a.passives || []).length;
+                vb = (b.passives || []).length;
+                return (va - vb) * sortDir;
             }
             return ((va || 0) - (vb || 0)) * sortDir;
         });
     }
 
     function findExtremes(creeps) {
-        var numCols = ['level', 'hp', 'atk', 'def', 'regen', 'magicRes', 'gold', 'xp'];
+        var numCols = ['level', 'hp', 'atk', 'def', 'regen', 'magicRes', 'cool', 'spd', 'gold', 'xp'];
         var extremes = {};
         numCols.forEach(function(col) {
             var vals = creeps.map(function(c) { return c[col] || 0; });
@@ -338,6 +362,7 @@
 
         countEl.textContent = 'Крипов: ' + sorted.length;
 
+        // Обновить стрелки сортировки
         document.querySelectorAll('.creep-table th').forEach(function(th) {
             var col = th.dataset.col;
             if (!col) return;
@@ -347,24 +372,46 @@
         });
 
         if (!sorted.length) {
-            tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;color:var(--text-muted);padding:24px;">Нет крипов</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="13" style="text-align:center;color:var(--text-muted);padding:24px;">Нет крипов</td></tr>';
             return;
         }
 
         tbody.innerHTML = sorted.map(function(c) {
             var initial = c.name.charAt(0);
 
-            function cell(col, hideClass) {
+            function cell(col) {
                 var v = c[col] || 0;
-                var cls = hideClass || '';
-                if (v === 0) cls += ' zero-val';
-                else if (extremes[col] && extremes[col].max !== extremes[col].min && v === extremes[col].max) cls += ' best-val';
-                else if (extremes[col] && extremes[col].max !== extremes[col].min && v === extremes[col].min) cls += ' worst-val';
                 var group = COL_GROUPS[col] || '';
                 if (group && !activeGroups[group]) return '';
-                return '<td class="' + cls.trim() + '">' + v + '</td>';
+
+                var cls = '';
+                if (v === 0 && col !== 'level') cls += ' zero-val';
+                else if (extremes[col] && extremes[col].max !== extremes[col].min && v === extremes[col].max) cls += ' best-val';
+                else if (extremes[col] && extremes[col].max !== extremes[col].min && v === extremes[col].min) cls += ' worst-val';
+
+                // Форматирование
+                var display = v;
+                if (col === 'cool' && v > 0) display = v.toFixed(1) + 'с';
+                if (col === 'cool' && v === 0) { display = '—'; cls = cls.replace(' zero-val', ''); }
+                if (col === 'spd' && v === 0) { display = '—'; cls = cls.replace(' zero-val', ''); }
+                if (col === 'magicRes' && v > 0) display = v + '%';
+                if (col === 'magicRes' && v === 0) { display = '0%'; cls = cls.replace(' zero-val', ''); }
+
+                return '<td class="' + cls.trim() + '">' + display + '</td>';
             }
 
+            // Тип брони (через cell для toggle)
+            var defTypeHtml = '';
+            if (activeGroups.defense) {
+                var dt = c.defType || '';
+                var dtClass = DEF_TYPE_CLASS[dt] || '';
+                var dtLabel = DEF_TYPE_LABEL[dt] || dt || '—';
+                defTypeHtml = '<td><span class="def-type-tag ' + dtClass + '">' + dtLabel + '</span></td>';
+            } else {
+                defTypeHtml = '';
+            }
+
+            // Пассивки
             var passiveHtml = '—';
             if (Array.isArray(c.passives) && c.passives.length) {
                 passiveHtml = c.passives.map(function(p) {
@@ -377,8 +424,10 @@
 
             return '<tr>' +
                 '<td><div class="creep-name-cell"><div class="creep-icon-placeholder">' + initial + '</div><span>' + c.name + '</span></div></td>' +
-                cell('level') +
-                cell('hp') + cell('atk') + cell('def', 'col-hide-mobile') + cell('regen', 'col-hide-mobile') + cell('magicRes', 'col-hide-mobile') + cell('gold', 'col-hide-small') + cell('xp', 'col-hide-small') +
+                cell('level') + cell('hp') + cell('atk') +
+                cell('def') + defTypeHtml + cell('regen') + cell('magicRes') +
+                cell('cool') + cell('spd') +
+                cell('gold') + cell('xp') +
                 passiveTd +
                 '</tr>';
         }).join('');
@@ -411,11 +460,10 @@
             var group = btn.dataset.group;
             activeGroups[group] = !activeGroups[group];
             btn.classList.toggle('active', activeGroups[group]);
-            // Обновить thead
+            // Скрыть/показать thead
             document.querySelectorAll('.creep-table th[data-group]').forEach(function(th) {
                 th.style.display = activeGroups[th.dataset.group] ? '' : 'none';
             });
-            // Перерисовать tbody с учётом групп
             renderTable();
         });
     });
