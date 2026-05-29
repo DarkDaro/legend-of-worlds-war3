@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="hero-data.js" defer></script>
-    <script src="abilities-db.js"></script>
-    <script src="ability-stats.js"></script>
+    <script src="abilities-db.js" defer"></script>
+    <script src="ability-stats.js" defer"></script>
     <script src="analytics.js" defer></script>
     <script src="ui-effects.js" defer></script>
     <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/balance-dashboard.html">
@@ -255,6 +255,7 @@
     </footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
 (function() {
     'use strict';
 
@@ -740,6 +741,7 @@
     resizeCanvas();
     update();
 })();
+}); // end DOMContentLoaded
 </script>
 </body>
 </html>

@@ -80,9 +80,9 @@
     </div>
 
     <script>
-        (function() {
-            // ========== БАЗА ГЕРОЕВ ==========
-            // Данные загружены из hero-data.js (глобальная переменная HEROES_DATA)
+        document.addEventListener('DOMContentLoaded', function() {
+        // ========== БАЗА ГЕРОЕВ ==========
+        // Данные загружены из hero-data.js (глобальная переменная HEROES_DATA)
             const heroesData = typeof HEROES_DATA !== 'undefined' ? HEROES_DATA : [];
 
             const heroGrid = document.getElementById('heroGrid');
@@ -113,8 +113,8 @@
                     currentFilter = 'all';
                     document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
                     document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
-                    applyFilters();
                 }
+                applyFilters();
             };
 
             function toggleFavorite(heroId) {
@@ -133,7 +133,7 @@
                     }
                 }
                 // Перефильтровываем с учётом текущей вкладки
-                filterHeroes(currentFilter);
+                applyFilters();
             }
 
             // Роли и их иконки
@@ -195,40 +195,42 @@
                 heroGrid.innerHTML = '';
                 heroesData.forEach(hero => {
                     const card = createHeroCard(hero);
-                    let show = currentFilter === 'all' && !hero.unique && !hero.isAltForm && !hero.wip
-                        || (currentFilter === 'unique' && hero.unique)
-                        || (currentFilter === 'wip' && hero.wip && false) // WIP-фильтр: всегда пусто
-                        || (hero.attr === currentFilter && !hero.unique && !hero.isAltForm && !hero.wip);
-                    if (currentFilter === 'favorites') {
-                        show = favorites.includes(hero.heroId) && !hero.wip;
-                    }
-                    card.style.display = show ? '' : 'none';
                     heroGrid.appendChild(card);
                 });
+                applyFilters();
             }
 
-            // Фильтрация
-            function filterHeroes(filterValue) {
-                currentFilter = filterValue;
+            // Единая функция фильтрации (фильтр + поиск)
+            function applyFilters() {
+                const query = searchInput.value.toLowerCase().trim();
                 const cards = document.querySelectorAll('.hero-card');
                 cards.forEach((card, i) => {
                     const hero = heroesData[i];
-                    let show = filterValue === 'all' && !hero.unique && !hero.isAltForm && !hero.wip
-                        || (filterValue === 'unique' && hero.unique)
-                        || (filterValue === 'wip' && hero.wip && false) // WIP-фильтр: всегда пусто
-                        || (hero.attr === filterValue && !hero.unique && !hero.isAltForm && !hero.wip);
-                    if (filterValue === 'favorites') {
-                        show = favorites.includes(hero.heroId) && !hero.wip;
+                    let filterOk = (currentFilter === 'all' && !hero.unique && !hero.isAltForm && !hero.wip)
+                        || (currentFilter === 'unique' && hero.unique)
+                        || (currentFilter === 'wip' && hero.wip)
+                        || (hero.attr === currentFilter && !hero.unique && !hero.isAltForm && !hero.wip);
+                    if (currentFilter === 'favorites') {
+                        filterOk = favorites.includes(hero.heroId) && !hero.wip;
                     }
-                    card.style.display = show ? '' : 'none';
+                    const name = hero.name.toLowerCase();
+                    const title = hero.title.toLowerCase();
+                    const searchOk = !query || name.includes(query) || title.includes(query);
+                    card.style.display = (filterOk && searchOk) ? '' : 'none';
                 });
+                updateCount();
+            }
+
+            // Фильтрация по кнопке
+            function filterHeroes(filterValue) {
+                currentFilter = filterValue;
                 filterBtns.forEach(btn => {
                     btn.classList.remove('active');
                     if (btn.dataset.filter === filterValue) {
                         btn.classList.add('active');
                     }
                 });
-                updateCount();
+                applyFilters();
             }
 
             // Обработчики фильтров
@@ -247,36 +249,19 @@
             // Поиск (комбинируется с текущим фильтром)
             const searchInput = document.getElementById('heroSearch');
             searchInput.addEventListener('input', function() {
-                const query = this.value.toLowerCase().trim();
-                document.querySelectorAll('.hero-card').forEach((card, i) => {
-                    const hero = heroesData[i];
-                    // Проверяем фильтр (WIP всегда скрыт)
-                    let filterOk = currentFilter === 'all' && !hero.unique && !hero.isAltForm && !hero.wip
-                        || (currentFilter === 'unique' && hero.unique)
-                        || (hero.attr === currentFilter && !hero.unique && !hero.isAltForm && !hero.wip);
-                    if (currentFilter === 'favorites') {
-                        filterOk = favorites.includes(hero.heroId) && !hero.wip;
-                    }
-                    // Проверяем поиск
-                    const name = hero.name.toLowerCase();
-                    const title = hero.title.toLowerCase();
-                    const searchOk = !query || name.includes(query) || title.includes(query);
-                    card.style.display = (filterOk && searchOk) ? '' : 'none';
-                });
-                updateCount();
+                applyFilters();
             });
 
             // Escape = очистка
             searchInput.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     this.value = '';
-                    this.dispatchEvent(new Event('input'));
+                    applyFilters();
                 }
             });
 
             // Первоначальный рендер
             renderHeroes();
-            updateCount();
             updateClearBtn();
 
             // Функция для добавления нового героя (можно вызывать из консоли)
@@ -285,7 +270,8 @@
                 renderHeroes();
                 console.log(`Герой ${heroData.name} добавлен!`);
             };
-        })();
+        });
+        });
     </script>
 
     <footer class="site-footer">

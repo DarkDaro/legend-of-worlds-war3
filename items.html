@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <script src="hero-data.js" defer></script>
-  <script src="jass-data.js"></script>
-  <script src="bot-builds.js"></script>
-  <script src="item-bonus-parser.js"></script>
+  <script src="jass-data.js" defer"></script>
+  <script src="bot-builds.js" defer"></script>
+  <script src="item-bonus-parser.js" defer"></script>
   <script src="search-index.js" defer></script>
     <script src="search.js" defer></script>
   <script src="icon-loader.js" defer></script>
@@ -139,9 +139,10 @@
   </div>
 
   <!-- Подключаем базу предметов и логику -->
-  <script src="hero-builds.js"></script>
-  <script src="items-db.js"></script>
+  <script src="hero-builds.js" defer"></script>
+  <script src="items-db.js" defer"></script>
   <script>
+  document.addEventListener('DOMContentLoaded', function() {
   (function() {
     const STORAGE_KEY = 'heroData:itemGridCollapseState';
 
@@ -241,6 +242,7 @@
     restoreGridState();
   })();
 
+  }); // end DOMContentLoaded
 
   // Обработка hash и ?item= теперь в items-db.js (openItemFromUrl)
   </script>
