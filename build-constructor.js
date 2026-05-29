@@ -696,15 +696,88 @@ function bcImportFromBot() {
 
 // === Инициализация ===
 
+// === Шаринг сборки через URL ===
+
+function bcBuildShareURL() {
+    var params = [];
+    var group = parseInt(document.getElementById('bcGroupInput').value) || 1;
+    if (group !== 1) params.push('g=' + group);
+
+    buildStages.forEach(function(stage, si) {
+        var items = stage.items.map(function(s) {
+            if (!s) return '';
+            var id = bcSlotId(s);
+            var keep = bcSlotKeep(s);
+            if (!id) return '';
+            return id + (keep ? '' : '!');
+        }).filter(Boolean);
+        if (items.length > 0) {
+            params.push('s' + (si + 1) + '=' + stage.level + ':' + items.join(','));
+        }
+    });
+
+    var base = window.location.href.split('?')[0].split('#')[0];
+    return params.length > 0 ? base + '?' + params.join('&') : base;
+}
+
+function bcLoadFromURL() {
+    var params = new URLSearchParams(window.location.search);
+    if (!params.has('s1')) return false;
+
+    var group = params.get('g');
+    if (group) {
+        var groupInput = document.getElementById('bcGroupInput');
+        if (groupInput) groupInput.value = group;
+    }
+
+    var stages = [];
+    var i = 1;
+    while (params.has('s' + i)) {
+        var raw = params.get('s' + i);
+        var parts = raw.split(':');
+        var level = parseInt(parts[0]) || 1;
+        var items = [null, null, null, null, null, null];
+        if (parts[1]) {
+            var itemStrs = parts[1].split(',');
+            itemStrs.forEach(function(itemStr, idx) {
+                if (idx >= 6) return;
+                var keep = !itemStr.endsWith('!');
+                var id = keep ? itemStr : itemStr.slice(0, -1);
+                if (itemsDB && itemsDB[id]) {
+                    items[idx] = { id: id, keep: keep };
+                }
+            });
+        }
+        stages.push({ level: level, items: items });
+        i++;
+    }
+
+    if (stages.length > 0) {
+        buildStages = stages;
+        bcCollapsedStages.clear();
+        activeSlot = [0, 0];
+        bcSave();
+        bcRender();
+        return true;
+    }
+    return false;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     bcLoad();
 
-    // Проверяем импорт из сборки ИИ
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('import') === '1') {
-        bcImportFromBot();
-        // Убираем ?import=1 из URL без перезагрузки
+    // Проверяем загрузку из URL
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('s1')) {
+        bcLoadFromURL();
         window.history.replaceState({}, '', 'build-constructor.html');
+    } else {
+        // Проверяем импорт из сборки ИИ
+        if (urlParams.get('import') === '1') {
+            bcImportFromBot();
+            // Убираем ?import=1 из URL без перезагрузки
+            window.history.replaceState({}, '', 'build-constructor.html');
+        }
     }
 
     bcRenderTabs();
@@ -720,6 +793,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearBtn = document.getElementById('bcClearBtn');
     if (clearBtn) {
         clearBtn.addEventListener('click', bcClearAll);
+    }
+
+    // Кнопка «Поделиться»
+    const shareBtn = document.getElementById('bcShareBtn');
+    if (shareBtn) {
+        shareBtn.addEventListener('click', () => {
+            const url = bcBuildShareURL();
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(() => {
+                    bcToast('Ссылка на сборку скопирована');
+                });
+            } else {
+                const ta = document.createElement('textarea');
+                ta.value = url;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                bcToast('Ссылка на сборку скопирована');
+            }
+        });
     }
 
     // Сворачивание превью
