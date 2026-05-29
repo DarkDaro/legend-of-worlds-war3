@@ -521,7 +521,7 @@ function isBossStage(stage) {
 
 // === Иконка предмета ===
 function renderItemIcon(item, isTemp, isBoss) {
-    if (!item) return '<div class="bb-slot-img"><span style="color:#666;font-size:0.6rem">?</span></div>';
+    if (!item) return '<div class="bb-slot-img"><span class="bb-slot-empty">?</span></div>';
     const imgSrc = `images/items/${item.id}.png`;
     const fallback = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><rect fill="none" width="64" height="64"/><path d="M32 8 L56 24 L48 56 L16 56 L8 24Z" fill="none" stroke="rgba(0,255,255,0.2)" stroke-width="1"/></svg>')}`;
 
@@ -628,8 +628,8 @@ function renderStage(stageData, stageIndex, prevItems) {
     // Уровень стадии
     const level = stageData.bootsLevel;
     const levelHtml = level >= 100
-        ? `<span style="color:#ff6b6b;font-size:0.75rem;">Ур. ${level}</span>`
-        : `<span style="color:var(--text-secondary);font-size:0.75rem;">Ур. ${level}</span>`;
+        ? `<span class="bb-level-badge">Ур. ${level}</span>`
+        : `<span class="bb-level-badge" style="color:var(--text-secondary);">Ур. ${level}</span>`;
 
     // Стоимость
     let costHtml = '';
