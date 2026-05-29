@@ -183,7 +183,7 @@ var HEROES_DATA = [
       strBase: 16, strGain: 1.5, agiBase: 16, agiGain: 2, intBase: 28, intGain: 4.5,
       hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0.5, mpRegen: 0.01, speed: 290, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
 
-    { name: 'Астральный Маг', title: '', attr: 'strength', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'astral-mage', image: 'astral-mage', charName: 'Марина',
+    { name: 'Астральный Маг', title: '', attr: 'intelligence', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'astral-mage', image: 'astral-mage', charName: 'Марина',
       unique: true,
       rawcode: 'H055',
       strBase: 18, strGain: 3.5, agiBase: 14, agiGain: 2.5, intBase: 28, intGain: 2,
@@ -195,13 +195,13 @@ var HEROES_DATA = [
       strBase: 25, strGain: 3.5, agiBase: 22, agiGain: 3, intBase: 13, intGain: 1.5,
       hp: 500, mp: 150, atk: 46, def: 2, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0.01, speed: 305, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
-    { name: 'Пожиратель Пламени', title: '', attr: 'strength', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'flame-eater', image: 'flame-eater', charName: 'Феликс',
+    { name: 'Пожиратель Пламени', title: '', attr: 'intelligence', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'flame-eater', image: 'flame-eater', charName: 'Феликс',
       unique: true,
       rawcode: 'H08O',
       strBase: 18, strGain: 3.5, agiBase: 16, agiGain: 2.5, intBase: 26, intGain: 2,
       hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0.5, mpRegen: 0.01, speed: 290, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
-    { name: 'Темный Мастер', title: '', attr: 'strength', roles: ['controller', 'damager'], roleNames: ['Контролёр', 'Дамагер'], heroId: 'dark-master', image: 'dark-master', charName: 'Леонардо',
+    { name: 'Темный Мастер', title: '', attr: 'intelligence', roles: ['controller', 'damager'], roleNames: ['Контролёр', 'Дамагер'], heroId: 'dark-master', image: 'dark-master', charName: 'Леонардо',
       unique: true,
       rawcode: 'H07E',
       strBase: 20, strGain: 2.5, agiBase: 20, agiGain: 2, intBase: 20, intGain: 3.5,
