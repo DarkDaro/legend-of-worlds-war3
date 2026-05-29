@@ -97,7 +97,8 @@
         .tl-tier-label.tier-b { background: #F39C12; }
         .tl-tier-label.tier-c { background: #95A5A6; }
         .tl-tier-label.tier-d { background: #5A5A5A; }
-        .tl-tier-label.tier-f { background: #2C2C2C; color: #888; }
+        .tl-tier-label.tier-e { background: #3A3A3A; color: #777; }
+        .tl-tier-label.tier-f { background: #1A1A1A; color: #555; }
 
         .tl-tier-slots {
             flex: 1;
@@ -302,11 +303,12 @@
             { key: 'b', label: 'B', cssClass: 'tier-b' },
             { key: 'c', label: 'C', cssClass: 'tier-c' },
             { key: 'd', label: 'D', cssClass: 'tier-d' },
+            { key: 'e', label: 'E', cssClass: 'tier-e' },
             { key: 'f', label: 'F', cssClass: 'tier-f' }
         ];
 
         var STORAGE_KEY = 'loW_tierlist';
-        var tierData = { sp: [], s: [], a: [], b: [], c: [], d: [], f: [] };
+        var tierData = { sp: [], s: [], a: [], b: [], c: [], d: [], e: [], f: [] };
         var selectedHero = null; // heroId для click-to-place
         var activeFilter = 'all';
 
@@ -330,6 +332,7 @@
                 if (!d) return;
                 // Миграция: старый формат без sp/f
                 if (!Array.isArray(d.sp)) d.sp = [];
+                if (!Array.isArray(d.e)) d.e = [];
                 if (!Array.isArray(d.f)) d.f = [];
                 if (Array.isArray(d.s) && Array.isArray(d.a) && Array.isArray(d.b) && Array.isArray(d.c) && Array.isArray(d.d)) {
                     tierData = d;
@@ -610,7 +613,7 @@
             // Очистить
             document.getElementById('tlClearBtn').addEventListener('click', function() {
                 if (!confirm('Очистить весь тирлист?')) return;
-                tierData = { sp: [], s: [], a: [], b: [], c: [], d: [], f: [] };
+                tierData = { sp: [], s: [], a: [], b: [], c: [], d: [], e: [], f: [] };
                 selectedHero = null;
                 save();
                 render();
