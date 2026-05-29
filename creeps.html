@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Крипы · Legend of Worlds</title>
     <meta property="og:title" content="Крипы — Legend of Worlds">
-    <meta property="og:description" content="25 типов крипов на арене: статы, золото, опыт, пассивки.">
+    <meta property="og:description" content="25 типов крипов на арене: статы, золото, опыт, способности.">
     <meta property="og:image" content="images/preview.png">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -245,15 +245,15 @@
             <div class="creep-filters">
                 <input type="text" class="creep-search" id="creepSearch" placeholder="Поиск крипа...">
                 <button class="passive-btn active" data-passive="all">Все</button>
-                <button class="passive-btn" data-passive="has"><i class="fas fa-bolt"></i> С пассивками</button>
-                <button class="passive-btn" data-passive="none"><i class="fas fa-minus"></i> Без пассивок</button>
+                <button class="passive-btn" data-passive="has"><i class="fas fa-bolt"></i> Со способностями</button>
+                <button class="passive-btn" data-passive="none"><i class="fas fa-minus"></i> Без способностей</button>
             </div>
             <div class="creep-col-toggles">
                 <span class="col-toggle-label">Колонки:</span>
                 <button class="col-toggle active" data-group="defense"><i class="fas fa-shield-alt"></i> Защита</button>
                 <button class="col-toggle active" data-group="combat"><i class="fas fa-crosshairs"></i> Бой</button>
                 <button class="col-toggle active" data-group="reward"><i class="fas fa-coins"></i> Награда</button>
-                <button class="col-toggle active" data-group="passives"><i class="fas fa-bolt"></i> Пассивки</button>
+                <button class="col-toggle active" data-group="passives"><i class="fas fa-bolt"></i> Способности</button>
             </div>
             <div class="creep-count" id="creepCount"></div>
             <div class="creep-table-wrap">
@@ -272,7 +272,7 @@
                             <th data-col="spd" data-group="combat">Скорость <span class="sort-arrow">▲</span></th>
                             <th data-col="gold" data-group="reward">Золото <span class="sort-arrow">▲</span></th>
                             <th data-col="xp" data-group="reward">Опыт <span class="sort-arrow">▲</span></th>
-                            <th data-col="passives" data-group="passives">Пассивки <span class="sort-arrow">▲</span></th>
+                            <th data-col="passives" data-group="passives">Способности <span class="sort-arrow">▲</span></th>
                         </tr>
                     </thead>
                     <tbody id="creepBody"></tbody>
@@ -411,7 +411,7 @@
                 defTypeHtml = '';
             }
 
-            // Пассивки
+            // Способности
             var passiveHtml = '—';
             if (Array.isArray(c.passives) && c.passives.length) {
                 passiveHtml = c.passives.map(function(p) {
