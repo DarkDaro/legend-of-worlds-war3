@@ -9,35 +9,39 @@ var ATTR_CLASS_MAP = { strength: 'compare-attr-strength', agility: 'compare-attr
 var ROLE_LABELS = { tank: 'Танк', bruiser: 'Рубака', damager: 'Дамагер', assassin: 'Убийца', initiator: 'Инициатор', controller: 'Контролёр', healer: 'Целитель', support: 'Помощник' };
 
 document.addEventListener('DOMContentLoaded', function() {
-if (typeof HEROES_DATA === 'undefined') { console.error('HEROES_DATA not loaded'); return; }
-HEROES_DATA.forEach(function(hero) {
-    if (hero.isAltForm || hero.wip || hero.noPage) return;
-    HERO_COMPARE_DATA[hero.heroId] = {
-        id: hero.heroId,
-        name: hero.name,
-        attr: hero.attr,
-        attrLabel: ATTR_LABELS[hero.attr] || hero.attr,
-        role: hero.roleNames ? hero.roleNames.join(', ') : (hero.roleName || hero.role),
-        image: 'images/heroes/' + hero.image + '.png',
-        stats: {
-            hp: hero.hp != null ? hero.hp : 0,
-            mp: hero.mp != null ? hero.mp : 0,
-            atk: hero.atk != null ? hero.atk : 0,
-            def: hero.def != null ? hero.def : 0,
-            hpRegen: hero.hpRegen != null ? hero.hpRegen : 0,
-            mpRegen: hero.mpRegen != null ? hero.mpRegen : 0,
-            speed: hero.speed != null ? hero.speed : 0,
-            range: hero.range != null ? hero.range : 0,
-            strBase: hero.strBase,
-            strGain: hero.strGain,
-            agiBase: hero.agiBase,
-            agiGain: hero.agiGain,
-            intBase: hero.intBase,
-            intGain: hero.intGain
-        }
-    };
+    // Заполняем HERO_COMPARE_DATA
+    if (typeof HEROES_DATA === 'undefined') { console.error('HEROES_DATA not loaded'); return; }
+    HEROES_DATA.forEach(function(hero) {
+        if (hero.isAltForm || hero.wip || hero.noPage) return;
+        HERO_COMPARE_DATA[hero.heroId] = {
+            id: hero.heroId,
+            name: hero.name,
+            attr: hero.attr,
+            attrLabel: ATTR_LABELS[hero.attr] || hero.attr,
+            role: hero.roleNames ? hero.roleNames.join(', ') : (hero.roleName || hero.role),
+            image: 'images/heroes/' + hero.image + '.png',
+            stats: {
+                hp: hero.hp != null ? hero.hp : 0,
+                mp: hero.mp != null ? hero.mp : 0,
+                atk: hero.atk != null ? hero.atk : 0,
+                def: hero.def != null ? hero.def : 0,
+                hpRegen: hero.hpRegen != null ? hero.hpRegen : 0,
+                mpRegen: hero.mpRegen != null ? hero.mpRegen : 0,
+                speed: hero.speed != null ? hero.speed : 0,
+                range: hero.range != null ? hero.range : 0,
+                strBase: hero.strBase,
+                strGain: hero.strGain,
+                agiBase: hero.agiBase,
+                agiGain: hero.agiGain,
+                intBase: hero.intBase,
+                intGain: hero.intGain
+            }
+        };
+    });
+
+    // Инициализация страницы после заполнения данных
+    initComparePage();
 });
-}); // end DOMContentLoaded for HEROES_DATA
 
 var SELECT_IDS = ['hero1', 'hero2', 'hero3'];
 
@@ -151,11 +155,7 @@ function initComparePage() {
     renderComparison();
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initComparePage);
-} else {
-    initComparePage();
-}
+// initComparePage вызывается из DCL выше, после заполнения HERO_COMPARE_DATA
 
 // Перерендер при смене размера экрана (десктоп ↔ мобильный)
 var COMPARE_RESIZE_TIMER = null;

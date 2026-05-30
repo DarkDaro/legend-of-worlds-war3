@@ -7,8 +7,7 @@
 
     // Маппинг heroId → базовое имя файла (если отличается от id)
     const heroImageMap = {
-        'drowranger': 'DarkRanger',
-        'farseer': 'FarSeer'
+        'drowranger': 'DarkRanger'
     };
 
     // ========== ИКОНКА ГЕРОЯ В ДЕТАЛЬНОЙ КАРТОЧКЕ ==========
