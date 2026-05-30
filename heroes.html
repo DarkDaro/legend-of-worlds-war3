@@ -69,6 +69,7 @@
             <button class="filter-btn" data-filter="favorites"><i class="fas fa-heart"></i> Избранное</button>
             <button class="filter-btn" data-filter="wip"><i class="fas fa-hammer"></i> В разработке</button>
             <button class="filter-btn" id="clearFavBtn" style="display:none;" onclick="clearHeroFavorites()"><i class="fas fa-times"></i> Очистить избранное</button>
+            <button class="filter-btn" id="sortAlphaBtn" data-sort="alpha"><i class="fas fa-sort-alpha-down"></i> А-Я</button>
         </div>
 
         <!-- Сетка героев будет сгенерирована JS -->
@@ -94,6 +95,7 @@
             const heroGrid = document.getElementById('heroGrid');
             const filterBtns = document.querySelectorAll('.filter-btn');
             let currentFilter = 'all';
+            let sortAlphabet = false;
 
             // Избранное
             let favorites = JSON.parse(localStorage.getItem('heroFavorites') || '[]');
@@ -199,19 +201,32 @@
             // Рендер всех героев
             function renderHeroes() {
                 heroGrid.innerHTML = '';
-                heroesData.forEach(hero => {
+                var list = sortAlphabet ? sortHeroesByName(heroesData) : heroesData;
+                list.forEach(hero => {
                     const card = createHeroCard(hero);
                     heroGrid.appendChild(card);
                 });
                 applyFilters();
             }
 
+            // Сортировка по алфавиту
+            var sortBtn = document.getElementById('sortAlphaBtn');
+            sortBtn.addEventListener('click', function() {
+                sortAlphabet = !sortAlphabet;
+                sortBtn.classList.toggle('active', sortAlphabet);
+                sortBtn.innerHTML = sortAlphabet
+                    ? '<i class="fas fa-sort-alpha-up"></i> А-Я'
+                    : '<i class="fas fa-sort-alpha-down"></i> А-Я';
+                renderHeroes();
+            });
+
             // Единая функция фильтрации (фильтр + поиск)
             function applyFilters() {
                 const query = searchInput.value.toLowerCase().trim();
                 const cards = document.querySelectorAll('.hero-card');
-                cards.forEach((card, i) => {
-                    const hero = heroesData[i];
+                cards.forEach((card) => {
+                    const heroId = card.dataset.hero;
+                    const hero = heroesData.find(h => h.heroId === heroId);
                     let filterOk = (currentFilter === 'all' && !hero.unique && !hero.isAltForm && !hero.wip)
                         || (currentFilter === 'unique' && hero.unique)
                         || (currentFilter === 'wip' && hero.wip)

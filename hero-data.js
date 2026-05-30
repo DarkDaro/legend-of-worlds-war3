@@ -395,7 +395,7 @@ var HEROES_DATA = [
       strBase: 24, strGain: 1.5, agiBase: 12, agiGain: 2.5, intBase: 24, intGain: 4,
       hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 2, mpRegen: 0.01, speed: 280, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
 
-    { name: 'Верховный Маг', title: 'Маг воды', attr: 'intelligence', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'archmage', image: 'Archmage', charName: 'Павел',
+    { name: 'Верховный Маг', title: 'Маг воды', attr: 'intelligence', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'archmage', image: 'archmage', charName: 'Павел',
       rawcode: 'H02P',
       strBase: 16, strGain: 1.5, agiBase: 17, agiGain: 2, intBase: 27, intGain: 4.5,
       hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 320, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
@@ -529,6 +529,11 @@ var ROLE_CLASS_MAP = {
 function statVal(v, suffix) {
     if (v === null || v === undefined) return '—';
     return suffix ? v + suffix : String(v);
+}
+
+// Сортировка героев по имени (кириллица)
+function sortHeroesByName(arr) {
+    return arr.slice().sort(function(a, b) { return a.name.localeCompare(b.name, 'ru'); });
 }
 
 // Рендер блока статов + таблицы приростов для карточки героя
