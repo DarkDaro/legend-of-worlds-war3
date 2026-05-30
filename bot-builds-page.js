@@ -313,5 +313,7 @@ function selectGroup(gid) {
     renderGroup(gid);
 }
 
+window.selectGroup = selectGroup;
+window.copyToConstructor = copyToConstructor;
 init();
 }); // end DOMContentLoaded
