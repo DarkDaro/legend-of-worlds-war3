@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Профили баланса · Legend of Worlds</title>
     <meta property="og:title" content="Профили баланса героев — Legend of Worlds">
-    <meta property="og:description" content="Радар-профили героев: урон, бёрст, живучесть, контроль, мобильность, фарм, скалинг. Сравнение на любом уровне.">
+    <meta property="og:description" content="Радар-профили героев: урон, бёрст, живучесть, контроль, мобильность, фарм, скалинг. Сравнение на любом уровне 1–300.">
     <meta property="og:image" content="images/preview.png">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -178,7 +178,7 @@
                 <div class="detail-icon"><img loading="lazy" src="images/preview.png" alt="" class="detail-logo-img" /></div>
                 <div class="detail-title">Профили баланса героев</div>
             </div>
-            <p class="detail-description">Радар-профили по 7 осям: урон, бёрст, живучесть, контроль, мобильность, фарм, скалинг. Сравнение на любом уровне 1–150.</p>
+            <p class="detail-description">Радар-профили по 7 осям: урон, бёрст, живучесть, контроль, мобильность, фарм, скалинг. Сравнение на любом уровне 1–300.</p>
 
             <div class="dash-controls">
                 <div class="ctrl-group">
@@ -196,8 +196,8 @@
                 <div class="ctrl-group">
                     <label>Уровень</label>
                     <div style="display:flex;align-items:center;gap:8px;">
-                        <input type="range" class="level-slider" id="levelSlider" min="1" max="150" value="25">
-                        <span class="level-display" id="levelDisplay">25</span>
+                        <input type="range" class="level-slider" id="levelSlider" min="1" max="300" value="30">
+                        <span class="level-display" id="levelDisplay">30</span>
                     </div>
                 </div>
             </div>
@@ -278,26 +278,27 @@ document.addEventListener('DOMContentLoaded', function() {
         cc: 'Суммарная длительность контроля × вес типа',
         mob: 'Скорость + бонус от дэш/блинк способностей',
         farm: 'AoE-урон + количество AoE + бёрст',
-        scaling: 'Во сколько раз растёт DPS от 25 к 150 уровню'
+        scaling: 'Во сколько раз растёт DPS от 30 к 300 уровню'
     };
     var HERO_COLORS = ['#00e6ff', '#ff6b6b', '#51cf66'];
 
     // === Расчёт способностей ===
     function abilityLevel(heroLevel, reqLevel, maxLevels) {
         if (heroLevel < reqLevel) return 0;
-        if (maxLevels <= 0) return Math.min(Math.floor(heroLevel / 25) + 1, 3);
+        if (maxLevels <= 0) return Math.min(Math.floor(heroLevel / 60) + 1, 5);
         var lvl = Math.floor((heroLevel - reqLevel) / 8) + 1;
         return Math.min(lvl, maxLevels);
     }
 
     function heroStatsAtLevel(h, level) {
         var l = level - 1;
+        var C = typeof GAME_CONSTANTS !== 'undefined' ? GAME_CONSTANTS : {};
         return {
             str: h.strBase + h.strGain * l,
             agi: h.agiBase + h.agiGain * l,
             int: h.intBase + h.intGain * l,
-            hp: h.hp + h.strGain * l * 19,
-            def: h.def + h.agiGain * l / 3,
+            hp: h.hp + h.strGain * l * (C.STR_HP_FACTOR || 20),
+            def: h.def + h.agiGain * l * (C.AGI_ARMOR_FACTOR || 0.05),
             speed: h.speed,
             range: h.range
         };
@@ -401,7 +402,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Живучесть: EHP
         var totalArmor = stats.def + buffArmor;
-        var ehp = (stats.hp + buffHP) * (1 + totalArmor * 0.06) * (1 + evasion / 100);
+        var armorC = (typeof GAME_CONSTANTS !== 'undefined' && GAME_CONSTANTS.ARMOR_C) || 0.05;
+        var ehp = (stats.hp + buffHP) * (1 + totalArmor * armorC) * (1 + evasion / 100);
 
         // Мобильность: скорость + дэш
         var mob = stats.speed + totalMob * 10;
@@ -409,9 +411,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Фарм: AoE-урон + бонус за количество AoE
         var farm = aoeDmg + aoeCount * 150;
 
-        // Скалинг: DPS150/DPS25
-        var dps25 = 0, dps150 = 0;
-        [25, 150].forEach(function(lvl) {
+        // Скалинг: DPS300/DPS30
+        var dps30 = 0, dps300 = 0;
+        [30, 300].forEach(function(lvl) {
             var sLvl = heroStatsAtLevel(hero, lvl);
             var dpsLvl = 0;
             abilCodes.forEach(function(rc) {
@@ -426,9 +428,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 dpsLvl += d2 / c2;
             });
             dpsLvl *= (1 + spellDmgPct / 100);
-            if (lvl === 25) dps25 = dpsLvl; else dps150 = dpsLvl;
+            if (lvl === 30) dps30 = dpsLvl; else dps300 = dpsLvl;
         });
-        var scaling = dps25 > 0 ? dps150 / dps25 : 1;
+        var scaling = dps30 > 0 ? dps300 / dps30 : 1;
 
         return {
             dps: Math.round(totalDPS),
@@ -459,7 +461,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // === UI State ===
     var heroes = HEROES_DATA.filter(function(h) { return !h.wip && !h.isAltForm; });
-    var currentLevel = 25;
+    var currentLevel = 30;
     var profileCache = {};
     var allProfiles = [];
     var percentileFns = {};

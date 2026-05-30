@@ -123,6 +123,12 @@ h1 {
     margin-bottom: 20px;
     white-space: nowrap;
 }
+.hero-page-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-left: 16px;
+}
 @media (max-width: 1200px) {
     .hero-grid { grid-template-columns: repeat(5, 1fr); }
 }
@@ -1666,6 +1672,7 @@ h1 {
     gap: 10px;
     flex-wrap: wrap;
     margin-bottom: 8px;
+    padding-left: 16px;
 }
 @media (max-width: 800px) {
     .mechanics-grid { grid-template-columns: 1fr; }
@@ -5925,6 +5932,7 @@ body.page-map-changes::after {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    padding-left: 16px;
 }
 
 /* Иконки с цветами */
