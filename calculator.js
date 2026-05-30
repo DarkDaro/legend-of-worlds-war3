@@ -547,19 +547,18 @@ function populateHeroSelect() {
             }
         });
     }
-    // Сначала герои с ручной сборкой (пропускаем WIP и альт-формы)
+    // Собираем всех героев в массив, потом сортируем по имени
+    var allOpts = [];
+    // Герои с ручной сборкой (пропускаем WIP и альт-формы)
     Object.keys(heroBuilds).forEach(key => {
         const hero = heroBuilds[key];
         const flags = heroFlags[key];
         if (flags && (flags.wip || flags.isAltForm)) return;
         if (hero && hero.items && hero.items.length > 0) {
-            const opt = document.createElement('option');
-            opt.value = key;
-            opt.textContent = heroNames[key] || hero.name || key;
-            select.appendChild(opt);
+            allOpts.push({ value: key, text: heroNames[key] || hero.name || key });
         }
     });
-    // Затем все остальные герои с ИИ-сборкой
+    // Герои с ИИ-сборкой
     if (typeof HERO_BUILD_DATA !== 'undefined' && typeof botBuildGroups !== 'undefined') {
         var added = new Set(Object.keys(heroBuilds));
         for (var rc in HERO_BUILD_DATA) {
@@ -569,16 +568,20 @@ function populateHeroSelect() {
                 if (flags && (flags.wip || flags.isAltForm)) continue;
                 var group = botBuildGroups[h.group];
                 if (group && group.stages && group.stages.length > 0) {
-                    var opt = document.createElement('option');
-                    opt.value = h.heroId;
-                    opt.textContent = heroNames[h.heroId] || h.name;
-                    opt.setAttribute('data-rawcode', rc);
-                    select.appendChild(opt);
+                    allOpts.push({ value: h.heroId, text: heroNames[h.heroId] || h.name });
                     added.add(h.heroId);
                 }
             }
         }
     }
+    // Сортировка по имени (кириллица)
+    allOpts.sort(function(a, b) { return a.text.localeCompare(b.text, 'ru'); });
+    allOpts.forEach(function(o) {
+        var opt = document.createElement('option');
+        opt.value = o.value;
+        opt.textContent = o.text;
+        select.appendChild(opt);
+    });
 }
 
 function importHeroBuild(heroId) {
