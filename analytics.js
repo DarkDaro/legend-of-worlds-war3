@@ -1,34 +1,28 @@
-// === Яндекс Метрика — шаблон ===
-// Замените YANDEX_COUNTER_ID на реальный номер счётчика из metrika.yandex.ru
-// После получения номера раскомментируйте блок ниже и удалите этот комментарий
+// === Яндекс Метрика — счётчик 109531576 ===
+(function(m,e,t,r,i,k,a){
+    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+})(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id=109531576","ym");
 
-/*
-(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0];
-k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})
-(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
-
-ym(YANDEX_COUNTER_ID, "init", {
+ym(109531576, "init", {
+    ssr: true,
+    webvisor: true,
     clickmap: true,
-    trackLinks: true,
+    ecommerce: "dataLayer",
+    referrer: document.referrer,
+    url: location.href,
     accurateTrackBounce: true,
-    webvisor: true
+    trackLinks: true
 });
-*/
 
 // === Отслеживание кликов по кнопке «Скачать карту» ===
-// Работает и без Метрики — просто логирует в консоль
-// Когда Метрика будет подключена — отправляет событие туда
-
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.nav-download').forEach(function(btn) {
         btn.addEventListener('click', function(e) {
-            // Лог в консоль (всегда)
             console.log('[Download] Клик по кнопке скачивания карты');
-
-            // Отправка цели в Метрику (когда будет подключена)
             if (typeof ym !== 'undefined') {
-                ym(YANDEX_COUNTER_ID, 'reachGoal', 'download_map');
+                ym(109531576, 'reachGoal', 'download_map');
             }
         });
     });
