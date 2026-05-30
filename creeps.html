@@ -302,8 +302,7 @@
 (function() {
     'use strict';
 
-    var CREEPS = typeof CREEPS_DB !== 'undefined' ? CREEPS_DB : [];
-
+    var CREEPS = [];
     var searchQuery = '';
     var passiveFilter = 'all';
     var sortCol = 'level';
@@ -318,6 +317,7 @@
     var DEF_TYPE_LABEL = { small: 'Лёгкая', medium: 'Средняя', heavy: 'Тяжёлая', Flesh: 'Плоть' };
 
     function getCreeps() {
+        if (!CREEPS.length && typeof CREEPS_DB !== 'undefined') CREEPS = CREEPS_DB;
         return CREEPS.filter(function(c) {
             if (searchQuery && !c.name.toLowerCase().includes(searchQuery) && !c.code.toLowerCase().includes(searchQuery)) return false;
             if (passiveFilter === 'has' && (!c.passives || !c.passives.length)) return false;
@@ -474,7 +474,16 @@
         renderTable();
     });
 
-    renderTable();
+    // Ждём загрузки defer-скриптов
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof CREEPS_DB !== 'undefined') CREEPS = CREEPS_DB;
+            renderTable();
+        });
+    } else {
+        if (typeof CREEPS_DB !== 'undefined') CREEPS = CREEPS_DB;
+        renderTable();
+    }
 })();
 document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.creep-table-wrap'); });
 </script>
