@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Предметы · Legend of Worlds</title>
+  <meta property="og:title" content="Предметы — Legend of Worlds">
+  <meta property="og:description" content="120+ артефактов: оружие, доспехи, магические предметы. Рецепты, сборки, тактика.">
+  <meta property="og:image" content="images/preview.png">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="items-db.js" defer></script>
+  <script src="analytics.js" defer></script>
+</head>
+<body class="page-items">
+
+  <header class="site-header">
+    <a href="https://disk.yandex.ru/d/P7Zp2vprpmg64A" class="logo" target="_blank" rel="noopener">
+      <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+      <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+    </a>
+    <nav class="header-nav">
+      <a href="https://disk.yandex.ru/d/P7Zp2vprpmg64A" class="nav-link nav-download" target="_blank" rel="noopener"><i class="fas fa-download"></i> Скачать карту</a>
+    </nav>
+  </header>
+
+  <div class="wiki-container">
+    <h1><i class="fas fa-flask"></i> Лавки предметов</h1>
+    <p style="margin-bottom:20px; color:var(--text-secondary);">Кликните по предмету — увидите полное дерево компонентов, включая стоимость свитков.</p>
+    <div class="item-search">
+      <i class="fas fa-search"></i>
+      <input type="text" id="itemSearch" placeholder="Найти предмет...">
+    </div>
+
+    <div class="app-container">
+      <div class="catalog">
+        <div class="category-tabs">
+          <button class="tab-btn active" data-cat="all">Все</button>
+          <button class="tab-btn" data-cat="armory">Оружейная</button>
+          <button class="tab-btn" data-cat="elements">Элементы стихии</button>
+          <button class="tab-btn" data-cat="equip">Экипировка</button>
+          <button class="tab-btn" data-cat="overseas">Заморские товары</button>
+          <button class="tab-btn" data-cat="boots">Обувь</button>
+          <button class="tab-btn" data-cat="jewels">Драгоценности</button>
+          <button class="tab-btn" data-cat="armor">Броня и доспехи</button>
+          <button class="tab-btn" data-cat="shields">Боевые щиты</button>
+          <button class="tab-btn" data-cat="weapon">Вооружение</button>
+          <button class="tab-btn" data-cat="weapon2">Вооружение 2</button>
+          <button class="tab-btn" data-cat="magic_art">Магические артефакты</button>
+          <button class="tab-btn" data-cat="magic_equip">Магическая экипировка</button>
+          <button class="tab-btn" data-cat="situational">Ситуативные</button>
+          <button class="tab-btn" data-cat="str_element">Элемент силы</button>
+          <button class="tab-btn" data-cat="int_element">Элемент разума</button>
+          <button class="tab-btn" data-cat="agi_element">Элемент ловкости</button>
+          <button class="tab-btn" data-cat="agi_element2">Элемент ловкости 2</button>
+          <button class="tab-btn" data-cat="dark_telec">Темный делец</button>
+          <button class="tab-btn" data-cat="boss">С боссов</button>
+          <button class="tab-btn" data-cat="boost">Книги и руны</button>
+          <button class="tab-btn" id="clearItemFavBtn" style="display:none;" onclick="clearItemFavorites()"><i class="fas fa-times"></i> Очистить избранное</button>
+        </div>
+
+        <section class="category-section" id="cat-armory"><h2><i class="fas fa-shield-alt"></i> Оружейная</h2><div class="items-grid" id="grid-armory"></div></section>
+        <section class="category-section" id="cat-elements"><h2><i class="fas fa-fire"></i> Элементы стихии</h2><div class="items-grid" id="grid-elements"></div></section>
+        <section class="category-section" id="cat-equip"><h2><i class="fas fa-ring"></i> Экипировка и ценности</h2><div class="items-grid" id="grid-equip"></div></section>
+        <section class="category-section" id="cat-overseas"><h2><i class="fas fa-globe-americas"></i> Заморские товары</h2><div class="items-grid" id="grid-overseas"></div></section>
+        <section class="category-section" id="cat-boots"><h2><i class="fas fa-shoe-prints"></i> Обувь</h2><div class="items-grid" id="grid-boots"></div></section>
+        <section class="category-section" id="cat-jewels"><h2><i class="fas fa-gem"></i> Драгоценности</h2><div class="items-grid" id="grid-jewels"></div></section>
+        <section class="category-section" id="cat-armor"><h2><i class="fas fa-shield-alt"></i> Броня и доспехи</h2><div class="items-grid" id="grid-armor"></div></section>
+        <section class="category-section" id="cat-shields"><h2><i class="fas fa-shield-alt"></i> Боевые щиты</h2><div class="items-grid" id="grid-shields"></div></section>
+        <section class="category-section" id="cat-weapon"><h2><i class="fas fa-khanda"></i> Вооружение</h2><div class="items-grid" id="grid-weapon"></div></section>
+        <section class="category-section" id="cat-weapon2"><h2><i class="fas fa-khanda"></i> Вооружение 2</h2><div class="items-grid" id="grid-weapon2"></div></section>
+        <section class="category-section" id="cat-magic_art"><h2><i class="fas fa-hat-wizard"></i> Магические артефакты</h2><div class="items-grid" id="grid-magic_art"></div></section>
+        <section class="category-section" id="cat-magic_equip"><h2><i class="fas fa-hat-wizard"></i> Магическая экипировка</h2><div class="items-grid" id="grid-magic_equip"></div></section>
+        <section class="category-section" id="cat-situational"><h2><i class="fas fa-exclamation-triangle"></i> Ситуативные предметы</h2><div class="items-grid" id="grid-situational"></div></section>
+        <section class="category-section" id="cat-str_element"><h2><i class="fas fa-fist-raised"></i> Элемент силы</h2><div class="items-grid" id="grid-str_element"></div></section>
+        <section class="category-section" id="cat-int_element"><h2><i class="fas fa-brain"></i> Элемент разума</h2><div class="items-grid" id="grid-int_element"></div></section>
+        <section class="category-section" id="cat-agi_element"><h2><i class="fas fa-running"></i> Элемент ловкости</h2><div class="items-grid" id="grid-agi_element"></div></section>
+        <section class="category-section" id="cat-agi_element2"><h2><i class="fas fa-running"></i> Элемент ловкости 2</h2><div class="items-grid" id="grid-agi_element2"></div></section>
+        <section class="category-section" id="cat-dark_telec"><h2><i class="fas fa-moon"></i> Темный делец</h2><div class="items-grid" id="grid-dark_telec"></div></section>
+        <section class="category-section" id="cat-boss"><h2><i class="fas fa-crown"></i> Выпадает с боссов</h2><div class="items-grid" id="grid-boss"></div></section>
+        <section class="category-section" id="cat-boost"><h2><i class="fas fa-chart-line"></i> Книги и руны</h2><div class="items-grid" id="grid-boost"></div></section>
+      </div>
+
+      <div class="item-detail-panel" id="itemDetailPanel">
+        <div id="detailContent">
+          <div class="empty-detail">
+            <div style="font-size:48px;"><i class="fas fa-clipboard-list"></i></div>
+            <p>Выберите предмет</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="item-sheet-overlay" id="itemSheetOverlay"></div>
+  <div class="item-bottom-sheet" id="itemBottomSheet" aria-hidden="true">
+    <button type="button" class="item-sheet-close" id="itemSheetClose" aria-label="Закрыть детали предмета">
+      <i class="fas fa-times"></i>
+    </button>
+    <div id="itemSheetContent">
+      <div class="empty-detail">
+        <div style="font-size:48px;"><i class="fas fa-clipboard-list"></i></div>
+        <p>Выберите предмет</p>
+      </div>
+    </div>
+  </div>
+
+  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Наверх"><i class="fas fa-chevron-up"></i></button>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo"><img loading="lazy" src="images/preview.png" alt="" width="28" height="28" class="footer-logo-img"> Legend of Worlds</span>
+      </div>
+      <div class="footer-social">
+        <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+        <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+        <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+  (function() {
+    const STORAGE_KEY = 'heroData:itemGridCollapseState';
+
+    function loadCollapsedState() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') || {};
+      } catch (err) {
+        return {};
+      }
+    }
+
+    function saveCollapsedState(state) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (err) {
+      }
+    }
+
+    const collapsedState = loadCollapsedState();
+
+    function getToggleButton(h2) {
+      return h2.querySelector('.collapse-toggle');
+    }
+
+    function updateToggleButton(h2, isCollapsed) {
+      const btn = getToggleButton(h2);
+      if (!btn) return;
+      btn.innerHTML = '<i class="fas ' + (isCollapsed ? 'fa-chevron-right' : 'fa-chevron-down') + ' collapse-chevron"></i>';
+      btn.setAttribute('aria-label', isCollapsed ? 'Развернуть магазин' : 'Свернуть магазин');
+      btn.setAttribute('aria-expanded', isCollapsed ? 'false' : 'true');
+      btn.title = isCollapsed ? 'Развернуть магазин' : 'Свернуть магазин';
+    }
+
+    function applyGridState(section, animate) {
+      if (!section) return;
+      var grid = section.querySelector('.items-grid');
+      var h2 = section.querySelector('h2');
+      if (!grid || !h2) return;
+
+      var isCollapsed = !!collapsedState[section.id];
+      grid.classList.toggle('collapsed', isCollapsed);
+      h2.classList.toggle('collapsed-header', isCollapsed);
+      updateToggleButton(h2, isCollapsed);
+
+      if (isCollapsed) {
+        grid.style.maxHeight = '0px';
+        return;
+      }
+
+      if (animate) {
+        grid.style.maxHeight = grid.scrollHeight + 'px';
+        setTimeout(function() {
+          if (!grid.classList.contains('collapsed')) {
+            grid.style.maxHeight = '';
+          }
+        }, 350);
+      } else {
+        grid.style.maxHeight = '';
+      }
+    }
+
+    function toggleGridState(section) {
+      if (!section) return;
+      var nextState = !collapsedState[section.id];
+      collapsedState[section.id] = nextState;
+      saveCollapsedState(collapsedState);
+      applyGridState(section, true);
+    }
+
+    function restoreGridState() {
+      document.querySelectorAll('.category-section').forEach(function(section) {
+        applyGridState(section, false);
+      });
+    }
+
+    document.querySelectorAll('.category-section h2').forEach(function(h2) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'collapse-toggle';
+      btn.innerHTML = '<i class="fas fa-chevron-down collapse-chevron"></i>';
+      btn.setAttribute('aria-label', 'Свернуть магазин');
+      btn.setAttribute('aria-expanded', 'true');
+      h2.appendChild(btn);
+      updateToggleButton(h2, !!collapsedState[h2.parentElement.id]);
+
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleGridState(h2.parentElement);
+      });
+
+      h2.addEventListener('click', function() {
+        toggleGridState(h2.parentElement);
+      });
+    });
+
+    restoreGridState();
+  })();
+
+  // Кнопка «Наверх»
+  (function() {
+    var btn = document.getElementById('scrollTopBtn');
+    if (!btn) return;
+    function checkScroll() {
+      btn.classList.toggle('visible', window.scrollY > 200);
+    }
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    checkScroll();
+    btn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+
+  }); // end DOMContentLoaded
+  </script>
+</body>
+</html>
