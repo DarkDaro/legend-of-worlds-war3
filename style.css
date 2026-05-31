@@ -650,7 +650,6 @@ h1 {
 }
 .ability-card:hover {
     box-shadow: inset 0 0 10px #00000055, 0 0 15px #00e6ff44;
-    transform: translateY(-3px);
     background: #132030;
 }
 .ability-card:hover .ability-icon {
@@ -5390,40 +5389,10 @@ body.item-sheet-open {
 
 /* ===== Микро-анимации ===== */
 
-/* Пульсация свечения при наведении */
-@keyframes glow-pulse {
-    0%, 100% { box-shadow: 0 0 15px rgba(0, 230, 255, 0.3); }
-    50% { box-shadow: 0 0 25px rgba(0, 230, 255, 0.5); }
-}
-
 /* Появление карточки снизу */
 @keyframes fadeSlideUp {
     from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
-}
-
-/* Пульсация свечения для карточек героев */
-.hero-card:hover {
-    box-shadow: 0 0 25px rgba(0, 230, 255, 0.5);
-    animation: fadeSlideUp 0.4s ease-out both, glow-pulse 2s ease-in-out infinite 0.4s;
-}
-
-/* Пульсация свечения для карточек предметов */
-.item-card:hover {
-    box-shadow: 0 0 25px rgba(0, 230, 255, 0.5);
-    animation: fadeSlideUp 0.4s ease-out both, glow-pulse 2s ease-in-out infinite 0.4s;
-}
-
-/* Пульсация свечения для stat-box */
-.stat-box:hover {
-    box-shadow: 0 0 25px rgba(0, 230, 255, 0.5);
-    animation: fadeSlideUp 0.4s ease-out both, glow-pulse 2s ease-in-out infinite 0.4s;
-}
-
-/* Пульсация свечения для quick-link-card */
-.quick-link-card:hover {
-    box-shadow: 0 0 25px rgba(0, 230, 255, 0.5);
-    animation: fadeSlideUp 0.4s ease-out both, glow-pulse 2s ease-in-out infinite 0.4s;
 }
 
 /* Появление карточек при загрузке */
@@ -5474,9 +5443,9 @@ body.item-sheet-open {
     transform: translateY(1px);
 }
 
-/* Способность при наведении — лёгкий сдвиг вправо */
+/* Способность при наведении — лёгкий сдвиг вправо + подъём */
 .ability-card:hover {
-    transform: translateX(4px);
+    transform: translateX(4px) translateY(-3px);
 }
 
 /* ===== Текстуры и паттерны ===== */
