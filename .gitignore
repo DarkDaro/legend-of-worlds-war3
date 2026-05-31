@@ -53,3 +53,12 @@ JassCode/
 *.zip
 *.rar
 *.af
+
+# Оригиналы WC3 иконок (не используются на сайте)
+images/PNG/
+
+# Осиротевшие файлы
+images/heroes/dark-archer2.png
+images/heroes/lich.png
+images/map_preview.PNG
+heroes/sorcerer-demo.html
