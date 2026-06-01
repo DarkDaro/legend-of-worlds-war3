@@ -87,30 +87,4 @@
 
 Статический сайт (HTML + CSS + JS), хостинг на GitHub Pages. Без фреймворков, без сборки, без сервера.
 
-## Файловая структура
-
-```
-├── heroes/              # 79 карточек героев
-├── images/
-│   ├── heroes/          # 79 иконок героев (PNG)
-│   ├── items/           # 201 иконка предметов
-│   ├── abilities/       # иконки способностей
-│   └── creeps/          # иконки крипов
-├── tools/               # Dev-скрипты (gitignored)
-├── mdlog/               # Документация и планы
-├── hero-data.js         # База героев (73 записи)
-├── abilities-db.js      # База способностей
-├── items-db.js          # База предметов
-├── hero-lore.js         # Лор и описания героев
-├── hero-builds.js       # Рекомендуемые сборки
-├── bot-builds.js        # AI-сборки
-├── jass-data.js         # Rawcode-маппинг из карты
-├── mechanics-db.js      # Механики игры
-├── creeps-db.js         # База крипов
-├── game-constants.js    # Формулы и константы
-├── search-index.js      # Индекс поиска
-├── style.css            # Стили
-└── *.html               # Страницы сайта
-```
-
 Автор карты: **DarkDaro**
