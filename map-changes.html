@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Изменения карты · Legend of Worlds</title>
     <meta property="og:title" content="Изменения карты — Legend of Worlds">
-    <meta property="og:description" content="Реестр изменений баланса и механик карты Legend of Worlds.">
+    <meta property="og:description" content="Баланс, механики, распределение героев и приросты характеристик.">
     <meta property="og:image" content="images/preview.png">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -16,98 +16,51 @@
     <script src="search.js" defer></script>
     <script src="items-db.js" defer></script>
     <style>
-        .mc-section {
-            margin: 24px 0;
-        }
-        .mc-date {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-        }
+        .mc-section { margin: 18px 0; }
+        .mc-date { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 8px; }
         .mc-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
-            padding: 16px 20px;
-            margin: 12px 0;
-            transition: background 0.2s, border-color 0.2s;
+            background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border); border-radius: 8px;
+            padding: 12px 16px; margin: 8px 0; transition: background 0.2s, border-color 0.2s;
         }
-        .mc-card:hover {
-            background: var(--glass-bg-hover);
-            border-color: var(--glass-border-hover);
+        .mc-card:hover { background: var(--glass-bg-hover); border-color: var(--glass-border-hover); }
+        .mc-card-title { font-weight: 600; font-size: 0.95rem; color: var(--text-primary); margin-bottom: 6px; }
+        .mc-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 6px 0; }
+        .mc-table th { text-align: left; padding: 4px 10px; border-bottom: 1px solid var(--glass-border); color: var(--text-secondary); font-weight: 600; font-size: 0.78rem; }
+        .mc-table td { padding: 4px 10px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text-primary); }
+        .mc-table .mc-old { color: #ff6b6b; text-decoration: line-through; text-decoration-color: rgba(255,107,107,0.4); }
+        .mc-table .mc-new { color: #4ecdc4; }
+        .mc-tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; margin-left: 6px; }
+        .mc-tag-balance { background: rgba(255,200,0,0.12); border: 1px solid rgba(255,200,0,0.3); color: #ffc800; }
+        .mc-tag-rework { background: rgba(0,200,255,0.1); border: 1px solid rgba(0,200,255,0.3); color: #00c8ff; }
+        .mc-tag-fix { background: rgba(100,255,100,0.1); border: 1px solid rgba(100,255,100,0.3); color: #64ff64; }
+        .mc-note { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; padding-left: 10px; border-left: 2px solid var(--glass-border); }
+
+        /* Pie chart */
+        .mc-pie-wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+        .mc-pie-svg { width: 160px; height: 160px; flex-shrink: 0; }
+        .mc-pie-legend { display: flex; flex-direction: column; gap: 6px; }
+        .mc-pie-legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; }
+        .mc-pie-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .mc-pie-pct { color: var(--text-secondary); font-size: 0.78rem; }
+
+        /* Role chips */
+        .mc-role-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .mc-role-chip {
+            padding: 3px 10px; border-radius: 4px; font-size: 0.78rem; font-weight: 600;
+            border: 1px solid; background: rgba(255,255,255,0.03);
         }
-        .mc-card-title {
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-        .mc-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
-            margin: 8px 0;
-        }
-        .mc-table th {
-            text-align: left;
-            padding: 6px 12px;
-            border-bottom: 1px solid var(--glass-border);
-            color: var(--text-secondary);
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-        .mc-table td {
-            padding: 6px 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            color: var(--text-primary);
-        }
-        .mc-table .mc-old {
-            color: #ff6b6b;
-            text-decoration: line-through;
-            text-decoration-color: rgba(255, 107, 107, 0.4);
-        }
-        .mc-table .mc-new {
-            color: #4ecdc4;
-        }
-        .mc-tag {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.72rem;
-            font-weight: 600;
-            margin-left: 8px;
-        }
-        .mc-tag-balance { background: rgba(255, 200, 0, 0.12); border: 1px solid rgba(255, 200, 0, 0.3); color: #ffc800; }
-        .mc-tag-rework { background: rgba(0, 200, 255, 0.1); border: 1px solid rgba(0, 200, 255, 0.3); color: #00c8ff; }
-        .mc-tag-fix { background: rgba(100, 255, 100, 0.1); border: 1px solid rgba(100, 255, 100, 0.3); color: #64ff64; }
-        .mc-note {
-            font-size: 0.82rem;
-            color: var(--text-secondary);
-            margin-top: 6px;
-            padding-left: 12px;
-            border-left: 2px solid var(--glass-border);
-        }
+
+        /* Gains range */
+        .mc-gain-range { color: var(--text-secondary); font-size: 0.75rem; }
+
         @media (max-width: 600px) {
-            .mc-card {
-                padding: 12px 14px;
-            }
-            .mc-table {
-                font-size: 0.78rem;
-                display: block;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            .mc-table th, .mc-table td {
-                padding: 5px 8px;
-            }
-            .mc-card-title {
-                font-size: 0.92rem;
-            }
-            .mc-date {
-                font-size: 0.8rem;
-            }
+            .mc-card { padding: 10px 12px; }
+            .mc-table { font-size: 0.76rem; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .mc-table th, .mc-table td { padding: 3px 6px; }
+            .mc-card-title { font-size: 0.88rem; }
+            .mc-pie-wrap { flex-direction: column; align-items: flex-start; }
+            .mc-pie-svg { width: 130px; height: 130px; }
         }
         @supports not (backdrop-filter: blur(1px)) {
             .mc-card { background: #0f172a !important; }
@@ -116,6 +69,7 @@
     <script src="icon-loader.js" defer></script>
     <script src="analytics.js" defer></script>
     <script src="ui-effects.js" defer></script>
+    <script src="map-changes-page.js" defer></script>
     <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/map-changes.html">
 </head>
 <body class="page-map-changes">
@@ -144,20 +98,38 @@
     <div class="wiki-container">
         <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="info.html">Информация</a><span class="sep">›</span><span class="current">Изменения карты</span></div>
         <h1><i class="fas fa-scroll"></i> Изменения карты</h1>
-        <p style="color:var(--text-secondary); margin-bottom:24px;">Внутренний реестр изменений баланса и механик карты. Источник — правки в items-db.js и JASS-скриптах.</p>
+        <p style="color:var(--text-secondary); margin-bottom:18px;">Баланс, механики, распределение героев и приросты характеристик.</p>
+
+        <!-- Распределение по классам -->
+        <div class="mc-section">
+            <div class="mc-date">Распределение героев</div>
+            <div class="mc-card">
+                <div class="mc-card-title"><i class="fas fa-chart-pie"></i> По основному атрибуту</div>
+                <div id="mcPieChart"></div>
+            </div>
+            <div class="mc-card">
+                <div class="mc-card-title"><i class="fas fa-tags"></i> По ролям</div>
+                <div id="mcRoleTable"></div>
+            </div>
+        </div>
+
+        <!-- Приросты характеристик -->
+        <div class="mc-section">
+            <div class="mc-date">Приросты характеристик</div>
+            <div class="mc-card">
+                <div class="mc-card-title"><i class="fas fa-chart-bar"></i> Сводка по классам</div>
+                <div id="mcGainsTable"></div>
+                <div class="mc-note">Суммарный прирост за уровень — всегда 8.0. В скобках — диапазон (мин–макс) среди героев класса.</div>
+            </div>
+        </div>
 
         <!-- 25.05.2026 -->
         <div class="mc-section">
             <div class="mc-date">25 мая 2026</div>
-
             <div class="mc-card">
-                <div class="mc-card-title">
-                    Перезарядка и манакост предметов
-                    <span class="mc-tag mc-tag-rework">переработка</span>
-                </div>
+                <div class="mc-card-title">Перезарядка и манакост предметов <span class="mc-tag mc-tag-rework">переработка</span></div>
                 <div class="mc-note">Перезарядка и манакост всех активных предметов обновлены. Также обновлены активные способности героев — на сайте теперь отображаются правильные данные.</div>
             </div>
-
         </div>
 
         <!-- 14.05.2026 -->
@@ -165,87 +137,37 @@
             <div class="mc-date">14 мая 2026</div>
 
             <div class="mc-card">
-                <div class="mc-card-title">
-                    Тёмный заряд: сила → наибольший атрибут
-                    <span class="mc-tag mc-tag-rework">переработка</span>
-                </div>
+                <div class="mc-card-title">Тёмный заряд: сила → наибольший атрибут <span class="mc-tag mc-tag-rework">переработка</span></div>
                 <table class="mc-table">
                     <tr><th>Предмет</th><th>Было</th><th>Стало</th></tr>
-                    <tr>
-                        <td>Рука тьмы</td>
-                        <td class="mc-old">900 + 2× STR</td>
-                        <td class="mc-new">900 + 2× наибольший атрибут</td>
-                    </tr>
-                    <tr>
-                        <td>Лук тьмы</td>
-                        <td class="mc-old">900 + 2× STR</td>
-                        <td class="mc-new">900 + 2× наибольший атрибут</td>
-                    </tr>
+                    <tr><td>Рука тьмы</td><td class="mc-old">900 + 2× STR</td><td class="mc-new">900 + 2× наибольший атрибут</td></tr>
+                    <tr><td>Лук тьмы</td><td class="mc-old">900 + 2× STR</td><td class="mc-new">900 + 2× наибольший атрибут</td></tr>
                 </table>
                 <div class="mc-note">Ловкачи и маги теперь получают тот же урон, что и силовики. Расчёт берёт максимальный из STR/AGI/INT.</div>
             </div>
 
             <div class="mc-card">
-                <div class="mc-card-title">
-                    Демоническая сущность — Поглотить
-                    <span class="mc-tag mc-tag-rework">переработка</span>
-                </div>
+                <div class="mc-card-title">Демоническая сущность — Поглотить <span class="mc-tag mc-tag-rework">переработка</span></div>
                 <table class="mc-table">
                     <tr><th>Параметр</th><th>Было</th><th>Стало</th></tr>
-                    <tr>
-                        <td>Эффект</td>
-                        <td class="mc-old">Вживляет предмет в обладателя или союзника</td>
-                        <td class="mc-new">Союзник получает 30% маг. вампиризма и блока на 10 сек</td>
-                    </tr>
-                    <tr>
-                        <td>Мана</td>
-                        <td class="mc-old">225</td>
-                        <td class="mc-new">250</td>
-                    </tr>
+                    <tr><td>Эффект</td><td class="mc-old">Вживляет предмет в обладателя или союзника</td><td class="mc-new">Союзник получает 30% маг. вампиризма и блока на 10 сек</td></tr>
+                    <tr><td>Мана</td><td class="mc-old">225</td><td class="mc-new">250</td></tr>
                 </table>
             </div>
 
             <div class="mc-card">
-                <div class="mc-card-title">
-                    Манабонус при атаке — убран
-                    <span class="mc-tag mc-tag-balance">баланс</span>
-                </div>
+                <div class="mc-card-title">Манабонус при атаке — убран <span class="mc-tag mc-tag-balance">баланс</span></div>
                 <table class="mc-table">
                     <tr><th>Предмет</th><th>Было</th><th>Стало</th></tr>
-                    <tr>
-                        <td>Огненный плащ</td>
-                        <td class="mc-old">+5 маны за атаку</td>
-                        <td class="mc-new">—</td>
-                    </tr>
-                    <tr>
-                        <td>Щит смерти</td>
-                        <td class="mc-old">+15 маны за атаку</td>
-                        <td class="mc-new">—</td>
-                    </tr>
-                    <tr>
-                        <td>Огненный щит</td>
-                        <td class="mc-old">+25 маны за атаку</td>
-                        <td class="mc-new">—</td>
-                    </tr>
-                    <tr>
-                        <td>Щит джаггернаута</td>
-                        <td class="mc-old">+50 маны при атаке</td>
-                        <td class="mc-new">— (реген +100→+150)</td>
-                    </tr>
-                    <tr>
-                        <td>Щит джаггернаута II</td>
-                        <td class="mc-old">+100 маны при атаке</td>
-                        <td class="mc-new">— (реген +150→+200)</td>
-                    </tr>
-                    <tr>
-                        <td>Защита ада</td>
-                        <td class="mc-old">+60 мана бонус</td>
-                        <td class="mc-new">—</td>
-                    </tr>
+                    <tr><td>Огненный плащ</td><td class="mc-old">+5 маны за атаку</td><td class="mc-new">—</td></tr>
+                    <tr><td>Щит смерти</td><td class="mc-old">+15 маны за атаку</td><td class="mc-new">—</td></tr>
+                    <tr><td>Огненный щит</td><td class="mc-old">+25 маны за атаку</td><td class="mc-new">—</td></tr>
+                    <tr><td>Щит джаггернаута</td><td class="mc-old">+50 маны при атаке</td><td class="mc-new">— (реген +100→+150)</td></tr>
+                    <tr><td>Щит джаггернаута II</td><td class="mc-old">+100 маны при атаке</td><td class="mc-new">— (реген +150→+200)</td></tr>
+                    <tr><td>Защита ада</td><td class="mc-old">+60 мана бонус</td><td class="mc-new">—</td></tr>
                 </table>
                 <div class="mc-note">Щиты джаггернаута получили компенсацию в виде увеличения регенерации здоровья.</div>
             </div>
-
         </div>
 
         <a href="info.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к информации</a>
@@ -269,7 +191,6 @@
     </footer>
 
 <script>
-// Scroll-reveal — карточки изменений
 document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.mc-card, .mc-section'); });
 </script>
 
