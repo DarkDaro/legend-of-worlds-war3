@@ -1647,16 +1647,18 @@ tabs.forEach(function(btn) {
 
 // Поиск предметов
 const searchInput = document.getElementById('itemSearch');
-searchInput.addEventListener('input', function() {
-  itemSearchQuery = this.value.toLowerCase().trim();
-  applyItemView();
-});
-searchInput.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    this.value = '';
-    this.dispatchEvent(new Event('input'));
-  }
-});
+if (searchInput) {
+  searchInput.addEventListener('input', function() {
+    itemSearchQuery = this.value.toLowerCase().trim();
+    applyItemView();
+  });
+  searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      this.value = '';
+      this.dispatchEvent(new Event('input'));
+    }
+  });
+}
 
 // Запуск
 renderAllGrids();
