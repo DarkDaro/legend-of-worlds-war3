@@ -4,8 +4,14 @@
 (function() {
     'use strict';
     var MAX_TILT = 8;
+    var MOBILE_BREAKPOINT = 768;
+
+    function isMobile() {
+        return window.innerWidth <= MOBILE_BREAKPOINT || !window.matchMedia('(hover: hover)').matches;
+    }
 
     function initTilt() {
+        if (isMobile()) return;
         var cards = document.querySelectorAll('.hero-card');
         for (var i = 0; i < cards.length; i++) {
             var card = cards[i];

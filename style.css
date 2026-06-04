@@ -209,13 +209,6 @@ h1 {
     transform: perspective(600px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(-5px);
     transition: transform 0.15s ease-out, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
-/* Fallback hover без tilt (мобильные) */
-@media (hover: none) {
-    .hero-card:hover {
-        transform: translateY(-5px);
-    }
-}
-
 .hero-image {
     width: 100%;
     height: 90px;
@@ -6188,7 +6181,7 @@ body.page-map-changes::after {
 
 /* Продающийся предмет в калькуляторе */
 .calc-slot-temp {
-    border: 1px dashed rgba(255, 200, 0, 0.4) !important;
+    border: 1px dashed rgba(255, 200, 0, 0.4);
     opacity: 0.7;
 }
 
@@ -7010,7 +7003,7 @@ body.page-leaving {
     /* Убираем cursor glow и tilt на мобильных */
     .cursor-glow { display: none !important; }
     .tilt-glare { display: none !important; }
-    .hero-card.tilt-active { transform: translateY(-3px) !important; }
+    .hero-card:hover { transform: translateY(-3px); }
     /* Ripple быстрее */
     .ripple { animation-duration: 0.3s !important; }
     /* Page transition быстрее */
@@ -7340,9 +7333,9 @@ body.page-leaving {
 
 /* Временный предмет (продаётся при переходе) */
 .bc-slot-temp {
-    border-style: dashed !important;
-    border-color: rgba(255, 200, 0, 0.35) !important;
-    background: rgba(255, 200, 0, 0.03) !important;
+    border-style: dashed;
+    border-color: rgba(255, 200, 0, 0.35);
+    background: rgba(255, 200, 0, 0.03);
 }
 
 .bc-slot-temp .bc-slot-name.temp-name {
