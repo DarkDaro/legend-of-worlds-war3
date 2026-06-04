@@ -54,7 +54,6 @@ body {
 }
 @media (max-width: 600px) {
     .wiki-container { padding: 14px 12px; border-radius: 12px; }
-    .hero-page-container { padding: 14px 10px; border-radius: 16px; }
     .hero-stats-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 }
 
@@ -2805,7 +2804,8 @@ h1 {
         height: 48px;
     }
     /* Расширяем wiki-container на мобильных — карточки предметов не обрезаются */
-    .wiki-container {
+    .page-items .wiki-container,
+    .page-monsters .wiki-container {
         padding: 16px 4px;
         border-radius: 12px;
         /* Убираем лишние отступы у границы контейнера */
