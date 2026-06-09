@@ -1,0 +1,1066 @@
+/* === Гайды на героев: узкий контейнер === */
+body.page-hero-guide {
+    background-image:
+        radial-gradient(ellipse at 50% 50%, rgba(0, 230, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 30% 10%, #1a2230 0%, #05070a 100%);
+}
+body.page-hero-guide .wiki-container {
+    max-width: 1100px;
+}
+/* Orb для главной — два пятна */
+body.page-home::after {
+    content: '';
+    position: fixed;
+    top: 10%;
+    right: 10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    box-shadow: -200px 300px 0 -100px rgba(0, 128, 255, 0.04);
+    animation: homeOrbPulse 5s ease-in-out infinite;
+}
+@keyframes homeOrbPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.15); }
+}
+.home-orb-secondary {
+    position: fixed;
+    bottom: 5%;
+    left: 8%;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(0, 128, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: homeOrb2Pulse 7s ease-in-out infinite 1s;
+}
+@keyframes homeOrb2Pulse {
+    0%, 100% { opacity: 0.8; transform: scale(1) translate(0, 0); }
+    33% { opacity: 0.4; transform: scale(1.1) translate(20px, -15px); }
+    66% { opacity: 0.9; transform: scale(0.95) translate(-10px, 10px); }
+}
+
+/* Orb для калькулятора/конструктора/бот-сборок — правый нижний */
+body.page-calculator::after,
+body.page-build-constructor::after,
+body.page-bot-builds::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    right: -5%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Orb для сравнения — левый нижний */
+body.page-compare::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    left: -5%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(0, 128, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body.page-armor-calc,
+body.page-formulas-calc {
+    background-image:
+        radial-gradient(ellipse at 70% 20%, rgba(0, 230, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, #182530 0%, #05070a 100%);
+}
+
+/* Orb для калькуляторов брони/формул — правый верхний */
+body.page-armor-calc::after,
+body.page-formulas-calc::after {
+    content: '';
+    position: fixed;
+    top: -5%;
+    right: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Orb для режимов — центр-правый */
+body.page-modes::after {
+    content: '';
+    position: fixed;
+    top: 20%;
+    right: -8%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Orb для FAQ — левый верхний */
+body.page-faq::after {
+    content: '';
+    position: fixed;
+    top: -5%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 128, 255, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Orb для гайдов — правый нижний */
+body.page-guides::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    right: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Orb для изменений карты — левый нижний */
+body.page-map-changes::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ===== Калькулятор сборок ===== */
+
+.calc-intro {
+    color: #b0b9d0;
+    margin-bottom: 8px;
+    font-size: 0.88rem;
+}
+
+.calc-top-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.calc-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #8aa0c0;
+    text-decoration: none;
+    font-size: 0.8rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.calc-back-link:hover {
+    color: #00e6ff;
+    border-color: #00e6ff88;
+}
+
+.calc-hero-import {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.calc-hero-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #c0d0e8;
+    white-space: nowrap;
+}
+
+.calc-hero-select {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    color: #e0f0ff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    min-width: 140px;
+}
+
+.calc-hero-select:focus {
+    outline: none;
+    border-color: #00e6ff88;
+    box-shadow: 0 0 6px #00e6ff22;
+}
+
+.calc-share-btn {
+    background: transparent;
+    border: 1px solid #2a4060;
+    color: #8aa0c0;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: border-color 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+
+.calc-share-btn:hover {
+    border-color: #00e6ff88;
+    color: #00e6ff;
+}
+
+.calc-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(16px);
+    background: rgba(15, 23, 42, 0.93);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid #00e6ff66;
+    color: #e0f0ff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 1000;
+    box-shadow: 0 4px 16px #00000066;
+}
+
+.calc-toast.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.calc-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #0a1a2a, #0f2535);
+    border: 1px solid #00e6ff44;
+    color: #00e6ff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.calc-link-btn:hover {
+    border-color: #00e6ff88;
+    box-shadow: 0 0 12px #00e6ff33;
+    transform: translateY(-2px);
+}
+
+.cross-links {
+    margin-top: 24px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-left: 16px;
+}
+
+/* Иконки с цветами */
+.icon-green { color: #51cf66; }
+.icon-gold { color: #ffd43b; }
+.icon-red { color: #ff6b6b; }
+.icon-orange { color: #ff922b; }
+.icon-blue { color: #74c0fc; }
+.icon-danger { color: #ff5555; }
+.icon-warn { color: #ff7777; }
+
+/* Утилиты */
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.mt-8 { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+.text-muted-sm { font-size: 0.85rem; color: var(--text-muted); }
+
+/* Цвета атрибутов */
+.attr-str { color: #ff5555; }
+.attr-agi { color: #55ff55; }
+.attr-int { color: #55aaff; }
+.attr-chaos { color: #bf7fff; }
+.attr-mech { color: #ff9944; }
+.attr-gold { color: #ffcc00; }
+
+/* Соцсети — брендовые цвета */
+.social-vk { color: #4a76a8; }
+.social-tg { color: #26a5e4; }
+.social-dc { color: #5865f2; }
+.social-yt { color: #ff0000; }
+.social-bolt { color: #ff8800; }
+
+/* Иконки методов поддержки */
+.method-icon i { font-size: 2rem; }
+.method-icon .fa-credit-card { color: var(--accent-cyan); }
+
+/* Bot builds */
+.bb-slot-empty { color: #666; font-size: 0.6rem; }
+.bb-level-badge { color: #ff6b6b; font-size: 0.75rem; }
+
+/* ===== Калькуляторы брони и формул ===== */
+.calc-page-note {
+    color: #b0b9d0;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+.calc-inline-note {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+.formula-result-value--warning {
+    color: #ff9944;
+}
+.formula-source-input {
+    width: 80px;
+    background: #0a1020;
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    color: #e0f0ff;
+    font-size: 0.9rem;
+    outline: none;
+    box-sizing: border-box;
+}
+.formula-source-input:focus {
+    border-color: #00e6ff;
+}
+.calc-page-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--accent-cyan);
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+.calc-page-link--spaced {
+    margin-left: 16px;
+}
+
+/* Отступ для второй ссылки в калькуляторе брони */
+.armor-hero-link--spaced {
+    margin-left: 16px;
+}
+
+/* ===== Сравнение героев ===== */
+.compare-page-note {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+.compare-clear-btn {
+    align-self: flex-end;
+}
+.compare-back-link {
+    margin-top: 32px;
+}
+.compare-attr-strength {
+    color: #ff5555;
+}
+.compare-attr-agility {
+    color: #55ff55;
+}
+.compare-attr-intelligence {
+    color: #55aaff;
+}
+.compare-level-gain {
+    color: #55ff88;
+    font-size: 0.76rem;
+}
+.compare-level-total {
+    color: var(--text-dim);
+    font-size: 0.72rem;
+}
+
+.calc-container {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.calc-left {
+    flex: 1;
+    min-width: 0;
+}
+
+.calc-right {
+    width: 240px;
+    flex-shrink: 0;
+}
+
+/* Слоты */
+.calc-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.calc-slot {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 2px dashed #2a4060;
+    border-radius: 8px;
+    padding: 6px 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 78px;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    position: relative;
+}
+
+.calc-slot:hover {
+    border-color: #00e6ff66;
+    box-shadow: 0 0 8px #00e6ff22;
+}
+
+.calc-slot-empty {
+    color: #2a4060;
+    font-size: 1.2rem;
+}
+
+.calc-slot-empty:hover {
+    color: #00e6ff;
+    border-color: #00e6ff88;
+}
+
+.calc-slot-filled {
+    border-style: solid;
+    border-color: #00e6ff44;
+    background: var(--glass-bg-hover);
+    cursor: default;
+}
+
+.calc-slot-filled:hover {
+    border-color: #ff555588;
+    box-shadow: 0 0 8px #ff555522;
+}
+
+/* Цвет рамки слота по атрибуту */
+.calc-attr-strength { border-color: #ff555566; }
+.calc-attr-strength .calc-slot-icon img { border-color: #ff5555aa; box-shadow: 0 0 8px #ff555544; }
+.calc-attr-agility { border-color: #55ff5566; }
+.calc-attr-agility .calc-slot-icon img { border-color: #55ff55aa; box-shadow: 0 0 8px #55ff5544; }
+.calc-attr-intelligence { border-color: #55aaff66; }
+.calc-attr-intelligence .calc-slot-icon img { border-color: #55aaffaa; box-shadow: 0 0 8px #55aaff44; }
+.calc-attr-weapon { border-color: #ff880066; }
+.calc-attr-weapon .calc-slot-icon img { border-color: #ff8800aa; box-shadow: 0 0 8px #ff880044; }
+.calc-attr-armor { border-color: #00e6ff66; }
+.calc-attr-armor .calc-slot-icon img { border-color: #00e6ffaa; box-shadow: 0 0 8px #00e6ff44; }
+.calc-attr-boss { border-color: #ff880066; }
+.calc-attr-boss .calc-slot-icon img { border-color: #ff8800aa; box-shadow: 0 0 8px #ff880044; }
+.calc-attr-neutral { border-color: #bf7fff66; }
+.calc-attr-neutral .calc-slot-icon img { border-color: #bf7fffaa; box-shadow: 0 0 8px #bf7fff44; }
+
+.calc-slot-icon {
+    margin-bottom: 2px;
+}
+
+.calc-slot-icon img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    border-radius: 6px;
+    border: 2px solid #00e6ffaa;
+    box-shadow: 0 0 6px #00e6ff44;
+}
+
+.calc-slot-name {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #e0f0ff;
+    text-align: center;
+    margin-bottom: 0;
+    word-break: break-word;
+    line-height: 1.2;
+}
+
+.calc-slot-cost {
+    font-size: 0.65rem;
+    color: #8aa0c0;
+}
+
+.calc-slot-remove {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: #ff555533;
+    border: none;
+    color: #ff5555;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.15s, background 0.15s;
+}
+
+.calc-slot-filled:hover .calc-slot-remove {
+    opacity: 1;
+}
+
+.calc-slot-remove:hover {
+    background: #ff555566;
+}
+
+/* Кнопка toggle «продаётся» в калькуляторе */
+.calc-slot-keep-toggle {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background: rgba(0, 230, 255, 0.1);
+    border: none;
+    color: #00e6ff;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.55rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.15s, background 0.15s;
+}
+
+.calc-slot-filled:hover .calc-slot-keep-toggle {
+    opacity: 1;
+}
+
+.calc-slot-keep-toggle:hover {
+    background: rgba(0, 230, 255, 0.25);
+}
+
+/* Продающийся предмет в калькуляторе */
+.calc-slot-temp {
+    border: 1px dashed rgba(255, 200, 0, 0.4);
+    opacity: 0.7;
+}
+
+.calc-slot-temp .calc-slot-name.temp-name {
+    text-decoration: line-through;
+    text-decoration-color: rgba(255, 200, 0, 0.5);
+}
+
+.calc-badge-temp {
+    background: rgba(255, 200, 0, 0.12);
+    border: 1px solid rgba(255, 200, 0, 0.3);
+    color: #ffc800;
+    font-size: 0.55rem;
+    padding: 0 4px;
+    border-radius: 3px;
+    margin-left: 3px;
+}
+
+/* Строка возврата в результатах */
+.calc-results-refund .calc-results-row-value {
+    color: #4ade80;
+}
+
+.calc-results-net .calc-results-row-label {
+    font-weight: 700;
+}
+
+.calc-results-net .calc-results-row-value {
+    color: #00e6ff;
+    font-weight: 700;
+}
+
+.calc-slots-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.calc-slots-counter {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #00e6ff;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    padding: 3px 8px;
+}
+
+/* Кнопка очистки */
+.calc-clear-btn {
+    background: transparent;
+    border: 1px solid #2a4060;
+    color: #8aa0c0;
+    padding: 3px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.calc-clear-btn:hover {
+    border-color: #ff555588;
+    color: #ff5555;
+}
+
+/* Результаты */
+.calc-results {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    padding: 12px;
+    position: sticky;
+    top: 16px;
+}
+
+.calc-results-empty {
+    color: #5a7a9a;
+    text-align: center;
+    padding: 16px 8px;
+    font-size: 0.82rem;
+}
+
+.calc-results-empty i {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+    color: #2a4060;
+}
+
+.calc-results-total {
+    text-align: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #1a2a40;
+}
+
+.calc-results-label {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.calc-results-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffc800;
+    text-shadow: 0 0 12px #ffc80044;
+}
+
+.calc-results-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.calc-results-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72rem;
+}
+
+.calc-results-row-label {
+    color: #8aa0c0;
+}
+
+.calc-results-row-value {
+    color: #e0f0ff;
+    font-weight: 600;
+}
+
+.calc-results-boss .calc-results-row-label {
+    color: #ff8800;
+}
+
+.calc-results-boss .calc-results-row-value {
+    color: #ff8800;
+}
+
+.calc-results-summary {
+    font-size: 0.68rem;
+    color: #5a7a9a;
+    text-align: center;
+    padding-top: 6px;
+    border-top: 1px solid #1a2a40;
+}
+
+.calc-shopping-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #e0f0ff;
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid #1a2a40;
+    margin-bottom: 4px;
+}
+
+.calc-bonuses-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #e0f0ff;
+    margin-bottom: 6px;
+}
+
+.calc-shopping-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.calc-shopping-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.68rem;
+    padding: 1px 0;
+}
+
+.calc-shopping-icon img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    border-radius: 3px;
+}
+
+.calc-shopping-name {
+    flex: 1;
+    color: #c0d0e8;
+    word-break: break-word;
+}
+
+.calc-shopping-cost {
+    color: #8aa0c0;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Дерево компонентов */
+.calc-tree-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #e0f0ff;
+    margin-bottom: 6px;
+}
+
+.calc-tree-item {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 6px;
+}
+
+.calc-tree-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 2px;
+}
+
+.calc-tree-expandable {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 3px;
+    margin: -3px;
+    transition: background 0.15s;
+}
+
+.calc-tree-expandable:hover {
+    background: var(--glass-subtle-hover);
+}
+
+.calc-tree-chevron {
+    font-size: 0.65rem;
+    color: #5a7a9a;
+    width: 12px;
+    flex-shrink: 0;
+    transition: transform 0.15s;
+}
+
+.calc-tree-icon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    border-radius: 5px;
+    border: 2px solid #00e6ffaa;
+}
+
+.calc-tree-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #e0f0ff;
+    flex: 1;
+}
+
+.calc-tree-cost {
+    font-size: 0.72rem;
+    color: #8aa0c0;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.calc-tree-components {
+    padding-left: 6px;
+}
+
+/* Каталог выбора */
+.calc-catalog-section {
+    margin-top: 16px;
+}
+
+.calc-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    padding: 6px 14px;
+    margin-bottom: 8px;
+    max-width: 320px;
+}
+
+.calc-search i {
+    color: #00e6ff;
+    font-size: 13px;
+}
+
+.calc-search input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #e0f0ff;
+    font-size: 13px;
+    width: 100%;
+}
+
+.calc-search input::placeholder {
+    color: #6b7c99;
+}
+
+.calc-catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
+    gap: 6px;
+}
+
+.calc-catalog-item {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    padding: 6px 3px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.calc-catalog-item:hover {
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--neon-glow);
+    transform: translateY(-2px);
+}
+
+.calc-catalog-item.calc-catalog-in-build {
+    border-color: #00e6ff44;
+    background: #0a1520;
+    opacity: 0.6;
+}
+
+.calc-catalog-icon img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    border-radius: 5px;
+    margin-bottom: 1px;
+}
+
+.calc-catalog-name {
+    font-size: 0.66rem;
+    font-weight: 600;
+    color: #e0f0ff;
+    word-break: break-word;
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+
+.calc-catalog-cost {
+    font-size: 0.58rem;
+    color: #8aa0c0;
+}
+
+/* Мобильная адаптация калькулятора */
+@media (max-width: 900px) {
+    .calc-container {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .calc-right {
+        width: 100%;
+    }
+    .calc-results {
+        position: static;
+    }
+}
+
+@media (max-width: 800px) {
+    .calc-top-bar {
+        flex-direction: column;
+    }
+
+    .calc-slot-keep-toggle {
+        opacity: 1;
+        font-size: 0.5rem;
+    }
+    .calc-top-bar .calc-back-link {
+        text-align: center;
+    }
+    .calc-slots {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .calc-hero-import {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+    .calc-hero-select {
+        min-width: 0;
+        width: 100%;
+    }
+    .calc-share-btn {
+        width: 100%;
+        text-align: center;
+    }
+    .calc-search {
+        max-width: 100%;
+    }
+    .calc-catalog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+        gap: 6px;
+    }
+    .calc-catalog-item {
+        padding: 6px 3px;
+    }
+    .calc-catalog-icon img {
+        width: 36px;
+        height: 36px;
+    }
+    .calc-catalog-name {
+        font-size: 0.68rem;
+    }
+    .calc-catalog-cost {
+        font-size: 0.6rem;
+    }
+    /* Табы каталога — горизонтальный скролл */
+    .calc-catalog-section .category-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+    }
+    .calc-catalog-section .category-tabs::-webkit-scrollbar {
+        display: none;
+    }
+    .calc-catalog-section .tab-btn {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 500px) {
+    .calc-slots {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+    .calc-slot {
+        min-height: 80px;
+        padding: 6px 4px;
+    }
+    .calc-slot-icon img {
+        width: 40px;
+        height: 40px;
+    }
+    .calc-slot-name {
+        font-size: 0.68rem;
+    }
+    .calc-slot-cost {
+        font-size: 0.62rem;
+    }
+    .calc-tree-icon img {
+        width: 28px;
+        height: 28px;
+    }
+    .calc-tree-name {
+        font-size: 0.78rem;
+    }
+    .calc-tree-cost {
+        font-size: 0.7rem;
+    }
+    .calc-shopping-list {
+        max-height: 140px;
+    }
+    .calc-results-value {
+        font-size: 1.3rem;
+    }
+}

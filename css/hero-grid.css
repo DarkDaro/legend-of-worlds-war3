@@ -1,0 +1,245 @@
+/* === Фильтры === */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+.filter-btn {
+    background: var(--glass-bg);
+    border: 1px solid #2a5070;
+    color: #b0c8f0;
+    padding: 12px 24px;
+    border-radius: 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00e6ff33;
+    transition: 0.15s;
+    text-transform: uppercase;
+}
+.filter-btn i { margin-right: 8px; }
+.filter-btn:hover {
+    background: #1a3050;
+    color: white;
+    box-shadow: 0 0 20px #00e6ffaa;
+    border-color: #00e6ff;
+}
+.filter-btn.active {
+    background: #00e6ff;
+    border-color: white;
+    color: #0b0e14;
+    box-shadow: 0 0 25px #00e6ff;
+}
+
+/* === Сетка героев (4 в ряд) === */
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 24px;
+}
+.hero-page-links .calc-link-btn {
+    margin-bottom: 20px;
+    white-space: nowrap;
+}
+.hero-page-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-left: 16px;
+    margin-top: 32px;
+}
+@media (max-width: 1200px) {
+    .hero-grid { grid-template-columns: repeat(5, 1fr); }
+}
+@media (max-width: 900px) {
+    .hero-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 700px) {
+    .hero-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+    .hero-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* === Карточка героя === */
+.hero-card {
+    position: relative;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-radius: 12px;
+    padding: 8px 8px 8px;
+    text-align: center;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 0 15px #00000080, 0 0 0 1px #00e6ff22 inset;
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    color: #d0e0ff;
+    text-decoration: none;
+    display: block;
+    will-change: transform;
+    contain: layout style;
+}
+.hero-card:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--neon-glow-strong);
+}
+
+/* Градиентная рамка при hover */
+.hero-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 1px;
+    background: linear-gradient(135deg, #00e6ff, #0080ff, #00e6ff);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+.hero-card:hover::before {
+    opacity: 1;
+}
+
+/* Цветные акценты по атрибуту */
+.hero-card.strength    { border-bottom: 4px solid #ff5555; box-shadow: 0 0 15px #ff555555, 0 0 0 1px #00e6ff22 inset; }
+.hero-card.agility     { border-bottom: 4px solid #55ff55; box-shadow: 0 0 15px #55ff5555, 0 0 0 1px #00e6ff22 inset; }
+.hero-card.intelligence{ border-bottom: 4px solid #55aaff; box-shadow: 0 0 15px #55aaff55, 0 0 0 1px #00e6ff22 inset; }
+
+/* Tilt-эффект + блик на hero-card */
+.hero-card .tilt-glare {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255,255,255,0.12) 0%, transparent 60%);
+    z-index: 3;
+}
+.hero-card:hover .tilt-glare {
+    opacity: 1;
+}
+.hero-card.tilt-active {
+    transform: perspective(600px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(-5px);
+    transition: transform 0.15s ease-out, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.hero-image {
+    width: 100%;
+    height: 90px;
+    background-color: #1e1e2a;
+    border-radius: 10px;
+    border: 2px solid #00e6ff66;
+    box-shadow: inset 0 0 15px #000, 0 0 15px #00e6ff66;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.hero-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+.hero-image.no-icon {
+    font-size: 48px;
+    color: #2a5070;
+}
+.hero-image.no-icon::after {
+    content: '\f71d';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 36px;
+    color: #2a5070;
+}
+.hero-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 0 8px #00e6ff;
+    margin-bottom: 1px;
+    line-height: 1.2;
+}
+.hero-title {
+    font-size: 0.68rem;
+    color: #a0b5d0;
+    margin-bottom: 4px;
+}
+.hero-attr-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 0.65rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: var(--glass-bg);
+    border: 1px solid;
+}
+.hero-card.strength .hero-attr-badge    { border-color: #ff5555; color: #ffaaaa; }
+.hero-card.agility .hero-attr-badge     { border-color: #55ff55; color: #aaffaa; }
+.hero-card.intelligence .hero-attr-badge{ border-color: #55aaff; color: #aaccff; }
+.unique-badge {
+    position: absolute;
+    top: 8px;
+    right: 40px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #1a1a2e;
+    border: 1px solid #ffd966;
+    color: #ffd966;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 8px #ffd96666;
+    z-index: 2;
+}
+.hero-card:hover .unique-badge {
+    background: #ffd966;
+    color: #0b0e14;
+    box-shadow: 0 0 15px #ffd966aa;
+}
+
+.wip-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(10, 14, 20, 0.85);
+    border: 1px solid #ff8844aa;
+    color: #ff8844;
+    font-size: 0.55rem;
+    padding: 2px 6px;
+    border-radius: 6px;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hero-card:hover .wip-badge {
+    background: rgba(255, 136, 68, 0.15);
+    box-shadow: 0 0 8px #ff884466;
+}
+
+.wip-page-banner {
+    background: rgba(255, 136, 68, 0.1);
+    border: 1px solid #ff8844aa;
+    color: #ff8844;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+}

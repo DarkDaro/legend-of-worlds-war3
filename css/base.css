@@ -1,0 +1,76 @@
+/* === Неоновая вики героев (совместимо с hero-grid) === */
+:root {
+    /* Стекломорфизм */
+    --glass-bg: rgba(15, 23, 42, 0.5);
+    --glass-bg-hover: rgba(15, 23, 42, 0.65);
+    --glass-blur: 12px;
+    --glass-border: rgba(0, 230, 255, 0.12);
+    --glass-border-hover: rgba(0, 230, 255, 0.35);
+    /* Тонкие фоны для подзаголовков, кнопок, тегов */
+    --glass-subtle: rgba(0, 255, 255, 0.04);
+    --glass-subtle-hover: rgba(0, 255, 255, 0.08);
+    --glass-tag-bg: rgba(0, 255, 255, 0.06);
+    --glass-tag-border: rgba(0, 255, 255, 0.15);
+    --glass-tag-active: rgba(0, 255, 255, 0.15);
+    /* Текстовые цвета */
+    --text-primary: #e0f0ff;
+    --text-secondary: #8aa0c0;
+    --text-muted: #6b7c99;
+    --text-dim: #5a7a9a;
+    --accent-cyan: #00e6ff;
+    /* Неоновый glow */
+    --neon-glow: 0 0 20px rgba(0, 230, 255, 0.2), 0 0 60px rgba(0, 230, 255, 0.08);
+    --neon-glow-strong: 0 0 20px rgba(0, 230, 255, 0.4), 0 0 60px rgba(0, 230, 255, 0.15), inset 0 0 15px rgba(0, 230, 255, 0.03);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+}
+
+body {
+    background: #0b0e14;
+    background-image: radial-gradient(circle at 30% 10%, #1a2330 0%, #05070a 100%);
+    color: #e3e9f5;
+    padding: 24px 32px;
+    line-height: 1.5;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* === wiki-container: глобальный 1600px === */
+.wiki-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    background: rgba(10, 20, 40, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 230, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px 32px;
+    margin-top: 16px;
+    margin-bottom: 24px;
+}
+@media (max-width: 600px) {
+    .wiki-container { padding: 14px 12px; border-radius: 12px; }
+    .hero-stats-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+h1 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    border-bottom: 2px solid #00e6ff;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+    color: #ffffff;
+    text-shadow: 0 0 12px #00e6ff88, 0 0 25px #00e6ff44;
+    letter-spacing: 1px;
+    /* Shimmer-перелив на заголовках */
+    background: linear-gradient(90deg, #fff 0%, #00e6ff 45%, #fff 55%, #00e6ff 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleShimmer 6s ease-in-out infinite;
+}

@@ -1,0 +1,1157 @@
+/* ===== Глобальный поиск ===== */
+
+/* Кнопка поиска в шапке */
+.gs-trigger {
+    background: var(--glass-bg);
+    border: 1px solid #2a5070;
+    color: #8aa0c0;
+    padding: 8px 14px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.84rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.15s;
+    white-space: nowrap;
+    line-height: 1.35;
+}
+.gs-trigger:hover {
+    border-color: #00e6ff;
+    color: #00e6ff;
+    box-shadow: 0 0 12px #00e6ff44;
+}
+.gs-trigger kbd {
+    background: var(--glass-subtle-hover);
+    border: 1px solid #2a5070;
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 0.7rem;
+    font-family: inherit;
+    color: #5a7a9a;
+    margin-left: 4px;
+}
+
+/* Оверлей */
+.gs-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 12vh;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+.gs-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Модальное окно */
+.gs-modal {
+    width: 90%;
+    max-width: 560px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 0 40px #000000aa, 0 0 20px #00e6ff33;
+    overflow: hidden;
+    transform: translateY(-10px);
+    transition: transform 0.2s;
+}
+.gs-overlay.active .gs-modal {
+    transform: translateY(0);
+}
+
+/* Строка ввода */
+.gs-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    border-bottom: 1px solid #1a3050;
+}
+.gs-search-icon {
+    color: #5a7a9a;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+.gs-input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: #e0f0ff;
+    font-size: 1.05rem;
+    font-family: inherit;
+}
+.gs-input::placeholder {
+    color: #5a7a9a;
+}
+.gs-close {
+    background: none;
+    border: 1px solid #2a5070;
+    border-radius: 8px;
+    color: #5a7a9a;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.15s;
+    flex-shrink: 0;
+}
+.gs-close:hover {
+    border-color: #ff5555;
+    color: #ff5555;
+    box-shadow: 0 0 8px #ff555544;
+}
+
+/* Результаты */
+.gs-results {
+    max-height: 50vh;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+.gs-group {
+    margin-bottom: 8px;
+}
+.gs-group-title {
+    padding: 8px 18px 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #5a7a9a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.gs-group-title i {
+    color: #00e6ff;
+    font-size: 0.8rem;
+}
+
+/* Строка результата */
+.gs-result {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    text-decoration: none;
+    color: #d0e0ff;
+    transition: 0.1s;
+}
+.gs-result:hover {
+    background: var(--glass-subtle-hover);
+}
+.gs-result-name {
+    font-weight: 600;
+    flex: 1;
+}
+.gs-result-name mark {
+    background: #00e6ff33;
+    color: #00e6ff;
+    border-radius: 2px;
+    padding: 0 2px;
+}
+.gs-result-sub {
+    font-size: 0.8rem;
+    color: #5a7a9a;
+}
+.gs-result-desc {
+    max-width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Пусто */
+.gs-empty {
+    padding: 32px 18px;
+    text-align: center;
+    color: #5a7a9a;
+    font-size: 0.95rem;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 600px) {
+    .gs-trigger kbd {
+        display: none;
+    }
+    .gs-modal {
+        width: 96%;
+        border-radius: 16px;
+    }
+    .gs-overlay {
+        padding-top: 6vh;
+    }
+}
+
+/* ===== Доступность: отключение анимаций ===== */
+
+/* ===== Ripple-эффект при клике ===== */
+.ripple-container {
+    position: relative;
+    overflow: hidden;
+}
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 230, 255, 0.2);
+    transform: scale(0);
+    animation: rippleExpand 0.5s ease-out forwards;
+    pointer-events: none;
+    z-index: 10;
+}
+@keyframes rippleExpand {
+    to { transform: scale(2); opacity: 0; }
+}
+
+/* ===== Page transition ===== */
+body {
+    animation: pageIn 0.25s ease-out;
+}
+body.page-leaving {
+    animation: pageOut 0.15s ease-in forwards;
+}
+@keyframes pageIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes pageOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* ===== Cursor glow ===== */
+.cursor-glow {
+    position: fixed;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    transition: left 0.15s ease-out, top 0.15s ease-out;
+}
+
+/* ===== Scroll progress bar ===== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #00e6ff, #0080ff);
+    box-shadow: 0 0 8px #00e6ff88;
+    z-index: 9999;
+    transition: width 0.1s ease-out;
+    border-radius: 0 2px 2px 0;
+}
+
+/* ===== Nav-link hover underline ===== */
+.nav-link {
+    position: relative;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 14px;
+    right: 14px;
+    height: 2px;
+    background: #00e6ff;
+    border-radius: 1px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+}
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+.nav-link.active::after {
+    display: none;
+}
+
+/* ===== Мобильная оптимизация: убираем тяжёлые эффекты ===== */
+@media (max-width: 768px) {
+    /* Отключаем blur — главная причина тормозов при скролле */
+    .hero-card,
+    .item-card,
+    .ability-card,
+    .mechanic-card,
+    .monster-card,
+    .mode-card,
+    .version-card,
+    .support-card,
+    .guide-card,
+    .faq-item,
+    .quick-link-card,
+    .stat-box,
+    .info-stat-card,
+    .wiki-container,
+    .hero-page-container,
+    .site-header,
+    .gs-modal,
+    .hero-search,
+    .item-search,
+    .calc-slot,
+    .bc-slot,
+    .formula-tab,
+    .compare-table-wrap,
+    .bb-stage {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(15, 23, 42, 0.92) !important;
+    }
+    /* Упрощаем box-shadow — убираем glow */
+    .hero-card,
+    .item-card,
+    .ability-card,
+    .mechanic-card,
+    .monster-card,
+    .mode-card,
+    .quick-link-card,
+    .stat-box {
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+    }
+    /* Убираем text-shadow glow */
+    h1, .hero-name, .detail-title, .ability-name {
+        text-shadow: none !important;
+    }
+    /* Убираем cursor glow и tilt на мобильных */
+    .cursor-glow { display: none !important; }
+    .tilt-glare { display: none !important; }
+    .hero-card:hover { transform: translateY(-3px); }
+    /* Ripple быстрее */
+    .ripple { animation-duration: 0.3s !important; }
+    /* Page transition быстрее */
+    body { animation-duration: 0.1s !important; }
+    body.page-leaving { animation-duration: 0.08s !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Fallback: устройства без backdrop-filter получают solid фон */
+@supports not (backdrop-filter: blur(1px)) {
+    .item-card,
+    .hero-card,
+    .quick-link-card,
+    .stat-box,
+    .mode-card,
+    .mechanic-card,
+    .info-stat-card,
+    .info-guide-card,
+    .info-link-card,
+    .info-author-card,
+    .info-section,
+    .lore-text,
+    .call-to-action,
+    .version-card,
+    .support-card,
+    .monster-card,
+    .wiki-container,
+    .calc-slot,
+    .calc-catalog-item,
+    .bc-slot,
+    .calc-results,
+    .calc-tree-item,
+    .gs-modal,
+    .hero-search,
+    .item-search,
+    .calc-search,
+    .form-tab,
+    .cycle-label,
+    .calc-back-link,
+    .calc-hero-select,
+    .calc-slots-counter,
+    .guide-card,
+    .guide-section,
+    .faq-item,
+    .faq-section,
+    .compare-table-wrap,
+    .compare-cards,
+    .armor-results,
+    .formula-tab,
+    .formula-panel,
+    .formula-results,
+    .bb-stage {
+        background: #0f172a !important;
+    }
+}
+
+/* ==========================================================================
+   Конструктор сборок (build-constructor)
+   ========================================================================== */
+
+.bc-intro {
+    color: #8e97aa;
+    margin-bottom: 14px;
+    line-height: 1.4;
+    font-size: 0.88rem;
+}
+
+.bc-top-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+/* Группа */
+.bc-group-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding: 8px 12px;
+    background: rgba(0, 230, 255, 0.04);
+    border: 1px solid rgba(0, 230, 255, 0.1);
+    border-radius: 6px;
+}
+
+.bc-group-label {
+    color: #c0d0e0;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.bc-group-input {
+    width: 50px;
+    padding: 3px 6px;
+    background: #0a1520;
+    border: 1px solid rgba(0, 230, 255, 0.2);
+    border-radius: 4px;
+    color: #e0f0ff;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.bc-group-hint {
+    color: #5a6a7a;
+    font-size: 0.75rem;
+}
+
+/* Стадии */
+.bc-stages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.bc-stage {
+    background: rgba(0, 230, 255, 0.03);
+    border: 1px solid rgba(0, 230, 255, 0.1);
+    border-radius: 6px;
+    padding: 10px 12px;
+}
+
+.bc-stage-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.bc-stage-num {
+    font-weight: 600;
+    color: #00e6ff;
+    font-size: 0.9rem;
+}
+
+.bc-stage-header {
+    cursor: pointer;
+}
+
+.bc-stage-chevron {
+    color: #5a6a80;
+    font-size: 0.7rem;
+    margin-right: 4px;
+    transition: transform 0.15s;
+}
+
+.bc-stage-level {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #8e97aa;
+    font-size: 0.8rem;
+}
+
+.bc-level-input {
+    width: 44px;
+    padding: 2px 4px;
+    background: #0a1520;
+    border: 1px solid rgba(0, 230, 255, 0.2);
+    border-radius: 4px;
+    color: #e0f0ff;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.bc-stage-cost {
+    color: #8e97aa;
+    font-size: 0.8rem;
+    margin-left: auto;
+}
+
+.bc-stage-remove {
+    background: none;
+    border: none;
+    color: #5a3a3a;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+}
+
+.bc-stage-remove:hover {
+    color: #ff4444;
+    background: rgba(255, 68, 68, 0.1);
+}
+
+/* Слоты */
+.bc-stage-slots {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+}
+
+.bc-slot {
+    min-height: 76px;
+    border: 2px dashed rgba(0, 230, 255, 0.15);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    position: relative;
+    padding: 4px 2px;
+}
+
+.bc-slot-empty {
+    color: #3a4a5a;
+}
+
+.bc-slot-empty:hover,
+.bc-slot-active {
+    border-color: rgba(0, 230, 255, 0.5);
+    background: rgba(0, 230, 255, 0.05);
+}
+
+.bc-slot-active {
+    border-style: solid;
+    box-shadow: 0 0 8px rgba(0, 230, 255, 0.15);
+}
+
+.bc-slot-filled {
+    border-style: solid;
+    border-color: var(--glass-border-hover);
+    background: var(--glass-bg-hover);
+}
+
+.bc-slot-filled:hover {
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--neon-glow);
+}
+
+.bc-slot-boss-drop {
+    border-color: rgba(255, 68, 68, 0.3);
+    background: rgba(255, 68, 68, 0.05);
+}
+
+.bc-slot-boss-craft {
+    border-color: rgba(255, 165, 0, 0.3);
+    background: rgba(255, 165, 0, 0.05);
+}
+
+.bc-slot-icon {
+    margin-bottom: 1px;
+}
+
+.bc-slot-icon img {
+    width: 40px;
+    height: 40px;
+}
+
+.bc-slot-name {
+    font-size: 0.62rem;
+    color: #c0d0e0;
+    text-align: center;
+    line-height: 1.15;
+    max-height: 2.3em;
+    overflow: hidden;
+    word-break: break-word;
+}
+
+.bc-slot-cost {
+    font-size: 0.58rem;
+    color: #8e97aa;
+    margin-top: 1px;
+}
+
+.bc-slot-remove {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #5a3a3a;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 0.65rem;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.bc-slot:hover .bc-slot-remove {
+    opacity: 1;
+}
+
+.bc-slot-remove:hover {
+    color: #ff4444;
+}
+
+/* Кнопка toggle «продаётся» на слоте */
+.bc-slot-keep-toggle {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #8e97aa;
+    font-size: 0.6rem;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 2;
+}
+
+.bc-slot:hover .bc-slot-keep-toggle {
+    opacity: 1;
+}
+
+.bc-slot-keep-toggle:hover {
+    color: #ffc800;
+}
+
+/* Временный предмет (продаётся при переходе) */
+.bc-slot-temp {
+    border-style: dashed;
+    border-color: rgba(255, 200, 0, 0.35);
+    background: rgba(255, 200, 0, 0.03);
+}
+
+.bc-slot-temp .bc-slot-name.temp-name {
+    text-decoration: line-through;
+    text-decoration-color: rgba(255, 200, 0, 0.5);
+    opacity: 0.7;
+}
+
+/* Бейдж «Продаётся» в превью */
+.bc-badge-temp {
+    background: rgba(255, 200, 0, 0.12);
+    border: 1px solid rgba(255, 200, 0, 0.3);
+    color: #ffc800;
+    font-size: 0.65rem;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-left: 4px;
+}
+
+/* Стоимость перехода между стадиями */
+.bc-stage-delta {
+    color: rgba(0, 230, 255, 0.5);
+    font-size: 0.75em;
+    font-weight: 400;
+}
+
+/* Кнопка добавления стадии */
+.bc-add-stage-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 8px;
+    background: rgba(0, 230, 255, 0.05);
+    border: 2px dashed rgba(0, 230, 255, 0.2);
+    border-radius: 6px;
+    color: #00e6ff;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    margin-bottom: 16px;
+}
+
+.bc-add-stage-btn:hover {
+    background: rgba(0, 230, 255, 0.1);
+    border-color: rgba(0, 230, 255, 0.4);
+}
+
+.bc-stage-actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.bc-stage-actions .bc-add-stage-btn {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.bc-paste-stage-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(0, 230, 255, 0.05);
+    border: 2px dashed rgba(0, 230, 255, 0.2);
+    border-radius: 6px;
+    color: #00e6ff;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+}
+
+.bc-paste-stage-btn:hover {
+    background: rgba(0, 230, 255, 0.1);
+    border-color: rgba(0, 230, 255, 0.4);
+}
+
+.bc-clear-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(255, 80, 80, 0.05);
+    border: 2px dashed rgba(255, 80, 80, 0.2);
+    border-radius: 6px;
+    color: #ff5050;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+}
+
+.bc-clear-btn:hover {
+    background: rgba(255, 80, 80, 0.1);
+    border-color: rgba(255, 80, 80, 0.4);
+}
+
+.bc-stage-copy {
+    background: none;
+    border: none;
+    color: #5a6a7a;
+    cursor: pointer;
+    padding: 4px 6px;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+}
+
+.bc-stage-copy:hover {
+    color: #00e6ff;
+}
+
+.bc-stage-paste {
+    background: none;
+    border: none;
+    color: #5a6a7a;
+    cursor: pointer;
+    padding: 4px 6px;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+}
+
+.bc-stage-paste:hover {
+    color: #4caf50;
+}
+
+.bc-section-toggle {
+    cursor: pointer;
+    user-select: none;
+}
+
+.bc-section-toggle:hover {
+    opacity: 0.8;
+}
+
+/* Превью */
+.bc-preview-section {
+    margin-bottom: 16px;
+    overflow-x: auto;
+}
+
+.bc-preview-empty {
+    color: #5a6a7a;
+    padding: 12px;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.bc-preview-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+}
+
+.bc-preview-table th {
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 1px solid rgba(0, 230, 255, 0.15);
+    color: #00e6ff;
+    font-weight: 600;
+}
+
+.bc-preview-table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid rgba(0, 230, 255, 0.05);
+    vertical-align: top;
+}
+
+.bc-td-stage {
+    color: #00e6ff;
+    font-weight: 600;
+    width: 60px;
+}
+
+.bc-td-level {
+    width: 60px;
+    color: #8e97aa;
+}
+
+.bc-td-cost {
+    width: 120px;
+    color: #8e97aa;
+    text-align: right;
+}
+
+.bc-preview-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 0;
+}
+
+.bc-preview-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+.bc-preview-name {
+    color: #c0d0e0;
+}
+
+.bc-preview-badge {
+    font-size: 0.65rem;
+    padding: 1px 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+
+.bc-badge-drop {
+    background: rgba(255, 68, 68, 0.15);
+    color: #ff6666;
+    border: 1px solid rgba(255, 68, 68, 0.3);
+}
+
+.bc-badge-craft {
+    background: rgba(255, 165, 0, 0.15);
+    color: #ffa500;
+    border: 1px solid rgba(255, 165, 0, 0.3);
+}
+
+.bc-preview-boss-drop .bc-preview-name {
+    color: #ff6666;
+}
+
+.bc-preview-boss-craft .bc-preview-name {
+    color: #ffa500;
+}
+
+/* JASS-код */
+.bc-jass-section {
+    margin-bottom: 16px;
+}
+
+#bcJassToggle {
+    cursor: pointer;
+    user-select: none;
+}
+
+.bc-chevron {
+    margin-left: 6px;
+    font-size: 0.8rem;
+    transition: transform 0.2s;
+}
+
+.bc-jass-content {
+    margin-top: 8px;
+}
+
+.bc-jass-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+}
+
+.bc-copy-btn {
+    padding: 4px 10px;
+    background: rgba(0, 230, 255, 0.1);
+    border: 1px solid rgba(0, 230, 255, 0.3);
+    border-radius: 4px;
+    color: #00e6ff;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: background 0.2s;
+}
+
+.bc-copy-btn:hover {
+    background: rgba(0, 230, 255, 0.2);
+}
+
+.bc-jass-note {
+    color: #5a6a7a;
+    font-size: 0.7rem;
+    font-style: italic;
+}
+
+.bc-jass-code {
+    background: #060d14;
+    border: 1px solid rgba(0, 230, 255, 0.1);
+    border-radius: 4px;
+    padding: 10px 12px;
+    color: #a0c0e0;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    overflow-x: auto;
+    white-space: pre;
+    max-height: 300px;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 720px) {
+    .bc-stage-slots {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .bc-stage-header {
+        flex-wrap: wrap;
+    }
+
+    .bc-stage-cost {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 4px;
+    }
+
+    .bc-group-row {
+        flex-wrap: wrap;
+    }
+
+    .bc-group-hint {
+        width: 100%;
+        margin-top: 4px;
+    }
+
+    .bc-preview-table {
+        font-size: 0.75rem;
+    }
+
+    .bc-preview-table th,
+    .bc-preview-table td {
+        padding: 4px 6px;
+    }
+
+    .bc-td-cost {
+        width: auto;
+    }
+
+    .bc-preview-icon img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .bc-jass-code {
+        font-size: 0.7rem;
+        padding: 10px;
+        max-height: 250px;
+    }
+
+    .bc-jass-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .bc-top-bar {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .bc-top-bar .calc-back-link {
+        text-align: center;
+    }
+
+    .bc-slot {
+        min-height: 72px;
+    }
+
+    .bc-slot-icon img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .bc-slot-name {
+        font-size: 0.58rem;
+    }
+
+    .bc-slot-cost {
+        font-size: 0.54rem;
+    }
+
+    .bc-slot-keep-toggle {
+        opacity: 1;
+        font-size: 0.55rem;
+    }
+
+    .bc-add-stage-btn {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    /* Каталог — горизонтальный скролл табов */
+    .calc-catalog-section .category-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+    }
+
+    .calc-catalog-section .category-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .calc-catalog-section .tab-btn {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+
+    .calc-catalog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+        gap: 6px;
+    }
+
+    .calc-catalog-item {
+        padding: 6px 3px;
+    }
+
+    .calc-catalog-icon img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .calc-catalog-name {
+        font-size: 0.68rem;
+    }
+
+    .calc-catalog-cost {
+        font-size: 0.6rem;
+    }
+
+    .calc-search {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .bc-stage-slots {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+
+    .bc-slot {
+        min-height: 68px;
+    }
+
+    .bc-slot-icon img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .bc-slot-name {
+        font-size: 0.58rem;
+    }
+
+    .bc-slot-keep-toggle {
+        opacity: 1;
+        font-size: 0.55rem;
+    }
+
+    .bc-stage {
+        padding: 10px;
+    }
+
+    .bc-stage-num {
+        font-size: 0.9rem;
+    }
+
+    .bc-preview-table {
+        font-size: 0.68rem;
+    }
+
+    .bc-preview-table .bc-td-level {
+        display: none;
+    }
+
+    .bc-preview-badge {
+        font-size: 0.58rem;
+    }
+
+    .bc-jass-code {
+        font-size: 0.65rem;
+        padding: 8px;
+    }
+
+    .calc-catalog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
+    }
+
+    .calc-catalog-icon img {
+        width: 32px;
+        height: 32px;
+    }
+}

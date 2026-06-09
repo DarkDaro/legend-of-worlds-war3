@@ -1,0 +1,347 @@
+/* === Кнопка «Наверх» === */
+
+/* === Страница Лор === */
+.lore-section {
+    margin-bottom: 30px;
+}
+.lore-title {
+    font-size: 1.8rem;
+    color: #00e6ff;
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px #00e6ffaa;
+    border-left: 4px solid #00e6ff;
+    padding-left: 20px;
+    position: relative;
+}
+/* Shimmer-свип по левой границе заголовка */
+.lore-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, transparent, #55ffff, transparent);
+    background-size: 100% 200%;
+    animation: loreBorderShimmer 3s ease-in-out infinite;
+    border-radius: 2px;
+}
+@keyframes loreBorderShimmer {
+    0%, 100% { background-position: 0 -100%; opacity: 0.4; }
+    50% { background-position: 0 200%; opacity: 1; }
+}
+.lore-text {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    color: #c0d4ff;
+    line-height: 1.7;
+    font-size: 1.05rem;
+    padding: 20px 25px;
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+    box-shadow: inset 0 0 15px #00000055, 0 0 15px #00e6ff22;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.lore-text:hover {
+    border-color: var(--glass-border-hover);
+    box-shadow: inset 0 0 15px #00000055, 0 0 25px #00e6ff44;
+}
+/* Блик-свип при hover */
+.lore-text::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background: linear-gradient(120deg, transparent 30%, rgba(0,230,255,0.06) 50%, transparent 70%);
+    background-size: 200% 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.lore-text:hover::after {
+    opacity: 1;
+    animation: sparkleSweep 0.6s ease-out;
+}
+.lore-highlight {
+    color: #ffd966;
+    font-weight: 600;
+}
+.call-to-action {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 2px solid var(--glass-border-hover);
+    border-radius: 20px;
+    padding: 25px;
+    margin-top: 30px;
+    box-shadow: var(--neon-glow-strong);
+    position: relative;
+    overflow: hidden;
+}
+.call-to-action::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(0, 230, 255, 0.04) 35%,
+        rgba(0, 128, 255, 0.03) 40%,
+        transparent 45%
+    );
+    animation: auroraShift 8s ease-in-out infinite;
+    pointer-events: none;
+}
+.cta-title {
+    font-size: 1.5rem;
+    color: #ffd966;
+    margin-bottom: 12px;
+}
+/* Режимы игры */
+.modes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+.mode-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    transition: 0.25s ease;
+    box-shadow: inset 0 0 15px #00000055, 0 0 15px #00e6ff22;
+}
+.mode-card:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--neon-glow);
+    transform: translateY(-3px);
+}
+.mode-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: block;
+}
+.mode-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e0f0ff;
+    margin-bottom: 6px;
+}
+.mode-desc {
+    font-size: 0.85rem;
+    color: #8aa0c0;
+    line-height: 1.4;
+}
+
+/* Цветовые акценты карточек режимов */
+.mode-spell-half .mechanic-icon {
+    background: #2a0a1a;
+    border: 1px solid #ff555544;
+    color: #ff5555;
+}
+.mode-bosses .mechanic-icon {
+    background: #1a0a2a;
+    border: 1px solid #bf7fff44;
+    color: #bf7fff;
+}
+.mode-gold-loss .mechanic-icon {
+    background: #2a1a0a;
+    border: 1px solid #ff994444;
+    color: #ff9944;
+}
+.mode-turbo .mechanic-icon {
+    background: #0a2a1a;
+    border: 1px solid #55ff8844;
+    color: #55ff88;
+}
+.mode-no-books .mechanic-icon {
+    background: #0a1a2a;
+    border: 1px solid #55aaff44;
+    color: #55aaff;
+}
+.mode-team-rewards .mechanic-icon {
+    background: #1a1a0a;
+    border: 1px solid #aaaa4444;
+    color: #aaaa44;
+}
+.mode-solo .mechanic-icon {
+    background: #2a0a0a;
+    border: 1px solid #ff444444;
+    color: #ff4444;
+}
+.mode-hero-ban .mechanic-icon {
+    background: #1a0a1a;
+    border: 1px solid #aa44aa44;
+    color: #aa44aa;
+}
+.mode-random-hero .mechanic-icon {
+    background: #0a1a1a;
+    border: 1px solid #55ffcc44;
+    color: #55ffcc;
+}
+
+.scroll-top-btn {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #00e6ffaa;
+    background: rgba(15, 23, 42, 0.93);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #00e6ff;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s, background 0.15s, box-shadow 0.15s;
+    box-shadow: 0 0 12px #00e6ff44;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.scroll-top-btn.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+.scroll-top-btn:hover {
+    background: #00e6ff;
+    color: #0b0e14;
+    box-shadow: 0 0 25px #00e6ff;
+}
+
+/* === Шапка сайта (адаптивная) === */
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    padding: clamp(16px, 2.5vw, 26px) clamp(16px, 3vw, 32px);
+    margin-bottom: clamp(20px, 3vw, 32px);
+    border: 1px solid #2a4060;
+    border-radius: 24px;
+    background: rgba(15, 23, 42, 0.86);
+    box-shadow: 0 0 30px #00000055, 0 0 20px #00e6ff22;
+    backdrop-filter: blur(8px);
+    min-height: 68px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.2s;
+    flex-shrink: 0;
+    min-width: 0;
+}
+.logo:hover {
+    text-shadow: 0 0 15px #00e6ff;
+}
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    background: radial-gradient(circle at 30% 20%, #1e3a5a, #0e1a2b);
+    border-radius: 14px;
+    border: 2px solid #00e6ff;
+    box-shadow: 0 0 15px #00e6ff88, inset 0 0 8px #00e6ff44;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #00e6ff;
+}
+.logo-text {
+    font-size: clamp(1.15rem, 1.4vw, 1.6rem);
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-shadow: 0 0 12px #00e6ffaa;
+    line-height: 1.1;
+}
+.logo-text small {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #aac8ff;
+    margin-left: 8px;
+    text-shadow: none;
+}
+
+.header-nav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-top: 0;
+    flex: 1 1 520px;
+    min-width: 0;
+}
+.nav-link {
+    color: #b0c8f0;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 30px;
+    border: 1px solid transparent;
+    transition: 0.15s;
+    background: var(--glass-bg);
+    box-shadow: 0 0 8px #00e6ff33;
+    font-size: 0.84rem;
+    white-space: nowrap;
+    line-height: 1.35;
+}
+.nav-link i {
+    margin-right: 5px;
+}
+.nav-link:hover {
+    background: #1a3050;
+    border-color: #00e6ff;
+    color: white;
+    box-shadow: 0 0 20px #00e6ffaa;
+}
+.nav-link.active {
+    background: #00e6ff;
+    border-color: white;
+    color: #0b0e14;
+    box-shadow: 0 0 20px #00e6ff;
+}
+.nav-download {
+    color: #0b0e14;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 30px;
+    border: 1px solid #00ff88;
+    transition: 0.15s;
+    background: linear-gradient(135deg, #00cc66, #00ff88);
+    box-shadow: 0 0 12px #00ff8866;
+    font-size: 0.84rem;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    line-height: 1.35;
+}
+.nav-download i {
+    margin-right: 5px;
+}
+.nav-download:hover {
+    box-shadow: 0 0 25px #00ff88aa;
+    transform: translateY(-1px);
+}

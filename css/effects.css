@@ -1,0 +1,280 @@
+/* ===== Расширенные стили для карточек героев (Warcraft III style) ===== */
+.hero-role {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--glass-subtle);
+    color: #ffd966;
+    margin-top: 5px;
+    border: 1px solid #ffd96666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.role-tank { color: #ffaa66; border-color: #ffaa66; }
+.role-bruiser { color: #ff8844; border-color: #ff8844; }
+.role-damager { color: #ff6666; border-color: #ff6666; }
+.role-assassin { color: #cc44ff; border-color: #cc44ff; }
+.role-initiator { color: #ffcc00; border-color: #ffcc00; }
+.role-controller { color: #44ccff; border-color: #44ccff; }
+.role-healer { color: #55ff55; border-color: #55ff55; }
+.role-support { color: #66aaff; border-color: #66aaff; }
+
+.hero-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px #00000055, 0 0 10px #00e6ff22;
+}
+.hero-stats-table th {
+    background: var(--glass-subtle-hover);
+    color: #ffd966;
+    font-weight: 600;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px solid #00e6ff;
+}
+.hero-stats-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #2a4060;
+    color: #d0e4ff;
+}
+.hero-stats-table tr:last-child td {
+    border-bottom: none;
+}
+.stat-primary {
+    color: #ffd966;
+    font-weight: bold;
+}
+.stat-strength { color: #ff5555; }
+.stat-agility { color: #55ff55; }
+.stat-intelligence { color: #55aaff; }
+
+/* passive-ability и ability-stats заменены на .ability-card.passive и .ability-params */
+
+/* ===== Микро-анимации ===== */
+
+/* Появление карточки снизу */
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Появление карточек при загрузке */
+.hero-card {
+    animation: fadeSlideUp 0.4s ease-out both;
+}
+.item-card {
+    animation: fadeSlideUp 0.4s ease-out both;
+}
+.stat-box {
+    animation: fadeSlideUp 0.4s ease-out both;
+}
+.quick-link-card {
+    animation: fadeSlideUp 0.4s ease-out both;
+}
+
+/* Staggered delay — первые 6 карточек появляются с задержкой */
+.hero-card:nth-child(1) { animation-delay: 0.05s; }
+.hero-card:nth-child(2) { animation-delay: 0.1s; }
+.hero-card:nth-child(3) { animation-delay: 0.15s; }
+.hero-card:nth-child(4) { animation-delay: 0.2s; }
+.hero-card:nth-child(5) { animation-delay: 0.25s; }
+.hero-card:nth-child(6) { animation-delay: 0.3s; }
+
+.item-card:nth-child(1) { animation-delay: 0.05s; }
+.item-card:nth-child(2) { animation-delay: 0.1s; }
+.item-card:nth-child(3) { animation-delay: 0.15s; }
+.item-card:nth-child(4) { animation-delay: 0.2s; }
+.item-card:nth-child(5) { animation-delay: 0.25s; }
+.item-card:nth-child(6) { animation-delay: 0.3s; }
+
+.stat-box:nth-child(1) { animation-delay: 0.05s; }
+.stat-box:nth-child(2) { animation-delay: 0.1s; }
+.stat-box:nth-child(3) { animation-delay: 0.15s; }
+.stat-box:nth-child(4) { animation-delay: 0.2s; }
+
+.quick-link-card:nth-child(1) { animation-delay: 0.05s; }
+.quick-link-card:nth-child(2) { animation-delay: 0.1s; }
+.quick-link-card:nth-child(3) { animation-delay: 0.15s; }
+
+/* Нажатие кнопки — эффект вдавливания */
+.btn-primary:active,
+.btn-secondary:active {
+    transform: translateY(1px) !important;
+    box-shadow: 0 0 8px rgba(0, 230, 255, 0.3) !important;
+}
+.filter-btn:active {
+    transform: translateY(1px);
+}
+
+/* Способность при наведении — лёгкий сдвиг вправо + подъём */
+.ability-card:hover {
+    transform: translateX(4px) translateY(-3px);
+}
+
+/* ===== Текстуры и паттерны ===== */
+
+/* Диагональные линии внутри карточек — «тканевая» текстура */
+.hero-card,
+.item-card,
+.stat-box,
+.quick-link-card,
+.ability-card,
+.mechanic-card,
+.support-card,
+.monster-card,
+.version-card {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.008'%3E%3Cpath d='M0 40L40 0H20L0 20zM40 40V20L20 40z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Точечная сетка в футере */
+.site-footer {
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2300e6ff' fill-opacity='0.04'%3E%3Ccircle cx='10' cy='10' r='1'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ===== Страничные оттенки фона ===== */
+/* Лёгкий сдвиг градиента + второй cyan-отсвет в разных точках — всё в рамках палитры */
+
+/* Герои — cyan отсвет правее + лёгкий тёплый тон */
+body.page-heroes {
+    background-image:
+        radial-gradient(ellipse at 70% 80%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 30% 10%, #1c2230 0%, #05070a 100%);
+}
+/* Orb для стекла — правый нижний */
+body.page-heroes::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    right: -5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Предметы — cyan отсвет ниже + лёгкий teal тон */
+body.page-items {
+    background-image:
+        radial-gradient(ellipse at 50% 90%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 30% 10%, #1a2430 0%, #05070a 100%);
+}
+/* Orb для стекла — левый верхний */
+body.page-items::after {
+    content: '';
+    position: fixed;
+    top: -5%;
+    left: -5%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(0, 128, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Info — orb пульсация */
+.info-orb {
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: infoOrbPulse 6s ease-in-out infinite;
+}
+@keyframes infoOrbPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* Механики — cyan отсвет левее + лёгкий фиолетовый тон */
+body.page-mechanics {
+    background-image:
+        radial-gradient(ellipse at 20% 70%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 30% 10%, #1e2230 0%, #05070a 100%);
+}
+
+/* Монстры — cyan отсвет выше + лёгкий тёплый тон */
+body.page-monsters {
+    background-image:
+        radial-gradient(ellipse at 60% 20%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 30% 10%, #1e2030 0%, #05070a 100%);
+}
+/* Orb для стекла — левый нижний */
+body.page-monsters::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    left: -5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 85, 85, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Лор — cyan отсвет шире + глубокий синий тон */
+body.page-lore {
+    background-image:
+        radial-gradient(ellipse at 40% 60%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 30% 10%, #182530 0%, #05070a 100%);
+}
+/* Orb для стекла — правый верхний */
+body.page-lore::after {
+    content: '';
+    position: fixed;
+    top: -5%;
+    right: -5%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(0, 230, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body.page-calculator,
+body.page-build-constructor,
+body.page-bot-builds {
+    background-image:
+        radial-gradient(ellipse at 60% 30%, rgba(0, 230, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, #182530 0%, #05070a 100%);
+}
+
+body.page-map-changes {
+    background-image:
+        radial-gradient(ellipse at 50% 20%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 50% 80%, #182530 0%, #05070a 100%);
+}
+
+body.page-guides,
+body.page-info,
+body.page-support,
+body.page-updates,
+body.page-changelog,
+body.page-modes,
+body.page-faq,
+body.page-compare,
+body.page-balance,
+body.page-creeps,
+body.page-runes,
+body.page-home,
+body.page-404 {
+    background-image:
+        radial-gradient(ellipse at 50% 50%, rgba(0, 230, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 30% 10%, #1a2230 0%, #05070a 100%);
+}

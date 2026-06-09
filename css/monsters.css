@@ -1,0 +1,597 @@
+/* === Поддержать === */
+.support-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+.support-hero {
+    font-size: 4rem;
+    margin-bottom: 16px;
+}
+.support-desc {
+    color: #8aa0c0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+.support-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+.support-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 24px;
+    transition: 0.25s ease;
+    position: relative;
+}
+.support-card:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--neon-glow);
+    transform: translateY(-3px);
+}
+.support-card .method-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+.support-card h3 {
+    color: #e0f0ff;
+    margin-bottom: 8px;
+}
+.support-card p {
+    color: #5a7a9a;
+    font-size: 0.85rem;
+}
+.support-card .method-link {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 20px;
+    background: #00e6ff22;
+    border: 1px solid #00e6ff;
+    border-radius: 30px;
+    color: #00e6ff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+.support-card .method-link:hover {
+    background: #00e6ff;
+    color: #0b0e14;
+}
+.support-thanks {
+    color: #5a7a9a;
+    font-size: 0.9rem;
+    margin-top: 24px;
+    font-style: italic;
+}
+
+/* === Монстры === */
+.monsters-section {
+    margin-bottom: 40px;
+    padding-top: 24px;
+}
+.monsters-section h2 {
+    font-size: 1.4rem;
+    color: #e0f0ff;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Добыча боссов — наглядная схема */
+.boss-drops-section {
+    margin-bottom: 24px;
+}
+.boss-drop-icon {
+    image-rendering: pixelated;
+    border-radius: 6px;
+    object-fit: contain;
+}
+.boss-drops-title {
+    font-size: 1.1rem;
+    color: #8aa0c0;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.boss-drops-title i {
+    color: #00e6ff;
+}
+.boss-drops-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.boss-drop-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    text-decoration: none;
+    color: #d0e0ff;
+    transition: 0.15s;
+    cursor: pointer;
+}
+.boss-drop-row:hover {
+    border-color: var(--glass-border-hover);
+    box-shadow: 0 0 12px #00e6ff33;
+}
+.boss-drop-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.boss-drop-name {
+    font-weight: 600;
+    min-width: 140px;
+}
+.boss-drop-arrow {
+    color: #2a5070;
+    font-size: 0.7rem;
+}
+.boss-drop-item-name {
+    color: #ff6b6b;
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+}
+.boss-drop-item-name:hover {
+    text-decoration: underline;
+    color: #ff8888;
+}
+.boss-drop-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+.boss-drop-level {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+.boss-drop-chance {
+    font-size: 0.68rem;
+    padding: 1px 6px;
+    border-radius: 6px;
+    background: #00e6ff22;
+    color: #00e6ff;
+    font-weight: 600;
+}
+.boss-drop-chance-low {
+    background: #ff555522;
+    color: #ff7777;
+}
+.boss-drops-section::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+@media (max-width: 640px) {
+    /* Адаптив карточек монстров на мобильных */
+    .monster-card {
+        margin-bottom: 6px;
+        border-radius: 12px;
+    }
+    .monster-card .monster-header {
+        padding: 10px 12px;
+    }
+    .monster-card .monster-name {
+        font-size: 0.95rem;
+    }
+    .monster-card .monster-desc {
+        font-size: 0.78rem;
+        -webkit-line-clamp: 2;
+    }
+    .monster-card .monster-icon img {
+        width: 48px;
+        height: 48px;
+    }
+    /* Расширяем wiki-container на мобильных — карточки предметов не обрезаются */
+    .page-items .wiki-container,
+    .page-monsters .wiki-container {
+        padding: 16px 4px;
+        border-radius: 12px;
+        /* Убираем лишние отступы у границы контейнера */
+        margin-left: -8px;
+        margin-right: -8px;
+        width: calc(100% + 16px);
+    }
+    /* Таблица добычи боссов: предмет переносится на вторую строку */
+    .boss-drop-row {
+        gap: 2px;
+        padding: 8px 10px;
+    }
+    .boss-drop-main {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    .boss-drop-name {
+        min-width: 0;
+        flex: 1;
+    }
+    .boss-drop-arrow {
+        display: none;
+    }
+    .boss-drop-item-name {
+        display: block; /* предмет на отдельной строке */
+        width: 100%;
+        margin-left: 0;
+        padding-left: 38px; /* выравнивание под иконку босса */
+        box-sizing: border-box;
+        font-size: 0.82rem;
+    }
+    .boss-drop-chance {
+        margin-left: 0;
+    }
+}
+.monster-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    transition: 0.25s ease;
+    position: relative;
+}
+.monster-card:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--neon-glow);
+    transform: translateY(-2px);
+}
+.monster-card.boss {
+    border-left: 4px solid #ff5555;
+}
+.monster-card.creep {
+    border-left: 4px solid #ff9944;
+}
+.monster-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.15s;
+}
+.monster-header:hover {
+    background: #1a2540;
+}
+.monster-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+.monster-card.boss .monster-icon {
+    background: #2a0a0a;
+    border: 1px solid #ff555544;
+    color: #ff5555;
+}
+.monster-card.creep .monster-icon {
+    background: #2a1a0a;
+    border: 1px solid #ff994444;
+    color: #ff9944;
+}
+.monster-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e0f0ff;
+    flex: 1;
+}
+.monster-code {
+    font-family: 'Consolas', monospace;
+    font-size: 0.75rem;
+    color: #5a7a9a;
+    background: #0a0f1a;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+.monster-toggle {
+    color: #5a7a9a;
+    font-size: 0.8rem;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+}
+.monster-card.open .monster-toggle {
+    transform: rotate(90deg);
+}
+.monster-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+.monster-card.open .monster-body {
+    max-height: 2000px;
+}
+.monster-body-inner {
+    padding: 0 18px 16px;
+    border-top: 1px solid #1a3050;
+}
+.monster-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 12px;
+}
+.monster-stat {
+    background: #0a0f1a;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+.monster-stat .stat-label {
+    font-size: 0.75rem;
+    color: #5a7a9a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.monster-stat .stat-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e0f0ff;
+    margin-top: 2px;
+}
+.monster-desc {
+    color: #8aa0c0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-top: 12px;
+}
+
+/* Боссы и крипы: разный уровень детализации */
+.monster-card.boss .monster-header {
+    padding: 16px 18px;
+}
+.monster-card.boss .monster-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+}
+.monster-card.boss .monster-body-inner {
+    padding: 0 18px 18px;
+}
+.monster-card.boss .monster-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.monster-card.creep .monster-header {
+    padding: 12px 16px;
+}
+.monster-card.creep .monster-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+}
+.monster-card.creep .monster-name {
+    font-size: 0.96rem;
+}
+.monster-card.creep .monster-body-inner {
+    padding: 0 16px 14px;
+}
+.monster-card.creep .monster-stats-grid {
+    grid-template-columns: 1fr;
+}
+.monster-card.creep .monster-abilities,
+.monster-card.creep .monster-desc {
+    display: none;
+}
+.monster-card.creep .monster-reward {
+    margin-top: 12px;
+}
+.monster-card.creep .reward-row {
+    padding: 5px 10px;
+}
+
+@media (max-width: 500px) {
+    .monster-card.boss .monster-header {
+        padding: 14px 14px;
+    }
+    .monster-card.boss .monster-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
+    .monster-card.boss .monster-body-inner {
+        padding: 0 14px 14px;
+    }
+    .monster-card.boss .monster-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Способности босса */
+.boss-ability {
+    background: #0a0f1a;
+    border: 1px solid #1a3050;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 6px;
+}
+.boss-ability-name {
+    font-weight: 600;
+    color: #00e6ff;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+.boss-ability-desc {
+    color: #8aa0c0;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* Вступительный текст на странице монстров */
+.monsters-intro {
+    color: #8aa0c0;
+    margin-bottom: 24px;
+    font-size: 1.05rem;
+}
+
+/* Иконка заголовка "Боссы" */
+.boss-heading-icon {
+    color: #ff5555;
+}
+
+/* Заголовки секций внутри карточки босса */
+.boss-section-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #00e6ff;
+    margin: 16px 0 8px;
+    text-shadow: 0 0 8px #00e6ffaa;
+}
+
+/* Иконка босса/крипа */
+.monster-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Пассивные способности босса */
+.boss-passive {
+    background: #0a1a0a;
+    border: 1px solid #55ff8833;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 6px;
+}
+.boss-passive-name {
+    font-weight: 600;
+    color: #55ff88;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+.boss-passive-desc {
+    color: #8aa0c0;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* Стадии босса */
+.boss-stages {
+    margin-top: 12px;
+}
+.boss-stage {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 8px 12px;
+    background: #0f0a1a;
+    border: 1px solid #bf7fff22;
+    border-radius: 8px;
+    margin-bottom: 4px;
+}
+.boss-stage-threshold {
+    font-weight: 700;
+    color: #bf7fff;
+    font-size: 0.85rem;
+    min-width: 70px;
+    flex-shrink: 0;
+}
+.boss-stage-desc {
+    color: #8aa0c0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+/* Награда за босса */
+.monster-reward {
+    margin-top: 8px;
+}
+.reward-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    background: #0a0f1a;
+}
+.reward-row.drop {
+    background: #1a0a0a;
+    border: 1px solid #ff555544;
+}
+.reward-label {
+    color: #8aa0c0;
+    font-size: 0.85rem;
+}
+.reward-value {
+    color: #e0f0ff;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: right;
+}
+.monster-require {
+    color: #5a8aaa;
+    font-size: 0.85rem;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: #0a1525;
+    border-left: 3px solid #ffd966;
+    border-radius: 0 8px 8px 0;
+}
+.monster-require i {
+    color: #ffd966;
+    margin-right: 6px;
+}
+.motivation-badge {
+    display: inline-block;
+    background: #2a1a3a;
+    color: #bf7fff;
+    font-size: 0.75rem;
+    padding: 1px 8px;
+    border-radius: 10px;
+    border: 1px solid #bf7fff44;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+.item-link {
+    color: #00e6ff;
+    text-decoration: none;
+    border-bottom: 1px dashed #00e6ff66;
+    transition: 0.15s;
+}
+.item-link:hover {
+    color: #fff;
+    border-bottom-color: #00e6ff;
+    text-shadow: 0 0 8px #00e6ff88;
+}
+.monster-card .reward-row.drop .item-link {
+    color: #ff6b6b;
+    border-bottom-color: #ff6b6b66;
+}
+.monster-card .reward-row.drop .item-link:hover {
+    color: #ff8888;
+    border-bottom-color: #ff6b6b;
+    text-shadow: 0 0 8px #ff6b6b88;
+}
+.drop-bonus {
+    color: #bf7fff;
+    font-size: 0.8rem;
+    margin-left: 4px;
+}
