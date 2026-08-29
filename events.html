@@ -1,0 +1,588 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ивенты и дуэли · Legend of Worlds</title>
+    <meta property="og:title" content="Ивенты и дуэли — Legend of Worlds">
+    <meta property="og:description" content="Система ивентов и дуэлей в Legend of Worlds: 1v1, 2v2, 3v3, FFA, босс-ивенты, соло-режим.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="hero-data.js" defer></script>
+    <script src="search-index.js" defer></script>
+    <script src="search.js" defer></script>
+    <script src="items-db.js" defer></script>
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+    <script src="ui-effects.js" defer></script>
+    <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/events.html">
+    <style>
+        .events-section {
+            margin-bottom: 36px;
+        }
+        .events-section-title {
+            font-size: 1.25rem;
+            color: var(--accent-cyan);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .events-section-title i {
+            font-size: 1rem;
+        }
+        .event-type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .event-card {
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            padding: 20px;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+        }
+        .event-card:hover {
+            background: var(--glass-bg-hover);
+            border-color: var(--glass-border-hover);
+            transform: translateY(-2px);
+        }
+        .event-card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .event-card h3 {
+            font-size: 1.05rem;
+            margin: 0 0 8px 0;
+            color: var(--text-primary);
+        }
+        .event-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin: 0;
+        }
+        .event-card .event-duration {
+            display: inline-block;
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            background: rgba(0, 229, 255, 0.08);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+        .event-flow {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+        }
+        .event-flow ol {
+            padding-left: 20px;
+            margin: 0;
+        }
+        .event-flow li {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 6px;
+        }
+        .event-flow li strong {
+            color: var(--text-primary);
+        }
+        .boss-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 24px;
+        }
+        .boss-table th,
+        .boss-table td {
+            padding: 10px 14px;
+            text-align: left;
+            font-size: 0.88rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .boss-table th {
+            color: var(--accent-cyan);
+            font-weight: 600;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .boss-table td {
+            color: var(--text-secondary);
+        }
+        .boss-table tr:hover td {
+            background: rgba(0, 229, 255, 0.04);
+        }
+        .rules-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .rules-list li {
+            position: relative;
+            padding: 10px 16px 10px 36px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .rules-list li:last-child {
+            border-bottom: none;
+        }
+        .rules-list li::before {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 16px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+        }
+        .mode-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+        .mode-badge.solo {
+            background: rgba(255, 165, 0, 0.15);
+            color: #ffa500;
+            border: 1px solid rgba(255, 165, 0, 0.3);
+        }
+        .mode-badge.normal {
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+        }
+        .mode-badge.boss {
+            background: rgba(220, 38, 38, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(220, 38, 38, 0.3);
+        }
+        .solo-cycle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .solo-cycle-step {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+        }
+        .solo-cycle-step i {
+            font-size: 1rem;
+        }
+        .solo-cycle-arrow {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+        .pair-split {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 18px;
+            margin: 16px 0;
+            backdrop-filter: blur(var(--glass-blur));
+        }
+        .pair-split p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+        .pair-split code {
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--accent-cyan);
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-size: 0.82rem;
+        }
+        .highlight-box {
+            background: rgba(0, 229, 255, 0.06);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .highlight-box strong {
+            color: var(--accent-cyan);
+        }
+        @media (max-width: 800px) {
+            .event-type-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .event-card {
+                padding: 16px;
+            }
+            .event-card-icon {
+                font-size: 1.5rem;
+            }
+            .event-card h3 {
+                font-size: 0.95rem;
+            }
+            .boss-table th,
+            .boss-table td {
+                padding: 8px 10px;
+                font-size: 0.82rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .events-section-title {
+                font-size: 1.05rem;
+            }
+            .event-type-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .event-card {
+                padding: 14px;
+            }
+            .event-card-icon {
+                font-size: 1.3rem;
+                margin-bottom: 6px;
+            }
+            .event-card h3 {
+                font-size: 0.9rem;
+            }
+            .event-card p {
+                font-size: 0.82rem;
+            }
+            .event-flow {
+                padding: 16px;
+            }
+            .event-flow li {
+                font-size: 0.84rem;
+            }
+            .boss-table-wrap {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin: 0 -8px;
+            }
+            .boss-table th,
+            .boss-table td {
+                padding: 8px;
+                font-size: 0.8rem;
+            }
+            .solo-cycle {
+                gap: 6px;
+            }
+            .solo-cycle-step {
+                padding: 8px 12px;
+                font-size: 0.82rem;
+            }
+            .pair-split {
+                padding: 14px;
+            }
+            .highlight-box {
+                padding: 12px 14px;
+                font-size: 0.84rem;
+            }
+            .mode-badge {
+                font-size: 0.68rem;
+                padding: 1px 6px;
+            }
+        }
+        @media (max-width: 420px) {
+            .event-card {
+                padding: 12px;
+            }
+            .event-card h3 {
+                font-size: 0.85rem;
+            }
+            .boss-table th,
+            .boss-table td {
+                padding: 6px;
+                font-size: 0.76rem;
+            }
+            .solo-cycle-step {
+                padding: 6px 10px;
+                font-size: 0.78rem;
+            }
+        }
+        @supports not (backdrop-filter: blur(1px)) {
+            .event-card, .event-flow, .pair-split {
+                background: #0f172a !important;
+            }
+        }
+    </style>
+</head>
+<body class="page-events">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="events.html" class="nav-link active"><i class="fas fa-bolt"></i> Ивенты</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="map.html" class="nav-link"><i class="fas fa-map"></i> Карта</a>
+            <a href="guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="mechanics.html">Механики</a><span class="sep">›</span><span class="current">Ивенты и дуэли</span></div>
+
+        <h1><i class="fas fa-bolt" style="color: var(--accent-cyan); margin-right:10px;"></i>Ивенты и дуэли</h1>
+        <p style="color:var(--text-secondary); margin-bottom:24px; font-size:1.05rem;">Периодические ивенты — основа динамики матча. Дуэли, боссы и командные сражения происходят автоматически каждые несколько минут.</p>
+
+        <!-- ==================== ОБЫЧНЫЙ РЕЖИМ ==================== -->
+        <div class="events-section">
+            <h2 class="events-section-title"><i class="fas fa-users"></i> Командный режим</h2>
+
+            <p style="color:var(--text-secondary); font-size:0.92rem; margin-bottom:18px;">В командном режиме ивенты идут по циклу с фиксированной ротацией. Между ивентами — пауза 60 секунд. Первый ивент начинается через 5 минут после старта.</p>
+
+            <div class="highlight-box">
+                <strong>Ротация:</strong> 1v1 → Team → 1v1 → Boss → 1v1 → Team → ... (Boss каждые 4 дуэли)<br>
+                Команду <code>-boss</code> можно ввести в чат для внеочередного босс-ивента.
+            </div>
+
+            <div class="event-type-grid">
+                <div class="event-card">
+                    <span class="event-card-icon"><i class="fas fa-sword" style="color:#00e5ff;"></i></span>
+                    <h3>1v1 (SuperDuel) <span class="mode-badge normal">командный</span></h3>
+                    <p>Два случайных героя с разных команд сражаются на арене. Победитель получает золото, кристаллы и рейтинг.</p>
+                    <span class="event-duration"><i class="fas fa-clock"></i> 60 сек + 5 сек отсчёт</span>
+                </div>
+                <div class="event-card">
+                    <span class="event-card-icon"><i class="fas fa-shield-alt" style="color:#00e5ff;"></i></span>
+                    <h3>Team Duel <span class="mode-badge normal">командный</span></h3>
+                    <p>Все игроки обеих команд. Команда с выжившими побеждает. Ничья — награда поровну.</p>
+                    <span class="event-duration"><i class="fas fa-clock"></i> 60 сек + 5 сек отсчёт</span>
+                </div>
+                <div class="event-card">
+                    <span class="event-card-icon"><i class="fas fa-swords" style="color:#00e5ff;"></i></span>
+                    <h3>2v2 <span class="mode-badge normal">командный</span></h3>
+                    <p>Два героя от каждой команды (по рейтингу). Команда с выжившими побеждает.</p>
+                    <span class="event-duration"><i class="fas fa-clock"></i> 120 сек + 5 сек отсчёт</span>
+                </div>
+                <div class="event-card">
+                    <span class="event-card-icon"><i class="fas fa-swords" style="color:#00e5ff;"></i></span>
+                    <h3>3v3 <span class="mode-badge normal">командный</span></h3>
+                    <p>Три героя от каждой команды (по рейтингу). Аналогично 2v2, но больше участников.</p>
+                    <span class="event-duration"><i class="fas fa-clock"></i> 120 сек + 5 сек отсчёт</span>
+                </div>
+                <div class="event-card">
+                    <span class="event-card-icon"><i class="fas fa-fire" style="color:#ff6b35;"></i></span>
+                    <h3>FFA (Free For All) <span class="mode-badge normal">командный</span></h3>
+                    <p>Все против всех. Последний выживший побеждает. Альянсы временно разрываются, после — восстанавливаются.</p>
+                    <span class="event-duration"><i class="fas fa-clock"></i> 120 сек + 5 сек отсчёт</span>
+                </div>
+                <div class="event-card">
+                    <span class="event-card-icon"><i class="fas fa-dragon" style="color:#ef4444;"></i></span>
+                    <h3>Boss Event <span class="mode-badge boss">оба режима</span></h3>
+                    <p>Все игроки объединяются против босса. Награда пропорциональна числу игроков. Провал при слишком многих смертях или таймауте.</p>
+                    <span class="event-duration"><i class="fas fa-clock"></i> 3 мин таймаут</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== ХОД ДУЭЛИ ==================== -->
+        <div class="events-section">
+            <h2 class="events-section-title"><i class="fas fa-list-ol"></i> Ход дуэли</h2>
+            <div class="event-flow">
+                <ol>
+                    <li><strong>Подготовка</strong> — все герои замораживаются (неуязвимость + пауза)</li>
+                    <li><strong>Отсчёт</strong> — 5...4...3...2...1...В бой!</li>
+                    <li><strong>Бой</strong> — участники перемещаются на арену, неуязвимость снимается</li>
+                    <li><strong>Завершение</strong> — победитель / ничья → награды, все возвращаются на базу</li>
+                    <li><strong>Пауза</strong> — 60 сек до следующего ивента</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- ==================== SOLOMODE ==================== -->
+        <div class="events-section">
+            <h2 class="events-section-title"><i class="fas fa-user"></i> Соло режим</h2>
+
+            <p style="color:var(--text-secondary); font-size:0.92rem; margin-bottom:18px;">В соло-режиме ротация ивентов фиксирована. Команды не играют роли — каждый сам за себя.</p>
+
+            <div class="solo-cycle">
+                <div class="solo-cycle-step" style="border-color: rgba(0,229,255,0.3);">
+                    <i class="fas fa-user-friends" style="color: var(--accent-cyan);"></i> Пары (1v1)
+                </div>
+                <span class="solo-cycle-arrow"><i class="fas fa-arrow-right"></i></span>
+                <div class="solo-cycle-step" style="border-color: rgba(255,165,0,0.3);">
+                    <i class="fas fa-fire" style="color: #ffa500;"></i> FFA
+                </div>
+                <span class="solo-cycle-arrow"><i class="fas fa-arrow-right"></i></span>
+                <div class="solo-cycle-step" style="border-color: rgba(220,38,38,0.3);">
+                    <i class="fas fa-dragon" style="color: #ef4444;"></i> Boss
+                </div>
+                <span class="solo-cycle-arrow"><i class="fas fa-arrow-right"></i></span>
+                <div class="solo-cycle-step" style="border-color: rgba(0,229,255,0.3);">
+                    <i class="fas fa-redo" style="color: var(--accent-cyan);"></i> Пары...
+                </div>
+            </div>
+
+            <div class="pair-split">
+                <p><strong>Разбивка на пары:</strong> Все игроки делятся на пары и дерются по очереди. Пары разбиты на две группы: первая половина → пауза 3 мин → вторая половина. Например, при 12 игроках: 3 пары → пауза → 3 пары.</p>
+            </div>
+
+            <div class="event-type-grid">
+                <div class="event-card">
+                    <span class="event-card-icon"><i class="fas fa-sword" style="color:#00e5ff;"></i></span>
+                    <h3>SoloDuel (пары) <span class="mode-badge solo">соло</span></h3>
+                    <p>Два игрока сражаются 1v1. Остальные игроки <strong>заморожены</strong> (PauseUnit + неуязвимость). Победитель получает награду, оба лечатся и возвращаются на базу.</p>
+                    <span class="event-duration"><i class="fas fa-clock"></i> 5 сек отсчёт</span>
+                </div>
+                <div class="event-card">
+                    <span class="event-card-icon"><i class="fas fa-fire" style="color:#ff6b35;"></i></span>
+                    <h3>SoloFFA <span class="mode-badge solo">соло</span></h3>
+                    <p>Все живые герои размещаются кругом на арене. Последний выживший побеждает. AI-боты атакуют каждые 5 секунд.</p>
+                    <span class="event-duration"><i class="fas fa-clock"></i> 120 сек + 5 сек отсчёт</span>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Ключевое отличие от обычного режима:</strong> Во время SoloDuel/SoloFFA/Boss все остальные герои <strong>заморожены</strong> — не могут двигаться, умирать или действовать. Это предотвращает дисбаланс: мёртвые не теряют золото, живые не фармят.
+            </div>
+        </div>
+
+        <!-- ==================== BOSS ==================== -->
+        <div class="events-section">
+            <h2 class="events-section-title"><i class="fas fa-dragon"></i> Босс-ивент</h2>
+
+            <p style="color:var(--text-secondary); font-size:0.92rem; margin-bottom:18px;">Босс-ивент доступен в обоих режимах. Команда <code>-boss</code> запускает вне очереди, <code>-boss N</code> — конкретного босса.</p>
+
+            <table class="boss-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Босс</th>
+                        <th>Режим</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Вурдалак</td><td>Оба</td></tr>
+                    <tr><td>2</td><td>Великан</td><td>Оба</td></tr>
+                    <tr><td>3</td><td>Рак</td><td>Оба</td></tr>
+                    <tr><td>4</td><td>Пустынник высший</td><td>Оба</td></tr>
+                    <tr><td>5</td><td>Пустынник низший</td><td>Оба</td></tr>
+                    <tr><td>6</td><td>Ледяной голем</td><td>Оба</td></tr>
+                    <tr><td>7</td><td>Синий Танатос</td><td>Оба</td></tr>
+                    <tr><td>8</td><td>Зелёный Танатос</td><td>Оба</td></tr>
+                </tbody>
+            </table>
+
+            <div class="event-flow">
+                <ol>
+                    <li><strong>Объединение</strong> — все игроки становятся союзниками</li>
+                    <li><strong>Скрытие</strong> — все герои скрываются, камера на босса</li>
+                    <li><strong>Спавн</strong> — босс появляется на арене, герои размещаются вокруг</li>
+                    <li><strong>Бой</strong> — неуязвимость снимается, начинается сражение</li>
+                    <li><strong>Ревайв</strong> — мёртвые герои воскрешаются с задержкой 1-3 сек</li>
+                    <li><strong>Завершение</strong> — победа (босс убит) или провал (слишком много смертей / таймаут 3 мин)</li>
+                </ol>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Провал:</strong> Если общие смерти ≥ количество игроков × 3 или истёк таймаут 3 мин — босс-ивент провален. Звук смеха Саргераса, босс исчезает.
+            </div>
+        </div>
+
+        <!-- ==================== НАГРАДЫ ==================== -->
+        <div class="events-section">
+            <h2 class="events-section-title"><i class="fas fa-trophy"></i> Награды</h2>
+
+            <table class="boss-table">
+                <thead>
+                    <tr>
+                        <th>Тип ивента</th>
+                        <th>Награда</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1v1</td><td>Золото, кристаллы, рейтинг победителю</td></tr>
+                    <tr><td>Team Duel</td><td>Награда всей команде победителей</td></tr>
+                    <tr><td>2v2 / 3v3</td><td>Золото и кристаллы выжившим</td></tr>
+                    <tr><td>FFA</td><td>Победитель — основная награда. Ничья — поровну</td></tr>
+                    <tr><td>Boss</td><td>Золото и кристаллы пропорционально числу игроков</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ==================== ПРАВИЛА ==================== -->
+        <div class="events-section">
+            <h2 class="events-section-title"><i class="fas fa-gavel"></i> Ключевые правила</h2>
+            <ul class="rules-list">
+                <li><strong>DuelBoolean</strong> — во время любого ивента стандартное воскрешение заблокировано. Мёртвые не ресаются до конца ивента.</li>
+                <li><strong>Запрет выхода</strong> — NOLeave-триггер не позволяет покинуть зону арены. Попытка выйти — возврат на арену.</li>
+                <li><strong>Паузы между ивентами:</strong> 60 сек (командный режим), 3 мин (SoloMode между парами), 5 мин (SoloMode перед FFA/Boss).</li>
+                <li><strong>Первый ивент</strong> — через 5 мин после старта (командный), через 3 мин (SoloMode).</li>
+                <li><strong>Турбо-режим</strong> — дуэли ускорены в 1.33 раза (×0.75).</li>
+                <li><strong>FFA альянсы</strong> — перед FFA альянсы разрываются, после — восстанавливаются.</li>
+                <li><strong>Ничья по таймауту</strong> — если никто не умер за время дуэли, награда делится поровну.</li>
+            </ul>
+        </div>
+
+        <div style="margin-top:32px; text-align:center; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+            <a href="mechanics.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> К механикам</a>
+            <a href="modes.html" class="btn-secondary"><i class="fas fa-sliders-h"></i> Игровые режимы</a>
+        </div>
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img loading="lazy" src="images/preview.png" alt="" width="28" height="28" class="footer-logo-img"> Legend of Worlds</span>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
+        </div>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof revealElements === 'function') revealElements('.event-card, .event-flow, .highlight-box');
+    });
+    </script>
+</body>
+</html>

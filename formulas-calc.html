@@ -251,7 +251,6 @@
             border: 1px solid var(--glass-border);
             border-radius: 8px;
             padding: 10px 12px;
-            cursor: pointer;
             transition: all 0.2s;
             display: flex;
             align-items: center;
@@ -282,6 +281,67 @@
         }
         .luck-item-card.selected .luck-item-value {
             color: var(--accent-cyan);
+        }
+        .luck-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .luck-item-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            border: 1px solid var(--glass-border);
+            background: #0a1020;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s;
+            line-height: 1;
+            padding: 0;
+        }
+        .luck-item-btn:hover:not(:disabled) {
+            border-color: #00e6ff;
+            color: var(--accent-cyan);
+        }
+        .luck-item-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .luck-item-count {
+            color: var(--accent-cyan);
+            font-weight: 700;
+            font-size: 0.9rem;
+            min-width: 16px;
+            text-align: center;
+        }
+        .luck-item-card .luck-item-total {
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            margin-left: 4px;
+        }
+        .luck-items-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+            padding: 8px 12px;
+            background: #0a1020;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        .luck-items-total-row .total-label {
+            color: var(--text-secondary);
+        }
+        .luck-items-total-row .total-value {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+        .luck-items-total-row .total-value.over-limit {
+            color: #ff5555;
         }
         @media (max-width: 600px) {
             .formulas-container {
@@ -342,9 +402,9 @@
             <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
             <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
             <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="events.html" class="nav-link"><i class="fas fa-bolt"></i> Ивенты</a>
             <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
             <a href="map.html" class="nav-link"><i class="fas fa-map"></i> Карта</a>
-            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
             <a href="guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
             <a href="faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
             <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
@@ -454,7 +514,7 @@
                 </div>
                 <div class="formula-formula-box">
                     <strong>Формула:</strong> Итог = Базовый% + (Удача героя + Удача предметов) × (1 − Базовый% / 100)<br>
-                    Удача складывается: герой + все выбранные предметы.
+                    Удача складывается: герой + все выбранные предметы. Можно выбрать до 6 предметов (несколько одинаковых).
                 </div>
             </div>
 

@@ -43,25 +43,65 @@ document.addEventListener('DOMContentLoaded', function() {
                 { id: 'I03V', name: 'Посох света', luck: 5 },
                 { id: 'I0DB', name: 'Скипетр Владыки I', luck: 5 }
             ];
-        var selectedLuckItems = {};
+        var LUCK_ITEMS_MAX_TOTAL = 6;
+        var selectedLuckItems = {}; // { id: count }
+
+        function getTotalItemCount() {
+            var total = 0;
+            for (var id in selectedLuckItems) {
+                total += selectedLuckItems[id];
+            }
+            return total;
+        }
 
         function renderLuckItems() {
             var grid = document.getElementById('luckItemsGrid');
+            var totalItems = getTotalItemCount();
             grid.innerHTML = LUCK_ITEMS.map(function(item) {
-                var sel = selectedLuckItems[item.id];
-                return '<div class="luck-item-card' + (sel ? ' selected' : '') + '" data-luck-id="' + item.id + '">'
+                var count = selectedLuckItems[item.id] || 0;
+                var isDisabled = count <= 0;
+                var isMaxed = totalItems >= LUCK_ITEMS_MAX_TOTAL;
+                return '<div class="luck-item-card' + (count > 0 ? ' selected' : '') + '" data-luck-id="' + item.id + '">'
                     + '<img loading="lazy" src="images/items/' + item.id + '.png" alt="" class="luck-item-icon" onerror="this.style.display=\'none\'">'
                     + '<span class="luck-item-name">' + item.name + '</span>'
-                    + '<span class="luck-item-value">+' + item.luck + '%</span>'
+                    + '<div class="luck-item-controls">'
+                    + '<button class="luck-item-btn luck-item-minus" data-luck-id="' + item.id + '"' + (isDisabled ? ' disabled' : '') + '>&minus;</button>'
+                    + '<span class="luck-item-count">' + count + '</span>'
+                    + '<button class="luck-item-btn luck-item-plus" data-luck-id="' + item.id + '"' + (isMaxed ? ' disabled' : '') + '>+</button>'
+                    + '</div>'
+                    + '<span class="luck-item-value">' + (count > 0 ? '+' + (item.luck * count) + '%' : '+' + item.luck + '%') + '</span>'
                     + '</div>';
             }).join('');
-            grid.querySelectorAll('.luck-item-card').forEach(function(card) {
-                card.addEventListener('click', function() {
-                    var id = card.dataset.luckId;
-                    if (selectedLuckItems[id]) {
-                        delete selectedLuckItems[id];
-                    } else {
-                        selectedLuckItems[id] = true;
+
+            // Total items row
+            var totalRow = grid.parentElement.querySelector('.luck-items-total-row');
+            if (!totalRow) {
+                totalRow = document.createElement('div');
+                totalRow.className = 'luck-items-total-row';
+                grid.parentElement.appendChild(totalRow);
+            }
+            var totalItemsNow = getTotalItemCount();
+            totalRow.innerHTML = '<span class="total-label">Предметов выбрано</span>'
+                + '<span class="total-value' + (totalItemsNow > LUCK_ITEMS_MAX_TOTAL ? ' over-limit' : '') + '">' + totalItemsNow + ' / ' + LUCK_ITEMS_MAX_TOTAL + '</span>';
+
+            grid.querySelectorAll('.luck-item-minus').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var id = btn.dataset.luckId;
+                    if (selectedLuckItems[id] && selectedLuckItems[id] > 0) {
+                        selectedLuckItems[id]--;
+                        if (selectedLuckItems[id] === 0) delete selectedLuckItems[id];
+                    }
+                    renderLuckItems();
+                    calcLuckItems();
+                });
+            });
+            grid.querySelectorAll('.luck-item-plus').forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    var id = btn.dataset.luckId;
+                    if (getTotalItemCount() < LUCK_ITEMS_MAX_TOTAL) {
+                        selectedLuckItems[id] = (selectedLuckItems[id] || 0) + 1;
                     }
                     renderLuckItems();
                     calcLuckItems();
@@ -75,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var itemLuck = 0;
             for (var id in selectedLuckItems) {
                 var item = LUCK_ITEMS.find(function(i) { return i.id === id; });
-                if (item) itemLuck += item.luck;
+                if (item) itemLuck += item.luck * selectedLuckItems[id];
             }
             var totalLuck = heroLuck + itemLuck;
             var result = base + totalLuck * (1 - base / 100);
