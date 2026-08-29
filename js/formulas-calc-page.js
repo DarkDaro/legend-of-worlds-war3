@@ -62,14 +62,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 var isDisabled = count <= 0;
                 var isMaxed = totalItems >= LUCK_ITEMS_MAX_TOTAL;
                 return '<div class="luck-item-card' + (count > 0 ? ' selected' : '') + '" data-luck-id="' + item.id + '">'
+                    + '<div class="luck-item-row">'
                     + '<img loading="lazy" src="images/items/' + item.id + '.png" alt="" class="luck-item-icon" onerror="this.style.display=\'none\'">'
                     + '<span class="luck-item-name">' + item.name + '</span>'
+                    + '<span class="luck-item-value">' + (count > 0 ? '+' + (item.luck * count) + '%' : '+' + item.luck + '%') + '</span>'
+                    + '</div>'
                     + '<div class="luck-item-controls">'
                     + '<button class="luck-item-btn luck-item-minus" data-luck-id="' + item.id + '"' + (isDisabled ? ' disabled' : '') + '>&minus;</button>'
                     + '<span class="luck-item-count">' + count + '</span>'
                     + '<button class="luck-item-btn luck-item-plus" data-luck-id="' + item.id + '"' + (isMaxed ? ' disabled' : '') + '>+</button>'
                     + '</div>'
-                    + '<span class="luck-item-value">' + (count > 0 ? '+' + (item.luck * count) + '%' : '+' + item.luck + '%') + '</span>'
                     + '</div>';
             }).join('');
 
