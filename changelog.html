@@ -51,6 +51,20 @@
 
             <div class="version-card">
                 <div class="version-header">
+                    <span class="version-badge hot">v6.6</span>
+                    <span class="version-title">Ивенты и дуэли, фиксы CSS</span>
+                    <span class="version-date">— 29 августа 2026</span>
+                </div>
+                <ul class="change-list">
+                    <li class="new">Страница «Ивенты и дуэли» — режимы 1v1, 2v2, 3v3, FFA, босс-ивенты, соло-режим</li>
+                    <li class="fix">Удалены конфликтующие hover-эффекты на карточках героев и предметов</li>
+                    <li class="fix">Удалена дублирующая анимация glow-pulse</li>
+                    <li class="fix">Исправлены конфликты border-radius и padding в контейнерах</li>
+                </ul>
+            </div>
+
+            <div class="version-card">
+                <div class="version-header">
                     <span class="version-badge hot">v6.5</span>
                     <span class="version-title">Тирлист героев и улучшения сайта</span>
                     <span class="version-date">— 29 мая 2026</span>
@@ -95,6 +109,28 @@
                     <li class="new">Рекомендуемые сборки — автогенерация для всех 73 героев из данных ИИ-ботов</li>
                     <li class="fix">Описания героев на карточках — теперь подтягиваются из базы автоматически</li>
                     <li class="fix">Исправлены ошибки в данных сборок 17 героев — предметы соответствуют реальным данным карты</li>
+                </ul>
+            </div>
+
+            <div class="version-card">
+                <div class="version-header">
+                    <span class="version-badge">v6.1</span>
+                    <span class="version-title">Гайды на героев, WIP скрыты</span>
+                    <span class="version-date">— 26 мая 2026</span>
+                </div>
+                <ul class="change-list">
+                    <li class="new">Гайд на Друида — способности, комбо, сборки, позиционирование, синергии и контрпики</li>
+                    <li class="new">Гайд на Адмирала — способности, 3 комбо-паттерна, фазы сборки со Скипетром Владыки, синергии</li>
+                    <li class="new">Реструктуризация гайдов — общие гайды и секция «Гайды на героев» с горизонтальными карточками</li>
+                    <li class="new">Кнопки гайдов на страницах Друида и Адмирала</li>
+                    <li class="fix">Герои в разработке (WIP) — полностью скрыты от игроков: не в каталоге, фильтрах и поиске</li>
+                    <li class="fix">Исправлены имена героев в синергиях: Архимаг → Верховный Маг, Лич → Некромонгер, Убийца → Ассасин</li>
+                    <li class="fix">23 сломанных имени способностей в abilities-db.js — починены (UTF-8→Latin-1 мождибак)</li>
+                    <li class="fix">16 героев с тегом «Сломанная кодировка» — описания обновлены из INI, теги удалены</li>
+                    <li class="fix">Калькулятор сборок — заголовок обновляется при смене героя в селекте</li>
+                    <li class="fix">Сравнение героев — селекты не наслаиваются на мобильной верстке</li>
+                    <li class="fix">Таблица приростов героев — вписывается в контейнер на мобильном</li>
+                    <li class="new">База крипов creeps-db.js — 25 крипов с характеристиками, пассивками, подключена к таблице</li>
                 </ul>
             </div>
 
@@ -347,6 +383,23 @@
 
             <div class="version-card">
                 <div class="version-header">
+                    <span class="version-badge">v3.9a</span>
+                    <span class="version-title">Данные героев и сравнение</span>
+                    <span class="version-date">— 2026</span>
+                </div>
+                <ul class="change-list">
+                    <li class="new">У шести героев появились полные характеристики: здоровье, мана, атака, защита, скорость и регенерация</li>
+                    <li class="new">На странице сравнения теперь видны регенерация здоровья и маны с учётом уровня</li>
+                    <li class="new">Калькулятор сборок показывает, чья это сборка, при переходе из карточки героя</li>
+                    <li class="new">Появился раздел «ЧаВо» — ответы на частые вопросы в одном месте</li>
+                    <li class="new">На странице героев добавлена кнопка для быстрого сравнения</li>
+                    <li class="fix">Исправлены имена боссов, с которых выпадают редкие предметы</li>
+                    <li class="fix">Убрана плашка «В разработке» с готовых героев</li>
+                </ul>
+            </div>
+
+            <div class="version-card">
+                <div class="version-header">
                     <span class="version-badge">v3.8</span>
                     <span class="version-title">Последние улучшения</span>
                     <span class="version-date">— 2026</span>
@@ -374,6 +427,22 @@
                     <li class="fix">Описание способностей и подсказки теперь лучше помещаются на экран</li>
                     <li class="fix">Кнопки и элементы интерфейса стали меньше мешать на узких экранах</li>
                     <li class="fix">Картинки героев стали отображаться ровнее и чище</li>
+                </ul>
+            </div>
+
+            <div class="version-card">
+                <div class="version-header">
+                    <span class="version-badge">v3.6</span>
+                    <span class="version-title">Расширение сайта</span>
+                    <span class="version-date">— 2026</span>
+                </div>
+                <ul class="change-list">
+                    <li class="new">На сайте появились новые разделы про механику, монстров, поддержку, информацию и лор</li>
+                    <li class="new">Главная страница стала более живой и наглядной</li>
+                    <li class="new">Появилась отдельная кнопка для скачивания карты</li>
+                    <li class="new">Предметы получили новые подсказки и удобные пометки</li>
+                    <li class="rework">Навигация стала богаче и проще для ориентации</li>
+                    <li class="fix">Сайт стал выглядеть ровнее и чище на разных экранах</li>
                 </ul>
             </div>
 
