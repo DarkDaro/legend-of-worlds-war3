@@ -114,6 +114,20 @@
             div.addEventListener('dragstart', function(e) {
                 e.dataTransfer.setData('text/plain', hero.heroId);
                 div.classList.add('dragging');
+                // Custom drag ghost — small clean card, not the whole pool
+                var ghost = document.createElement('div');
+                ghost.style.cssText = 'position:fixed;top:-200px;left:-200px;display:flex;align-items:center;gap:6px;padding:4px 10px 4px 4px;background:rgba(10,20,35,0.95);border:1px solid #00e6ff;border-radius:8px;pointer-events:none;z-index:99999;';
+                var gImg = document.createElement('img');
+                gImg.src = 'images/heroes/' + hero.image + '.png';
+                gImg.style.cssText = 'width:32px;height:32px;border-radius:4px;';
+                ghost.appendChild(gImg);
+                var gName = document.createElement('span');
+                gName.textContent = hero.name;
+                gName.style.cssText = 'font-size:0.82rem;color:#e0f0ff;white-space:nowrap;';
+                ghost.appendChild(gName);
+                document.body.appendChild(ghost);
+                e.dataTransfer.setDragImage(ghost, 20, 16);
+                requestAnimationFrame(function() { document.body.removeChild(ghost); });
             });
             div.addEventListener('dragend', function() {
                 div.classList.remove('dragging');
