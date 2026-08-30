@@ -186,19 +186,19 @@ var HEROES_DATA = [
     { name: 'Астральный Маг', title: '', attr: 'intelligence', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'astral-mage', image: 'astral-mage', charName: 'Марина',
       unique: true,
       rawcode: 'H055',
-      strBase: 18, strGain: 3.5, agiBase: 14, agiGain: 2.5, intBase: 28, intGain: 2,
+      strBase: 18, strGain: 2.0, agiBase: 14, agiGain: 2.5, intBase: 28, intGain: 3.5,
       hp: 200, mp: 150, atk: 25, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 300, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
 
     { name: 'Демон', title: '', attr: 'strength', roles: ['assassin', 'bruiser'], roleNames: ['Убийца', 'Рубака'], heroId: 'demon', image: 'demon', charName: 'Игорь',
       unique: true,
       rawcode: 'O00M',
-      strBase: 25, strGain: 3.5, agiBase: 22, agiGain: 3, intBase: 13, intGain: 1.5,
+      strBase: 25, strGain: 3.5, agiBase: 22, agiGain: 3.5, intBase: 13, intGain: 1.0,
       hp: 500, mp: 150, atk: 46, def: 2, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0.01, speed: 305, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Пожиратель Пламени', title: '', attr: 'intelligence', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'flame-eater', image: 'flame-eater', charName: 'Феликс',
       unique: true,
       rawcode: 'H08O',
-      strBase: 18, strGain: 3.5, agiBase: 16, agiGain: 2.5, intBase: 26, intGain: 2,
+      strBase: 18, strGain: 2.0, agiBase: 16, agiGain: 2.0, intBase: 26, intGain: 4.0,
       hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 0.5, mpRegen: 0.01, speed: 290, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Темный Мастер', title: '', attr: 'intelligence', roles: ['controller', 'damager'], roleNames: ['Контролёр', 'Дамагер'], heroId: 'dark-master', image: 'dark-master', charName: 'Леонардо',
