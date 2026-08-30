@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ИИ-боты · Legend of Worlds</title>
+    <meta property="og:title" content="ИИ-боты — Legend of Worlds">
+    <meta property="og:description" content="Как работают ИИ-боты: приоритеты, состояния, каст спеллов, фарм и командное взаимодействие.">
+    <meta name="description" content="Как работают ИИ-боты: приоритеты, состояния, каст спеллов, фарм и командное взаимодействие.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="aibot.css">
+    <script src="hero-data.js" defer></script>
+    <script src="search-index.js" defer></script>
+    <script src="search.js" defer></script>
+    <script src="icon-loader.js" defer></script>
+    <script src="analytics.js" defer></script>
+    <script src="ui-effects.js" defer></script>
+    <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/aibot.html">
+</head>
+<body class="page-aibot">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="events.html" class="nav-link"><i class="fas fa-bolt"></i> Ивенты</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Инфо</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="map.html" class="nav-link"><i class="fas fa-map"></i> Карта</a>
+            <a href="aibot.html" class="nav-link active"><i class="fas fa-robot"></i> ИИ-боты</a>
+            <a href="guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="mechanics.html">Механики</a><span class="sep">›</span><span class="current">ИИ-боты</span></div>
+        <div class="hero-page-container">
+
+            <div class="panel-header">
+                <div class="detail-icon"><img loading="lazy" src="images/preview.png" alt="" class="detail-logo-img" /></div>
+                <h1 class="detail-title">ИИ-боты</h1>
+            </div>
+            <p class="detail-description">Как думают боты: приоритеты, состояния, каст, фарм и командное взаимодействие.</p>
+
+            <!-- ОБЗОР -->
+            <h2><i class="fas fa-brain"></i> Обзор</h2>
+            <div class="ai-card">
+                <p>Каждый бот-герой «думает» раз в секунду. На каждом тике он проходит <strong>цепочку проверок по приоритету</strong> — от критических (смерть, дуэль) до повседневных (фарм, роуминг).</p>
+                <p>Логика разделена на три слоя: <strong>поведение</strong> (куда идём), <strong>каст способностей</strong> (какие спеллы используем) и <strong>предметы</strong> (что активируем).</p>
+            </div>
+
+            <!-- ПРИОРИТЕТЫ -->
+            <h2><i class="fas fa-list-ol"></i> Цепочка приоритетов</h2>
+            <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:8px;">Каждый тик бот проходит проверки сверху вниз. Первое совпадение — выполняется, остальные пропускаются.</p>
+            <div class="priority-chain">
+                <div class="priority-step">
+                    <div class="priority-num">0</div>
+                    <div><div class="step-label">Мёртв / Отключён</div><div class="step-desc">Бот мёртв или отключён командой — таймер останавливается.</div></div>
+                </div>
+                <div class="priority-step">
+                    <div class="priority-num">1</div>
+                    <div><div class="step-label">Босс-ивент</div><div class="step-desc">Активен босс-ивент — бот атакует босса напрямую, даже если находится в данже.</div></div>
+                </div>
+                <div class="priority-step">
+                    <div class="priority-num">2</div>
+                    <div><div class="step-label">Дуэль</div><div class="step-desc">Активная дуэль — бот атакует цель и не отступает.</div></div>
+                </div>
+                <div class="priority-step">
+                    <div class="priority-num">3</div>
+                    <div><div class="step-label">Критический HP</div><div class="step-desc">HP ≤ 20% (30% Solo) — отступление. Если рядом слабый враг — добить, иначе к базе.</div></div>
+                </div>
+                <div class="priority-step">
+                    <div class="priority-num">4</div>
+                    <div><div class="step-label">На базе</div><div class="step-desc">HP &lt; 80% — лечение. HP ≥ 80% — покупка телепорта, выход с базы.</div></div>
+                </div>
+                <div class="priority-step">
+                    <div class="priority-num">5</div>
+                    <div><div class="step-label">Отступление</div><div class="step-desc">Арена-телепорт или движение к базе. Застрял 5+ сек — телепорт на базу.</div></div>
+                </div>
+                <div class="priority-step">
+                    <div class="priority-num">6</div>
+                    <div><div class="step-label">Покупка предметов</div><div class="step-desc">Книги статов (+5 ко всем за 30 дерева) и бонус-статы на 150+ уровне.</div></div>
+                </div>
+                <div class="priority-step">
+                    <div class="priority-num">7</div>
+                    <div><div class="step-label">Есть цель — атака</div><div class="step-desc">Радиус 1800 (день), 1500 (ночь), 2500 (данж). Приоритет: босс → герой → крип. Слишком много союзников рядом — смена области.</div></div>
+                </div>
+                <div class="priority-step">
+                    <div class="priority-num">8</div>
+                    <div><div class="step-label">Нет цели — фарм / роуминг</div><div class="step-desc">Данж: нет цели 20+ сек — выход. Не в данже: командное взаимодействие, мана-фонтан, поиск области с крипами.</div></div>
+                </div>
+            </div>
+
+            <!-- СОСТОЯНИЯ -->
+            <h2><i class="fas fa-project-diagram"></i> Состояния</h2>
+            <div class="ai-card" style="overflow-x:auto;padding:0;">
+                <table class="state-table">
+                    <thead>
+                        <tr><th>Состояние</th><th>Когда</th><th>Переход</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="state-badge state-idle">Простой</span></td><td>Начальное, после респауна</td><td>→ Фарм / Лечение</td></tr>
+                        <tr><td><span class="state-badge state-farm">Фарм</span></td><td>Идёт на фарм-область</td><td>→ Бой (цель найдена)</td></tr>
+                        <tr><td><span class="state-badge state-fight">Бой (герой)</span></td><td>Атакует вражеского героя</td><td>→ Фарм (цель убита / угроза)</td></tr>
+                        <tr><td><span class="state-badge state-fight">Бой (крип)</span></td><td>Атакает крипа</td><td>→ Фарм (цель убита)</td></tr>
+                        <tr><td><span class="state-badge state-duel">Дуэль 1×1</span></td><td>Дуэль один на один</td><td>→ Фарм (дуэль кончилась)</td></tr>
+                        <tr><td><span class="state-badge state-duel">Масс-дуэль</span></td><td>Массовая дуэль</td><td>→ Фарм</td></tr>
+                        <tr><td><span class="state-badge state-retreat">Отступление</span></td><td>HP критический, идёт к базе</td><td>→ Лечение (дошёл)</td></tr>
+                        <tr><td><span class="state-badge state-heal">Лечение</span></td><td>Лечится на базе</td><td>→ Готов (HP ≥ 80%)</td></tr>
+                        <tr><td><span class="state-badge state-ready">Готов</span></td><td>На базе, готов к выходу</td><td>→ Фарм (выход)</td></tr>
+                        <tr><td><span class="state-badge state-dead">Мёртв</span></td><td>Убит</td><td>→ Простой / Лечение (респаун)</td></tr>
+                        <tr><td><span class="state-badge state-boss">Бой (босс)</span></td><td>Атакует босс-ивент</td><td>→ Фарм (босс убит)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- КАСТ СПОСОБНОСТЕЙ -->
+            <h2><i class="fas fa-magic"></i> Каст способностей</h2>
+
+            <h3>Пороги каста</h3>
+            <div class="ai-card">
+                <p>Бот кастует скилл только если цель «достойна» уровня скилла. Чем выше уровень скилла — тем слабее требования к цели:</p>
+                <ul>
+                    <li><strong>Уровень ≥ 10</strong> — цель ≥ 6 HP или босс</li>
+                    <li><strong>Уровень ≥ 5</strong> — цель ≥ 2 HP или босс</li>
+                    <li><strong>Уровень ≥ 1</strong> — цель ≥ 2 HP или босс</li>
+                </ul>
+            </div>
+
+            <h3>Ульта на крипах</h3>
+            <div class="ai-card">
+                <p>Небаффовые ульта могут кастовать на крип с <strong>тиром ≥ 2</strong>. Баффовые ульта (химический раж, аватар, рёв, берсерк) — без ограничения по тирам, кастуются всегда.</p>
+            </div>
+
+            <h3>Мана-консервация</h3>
+            <div class="mana-gate mana-gate-no"><div class="mana-gate-icon"><i class="fas fa-ban"></i></div><span>Крип <strong>тир 1</strong> + мана &lt; 40% → <strong>не каст</strong></span></div>
+            <div class="mana-gate mana-gate-no"><div class="mana-gate-icon"><i class="fas fa-ban"></i></div><span>Ульта на крип <strong>тир 1</strong> → <strong>никогда</strong></span></div>
+            <div class="mana-gate mana-gate-warn"><div class="mana-gate-icon"><i class="fas fa-exclamation-circle"></i></div><span>Любой крип + мана &lt; 20% → <strong>режим экономии</strong></span></div>
+            <div class="mana-gate mana-gate-yes"><div class="mana-gate-icon"><i class="fas fa-check-circle"></i></div><span>Герои и боссы — <strong>всегда</strong> каст без ограничений</span></div>
+
+            <h3>Исключения</h3>
+            <div class="ai-card">
+                <ul>
+                    <li><strong>Побеговые скиллы</strong> (невидимость, уклонение) — только порог каста, без тир-проверок и проверки на боссов</li>
+                    <li><strong>Герой-только ульта</strong> (самурай, мятежник) — остаются hero-only, не кастуются на боссов/крипов</li>
+                </ul>
+            </div>
+
+            <!-- ПРЕДМЕТЫ -->
+            <h2><i class="fas fa-gem"></i> Предметы</h2>
+            <div class="ai-card">
+                <p>Боты собирают предметы по <a href="bot-builds.html" style="color:var(--accent-cyan);">ИИ-сборкам</a> — заранее заданным билдам для каждого героя. Ниже описана логика использования предметов в бою.</p>
+            </div>
+            <div class="ai-card">
+                <div class="ai-card-title"><i class="fas fa-shield-alt"></i> Режим боя</div>
+                <p>Во время босс-ивента или в данже бот переходит в <strong>режим боя</strong>. Атакующие предметы используются активнее — фарм-ограничения ослабляются.</p>
+            </div>
+
+            <h3>Что меняется в режиме боя</h3>
+            <div class="ai-card">
+                <ul>
+                    <li>Блинк-предметы используются свободнее</li>
+                    <li>8 атакующих предметов с фарм-ограничениями — ограничения сняты</li>
+                </ul>
+            </div>
+
+            <h3>Что НЕ меняется</h3>
+            <div class="ai-card">
+                <ul>
+                    <li><strong>Каст способностей</strong> — отдельная система мана-консервации, без режима боя</li>
+                    <li><strong>Предметы по цели</strong> — без изменений</li>
+                    <li><strong>Лечение союзников</strong> — без изменений</li>
+                    <li><strong>Ротация скиллов по героям</strong> — без изменений</li>
+                </ul>
+            </div>
+
+            <h3>Щиты по HP</h3>
+            <button class="spoiler-toggle" onclick="this.classList.toggle('open');document.getElementById('shields-detail').classList.toggle('open')"><i class="fas fa-chevron-down"></i> Подробнее</button>
+            <div id="shields-detail" class="spoiler-content">
+                <div class="ai-card">
+                    <ul>
+                        <li><strong>HP ≤ 80%</strong> — ледяные доспехи, ледяной дух</li>
+                        <li><strong>HP ≤ 70%</strong> — сфера магии, адская маска</li>
+                        <li><strong>HP ≤ 60%</strong> — адская маска (улучшенная)</li>
+                        <li><strong>HP ≤ 50%</strong> — маска демона, рыцарский щит, доспех шторма</li>
+                        <li><strong>HP ≤ 40%</strong> — жезл стремительности, кинжал призрака</li>
+                        <li><strong>HP ≤ 30%</strong> — посох восстановления</li>
+                        <li><strong>HP ≤ 20%</strong> — клеймор (улучшенный), жезл исцеления</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Атакующие предметы</h3>
+            <button class="spoiler-toggle" onclick="this.classList.toggle('open');document.getElementById('attack-items-detail').classList.toggle('open')"><i class="fas fa-chevron-down"></i> Подробнее</button>
+            <div id="attack-items-detail" class="spoiler-content">
+                <div class="ai-card">
+                    <ul>
+                        <li><strong>Ближний бой (≤ 400)</strong> — ледяное око</li>
+                        <li><strong>Средняя дистанция (≤ 800)</strong> — меч чёрной магии, меч падшего</li>
+                        <li><strong>Дальняя дистанция (≤ 1000)</strong> — посох разложения, древний мистический, нерубский доспех, щит джаггернаута</li>
+                        <li><strong>Герой рядом (≤ 1000)</strong> — антимагические доспехи, огненный щит, кристальный щит</li>
+                        <li><strong>2+ героя рядом (≤ 1500)</strong> — фростморн</li>
+                        <li><strong>Универсальные</strong> — проклятые когти, огненные перчатки, клеймор, сфера мистицизма, защита ада</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Предметы по цели (только герои)</h3>
+            <button class="spoiler-toggle" onclick="this.classList.toggle('open');document.getElementById('target-items-detail').classList.toggle('open')"><i class="fas fa-chevron-down"></i> Подробнее</button>
+            <div id="target-items-detail" class="spoiler-content">
+                <div class="ai-card">
+                    <ul>
+                        <li><strong>Цель HP ≤ 40%</strong> — жезлы боли</li>
+                        <li><strong>Цель HP ≤ 80%</strong> — посох подавления</li>
+                        <li><strong>Свой HP ≤ 30%</strong> — проклятый череп</li>
+                        <li><strong>Свой HP ≤ 20%</strong> — посох ветров, лук ветров</li>
+                        <li><strong>Дистанция ≤ 1000</strong> — сжигатель маны</li>
+                        <li><strong>Видимая цель</strong> — рука тьмы, лук тьмы</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ОЦЕНКА УГРОЗЫ -->
+            <h2><i class="fas fa-exclamation-triangle"></i> Оценка угрозы</h2>
+            <div class="ai-card">
+                <p>Перед атакой на героя бот оценивает угрозу по 3 уровням:</p>
+                <ul>
+                    <li><strong>0 — безопасно</strong>: атакуем всеми скиллами</li>
+                    <li><strong>1 — рискованно</strong>: без ульты, экономим ману (< 60%)</li>
+                    <li><strong>2 — опасно</strong>: отступаем, не атакуем</li>
+                </ul>
+                <p>На крипах и боссах угроза всегда 0.</p>
+            </div>
+
+            <button class="spoiler-toggle" onclick="this.classList.toggle('open');document.getElementById('threat-detail').classList.toggle('open')"><i class="fas fa-chevron-down"></i> Пороги оценки</button>
+            <div id="threat-detail" class="spoiler-content">
+                <div class="ai-card" style="overflow-x:auto;padding:0;">
+                    <table class="compare-table">
+                        <thead><tr><th>Условие</th><th>Solo</th><th>Обычный</th></tr></thead>
+                        <tbody>
+                            <tr><td>Разница уровней > 20</td><td colspan="2">Опасно (2)</td></tr>
+                            <tr><td>Разница > 10 + свой HP &lt; 70%</td><td colspan="2">Опасно (2)</td></tr>
+                            <tr><td>Разница > 10</td><td>Рискованно (1) — строже на 5 ур.</td><td>Рискованно (1)</td></tr>
+                            <tr><td>Разница > 0 + свой HP &lt; 50%</td><td>Рискованно (1)</td><td>Рискованно (1)</td></tr>
+                            <tr><td>HP цели &lt; 10%</td><td colspan="2">Всегда безопасно (добиваем)</td></tr>
+                            <tr><td>HP цели &lt; 25%</td><td colspan="2">Угроза −1</td></tr>
+                            <tr><td>2+ союзника рядом</td><td colspan="2">Угроза −1</td></tr>
+                            <tr><td>3+ союзника рядом</td><td colspan="2">Всегда безопасно</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ФАРМ -->
+            <h2><i class="fas fa-seedling"></i> Фарм-логика</h2>
+            <div class="ai-card">
+                <p>Когда у бота нет цели, он ищет её без проверки видимости:</p>
+                <ol>
+                    <li><strong>Герой рядом</strong> (1500) → атака самого слабого</li>
+                    <li><strong>Крип рядом</strong> → атака</li>
+                    <li><strong>Ближайшая область с крипами</strong> → движение к ней</li>
+                    <li><strong>Нигде ничего</strong> → роуминг</li>
+                </ol>
+            </div>
+
+            <h3>Выбор фарм-области</h3>
+            <button class="spoiler-toggle" onclick="this.classList.toggle('open');document.getElementById('farm-detail').classList.toggle('open')"><i class="fas fa-chevron-down"></i> Подробнее</button>
+            <div id="farm-detail" class="spoiler-content">
+                <div class="ai-card">
+                    <p><strong>Solo:</strong> дистанция не учитывается. Выбор по уровню области + рандом + штраф за повтор.</p>
+                    <ul>
+                        <li>&lt; 30 ур. → низкоуровневые области</li>
+                        <li>30-49 → средние</li>
+                        <li>50-79 → до 20 уровня</li>
+                        <li>80-149 → высокоуровневые</li>
+                        <li>150+ → высокоуровневые (мягче)</li>
+                    </ul>
+                    <p><strong>Обычный:</strong> дистанция учитывается. Своя зона ближе (×0.5-0.7), чужая — штраф. Командное распределение.</p>
+                    <p><strong>2-pass поиск:</strong> сначала области с крипами подходящего уровня, потом любые с крипами, потом рандом.</p>
+                    <p><strong>Анти-кластеринг:</strong> если 2+ союзника (50+ ур.) или 3+ (&lt; 50) рядом → смена области.</p>
+                </div>
+            </div>
+
+            <!-- ДАНЖИ -->
+            <h2><i class="fas fa-dungeon"></i> Данжи</h2>
+            <div class="ai-card">
+                <ul>
+                    <li>Радиус поиска цели: <strong>2500</strong> (вместо обычных 1800/1500)</li>
+                    <li>Нет цели 20+ сек → выход из данжа</li>
+                    <li>Застрял 15+ сек → выход</li>
+                    <li><strong>Блинк-предметы отключены</strong> в данже</li>
+                    <li>Отступление: движение к выходу + невидимость, без блинка</li>
+                </ul>
+            </div>
+
+            <!-- SOLO vs NORMAL -->
+            <h2><i class="fas fa-users-cog"></i> Solo vs Обычный режим</h2>
+            <div class="ai-card" style="overflow-x:auto;padding:0;">
+                <table class="compare-table">
+                    <thead><tr><th>Параметр</th><th>Solo Mode</th><th>Обычный режим</th></tr></thead>
+                    <tbody>
+                        <tr><td>База</td><td>Любая из трёх</td><td>Своя по клану</td></tr>
+                        <tr><td>Выбор фарм-области</td><td>Рандом + уровень</td><td>Дистанция + команда + уровень</td></tr>
+                        <tr><td>Выход с базы</td><td>К телепорту пешком</td><td>Блинк + атака</td></tr>
+                        <tr><td>Анти-фид</td><td>Отключён</td><td>Включён</td></tr>
+                        <tr><td>Агрессия на героев</td><td>150+ уровень</td><td>100+ уровень</td></tr>
+                        <tr><td>HP порог отступления</td><td>30%</td><td>20%</td></tr>
+                        <tr><td>Suicide на крипов</td><td>10% HP</td><td>Нет</td></tr>
+                        <tr><td>Командное взаимодействие</td><td>Отключено</td><td>Включено (кулдаун 10 сек)</td></tr>
+                        <tr><td>Лечение союзников</td><td>Отключено</td><td>Включено</td></tr>
+                        <tr><td>Роуминг</td><td>±800</td><td>±500</td></tr>
+                        <tr><td>Оценка угрозы</td><td>Строже на 5 уровней</td><td>Нормальная</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- КОМАНДНОЕ ВЗАИМОДЕЙСТВИЕ -->
+            <h2><i class="fas fa-handshake"></i> Командное взаимодействие</h2>
+            <div class="ai-card">
+                <p>Только в обычном (не Solo) режиме. Кулдаун <strong>10 сек</strong> после любого командного действия.</p>
+            </div>
+
+            <div class="ai-card">
+                <div class="ai-card-title"><i class="fas fa-shield-alt"></i> Прикрытие союзника</div>
+                <p>Рядом (1000) союзник отступает с HP &lt; 40% → бот атакует ближайшего врага рядом с ним (≤ 1200), чтобы отвлечь.</p>
+            </div>
+
+            <div class="ai-card">
+                <div class="ai-card-title"><i class="fas fa-heart"></i> Защита союзника</div>
+                <p>Рядом (900) союзник в бою с HP &lt; 50% → бот атакует его цель (≤ 1200).</p>
+            </div>
+
+            <div class="ai-card">
+                <div class="ai-card-title"><i class="fas fa-users"></i> Помощь союзнику</div>
+                <p>Рядом союзник атакует героя/босса → бот помогает атаковать ту же цель.</p>
+            </div>
+
+            <div class="ai-card">
+                <div class="ai-card-title"><i class="fas fa-medkit"></i> Лечение союзников</div>
+                <p>Кулдаун 5 сек. Порог HP: &lt; 30% (до 50 ур.), &lt; 20% (50-99), &lt; 15% (100+). Радиус 800. 2+ раненых → аура-предметы.</p>
+            </div>
+
+            <!-- ТАЙМЕРЫ -->
+            <h2><i class="fas fa-stopwatch"></i> Таймеры и кулдауны</h2>
+            <button class="spoiler-toggle" onclick="this.classList.toggle('open');document.getElementById('timers-detail').classList.toggle('open')"><i class="fas fa-chevron-down"></i> Подробнее</button>
+            <div id="timers-detail" class="spoiler-content">
+                <div class="ai-card" style="overflow-x:auto;padding:0;">
+                    <table class="state-table">
+                        <thead><tr><th>Таймер</th><th>Порог</th><th>Действие</th></tr></thead>
+                        <tbody>
+                            <tr><td>Застрял в бою</td><td>сброс при цели</td><td>Не застрял</td></tr>
+                            <tr><td>Застрял без цели</td><td>≥ 4 сек</td><td>Смена фарм-области</td></tr>
+                            <tr><td>Застрял при отступлении</td><td>≥ 5 сек</td><td>Телепорт на базу</td></tr>
+                            <tr><td>Без движения в данже</td><td>≥ 15 сек</td><td>Выход из данжа</td></tr>
+                            <tr><td>Без цели в данже</td><td>≥ 20 сек</td><td>Выход из данжа</td></tr>
+                            <tr><td>Попытки покинуть базу</td><td>≥ 3</td><td>Выход с базы</td></tr>
+                            <tr><td>Попытки покинуть базу</td><td>≥ 5</td><td>Блинк / телепорт на фарм</td></tr>
+                            <tr><td>Смена фарм-области</td><td>6 сек КД</td><td>Анти-осцилляция</td></tr>
+                            <tr><td>Командное действие</td><td>10 сек КД</td><td>Анти-осцилляция</td></tr>
+                            <tr><td>Арена-телепорт</td><td>15 сек КД</td><td>Анти-осцилляция</td></tr>
+                            <tr><td>Выход с базы</td><td>3 сек КД</td><td>Анти-спам</td></tr>
+                            <tr><td>Мана-фонтан</td><td>60 / 120 сек КД</td><td>Нормальный выход / лимит</td></tr>
+                            <tr><td>Покупка телепорта</td><td>30 / 60 сек КД</td><td>Нормальный / 5 подряд одинаковых</td></tr>
+                            <tr><td>Лечение союзников</td><td>5 сек КД</td><td>Анти-спам</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ПОКУПКИ -->
+            <h2><i class="fas fa-coins"></i> Покупки</h2>
+
+            <h3>Книги статов</h3>
+            <div class="ai-card">
+                <p>Каждый тик (только COMPUTER-игроки): если есть 30 дерева и уровень &lt; 150, бот покупает до +5 ко всем статам за 30 дерева. Итого: до +50 ко всем статам за 300 дерева.</p>
+            </div>
+
+            <h3>Бонус-статы (150+ уровень)</h3>
+            <div class="ai-card">
+                <p>Если уровень ≥ 150 и статы &lt; 5: 5000 золота + 100 дерева → бонус-предмет. До 5 покупок.</p>
+            </div>
+
+            <h3>Телепорты (покупаются на базе)</h3>
+            <button class="spoiler-toggle" onclick="this.classList.toggle('open');document.getElementById('tp-detail').classList.toggle('open')"><i class="fas fa-chevron-down"></i> Подробнее</button>
+            <div id="tp-detail" class="spoiler-content">
+                <div class="ai-card" style="overflow-x:auto;padding:0;">
+                    <table class="state-table">
+                        <thead><tr><th>Уровень</th><th>Цена</th><th>Куда</th></tr></thead>
+                        <tbody>
+                            <tr><td>200+</td><td>7000 золота</td><td>Секретная область</td></tr>
+                            <tr><td>200+</td><td>5000 золота</td><td>Эйс (данж)</td></tr>
+                            <tr><td>150+</td><td>6000 золота</td><td>Зелёный/пурпурный портал</td></tr>
+                            <tr><td>150+</td><td>3000 золота</td><td>Доп. фарм-область 2</td></tr>
+                            <tr><td>100+</td><td>1000 золота</td><td>Босс-рандом</td></tr>
+                            <tr><td>50+</td><td>2000 золота</td><td>Пустыня Лох</td></tr>
+                        </tbody>
+                    </table>
+                    <p style="color:var(--text-muted);font-size:0.82rem;margin-top:8px;padding:0 14px;">Шанс покупки: 20% за тик. 5 одинаковых подряд → кулдаун 60 сек.</p>
+                </div>
+            </div>
+
+            <!-- СЛОЖНОСТЬ И БОНУСЫ -->
+            <h2><i class="fas fa-layer-group"></i> Сложность и бонусы</h2>
+            <div class="ai-card">
+                <p>Боты получают <strong>бонус опыта и золота</strong> за убийство крипов. Множитель зависит от сложности и баланса команд.</p>
+                <p>Формула: <strong>опыт = уровень жертвы × (база + баланс)</strong>, <strong>золото = уровень жертвы / 2 × (база + баланс)</strong>.</p>
+                <p>Бонус начисляется только за <strong>крипов</strong> (не за героев, не за иллюзии).</p>
+            </div>
+
+            <h3>Множители по сложности (без баланса)</h3>
+            <div class="ai-card" style="overflow-x:auto;padding:0;">
+                <table class="state-table">
+                    <thead>
+                        <tr><th>Сложность</th><th>Опыт</th><th>Золото</th><th>Пример (крип 10 ур.)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="state-badge state-idle">Слабый</span></td>
+                            <td>ур. × 10</td><td>ур. / 2 × 5</td><td>100 оп., 25 зол.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="state-badge state-duel">Средний</span></td>
+                            <td>ур. × 15</td><td>ур. / 2 × 10</td><td>150 оп., 50 зол.</td>
+                        </tr>
+                        <tr>
+                            <td><span class="state-badge state-retreat">Сложный</span></td>
+                            <td>ур. × 20</td><td>ур. / 2 × 20</td><td>200 оп., 100 зол.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Баланс команд</h3>
+            <div class="ai-card">
+                <p>Отстающая по игрокам команда получает <strong>BotBonus</strong> — добавка к множителю. Рассчитывается один раз при старте:</p>
+                <ul>
+                    <li><strong>Разница людей</strong>: за каждого лишнего игрока в команде противника +1 бонус</li>
+                    <li><strong>Разница размера</strong>: за большую команду +2 бонус</li>
+                    <li><strong>Итого</strong>: разница бонусов × 5 = BotBonus для отстающей команды</li>
+                </ul>
+            </div>
+
+            <h3>Примеры баланса</h3>
+            <div class="ai-card" style="overflow-x:auto;padding:0;">
+                <table class="state-table">
+                    <thead>
+                        <tr><th>Ситуация</th><th>Команда 1 бонус</th><th>Команда 2 бонус</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>2 vs 2 (равно)</td><td>0</td><td>0</td></tr>
+                        <tr><td>3 игрока vs 1 игрок</td><td>0</td><td>20</td></tr>
+                        <tr><td>1 игрок + 1 бот vs 3 игрока</td><td>20</td><td>0</td></tr>
+                        <tr><td>4 vs 3 (1 разница)</td><td>0</td><td>5</td></tr>
+                    </tbody>
+                </table>
+                <p style="color:var(--text-muted);font-size:0.82rem;margin:8px 14px 0;">Пример: Сложный бот + BotBonus 20 = опыт за крипа = ур. × (20+20) = ур. × 40.</p>
+            </div>
+
+            <h3>Solo Mode</h3>
+            <div class="ai-card">
+                <p>В Solo Mode все боты получают <strong>одинаковый бонус Team1</strong> (без баланса команд). Множители те же, что в таблице выше — баланс не применяется.</p>
+            </div>
+
+            <!-- СВЯЗАННЫЕ СТРАНИЦЫ -->
+            <h2><i class="fas fa-link"></i> Связанные страницы</h2>
+            <div class="mechanics-calc-links" style="margin-top:0;">
+                <a href="mechanics.html" class="calc-link-btn"><i class="fas fa-cogs"></i> Механики</a>
+                <a href="creeps.html" class="calc-link-btn"><i class="fas fa-dragon"></i> Крипы</a>
+                <a href="bot-builds.html" class="calc-link-btn"><i class="fas fa-tools"></i> Бот-сборки</a>
+                <a href="events.html" class="calc-link-btn"><i class="fas fa-bolt"></i> Ивенты</a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img loading="lazy" src="images/preview.png" alt="" width="28" height="28" class="footer-logo-img"> Legend of Worlds</span>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
+        </div>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.ai-card, .priority-chain, .state-table, .compare-table, .mana-gate'); });
+</script>
+</body>
+</html>
