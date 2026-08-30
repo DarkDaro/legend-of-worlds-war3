@@ -108,26 +108,7 @@
     color: white;
     text-shadow: 0 0 12px #00e6ffcc;
 }
-.detail-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-.detail-badge {
-    display: inline-block;
-    background: var(--glass-subtle-hover);
-    padding: 4px 14px;
-    border-radius: 40px;
-    font-size: 0.9rem;
-    margin-left: 0;
-    color: #c0e4ff;
-    border: 1px solid #00e6ff88;
-}
-.detail-badge.badge-danger {
-    background: #3a1a1a;
-    color: #ff4444;
-    border-color: #ff444488;
-}
+/* detail-badges и detail-badge перенесены в items.css (секция бейджей) */
 .detail-description {
     color: #b8cef0;
     margin: 20px 0;

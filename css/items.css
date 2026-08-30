@@ -1,4 +1,18 @@
 /* ===== Стили для страницы предметов ===== */
+/* Навигация:
+   Макет и панели:
+   2-25:     Макет (app-container, catalog, detail-panel)
+   26-39:    detail-icon
+   41-98:    Bottom sheet (оверлей, шторка, закрытие)
+   108-188:  Дерево компонентов (component-tree, component-item)
+   195-268:  Способности, босс-дропы, рекомендации
+   334-362:  Цепочка апгрейдов, back-button
+   363-402:  Пустое состояние, бейджи стоимости (cost-badges)
+   404-441:  Бейджи предмета (detail-badge, badge-danger, badge-unique, badge-class)
+   443-495:  Сетка предметов (items-grid, item-card, редкость)
+   497+:     Иконка, название, поиск, вкладки
+   Мобайл:   700+ (overlay, bottom-sheet, адаптив)
+*/
 .app-container {
   display: flex;
   gap: 24px;
@@ -386,6 +400,47 @@ body.item-sheet-open {
 .cost-badge.cost-total    { border: 1px solid #ffcc4455; color: #ffd966; }
 .cost-badge.cost-base     { border: 1px solid #00e6ff55; color: #8ab4f0; }
 .cost-badge.cost-recipe   { border: 1px solid #ff555555; color: #ffaaaa; }
+
+/* ===== Бейджи предмета (detail-badge) ===== */
+/* Контейнер бейджей */
+.detail-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+/* Базовый бейдж (используется на страницах героев и предметов) */
+.detail-badge {
+  display: inline-block;
+  background: var(--glass-subtle-hover);
+  padding: 4px 14px;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  margin-left: 0;
+  color: #c0e4ff;
+  border: 1px solid #00e6ff88;
+}
+/* Бейдж «Выпадает при смерти» (boss_drop) */
+.detail-badge.badge-danger {
+  background: #3a1a1a;
+  color: #ff4444;
+  border-color: #ff444488;
+}
+/* Бейдж «1 на героя» — уникальный предмет, нельзя носить больше одного */
+.badge-unique {
+  background: linear-gradient(135deg, #ff6b3522, #ff6b3544);
+  border: 1px solid #ff6b3588;
+  color: #ffb088;
+  cursor: help;
+}
+/* Бейдж «Класс: X» — нельзя носить два предмета одного класса */
+.badge-class {
+  background: linear-gradient(135deg, #e040fb22, #e040fb44);
+  border: 1px solid #e040fb88;
+  color: #f0a0ff;
+  cursor: help;
+}
+
+/* ===== Сетка предметов (items-grid) ===== */
 .items-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
