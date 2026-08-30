@@ -1,0 +1,212 @@
+/* ── ИИ-боты: стили страницы ── */
+
+.hero-page-container { max-width: 960px; }
+h2 { color: var(--accent-cyan); font-size: 1.2rem; margin: 32px 0 12px; border-bottom: 1px solid var(--glass-border); padding-bottom: 6px; }
+h2:first-child { margin-top: 0; }
+h3 { color: var(--text-primary); font-size: 1rem; margin: 20px 0 8px; }
+
+/* ── Карточки ── */
+.ai-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+}
+.ai-card-title {
+    color: var(--accent-cyan);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.ai-card-title i { font-size: 0.9rem; }
+.ai-card p, .ai-card li { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.55; }
+.ai-card ul { padding-left: 18px; margin: 6px 0; }
+.ai-card ul li { margin-bottom: 4px; }
+
+/* ── Цепочка приоритетов ── */
+.priority-chain {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 12px 0;
+}
+.priority-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border-left: 3px solid var(--glass-border);
+    background: rgba(0,0,0,0.15);
+    position: relative;
+    transition: background 0.2s;
+}
+.priority-step:hover { background: rgba(0,230,255,0.04); }
+.priority-step:first-child { border-left-color: #ff6b6b; }
+.priority-step:nth-child(2) { border-left-color: #ffc107; }
+.priority-step:nth-child(3) { border-left-color: #ffc107; }
+.priority-step:nth-child(4) { border-left-color: #ff9800; }
+.priority-step:nth-child(5) { border-left-color: #ff9800; }
+.priority-step:nth-child(6) { border-left-color: #2196f3; }
+.priority-step:nth-child(7) { border-left-color: #2196f3; }
+.priority-step:nth-child(8) { border-left-color: #4caf50; }
+.priority-step:nth-child(9) { border-left-color: #4caf50; }
+.priority-step:last-child { border-left-color: #607d8b; }
+.priority-num {
+    min-width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700;
+    background: rgba(0,230,255,0.1);
+    color: var(--accent-cyan);
+    flex-shrink: 0;
+}
+.priority-step .step-label { color: var(--text-primary); font-weight: 600; font-size: 0.88rem; }
+.priority-step .step-desc { color: var(--text-muted); font-size: 0.82rem; margin-top: 2px; }
+
+/* ── Таблица состояний ── */
+.state-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+.state-table th {
+    padding: 10px 14px; text-align: left;
+    color: var(--text-muted); font-weight: 500;
+    border-bottom: 1px solid var(--glass-border);
+    background: rgba(13,27,42,0.95);
+    position: sticky; top: 0; z-index: 2;
+}
+.state-table td {
+    padding: 8px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--text-secondary);
+}
+.state-table tr:hover td { background: rgba(0,230,255,0.04); }
+.state-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+.state-idle { background: rgba(96,125,139,0.2); color: #90a4ae; }
+.state-farm { background: rgba(76,175,80,0.15); color: #66bb6a; }
+.state-fight { background: rgba(255,87,34,0.15); color: #ff7043; }
+.state-duel { background: rgba(255,193,7,0.15); color: #ffc107; }
+.state-retreat { background: rgba(244,67,54,0.15); color: #ef5350; }
+.state-heal { background: rgba(33,150,243,0.15); color: #42a5f5; }
+.state-dead { background: rgba(120,120,120,0.15); color: #999; }
+.state-boss { background: rgba(171,71,188,0.15); color: #ab47bc; }
+.state-ready { background: rgba(0,230,255,0.12); color: #00e6ff; }
+
+/* ── Таблица сравнения ── */
+.compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+.compare-table th {
+    padding: 10px 14px; text-align: left;
+    color: var(--text-muted); font-weight: 500;
+    border-bottom: 1px solid var(--glass-border);
+    background: rgba(13,27,42,0.95);
+}
+.compare-table th:first-child { width: 35%; }
+.compare-table td {
+    padding: 8px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--text-secondary);
+}
+.compare-table tr:hover td { background: rgba(0,230,255,0.04); }
+.compare-table td:first-child { color: var(--text-primary); font-weight: 500; }
+
+/* ── Спойлер ── */
+.spoiler-toggle {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 14px; border-radius: 8px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg); color: var(--text-secondary);
+    cursor: pointer; font-size: 0.85rem; transition: all 0.2s;
+    margin-bottom: 8px;
+}
+.spoiler-toggle:hover { border-color: var(--accent-cyan); color: var(--text-primary); }
+.spoiler-toggle .fa-chevron-down { transition: transform 0.2s; font-size: 0.7rem; }
+.spoiler-toggle.open .fa-chevron-down { transform: rotate(180deg); }
+.spoiler-content {
+    max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+}
+.spoiler-content.open { max-height: 2000px; }
+
+/* ── Мана-гейты ── */
+.mana-gate {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: rgba(0,230,255,0.04);
+    border: 1px solid var(--glass-border);
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+.mana-gate-icon { font-size: 0.95rem; flex-shrink: 0; }
+.mana-gate-no { border-left: 3px solid #ff6b6b; }
+.mana-gate-no .mana-gate-icon { color: #ff6b6b; }
+.mana-gate-warn { border-left: 3px solid #ffc107; }
+.mana-gate-warn .mana-gate-icon { color: #ffc107; }
+.mana-gate-yes { border-left: 3px solid #4caf50; }
+.mana-gate-yes .mana-gate-icon { color: #4caf50; }
+
+/* ── Мобильная адаптация ── */
+@media (max-width: 900px) {
+    .priority-step { padding: 8px 10px; gap: 10px; }
+    .priority-num { min-width: 22px; height: 22px; font-size: 0.7rem; }
+    .priority-step .step-label { font-size: 0.82rem; }
+    .priority-step .step-desc { font-size: 0.78rem; }
+    .ai-card { padding: 14px 16px; }
+    .ai-card p, .ai-card li { font-size: 0.84rem; }
+    .state-table, .compare-table { font-size: 0.82rem; }
+    .state-table th, .state-table td,
+    .compare-table th, .compare-table td { padding: 8px 10px; }
+    .mana-gate { font-size: 0.82rem; padding: 7px 10px; }
+    h2 { font-size: 1.1rem; margin: 24px 0 10px; }
+    h3 { font-size: 0.95rem; }
+}
+@media (max-width: 700px) {
+    .priority-step { padding: 8px; gap: 8px; }
+    .priority-num { min-width: 20px; height: 20px; font-size: 0.65rem; }
+    .priority-step .step-label { font-size: 0.8rem; }
+    .priority-step .step-desc { font-size: 0.75rem; }
+    .ai-card { padding: 12px 14px; margin-bottom: 12px; }
+    .ai-card p, .ai-card li { font-size: 0.8rem; }
+    .ai-card ul, .ai-card ol { padding-left: 14px; }
+    .state-table, .compare-table { font-size: 0.75rem; }
+    .state-table th, .state-table td,
+    .compare-table th, .compare-table td { padding: 6px 8px; }
+    .state-badge { font-size: 0.72rem; padding: 1px 6px; }
+    .mana-gate { font-size: 0.78rem; padding: 6px 8px; gap: 8px; }
+    .mana-gate-icon { font-size: 0.85rem; }
+    h2 { font-size: 1rem; margin: 20px 0 8px; }
+    h3 { font-size: 0.9rem; margin: 14px 0 6px; }
+    .spoiler-toggle { font-size: 0.8rem; padding: 6px 12px; }
+    .compare-table th:first-child { width: 40%; }
+}
+@media (max-width: 480px) {
+    .priority-chain { margin: 8px 0; }
+    .priority-step { padding: 6px; gap: 6px; }
+    .ai-card { padding: 10px 12px; margin-bottom: 10px; border-radius: 8px; }
+    .ai-card p, .ai-card li { font-size: 0.76rem; }
+    .ai-card ul { padding-left: 14px; }
+    .ai-card ul li { margin-bottom: 2px; }
+    .state-table, .compare-table { font-size: 0.7rem; }
+    .state-table th, .state-table td,
+    .compare-table th, .compare-table td { padding: 5px 6px; }
+    .mana-gate { font-size: 0.74rem; padding: 5px 7px; gap: 6px; flex-wrap: wrap; }
+    h2 { font-size: 0.95rem; }
+    h3 { font-size: 0.85rem; }
+    .ai-card-title { font-size: 0.88rem; }
+}

@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Таблица баланса · Legend of Worlds</title>
     <meta property="og:title" content="Таблица баланса героев — Legend of Worlds">
-    <meta property="og:description" content="Все герои в одной таблице: статы, прирост, дальность, скорость. Сортировка и фильтры."
-    <meta name="description" content="Все герои в одной таблице: статы, прирост, дальность, скорость. Сортировка и фильтры.">
+    <meta property="og:description" content="Все герои в одной таблице: статы, прирост, роли, дальность, скорость. Сортировка и фильтры.">
+    <meta name="description" content="Все герои в одной таблице: статы, прирост, роли, дальность, скорость. Сортировка и фильтры.">
     <meta property="og:image" content="images/preview.png">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -125,6 +125,7 @@
         .balance-table .best-val { color: #ffd43b; font-weight: 600; }
         .balance-table .worst-val { color: #ff6b6b; opacity: 0.7; }
         .balance-table .zero-val { opacity: 0.3; }
+        .balance-table td:has(.role-cell) { white-space: normal; }
 
         /* Парящая иконка */
         .balance-page-icon {
@@ -133,6 +134,66 @@
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-14px); }
+        }
+
+        /* ── Скрытие колонок на мобильных ── */
+        @media (max-width: 700px) {
+            .col-hide-mobile { display: none; }
+        }
+        @media (max-width: 480px) {
+            .col-hide-small { display: none; }
+            .col-hide-mobile { display: none; }
+            .balance-table .role-cell { flex-direction: column; gap: 1px; }
+        }
+
+        /* ── Роль-теги ── */
+        .role-cell {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+        }
+        .role-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .role-tag i { font-size: 0.65rem; }
+        .role-tank { background: rgba(96,125,139,0.2); color: #90a4ae; }
+        .role-bruiser { background: rgba(255,87,34,0.15); color: #ff7043; }
+        .role-initiator { background: rgba(255,193,7,0.15); color: #ffc107; }
+        .role-assassin { background: rgba(156,39,176,0.15); color: #ab47bc; }
+        .role-damager { background: rgba(244,67,54,0.15); color: #ef5350; }
+        .role-controller { background: rgba(33,150,243,0.15); color: #42a5f5; }
+        .role-healer { background: rgba(76,175,80,0.15); color: #66bb6a; }
+        .role-support { background: rgba(0,230,255,0.12); color: #00e6ff; }
+        .role-other { background: rgba(150,150,150,0.1); color: #999; }
+
+        /* ── Фильтр по ролям ── */
+        .role-filter-label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-right: 4px;
+        }
+        .role-btn {
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.78rem;
+        }
+        .role-btn:hover { border-color: var(--accent-cyan); color: var(--text-primary); }
+        .role-btn.active {
+            background: rgba(0, 230, 255, 0.12);
+            border-color: var(--accent-cyan);
+            color: var(--text-primary);
         }
 
         /* ── Счётчик ── */
@@ -186,6 +247,9 @@
             .balance-table .hero-name-cell img { width: 22px; height: 22px; }
             .balance-col-toggles { gap: 5px; }
             .col-toggle { font-size: 0.72rem; padding: 4px 8px; }
+            .role-btn { font-size: 0.7rem; padding: 3px 7px; }
+            .role-filter-label { font-size: 0.72rem; }
+            .role-tag i { display: none; }
         }
         @media (max-width: 480px) {
             .balance-table { min-width: 500px; font-size: 0.7rem; }
@@ -194,6 +258,8 @@
             .balance-col-toggles { gap: 4px; }
             .col-toggle-label { display: none; }
             .col-toggle { font-size: 0.68rem; padding: 3px 6px; }
+            .role-btn { font-size: 0.65rem; padding: 2px 5px; }
+            .role-tag { font-size: 0.65rem; padding: 1px 4px; }
         }
     </style>
     <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/balance.html">
@@ -227,7 +293,7 @@
                 <div class="detail-icon"><img loading="lazy" src="images/preview.png" alt="" class="detail-logo-img" /></div>
                 <h1 class="detail-title">Таблица баланса героев</h1>
             </div>
-            <p class="detail-description">Все герои в одной таблице — базовые статы, прирост за уровень, дальность атаки, скорость. Сортировка по любому столбцу. Нажмите на заголовок.</p>
+            <p class="detail-description">Все герои в одной таблице — статы, прирост, роли, дальность, скорость. Сортировка по любому столбцу.</p>
 
             <div class="balance-filters">
                 <input type="text" class="balance-search" id="balanceSearch" placeholder="Поиск героя...">
@@ -235,6 +301,18 @@
                 <button class="attr-btn" data-attr="strength"><i class="fas fa-fist-raised"></i> Сила</button>
                 <button class="attr-btn" data-attr="agility"><i class="fas fa-bullseye"></i> Ловкость</button>
                 <button class="attr-btn" data-attr="intelligence"><i class="fas fa-brain"></i> Разум</button>
+            </div>
+            <div class="balance-filters">
+                <span class="role-filter-label"><i class="fas fa-users"></i> Роль:</span>
+                <button class="role-btn active" data-role="all">Все</button>
+                <button class="role-btn" data-role="tank"><i class="fas fa-shield-alt"></i> Танк</button>
+                <button class="role-btn" data-role="bruiser"><i class="fas fa-fist-raised"></i> Рубака</button>
+                <button class="role-btn" data-role="initiator"><i class="fas fa-bolt"></i> Инициатор</button>
+                <button class="role-btn" data-role="assassin"><i class="fas fa-crosshairs"></i> Убийца</button>
+                <button class="role-btn" data-role="damager"><i class="fas fa-fire"></i> Дамагер</button>
+                <button class="role-btn" data-role="controller"><i class="fas fa-project-diagram"></i> Контролёр</button>
+                <button class="role-btn" data-role="healer"><i class="fas fa-heart"></i> Целитель</button>
+                <button class="role-btn" data-role="support"><i class="fas fa-hands-helping"></i> Помощник</button>
             </div>
             <div class="balance-col-toggles">
                 <span class="col-toggle-label">Колонки:</span>
@@ -250,6 +328,7 @@
                         <tr>
                             <th data-col="name">Герой <span class="sort-arrow">▲</span></th>
                             <th data-col="attr">Атрибут <span class="sort-arrow">▲</span></th>
+                            <th data-col="roles">Роль <span class="sort-arrow">▲</span></th>
                             <th data-col="attackType" data-group="move" class="col-hide-mobile">Тип <span class="sort-arrow">▲</span></th>
                             <th data-col="strBase" data-group="stats">Сила <span class="sort-arrow">▲</span></th>
                             <th data-col="strGain" data-group="stats" class="col-hide-mobile">+Сил <span class="sort-arrow">▲</span></th>
@@ -276,7 +355,10 @@
         <div class="cross-links">
             <a href="compare.html" class="calc-link-btn"><i class="fas fa-balance-scale"></i> Сравнение героев</a>
             <a href="tierlist.html" class="calc-link-btn"><i class="fas fa-trophy"></i> Тирлист</a>
+            <a href="balance-dashboard.html" class="calc-link-btn"><i class="fas fa-chart-pie"></i> Профили баланса</a>
             <a href="calculator.html" class="calc-link-btn"><i class="fas fa-calculator"></i> Калькулятор</a>
+            <a href="bot-builds.html" class="calc-link-btn"><i class="fas fa-robot"></i> Сборки ИИ</a>
+            <a href="aibot.html" class="calc-link-btn"><i class="fas fa-brain"></i> ИИ-боты</a>
         </div>
     </div>
 

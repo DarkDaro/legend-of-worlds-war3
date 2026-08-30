@@ -2,129 +2,168 @@ document.addEventListener('DOMContentLoaded', function() {
 (function() {
     'use strict';
 
-    // Столбцы, где меньше = лучше (инвертируем worst-val)
-    const LOWER_IS_BETTER = new Set(['atkSpeed']);
+    var LOWER_IS_BETTER = ['atkSpeed'];
 
-    let currentAttr = 'all';
-    let searchQuery = '';
-    let sortCol = 'name';
-    let sortDir = 1;
+    var ROLE_META = {
+        tank:       { label: 'Танк',        icon: 'fa-shield-alt',     cls: 'role-tank' },
+        bruiser:    { label: 'Рубака',       icon: 'fa-fist-raised',    cls: 'role-bruiser' },
+        initiator:  { label: 'Инициатор',    icon: 'fa-bolt',           cls: 'role-initiator' },
+        assassin:   { label: 'Убийца',       icon: 'fa-crosshairs',     cls: 'role-assassin' },
+        damager:    { label: 'Дамагер',      icon: 'fa-fire',           cls: 'role-damager' },
+        controller: { label: 'Контролёр',    icon: 'fa-project-diagram',cls: 'role-controller' },
+        healer:     { label: 'Целитель',     icon: 'fa-heart',          cls: 'role-healer' },
+        support:    { label: 'Помощник',     icon: 'fa-hands-helping',  cls: 'role-support' }
+    };
 
-    const ATTR_LABELS = { strength: 'Сила', agility: 'Ловкость', intelligence: 'Разум' };
-    const TYPE_LABELS = { melee: '<i class="fas fa-fist-raised"></i> Ближний', ranged: '<i class="fas fa-bullseye"></i> Дальний' };
+    var currentAttr = 'all';
+    var currentRole = 'all';
+    var searchQuery = '';
+    var sortCol = 'name';
+    var sortDir = 1;
 
-    // Группы колонок: col → group
-    const COL_GROUPS = {
+    var ATTR_LABELS = { strength: 'Сила', agility: 'Ловкость', intelligence: 'Разум' };
+    var TYPE_LABELS = { melee: '<i class="fas fa-fist-raised"></i> Ближний', ranged: '<i class="fas fa-bullseye"></i> Дальний' };
+
+    var COL_GROUPS = {
         strBase: 'stats', strGain: 'stats', agiBase: 'stats', agiGain: 'stats', intBase: 'stats', intGain: 'stats',
         hp: 'combat', mp: 'combat', atk: 'combat', def: 'combat', atkSpeed: 'combat',
         hpRegen: 'regen', mpRegen: 'regen',
         speed: 'move', range: 'move', attackType: 'move'
     };
-    const activeGroups = new Set(['stats', 'combat', 'regen', 'move']);
+    var activeGroups = ['stats', 'combat', 'regen', 'move'];
 
     function getHeroes() {
         if (typeof HEROES_DATA === 'undefined') return [];
-        return HEROES_DATA.filter(h => {
+        return HEROES_DATA.filter(function(h) {
             if (h.isAltForm || h.wip) return false;
             if (currentAttr !== 'all' && h.attr !== currentAttr) return false;
-            if (searchQuery && !h.name.toLowerCase().includes(searchQuery)) return false;
+            if (currentRole !== 'all' && (!h.roles || h.roles.indexOf(currentRole) === -1)) return false;
+            if (searchQuery && h.name.toLowerCase().indexOf(searchQuery) === -1) return false;
             return true;
         });
     }
 
     function sortHeroes(heroes) {
-        return heroes.slice().sort((a, b) => {
-            let va = a[sortCol], vb = b[sortCol];
+        return heroes.slice().sort(function(a, b) {
+            var va = a[sortCol], vb = b[sortCol];
             if (sortCol === 'name') { va = va.toLowerCase(); vb = vb.toLowerCase(); }
             if (sortCol === 'attr') { va = va || ''; vb = vb || ''; }
+            if (sortCol === 'roles') { va = (a.roles || []).join(','); vb = (b.roles || []).join(','); return va.localeCompare(vb) * sortDir; }
             if (typeof va === 'string') return va.localeCompare(vb) * sortDir;
             return ((va || 0) - (vb || 0)) * sortDir;
         });
     }
 
-    // Найти лучшие/худшие значения для подсветки
     function findExtremes(heroes) {
-        const numCols = ['strBase','strGain','agiBase','agiGain','intBase','intGain','hp','mp','atk','def','atkSpeed','hpRegen','mpRegen','speed','range'];
-        const extremes = {};
-        numCols.forEach(col => {
-            const vals = heroes.map(h => h[col] || 0);
-            extremes[col] = { max: Math.max(...vals), min: Math.min(...vals) };
-        });
+        var numCols = ['strBase','strGain','agiBase','agiGain','intBase','intGain','hp','mp','atk','def','atkSpeed','hpRegen','mpRegen','speed','range'];
+        var extremes = {};
+        for (var i = 0; i < numCols.length; i++) {
+            var col = numCols[i];
+            var vals = [];
+            for (var j = 0; j < heroes.length; j++) {
+                vals.push(heroes[j][col] || 0);
+            }
+            extremes[col] = { max: Math.max.apply(null, vals), min: Math.min.apply(null, vals) };
+        }
         return extremes;
     }
 
+    function groupActive(group) {
+        return activeGroups.indexOf(group) !== -1;
+    }
+
+    function makeCell(h, extremes, col, hideClass) {
+        var v = h[col];
+        if (v === undefined || v === null) v = 0;
+        var cls = hideClass || '';
+        if (v === 0) {
+            cls += ' zero-val';
+        } else {
+            var ext = extremes[col];
+            if (ext && ext.max !== ext.min) {
+                if (v === ext.max) cls += ' best-val';
+                else if (v === ext.min && LOWER_IS_BETTER.indexOf(col) === -1) cls += ' worst-val';
+            }
+        }
+        var group = COL_GROUPS[col] || '';
+        if (group && !groupActive(group)) return '';
+        return '<td class="' + cls.trim() + '">' + v + '</td>';
+    }
+
     function renderTable() {
-        const heroes = getHeroes();
-        const sorted = sortHeroes(heroes);
-        const extremes = findExtremes(heroes);
-        const tbody = document.getElementById('balanceBody');
-        const countEl = document.getElementById('balanceCount');
+        var heroes = getHeroes();
+        var sorted = sortHeroes(heroes);
+        var extremes = findExtremes(heroes);
+        var tbody = document.getElementById('balanceBody');
+        var countEl = document.getElementById('balanceCount');
 
         countEl.textContent = 'Героев: ' + sorted.length;
 
-        // Обновить стрелки в заголовках
-        document.querySelectorAll('.balance-table th').forEach(th => {
-            const col = th.dataset.col;
+        document.querySelectorAll('.balance-table th').forEach(function(th) {
+            var col = th.dataset.col;
             if (!col) return;
             th.classList.toggle('sorted', col === sortCol);
-            const arrow = th.querySelector('.sort-arrow');
-            if (arrow) arrow.textContent = col === sortCol ? (sortDir === 1 ? '▲' : '▼') : '▲';
+            var arrow = th.querySelector('.sort-arrow');
+            if (arrow) arrow.textContent = col === sortCol ? (sortDir === 1 ? '\u25B2' : '\u25BC') : '\u25B2';
         });
 
         if (!sorted.length) {
-            tbody.innerHTML = '<tr><td colspan="17" style="text-align:center;color:var(--text-muted);padding:24px;">Нет героев</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="19" style="text-align:center;color:var(--text-muted);padding:24px;">Нет героев</td></tr>';
             return;
         }
 
-        tbody.innerHTML = sorted.map(h => {
-            const heroPage = h.heroId ? 'heroes/' + h.heroId + '.html' : '#';
-            const iconSrc = h.image ? 'images/heroes/' + h.image + '.png' : '';
-            const iconHtml = iconSrc
+        var html = '';
+        for (var i = 0; i < sorted.length; i++) {
+            var h = sorted[i];
+            var heroPage = h.heroId ? 'heroes/' + h.heroId + '.html' : '#';
+            var iconSrc = h.image ? 'images/heroes/' + h.image + '.png' : '';
+            var iconHtml = iconSrc
                 ? '<img loading="lazy" src="' + iconSrc + '" alt="" onerror="this.style.display=\'none\'">'
                 : '';
-            const attrClass = 'attr-' + (h.attr || '');
-            const attrLabel = ATTR_LABELS[h.attr] || h.attr || '—';
-            const typeClass = 'type-' + (h.attackType || 'melee');
-            const typeLabel = TYPE_LABELS[h.attackType] || h.attackType || '—';
+            var attrClass = 'attr-' + (h.attr || '');
+            var attrLabel = ATTR_LABELS[h.attr] || h.attr || '\u2014';
+            var typeClass = 'type-' + (h.attackType || 'melee');
+            var typeLabel = TYPE_LABELS[h.attackType] || h.attackType || '\u2014';
 
-            function cell(col, hideClass) {
-                const v = h[col] || 0;
-                let cls = hideClass || '';
-                if (v === 0) cls += ' zero-val';
-                else if (extremes[col]?.max && extremes[col]?.max !== extremes[col]?.min && v === extremes[col].max) cls += ' best-val';
-                else if (extremes[col]?.min && extremes[col]?.max !== extremes[col]?.min && v === extremes[col].min && !LOWER_IS_BETTER.has(col)) cls += ' worst-val';
-                const group = COL_GROUPS[col] || '';
-                if (group && !activeGroups.has(group)) return '';
-                return '<td class="' + cls.trim() + '">' + v + '</td>';
+            var rolesHtml = '\u2014';
+            if (h.roleNames && h.roleNames.length) {
+                var parts = [];
+                for (var ri = 0; ri < h.roleNames.length; ri++) {
+                    var rk = h.roles[ri] || '';
+                    var meta = ROLE_META[rk] || {};
+                    var cls = meta.cls || 'role-other';
+                    var icon = meta.icon ? '<i class="fas ' + meta.icon + '"></i> ' : '';
+                    parts.push('<span class="role-tag ' + cls + '">' + icon + h.roleNames[ri] + '</span>');
+                }
+                rolesHtml = parts.join(' ');
             }
 
-            // Атрибут — всегда видимый
-            // Тип атаки — группа move
-            var typeHtml = activeGroups.has('move')
+            var typeHtml = groupActive('move')
                 ? '<td class="' + typeClass + '">' + typeLabel + '</td>'
                 : '';
 
-            return '<tr>' +
+            html += '<tr>' +
                 '<td><div class="hero-name-cell">' + iconHtml + '<a href="' + heroPage + '">' + h.name + '</a></div></td>' +
                 '<td class="' + attrClass + '">' + attrLabel + '</td>' +
+                '<td><div class="role-cell">' + rolesHtml + '</div></td>' +
                 typeHtml +
-                cell('strBase') + cell('strGain', 'col-hide-mobile') +
-                cell('agiBase') + cell('agiGain', 'col-hide-mobile') +
-                cell('intBase') + cell('intGain', 'col-hide-mobile') +
-                cell('hp') + cell('mp', 'col-hide-mobile') +
-                cell('atk') + cell('def', 'col-hide-small') + cell('atkSpeed', 'col-hide-small') +
-                cell('hpRegen', 'col-hide-mobile') + cell('mpRegen', 'col-hide-mobile') +
-                cell('speed') + cell('range', 'col-hide-small') +
+                makeCell(h, extremes, 'strBase', '') + makeCell(h, extremes, 'strGain', 'col-hide-mobile') +
+                makeCell(h, extremes, 'agiBase', '') + makeCell(h, extremes, 'agiGain', 'col-hide-mobile') +
+                makeCell(h, extremes, 'intBase', '') + makeCell(h, extremes, 'intGain', 'col-hide-mobile') +
+                makeCell(h, extremes, 'hp', '') + makeCell(h, extremes, 'mp', 'col-hide-mobile') +
+                makeCell(h, extremes, 'atk', '') + makeCell(h, extremes, 'def', 'col-hide-small') + makeCell(h, extremes, 'atkSpeed', 'col-hide-small') +
+                makeCell(h, extremes, 'hpRegen', 'col-hide-mobile') + makeCell(h, extremes, 'mpRegen', 'col-hide-mobile') +
+                makeCell(h, extremes, 'speed', '') + makeCell(h, extremes, 'range', 'col-hide-small') +
                 '</tr>';
-        }).join('');
+        }
+        tbody.innerHTML = html;
     }
 
     // === Обработчики ===
 
-    // Сортировка по клику на заголовок
-    document.querySelectorAll('.balance-table th').forEach(th => {
-        th.addEventListener('click', () => {
-            const col = th.dataset.col;
+    document.querySelectorAll('.balance-table th').forEach(function(th) {
+        th.addEventListener('click', function() {
+            var col = th.dataset.col;
             if (!col) return;
             if (sortCol === col) sortDir *= -1;
             else { sortCol = col; sortDir = 1; }
@@ -132,11 +171,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Фильтр по атрибуту
-    document.querySelectorAll('.attr-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.attr-btn').forEach(b => b.classList.remove('active', 'active-strength', 'active-agility', 'active-intelligence'));
-            const attr = btn.dataset.attr;
+    document.querySelectorAll('.attr-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.attr-btn').forEach(function(b) { b.classList.remove('active', 'active-strength', 'active-agility', 'active-intelligence'); });
+            var attr = btn.dataset.attr;
             currentAttr = attr;
             btn.classList.add('active');
             if (attr !== 'all') btn.classList.add('active-' + attr);
@@ -144,33 +182,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Поиск
-    document.getElementById('balanceSearch').addEventListener('input', (e) => {
-        searchQuery = e.target.value.toLowerCase().trim();
-        renderTable();
-    });
-
-    // Переключатели групп колонок
-    document.querySelectorAll('.col-toggle').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const group = btn.dataset.group;
-            if (activeGroups.has(group)) {
-                activeGroups.delete(group);
-                btn.classList.remove('active');
-            } else {
-                activeGroups.add(group);
-                btn.classList.add('active');
-            }
-            // Обновить thead
-            document.querySelectorAll('.balance-table th[data-group]').forEach(th => {
-                th.style.display = activeGroups.has(th.dataset.group) ? '' : 'none';
-            });
-            // Перерисовать tbody с учётом групп
+    document.querySelectorAll('.role-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.role-btn').forEach(function(b) { b.classList.remove('active'); });
+            currentRole = btn.dataset.role;
+            btn.classList.add('active');
             renderTable();
         });
     });
 
-    // Первый рендер
-    renderTable();
+    document.getElementById('balanceSearch').addEventListener('input', function(e) {
+        searchQuery = e.target.value.toLowerCase().trim();
+        renderTable();
+    });
+
+    document.querySelectorAll('.col-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var group = btn.dataset.group;
+            var idx = activeGroups.indexOf(group);
+            if (idx !== -1) {
+                activeGroups.splice(idx, 1);
+                btn.classList.remove('active');
+            } else {
+                activeGroups.push(group);
+                btn.classList.add('active');
+            }
+            document.querySelectorAll('.balance-table th[data-group]').forEach(function(th) {
+                th.style.display = groupActive(th.dataset.group) ? '' : 'none';
+            });
+            renderTable();
+        });
+    });
+
+    try { renderTable(); } catch(e) { console.error('[balance] renderTable error:', e); }
 })();
-}); // end DOMContentLoaded
+});
