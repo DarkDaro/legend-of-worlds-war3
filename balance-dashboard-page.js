@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cc: 'Суммарная длительность контроля × вес типа',
         mob: 'Скорость + бонус от дэш/блинк способностей',
         farm: 'AoE-урон + количество AoE + бёрст',
-        scaling: 'Во сколько раз растёт DPS от 30 к 300 уровню'
+        scaling: 'Во сколько раз растёт DPS от 30 к 500 уровню'
     };
     var HERO_COLORS = ['#00e6ff', '#ff6b6b', '#51cf66'];
 
@@ -65,6 +65,21 @@ document.addEventListener('DOMContentLoaded', function() {
             if (d.isDOT && d.dotDuration) dmg *= (d.dotDuration[Math.min(idx, d.dotDuration.length - 1)] || 1);
             if (d.hitCount) dmg *= (d.hitCount[Math.min(idx, d.hitCount.length - 1)] || 1);
             total += dmg;
+        });
+        return total;
+    }
+
+    function calcSpellDmgPct(hero, level) {
+        var abilCodes = HERO_ABILITIES[hero.rawcode] || [];
+        var total = 0;
+        abilCodes.forEach(function(rc) {
+            var abS = ABILITY_STATS[rc];
+            if (!abS || !abS.buffs || !abS.buffs.spellDmgPct) return;
+            var abD = ABILITIES_DB[rc];
+            if (!abD) return;
+            var abLvl = abilityLevel(level, abD.reqLevel || 1, abD.levels || 3);
+            if (abLvl <= 0) return;
+            total += abS.buffs.spellDmgPct[Math.min(abLvl, abS.buffs.spellDmgPct.length) - 1] || 0;
         });
         return total;
     }
@@ -149,10 +164,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Фарм: AoE-урон + бонус за количество AoE
         var farm = aoeDmg + aoeCount * 150;
 
-        // Скалинг: DPS300/DPS30
-        var dps30 = 0, dps300 = 0;
-        [30, 300].forEach(function(lvl) {
+        // Скалинг: DPS500/DPS30
+        var dps30 = 0, dps500 = 0;
+        [30, 500].forEach(function(lvl) {
             var sLvl = heroStatsAtLevel(hero, lvl);
+            var sdp = calcSpellDmgPct(hero, lvl);
             var dpsLvl = 0;
             abilCodes.forEach(function(rc) {
                 var abS2 = ABILITY_STATS[rc]; if (!abS2) return;
@@ -165,10 +181,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (abS2.type === 'passive' || abD2.type === 'passive') d2 *= 0.2;
                 dpsLvl += d2 / c2;
             });
-            dpsLvl *= (1 + spellDmgPct / 100);
-            if (lvl === 30) dps30 = dpsLvl; else dps300 = dpsLvl;
+            dpsLvl *= (1 + sdp / 100);
+            if (lvl === 30) dps30 = dpsLvl; else dps500 = dpsLvl;
         });
-        var scaling = dps30 > 0 ? dps300 / dps30 : 1;
+        var scaling = dps30 > 0 ? dps500 / dps30 : 1;
 
         return {
             dps: Math.round(totalDPS),
@@ -199,6 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // === UI State ===
     var heroes = HEROES_DATA.filter(function(h) { return !h.wip && !h.isAltForm; });
     var currentLevel = 30;
+    var currentRole = '';
     var profileCache = {};
     var allProfiles = [];
     var percentileFns = {};
@@ -348,7 +365,7 @@ document.addEventListener('DOMContentLoaded', function() {
         selectedHeroes.forEach(function(item, pi) {
             var div = document.createElement('div');
             div.className = 'hero-values';
-            var html = '<h3><span class="color-dot" style="background:' + HERO_COLORS[pi] + '"></span>' + item.hero.name + '</h3>';
+            var html = '<h3><span class="color-dot" style="background:' + HERO_COLORS[pi] + '"></span><img src="images/heroes/' + item.hero.image + '.png" alt="" style="width:24px;height:24px;border-radius:4px;vertical-align:middle;margin-right:4px;">' + item.hero.name + ' <small style="color:var(--text-muted);font-weight:400;">' + (item.hero.roleNames ? item.hero.roleNames[0] : '') + '</small></h3>';
             AXES.forEach(function(axis) {
                 var raw = item.raw[axis];
                 var pct = percentileFns[axis](raw);
@@ -370,6 +387,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // === Таблица (перцентили) ===
     function renderTable() {
         var data = allProfiles.slice();
+        if (currentRole) data = data.filter(function(d) { return d.hero.roleNames && d.hero.roleNames.indexOf(currentRole) !== -1; });
 
         if (tableSortCol) {
             data.sort(function(a, b) {
@@ -390,7 +408,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 var cls = pctClass(pct);
                 return '<td class="pct-cell ' + cls + '" title="' + AXIS_LABELS[axis] + ': ' + formatRaw(axis, raw) + '">' + pct + '</td>';
             }).join('');
-            return '<tr><td style="color:var(--text-primary);font-weight:500;">' + d.hero.name + '</td>' + cells + '</tr>';
+            return '<tr><td style="color:var(--text-primary);font-weight:500;">' + d.hero.name + ' <small style="color:var(--text-muted);font-weight:400;font-size:0.75rem;">' + (d.hero.roleNames ? d.hero.roleNames[0] : '') + '</small></td>' + cells + '</tr>';
         }).join('');
 
         document.querySelectorAll('.percentile-table th').forEach(function(th) {
@@ -444,6 +462,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // === Инициализация ===
     populateSelects();
+
+    // Role filter
+    var roleFilter = document.getElementById('roleFilter');
+    var allRoles = [];
+    heroes.forEach(function(h) {
+        if (h.roleNames) h.roleNames.forEach(function(r) { if (allRoles.indexOf(r) === -1) allRoles.push(r); });
+    });
+    allRoles.sort();
+    allRoles.forEach(function(r) {
+        var opt = document.createElement('option');
+        opt.value = r; opt.textContent = r;
+        roleFilter.appendChild(opt);
+    });
+    roleFilter.addEventListener('change', function() { currentRole = this.value; update(); });
 
     document.getElementById('hero1').addEventListener('change', function() { updateSelectOptions(); update(); });
     document.getElementById('hero2').addEventListener('change', function() { updateSelectOptions(); update(); });

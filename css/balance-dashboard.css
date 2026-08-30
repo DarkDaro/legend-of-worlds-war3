@@ -1,0 +1,135 @@
+/* balance-dashboard.css — стили страницы Профили баланса */
+
+.dash-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.dash-controls { display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 24px; }
+.dash-controls .ctrl-group { display: flex; flex-direction: column; gap: 4px; }
+.dash-controls label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.dash-controls select, .dash-controls input[type=range] {
+    background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-primary);
+    border-radius: 8px; padding: 8px 12px; font-size: 0.9rem; min-width: 180px;
+}
+.dash-controls select:focus { outline: none; border-color: var(--accent-cyan); }
+.dash-controls select option:disabled { color: #555; }
+.level-display { font-size: 1.4rem; font-weight: 700; color: var(--accent-cyan); min-width: 50px; text-align: center; }
+.level-slider { width: 200px; accent-color: var(--accent-cyan); }
+
+.radar-wrap { display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start; }
+.radar-canvas-wrap {
+    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    border-radius: 16px; padding: 20px; flex-shrink: 0;
+}
+.radar-canvas-wrap canvas { display: block; }
+.radar-values { flex: 1; min-width: 280px; }
+.radar-values .hero-values {
+    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    border-radius: 12px; padding: 16px; margin-bottom: 12px;
+}
+.radar-values .hero-values h3 { font-size: 0.95rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.radar-values .hero-values h3 .color-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.stat-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.stat-row:last-child { border-bottom: none; }
+.stat-label { color: var(--text-secondary); }
+.stat-right { display: flex; align-items: center; gap: 8px; }
+.stat-pct-bar { width: 60px; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+.stat-pct-fill { height: 100%; border-radius: 3px; transition: width 0.3s ease; }
+.stat-pct-num { font-weight: 600; min-width: 28px; text-align: right; }
+.stat-raw { color: var(--text-muted); font-size: 0.7rem; }
+.pct-low { color: #ff6b6b; }
+.pct-mid { color: var(--text-primary); }
+.pct-high { color: #ffa500; }
+.pct-best { color: #ffd43b; }
+
+.percentile-table-wrap {
+    margin-top: 32px; overflow-x: auto; max-height: 600px;
+    border-radius: 12px; border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+}
+.percentile-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; white-space: nowrap; }
+.percentile-table th {
+    padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 500;
+    border-bottom: 1px solid var(--glass-border); cursor: pointer; user-select: none;
+    position: sticky; top: 0; background: rgba(13,27,42,0.95); backdrop-filter: blur(8px); z-index: 2;
+}
+.percentile-table th:hover { color: var(--accent-cyan); }
+.percentile-table td { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text-secondary); }
+.percentile-table tr:hover td { background: rgba(0,230,255,0.04); }
+.pct-cell { font-weight: 600; }
+.pct-cell.low { color: #ff6b6b; background: rgba(255,107,107,0.08); }
+.pct-cell.mid { color: var(--text-primary); }
+.pct-cell.high { color: #ffa500; background: rgba(255,165,0,0.06); }
+.pct-cell.best { color: #ffd43b; background: rgba(255,212,59,0.08); }
+
+.role-filter-select {
+    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    color: var(--text-primary); border-radius: 8px; padding: 6px 12px; font-size: 0.85rem;
+}
+
+.disclaimer {
+    margin-top: 24px; padding: 16px; border-radius: 10px;
+    background: rgba(255,165,0,0.08); border: 1px solid rgba(255,165,0,0.2);
+    font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6;
+}
+.disclaimer strong { color: #ffa500; }
+
+@media (max-width: 700px) {
+    .radar-wrap { flex-direction: column; align-items: center; }
+    .dash-controls { gap: 10px; }
+    .dash-controls select { min-width: 140px; }
+    .level-slider { width: 140px; }
+}
+
+@media (max-width: 900px) {
+    .dash-container { padding: 12px; }
+    .radar-wrap { gap: 16px; }
+    .radar-canvas-wrap { padding: 12px; }
+    .stat-pct-bar { width: 40px; }
+}
+
+@media (max-width: 600px) {
+    .dash-container { padding: 8px; }
+
+    .panel-header { flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+    .detail-icon img { width: 48px; height: 48px; }
+    .detail-title { font-size: 1.1rem; }
+    .detail-description { font-size: 0.85rem; text-align: center; }
+
+    .dash-controls { flex-direction: column; gap: 8px; align-items: stretch; }
+    .dash-controls .ctrl-group { width: 100%; }
+    .dash-controls select { min-width: 100%; width: 100%; box-sizing: border-box; }
+    .level-slider { width: 100%; }
+    .level-display { font-size: 1.2rem; min-width: 36px; }
+
+    .role-filter-wrap { flex-direction: column; align-items: stretch; gap: 4px; margin-top: 12px; }
+    .role-filter-select { width: 100%; box-sizing: border-box; }
+
+    .radar-canvas-wrap { width: 100%; padding: 8px; box-sizing: border-box; }
+    .radar-canvas-wrap canvas { max-width: 100%; margin: 0 auto; display: block; }
+
+    .radar-values { min-width: 0; width: 100%; }
+    .radar-values .hero-values { padding: 12px; }
+    .radar-values .hero-values h3 { font-size: 0.9rem; }
+    .radar-values .hero-values h3 img { width: 20px; height: 20px; }
+    .stat-row { font-size: 0.8rem; padding: 4px 0; }
+    .stat-right { gap: 6px; }
+    .stat-pct-bar { width: 36px; height: 5px; }
+    .stat-pct-num { min-width: 24px; font-size: 0.8rem; }
+    .stat-raw { font-size: 0.65rem; }
+
+    .percentile-table-wrap { margin-top: 16px; max-height: 50vh; border-radius: 8px; }
+    .percentile-table { font-size: 0.7rem; }
+    .percentile-table th { padding: 6px 6px; font-size: 0.65rem; }
+    .percentile-table td { padding: 5px 6px; }
+
+    .disclaimer { padding: 12px; font-size: 0.75rem; margin-top: 16px; }
+}
+
+@media (max-width: 380px) {
+    .dash-container { padding: 4px; }
+    .detail-title { font-size: 1rem; }
+    .radar-canvas-wrap canvas { max-width: 280px; }
+    .stat-pct-bar { display: none; }
+    .stat-raw { display: none; }
+    .percentile-table { font-size: 0.65rem; }
+    .percentile-table th, .percentile-table td { padding: 4px 4px; }
+    .role-filter-wrap { margin-top: 8px; }
+}
