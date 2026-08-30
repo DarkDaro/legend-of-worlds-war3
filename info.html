@@ -19,6 +19,7 @@
     <script src="icon-loader.js" defer></script>
     <script src="analytics.js" defer></script>
     <script src="ui-effects.js" defer></script>
+    <script src="js/hero-stats-page.js" defer></script>
     <style>
         .modes-promo-btn {
             display: flex;
@@ -209,6 +210,28 @@
             <span>Игровые режимы</span>
             <small>9 уникальных режимов: от классического до хаоса</small>
         </a>
+
+        <!-- Распределение героев и приросты -->
+        <div class="mc-section">
+            <div class="mc-date">Распределение героев</div>
+            <div class="mc-card">
+                <div class="mc-card-title"><i class="fas fa-chart-pie"></i> По основному атрибуту</div>
+                <div id="mcPieChart"></div>
+            </div>
+            <div class="mc-card">
+                <div class="mc-card-title"><i class="fas fa-tags"></i> По ролям</div>
+                <div id="mcRoleTable"></div>
+            </div>
+        </div>
+
+        <div class="mc-section">
+            <div class="mc-date">Приросты характеристик</div>
+            <div class="mc-card">
+                <div class="mc-card-title"><i class="fas fa-chart-bar"></i> Сводка по классам</div>
+                <div id="mcGainsTable"></div>
+                <div class="mc-note">Суммарный прирост за уровень — всегда 8.0. В скобках — диапазон (мин–макс) среди героев класса.</div>
+            </div>
+        </div>
 
         <!-- Автопрокачка способностей -->
         <div class="info-section" id="auto-level">
