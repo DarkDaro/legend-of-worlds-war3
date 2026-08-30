@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Крипы · Legend of Worlds</title>
     <meta property="og:title" content="Крипы — Legend of Worlds">
-    <meta property="og:description" content="25 типов крипов на арене: статы, золото, опыт, способности."
-    <meta name="description" content="25 типов крипов на арене: статы, золото, опыт, способности.">
+    <meta property="og:description" content="25 крипов на арене в 8 тирам: статы, бонусы за уровень, золото, опыт, способности.">
+    <meta name="description" content="25 крипов на арене в 8 тирам: статы, бонусы за уровень, золото, опыт, способности.">
     <meta property="og:image" content="images/preview.png">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -210,6 +210,69 @@
             .col-toggle-label { display: none; }
             .col-toggle { font-size: 0.68rem; padding: 3px 6px; }
         }
+
+        /* ── Тир-бейджи ── */
+        .tier-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 26px; height: 26px; border-radius: 6px;
+            font-weight: 700; font-size: 0.78rem; line-height: 1;
+            cursor: help;
+        }
+        .tier-1 { background: rgba(150,150,150,0.15); color: #aaa; }
+        .tier-2 { background: rgba(139,195,74,0.15); color: #8bc34a; }
+        .tier-3 { background: rgba(76,175,80,0.15); color: #4caf50; }
+        .tier-4 { background: rgba(33,150,243,0.15); color: #42a5f5; }
+        .tier-5 { background: rgba(92,107,192,0.15); color: #7986cb; }
+        .tier-6 { background: rgba(171,71,188,0.15); color: #ab47bc; }
+        .tier-7 { background: rgba(255,112,67,0.15); color: #ff7043; }
+        .tier-8 { background: rgba(255,193,7,0.18); color: #ffc107; }
+
+        /* ── Фильтр по тирам ── */
+        .creep-tier-select {
+            padding: 6px 10px; border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg); color: var(--text-primary);
+            font-size: 0.85rem; cursor: pointer;
+        }
+        .creep-tier-select option { background: #0d1b2a; }
+
+        /* ── Справочник бонусов ── */
+        .bonus-info { margin-bottom: 16px; }
+        .bonus-toggle {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 7px 14px; border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg); color: var(--text-secondary);
+            cursor: pointer; font-size: 0.85rem; transition: all 0.2s;
+        }
+        .bonus-toggle:hover { border-color: var(--accent-cyan); color: var(--text-primary); }
+        .bonus-toggle .fa-chevron-down { transition: transform 0.2s; font-size: 0.7rem; }
+        .bonus-toggle.open .fa-chevron-down { transform: rotate(180deg); }
+        .bonus-table-wrap {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+            margin-top: 0;
+        }
+        .bonus-table-wrap.open { max-height: 500px; margin-top: 10px; }
+        .bonus-table {
+            width: 100%; border-collapse: collapse; font-size: 0.82rem;
+            background: var(--glass-bg); border-radius: 8px; overflow: hidden;
+        }
+        .bonus-table th {
+            padding: 8px 12px; text-align: left;
+            color: var(--text-muted); font-weight: 500;
+            border-bottom: 1px solid var(--glass-border);
+            background: rgba(13,27,42,0.9);
+        }
+        .bonus-table td {
+            padding: 7px 12px; border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--text-secondary);
+        }
+        .bonus-table tr:last-child td { border-bottom: none; }
+        .bonus-table .bonus-tier-cell { display: flex; align-items: center; gap: 6px; }
+        .bonus-note {
+            color: var(--text-muted); font-size: 0.78rem; margin-top: 6px;
+            line-height: 1.5;
+        }
     </style>
     <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/creeps.html">
 </head>
@@ -242,13 +305,24 @@
                 <div class="detail-icon"><img loading="lazy" src="images/preview.png" alt="" class="detail-logo-img" /></div>
                 <h1 class="detail-title">Крипы</h1>
             </div>
-            <p class="detail-description">25 типов крипов на арене. Нажмите на заголовок для сортировки.</p>
+            <p class="detail-description">25 крипов на арене. Каждые 3 мин крип получает бонусы по тирам. Нажмите на заголовок для сортировки.</p>
 
             <div class="creep-filters">
                 <input type="text" class="creep-search" id="creepSearch" placeholder="Поиск крипа...">
                 <button class="passive-btn active" data-passive="all">Все</button>
                 <button class="passive-btn" data-passive="has"><i class="fas fa-bolt"></i> Со способностями</button>
                 <button class="passive-btn" data-passive="none"><i class="fas fa-minus"></i> Без способностей</button>
+                <select class="creep-tier-select" id="creepTierFilter">
+                    <option value="all">Все тиры</option>
+                    <option value="1">Тир 1</option>
+                    <option value="2">Тир 2</option>
+                    <option value="3">Тир 3</option>
+                    <option value="4">Тир 4</option>
+                    <option value="5">Тир 5</option>
+                    <option value="6">Тир 6</option>
+                    <option value="7">Тир 7</option>
+                    <option value="8">Тир 8</option>
+                </select>
             </div>
             <div class="creep-col-toggles">
                 <span class="col-toggle-label">Колонки:</span>
@@ -258,12 +332,31 @@
                 <button class="col-toggle active" data-group="passives"><i class="fas fa-bolt"></i> Способности</button>
             </div>
             <div class="creep-count" id="creepCount"></div>
+            <div class="bonus-info">
+                <button class="bonus-toggle" id="bonusToggle"><i class="fas fa-chart-line"></i> Бонусы за уровень <i class="fas fa-chevron-down"></i></button>
+                <div class="bonus-table-wrap" id="bonusTableWrap">
+                    <table class="bonus-table" id="bonusTable">
+                        <thead>
+                            <tr>
+                                <th>Тир</th>
+                                <th>+Атака</th>
+                                <th>+HP</th>
+                                <th>+AS</th>
+                                <th>+Броня</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bonusBody"></tbody>
+                    </table>
+                    <p class="bonus-note">Бонусы начисляются каждые 3 мин. Броня: +1 каждые N уровней (указано в столбце). При респавне крип получает полный бонус за все прошедшие уровни.</p>
+                </div>
+            </div>
             <div class="creep-table-wrap">
                 <table class="creep-table" id="creepTable">
                     <thead>
                         <tr>
                             <th data-col="name">Крип <span class="sort-arrow">▲</span></th>
                             <th data-col="level">Ур. <span class="sort-arrow">▲</span></th>
+                            <th data-col="tier">Тир <span class="sort-arrow">▲</span></th>
                             <th data-col="hp">HP <span class="sort-arrow">▲</span></th>
                             <th data-col="atk">Атака <span class="sort-arrow">▲</span></th>
                             <th data-col="def" data-group="defense">Броня <span class="sort-arrow">▲</span></th>
@@ -307,8 +400,9 @@
     var CREEPS = [];
     var searchQuery = '';
     var passiveFilter = 'all';
-    var sortCol = 'level';
-    var sortDir = -1;
+    var tierFilter = 'all';
+    var sortCol = 'tier';
+    var sortDir = 1;
 
     // Группы колонок
     var COL_GROUPS = { def: 'defense', defType: 'defense', regen: 'defense', magicRes: 'defense', cool: 'combat', spd: 'combat', gold: 'reward', xp: 'reward', passives: 'passives' };
@@ -324,6 +418,7 @@
             if (searchQuery && !c.name.toLowerCase().includes(searchQuery) && !c.code.toLowerCase().includes(searchQuery)) return false;
             if (passiveFilter === 'has' && (!c.passives || !c.passives.length)) return false;
             if (passiveFilter === 'none' && c.passives && c.passives.length) return false;
+            if (tierFilter !== 'all' && c.tier !== parseInt(tierFilter)) return false;
             return true;
         });
     }
@@ -346,7 +441,7 @@
     }
 
     function findExtremes(creeps) {
-        var numCols = ['level', 'hp', 'atk', 'def', 'regen', 'magicRes', 'cool', 'spd', 'gold', 'xp'];
+        var numCols = ['level', 'tier', 'hp', 'atk', 'def', 'regen', 'magicRes', 'cool', 'spd', 'gold', 'xp'];
         var extremes = {};
         numCols.forEach(function(col) {
             var vals = creeps.map(function(c) { return c[col] || 0; });
@@ -374,7 +469,7 @@
         });
 
         if (!sorted.length) {
-            tbody.innerHTML = '<tr><td colspan="13" style="text-align:center;color:var(--text-muted);padding:24px;">Нет крипов</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="14" style="text-align:center;color:var(--text-muted);padding:24px;">Нет крипов</td></tr>';
             return;
         }
 
@@ -413,6 +508,20 @@
                 defTypeHtml = '';
             }
 
+            // Тир
+            var tierHtml = '';
+            var tier = c.tier || 0;
+            if (tier > 0 && typeof CREEP_TIERS !== 'undefined' && CREEP_TIERS[tier]) {
+                var tb = CREEP_TIERS[tier];
+                var armTip = tb.armInterval === 1 ? 'каждый ур.' : 'каждые ' + tb.armInterval + ' ур.';
+                var tierTitle = '+' + tb.atk + ' атк, +' + tb.hp + ' HP, +' + tb.as + ' AS, +1 бр ' + armTip + ' за ур.';
+                tierHtml = '<td><span class="tier-badge tier-' + tier + '" title="' + tierTitle + '">' + tier + '</span></td>';
+            } else if (tier > 0) {
+                tierHtml = '<td><span class="tier-badge tier-' + tier + '">' + tier + '</span></td>';
+            } else {
+                tierHtml = '<td>—</td>';
+            }
+
             // Способности
             var passiveHtml = '—';
             if (Array.isArray(c.passives) && c.passives.length) {
@@ -426,7 +535,7 @@
 
             return '<tr>' +
                 '<td><div class="creep-name-cell"><div class="creep-icon-placeholder">' + initial + '</div><span>' + c.name + '</span></div></td>' +
-                cell('level') + cell('hp') + cell('atk') +
+                cell('level') + tierHtml + cell('hp') + cell('atk') +
                 cell('def') + defTypeHtml + cell('regen') + cell('magicRes') +
                 cell('cool') + cell('spd') +
                 cell('gold') + cell('xp') +
@@ -476,15 +585,53 @@
         renderTable();
     });
 
+    // Фильтр по тирам
+    document.getElementById('creepTierFilter').addEventListener('change', function(e) {
+        tierFilter = e.target.value;
+        renderTable();
+    });
+
+    // Справочник бонусов
+    function renderBonusTable() {
+        if (typeof CREEP_TIERS === 'undefined') return;
+        var tbody = document.getElementById('bonusBody');
+        if (!tbody) return;
+        var rows = '';
+        for (var i = 1; i < CREEP_TIERS.length; i++) {
+            var t = CREEP_TIERS[i];
+            var armText = t.armInterval === 1 ? 'каждый ур.' : 'каждые ' + t.armInterval + ' ур.';
+            rows += '<tr>' +
+                '<td><div class="bonus-tier-cell"><span class="tier-badge tier-' + i + '">' + i + '</span></div></td>' +
+                '<td>+' + t.atk + '</td>' +
+                '<td>+' + t.hp + '</td>' +
+                '<td>+' + t.as + '</td>' +
+                '<td>+1 ' + armText + '</td>' +
+                '</tr>';
+        }
+        tbody.innerHTML = rows;
+    }
+
+    // Переключатель бонусов
+    var bonusToggle = document.getElementById('bonusToggle');
+    var bonusWrap = document.getElementById('bonusTableWrap');
+    if (bonusToggle && bonusWrap) {
+        bonusToggle.addEventListener('click', function() {
+            bonusToggle.classList.toggle('open');
+            bonusWrap.classList.toggle('open');
+        });
+    }
+
     // Ждём загрузки defer-скриптов
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof CREEPS_DB !== 'undefined') CREEPS = CREEPS_DB;
             renderTable();
+            renderBonusTable();
         });
     } else {
         if (typeof CREEPS_DB !== 'undefined') CREEPS = CREEPS_DB;
         renderTable();
+        renderBonusTable();
     }
 })();
 document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.creep-table-wrap'); });
