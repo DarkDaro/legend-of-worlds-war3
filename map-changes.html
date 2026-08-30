@@ -15,61 +15,9 @@
     <script src="search-index.js" defer></script>
     <script src="search.js" defer></script>
     <script src="items-db.js" defer></script>
-    <style>
-        .mc-section { margin: 18px 0; }
-        .mc-date { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 8px; }
-        .mc-card {
-            background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur));
-            border: 1px solid var(--glass-border); border-radius: 8px;
-            padding: 12px 16px; margin: 8px 0; transition: background 0.2s, border-color 0.2s;
-        }
-        .mc-card:hover { background: var(--glass-bg-hover); border-color: var(--glass-border-hover); }
-        .mc-card-title { font-weight: 600; font-size: 0.95rem; color: var(--text-primary); margin-bottom: 6px; }
-        .mc-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 6px 0; }
-        .mc-table th { text-align: left; padding: 4px 10px; border-bottom: 1px solid var(--glass-border); color: var(--text-secondary); font-weight: 600; font-size: 0.78rem; }
-        .mc-table td { padding: 4px 10px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text-primary); }
-        .mc-table .mc-old { color: #ff6b6b; text-decoration: line-through; text-decoration-color: rgba(255,107,107,0.4); }
-        .mc-table .mc-new { color: #4ecdc4; }
-        .mc-tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; margin-left: 6px; }
-        .mc-tag-balance { background: rgba(255,200,0,0.12); border: 1px solid rgba(255,200,0,0.3); color: #ffc800; }
-        .mc-tag-rework { background: rgba(0,200,255,0.1); border: 1px solid rgba(0,200,255,0.3); color: #00c8ff; }
-        .mc-tag-fix { background: rgba(100,255,100,0.1); border: 1px solid rgba(100,255,100,0.3); color: #64ff64; }
-        .mc-note { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; padding-left: 10px; border-left: 2px solid var(--glass-border); }
-
-        /* Pie chart */
-        .mc-pie-wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
-        .mc-pie-svg { width: 160px; height: 160px; flex-shrink: 0; }
-        .mc-pie-legend { display: flex; flex-direction: column; gap: 6px; }
-        .mc-pie-legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; }
-        .mc-pie-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-        .mc-pie-pct { color: var(--text-secondary); font-size: 0.78rem; }
-
-        /* Role chips */
-        .mc-role-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-        .mc-role-chip {
-            padding: 3px 10px; border-radius: 4px; font-size: 0.78rem; font-weight: 600;
-            border: 1px solid; background: rgba(255,255,255,0.03);
-        }
-
-        /* Gains range */
-        .mc-gain-range { color: var(--text-secondary); font-size: 0.75rem; }
-
-        @media (max-width: 600px) {
-            .mc-card { padding: 10px 12px; }
-            .mc-table { font-size: 0.76rem; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-            .mc-table th, .mc-table td { padding: 3px 6px; }
-            .mc-card-title { font-size: 0.88rem; }
-            .mc-pie-wrap { flex-direction: column; align-items: flex-start; }
-            .mc-pie-svg { width: 130px; height: 130px; }
-        }
-        @supports not (backdrop-filter: blur(1px)) {
-            .mc-card { background: #0f172a !important; }
-        }
-    </style>
     <script src="icon-loader.js" defer></script>
     <script src="analytics.js" defer></script>
     <script src="ui-effects.js" defer></script>
-    <script src="map-changes-page.js" defer></script>
     <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/map-changes.html">
 </head>
 <body class="page-map-changes">
@@ -99,28 +47,20 @@
     <div class="wiki-container">
         <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="info.html">Информация</a><span class="sep">›</span><span class="current">Изменения карты</span></div>
         <h1><i class="fas fa-scroll"></i> Изменения карты</h1>
-        <p style="color:var(--text-secondary); margin-bottom:18px;">Баланс, механики, распределение героев и приросты характеристик.</p>
+        <p style="color:var(--text-secondary); margin-bottom:18px;">История изменений баланса, механик и характеристик.</p>
 
-        <!-- Распределение по классам -->
+        <!-- 30.08.2026 -->
         <div class="mc-section">
-            <div class="mc-date">Распределение героев</div>
+            <div class="mc-date">30 августа 2026</div>
             <div class="mc-card">
-                <div class="mc-card-title"><i class="fas fa-chart-pie"></i> По основному атрибуту</div>
-                <div id="mcPieChart"></div>
-            </div>
-            <div class="mc-card">
-                <div class="mc-card-title"><i class="fas fa-tags"></i> По ролям</div>
-                <div id="mcRoleTable"></div>
-            </div>
-        </div>
-
-        <!-- Приросты характеристик -->
-        <div class="mc-section">
-            <div class="mc-date">Приросты характеристик</div>
-            <div class="mc-card">
-                <div class="mc-card-title"><i class="fas fa-chart-bar"></i> Сводка по классам</div>
-                <div id="mcGainsTable"></div>
-                <div class="mc-note">Суммарный прирост за уровень — всегда 8.0. В скобках — диапазон (мин–макс) среди героев класса.</div>
+                <div class="mc-card-title">Приросты характеристик героев <span class="mc-tag mc-tag-balance">баланс</span></div>
+                <table class="mc-table">
+                    <tr><th>Герой</th><th>Параметр</th><th>Было</th><th>Стало</th></tr>
+                    <tr><td>Астральный маг</td><td>STR / INT</td><td class="mc-old">3.5 / 2.0</td><td class="mc-new">2.0 / 3.5</td></tr>
+                    <tr><td>Демон</td><td>AGI / INT</td><td class="mc-old">3.0 / 1.5</td><td class="mc-new">3.5 / 1.0</td></tr>
+                    <tr><td>Пожиратель пламени</td><td>STR / AGI / INT</td><td class="mc-old">3.5 / 2.5 / 2.0</td><td class="mc-new">2.0 / 2.0 / 4.0</td></tr>
+                </table>
+                <div class="mc-note">Суммарный прирост за уровень не изменился — перераспределение между атрибутами.</div>
             </div>
         </div>
 
