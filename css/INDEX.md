@@ -13,6 +13,7 @@
 | `effects.css` | 8.3 KB | Все | Общие эффекты: роли, статы, карточки (hero-card, item-card, stat-box), футер |
 | `home.css` | 14.4 KB | index.html | Главная: баннер, кнопки, статистика, ссылки, футер |
 | `info.css` | 11.5 KB | info/support | Инфо-страницы: гайды, автор, ссылки, таймлайн |
+| `balance-dashboard.css` | 6.6 KB | balance-dashboard | Профили баланса: радар, контролы, таблица перцентилей, мобильный адаптив |
 | `lore.css` | 8.0 KB | lore/modes | Лор, режимы, навигация, шапка |
 | `mechanics.css` | 28.6 KB | mechanics/updates | Механики, чейнджлог, карты механик |
 | `monsters.css` | 12.3 KB | monsters | Монстры, боссы, дропы, способности |
