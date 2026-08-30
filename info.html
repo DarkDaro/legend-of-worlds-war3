@@ -67,6 +67,38 @@
             .modes-promo-btn i { font-size: 1.5rem; }
             .modes-promo-btn span { font-size: 1rem; }
         }
+        /* Распределение героев и приросты */
+        .mc-section { margin: 18px 0; }
+        .mc-date { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 8px; }
+        .mc-card {
+            background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border); border-radius: 8px;
+            padding: 12px 16px; margin: 8px 0; transition: background 0.2s, border-color 0.2s;
+        }
+        .mc-card:hover { background: var(--glass-bg-hover); border-color: var(--glass-border-hover); }
+        .mc-card-title { font-weight: 600; font-size: 0.95rem; color: var(--text-primary); margin-bottom: 6px; }
+        .mc-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 6px 0; }
+        .mc-table th { text-align: left; padding: 4px 10px; border-bottom: 1px solid var(--glass-border); color: var(--text-secondary); font-weight: 600; font-size: 0.78rem; }
+        .mc-table td { padding: 4px 10px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text-primary); }
+        .mc-pie-wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+        .mc-pie-svg { width: 160px; height: 160px; flex-shrink: 0; }
+        .mc-pie-legend { display: flex; flex-direction: column; gap: 6px; }
+        .mc-pie-legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; }
+        .mc-pie-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .mc-pie-pct { color: var(--text-secondary); font-size: 0.78rem; }
+        .mc-role-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .mc-role-chip { padding: 3px 10px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; border: 1px solid; background: rgba(255,255,255,0.03); }
+        .mc-gain-range { color: var(--text-secondary); font-size: 0.75rem; }
+        .mc-note { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; padding-left: 10px; border-left: 2px solid var(--glass-border); }
+        @media (max-width: 600px) {
+            .mc-card { padding: 10px 12px; }
+            .mc-table { font-size: 0.76rem; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .mc-pie-wrap { flex-direction: column; align-items: flex-start; }
+            .mc-pie-svg { width: 130px; height: 130px; }
+        }
+        @supports not (backdrop-filter: blur(1px)) {
+            .mc-card { background: #0f172a !important; }
+        }
     </style>
     <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/info.html">
 </head>
