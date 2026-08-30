@@ -538,6 +538,11 @@
 @media (max-width: 600px) {
     .mc-card { padding: 10px 12px; }
     .mc-table { font-size: 0.76rem; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .mc-table th, .mc-table td { padding: 3px 6px; }
+    .mc-card-title { font-size: 0.88rem; }
     .mc-pie-wrap { flex-direction: column; align-items: flex-start; }
     .mc-pie-svg { width: 130px; height: 130px; }
+}
+@supports not (backdrop-filter: blur(1px)) {
+    .mc-card { background: #0f172a !important; }
 }
