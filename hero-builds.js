@@ -98,6 +98,10 @@ const heroBuilds = {
     name: 'father-of-darkness',
     items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I0AF', name: 'Антимагические доспехи' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0B1', name: 'Звёздный лук' }, { id: 'I03Z', name: 'Кровавый клинок' }, { id: 'I0EP', name: 'Лук тьмы' }],
   },
+  'hell-gatekeeper': {
+    name: 'hell-gatekeeper',
+    items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0AF', name: 'Антимагические доспехи' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I02B', name: 'Доспехи полководца' }],
+  },
   'fire-golem-hero': {
     name: 'fire-golem-hero',
     items: [{ id: 'I0GJ', name: 'Клеймор' }, { id: 'I03G', name: 'Огненный щит' }, { id: 'I0AF', name: 'Антимагические доспехи' }, { id: 'I01A', name: 'Кровавая луна II' }, { id: 'I045', name: 'Доспехи дракона' }, { id: 'I02B', name: 'Доспехи полководца' }],
