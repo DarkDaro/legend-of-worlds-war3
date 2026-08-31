@@ -45,7 +45,7 @@ var HEROES_DATA = [
       wip: true,
       rawcode: 'H020',
       strGain: 3.5, agiGain: 2, intGain: 2.5,
-      hp: 300, mp: 0, atk: 40, def: 2, atkSpeed: 2, hpRegen: 1, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 300, mp: 150, atk: 40, def: 2, atkSpeed: 2, hpRegen: 1, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Огненный Рыцарь', title: '', attr: 'strength', roles: ['bruiser', 'initiator'], roleNames: ['Рубака', 'Инициатор'], heroId: 'fire-knight', image: 'fire-knight', charName: 'Мстислав',
       rawcode: 'H02A',
@@ -61,13 +61,13 @@ var HEROES_DATA = [
       wip: true,
       rawcode: 'H098',
       strGain: 3.5, agiGain: 2, intGain: 2.5,
-      hp: 200, mp: 150, atk: 30, def: 0, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0.01, speed: 290, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 200, mp: 150, atk: 30, def: 2, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0.01, speed: 290, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Тирион', title: '', attr: 'strength', roles: ['tank'], roleNames: ['Танк'], heroId: 'tyrion', image: 'tyrion', charName: '',
       wip: true,
       rawcode: 'H0A7',
       strGain: 4, agiGain: 2, intGain: 2,
-      hp: 800, mp: 150, atk: 55, def: 0, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 280, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 800, mp: 150, atk: 55, def: 2, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 280, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Разрушитель', title: '', attr: 'strength', roles: ['bruiser', 'initiator'], roleNames: ['Рубака', 'Инициатор'], heroId: 'destroyer', image: 'destroyer', charName: 'Кузьма',
       rawcode: 'N00I',
@@ -140,20 +140,20 @@ var HEROES_DATA = [
       isAltForm: true,
       rawcode: 'H088',
       strBase: 30, strGain: 5, agiBase: 15, agiGain: 1.5, intBase: 15, intGain: 1.5,
-      hp: 1600, mp: 0, atk: 130, def: 12, atkSpeed: 2, hpRegen: 21, mpRegen: 0.01, speed: 390, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 1600, mp: 150, atk: 130, def: 12, atkSpeed: 2, hpRegen: 22, mpRegen: 0.01, speed: 390, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Привратник Ада', title: '', attr: 'strength', roles: ['tank'], roleNames: ['Танк'], heroId: 'hell-gatekeeper', image: 'hell-gatekeeper', charName: 'Родион',
       unique: true,
       isAltForm: true,
       rawcode: 'H08A',
       strBase: 30, strGain: 5, agiBase: 15, agiGain: 1.5, intBase: 15, intGain: 1.5,
-      hp: 800, mp: 0, atk: 30, def: 0, atkSpeed: 2, hpRegen: 1, mpRegen: 0.01, speed: 290, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 800, mp: 150, atk: 30, def: 2, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 290, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Костолом', title: '', attr: 'strength', roles: ['tank'], roleNames: ['Танк'], heroId: 'bonebreaker-alt', image: 'bonebreaker-alt', charName: 'Иннокентий',
       isAltForm: true,
       rawcode: 'H099',
       strBase: 1, strGain: 5, agiBase: 1, agiGain: 1.5, intBase: 1, intGain: 1.5,
-      hp: 600, mp: 0, atk: 30, def: 3, atkSpeed: 0, hpRegen: 5, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 600, mp: 150, atk: 30, def: 3, atkSpeed: 2, hpRegen: 5, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Всадник', title: '', attr: 'strength', roles: ['tank'], roleNames: ['Танк'], heroId: 'rider-mounted', image: 'rider-mounted', charName: 'Ромео',
       isAltForm: true,
@@ -164,8 +164,8 @@ var HEROES_DATA = [
     { name: 'Гнев Титана', title: '', attr: 'strength', roles: ['tank'], roleNames: ['Танк'], heroId: 'titan-enraged', image: 'titan-enraged', charName: 'Андрей',
       isAltForm: true,
       rawcode: 'O00C',
-      strBase: 27, strGain: 5, agiBase: 18, agiGain: 1.5, intBase: 0, intGain: 1.5,
-      hp: 1250, mp: 0, atk: 225, def: 21, atkSpeed: 1.7, hpRegen: 15, mpRegen: 0.01, speed: 350, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      strBase: 27, strGain: 5, agiBase: 18, agiGain: 1.5, intBase: 15, intGain: 1.5,
+      hp: 1250, mp: 150, atk: 225, def: 21, atkSpeed: 1.7, hpRegen: 15, mpRegen: 0.01, speed: 350, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Лорд Хаоса', title: '', attr: 'strength', roles: ['tank'], roleNames: ['Танк'], heroId: 'chaos-lord-alt', image: 'chaos-lord-alt', charName: 'Даркдарон',
       isAltForm: true,
@@ -211,7 +211,7 @@ var HEROES_DATA = [
       wip: true,
       rawcode: 'H0A6',
       strGain: 3, agiGain: 2, intGain: 3,
-      hp: 200, mp: 0, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 200, mp: 150, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
 
     // === ЛОВКОСТЬ ===
@@ -318,7 +318,7 @@ var HEROES_DATA = [
       isAltForm: true,
       rawcode: 'E002',
       strBase: 20, strGain: 2, agiBase: 22, agiGain: 4.5, intBase: 18, intGain: 1.5,
-      hp: 1200, mp: 0, atk: 170, def: 4, atkSpeed: 0, hpRegen: 60, mpRegen: 0.01, speed: 320, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
+      hp: 1200, mp: 150, atk: 170, def: 4, atkSpeed: 0, hpRegen: 60, mpRegen: 0.01, speed: 320, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
 
     { name: 'Пламенный Берсеркер', title: '', attr: 'agility', roles: ['damager'], roleNames: ['Дамагер'], heroId: 'flame-berserker-alt', image: 'flame-berserker-alt', charName: 'Даниил',
       isAltForm: true,
@@ -498,7 +498,7 @@ var HEROES_DATA = [
       wip: true,
       rawcode: 'O00X',
       strGain: 2, agiGain: 2, intGain: 4,
-      hp: 250, mp: 0, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
+      hp: 250, mp: 150, atk: 0, def: 0, atkSpeed: 0, hpRegen: 0, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
 ];
 
