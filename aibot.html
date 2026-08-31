@@ -71,11 +71,11 @@
                 </div>
                 <div class="priority-step">
                     <div class="priority-num">1</div>
-                    <div><div class="step-label">Босс-ивент</div><div class="step-desc">Активен босс-ивент — бот атакует босса напрямую, даже если находится в данже.</div></div>
+                    <div><div class="step-label">Босс-ивент</div><div class="step-desc">Активен босс-ивент — бот атакует босса напрямую, даже если находится в данже. Отступление отключено: бот дерётся до победы.</div></div>
                 </div>
                 <div class="priority-step">
                     <div class="priority-num">2</div>
-                    <div><div class="step-label">Дуэль</div><div class="step-desc">Активная дуэль — бот атакует цель и не отступает.</div></div>
+                    <div><div class="step-label">Дуэль</div><div class="step-desc">Активная дуэль — бот атакует цель и не отступает, даже при критическом HP: обычный порог отступления блокируется.</div></div>
                 </div>
                 <div class="priority-step">
                     <div class="priority-num">3</div>
@@ -83,7 +83,7 @@
                 </div>
                 <div class="priority-step">
                     <div class="priority-num">4</div>
-                    <div><div class="step-label">На базе</div><div class="step-desc">HP &lt; 80% — лечение. HP ≥ 80% — покупка телепорта, выход с базы.</div></div>
+                    <div><div class="step-label">На базе</div><div class="step-desc">HP &lt; 80% — лечение. HP ≥ 80% — покупка телепорта и выход с базы обычным движением к фарм-области (без блинка). Застрял на базе 10+ сек — телепорт.</div></div>
                 </div>
                 <div class="priority-step">
                     <div class="priority-num">5</div>
@@ -95,11 +95,11 @@
                 </div>
                 <div class="priority-step">
                     <div class="priority-num">7</div>
-                    <div><div class="step-label">Есть цель — атака</div><div class="step-desc">Радиус 1800 (день), 1500 (ночь), 2500 (данж). Приоритет: босс → герой → крип. Слишком много союзников рядом — смена области.</div></div>
+                    <div><div class="step-label">Есть цель — атака</div><div class="step-desc">Радиус 1800 (день), 1500 (ночь), 2500 (данж). Приоритет: босс → герой → крип. Перед атакой героя — оценка угрозы: слишком опасный враг игнорируется, бот продолжает фарм.</div></div>
                 </div>
                 <div class="priority-step">
                     <div class="priority-num">8</div>
-                    <div><div class="step-label">Нет цели — фарм / роуминг</div><div class="step-desc">Данж: нет цели 20+ сек — выход. Не в данже: командное взаимодействие, мана-фонтан, поиск области с крипами.</div></div>
+                    <div><div class="step-label">Нет цели — фарм / роуминг</div><div class="step-desc">Данж: нет цели 20+ сек — выход. Не в данже: командное взаимодействие, мана-фонтан, поиск области с крипами (не пачкуясь с союзниками в одной области).</div></div>
                 </div>
             </div>
 
@@ -145,10 +145,9 @@
             </div>
 
             <h3>Мана-консервация</h3>
-            <div class="mana-gate mana-gate-no"><div class="mana-gate-icon"><i class="fas fa-ban"></i></div><span>Крип <strong>тир 1</strong> + мана &lt; 40% → <strong>не каст</strong></span></div>
-            <div class="mana-gate mana-gate-no"><div class="mana-gate-icon"><i class="fas fa-ban"></i></div><span>Ульта на крип <strong>тир 1</strong> → <strong>никогда</strong></span></div>
-            <div class="mana-gate mana-gate-warn"><div class="mana-gate-icon"><i class="fas fa-exclamation-circle"></i></div><span>Любой крип + мана &lt; 20% → <strong>режим экономии</strong></span></div>
-            <div class="mana-gate mana-gate-yes"><div class="mana-gate-icon"><i class="fas fa-check-circle"></i></div><span>Герои и боссы — <strong>всегда</strong> каст без ограничений</span></div>
+            <div class="mana-gate mana-gate-no"><div class="mana-gate-icon"><i class="fas fa-ban"></i></div><span>Типовой крип <strong>тир 1</strong> + мана &lt; 40% → <strong>не каст</strong>; ульта на такой крип — <strong>никогда</strong></span></div>
+            <div class="mana-gate mana-gate-warn"><div class="mana-gate-icon"><i class="fas fa-exclamation-circle"></i></div><span>Мана &lt; 20% на любом крипе → <strong>режим экономии</strong></span></div>
+            <div class="mana-gate mana-gate-yes"><div class="mana-gate-icon"><i class="fas fa-check-circle"></i></div><span>Герои, боссы (включая боссов данжей), саммоны и незнакомые юниты — <strong>всегда</strong> каст без ограничений: экономия маны включается только на хорошо известных слабых крипах (раньше боты молчали в данжах при нехватке маны)</span></div>
 
             <h3>Исключения</h3>
             <div class="ai-card">
@@ -162,6 +161,16 @@
             <h2><i class="fas fa-gem"></i> Предметы</h2>
             <div class="ai-card">
                 <p>Боты собирают предметы по <a href="bot-builds.html" style="color:var(--accent-cyan);">ИИ-сборкам</a> — заранее заданным билдам для каждого героя. Ниже описана логика использования предметов в бою.</p>
+            </div>
+            <div class="ai-card">
+                <div class="ai-card-title"><i class="fas fa-brain"></i> Умное расходование предметов</div>
+                <p>Бот не «скидывает все предметы» по кулдауну — каждая активировка по делу:</p>
+                <ul>
+                    <li><strong>Самолечение, щиты и спасение</strong> — работают всегда, даже под ударами мелочи (раньше ранний выход из боя блокировал всё)</li>
+                    <li><strong>Атакующие AOE-предметы</strong> (гром, молнии, когти, перчатки, клейморы, чёрная магия) — не сжигаются на одиночном слабаке: только на пачке из 5+ врагов или сильной цели</li>
+                    <li><strong>Рука тьмы и лук тьмы</strong> — только в героев и боссов, по крипам не тратятся</li>
+                </ul>
+                <p style="color:var(--text-muted);font-size:0.82rem;">«Слабая» цель — незнакомый юнит, чьё здоровье меньше четверти здоровья бота. Пачка из 5+ врагов слабаком не считается — по ней кастуем.</p>
             </div>
             <div class="ai-card">
                 <div class="ai-card-title"><i class="fas fa-shield-alt"></i> Режим боя</div>
@@ -227,7 +236,6 @@
                         <li><strong>Свой HP ≤ 30%</strong> — проклятый череп</li>
                         <li><strong>Свой HP ≤ 20%</strong> — посох ветров, лук ветров</li>
                         <li><strong>Дистанция ≤ 1000</strong> — сжигатель маны</li>
-                        <li><strong>Видимая цель</strong> — рука тьмы, лук тьмы</li>
                     </ul>
                 </div>
             </div>
@@ -235,7 +243,7 @@
             <!-- ОЦЕНКА УГРОЗЫ -->
             <h2><i class="fas fa-exclamation-triangle"></i> Оценка угрозы</h2>
             <div class="ai-card">
-                <p>Перед атакой на героя бот оценивает угрозу по 3 уровням:</p>
+                <p>Перед <strong>каждой</strong> атакой на героя (не только в ответ на удар) бот оценивает угрозу по 3 уровням:</p>
                 <ul>
                     <li><strong>0 — безопасно</strong>: атакуем всеми скиллами</li>
                     <li><strong>1 — рискованно</strong>: без ульты, экономим ману (< 60%)</li>
@@ -268,7 +276,7 @@
             <div class="ai-card">
                 <p>Когда у бота нет цели, он ищет её без проверки видимости:</p>
                 <ol>
-                    <li><strong>Герой рядом</strong> (1500) → атака самого слабого</li>
+                    <li><strong>Герой рядом</strong> (1500) → сначала оценка угрозы: опасный враг — игнорируем и фармим дальше, иначе атака самого слабого</li>
                     <li><strong>Крип рядом</strong> → атака</li>
                     <li><strong>Ближайшая область с крипами</strong> → движение к ней</li>
                     <li><strong>Нигде ничего</strong> → роуминг</li>
@@ -289,7 +297,7 @@
                     </ul>
                     <p><strong>Обычный:</strong> дистанция учитывается. Своя зона ближе (×0.5-0.7), чужая — штраф. Командное распределение.</p>
                     <p><strong>2-pass поиск:</strong> сначала области с крипами подходящего уровня, потом любые с крипами, потом рандом.</p>
-                    <p><strong>Анти-кластеринг:</strong> если 2+ союзника (50+ ур.) или 3+ (&lt; 50) рядом → смена области.</p>
+                    <p><strong>Анти-кластеринг:</strong> если 2+ союзника (50+ ур.) или 3+ (&lt; 50) рядом → смена области. На боссов можно всем — толпа не ограничивается.</p>
                 </div>
             </div>
 
@@ -302,6 +310,7 @@
                     <li>Застрял 15+ сек → выход</li>
                     <li><strong>Блинк-предметы отключены</strong> в данже</li>
                     <li>Отступление: движение к выходу + невидимость, без блинка</li>
+                    <li>Незнакомо сильный герой в данже → бот не лезет, бьёт ближайшего крипа</li>
                 </ul>
             </div>
 
@@ -313,14 +322,14 @@
                     <tbody>
                         <tr><td>База</td><td>Любая из трёх</td><td>Своя по клану</td></tr>
                         <tr><td>Выбор фарм-области</td><td>Рандом + уровень</td><td>Дистанция + команда + уровень</td></tr>
-                        <tr><td>Выход с базы</td><td>К телепорту пешком</td><td>Блинк + атака</td></tr>
+                        <tr><td>Выход с базы</td><td>Движение к фарм-области</td><td>Движение к фарм-области</td></tr>
                         <tr><td>Анти-фид</td><td>Отключён</td><td>Включён</td></tr>
-                        <tr><td>Агрессия на героев</td><td>150+ уровень</td><td>100+ уровень</td></tr>
+                        <tr><td>Агрессия на героев</td><td colspan="2">Любой уровень, если угроза не «опасно» (Solo строже)</td></tr>
                         <tr><td>HP порог отступления</td><td>30%</td><td>20%</td></tr>
                         <tr><td>Suicide на крипов</td><td>10% HP</td><td>Нет</td></tr>
                         <tr><td>Командное взаимодействие</td><td>Отключено</td><td>Включено (кулдаун 10 сек)</td></tr>
                         <tr><td>Лечение союзников</td><td>Отключено</td><td>Включено</td></tr>
-                        <tr><td>Роуминг</td><td>±800</td><td>±500</td></tr>
+                        <tr><td>Роуминг</td><td>±900</td><td>±900</td></tr>
                         <tr><td>Оценка угрозы</td><td>Строже на 5 уровней</td><td>Нормальная</td></tr>
                     </tbody>
                 </table>
@@ -361,16 +370,17 @@
                         <thead><tr><th>Таймер</th><th>Порог</th><th>Действие</th></tr></thead>
                         <tbody>
                             <tr><td>Застрял в бою</td><td>сброс при цели</td><td>Не застрял</td></tr>
-                            <tr><td>Застрял без цели</td><td>≥ 4 сек</td><td>Смена фарм-области</td></tr>
+                            <tr><td>Застрял без цели</td><td>≥ 10 сек</td><td>Смена фарм-области</td></tr>
                             <tr><td>Застрял при отступлении</td><td>≥ 5 сек</td><td>Телепорт на базу</td></tr>
+                            <tr><td>Застрял на базе</td><td>≥ 10 сек</td><td>Телепорт на фарм-область</td></tr>
                             <tr><td>Без движения в данже</td><td>≥ 15 сек</td><td>Выход из данжа</td></tr>
                             <tr><td>Без цели в данже</td><td>≥ 20 сек</td><td>Выход из данжа</td></tr>
                             <tr><td>Попытки покинуть базу</td><td>≥ 3</td><td>Выход с базы</td></tr>
-                            <tr><td>Попытки покинуть базу</td><td>≥ 5</td><td>Блинк / телепорт на фарм</td></tr>
-                            <tr><td>Смена фарм-области</td><td>6 сек КД</td><td>Анти-осцилляция</td></tr>
+                            <tr><td>Попытки покинуть базу</td><td>≥ 5</td><td>Телепорт на фарм-область</td></tr>
+                            <tr><td>Роуминг</td><td>8–10 сек КД</td><td>Защита от метания</td></tr>
                             <tr><td>Командное действие</td><td>10 сек КД</td><td>Анти-осцилляция</td></tr>
                             <tr><td>Арена-телепорт</td><td>15 сек КД</td><td>Анти-осцилляция</td></tr>
-                            <tr><td>Выход с базы</td><td>3 сек КД</td><td>Анти-спам</td></tr>
+                            <tr><td>Покупки (книги/статы)</td><td>5 сек КД</td><td>Анти-спам</td></tr>
                             <tr><td>Мана-фонтан</td><td>60 / 120 сек КД</td><td>Нормальный выход / лимит</td></tr>
                             <tr><td>Покупка телепорта</td><td>30 / 60 сек КД</td><td>Нормальный / 5 подряд одинаковых</td></tr>
                             <tr><td>Лечение союзников</td><td>5 сек КД</td><td>Анти-спам</td></tr>
@@ -411,66 +421,21 @@
                 </div>
             </div>
 
-            <!-- СЛОЖНОСТЬ И БОНУСЫ -->
+            <!-- 31.08: секция Сложность и бонусы перенесена на mechanics.html#bot-bonus -->
             <h2><i class="fas fa-layer-group"></i> Сложность и бонусы</h2>
             <div class="ai-card">
-                <p>Боты получают <strong>бонус опыта и золота</strong> за убийство крипов. Множитель зависит от сложности и баланса команд.</p>
-                <p>Формула: <strong>опыт = уровень жертвы × (база + баланс)</strong>, <strong>золото = уровень жертвы / 2 × (база + баланс)</strong>.</p>
-                <p>Бонус начисляется только за <strong>крипов</strong> (не за героев, не за иллюзии).</p>
+                <p>Боты получают <strong>бонус опыта и золота</strong> за убийство крипов — множитель зависит от сложности и баланса команд. Полные таблицы множителей и примеры расчёта — на странице <a href="mechanics.html#bot-bonus" style="color:var(--accent-cyan);">Механики</a>.</p>
             </div>
 
-            <h3>Множители по сложности (без баланса)</h3>
-            <div class="ai-card" style="overflow-x:auto;padding:0;">
-                <table class="state-table">
-                    <thead>
-                        <tr><th>Сложность</th><th>Опыт</th><th>Золото</th><th>Пример (крип 10 ур.)</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="state-badge state-idle">Слабый</span></td>
-                            <td>ур. × 10</td><td>ур. / 2 × 5</td><td>100 оп., 25 зол.</td>
-                        </tr>
-                        <tr>
-                            <td><span class="state-badge state-duel">Средний</span></td>
-                            <td>ур. × 15</td><td>ур. / 2 × 10</td><td>150 оп., 50 зол.</td>
-                        </tr>
-                        <tr>
-                            <td><span class="state-badge state-retreat">Сложный</span></td>
-                            <td>ур. × 20</td><td>ур. / 2 × 20</td><td>200 оп., 100 зол.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3>Баланс команд</h3>
+            <!-- 31.08: карточка-резюме -->
+            <h2><i class="fas fa-flag-checkered"></i> Итого</h2>
             <div class="ai-card">
-                <p>Отстающая по игрокам команда получает <strong>BotBonus</strong> — добавка к множителю. Рассчитывается один раз при старте:</p>
                 <ul>
-                    <li><strong>Разница людей</strong>: за каждого лишнего игрока в команде противника +1 бонус</li>
-                    <li><strong>Разница размера</strong>: за большую команду +2 бонус</li>
-                    <li><strong>Итого</strong>: разница бонусов × 5 = BotBonus для отстающей команды</li>
+                    <li><strong>Следят за собой</strong> — отступают при опасном HP, лечатся на базе, не лезут на заведомо сильных героев</li>
+                    <li><strong>Не жгут ресурсы зря</strong> — мана и атакующие предметы экономятся на слабаках, AOE только по пачкам и сильным целям</li>
+                    <li><strong>Не толпятся</strong> — распределяются по фарм-областям, на боссов собираются всем отрядом</li>
+                    <li><strong>Держат режим</strong> — в дуэлях и на босс-ивентах дерутся до конца, в обычном режиме прикрывают и лечат союзников</li>
                 </ul>
-            </div>
-
-            <h3>Примеры баланса</h3>
-            <div class="ai-card" style="overflow-x:auto;padding:0;">
-                <table class="state-table">
-                    <thead>
-                        <tr><th>Ситуация</th><th>Команда 1 бонус</th><th>Команда 2 бонус</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>2 vs 2 (равно)</td><td>0</td><td>0</td></tr>
-                        <tr><td>3 игрока vs 1 игрок</td><td>0</td><td>20</td></tr>
-                        <tr><td>1 игрок + 1 бот vs 3 игрока</td><td>20</td><td>0</td></tr>
-                        <tr><td>4 vs 3 (1 разница)</td><td>0</td><td>5</td></tr>
-                    </tbody>
-                </table>
-                <p style="color:var(--text-muted);font-size:0.82rem;margin:8px 14px 0;">Пример: Сложный бот + BotBonus 20 = опыт за крипа = ур. × (20+20) = ур. × 40.</p>
-            </div>
-
-            <h3>Solo Mode</h3>
-            <div class="ai-card">
-                <p>В Solo Mode все боты получают <strong>одинаковый бонус Team1</strong> (без баланса команд). Множители те же, что в таблице выше — баланс не применяется.</p>
             </div>
 
             <!-- СВЯЗАННЫЕ СТРАНИЦЫ -->
