@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гайд: Паладин · Legend of Worlds</title>
+    <meta property="og:title" content="Гайд: Паладин — Legend of Worlds">
+    <meta property="og:description" content="Позиционирование, комбо, закуп и синергии святого рыцаря: щит, лечение, контроль.">
+    <meta property="og:image" content="../images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../hero-data.js" defer></script>
+    <script src="../search-index.js" defer></script>
+    <script src="../search.js" defer></script>
+    <script src="../items-db.js" defer></script>
+    <script src="../icon-loader.js" defer></script>
+    <script src="../analytics.js" defer></script>
+    <script src="../ui-effects.js" defer></script>
+    <style>
+        .guide-hero-header { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; }
+        .guide-hero-icon { width: 80px; height: 80px; border-radius: 12px; border: 2px solid var(--glass-border); }
+        .guide-hero-info h1 { font-size: 1.6rem; margin: 0; }
+        .guide-hero-role { color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px; }
+        .role-tank { color: #4ecdc4; }
+        .role-healer { color: #6bcb77; }
+        .guide-section { margin-bottom: 28px; }
+        .guide-section h2 { font-size: 1.2rem; color: var(--accent-cyan); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .guide-ability-list { line-height: 1.8; color: var(--text-secondary); }
+        .guide-ability-list strong { color: var(--text-primary); }
+        .guide-ability-link { display: inline-block; margin-top: 8px; color: var(--accent-cyan); text-decoration: none; font-size: 0.85rem; }
+        .guide-ability-link:hover { text-decoration: underline; }
+        .tag-scepter { display: inline-block; background: rgba(0,230,255,0.1); color: var(--accent-cyan); padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
+        .tag-dispellable { display: inline-block; background: rgba(255,119,119,0.1); color: #ff7777; padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
+        .guide-combo { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; }
+        .guide-combo h3 { font-size: 0.95rem; color: var(--text-primary); margin: 0 0 6px; }
+        .guide-combo-sequence { font-family: monospace; color: var(--accent-cyan); font-size: 0.9rem; margin-bottom: 4px; }
+        .guide-combo-desc { color: var(--text-secondary); font-size: 0.85rem; }
+        .guide-buy-phase { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; }
+        .guide-buy-phase h3 { font-size: 0.95rem; color: var(--text-primary); margin: 0 0 8px; }
+        .guide-buy-items { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+        .guide-buy-item { background: var(--glass-tag-bg); border: 1px solid var(--glass-tag-border); padding: 3px 10px; border-radius: 6px; font-size: 0.82rem; color: var(--text-secondary); }
+        .guide-buy-note { color: var(--text-secondary); font-size: 0.85rem; }
+        .guide-key-item { background: rgba(0,230,255,0.06); border: 1px solid rgba(0,230,255,0.2); border-radius: 10px; padding: 14px 18px; margin-top: 12px; }
+        .guide-key-item h3 { color: var(--accent-cyan); font-size: 0.95rem; margin: 0 0 6px; }
+        .guide-key-item p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; }
+        .guide-list { list-style: none; padding: 0; }
+        .guide-list li { margin-bottom: 10px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; }
+        .guide-list-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: rgba(0,230,255,0.15); color: var(--accent-cyan); border-radius: 50%; font-size: 0.75rem; font-weight: 700; margin-right: 6px; }
+        .error { color: #ff5555; }
+        .guide-synergy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+        .guide-synergy-card { border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; }
+        .guide-synergy-card.ally { background: rgba(0,230,255,0.06); border: 1px solid rgba(0,230,255,0.15); }
+        .guide-synergy-card.enemy { background: rgba(255,85,85,0.06); border: 1px solid rgba(255,85,85,0.15); }
+        .guide-synergy-name { font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+        .guide-synergy-reason { color: var(--text-secondary); font-size: 0.8rem; }
+        .guide-bottom { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+        @media (max-width: 600px) { .guide-hero-header { flex-direction: column; text-align: center; } .guide-synergy-grid { grid-template-columns: 1fr; } }
+    </style>
+    <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/guides/guide-paladin.html">
+</head>
+<body class="page-hero-guide">
+    <header class="site-header">
+        <a href="../index.html" class="logo">
+            <img src="../images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="../heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
+            <a href="../items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="../mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="../monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="../map.html" class="nav-link"><i class="fas fa-map"></i> Карта</a>
+            <a href="../info.html" class="nav-link"><i class="fas fa-info-circle"></i> Информация</a>
+            <a href="../guides.html" class="nav-link active"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="../faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
+            <a href="../lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="../support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="../updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="../guides.html">Гайды</a><span class="sep">›</span><span class="current">Паладин</span></div>
+
+        <div class="guide-hero-header">
+            <img loading="lazy" src="../images/heroes/paladin.png" alt="Паладин" class="guide-hero-icon" />
+            <div class="guide-hero-info">
+                <h1>Паладин — Светозар</h1>
+                <div class="guide-hero-role">Сила · <span class="role-tank">Танк</span> · <span class="role-healer">Целитель</span> · Живучий святой рыцарь</div>
+            </div>
+        </div>
+
+        <!-- Способности -->
+        <div class="guide-section">
+            <h2><i class="fas fa-shield-halved"></i> Способности</h2>
+            <p class="guide-ability-list">
+                <strong>Q Исцеляющая Сфера</strong> — снаряд на 1300: лечит союзников на 12–20% макс. HP и наносит врагам 250–850 + STR×3 в радиусе 325. Хил и урон одним кастом.<br>
+                <strong>W Дары света</strong> — регенерация 2% + 45–145 ед/сек на 10 сек. <span class="tag-dispellable"><i class="fas fa-exclamation-triangle"></i> Развеивается</span> — не рассчитывай на полный реген против диспела.<br>
+                <strong>E Молитва свету</strong> — 3 сек задержка, затем 11–23 вспышки в радиусе 450: 200–600 + STR×1.25–2.25 каждая зона. <span class="tag-dispellable"><i class="fas fa-exclamation-triangle"></i> Развеивается</span>.<br>
+                <strong>R Святой Щит</strong> — щит на 1000–5000 + STR×5–25 поглощает весь урон 4–8 сек. Когда щит рушится, взрыв наносит врагам урон, равный потерянной прочности. <span class="tag-scepter"><i class="fas fa-gem"></i> Скипетр</span> — 10% шанс мгновенной перезарядки.<br>
+                <strong>F Аура защиты</strong> — пассивка: +10 брони союзникам в радиусе 800, при каждой атаке по Паладину враг получает 25 + уровень×2.
+            </p>
+            <a href="../heroes/paladin.html" class="guide-ability-link">Все параметры на карточке героя →</a>
+        </div>
+
+        <!-- Комбо -->
+        <div class="guide-section">
+            <h2><i class="fas fa-bolt"></i> Комбо</h2>
+
+            <div class="guide-combo">
+                <h3>Стена из щита</h3>
+                <div class="guide-combo-sequence">R → W → F (пассивка) → Q</div>
+                <div class="guide-combo-desc">R поглощает весь урон — враги вливают бёрст в пустоту. W регенит после щита, аура F давит бронёй и возвратом. Когда щит рушится от нанесённого урона — взрыв бьёт всех вокруг по потерянной прочности.</div>
+            </div>
+
+            <div class="guide-combo">
+                <h3>Молитва по стоячим</h3>
+                <div class="guide-combo-sequence">E (заранее) → драка</div>
+                <div class="guide-combo-desc">E срабатывает через 3 сек — кидай её ДО драки или по цели, которая стоит: занята криповкой или дерётся с союзником. Развеивается — не жди эффекта против героев с диспелом.</div>
+            </div>
+
+            <div class="guide-combo">
+                <h3>Сфера на перевес</h3>
+                <div class="guide-combo-sequence">Q → союзники</div>
+                <div class="guide-combo-desc">Q лечит союзников на 20% макс. HP на 5 уровне и бьёт врагов STR×3 + 850. Кидай в свалки, где есть и свои, и чужие: одно нажатие — хил команде и урон врагам.</div>
+            </div>
+        </div>
+
+        <!-- Закуп -->
+        <div class="guide-section">
+            <h2><i class="fas fa-coins"></i> Что покупать</h2>
+
+            <div class="guide-buy-phase">
+                <h3>Ранняя игра (1–5 мин)</h3>
+                <div class="guide-buy-items">
+                    <span class="guide-buy-item"><i class="fas fa-shoe-prints"></i> Сапог</span>
+                    <span class="guide-buy-item"><i class="fas fa-heart"></i> Камень жизни</span>
+                    <span class="guide-buy-item"><i class="fas fa-key"></i> Ключ силы</span>
+                    <span class="guide-buy-item"><i class="fas fa-shield-alt"></i> Щит древних</span>
+                    <span class="guide-buy-item"><i class="fas fa-fist-raised"></i> Когти</span>
+                </div>
+                <div class="guide-buy-note">Сборка ИИ: паладин — мили с 800 HP, но первый предмет всё равно Камень жизни — Q и R масштабируются от силы, а выживаемость нужна, чтобы стоять в поле, а не бегать к фонтану.</div>
+            </div>
+
+            <div class="guide-buy-phase">
+                <h3>Мидгейм (5–15 мин)</h3>
+                <div class="guide-buy-items">
+                    <span class="guide-buy-item"><i class="fas fa-shield-alt"></i> Шлем из кожи дракона</span>
+                    <span class="guide-buy-item"><i class="fas fa-plus"></i> Жезл исцеления</span>
+                    <span class="guide-buy-item"><i class="fas fa-tint"></i> Кровавая луна I</span>
+                    <span class="guide-buy-item"><i class="fas fa-shield-alt"></i> Доспехи полководца</span>
+                </div>
+                <div class="guide-buy-note">Жезл исцеления усиливает поддержку команды, Кровавая луна даёт вампиризм: паладин бьёт мили — каждая атака возвращает HP и продлевает жизнь в передней линии.</div>
+            </div>
+
+            <div class="guide-buy-phase">
+                <h3>Лейтгейм (15+ мин)</h3>
+                <div class="guide-buy-items">
+                    <span class="guide-buy-item"><i class="fas fa-gem"></i> Скипетр Владыки</span>
+                    <span class="guide-buy-item"><i class="fas fa-shield-alt"></i> Доспехи дракона</span>
+                    <span class="guide-buy-item"><i class="fas fa-plus"></i> Посох света</span>
+                    <span class="guide-buy-item"><i class="fas fa-tint"></i> Кровавая луна II</span>
+                    <span class="guide-buy-item"><i class="fas fa-shield-alt"></i> Щит смерти</span>
+                </div>
+                <div class="guide-buy-note">Финальная сборка ИИ: Кровавая луна II и Посох света — максимальная стойкость и поддержка, Щит смерти — против магического урона. Скипетр Владыки появляется после боссов: 10% перезарядка R — второй щит за драку.</div>
+            </div>
+
+            <div class="guide-key-item">
+                <h3><i class="fas fa-gem"></i> Ключевой предмет: Кровавая луна II</h3>
+                <p>Паладин — мили-танк: он должен стоять в гуще боя и выдерживать фокус. Вампиризм Кровавой луны превращает каждую автоатаку в реген — враги видят, что «танк не умирает», и тратят урон впустую. Вместе с W-регеном это делает Паладина практически бессмертным в затяжных драках.</p>
+            </div>
+        </div>
+
+        <!-- Позиционирование -->
+        <div class="guide-section">
+            <h2><i class="fas fa-crosshairs"></i> Позиционирование</h2>
+            <ul class="guide-list">
+                <li><strong>Ты — передняя линия.</strong> 800 HP, аура F и R-щит: иди первым, принимай урон на себя, давай магам время на комбо. Но не путай танк с самоубийцей: без R и W на кулдауне отступай.</li>
+                <li><strong>Q — двойная ценность.</strong> Сфера бьёт на 1300 — дальше, чем твой автоатак. Лечи союзников издали, не подходя, если драка плохая. Хил 20% макс. HP решает драки.</li>
+                <li><strong>Кидай E заранее.</strong> Задержка 3 сек — самая большая в игре. Запускай до начала драки или по врагу, занятому крипами. После начала боя цель просто отойдёт.</li>
+                <li><strong>R не только для себя.</strong> Взрыв щита наносит урон по потерянной прочности — враги, влившие урон в щит, получают его обратно. Дави их стоять рядом с рушащимся щитом.</li>
+                <li><strong>Аура F всегда в деле.</strong> +10 брони и возврат урона — не твой персональный бонус, а бонус всей команде рядом. Держись группы, а не бегай один.</li>
+            </ul>
+        </div>
+
+        <!-- Синергии -->
+        <div class="guide-section">
+            <h2><i class="fas fa-handshake"></i> Синергии и контрпики</h2>
+            <div class="guide-synergy-grid">
+                <div class="guide-synergy-card ally">
+                    <div class="guide-synergy-name">Архимаг</div>
+                    <div class="guide-synergy-reason">Хрупкий маг с 200 HP — твой щит и реген дают ему время на полное комбо</div>
+                </div>
+                <div class="guide-synergy-card ally">
+                    <div class="guide-synergy-name">Громовержец</div>
+                    <div class="guide-synergy-reason">Такой же хрупкий бёрст-маг: держишь врагов на себе, он бесплатно давит R с любой точки карты</div>
+                </div>
+                <div class="guide-synergy-card ally">
+                    <div class="guide-synergy-name">Адмирал</div>
+                    <div class="guide-synergy-reason">Две танковые линии: пока адмирал держит контроль, ты подбираешь хилом тех, кто начал тонуть</div>
+                </div>
+                <div class="guide-synergy-card enemy">
+                    <div class="guide-synergy-name">Тёмный Маг</div>
+                    <div class="guide-synergy-reason">Развеивание сносит W-реген и E-молитву — половина твоей выживаемости и урона исчезает</div>
+                </div>
+                <div class="guide-synergy-card enemy">
+                    <div class="guide-synergy-name">Ассасин</div>
+                    <div class="guide-synergy-reason">Бёрст по одному фокусу и невидимость: паладин медленный, догнать или убежать не выйдет — нужен R на реакцию</div>
+                </div>
+                <div class="guide-synergy-card enemy">
+                    <div class="guide-synergy-name">Призрак</div>
+                    <div class="guide-synergy-reason">Неуязвимость — твоё преимущество в стойкости не работает: он просто переживает тебя, пока ты не можешь его достать</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Частые ошибки -->
+        <div class="guide-section">
+            <h2><i class="fas fa-triangle-exclamation icon-warn"></i> Частые ошибки</h2>
+            <ul class="guide-list">
+                <li><span class="guide-list-num">1</span> <strong class="error">Ждать E до драки.</strong> 3 сек задержки — молитва не сработает по подвижной цели в бою. Кидай заранее или по стоячим.</li>
+                <li><span class="guide-list-num">2</span> <strong class="error">Лить урон в щит врага-Паладина.</strong> Встречный паладин с R получает взрыв по потерянной прочности — бей щит мало, либо отойди и жди рушения.</li>
+                <li><span class="guide-list-num">3</span> <strong class="error">Держать Q только для себя.</strong> Q лечит союзников на процент от их макс. HP — 20% макс. HP мага или стрелка ценнее, чем твои 20%. Не жадничай.</li>
+                <li><span class="guide-list-num">4</span> <strong class="error">Игнорировать диспел противника.</strong> W и E развеиваются полностью. Против героев с развеиванием не трать W заранее — жди урона.</li>
+                <li><span class="guide-list-num">5</span> <strong class="error">Бегать в одиночку.</strong> Аура F работает в радиусе 800 — оторвался от команды, потерял броню и возврат, стал обычным медленным мили-героем без эскейпа.</li>
+            </ul>
+        </div>
+
+        <div class="guide-bottom">
+            <a href="../guides.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> К гайдам</a>
+            <a href="../heroes/paladin.html" class="btn-secondary"><i class="fas fa-user"></i> Карточка героя</a>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img loading="lazy" src="../images/preview.png" alt="" width="28" height="28" class="footer-logo-img"> Legend of Worlds</span>
+            </div>
+            <div class="footer-links">
+                <a href="../info.html">Информация</a>
+                <a href="../support.html">Поддержать</a>
+                <a href="../updates.html">Обновления</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
+        </div>
+    </footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.guide-section, .guide-hero-header'); });
+</script>
+</body>
+</html>
