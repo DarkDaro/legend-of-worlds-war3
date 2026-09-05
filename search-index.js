@@ -280,6 +280,36 @@ var SEARCH_INDEX = {
     "heroName": "Лорд Хаоса"
   },
   {
+    "name": "Темная стая",
+    "heroId": "chaos-lord",
+    "heroName": "Лорд Хаоса"
+  },
+  {
+    "name": "Энергетический удар",
+    "heroId": "chaos-lord",
+    "heroName": "Лорд Хаоса"
+  },
+  {
+    "name": "Каменный дождь",
+    "heroId": "chaos-lord",
+    "heroName": "Лорд Хаоса"
+  },
+  {
+    "name": "Ярость",
+    "heroId": "chaos-lord",
+    "heroName": "Лорд Хаоса"
+  },
+  {
+    "name": "Бушующее пламя",
+    "heroId": "chaos-lord",
+    "heroName": "Лорд Хаоса"
+  },
+  {
+    "name": "Боевое Превосходство",
+    "heroId": "chaos-lord",
+    "heroName": "Лорд Хаоса"
+  },
+  {
     "name": "Мистический разряд",
     "heroId": "chaos-witcher",
     "heroName": "Ведьмак Хаоса"
@@ -730,6 +760,31 @@ var SEARCH_INDEX = {
     "heroName": "Пламенный Берсеркер"
   },
   {
+    "name": "Пылающая дорога",
+    "heroId": "flame-berserker",
+    "heroName": "Пламенный Берсеркер"
+  },
+  {
+    "name": "Пламенная агрессия",
+    "heroId": "flame-berserker",
+    "heroName": "Пламенный Берсеркер"
+  },
+  {
+    "name": "Огненный гейзер",
+    "heroId": "flame-berserker",
+    "heroName": "Пламенный Берсеркер"
+  },
+  {
+    "name": "Пламенное усиление",
+    "heroId": "flame-berserker",
+    "heroName": "Пламенный Берсеркер"
+  },
+  {
+    "name": "Путь огня",
+    "heroId": "flame-berserker",
+    "heroName": "Пламенный Берсеркер"
+  },
+  {
     "name": "Огненная буря",
     "heroId": "flame-eater",
     "heroName": "Пожиратель Пламени"
@@ -880,6 +935,31 @@ var SEARCH_INDEX = {
     "heroName": "Привратник Ада"
   },
   {
+    "name": "Огненный шар",
+    "heroId": "hell-gatekeeper",
+    "heroName": "Привратник Ада"
+  },
+  {
+    "name": "Рывок огня",
+    "heroId": "hell-gatekeeper",
+    "heroName": "Привратник Ада"
+  },
+  {
+    "name": "Хаотическая форма",
+    "heroId": "hell-gatekeeper",
+    "heroName": "Привратник Ада"
+  },
+  {
+    "name": "Огненный Рев",
+    "heroId": "hell-gatekeeper",
+    "heroName": "Привратник Ада"
+  },
+  {
+    "name": "Огненный меч",
+    "heroId": "hell-gatekeeper",
+    "heroName": "Привратник Ада"
+  },
+  {
     "name": "Плевок яда",
     "heroId": "hydralisk",
     "heroName": "Гидралиск"
@@ -928,6 +1008,31 @@ var SEARCH_INDEX = {
     "name": "Ледяная броня",
     "heroId": "ice-knight",
     "heroName": "Ледяной Рыцарь"
+  },
+  {
+    "name": "Иллюзия",
+    "heroId": "illusionist",
+    "heroName": "Иллюзионист"
+  },
+  {
+    "name": "Фантомные клинки",
+    "heroId": "illusionist",
+    "heroName": "Иллюзионист"
+  },
+  {
+    "name": "Отражение души",
+    "heroId": "illusionist",
+    "heroName": "Иллюзионист"
+  },
+  {
+    "name": "Перевоплощение",
+    "heroId": "illusionist",
+    "heroName": "Иллюзионист"
+  },
+  {
+    "name": "Разящая тень",
+    "heroId": "illusionist",
+    "heroName": "Иллюзионист"
   },
   {
     "name": "Иллюзия",
@@ -1021,6 +1126,31 @@ var SEARCH_INDEX = {
   },
   {
     "name": "Дух Природы",
+    "heroId": "leshy",
+    "heroName": "Леший"
+  },
+  {
+    "name": "Душа Природы",
+    "heroId": "leshy",
+    "heroName": "Леший"
+  },
+  {
+    "name": "Корни",
+    "heroId": "leshy",
+    "heroName": "Леший"
+  },
+  {
+    "name": "Аура возмездия",
+    "heroId": "leshy",
+    "heroName": "Леший"
+  },
+  {
+    "name": "Кусты",
+    "heroId": "leshy",
+    "heroName": "Леший"
+  },
+  {
+    "name": "Гнев природы",
     "heroId": "leshy",
     "heroName": "Леший"
   },
@@ -1380,6 +1510,31 @@ var SEARCH_INDEX = {
     "heroName": "Всадник"
   },
   {
+    "name": "Волна ярости",
+    "heroId": "rider",
+    "heroName": "Всадник"
+  },
+  {
+    "name": "Аура ярости",
+    "heroId": "rider",
+    "heroName": "Всадник"
+  },
+  {
+    "name": "Яростные Удары",
+    "heroId": "rider",
+    "heroName": "Всадник"
+  },
+  {
+    "name": "Огненная кровь",
+    "heroId": "rider",
+    "heroName": "Всадник"
+  },
+  {
+    "name": "Сеть",
+    "heroId": "rider",
+    "heroName": "Всадник"
+  },
+  {
     "name": "Невидимость",
     "heroId": "samurai",
     "heroName": "Самурай"
@@ -1646,6 +1801,36 @@ var SEARCH_INDEX = {
   },
   {
     "name": "Гнев Титана",
+    "heroId": "titan",
+    "heroName": "Титан"
+  },
+  {
+    "name": "Ангельское благословение",
+    "heroId": "titan",
+    "heroName": "Титан"
+  },
+  {
+    "name": "Воздушная коса",
+    "heroId": "titan",
+    "heroName": "Титан"
+  },
+  {
+    "name": "Древняя мощь",
+    "heroId": "titan",
+    "heroName": "Титан"
+  },
+  {
+    "name": "Серия Ударов",
+    "heroId": "titan",
+    "heroName": "Титан"
+  },
+  {
+    "name": "Гнев Титана",
+    "heroId": "titan",
+    "heroName": "Титан"
+  },
+  {
+    "name": "Свирепый молот",
     "heroId": "titan",
     "heroName": "Титан"
   },

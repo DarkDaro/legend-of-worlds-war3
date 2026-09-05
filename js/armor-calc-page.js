@@ -25,13 +25,27 @@ document.addEventListener('DOMContentLoaded', function() {
             const hp = parseFloat(hpInput.value) || 1;
             const C = constToggle.checked ? (parseFloat(cInput.value) || GAME_CONSTANTS.ARMOR_C) : GAME_CONSTANTS.ARMOR_C;
 
-            const reduction = (armor * C) / (1 + armor * C);
-            const ehp = hp * (1 + armor * C);
+            // 06.09: две формулы как в WC3 — положительная и отрицательная броня считаются по-разному
+            let reduction, ehp;
+            if (armor >= 0) {
+                // Положительная: снижение = (A×C)/(1+A×C), EHP = HP×(1+A×C)
+                reduction = (armor * C) / (1 + armor * C);
+                ehp = hp * (1 + armor * C);
+            } else {
+                // Отрицательная: множитель урона = 2 − 0.94^(−A) (экспонента, не зависит от C)
+                // Снижение отрицательное (урон растёт), EHP падает
+                const mult = 2 - Math.pow(0.94, -armor); // >1, максимум 2 (двойной урон)
+                reduction = 1 - mult; // отрицательное число
+                ehp = hp / mult;
+            }
             const gain = ((ehp - hp) / hp) * 100;
 
             const reductionPct = (reduction * 100).toFixed(1);
-            document.getElementById('reductionValue').textContent = (reduction >= 0 ? '' : '') + reductionPct + '%';
-            document.getElementById('reductionValue').className = 'armor-result-value ' + (reduction >= 0 ? 'positive' : 'negative');
+            const reductionEl = document.getElementById('reductionValue');
+            reductionEl.textContent = reduction >= 0
+                ? reductionPct + '%'
+                : 'урон +' + (Math.abs(reduction) * 100).toFixed(1) + '%';
+            reductionEl.className = 'armor-result-value ' + (reduction >= 0 ? 'positive' : 'negative');
             document.getElementById('ehpValue').textContent = Math.round(ehp).toLocaleString('ru-RU');
             document.getElementById('ehpGainValue').textContent = (gain >= 0 ? '+' : '') + gain.toFixed(1) + '%';
             document.getElementById('ehpGainValue').className = 'armor-result-value ' + (gain >= 0 ? 'positive' : 'negative');
@@ -44,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('reductionBar').style.background = reduction >= 0
                 ? 'linear-gradient(90deg, #00e6ff, #00ffaa)'
                 : 'linear-gradient(90deg, #ff5555, #ff9944)';
-            document.getElementById('reductionBarLabel').textContent = reductionPct + '%';
+            document.getElementById('reductionBarLabel').textContent = reductionEl.textContent;
 
             // Формула
             document.getElementById('formulaC').textContent = C;

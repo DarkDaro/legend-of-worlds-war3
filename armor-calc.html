@@ -147,6 +147,52 @@
         .armor-formula strong {
             color: var(--accent-cyan);
         }
+        /* 06.09: справка по броне */
+        .armor-faq {
+            margin-top: 24px;
+        }
+        .armor-faq h2 {
+            font-size: 1.15rem;
+            margin-bottom: 14px;
+            color: var(--text-primary);
+        }
+        .faq-block {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        .faq-block h3 {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            color: var(--accent-cyan);
+        }
+        .faq-block p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 8px;
+        }
+        .faq-block p:last-child { margin-bottom: 0; }
+        .armor-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 0.85rem;
+        }
+        .armor-table th, .armor-table td {
+            padding: 6px 10px;
+            text-align: left;
+            border-bottom: 1px solid #1a2744;
+        }
+        .armor-table th {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+        .armor-table td {
+            color: var(--text-secondary);
+        }
         .armor-hero-link {
             display: inline-block;
             margin-top: 12px;
@@ -279,10 +325,46 @@
             </div>
 
             <div class="armor-formula">
-                <strong>Формула:</strong><br>
-                Снижение = (Броня × C) / (1 + Броня × C)<br>
-                Эффективное HP = HP × (1 + Броня × C)<br>
-                C = <span id="formulaC">0.05</span>
+                <strong>Формулы (как в Warcraft III):</strong><br>
+                <span id="formulaPositive">Броня ≥ 0: Снижение = (Броня × C) / (1 + Броня × C) · Эфф. HP = HP × (1 + Броня × C)</span><br>
+                <span id="formulaNegative">Броня &lt; 0: Урон = 100% × (2 − 0.94<sup>−Броня</sup>) — растёт до +100% (двойной урон)</span><br>
+                C = <span id="formulaC">0.05</span> (в стандартном WC3 — 0.06, в карте изменено)
+            </div>
+
+            <div class="armor-faq">
+                <h2><i class="fas fa-book"></i> Как работает броня в Warcraft III</h2>
+
+                <div class="faq-block">
+                    <h3>Две разные формулы</h3>
+                    <p>В Warcraft III броня работает по-разному в плюс и в минус. Это не одна формула, а две:</p>
+                    <p><strong>Положительная броня</strong> — снижение урона = (Броня × C) / (1 + Броня × C). Каждая единица брони добавляет ровно C×100% эффективного здоровья (при C=0.05 — это +5% HP за единицу). Снижение урона растёт медленнее с ростом брони, но ценность каждой единицы не падает.</p>
+                    <p><strong>Отрицательная броня</strong> — усиление урона = 2 − 0.94<sup>(−Броня)</sup>. Отдельная экспоненциальная формула, константа C на неё не влияет. Урон растёт быстро и никогда не превышает +100% (двойной урон).</p>
+                </div>
+
+                <div class="faq-block">
+                    <h3>Таблица отрицательной брони</h3>
+                    <table class="armor-table">
+                        <tr><th>Броня</th><th>Урон</th><th>Эфф. HP</th></tr>
+                        <tr><td>−1</td><td>+5.7%</td><td>94.7%</td></tr>
+                        <tr><td>−5</td><td>+26.6%</td><td>79.0%</td></tr>
+                        <tr><td>−10</td><td>+46.1%</td><td>68.4%</td></tr>
+                        <tr><td>−20</td><td>+71.0%</td><td>58.5%</td></tr>
+                        <tr><td>−50</td><td>+95.5%</td><td>51.2%</td></tr>
+                        <tr><td>−100</td><td>+99.8%</td><td>50.0%</td></tr>
+                    </table>
+                    <p>При броне −20 урон +71% — это не предел, дальше урон продолжает расти, но всё медленнее. Максимум — ровно +100% (двойной урон), сколько бы дебаффов брони ни накопилось.</p>
+                </div>
+
+                <div class="faq-block">
+                    <h3>Стакается ли снижение брони</h3>
+                    <p>Да. Разные источники (проклятые когти, призрачный клинок, сало и т.д.) <strong>складываются арифметически</strong>: −5 брони и −4 брони дадут −9. Всё, что пробило броню ниже нуля, начинает работать экспоненциальная формула урона.</p>
+                    <p>Поэтому герой с низкой базовой бронёй против нескольких источников снижения получает катастрофический рост входящего урона — каждая следующая единица минуса стоит дороже предыдущей.</p>
+                </div>
+
+                <div class="faq-block">
+                    <h3>Эффективное здоровье</h3>
+                    <p>Эфф. HP — сколько урона нужно получить, чтобы убить юнита. При положительной броне растёт линейно (+5% за единицу при C=0.05). При отрицательной — падает: броня −20 означает, что героя убьёт на 41.5% меньше урона, чем нужно при нулевой броне.</p>
+                </div>
             </div>
 
             <a href="mechanics.html" class="armor-hero-link"><i class="fas fa-arrow-left"></i> К механикам</a>
