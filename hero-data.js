@@ -282,7 +282,7 @@ var HEROES_DATA = [
       hp: 200, mp: 150, atk: 45, def: 1, atkSpeed: 1.7, hpRegen: 1.0, mpRegen: 0.01, speed: 310, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
 
     { name: 'Отец Тьмы', title: '', attr: 'agility', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'father-of-darkness', image: 'father-of-darkness', charName: 'Злыдень',
-      unique: true,
+      unique: false,
       rawcode: 'H089',
       strBase: 17, strGain: 1.5, agiBase: 25, agiGain: 4.5, intBase: 18, intGain: 2,
       hp: 250, mp: 150, atk: 70, def: 2, atkSpeed: 1.7, hpRegen: 2, mpRegen: 0.01, speed: 305, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
