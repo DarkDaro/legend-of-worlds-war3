@@ -75,6 +75,7 @@ var HEROES_DATA = [
       hp: 750, mp: 150, atk: 30, def: 2, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Всадник', title: '', attr: 'strength', roles: ['bruiser', 'initiator'], roleNames: ['Рубака', 'Инициатор'], heroId: 'rider', image: 'rider', charName: 'Ромео',
+      forms: ['rider-mounted'],
       rawcode: 'O003',
       strBase: 25, strGain: 4.5, agiBase: 19, agiGain: 2, intBase: 16, intGain: 1.5,
       hp: 650, mp: 150, atk: 27, def: 1, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
@@ -90,6 +91,7 @@ var HEROES_DATA = [
       hp: 650, mp: 150, atk: 26, def: 1, atkSpeed: 2, hpRegen: 0.5, mpRegen: 0.01, speed: 305, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Титан', title: '', attr: 'strength', roles: ['tank', 'initiator'], roleNames: ['Танк', 'Инициатор'], heroId: 'titan', image: 'titan', charName: 'Андрей',
+      forms: ['titan-enraged'],
       rawcode: 'O00B',
       strBase: 27, strGain: 5, agiBase: 18, agiGain: 1.5, intBase: 15, intGain: 1.5,
       hp: 750, mp: 150, atk: 25, def: 1, atkSpeed: 2, hpRegen: 1, mpRegen: 0.01, speed: 290, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
@@ -121,6 +123,7 @@ var HEROES_DATA = [
       hp: 650, mp: 200, atk: 20, def: 1, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Лорд Хаоса', title: '', attr: 'strength', roles: ['bruiser', 'initiator'], roleNames: ['Рубака', 'Инициатор'], heroId: 'chaos-lord', image: 'chaos-lord', charName: 'Даркдарон',
+      forms: ['chaos-lord-alt'],
       rawcode: 'U00A',
       strBase: 22, strGain: 4.5, agiBase: 16, agiGain: 2, intBase: 18, intGain: 1.5,
       hp: 700, mp: 150, atk: 20, def: 2, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
@@ -137,14 +140,14 @@ var HEROES_DATA = [
       hp: 650, mp: 200, atk: 20, def: 1, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Хаотическая Форма', title: '', attr: 'strength', roles: ['tank'], roleNames: ['Танк'], heroId: 'chaos-lord-chaos', image: 'chaos-lord-chaos', charName: 'Родион',
-      isAltForm: true,
+      isAltForm: true, formOf: 'hell-gatekeeper',
       rawcode: 'H088',
       strBase: 30, strGain: 5, agiBase: 15, agiGain: 1.5, intBase: 15, intGain: 1.5,
       hp: 1600, mp: 150, atk: 130, def: 12, atkSpeed: 2, hpRegen: 22, mpRegen: 0.01, speed: 390, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Привратник Ада', title: '', attr: 'strength', roles: ['tank'], roleNames: ['Танк'], heroId: 'hell-gatekeeper', image: 'hell-gatekeeper', charName: 'Родион',
       unique: true,
-      isAltForm: true,
+      forms: ['chaos-lord-chaos'],
       rawcode: 'H08A',
       strBase: 30, strGain: 5, agiBase: 15, agiGain: 1.5, intBase: 15, intGain: 1.5,
       hp: 800, mp: 150, atk: 30, def: 2, atkSpeed: 2, hpRegen: 2, mpRegen: 0.01, speed: 290, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
@@ -156,19 +159,19 @@ var HEROES_DATA = [
       hp: 600, mp: 150, atk: 30, def: 3, atkSpeed: 2, hpRegen: 5, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Всадник', title: '', attr: 'strength', roles: ['tank'], roleNames: ['Танк'], heroId: 'rider-mounted', image: 'rider-mounted', charName: 'Ромео',
-      isAltForm: true,
+      isAltForm: true, formOf: 'rider',
       rawcode: 'O004',
       strBase: 25, strGain: 5, agiBase: 19, agiGain: 1.5, intBase: 0, intGain: 1.5,
       hp: 1250, mp: 150, atk: 177, def: 1, atkSpeed: 1, hpRegen: 1, mpRegen: 0.01, speed: 522, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Гнев Титана', title: '', attr: 'strength', roles: ['tank'], roleNames: ['Танк'], heroId: 'titan-enraged', image: 'titan-enraged', charName: 'Андрей',
-      isAltForm: true,
+      isAltForm: true, formOf: 'titan',
       rawcode: 'O00C',
       strBase: 27, strGain: 5, agiBase: 18, agiGain: 1.5, intBase: 15, intGain: 1.5,
       hp: 1250, mp: 150, atk: 225, def: 21, atkSpeed: 1.7, hpRegen: 15, mpRegen: 0.01, speed: 350, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Лорд Хаоса', title: '', attr: 'strength', roles: ['tank'], roleNames: ['Танк'], heroId: 'chaos-lord-alt', image: 'chaos-lord-alt', charName: 'Даркдарон',
-      isAltForm: true,
+      isAltForm: true, formOf: 'chaos-lord',
       rawcode: 'U00B',
       strBase: 22, strGain: 5, agiBase: 16, agiGain: 1.5, intBase: 18, intGain: 1.5,
       hp: 1700, mp: 150, atk: 170, def: 2, atkSpeed: 1.7, hpRegen: 52, mpRegen: 0.01, speed: 522, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
@@ -217,6 +220,7 @@ var HEROES_DATA = [
     // === ЛОВКОСТЬ ===
 
     { name: 'Иллюзионист', title: 'Мастер обмана', attr: 'agility', roles: ['damager', 'controller'], roleNames: ['Дамагер', 'Контролёр'], heroId: 'illusionist', image: 'illusionist', charName: 'Алексей',
+      forms: ['illusionist-demon'],
       rawcode: 'E000',
       strBase: 17, strGain: 1.5, agiBase: 22, agiGain: 4.5, intBase: 18, intGain: 2,
       hp: 200, mp: 150, atk: 70, def: 4, atkSpeed: 1.7, hpRegen: 0.5, mpRegen: 0.01, speed: 320, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
@@ -294,6 +298,7 @@ var HEROES_DATA = [
       hp: 200, mp: 150, atk: 45, def: 1, atkSpeed: 1.7, hpRegen: 1, mpRegen: 0.01, speed: 290, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
 
     { name: 'Пламенный Берсеркер', title: '', attr: 'agility', roles: ['bruiser', 'initiator'], roleNames: ['Рубака', 'Инициатор'], heroId: 'flame-berserker', image: 'flame-berserker', charName: 'Даниил',
+      forms: ['flame-berserker-alt'],
       rawcode: 'O008',
       strBase: 17, strGain: 2, agiBase: 29, agiGain: 4.5, intBase: 15, intGain: 1.5,
       hp: 300, mp: 150, atk: 65, def: 2, atkSpeed: 1.7, hpRegen: 2, mpRegen: 0.01, speed: 290, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
@@ -315,13 +320,13 @@ var HEROES_DATA = [
       hp: 200, mp: 150, atk: 50, def: 1, atkSpeed: 1.7, hpRegen: 2, mpRegen: 0.01, speed: 300, range: 150, sightDay: 1800, sightNight: 800 , attackType: 'melee'},
 
     { name: 'Демоническая Форма', title: '', attr: 'agility', roles: ['damager'], roleNames: ['Дамагер'], heroId: 'illusionist-demon', image: 'illusionist-demon', charName: 'Алексей',
-      isAltForm: true,
+      isAltForm: true, formOf: 'illusionist',
       rawcode: 'E002',
       strBase: 20, strGain: 2, agiBase: 22, agiGain: 4.5, intBase: 18, intGain: 1.5,
       hp: 1200, mp: 150, atk: 170, def: 4, atkSpeed: 0, hpRegen: 60, mpRegen: 0.01, speed: 320, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
 
     { name: 'Пламенный Берсеркер', title: '', attr: 'agility', roles: ['damager'], roleNames: ['Дамагер'], heroId: 'flame-berserker-alt', image: 'flame-berserker-alt', charName: 'Даниил',
-      isAltForm: true,
+      isAltForm: true, formOf: 'flame-berserker',
       rawcode: 'O009',
       strBase: 17, strGain: 2, agiBase: 29, agiGain: 4.5, intBase: 0, intGain: 1.5,
       hp: 1300, mp: 150, atk: 165, def: 2, atkSpeed: 1.7, hpRegen: 102, mpRegen: 0.01, speed: 290, range: 750, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
@@ -401,6 +406,7 @@ var HEROES_DATA = [
       hp: 200, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 320, range: 600, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
 
     { name: 'Леший', title: 'Друид', attr: 'intelligence', roles: ['controller', 'support'], roleNames: ['Контролёр', 'Помощник'], heroId: 'leshy', image: 'leshy', charName: 'Адам',
+      forms: ['spirit-of-nature'],
       rawcode: 'E006',
       strBase: 20, strGain: 1.5, agiBase: 18, agiGain: 1.5, intBase: 22, intGain: 5,
       hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 320, range: 550, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
@@ -411,7 +417,7 @@ var HEROES_DATA = [
       hp: 250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 1, mpRegen: 0.01, speed: 310, range: 750, sightDay: 1800, sightNight: 800 , attackType: 'ranged'},
 
     { name: 'Дух Природы', title: '', attr: 'intelligence', roles: ['support'], roleNames: ['Помощник'], heroId: 'spirit-of-nature', image: 'spirit-of-nature', charName: 'Адам',
-      isAltForm: true,
+      isAltForm: true, formOf: 'leshy',
       rawcode: 'E03H',
       strBase: 20, strGain: 1.5, agiBase: 18, agiGain: 2, intBase: 22, intGain: 4.5,
       hp: 1250, mp: 150, atk: 20, def: 1, atkSpeed: 2.25, hpRegen: 51, mpRegen: 0.01, speed: 320, range: 750, sightDay: 800, sightNight: 800 , attackType: 'ranged'},

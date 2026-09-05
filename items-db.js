@@ -1282,6 +1282,11 @@ function findHeroesWithItem(itemId) {
     for (const rc in HERO_BUILD_DATA) {
       const d = HERO_BUILD_DATA[rc];
       if (!d.group || !d.heroId) continue;
+      // Альт-формы скрыты — у них нет страниц героев, ссылки были бы битыми
+      if (typeof HEROES_DATA !== 'undefined') {
+        const hero = HEROES_DATA.find(h => h.heroId === d.heroId);
+        if (hero && hero.isAltForm) continue;
+      }
       if (!groupHeroes[d.group]) groupHeroes[d.group] = [];
       groupHeroes[d.group].push({ id: d.heroId, name: heroNames[d.heroId] || d.name });
     }
