@@ -58,14 +58,6 @@
             <div id="hero-description"></div>
             <div id="hero-lore"></div>
 
-            <div class="recipe-title"><i class="fas fa-exchange-alt"></i> Формы героя</div>
-            <div class="forms-grid">
-                <div class="form-card">
-                    <div class="form-name"><i class="fas fa-fire" style="margin-right:8px"></i>Хаотическая Форма</div>
-                    <div class="form-desc">Альтернативная форма Привратника Ада: собственный набор характеристик и способностей. По уровням меняются перезарядка и длительность способностей формы.</div>
-                </div>
-            </div>
-
             <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
             <div id="hero-build"></div>
             <div class="hero-page-links">
@@ -74,6 +66,13 @@
             </div>
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
+            <div class="form-tabs">
+                <button class="form-tab active" onclick="switchForm(this, 'base')"><i class="fas fa-fire"></i> Основная форма</button>
+                <button class="form-tab alt-form" onclick="switchForm(this, 'alt')"><i class="fas fa-skull"></i> Хаотическая Форма</button>
+            </div>
+
+            <!-- Основная форма -->
+            <div class="form-abilities active" id="form-base">
             <div class="abilities-grid">
 
                 <!-- Q: Огненный шар -->
@@ -96,7 +95,7 @@
                     </div>
                 </div>
 
-                <!-- W: Рывок огня — НУЖНО РУЧНОЕ ОПИСАНИЕ -->
+                <!-- W: Рывок огня -->
                 <div class="ability-card active">
                     <div class="ability-header">
                         <div class="ability-icon" data-ability="fire_dash" data-fallback="fire"></div>
@@ -108,7 +107,9 @@
                     </div>
                     <div class="ability-desc">Герой покрывает своё оружие пламенем, затем подлетает к противнику и наносит серьёзный урон. Урон по цели считается атакой.</div>
                     <div class="ability-params">
-                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">170</span></div>
+                        <div class="param-row"><span class="param-label">Урон</span><span class="param-values">250 + STR × 3/4/5/6/7</span></div>
+                        <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">900/1000/1100/1200/1300</span></div>
+                        <div class="param-row"><span class="param-label">Мана</span><span class="param-values">170/210/250/290/330</span></div>
                         <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
                     </div>
                 </div>
@@ -175,10 +176,138 @@
                     </div>
                 </div>
             </div>
+            </div>
+
+            <!-- Хаотическая Форма (альт-форма) -->
+            <div class="form-abilities" id="form-alt">
+                <div class="form-stats-bar">
+                    <span class="form-stats-title"><i class="fas fa-skull"></i> Статы формы:</span>
+                    <span class="form-stat"><b>HP</b> 1600</span>
+                    <span class="form-stat"><b>Атака</b> 130</span>
+                    <span class="form-stat"><b>Защита</b> 12</span>
+                    <span class="form-stat"><b>Скорость</b> 390</span>
+                    <span class="form-stat"><b>Сила</b> 30 +5</span>
+                    <span class="form-stat"><b>Ловкость</b> 15 +1.5</span>
+                    <span class="form-stat"><b>Интеллект</b> 15 +1.5</span>
+                </div>
+                <div class="abilities-grid">
+
+                    <!-- Q: Огненный шар (дубль) -->
+                    <div class="ability-card active">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="fireball" data-fallback="fire"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">Q</span>
+                                <div class="ability-name">Огненный шар</div>
+                                <div class="ability-type-badge">Активная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Бросок огненного шара в указанную цель. Наносит урон всем врагам вокруг цели.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Урон</span><span class="param-values">200/400/600/800/1000 + STR×2</span></div>
+                            <div class="param-row"><span class="param-label">Область</span><span class="param-values">450</span></div>
+                            <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">900/1000/1100/1200/1300</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">225/275/325/375/425</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">10 сек</span></div>
+                        </div>
+                    </div>
+
+                    <!-- W: Рывок огня (дубль) -->
+                    <div class="ability-card active">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="fire_dash" data-fallback="fire"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">W</span>
+                                <div class="ability-name">Рывок огня</div>
+                                <div class="ability-type-badge">Активная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Герой покрывает своё оружие пламенем, затем подлетает к противнику и наносит серьёзный урон. Урон по цели считается атакой.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Урон</span><span class="param-values">250 + STR × 3/4/5/6/7</span></div>
+                            <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">900/1000/1100/1200/1300</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">170/210/250/290/330</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
+                        </div>
+                    </div>
+
+                    <!-- E: Хаотическая форма (морф-переключатель) -->
+                    <div class="ability-card active">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="chaos_form" data-fallback="skull"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">E</span>
+                                <div class="ability-name">Хаотическая форма</div>
+                                <div class="ability-type-badge">Морф</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Герой принимает хаотичную форму огненного огромного демона с огненным мечом. Форма временна — по окончании длительности герой возвращается в обычный облик.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Базовый урон</span><span class="param-values">+100</span></div>
+                            <div class="param-row"><span class="param-label">Защита</span><span class="param-values">+10</span></div>
+                            <div class="param-row"><span class="param-label">Скорость бега</span><span class="param-values">+100</span></div>
+                            <div class="param-row"><span class="param-label">Здоровье</span><span class="param-values">+800</span></div>
+                            <div class="param-row"><span class="param-label">Регенерация</span><span class="param-values">+20 ед/сек</span></div>
+                            <div class="param-row"><span class="param-label">Урон заклинаний</span><span class="param-values">+15%</span></div>
+                            <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">10/15/20/25/30 сек</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">350</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">33 сек</span></div>
+                        </div>
+                    </div>
+
+                    <!-- R: Огненный Рев (дубль) -->
+                    <div class="ability-card ultimate">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="fire_roar" data-fallback="bolt"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">R</span>
+                                <div class="ability-name">Огненный Рев</div>
+                                <div class="ability-type-badge">Ультимейт</div>
+                                <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Всепожирающий поток пламени, сжигающий всё на пути. Область сужается по мере удаления.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Область</span><span class="param-values">425 → 100 (сужается)</span></div>
+                            <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1600</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">450/550/650/750/850</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">130 сек</span></div>
+                            <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
+                        </div>
+                    </div>
+
+                    <!-- F: Огненный меч (дубль) -->
+                    <div class="ability-card passive">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="fire_sword" data-fallback="star"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">F</span>
+                                <div class="ability-name">Огненный меч</div>
+                                <div class="ability-type-badge">Пассивная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">При каждой атаке есть шанс нанести урон по области или критический удар.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Крит</span><span class="param-values">20% шанс ×1.7 урона</span></div>
+                            <div class="param-row"><span class="param-label">Сплэш</span><span class="param-values">20% шанс (75 + STR×1), область 250</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
 
             <a href="../heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
         </div>
     </div>
+    <script>
+        function switchForm(btn, formId) {
+            const container = btn.closest('.hero-page-container');
+            container.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
+            container.querySelectorAll('.form-abilities').forEach(f => f.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('form-' + formId).classList.add('active');
+        }
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var statsContainer = document.getElementById('hero-stats');

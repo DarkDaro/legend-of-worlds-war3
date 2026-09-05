@@ -57,14 +57,6 @@
             <div id="hero-description"></div>
             <div id="hero-lore"></div>
 
-            <div class="recipe-title"><i class="fas fa-exchange-alt"></i> Формы героя</div>
-            <div class="forms-grid">
-                <div class="form-card">
-                    <div class="form-name"><i class="fas fa-mask" style="margin-right:8px"></i>Демоническая Форма</div>
-                    <div class="form-desc">Альтернативная форма Иллюзиониста: собственный набор характеристик и способностей. По уровням меняются перезарядка и длительность способностей формы.</div>
-                </div>
-            </div>
-
             <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
             <div id="hero-build"></div>
             <div class="hero-page-links">
@@ -74,6 +66,13 @@
             </div>
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
+            <div class="form-tabs">
+                <button class="form-tab active" onclick="switchForm(this, 'base')"><i class="fas fa-user-ninja"></i> Основная форма</button>
+                <button class="form-tab alt-form" onclick="switchForm(this, 'alt')"><i class="fas fa-skull"></i> Демоническая Форма</button>
+            </div>
+
+            <!-- Основная форма -->
+            <div class="form-abilities active" id="form-base">
             <div class="abilities-grid">
 
                 <!-- Q: Иллюзия -->
@@ -181,9 +180,140 @@
                 </div>
 
             </div>
+            </div>
+
+            <!-- Демоническая форма -->
+            <div class="form-abilities" id="form-alt">
+                <div class="form-stats-bar">
+                    <span class="form-stats-title"><i class="fas fa-skull"></i> Статы формы:</span>
+                    <span class="form-stat"><b>HP</b> 1200</span>
+                    <span class="form-stat"><b>Атака</b> 170</span>
+                    <span class="form-stat"><b>Защита</b> 4</span>
+                    <span class="form-stat"><b>Скорость</b> 320</span>
+                    <span class="form-stat"><b>Сила</b> 17 +1.5</span>
+                    <span class="form-stat"><b>Ловкость</b> 22 +4.5</span>
+                    <span class="form-stat"><b>Интеллект</b> 18 +2.0</span>
+                </div>
+                <div class="abilities-grid">
+
+                    <!-- Q: Иллюзия (дубль) -->
+                    <div class="ability-card active">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="mirror" data-fallback="fas fa-users"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">Q</span>
+                                <div class="ability-name">Иллюзия</div>
+                                <div class="ability-type-badge">Активная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Герой создаёт 3 иллюзии самого себя, которые получают 450% урона, а наносят 25% от атаки героя. Создание иллюзий наносит урон вокруг героя в радиусе 350.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Урон</span><span class="param-values">150/300/450/600/750 + AGI × 0.4/0.8/1.2/1.6/2</span></div>
+                            <div class="param-row"><span class="param-label">Радиус</span><span class="param-values">350</span></div>
+                            <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">15 сек</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/165/205/245/285</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">18 сек</span></div>
+                        </div>
+                    </div>
+
+                    <!-- W: Фантомные клинки (дубль) -->
+                    <div class="ability-card passive">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="blades" data-fallback="fas fa-ghost"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">W</span>
+                                <div class="ability-name">Фантомные клинки</div>
+                                <div class="ability-type-badge">Пассивная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Атакуя, есть шанс найти слабое место противника и нанести критический удар.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Шанс</span><span class="param-values">15%</span></div>
+                            <div class="param-row"><span class="param-label">Множитель</span><span class="param-values">×1.75/2.10/2.45/2.80/3.15</span></div>
+                        </div>
+                    </div>
+
+                    <!-- E: Отражение души (дубль) -->
+                    <div class="ability-card active">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="confuse" data-fallback="fas fa-random"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">E</span>
+                                <div class="ability-name">Отражение души</div>
+                                <div class="ability-type-badge">Активная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Иллюзионист отрывает частицу души всех юнитов в указанной области. Если частица души принадлежит герою, призывается его копия. Иллюзии наносят 40% урона, а получают 250%.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Область</span><span class="param-values">275/325/375/425/475</span></div>
+                            <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">800</span></div>
+                            <div class="param-row"><span class="param-label">Урон по крипам</span><span class="param-values">20 × уровень героя + 300/500/700/900/1100</span></div>
+                            <div class="param-row"><span class="param-label">Урон по героям</span><span class="param-values">20 × уровень героя + INT × 2</span></div>
+                            <div class="param-row"><span class="param-label">Длительность иллюзий</span><span class="param-values">4 сек</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">170/210/250/290/330</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
+                        </div>
+                    </div>
+
+                    <!-- R: Перевоплощение (морф-переключатель) -->
+                    <div class="ability-card ultimate">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="mirage" data-fallback="fas fa-magic"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">R</span>
+                                <div class="ability-name">Перевоплощение</div>
+                                <div class="ability-type-badge">Морф</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Герой принимает форму ужасного демона, обретая хаосную атаку дальнего боя 600. При применении издаёт леденящий крик, снижающий силу атаки врагов на 40% и защиту на 10 ед. Форма временна — повторное применение не требуется, работает на основе эликсира ярости.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Здоровье</span><span class="param-values">+1000</span></div>
+                            <div class="param-row"><span class="param-label">Атака</span><span class="param-values">+100</span></div>
+                            <div class="param-row"><span class="param-label">Регенерация</span><span class="param-values">+60 ед/сек</span></div>
+                            <div class="param-row"><span class="param-label">Урон заклинаний</span><span class="param-values">+30%</span></div>
+                            <div class="param-row"><span class="param-label">Длительность формы</span><span class="param-values">20/25/30/35/40 сек</span></div>
+                            <div class="param-row"><span class="param-label">Крик</span><span class="param-values">−40% сила атаки, −10 защита врагов (6 сек)</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">550</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">120 сек</span></div>
+                        </div>
+                    </div>
+
+                    <!-- F: Разящая тень (дубль) -->
+                    <div class="ability-card active">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="shadow" data-fallback="fas fa-bolt"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">F</span>
+                                <div class="ability-name">Разящая тень</div>
+                                <div class="ability-type-badge">Активная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Герой перемещается в указанную точку, оставляя на прежнем месте иллюзию на 10 секунд, затем наносит небольшой урон в области перемещения. Иллюзия наносит 20% урона, а получает 200%.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Урон</span><span class="param-values">300 + AGI × 0.5</span></div>
+                            <div class="param-row"><span class="param-label">Дистанция</span><span class="param-values">1000</span></div>
+                            <div class="param-row"><span class="param-label">Иллюзия</span><span class="param-values">20% урон, 200% получаемый</span></div>
+                            <div class="param-row"><span class="param-label">Длительность иллюзии</span><span class="param-values">10 сек</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">100/135/170</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">12 сек</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
             <a href="../heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
         </div>
     </div>
+        <script>
+        function switchForm(btn, formId) {
+            const container = btn.closest('.hero-page-container');
+            container.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
+            container.querySelectorAll('.form-abilities').forEach(f => f.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('form-' + formId).classList.add('active');
+        }
+        </script>
         <script>
         document.addEventListener('DOMContentLoaded', function() {
             var statsContainer = document.getElementById('hero-stats');

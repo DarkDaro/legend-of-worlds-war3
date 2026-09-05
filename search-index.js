@@ -1357,27 +1357,27 @@ var SEARCH_INDEX = {
   {
     "name": "Волна ярости",
     "heroId": "rider",
-    "heroName": "Ночной Всадник"
+    "heroName": "Всадник"
   },
   {
     "name": "Аура ярости",
     "heroId": "rider",
-    "heroName": "Ночной Всадник"
+    "heroName": "Всадник"
   },
   {
     "name": "Яростные Удары",
     "heroId": "rider",
-    "heroName": "Ночной Всадник"
+    "heroName": "Всадник"
   },
   {
     "name": "Огненная кровь",
     "heroId": "rider",
-    "heroName": "Ночной Всадник"
+    "heroName": "Всадник"
   },
   {
     "name": "Сеть",
     "heroId": "rider",
-    "heroName": "Ночной Всадник"
+    "heroName": "Всадник"
   },
   {
     "name": "Невидимость",

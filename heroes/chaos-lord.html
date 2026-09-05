@@ -57,14 +57,6 @@
             <div id="hero-description"></div>
             <div id="hero-lore"></div>
 
-            <div class="recipe-title"><i class="fas fa-exchange-alt"></i> Формы героя</div>
-            <div class="forms-grid">
-                <div class="form-card">
-                    <div class="form-name"><i class="fas fa-skull" style="margin-right:8px"></i>Лорд Хаоса</div>
-                    <div class="form-desc">Альтернативная форма Лорда Хаоса: собственный набор характеристик и способностей. По уровням меняются перезарядка и длительность способностей формы.</div>
-                </div>
-            </div>
-
             <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
             <div id="hero-build"></div>
             <div class="hero-page-links">
@@ -73,6 +65,13 @@
             </div>
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
+            <div class="form-tabs">
+                <button class="form-tab active" onclick="switchForm(this, 'base')"><i class="fas fa-fist-raised"></i> Основная форма</button>
+                <button class="form-tab alt-form" onclick="switchForm(this, 'alt')"><i class="fas fa-skull"></i> Ярость</button>
+            </div>
+
+            <!-- Основная форма -->
+            <div class="form-abilities active" id="form-base">
             <div class="abilities-grid">
 
                 <!-- Q: Темная стая -->
@@ -175,9 +174,160 @@
                 </div>
 
             </div>
+            </div>
+
+            <!-- Ярость (альт-форма) -->
+            <div class="form-abilities" id="form-alt">
+                <div class="form-stats-bar">
+                    <span class="form-stats-title"><i class="fas fa-skull"></i> Статы формы:</span>
+                    <span class="form-stat"><b>HP</b> 1700</span>
+                    <span class="form-stat"><b>Атака</b> 170 (хаос)</span>
+                    <span class="form-stat"><b>Защита</b> 2</span>
+                    <span class="form-stat"><b>Скорость</b> 522 (макс.)</span>
+                    <span class="form-stat"><b>Сила</b> 22 +4.5</span>
+                    <span class="form-stat"><b>Ловкость</b> 16 +2</span>
+                    <span class="form-stat"><b>Интеллект</b> 18 +1.5</span>
+                </div>
+                <div class="abilities-grid">
+
+                    <!-- Q: Темная стая (дубль) -->
+                    <div class="ability-card active">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="dark_flock" data-fallback="crow"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">Q</span>
+                                <div class="ability-name">Темная стая</div>
+                                <div class="ability-type-badge">Активная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Стая летучих мышей, наносящих урон врагам в области 300. В Ярости урон увеличивается.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Урон</span><span class="param-values">STR + 300/550/600/750/900</span></div>
+                            <div class="param-row"><span class="param-label">Урон в Ярости</span><span class="param-values">STR×3 + 300/550/600/750/900</span></div>
+                            <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">900</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">110/150/190/230/270</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">13 сек</span></div>
+                        </div>
+                    </div>
+
+                    <!-- W: Энергетический удар (дубль) -->
+                    <div class="ability-card active">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="energy_strike" data-fallback="bolt"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">W</span>
+                                <div class="ability-name">Энергетический удар</div>
+                                <div class="ability-type-badge">Активная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Выпускает импульс энергии, затем перемещается за спину врагу с оглушающей атакой. В Ярости урон по области 425.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">900</span></div>
+                            <div class="param-row"><span class="param-label">Область в Ярости</span><span class="param-values">425</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">125/170/215/260/305</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">18 сек</span></div>
+                        </div>
+                    </div>
+
+                    <!-- E: Каменный дождь (дубль) -->
+                    <div class="ability-card active">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="stone_rain" data-fallback="meteor"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">E</span>
+                                <div class="ability-name">Каменный дождь</div>
+                                <div class="ability-type-badge">Активная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Град раскаленных камней вокруг героя, оглушающих врагов и наносящих урон.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Урон</span><span class="param-values">STR×0.5 + 100/200/300/400/500</span></div>
+                            <div class="param-row"><span class="param-label">Камней</span><span class="param-values">8/10/12/14/16</span></div>
+                            <div class="param-row"><span class="param-label">Оглушение</span><span class="param-values">0.6 сек</span></div>
+                            <div class="param-row"><span class="param-label">Область</span><span class="param-values">500</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">150/200/250/300/350</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">25 сек</span></div>
+                        </div>
+                    </div>
+
+                    <!-- R: Ярость (морф-переключатель) -->
+                    <div class="ability-card ultimate">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="rage" data-fallback="fist-raised"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">R</span>
+                                <div class="ability-name">Ярость</div>
+                                <div class="ability-type-badge">Морф</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Герой впадает в ярость, что дарует ему максимальную скорость бега и хаосную атаку. Добавляет герою новую способность Бушующее пламя. Форма временна — по окончании длительности герой возвращается в обычный облик.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Здоровье</span><span class="param-values">+1000</span></div>
+                            <div class="param-row"><span class="param-label">Атака</span><span class="param-values">+100</span></div>
+                            <div class="param-row"><span class="param-label">Регенерация</span><span class="param-values">+50</span></div>
+                            <div class="param-row"><span class="param-label">Базовое время атаки</span><span class="param-values">1.7 сек</span></div>
+                            <div class="param-row"><span class="param-label">Урон заклинаний</span><span class="param-values">+30%</span></div>
+                            <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">20/30/40/50/60 сек</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">500</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100 сек</span></div>
+                        </div>
+                    </div>
+
+                    <!-- R в форме: Бушующее пламя -->
+                    <div class="ability-card ultimate">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="raging_flame" data-fallback="fire"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">R</span>
+                                <div class="ability-name">Бушующее пламя</div>
+                                <div class="ability-type-badge">В форме</div>
+                                <span class="ability-tag scepter"><i class="fas fa-gem"></i> Скипетр</span>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Герой материализует адское пламя вокруг себя. Все противники, попавшие под действие заклинания, получат урон.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Урон</span><span class="param-values">600/800/1000/1200/1400 + STR × 6/8/10/12/14</span></div>
+                            <div class="param-row"><span class="param-label">Макс. область поражения огня</span><span class="param-values">950</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">500</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">100 сек</span></div>
+                            <div class="param-row scepter-row"><span class="param-label"><i class="fas fa-gem"></i> Скипетр Владыки</span><span class="param-values">10% шанс мгновенной перезарядки</span></div>
+                        </div>
+                    </div>
+
+                    <!-- F: Боевое Превосходство (дубль) -->
+                    <div class="ability-card passive">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="combat_supremacy" data-fallback="shield-halved"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">F</span>
+                                <div class="ability-name">Боевое Превосходство</div>
+                                <div class="ability-type-badge">Пассивная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Увеличивает силу атаки дружественных войск поблизости. Шанс нанести дополнительный урон.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Усиление атаки</span><span class="param-values">+20%</span></div>
+                            <div class="param-row"><span class="param-label">Шанс доп. урона</span><span class="param-values">20%</span></div>
+                            <div class="param-row"><span class="param-label">Доп. урон</span><span class="param-values">100 + STR</span></div>
+                            <div class="param-row"><span class="param-label">Область</span><span class="param-values">900</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
             <a href="../heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
         </div>
     </div>
+        <script>
+        function switchForm(btn, formId) {
+            const container = btn.closest('.hero-page-container');
+            container.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
+            container.querySelectorAll('.form-abilities').forEach(f => f.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('form-' + formId).classList.add('active');
+        }
+        </script>
         <script>
         document.addEventListener('DOMContentLoaded', function() {
             var statsContainer = document.getElementById('hero-stats');

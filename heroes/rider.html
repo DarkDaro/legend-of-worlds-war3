@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <link rel="icon" href="../images/logo.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ночной Всадник · Герои · Legend of Worlds</title>
-    <meta property="og:title" content="Ночной Всадник — Legend of Worlds">
-    <meta property="og:description" content="Ночной Всадник — герой Арены Миров. Способности, статы, тактика.">
+    <title>Всадник · Герои · Legend of Worlds</title>
+    <meta property="og:title" content="Всадник — Legend of Worlds">
+    <meta property="og:description" content="Всадник — герой Арены Миров. Способности, статы, тактика.">
     <meta property="og:image" content="../images/preview.png">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -46,24 +46,16 @@
         </nav>
     </header>
     <div class="wiki-container">
-        <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="../heroes.html">Герои</a><span class="sep">›</span><span class="current">Ночной Всадник</span></div>
+        <div class="breadcrumbs"><a href="../index.html">Главная</a><span class="sep">›</span><a href="../heroes.html">Герои</a><span class="sep">›</span><span class="current">Всадник</span></div>
         <div class="hero-page-container">
             <div class="panel-header">
                 <div class="detail-icon"><img loading="lazy" src="../images/heroes/rider.png" alt="" width="96" height="96"></div>
-                <div class="detail-title">Ночной Всадник <span class="detail-badge">Сила</span></div>
+                <div class="detail-title">Всадник <span class="detail-badge">Сила</span></div>
             </div>
             <div id="hero-nav"></div>
             <div id="hero-stats"></div>
             <div id="hero-description"></div>
             <div id="hero-lore"></div>
-
-            <div class="recipe-title"><i class="fas fa-exchange-alt"></i> Формы героя</div>
-            <div class="forms-grid">
-                <div class="form-card">
-                    <div class="form-name"><i class="fas fa-horse" style="margin-right:8px"></i>Всадник (верхом)</div>
-                    <div class="form-desc">Альтернативная форма Ночного Всадника: собственный набор характеристик и способностей. По уровням меняются перезарядка и длительность способностей формы.</div>
-                </div>
-            </div>
 
             <div class="recipe-title"><i class="fas fa-shield-alt"></i> Рекомендуемая сборка</div>
             <div id="hero-build"></div>
@@ -73,6 +65,13 @@
             </div>
 
             <div class="recipe-title"><i class="fas fa-magic"></i> Способности</div>
+            <div class="form-tabs">
+                <button class="form-tab active" onclick="switchForm(this, 'base')"><i class="fas fa-horse"></i> Основная форма</button>
+                <button class="form-tab alt-form" onclick="switchForm(this, 'alt')"><i class="fas fa-fire"></i> Огненная кровь</button>
+            </div>
+
+            <!-- Основная форма -->
+            <div class="form-abilities active" id="form-base">
             <div class="abilities-grid">
 
                 <!-- Q: Волна ярости -->
@@ -177,9 +176,138 @@
                 </div>
 
             </div>
+            </div>
+
+            <!-- Огненная кровь (альт-форма) -->
+            <div class="form-abilities" id="form-alt">
+                <div class="form-stats-bar">
+                    <span class="form-stats-title"><i class="fas fa-fire"></i> Статы формы:</span>
+                    <span class="form-stat"><b>HP</b> 1250</span>
+                    <span class="form-stat"><b>Атака</b> 177</span>
+                    <span class="form-stat"><b>Защита</b> 1</span>
+                    <span class="form-stat"><b>Скорость</b> 522 (макс.)</span>
+                    <span class="form-stat"><b>Сила</b> 25 +4.5</span>
+                    <span class="form-stat"><b>Ловкость</b> 19 +2</span>
+                    <span class="form-stat"><b>Интеллект</b> 16 +1.5</span>
+                </div>
+                <div class="abilities-grid">
+
+                    <!-- Q: Волна ярости (дубль) -->
+                    <div class="ability-card active">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="rage_wave" data-fallback="bolt"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">Q</span>
+                                <div class="ability-name">Волна ярости</div>
+                                <div class="ability-type-badge">Активная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Мощный выплеск энергии, наносящий урон всем врагам.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Урон</span><span class="param-values">240/380/520/660/800 + STR×3</span></div>
+                            <div class="param-row"><span class="param-label">Область</span><span class="param-values">350</span></div>
+                            <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1200</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">175/215/255/295/335</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">11 сек</span></div>
+                        </div>
+                    </div>
+
+                    <!-- W: Аура ярости (дубль) -->
+                    <div class="ability-card aura">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="rage_aura" data-fallback="fire"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">W</span>
+                                <div class="ability-name">Аура ярости</div>
+                                <div class="ability-type-badge">Аура</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Союзники вокруг получают бонус к скорости атаки и бега.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Скорость атаки</span><span class="param-values">+20%/25%/30%/35%/40%</span></div>
+                            <div class="param-row"><span class="param-label">Скорость бега</span><span class="param-values">+4%/8%/16%/24%/32%</span></div>
+                            <div class="param-row"><span class="param-label">Область</span><span class="param-values">500</span></div>
+                        </div>
+                    </div>
+
+                    <!-- E: Яростные Удары (дубль) -->
+                    <div class="ability-card active">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="rage_strikes" data-fallback="hand-fist"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">E</span>
+                                <div class="ability-name">Яростные Удары</div>
+                                <div class="ability-type-badge">Активная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Высвобождает ярость, нанося критические удары. Может быть развеян!</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Шанс крита</span><span class="param-values">40%</span></div>
+                            <div class="param-row"><span class="param-label">Множитель</span><span class="param-values">×1.4/2.1/2.8/3.5/4.2</span></div>
+                            <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">8 сек</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">120/160/200/240/280</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">20 сек</span></div>
+                        </div>
+                    </div>
+
+                    <!-- R: Огненная кровь (морф-переключатель) -->
+                    <div class="ability-card ultimate">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="fire_blood" data-fallback="fire-flame-curved"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">R</span>
+                                <div class="ability-name">Огненная кровь</div>
+                                <div class="ability-type-badge">Морф</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Непреодолимая ярость охватывает воина, заставляя его кровь вскипать и бурлить подобно лаве и наделяя его огромной скоростью. Форма временна — по окончании длительности герой возвращается в обычный облик.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Атака</span><span class="param-values">+150</span></div>
+                            <div class="param-row"><span class="param-label">Здоровье</span><span class="param-values">+1000</span></div>
+                            <div class="param-row"><span class="param-label">Время атаки</span><span class="param-values">1.0 сек</span></div>
+                            <div class="param-row"><span class="param-label">Скорость бега</span><span class="param-values">максимальная</span></div>
+                            <div class="param-row"><span class="param-label">Урон заклинаний</span><span class="param-values">+20%</span></div>
+                            <div class="param-row"><span class="param-label">Длительность</span><span class="param-values">10/15/20/25/30 сек</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">450</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">130/120/110/100/90 сек</span></div>
+                        </div>
+                    </div>
+
+                    <!-- F: Сеть (дубль) -->
+                    <div class="ability-card active">
+                        <div class="ability-header">
+                            <div class="ability-icon" data-ability="net" data-fallback="link"></div>
+                            <div class="ability-info">
+                                <span class="ability-hotkey">F</span>
+                                <div class="ability-name">Сеть</div>
+                                <div class="ability-type-badge">Активная</div>
+                            </div>
+                        </div>
+                        <div class="ability-desc">Ловит всех врагов в области в сеть, обездвиживая их.</div>
+                        <div class="ability-params">
+                            <div class="param-row"><span class="param-label">Обездвиживание</span><span class="param-values">2.5/3/3.5 сек</span></div>
+                            <div class="param-row"><span class="param-label">Область</span><span class="param-values">425</span></div>
+                            <div class="param-row"><span class="param-label">Дальность</span><span class="param-values">1200</span></div>
+                            <div class="param-row"><span class="param-label">Мана</span><span class="param-values">15</span></div>
+                            <div class="param-row"><span class="param-label">Перезарядка</span><span class="param-values">14 сек</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
             <a href="../heroes.html" class="btn-secondary"><i class="fas fa-arrow-left"></i> Вернуться к героям</a>
         </div>
     </div>
+        <script>
+        function switchForm(btn, formId) {
+            const container = btn.closest('.hero-page-container');
+            container.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
+            container.querySelectorAll('.form-abilities').forEach(f => f.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('form-' + formId).classList.add('active');
+        }
+        </script>
         <script>
         document.addEventListener('DOMContentLoaded', function() {
             var statsContainer = document.getElementById('hero-stats');
