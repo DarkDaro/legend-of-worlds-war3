@@ -611,6 +611,34 @@
     color: #bf7fff;
     box-shadow: 0 0 12px #bf7fff44;
 }
+/* === Формы героя (вкладки на странице основного героя) === */
+.form-stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid #bf7fff44;
+    border-radius: 10px;
+}
+.form-stats-title {
+    color: #bf7fff;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+.form-stat {
+    color: #c0d4ff;
+    font-size: 0.8rem;
+}
+.form-stat b {
+    color: #bf7fff;
+    font-weight: 600;
+    margin-right: 4px;
+}
 /* === Формы героя (инфо-блок на странице основного героя) === */
 .forms-grid {
     display: grid;

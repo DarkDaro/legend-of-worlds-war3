@@ -762,13 +762,16 @@ var ABILITY_STATS = {
   },
   "A1AG": {
     "rawcode": "A1AG",
-    "name": "Паралич",
-    "hotkey": "Q",
+    "name": "Поиск жертвы",
+    "hotkey": "F",
     "type": "active",
     "cool": [
       15
     ],
-    "area": 700
+    "area": 700,
+    "cc": "Метка: −5 брони, раскрытие (5 сек)",
+    "area": 1750,
+    "cool": [25],
   },
   "A1AI": {
     "rawcode": "A1AI",
@@ -2828,13 +2831,17 @@ var ABILITY_STATS = {
   },
   "A0XU": {
     "rawcode": "A0XU",
-    "name": "Звериный рев",
-    "hotkey": "Q",
+    "name": "Кровожадность",
+    "hotkey": "F",
     "type": "active",
     "cool": [
       15
     ],
-    "area": 400
+    "area": 400,
+    "damage": "150 + 20×уровень героя",
+    "area": 300,
+    "cool": [14],
+    "buffs": "Скорость боя +35%, скорость бега +15% (10 сек)",
   },
   "A0A0": {
     "rawcode": "A0A0",
@@ -4326,8 +4333,8 @@ var ABILITY_STATS = {
   },
   "A0P3": {
     "rawcode": "A0P3",
-    "name": "Плевок яда",
-    "hotkey": "Q",
+    "name": "Ядовитая слюна",
+    "hotkey": "F",
     "type": "active",
     "damage": [
       {
@@ -4347,7 +4354,8 @@ var ABILITY_STATS = {
     "cool": [
       16
     ],
-    "area": 400
+    "area": 400,
+    "damage": "75 + INT×0.7 за 5 сек (20% шанс), замедление 20%",
   },
   "A0P2": {
     "rawcode": "A0P2",
@@ -6034,9 +6042,10 @@ var ABILITY_STATS = {
   },
   "A1AP": {
     "rawcode": "A1AP",
-    "name": "Удар когтями",
+    "name": "Зов Луны",
     "hotkey": "Q",
-    "type": "passive"
+    "type": "passive",
+    "damage": "Ночью: +20/+40 силы и ловкости, обзор 1800, +100% скорость"
   },
   "A1CM": {
     "rawcode": "A1CM",
@@ -9410,7 +9419,8 @@ var ABILITY_STATS = {
     "type": "active",
     "cool": [
       10
-    ]
+    ],
+    "wip": true,
   },
   "A0U9": {
     "rawcode": "A0U9",
@@ -9419,7 +9429,10 @@ var ABILITY_STATS = {
     "type": "active",
     "cool": [
       14
-    ]
+    ],
+    "cc": "Оглушение 1.25 сек",
+    "area": 325,
+    "damage": "Бросок (дальность 600/700/800)",
   },
   "A0UJ": {
     "rawcode": "A0UJ",
@@ -9428,13 +9441,15 @@ var ABILITY_STATS = {
     "type": "active",
     "cool": [
       8
-    ]
+    ],
+    "damage": "200/300/400 + AGI",
   },
   "A0V9": {
     "rawcode": "A0V9",
     "name": "Огненный меч",
     "hotkey": "F",
-    "type": "passive"
+    "type": "passive",
+    "damage": "Крит 20% x1.7/1.85/2.0; сплэш 20% (75/100/125 + STR), обл 250",
   },
   "A0ZM": {
     "rawcode": "A0ZM",
@@ -9443,7 +9458,8 @@ var ABILITY_STATS = {
     "type": "active",
     "cool": [
       12
-    ]
+    ],
+    "wip": true,
   },
   "A177": {
     "rawcode": "A177",
@@ -9461,7 +9477,8 @@ var ABILITY_STATS = {
     "type": "active",
     "cool": [
       40
-    ]
+    ],
+    "wip": true,
   },
   "A007": {
     "rawcode": "A007",
@@ -9485,12 +9502,66 @@ var ABILITY_STATS = {
     "rawcode": "A13A",
     "name": "Зов возмездия",
     "hotkey": "F",
-    "type": "passive"
+    "type": "passive",
+    "damage": "AGI×2 + 100 (шанс 10%), лечение 50% от урона",
   },
-  "A18U": {
+    "wip": true,
+    "A053": {
+    "rawcode": "A053",
+    "name": "Гнев природы",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": 100,
+    "area": 400,
+  },
+  "A0BR": {
+    "rawcode": "A0BR",
+    "name": "Свирепый молот",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": 25,
+  },
+  "A1AV": {
+    "rawcode": "A1AV",
+    "name": "Бушующее пламя",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": 100,
+  },
+  "A0R9": {
+    "rawcode": "A0R9",
+    "name": "Огненный шар",
+    "hotkey": "Q",
+    "type": "active",
+    "cool": 10,
+    "area": 400,
+  },
+  "A0VN": {
+    "rawcode": "A0VN",
+    "name": "Рывок огня",
+    "hotkey": "W",
+    "type": "active",
+    "cool": 25,
+  },
+  "A0V6": {
+    "rawcode": "A0V6",
+    "name": "Хаотическая форма",
+    "hotkey": "E",
+    "type": "active",
+    "cool": 33,
+  },
+  "A19T": {
+    "rawcode": "A19T",
+    "name": "Огненный Рев",
+    "hotkey": "R",
+    "type": "ultimate",
+    "cool": 130,
+  },
+"A18U": {
     "rawcode": "A18U",
     "name": "Разящий удар",
     "hotkey": "F",
-    "type": "active"
+    "type": "active",
+    "wip": true
   }
 };
