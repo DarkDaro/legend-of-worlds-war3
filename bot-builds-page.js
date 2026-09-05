@@ -178,9 +178,12 @@ function renderGroup(groupId) {
         return;
     }
 
-    // Герои в группе
+    // Герои в группе (альт-формы скрыты — у них нет страниц героев)
+    const altFormIds = new Set((typeof HEROES_DATA !== 'undefined' ? HEROES_DATA : [])
+        .filter(h => h.isAltForm).map(h => h.heroId));
     const heroesInGroup = Object.entries(HERO_BUILD_DATA)
         .filter(([_, data]) => data.group === parseInt(groupId))
+        .filter(([_, data]) => !data.heroId || !altFormIds.has(data.heroId))
         .map(([rawcode, data]) => ({
             heroId: data.heroId || null,
             name: data.name,

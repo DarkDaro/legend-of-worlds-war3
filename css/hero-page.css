@@ -611,6 +611,31 @@
     color: #bf7fff;
     box-shadow: 0 0 12px #bf7fff44;
 }
+/* === Формы героя (инфо-блок на странице основного героя) === */
+.forms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+}
+.form-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    padding: 14px 16px;
+}
+.form-name {
+    color: #bf7fff;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.form-desc {
+    color: #c0d4ff;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
 .form-abilities {
     display: none;
 }

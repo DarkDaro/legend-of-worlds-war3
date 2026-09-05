@@ -9396,5 +9396,101 @@ var ABILITY_STATS = {
     "cool": [
       14
     ]
+  },
+  "A0FQ": {
+    "rawcode": "A0FQ",
+    "name": "Темная аура",
+    "hotkey": "F",
+    "type": "aura"
+  },
+  "A0RW": {
+    "rawcode": "A0RW",
+    "name": "Оторвать плоть",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      10
+    ]
+  },
+  "A0U9": {
+    "rawcode": "A0U9",
+    "name": "Телекинез Бросок",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      14
+    ]
+  },
+  "A0UJ": {
+    "rawcode": "A0UJ",
+    "name": "Путь огня",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      8
+    ]
+  },
+  "A0V9": {
+    "rawcode": "A0V9",
+    "name": "Огненный меч",
+    "hotkey": "F",
+    "type": "passive"
+  },
+  "A0ZM": {
+    "rawcode": "A0ZM",
+    "name": "Впитывание боли",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      12
+    ]
+  },
+  "A177": {
+    "rawcode": "A177",
+    "name": "Кровожадность вурд босс",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      10
+    ]
+  },
+  "A19B": {
+    "rawcode": "A19B",
+    "name": "Духи падших",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      40
+    ]
+  },
+  "A007": {
+    "rawcode": "A007",
+    "name": "Теневой порез",
+    "hotkey": "F",
+    "type": "passive"
+  },
+  "A00V": {
+    "rawcode": "A00V",
+    "name": "Кровожадность",
+    "hotkey": "F",
+    "type": "active"
+  },
+  "A0HY": {
+    "rawcode": "A0HY",
+    "name": "Ядовитая слюна",
+    "hotkey": "F",
+    "type": "passive"
+  },
+  "A13A": {
+    "rawcode": "A13A",
+    "name": "Зов возмездия",
+    "hotkey": "F",
+    "type": "passive"
+  },
+  "A18U": {
+    "rawcode": "A18U",
+    "name": "Разящий удар",
+    "hotkey": "F",
+    "type": "active"
   }
 };
