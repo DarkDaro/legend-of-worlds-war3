@@ -513,7 +513,7 @@ const itemsDB = {
     components: [ {itemId: 'oslo', quantity: 1}, {itemId: 'oven', quantity: 1}, {itemId: 'I015', quantity: 1}, {itemId: 'I006', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 5000} ]
   },
   I0AC: { id: 'I0AC', name: 'Коса смерти', icon: '', type: 'weapon_strength', cost: 32125,
-    description: '+200 атаки, +60 силы, +30 ловкости, +30% скорости боя, Жатва: +3 ко всем атрибутам за убийство героя, Кровоточащий удар: 100 + STRx1 (4 сек), Замедление бега: 50%, 4 сек',
+    description: '+200 атаки, +60 силы, +30 ловкости, +30% скорости боя, Жатва: +3 ко всем атрибутам за убийство героя (лимит до 100 киллов), Кровоточащий удар: 100 + STRx1 (4 сек), Замедление бега: 50%, 4 сек',
     tags: ['unique'],
     components: [ {itemId: 'I04O', quantity: 1}, {itemId: 'I03N', quantity: 1}, {itemId: 'recipe', quantity: 1, costOverride: 20000} ]
   },
