@@ -1,6 +1,6 @@
 var ABILITY_STATS = {
-  "A0IJ": {
-    "rawcode": "A0IJ",
+  "A0IN": {
+    "rawcode": "A0IN",
     "name": "Гейзер",
     "hotkey": "Q",
     "type": "active",
@@ -37,8 +37,8 @@ var ABILITY_STATS = {
     ],
     "area": 450
   },
-  "A0IN": {
-    "rawcode": "A0IN",
+  "A15R": {
+    "rawcode": "A15R",
     "name": "Меч прилива",
     "hotkey": "W",
     "type": "passive",
@@ -67,8 +67,8 @@ var ABILITY_STATS = {
       }
     ]
   },
-  "A15R": {
-    "rawcode": "A15R",
+  "A0IP": {
+    "rawcode": "A0IP",
     "name": "Призрачный корабль",
     "hotkey": "E",
     "type": "active",
@@ -101,8 +101,8 @@ var ABILITY_STATS = {
     ],
     "area": 400
   },
-  "A0IP": {
-    "rawcode": "A0IP",
+  "A0IO": {
+    "rawcode": "A0IO",
     "name": "Призрачная Флотилия",
     "hotkey": "R",
     "type": "ultimate",
@@ -122,8 +122,8 @@ var ABILITY_STATS = {
     ],
     "area": 1500
   },
-  "A0IO": {
-    "rawcode": "A0IO",
+  "A0IJ": {
+    "rawcode": "A0IJ",
     "name": "Волны",
     "hotkey": "F",
     "type": "active",
@@ -142,8 +142,8 @@ var ABILITY_STATS = {
       14
     ]
   },
-  "A0KB": {
-    "rawcode": "A0KB",
+  "A0K2": {
+    "rawcode": "A0K2",
     "name": "Циклон",
     "hotkey": "Q",
     "type": "active",
@@ -176,8 +176,8 @@ var ABILITY_STATS = {
     ],
     "area": 300
   },
-  "A0K2": {
-    "rawcode": "A0K2",
+  "A0K3": {
+    "rawcode": "A0K3",
     "name": "Мощь ветра",
     "hotkey": "W",
     "type": "active",
@@ -219,8 +219,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0K3": {
-    "rawcode": "A0K3",
+  "A0K5": {
+    "rawcode": "A0K5",
     "name": "Контроль Ветра",
     "hotkey": "E",
     "type": "active",
@@ -252,8 +252,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0K5": {
-    "rawcode": "A0K5",
+  "A0JT": {
+    "rawcode": "A0JT",
     "name": "Ураган",
     "hotkey": "R",
     "type": "ultimate",
@@ -277,8 +277,8 @@ var ABILITY_STATS = {
     ],
     "area": 20075
   },
-  "A0JT": {
-    "rawcode": "A0JT",
+  "A0KB": {
+    "rawcode": "A0KB",
     "name": "Ветер",
     "hotkey": "F",
     "type": "passive",
@@ -333,8 +333,8 @@ var ABILITY_STATS = {
     "hotkey": "F",
     "type": "passive"
   },
-  "A0UW": {
-    "rawcode": "A0UW",
+  "A0G4": {
+    "rawcode": "A0G4",
     "name": "Магический шар",
     "hotkey": "Q",
     "type": "active",
@@ -366,8 +366,8 @@ var ABILITY_STATS = {
       10
     ]
   },
-  "A0G4": {
-    "rawcode": "A0G4",
+  "A0VD": {
+    "rawcode": "A0VD",
     "name": "Ледяная стрела",
     "hotkey": "W",
     "type": "active",
@@ -399,8 +399,8 @@ var ABILITY_STATS = {
       15
     ]
   },
-  "A0VD": {
-    "rawcode": "A0VD",
+  "A0G5": {
+    "rawcode": "A0G5",
     "name": "Телекинез",
     "hotkey": "E",
     "type": "active",
@@ -432,8 +432,8 @@ var ABILITY_STATS = {
       25
     ]
   },
-  "A0G5": {
-    "rawcode": "A0G5",
+  "A0G6": {
+    "rawcode": "A0G6",
     "name": "Огненная земля",
     "hotkey": "R",
     "type": "ultimate",
@@ -458,8 +458,8 @@ var ABILITY_STATS = {
     ],
     "area": 550
   },
-  "A0G6": {
-    "rawcode": "A0G6",
+  "A0UW": {
+    "rawcode": "A0UW",
     "name": "Огненная вспышка",
     "hotkey": "F",
     "type": "active",
@@ -488,45 +488,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A15K": {
-    "rawcode": "A15K",
-    "name": "Тёмный дождь",
-    "hotkey": "Q",
-    "type": "active",
-    "damage": [
-      {
-        "base": [
-          150,
-          200,
-          250,
-          300,
-          350
-        ],
-        "statScale": {
-          "stat": "AGI",
-          "mult": 0.5
-        },
-        "hitCount": [
-          5,
-          8,
-          11,
-          14,
-          17
-        ]
-      }
-    ],
-    "cool": [
-      15
-    ],
-    "area": 300,
-    "dash": {
-      "dashRange": [
-        700
-      ]
-    }
-  },
-  "A137": {
-    "rawcode": "A137",
+  "A131": {
+    "rawcode": "A131",
     "name": "Иллюзорный скачок",
     "hotkey": "W",
     "type": "active",
@@ -554,8 +517,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A131": {
-    "rawcode": "A131",
+  "A12I": {
+    "rawcode": "A12I",
     "name": "Дух Зеры",
     "hotkey": "E",
     "type": "passive",
@@ -567,8 +530,8 @@ var ABILITY_STATS = {
       }
     ]
   },
-  "A12I": {
-    "rawcode": "A12I",
+  "A133": {
+    "rawcode": "A133",
     "name": "Нагината",
     "hotkey": "R",
     "type": "ultimate",
@@ -597,8 +560,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A133": {
-    "rawcode": "A133",
+  "A15K": {
+    "rawcode": "A15K",
     "name": "Призрачность",
     "hotkey": "F",
     "type": "active",
@@ -613,8 +576,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0F4": {
-    "rawcode": "A0F4",
+  "A0GH": {
+    "rawcode": "A0GH",
     "name": "Астральная вспышка",
     "hotkey": "Q",
     "type": "active",
@@ -638,8 +601,8 @@ var ABILITY_STATS = {
     ],
     "area": 450
   },
-  "A0GH": {
-    "rawcode": "A0GH",
+  "A0F5": {
+    "rawcode": "A0F5",
     "name": "Астральная мощь",
     "hotkey": "W",
     "type": "passive",
@@ -668,8 +631,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0F5": {
-    "rawcode": "A0F5",
+  "A16Q": {
+    "rawcode": "A16Q",
     "name": "Астральный удар",
     "hotkey": "E",
     "type": "active",
@@ -710,8 +673,8 @@ var ABILITY_STATS = {
       20
     ]
   },
-  "A16Q": {
-    "rawcode": "A16Q",
+  "A0F2": {
+    "rawcode": "A0F2",
     "name": "Астральная Сфера",
     "hotkey": "R",
     "type": "ultimate",
@@ -739,8 +702,8 @@ var ABILITY_STATS = {
     ],
     "area": 450
   },
-  "A0F2": {
-    "rawcode": "A0F2",
+  "A0F4": {
+    "rawcode": "A0F4",
     "name": "Телепортация",
     "hotkey": "F",
     "type": "active",
@@ -755,9 +718,7 @@ var ABILITY_STATS = {
         }
       }
     ],
-    "cool": [
-      10
-    ],
+    "cool": [10,9,8],
     "area": 250
   },
   "A1AG": {
@@ -765,16 +726,12 @@ var ABILITY_STATS = {
     "name": "Поиск жертвы",
     "hotkey": "F",
     "type": "active",
-    "cool": [
-      15
-    ],
+    "cool": [25, 22.5, 20],
     "area": 700,
-    "cc": "Метка: −5 брони, раскрытие (5 сек)",
-    "area": 1750,
-    "cool": [25],
+    "cc": "Метка: −5 брони, раскрытие (5 сек)"
   },
-  "A1AI": {
-    "rawcode": "A1AI",
+  "A1AE": {
+    "rawcode": "A1AE",
     "name": "Астральная стрела",
     "hotkey": "W",
     "type": "active",
@@ -791,8 +748,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A1AE": {
-    "rawcode": "A1AE",
+  "A1AK": {
+    "rawcode": "A1AK",
     "name": "Астральный разрыв",
     "hotkey": "E",
     "type": "active",
@@ -801,28 +758,15 @@ var ABILITY_STATS = {
     ],
     "area": 250
   },
-  "A1AK": {
-    "rawcode": "A1AK",
+  "A1AM": {
+    "rawcode": "A1AM",
     "name": "Астральная охота",
     "hotkey": "R",
     "type": "ultimate",
-    "cool": [
-      12
-    ]
+    "cool": [10]
   },
-  "A1AM": {
-    "rawcode": "A1AM",
-    "name": "Поиск жертвы",
-    "hotkey": "F",
-    "type": "active",
-    "cool": [
-      25,
-      22.5,
-      20
-    ]
-  },
-  "A0MI": {
-    "rawcode": "A0MI",
+  "A0ME": {
+    "rawcode": "A0ME",
     "name": "Астральный бросок",
     "hotkey": "Q",
     "type": "active",
@@ -846,8 +790,8 @@ var ABILITY_STATS = {
     ],
     "area": 500
   },
-  "A0ME": {
-    "rawcode": "A0ME",
+  "A0MB": {
+    "rawcode": "A0MB",
     "name": "Астральная молния",
     "hotkey": "W",
     "type": "active",
@@ -880,8 +824,8 @@ var ABILITY_STATS = {
     ],
     "area": 500
   },
-  "A0MB": {
-    "rawcode": "A0MB",
+  "A0Q6": {
+    "rawcode": "A0Q6",
     "name": "Астральная сфера",
     "hotkey": "E",
     "type": "active",
@@ -905,8 +849,8 @@ var ABILITY_STATS = {
     ],
     "area": 725
   },
-  "A0Q6": {
-    "rawcode": "A0Q6",
+  "A0MF": {
+    "rawcode": "A0MF",
     "name": "Астральный шторм",
     "hotkey": "R",
     "type": "ultimate",
@@ -943,8 +887,8 @@ var ABILITY_STATS = {
     ],
     "area": 1600
   },
-  "A0MF": {
-    "rawcode": "A0MF",
+  "A0MI": {
+    "rawcode": "A0MI",
     "name": "Астральное Возмездие",
     "hotkey": "F",
     "type": "passive",
@@ -1041,8 +985,8 @@ var ABILITY_STATS = {
       80
     ]
   },
-  "A0EJ": {
-    "rawcode": "A0EJ",
+  "A0BU": {
+    "rawcode": "A0BU",
     "name": "Магнитный удар",
     "hotkey": "Q",
     "type": "active",
@@ -1086,8 +1030,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0BU": {
-    "rawcode": "A0BU",
+  "A0ES": {
+    "rawcode": "A0ES",
     "name": "Сокрушение",
     "hotkey": "W",
     "type": "active",
@@ -1120,8 +1064,8 @@ var ABILITY_STATS = {
     ],
     "area": 450
   },
-  "A0ES": {
-    "rawcode": "A0ES",
+  "A179": {
+    "rawcode": "A179",
     "name": "Магическая волна",
     "hotkey": "E",
     "type": "active",
@@ -1158,8 +1102,8 @@ var ABILITY_STATS = {
     ],
     "area": 350
   },
-  "A179": {
-    "rawcode": "A179",
+  "A0EP": {
+    "rawcode": "A0EP",
     "name": "Фатальный удар",
     "hotkey": "R",
     "type": "ultimate",
@@ -1193,8 +1137,8 @@ var ABILITY_STATS = {
     ],
     "area": 200
   },
-  "A0EP": {
-    "rawcode": "A0EP",
+  "A0EJ": {
+    "rawcode": "A0EJ",
     "name": "Перелом",
     "hotkey": "F",
     "type": "passive",
@@ -1219,8 +1163,8 @@ var ABILITY_STATS = {
       }
     ]
   },
-  "A01A": {
-    "rawcode": "A01A",
+  "A1AA": {
+    "rawcode": "A1AA",
     "name": "Огненное дыхание",
     "hotkey": "Q",
     "type": "active",
@@ -1254,8 +1198,8 @@ var ABILITY_STATS = {
     ],
     "area": 150400
   },
-  "A1AA": {
-    "rawcode": "A1AA",
+  "A12E": {
+    "rawcode": "A12E",
     "name": "Бочонок с пивом",
     "hotkey": "W",
     "type": "active",
@@ -1284,8 +1228,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A12E": {
-    "rawcode": "A12E",
+  "A0KK": {
+    "rawcode": "A0KK",
     "name": "Прыжок",
     "hotkey": "E",
     "type": "active",
@@ -1323,8 +1267,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0KK": {
-    "rawcode": "A0KK",
+  "A01O": {
+    "rawcode": "A01O",
     "name": "Огненные легкие",
     "hotkey": "R",
     "type": "ultimate",
@@ -1354,53 +1298,8 @@ var ABILITY_STATS = {
       100
     ]
   },
-  "A01O": {
-    "rawcode": "A01O",
-    "name": "Пьяный мастер",
-    "hotkey": "F",
-    "type": "passive",
-    "buffs": {
-      "evasion": [
-        15
-      ]
-    }
-  },
-  "A0H7": {
-    "rawcode": "A0H7",
-    "name": "Ярость",
-    "hotkey": "Q",
-    "type": "active",
-    "damage": [
-      {
-        "base": [
-          25,
-          50,
-          75,
-          100,
-          125
-        ],
-        "statScale": {
-          "stat": "STR",
-          "mult": 0.8
-        }
-      }
-    ],
-    "cool": [
-      16
-    ],
-    "area": 250,
-    "buffs": {
-      "atkSpeed": [
-        20,
-        30,
-        40,
-        50,
-        60
-      ]
-    }
-  },
-  "A05C": {
-    "rawcode": "A05C",
+  "A15S": {
+    "rawcode": "A15S",
     "name": "Вампиризм",
     "hotkey": "W",
     "type": "passive",
@@ -1418,8 +1317,8 @@ var ABILITY_STATS = {
     ],
     "area": 600
   },
-  "A15S": {
-    "rawcode": "A15S",
+  "A0V2": {
+    "rawcode": "A0V2",
     "name": "Мясной крюк",
     "hotkey": "E",
     "type": "active",
@@ -1431,8 +1330,8 @@ var ABILITY_STATS = {
       18
     ]
   },
-  "A0V2": {
-    "rawcode": "A0V2",
+  "A00N": {
+    "rawcode": "A00N",
     "name": "Москиты",
     "hotkey": "R",
     "type": "ultimate",
@@ -1460,8 +1359,8 @@ var ABILITY_STATS = {
     ],
     "area": 2000
   },
-  "A00N": {
-    "rawcode": "A00N",
+  "A0H7": {
+    "rawcode": "A0H7",
     "name": "Крюки",
     "hotkey": "F",
     "type": "active",
@@ -1481,8 +1380,8 @@ var ABILITY_STATS = {
     ],
     "area": 350
   },
-  "A0QF": {
-    "rawcode": "A0QF",
+  "A04N": {
+    "rawcode": "A04N",
     "name": "Темная стая",
     "hotkey": "Q",
     "type": "active",
@@ -1505,8 +1404,8 @@ var ABILITY_STATS = {
       13
     ]
   },
-  "A04N": {
-    "rawcode": "A04N",
+  "A16R": {
+    "rawcode": "A16R",
     "name": "Энергетический удар",
     "hotkey": "W",
     "type": "active",
@@ -1519,8 +1418,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A16R": {
-    "rawcode": "A16R",
+  "A04X": {
+    "rawcode": "A04X",
     "name": "Каменный дождь",
     "hotkey": "E",
     "type": "active",
@@ -1560,8 +1459,8 @@ var ABILITY_STATS = {
     ],
     "area": 500
   },
-  "A04X": {
-    "rawcode": "A04X",
+  "A04R": {
+    "rawcode": "A04R",
     "name": "Ярость",
     "hotkey": "R",
     "type": "ultimate",
@@ -1577,8 +1476,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A04R": {
-    "rawcode": "A04R",
+  "A0QF": {
+    "rawcode": "A0QF",
     "name": "Боевое Превосходство",
     "hotkey": "F",
     "type": "passive",
@@ -1591,8 +1490,8 @@ var ABILITY_STATS = {
     ],
     "area": 900
   },
-  "A0UI": {
-    "rawcode": "A0UI",
+  "A0UE": {
+    "rawcode": "A0UE",
     "name": "Мистический разряд",
     "hotkey": "Q",
     "type": "active",
@@ -1626,8 +1525,8 @@ var ABILITY_STATS = {
       12
     ]
   },
-  "A0UE": {
-    "rawcode": "A0UE",
+  "A0UF": {
+    "rawcode": "A0UF",
     "name": "Аура Сопротивления",
     "hotkey": "W",
     "type": "active",
@@ -1649,8 +1548,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0UF": {
-    "rawcode": "A0UF",
+  "A0UG": {
+    "rawcode": "A0UG",
     "name": "Кровавая кара",
     "hotkey": "E",
     "type": "active",
@@ -1659,8 +1558,8 @@ var ABILITY_STATS = {
     ],
     "area": 300
   },
-  "A0UG": {
-    "rawcode": "A0UG",
+  "A0VB": {
+    "rawcode": "A0VB",
     "name": "Молнии Раздора",
     "hotkey": "R",
     "type": "ultimate",
@@ -1680,8 +1579,8 @@ var ABILITY_STATS = {
     ],
     "area": 700
   },
-  "A0VB": {
-    "rawcode": "A0VB",
+  "A0UI": {
+    "rawcode": "A0UI",
     "name": "Телекинез",
     "hotkey": "F",
     "type": "active",
@@ -1689,8 +1588,8 @@ var ABILITY_STATS = {
       14
     ]
   },
-  "A0KJ": {
-    "rawcode": "A0KJ",
+  "A00T": {
+    "rawcode": "A00T",
     "name": "Взрывные снаряды",
     "hotkey": "Q",
     "type": "active",
@@ -1713,14 +1612,14 @@ var ABILITY_STATS = {
       15
     ]
   },
-  "A00T": {
-    "rawcode": "A00T",
+  "A00F": {
+    "rawcode": "A00F",
     "name": "Техника",
     "hotkey": "W",
     "type": "passive"
   },
-  "A00F": {
-    "rawcode": "A00F",
+  "A0EZ": {
+    "rawcode": "A0EZ",
     "name": "Чакрам",
     "hotkey": "E",
     "type": "active",
@@ -1743,38 +1642,8 @@ var ABILITY_STATS = {
       15
     ]
   },
-  "A0EZ": {
-    "rawcode": "A0EZ",
-    "name": "Ракетный залп",
-    "hotkey": "R",
-    "type": "ultimate",
-    "damage": [
-      {
-        "base": [
-          1500,
-          8,
-          12,
-          16,
-          20
-        ]
-      }
-    ],
-    "cc": [
-      {
-        "type": "stun",
-        "duration": [
-          2.5
-        ],
-        "weight": 1
-      }
-    ],
-    "cool": [
-      100
-    ],
-    "area": 450
-  },
-  "A08E": {
-    "rawcode": "A08E",
+  "A0KJ": {
+    "rawcode": "A0KJ",
     "name": "Мины",
     "hotkey": "F",
     "type": "active",
@@ -1794,8 +1663,8 @@ var ABILITY_STATS = {
     ],
     "area": 200
   },
-  "A0NZ": {
-    "rawcode": "A0NZ",
+  "A0C4": {
+    "rawcode": "A0C4",
     "name": "Черная стрела",
     "hotkey": "Q",
     "type": "active",
@@ -1828,8 +1697,8 @@ var ABILITY_STATS = {
     ],
     "area": 250
   },
-  "A0C4": {
-    "rawcode": "A0C4",
+  "A197": {
+    "rawcode": "A197",
     "name": "Зачарованные стрелы",
     "hotkey": "W",
     "type": "passive",
@@ -1856,8 +1725,8 @@ var ABILITY_STATS = {
       0.34
     ]
   },
-  "A197": {
-    "rawcode": "A197",
+  "A0IK": {
+    "rawcode": "A0IK",
     "name": "Стрелы души",
     "hotkey": "E",
     "type": "active",
@@ -1866,8 +1735,8 @@ var ABILITY_STATS = {
     ],
     "area": 250
   },
-  "A0IK": {
-    "rawcode": "A0IK",
+  "A0C0": {
+    "rawcode": "A0C0",
     "name": "Падение стрелы",
     "hotkey": "R",
     "type": "ultimate",
@@ -1891,8 +1760,8 @@ var ABILITY_STATS = {
     ],
     "area": 550
   },
-  "A0C0": {
-    "rawcode": "A0C0",
+  "A0NZ": {
+    "rawcode": "A0NZ",
     "name": "Уклонение",
     "hotkey": "F",
     "type": "passive",
@@ -1902,8 +1771,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0DY": {
-    "rawcode": "A0DY",
+  "A02C": {
+    "rawcode": "A02C",
     "name": "Темные силы",
     "hotkey": "Q",
     "type": "active",
@@ -1926,8 +1795,8 @@ var ABILITY_STATS = {
       16
     ]
   },
-  "A02C": {
-    "rawcode": "A02C",
+  "A02D": {
+    "rawcode": "A02D",
     "name": "Удар тьмы",
     "hotkey": "W",
     "type": "passive",
@@ -1947,8 +1816,8 @@ var ABILITY_STATS = {
       }
     ]
   },
-  "A02D": {
-    "rawcode": "A02D",
+  "A0HV": {
+    "rawcode": "A0HV",
     "name": "Поток тьмы",
     "hotkey": "E",
     "type": "active",
@@ -1972,8 +1841,8 @@ var ABILITY_STATS = {
     ],
     "area": 475
   },
-  "A0HV": {
-    "rawcode": "A0HV",
+  "A02B": {
+    "rawcode": "A02B",
     "name": "Мастерство",
     "hotkey": "R",
     "type": "ultimate",
@@ -1991,39 +1860,14 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A02B": {
-    "rawcode": "A02B",
+  "A0DY": {
+    "rawcode": "A0DY",
     "name": "Сожжение маны",
     "hotkey": "F",
     "type": "passive"
   },
-  "A03V": {
-    "rawcode": "A03V",
-    "name": "Тёмный выстрел",
-    "hotkey": "Q",
-    "type": "active",
-    "damage": [
-      {
-        "base": [
-          150,
-          300,
-          450,
-          600,
-          750
-        ],
-        "statScale": {
-          "stat": "INT",
-          "mult": 3
-        }
-      }
-    ],
-    "cool": [
-      10
-    ],
-    "area": 300
-  },
-  "A19L": {
-    "rawcode": "A19L",
+  "A05Q": {
+    "rawcode": "A05Q",
     "name": "Давление тьмы",
     "hotkey": "W",
     "type": "active",
@@ -2056,8 +1900,8 @@ var ABILITY_STATS = {
     ],
     "area": 600
   },
-  "A05Q": {
-    "rawcode": "A05Q",
+  "A05S": {
+    "rawcode": "A05S",
     "name": "Пульс тьмы",
     "hotkey": "E",
     "type": "active",
@@ -2096,8 +1940,8 @@ var ABILITY_STATS = {
       20
     ]
   },
-  "A05S": {
-    "rawcode": "A05S",
+  "A05R": {
+    "rawcode": "A05R",
     "name": "Пришествие Тьмы",
     "hotkey": "R",
     "type": "ultimate",
@@ -2121,8 +1965,8 @@ var ABILITY_STATS = {
     ],
     "area": 450
   },
-  "A05R": {
-    "rawcode": "A05R",
+  "A03V": {
+    "rawcode": "A03V",
     "name": "Всплеск тьмы",
     "hotkey": "F",
     "type": "active",
@@ -2151,29 +1995,8 @@ var ABILITY_STATS = {
     ],
     "area": 350
   },
-  "A0AX": {
-    "rawcode": "A0AX",
-    "name": "Всплеск смерти",
-    "hotkey": "Q",
-    "type": "active",
-    "damage": [
-      {
-        "base": [
-          350,
-          550,
-          750,
-          950,
-          1150
-        ]
-      }
-    ],
-    "cool": [
-      10
-    ],
-    "area": 700
-  },
-  "A0FK": {
-    "rawcode": "A0FK",
+  "A0SH": {
+    "rawcode": "A0SH",
     "name": "Сфера смерти",
     "hotkey": "W",
     "type": "active",
@@ -2197,8 +2020,8 @@ var ABILITY_STATS = {
       18
     ]
   },
-  "A0SH": {
-    "rawcode": "A0SH",
+  "A0QR": {
+    "rawcode": "A0QR",
     "name": "Столб смерти",
     "hotkey": "E",
     "type": "active",
@@ -2225,29 +2048,8 @@ var ABILITY_STATS = {
       25
     ]
   },
-  "A0QR": {
-    "rawcode": "A0QR",
-    "name": "Тёмная энергия",
-    "hotkey": "R",
-    "type": "ultimate",
-    "damage": [
-      {
-        "base": [
-          0
-        ],
-        "statScale": {
-          "stat": "INT",
-          "mult": 3.5
-        }
-      }
-    ],
-    "cool": [
-      90
-    ],
-    "area": 1500
-  },
-  "A0FN": {
-    "rawcode": "A0FN",
+  "A0AX": {
+    "rawcode": "A0AX",
     "name": "Зов магии",
     "hotkey": "F",
     "type": "passive",
@@ -2260,32 +2062,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0W4": {
-    "rawcode": "A0W4",
-    "name": "Чародейская стрела",
-    "hotkey": "Q",
-    "type": "passive",
-    "damage": [
-      {
-        "base": [
-          200,
-          400,
-          600,
-          800,
-          1000
-        ],
-        "statScale": {
-          "stat": "INT",
-          "mult": 2
-        }
-      }
-    ],
-    "cool": [
-      10
-    ]
-  },
-  "A0WB": {
-    "rawcode": "A0WB",
+  "A0W8": {
+    "rawcode": "A0W8",
     "name": "Магический обстрел",
     "hotkey": "E",
     "type": "active",
@@ -2304,8 +2082,8 @@ var ABILITY_STATS = {
       25
     ]
   },
-  "A0W8": {
-    "rawcode": "A0W8",
+  "A0W7": {
+    "rawcode": "A0W7",
     "name": "Стихийный Удар",
     "hotkey": "R",
     "type": "ultimate",
@@ -2338,8 +2116,8 @@ var ABILITY_STATS = {
     ],
     "area": 925
   },
-  "A0W7": {
-    "rawcode": "A0W7",
+  "A0W4": {
+    "rawcode": "A0W4",
     "name": "Сменить стрелу",
     "hotkey": "F",
     "type": "active",
@@ -2347,8 +2125,8 @@ var ABILITY_STATS = {
       2
     ]
   },
-  "A0HG": {
-    "rawcode": "A0HG",
+  "A0HB": {
+    "rawcode": "A0HB",
     "name": "Перст боли",
     "hotkey": "Q",
     "type": "active",
@@ -2380,8 +2158,8 @@ var ABILITY_STATS = {
       10
     ]
   },
-  "A0HB": {
-    "rawcode": "A0HB",
+  "A0HA": {
+    "rawcode": "A0HA",
     "name": "Массовая немота",
     "hotkey": "W",
     "type": "active",
@@ -2418,8 +2196,8 @@ var ABILITY_STATS = {
     ],
     "area": 400
   },
-  "A0HA": {
-    "rawcode": "A0HA",
+  "A0H9": {
+    "rawcode": "A0H9",
     "name": "Высасывание жизни",
     "hotkey": "E",
     "type": "active",
@@ -2431,8 +2209,8 @@ var ABILITY_STATS = {
       26
     ]
   },
-  "A0H9": {
-    "rawcode": "A0H9",
+  "A0HC": {
+    "rawcode": "A0HC",
     "name": "Столб боли",
     "hotkey": "R",
     "type": "ultimate",
@@ -2465,8 +2243,8 @@ var ABILITY_STATS = {
     ],
     "area": 900
   },
-  "A0HC": {
-    "rawcode": "A0HC",
+  "A0HG": {
+    "rawcode": "A0HG",
     "name": "Рывок",
     "hotkey": "F",
     "type": "active",
@@ -2481,8 +2259,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0S9": {
-    "rawcode": "A0S9",
+  "A0SE": {
+    "rawcode": "A0SE",
     "name": "Удар морского воина",
     "hotkey": "Q",
     "type": "active",
@@ -2514,8 +2292,8 @@ var ABILITY_STATS = {
       12
     ]
   },
-  "A0SE": {
-    "rawcode": "A0SE",
+  "A0SD": {
+    "rawcode": "A0SD",
     "name": "Толчок хвостом",
     "hotkey": "W",
     "type": "active",
@@ -2539,8 +2317,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0SB": {
-    "rawcode": "A0SB",
+  "A0SC": {
+    "rawcode": "A0SC",
     "name": "Девятый вал",
     "hotkey": "R",
     "type": "ultimate",
@@ -2560,8 +2338,8 @@ var ABILITY_STATS = {
     ],
     "area": 550
   },
-  "A0SC": {
-    "rawcode": "A0SC",
+  "A0S9": {
+    "rawcode": "A0S9",
     "name": "Сила обитателей глубины",
     "hotkey": "F",
     "type": "passive",
@@ -2571,8 +2349,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0MQ": {
-    "rawcode": "A0MQ",
+  "A0MT": {
+    "rawcode": "A0MT",
     "name": "Адский крик",
     "hotkey": "Q",
     "type": "active",
@@ -2596,8 +2374,8 @@ var ABILITY_STATS = {
     ],
     "area": 450
   },
-  "A0MT": {
-    "rawcode": "A0MT",
+  "A0MR": {
+    "rawcode": "A0MR",
     "name": "Разгон",
     "hotkey": "W",
     "type": "active",
@@ -2630,8 +2408,8 @@ var ABILITY_STATS = {
     ],
     "area": 400
   },
-  "A0MR": {
-    "rawcode": "A0MR",
+  "A0MS": {
+    "rawcode": "A0MS",
     "name": "Демонические атаки",
     "hotkey": "E",
     "type": "active",
@@ -2662,8 +2440,8 @@ var ABILITY_STATS = {
     ],
     "area": 550
   },
-  "A0MS": {
-    "rawcode": "A0MS",
+  "A0M4": {
+    "rawcode": "A0M4",
     "name": "Танец клинков",
     "hotkey": "R",
     "type": "ultimate",
@@ -2676,8 +2454,8 @@ var ABILITY_STATS = {
     ],
     "area": 750
   },
-  "A0M4": {
-    "rawcode": "A0M4",
+  "A0MQ": {
+    "rawcode": "A0MQ",
     "name": "Линия ярости",
     "hotkey": "F",
     "type": "passive",
@@ -2703,8 +2481,8 @@ var ABILITY_STATS = {
     ],
     "area": 200
   },
-  "A05F": {
-    "rawcode": "A05F",
+  "A05K": {
+    "rawcode": "A05K",
     "name": "Магический круг",
     "hotkey": "Q",
     "type": "active",
@@ -2737,8 +2515,8 @@ var ABILITY_STATS = {
     ],
     "area": 400
   },
-  "A05K": {
-    "rawcode": "A05K",
+  "A05L": {
+    "rawcode": "A05L",
     "name": "Огненный дождь",
     "hotkey": "W",
     "type": "active",
@@ -2778,8 +2556,8 @@ var ABILITY_STATS = {
     ],
     "area": 300
   },
-  "A05L": {
-    "rawcode": "A05L",
+  "A05I": {
+    "rawcode": "A05I",
     "name": "Агония",
     "hotkey": "E",
     "type": "active",
@@ -2788,8 +2566,8 @@ var ABILITY_STATS = {
     ],
     "area": 750
   },
-  "A05I": {
-    "rawcode": "A05I",
+  "A05J": {
+    "rawcode": "A05J",
     "name": "Колья",
     "hotkey": "R",
     "type": "ultimate",
@@ -2822,8 +2600,8 @@ var ABILITY_STATS = {
     ],
     "area": 750
   },
-  "A05J": {
-    "rawcode": "A05J",
+  "A05F": {
+    "rawcode": "A05F",
     "name": "Демоническая сила",
     "hotkey": "F",
     "type": "passive",
@@ -2841,10 +2619,10 @@ var ABILITY_STATS = {
     "damage": "150 + 20×уровень героя",
     "area": 300,
     "cool": [14],
-    "buffs": "Скорость боя +35%, скорость бега +15% (10 сек)",
+    "buffs": "Скорость боя +35%, скорость бега +15% (10 сек)"
   },
-  "A0A0": {
-    "rawcode": "A0A0",
+  "A00W": {
+    "rawcode": "A00W",
     "name": "Вороны",
     "hotkey": "W",
     "type": "active",
@@ -2853,8 +2631,8 @@ var ABILITY_STATS = {
     ],
     "area": 1000
   },
-  "A00W": {
-    "rawcode": "A00W",
+  "A0J5": {
+    "rawcode": "A0J5",
     "name": "Омоложение",
     "hotkey": "E",
     "type": "active",
@@ -2878,54 +2656,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0J5": {
-    "rawcode": "A0J5",
-    "name": "Покой",
-    "hotkey": "R",
-    "type": "ultimate",
-    "damage": [
-      {
-        "base": [
-          0
-        ],
-        "statScale": {
-          "stat": "STR",
-          "mult": 0.4
-        }
-      }
-    ],
-    "cool": [
-      105
-    ],
-    "area": 700
-  },
-  "A00Z": {
-    "rawcode": "A00Z",
-    "name": "Кровожадность",
-    "hotkey": "F",
-    "type": "active",
-    "damage": [
-      {
-        "base": [
-          150
-        ]
-      }
-    ],
-    "cool": [
-      14
-    ],
-    "area": 300,
-    "buffs": {
-      "atkSpeed": [
-        35
-      ],
-      "moveSpeed": [
-        15
-      ]
-    }
-  },
-  "A122": {
-    "rawcode": "A122",
+  "A11Q": {
+    "rawcode": "A11Q",
     "name": "Всплеск тьмы",
     "hotkey": "Q",
     "type": "passive",
@@ -2952,15 +2684,15 @@ var ABILITY_STATS = {
     ],
     "area": 350
   },
-  "A11Q": {
-    "rawcode": "A11Q",
+  "A12B": {
+    "rawcode": "A12B",
     "name": "Тёмная аура",
     "hotkey": "W",
     "type": "active",
     "area": 1200
   },
-  "A12B": {
-    "rawcode": "A12B",
+  "A0WK": {
+    "rawcode": "A0WK",
     "name": "Высвобождение Душ",
     "hotkey": "E",
     "type": "active",
@@ -2990,8 +2722,8 @@ var ABILITY_STATS = {
       26
     ]
   },
-  "A0WK": {
-    "rawcode": "A0WK",
+  "A0I4": {
+    "rawcode": "A0I4",
     "name": "Путь тьмы",
     "hotkey": "R",
     "type": "ultimate",
@@ -3011,8 +2743,8 @@ var ABILITY_STATS = {
     ],
     "area": 450
   },
-  "A0I4": {
-    "rawcode": "A0I4",
+  "A122": {
+    "rawcode": "A122",
     "name": "Сменить всплеск тьмы",
     "hotkey": "F",
     "type": "active",
@@ -3020,8 +2752,8 @@ var ABILITY_STATS = {
       1
     ]
   },
-  "A0ZG": {
-    "rawcode": "A0ZG",
+  "A01M": {
+    "rawcode": "A01M",
     "name": "Всплеск огня",
     "hotkey": "Q",
     "type": "active",
@@ -3039,8 +2771,8 @@ var ABILITY_STATS = {
     ],
     "area": 425
   },
-  "A01M": {
-    "rawcode": "A01M",
+  "A0SK": {
+    "rawcode": "A0SK",
     "name": "Метеорный удар",
     "hotkey": "W",
     "type": "active",
@@ -3083,8 +2815,8 @@ var ABILITY_STATS = {
     ],
     "area": 475
   },
-  "A0SK": {
-    "rawcode": "A0SK",
+  "A01P": {
+    "rawcode": "A01P",
     "name": "Живой огонь",
     "hotkey": "E",
     "type": "active",
@@ -3108,8 +2840,8 @@ var ABILITY_STATS = {
     ],
     "area": 900
   },
-  "A01P": {
-    "rawcode": "A01P",
+  "A01L": {
+    "rawcode": "A01L",
     "name": "Огненный доспех",
     "hotkey": "R",
     "type": "ultimate",
@@ -3133,8 +2865,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A01L": {
-    "rawcode": "A01L",
+  "A0ZG": {
+    "rawcode": "A0ZG",
     "name": "Осколки метеорита",
     "hotkey": "F",
     "type": "passive",
@@ -3146,8 +2878,8 @@ var ABILITY_STATS = {
       }
     ]
   },
-  "A0O3": {
-    "rawcode": "A0O3",
+  "A0FA": {
+    "rawcode": "A0FA",
     "name": "Пекло",
     "hotkey": "Q",
     "type": "active",
@@ -3171,8 +2903,8 @@ var ABILITY_STATS = {
     ],
     "area": 450
   },
-  "A0FA": {
-    "rawcode": "A0FA",
+  "A0F9": {
+    "rawcode": "A0F9",
     "name": "Огненный круг",
     "hotkey": "W",
     "type": "active",
@@ -3217,8 +2949,8 @@ var ABILITY_STATS = {
     ],
     "area": 500
   },
-  "A0F9": {
-    "rawcode": "A0F9",
+  "A0FB": {
+    "rawcode": "A0FB",
     "name": "Взрывная волна",
     "hotkey": "E",
     "type": "active",
@@ -3242,8 +2974,8 @@ var ABILITY_STATS = {
     ],
     "area": 300
   },
-  "A0FB": {
-    "rawcode": "A0FB",
+  "A0FC": {
+    "rawcode": "A0FC",
     "name": "Метеорит",
     "hotkey": "R",
     "type": "ultimate",
@@ -3276,8 +3008,8 @@ var ABILITY_STATS = {
     ],
     "area": 750
   },
-  "A0FC": {
-    "rawcode": "A0FC",
+  "A0O3": {
+    "rawcode": "A0O3",
     "name": "Огненная Броня",
     "hotkey": "F",
     "type": "active",
@@ -3307,8 +3039,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0EE": {
-    "rawcode": "A0EE",
+  "A00Y": {
+    "rawcode": "A00Y",
     "name": "Огненный поток",
     "hotkey": "Q",
     "type": "active",
@@ -3331,8 +3063,8 @@ var ABILITY_STATS = {
       15
     ]
   },
-  "A00Y": {
-    "rawcode": "A00Y",
+  "A0H6": {
+    "rawcode": "A0H6",
     "name": "Метеоритный дождь",
     "hotkey": "W",
     "type": "active",
@@ -3363,8 +3095,8 @@ var ABILITY_STATS = {
     ],
     "area": 450
   },
-  "A0H6": {
-    "rawcode": "A0H6",
+  "A0E5": {
+    "rawcode": "A0E5",
     "name": "Вулканический удар",
     "hotkey": "E",
     "type": "active",
@@ -3392,8 +3124,8 @@ var ABILITY_STATS = {
     ],
     "area": 300
   },
-  "A0E5": {
-    "rawcode": "A0E5",
+  "A14S": {
+    "rawcode": "A14S",
     "name": "Вулкан",
     "hotkey": "R",
     "type": "ultimate",
@@ -3427,8 +3159,8 @@ var ABILITY_STATS = {
     ],
     "area": 650
   },
-  "A14S": {
-    "rawcode": "A14S",
+  "A0EE": {
+    "rawcode": "A0EE",
     "name": "Бросок молота",
     "hotkey": "F",
     "type": "active",
@@ -3459,8 +3191,8 @@ var ABILITY_STATS = {
     ],
     "area": 350
   },
-  "A047": {
-    "rawcode": "A047",
+  "A14R": {
+    "rawcode": "A14R",
     "name": "Огненный щит",
     "hotkey": "Q",
     "type": "passive",
@@ -3486,42 +3218,8 @@ var ABILITY_STATS = {
     ],
     "area": 200
   },
-  "A14R": {
-    "rawcode": "A14R",
-    "name": "Сфера пламени",
-    "hotkey": "W",
-    "type": "active",
-    "damage": [
-      {
-        "base": [
-          300,
-          350,
-          400,
-          450,
-          500
-        ],
-        "statScale": {
-          "stat": "AGI",
-          "mult": 2
-        }
-      },
-      {
-        "base": [
-          50,
-          100,
-          150,
-          200,
-          250
-        ]
-      }
-    ],
-    "cool": [
-      18
-    ],
-    "area": 150
-  },
-  "A14I": {
-    "rawcode": "A14I",
+  "A14P": {
+    "rawcode": "A14P",
     "name": "Мастерство огня",
     "hotkey": "E",
     "type": "active",
@@ -3545,8 +3243,8 @@ var ABILITY_STATS = {
     ],
     "area": 150
   },
-  "A14P": {
-    "rawcode": "A14P",
+  "A14G": {
+    "rawcode": "A14G",
     "name": "Огненный танец",
     "hotkey": "R",
     "type": "ultimate",
@@ -3554,8 +3252,8 @@ var ABILITY_STATS = {
       130
     ]
   },
-  "A14G": {
-    "rawcode": "A14G",
+  "A047": {
+    "rawcode": "A047",
     "name": "Огненное сердце",
     "hotkey": "F",
     "type": "active",
@@ -3572,8 +3270,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0OW": {
-    "rawcode": "A0OW",
+  "A09B": {
+    "rawcode": "A09B",
     "name": "Пылающая дорога",
     "hotkey": "Q",
     "type": "active",
@@ -3607,15 +3305,15 @@ var ABILITY_STATS = {
     ],
     "area": 200
   },
-  "A09B": {
-    "rawcode": "A09B",
+  "A09G": {
+    "rawcode": "A09G",
     "name": "Пламенная агрессия",
     "hotkey": "W",
     "type": "passive",
     "area": 100
   },
-  "A09G": {
-    "rawcode": "A09G",
+  "A09E": {
+    "rawcode": "A09E",
     "name": "Огненный гейзер",
     "hotkey": "E",
     "type": "active",
@@ -3640,8 +3338,8 @@ var ABILITY_STATS = {
     ],
     "area": 250
   },
-  "A09E": {
-    "rawcode": "A09E",
+  "A0B6": {
+    "rawcode": "A0B6",
     "name": "Пламенное усиление",
     "hotkey": "R",
     "type": "ultimate",
@@ -3654,8 +3352,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0B6": {
-    "rawcode": "A0B6",
+  "A0OW": {
+    "rawcode": "A0OW",
     "name": "Путь огня",
     "hotkey": "F",
     "type": "active",
@@ -3663,8 +3361,8 @@ var ABILITY_STATS = {
       18
     ]
   },
-  "A0VJ": {
-    "rawcode": "A0VJ",
+  "A146": {
+    "rawcode": "A146",
     "name": "Огненная буря",
     "hotkey": "Q",
     "type": "active",
@@ -3688,8 +3386,8 @@ var ABILITY_STATS = {
     ],
     "area": 350
   },
-  "A146": {
-    "rawcode": "A146",
+  "A0VM": {
+    "rawcode": "A0VM",
     "name": "Огненная кара",
     "hotkey": "W",
     "type": "active",
@@ -3719,8 +3417,8 @@ var ABILITY_STATS = {
       20
     ]
   },
-  "A0VM": {
-    "rawcode": "A0VM",
+  "A0VK": {
+    "rawcode": "A0VK",
     "name": "Зов Пламени",
     "hotkey": "E",
     "type": "active",
@@ -3728,8 +3426,8 @@ var ABILITY_STATS = {
       30
     ]
   },
-  "A0VK": {
-    "rawcode": "A0VK",
+  "A0VQ": {
+    "rawcode": "A0VQ",
     "name": "Огненная тропа",
     "hotkey": "R",
     "type": "ultimate",
@@ -3749,8 +3447,8 @@ var ABILITY_STATS = {
     ],
     "area": 450
   },
-  "A0VQ": {
-    "rawcode": "A0VQ",
+  "A0VJ": {
+    "rawcode": "A0VJ",
     "name": "Огненный диск",
     "hotkey": "F",
     "type": "active",
@@ -3770,8 +3468,8 @@ var ABILITY_STATS = {
     ],
     "area": 250
   },
-  "A011": {
-    "rawcode": "A011",
+  "A012": {
+    "rawcode": "A012",
     "name": "Оледенение",
     "hotkey": "Q",
     "type": "active",
@@ -3804,8 +3502,8 @@ var ABILITY_STATS = {
     ],
     "area": 800
   },
-  "A012": {
-    "rawcode": "A012",
+  "A12G": {
+    "rawcode": "A12G",
     "name": "Ледяной Щит",
     "hotkey": "W",
     "type": "active",
@@ -3831,8 +3529,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A12G": {
-    "rawcode": "A12G",
+  "A0L5": {
+    "rawcode": "A0L5",
     "name": "Ледяной шар",
     "hotkey": "E",
     "type": "active",
@@ -3849,8 +3547,8 @@ var ABILITY_STATS = {
       30
     ]
   },
-  "A0L5": {
-    "rawcode": "A0L5",
+  "A015": {
+    "rawcode": "A015",
     "name": "Ледниковый Период",
     "hotkey": "R",
     "type": "ultimate",
@@ -3874,8 +3572,8 @@ var ABILITY_STATS = {
     ],
     "area": 500
   },
-  "A015": {
-    "rawcode": "A015",
+  "A011": {
+    "rawcode": "A011",
     "name": "Сила Проклятых",
     "hotkey": "F",
     "type": "passive",
@@ -3885,8 +3583,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A06X": {
-    "rawcode": "A06X",
+  "A19X": {
+    "rawcode": "A19X",
     "name": "Обмен",
     "hotkey": "Q",
     "type": "active",
@@ -3909,8 +3607,8 @@ var ABILITY_STATS = {
       10
     ]
   },
-  "A19X": {
-    "rawcode": "A19X",
+  "A06V": {
+    "rawcode": "A06V",
     "name": "Ускорение",
     "hotkey": "W",
     "type": "active",
@@ -3934,8 +3632,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A06V": {
-    "rawcode": "A06V",
+  "A161": {
+    "rawcode": "A161",
     "name": "Кара",
     "hotkey": "E",
     "type": "passive",
@@ -3960,8 +3658,8 @@ var ABILITY_STATS = {
     ],
     "area": 300
   },
-  "A161": {
-    "rawcode": "A161",
+  "A162": {
+    "rawcode": "A162",
     "name": "Призрачный удар",
     "hotkey": "R",
     "type": "ultimate",
@@ -3992,8 +3690,8 @@ var ABILITY_STATS = {
     ],
     "area": 450
   },
-  "A162": {
-    "rawcode": "A162",
+  "A06X": {
+    "rawcode": "A06X",
     "name": "Призрачный Щит",
     "hotkey": "F",
     "type": "active",
@@ -4008,8 +3706,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0T7": {
-    "rawcode": "A0T7",
+  "A0T2": {
+    "rawcode": "A0T2",
     "name": "Пронзающая Смерть",
     "hotkey": "Q",
     "type": "active",
@@ -4041,8 +3739,8 @@ var ABILITY_STATS = {
       14
     ]
   },
-  "A0T2": {
-    "rawcode": "A0T2",
+  "A0T6": {
+    "rawcode": "A0T6",
     "name": "Панцирь с шипами",
     "hotkey": "W",
     "type": "passive",
@@ -4056,8 +3754,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0T6": {
-    "rawcode": "A0T6",
+  "A00B": {
+    "rawcode": "A00B",
     "name": "Подкоп",
     "hotkey": "E",
     "type": "active",
@@ -4090,8 +3788,8 @@ var ABILITY_STATS = {
     ],
     "area": 400
   },
-  "A00B": {
-    "rawcode": "A00B",
+  "A0V1": {
+    "rawcode": "A0V1",
     "name": "Землетрясение",
     "hotkey": "R",
     "type": "ultimate",
@@ -4114,14 +3812,14 @@ var ABILITY_STATS = {
       100
     ]
   },
-  "A0V1": {
-    "rawcode": "A0V1",
+  "A0T7": {
+    "rawcode": "A0T7",
     "name": "Мощь древних",
     "hotkey": "F",
     "type": "passive"
   },
-  "A0N4": {
-    "rawcode": "A0N4",
+  "A0T1": {
+    "rawcode": "A0T1",
     "name": "Сюрикен",
     "hotkey": "Q",
     "type": "active",
@@ -4140,17 +3838,11 @@ var ABILITY_STATS = {
         }
       }
     ],
-    "cool": [
-      15,
-      14,
-      13,
-      12,
-      11
-    ],
+    "cool": [15,15,15],
     "area": 1600
   },
-  "A0N2": {
-    "rawcode": "A0N2",
+  "A0N1": {
+    "rawcode": "A0N1",
     "name": "Удар в прыжке",
     "hotkey": "W",
     "type": "active",
@@ -4183,8 +3875,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0N1": {
-    "rawcode": "A0N1",
+  "A0N3": {
+    "rawcode": "A0N3",
     "name": "Смертоносные удары",
     "hotkey": "E",
     "type": "passive",
@@ -4215,8 +3907,8 @@ var ABILITY_STATS = {
       3
     ]
   },
-  "A0N3": {
-    "rawcode": "A0N3",
+  "A0PP": {
+    "rawcode": "A0PP",
     "name": "Сюрикен смерти",
     "hotkey": "R",
     "type": "ultimate",
@@ -4225,8 +3917,8 @@ var ABILITY_STATS = {
     ],
     "area": 450
   },
-  "A0PP": {
-    "rawcode": "A0PP",
+  "A0N4": {
+    "rawcode": "A0N4",
     "name": "Смертоносный кинжал",
     "hotkey": "F",
     "type": "active",
@@ -4355,10 +4047,10 @@ var ABILITY_STATS = {
       16
     ],
     "area": 400,
-    "damage": "75 + INT×0.7 за 5 сек (20% шанс), замедление 20%",
+    "damage": "75 + INT×0.7 за 5 сек (20% шанс), замедление 20%"
   },
-  "A0P2": {
-    "rawcode": "A0P2",
+  "A0MH": {
+    "rawcode": "A0MH",
     "name": "Ядовитый шар",
     "hotkey": "W",
     "type": "active",
@@ -4382,8 +4074,8 @@ var ABILITY_STATS = {
     ],
     "area": 225
   },
-  "A0MH": {
-    "rawcode": "A0MH",
+  "A0MG": {
+    "rawcode": "A0MG",
     "name": "Ядовитое кольцо",
     "hotkey": "E",
     "type": "active",
@@ -4406,54 +4098,8 @@ var ABILITY_STATS = {
     ],
     "area": 200
   },
-  "A0MG": {
-    "rawcode": "A0MG",
-    "name": "Ядовитый всплеск",
-    "hotkey": "R",
-    "type": "ultimate",
-    "damage": [
-      {
-        "base": [
-          500,
-          8,
-          12,
-          16,
-          20
-        ],
-        "statScale": {
-          "stat": "INT",
-          "mult": 4
-        }
-      },
-      {
-        "base": [
-          50
-        ],
-        "isDOT": true
-      }
-    ],
-    "cool": [
-      120
-    ],
-    "area": 900
-  },
-  "A0I2": {
-    "rawcode": "A0I2",
-    "name": "Ядовитая слюна",
-    "hotkey": "F",
-    "type": "passive",
-    "cc": [
-      {
-        "type": "slow",
-        "duration": [
-          0
-        ],
-        "weight": 0.4
-      }
-    ]
-  },
-  "A0NJ": {
-    "rawcode": "A0NJ",
+  "A13G": {
+    "rawcode": "A13G",
     "name": "Леденящий поток",
     "hotkey": "Q",
     "type": "active",
@@ -4486,8 +4132,8 @@ var ABILITY_STATS = {
     ],
     "area": 225
   },
-  "A13G": {
-    "rawcode": "A13G",
+  "A0NI": {
+    "rawcode": "A0NI",
     "name": "Кольцо холода",
     "hotkey": "W",
     "type": "active",
@@ -4527,8 +4173,8 @@ var ABILITY_STATS = {
     ],
     "area": 700
   },
-  "A0NI": {
-    "rawcode": "A0NI",
+  "A0OQ": {
+    "rawcode": "A0OQ",
     "name": "Ледяные драконы",
     "hotkey": "E",
     "type": "active",
@@ -4536,8 +4182,8 @@ var ABILITY_STATS = {
       30
     ]
   },
-  "A0OQ": {
-    "rawcode": "A0OQ",
+  "A0O8": {
+    "rawcode": "A0O8",
     "name": "Дыхание дракона",
     "hotkey": "R",
     "type": "ultimate",
@@ -4554,8 +4200,8 @@ var ABILITY_STATS = {
       140
     ]
   },
-  "A0O8": {
-    "rawcode": "A0O8",
+  "A0NJ": {
+    "rawcode": "A0NJ",
     "name": "Ледяная броня",
     "hotkey": "F",
     "type": "passive",
@@ -4595,8 +4241,8 @@ var ABILITY_STATS = {
     "hotkey": "F",
     "type": "passive"
   },
-  "A0KW": {
-    "rawcode": "A0KW",
+  "A0PN": {
+    "rawcode": "A0PN",
     "name": "Иллюзия",
     "hotkey": "Q",
     "type": "active",
@@ -4624,14 +4270,8 @@ var ABILITY_STATS = {
     ],
     "area": 350
   },
-  "A0PN": {
-    "rawcode": "A0PN",
-    "name": "Фантомные клинки",
-    "hotkey": "W",
-    "type": "passive"
-  },
-  "A00A": {
-    "rawcode": "A00A",
+  "A0U7": {
+    "rawcode": "A0U7",
     "name": "Отражение души",
     "hotkey": "E",
     "type": "active",
@@ -4658,10 +4298,10 @@ var ABILITY_STATS = {
     "cool": [
       25
     ],
-    "area": 275
+    "area": [275,325,375,425,475]
   },
-  "A0U7": {
-    "rawcode": "A0U7",
+  "A00C": {
+    "rawcode": "A00C",
     "name": "Перевоплощение",
     "hotkey": "R",
     "type": "ultimate",
@@ -4680,8 +4320,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A00C": {
-    "rawcode": "A00C",
+  "A0KW": {
+    "rawcode": "A0KW",
     "name": "Разящая тень",
     "hotkey": "F",
     "type": "active",
@@ -4705,8 +4345,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0F7": {
-    "rawcode": "A0F7",
+  "A06Q": {
+    "rawcode": "A06Q",
     "name": "Волна Мороза",
     "hotkey": "Q",
     "type": "active",
@@ -4739,8 +4379,8 @@ var ABILITY_STATS = {
     ],
     "area": 325
   },
-  "A06Q": {
-    "rawcode": "A06Q",
+  "A06O": {
+    "rawcode": "A06O",
     "name": "Выброс Тьмы",
     "hotkey": "W",
     "type": "active",
@@ -4749,8 +4389,8 @@ var ABILITY_STATS = {
     ],
     "area": 400
   },
-  "A06O": {
-    "rawcode": "A06O",
+  "A06R": {
+    "rawcode": "A06R",
     "name": "Ярость Фростморна",
     "hotkey": "E",
     "type": "active",
@@ -4787,8 +4427,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A06R": {
-    "rawcode": "A06R",
+  "A06D": {
+    "rawcode": "A06D",
     "name": "Черная Дыра",
     "hotkey": "R",
     "type": "ultimate",
@@ -4817,8 +4457,8 @@ var ABILITY_STATS = {
     ],
     "area": 700
   },
-  "A06D": {
-    "rawcode": "A06D",
+  "A0F7": {
+    "rawcode": "A0F7",
     "name": "Проклятый меч",
     "hotkey": "F",
     "type": "passive",
@@ -4834,8 +4474,8 @@ var ABILITY_STATS = {
       }
     ]
   },
-  "A0E3": {
-    "rawcode": "A0E3",
+  "A0HL": {
+    "rawcode": "A0HL",
     "name": "Шары Смерти",
     "hotkey": "Q",
     "type": "active",
@@ -4868,17 +4508,8 @@ var ABILITY_STATS = {
     ],
     "area": 1000
   },
-  "A0HL": {
-    "rawcode": "A0HL",
-    "name": "Тёмный лик",
-    "hotkey": "W",
-    "type": "active",
-    "cool": [
-      11
-    ]
-  },
-  "A0E2": {
-    "rawcode": "A0E2",
+  "A0S7": {
+    "rawcode": "A0S7",
     "name": "Заражение",
     "hotkey": "E",
     "type": "active",
@@ -4916,8 +4547,8 @@ var ABILITY_STATS = {
     ],
     "area": 450
   },
-  "A0S7": {
-    "rawcode": "A0S7",
+  "A0E8": {
+    "rawcode": "A0E8",
     "name": "Взрыв Глубины",
     "hotkey": "R",
     "type": "ultimate",
@@ -4941,8 +4572,8 @@ var ABILITY_STATS = {
     ],
     "area": 650
   },
-  "A0E8": {
-    "rawcode": "A0E8",
+  "A0E3": {
+    "rawcode": "A0E3",
     "name": "Сгусток яда",
     "hotkey": "F",
     "type": "active",
@@ -4970,8 +4601,8 @@ var ABILITY_STATS = {
       15
     ]
   },
-  "A0NV": {
-    "rawcode": "A0NV",
+  "A051": {
+    "rawcode": "A051",
     "name": "Корни",
     "hotkey": "Q",
     "type": "active",
@@ -5006,15 +4637,15 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A051": {
-    "rawcode": "A051",
+  "A1BB": {
+    "rawcode": "A1BB",
     "name": "Аура возмездия",
     "hotkey": "W",
     "type": "active",
     "area": 600
   },
-  "A1BB": {
-    "rawcode": "A1BB",
+  "A0J4": {
+    "rawcode": "A0J4",
     "name": "Кусты",
     "hotkey": "E",
     "type": "active",
@@ -5039,8 +4670,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0J4": {
-    "rawcode": "A0J4",
+  "A15N": {
+    "rawcode": "A15N",
     "name": "Дух Природы",
     "hotkey": "R",
     "type": "ultimate",
@@ -5063,8 +4694,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A15N": {
-    "rawcode": "A15N",
+  "A0NV": {
+    "rawcode": "A0NV",
     "name": "Душа Природы",
     "hotkey": "F",
     "type": "active",
@@ -5082,8 +4713,8 @@ var ABILITY_STATS = {
     ],
     "area": 180
   },
-  "A0U2": {
-    "rawcode": "A0U2",
+  "A0GX": {
+    "rawcode": "A0GX",
     "name": "Разряд молнии",
     "hotkey": "Q",
     "type": "active",
@@ -5106,8 +4737,8 @@ var ABILITY_STATS = {
       13
     ]
   },
-  "A0GX": {
-    "rawcode": "A0GX",
+  "A0GW": {
+    "rawcode": "A0GW",
     "name": "Поражение молнией",
     "hotkey": "W",
     "type": "active",
@@ -5140,8 +4771,8 @@ var ABILITY_STATS = {
       20
     ]
   },
-  "A0GW": {
-    "rawcode": "A0GW",
+  "A0GY": {
+    "rawcode": "A0GY",
     "name": "Электрический шар",
     "hotkey": "E",
     "type": "active",
@@ -5165,8 +4796,8 @@ var ABILITY_STATS = {
     ],
     "area": 725
   },
-  "A0GY": {
-    "rawcode": "A0GY",
+  "A0GV": {
+    "rawcode": "A0GV",
     "name": "Гроза",
     "hotkey": "R",
     "type": "ultimate",
@@ -5191,10 +4822,10 @@ var ABILITY_STATS = {
     "cool": [
       160
     ],
-    "area": 325
+    "area": 800
   },
-  "A0GV": {
-    "rawcode": "A0GV",
+  "A0U2": {
+    "rawcode": "A0U2",
     "name": "Щит молний",
     "hotkey": "F",
     "type": "active",
@@ -5214,8 +4845,8 @@ var ABILITY_STATS = {
     ],
     "area": 250
   },
-  "A0JO": {
-    "rawcode": "A0JO",
+  "A0JL": {
+    "rawcode": "A0JL",
     "name": "Шаровые молнии",
     "hotkey": "Q",
     "type": "active",
@@ -5253,8 +4884,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0JL": {
-    "rawcode": "A0JL",
+  "A0JK": {
+    "rawcode": "A0JK",
     "name": "Цепной прыжок",
     "hotkey": "W",
     "type": "active",
@@ -5292,8 +4923,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0JJ": {
-    "rawcode": "A0JJ",
+  "A0JI": {
+    "rawcode": "A0JI",
     "name": "Молниеносный скачок",
     "hotkey": "R",
     "type": "ultimate",
@@ -5326,8 +4957,8 @@ var ABILITY_STATS = {
     ],
     "area": 750
   },
-  "A0JI": {
-    "rawcode": "A0JI",
+  "A0JO": {
+    "rawcode": "A0JO",
     "name": "Выстрел молнией",
     "hotkey": "F",
     "type": "active",
@@ -5351,8 +4982,8 @@ var ABILITY_STATS = {
     ],
     "area": 300
   },
-  "A0TQ": {
-    "rawcode": "A0TQ",
+  "A0I9": {
+    "rawcode": "A0I9",
     "name": "Ракетный выстрел",
     "hotkey": "Q",
     "type": "active",
@@ -5385,8 +5016,8 @@ var ABILITY_STATS = {
     ],
     "area": 400
   },
-  "A0I9": {
-    "rawcode": "A0I9",
+  "A0I6": {
+    "rawcode": "A0I6",
     "name": "Выстрел лазера",
     "hotkey": "W",
     "type": "active",
@@ -5419,8 +5050,8 @@ var ABILITY_STATS = {
     ],
     "area": 200
   },
-  "A0I6": {
-    "rawcode": "A0I6",
+  "A0IC": {
+    "rawcode": "A0IC",
     "name": "Плазменный обстрел",
     "hotkey": "E",
     "type": "active",
@@ -5444,8 +5075,8 @@ var ABILITY_STATS = {
     ],
     "area": 700
   },
-  "A0IC": {
-    "rawcode": "A0IC",
+  "A0IB": {
+    "rawcode": "A0IB",
     "name": "Баллистическая Ракета",
     "hotkey": "R",
     "type": "ultimate",
@@ -5469,8 +5100,8 @@ var ABILITY_STATS = {
     ],
     "area": 500
   },
-  "A0IB": {
-    "rawcode": "A0IB",
+  "A0TQ": {
+    "rawcode": "A0TQ",
     "name": "Ракетница",
     "hotkey": "F",
     "type": "active",
@@ -5496,8 +5127,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A08P": {
-    "rawcode": "A08P",
+  "A08V": {
+    "rawcode": "A08V",
     "name": "Громовая поступь",
     "hotkey": "Q",
     "type": "active",
@@ -5515,8 +5146,8 @@ var ABILITY_STATS = {
     ],
     "area": 350
   },
-  "A08V": {
-    "rawcode": "A08V",
+  "A08S": {
+    "rawcode": "A08S",
     "name": "Энергия предков",
     "hotkey": "W",
     "type": "active",
@@ -5548,8 +5179,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A08S": {
-    "rawcode": "A08S",
+  "A08U": {
+    "rawcode": "A08U",
     "name": "Сотрясение земли",
     "hotkey": "E",
     "type": "active",
@@ -5567,10 +5198,10 @@ var ABILITY_STATS = {
     "cool": [
       25
     ],
-    "area": 600
+    "area": [600,650,700,750,800]
   },
-  "A08U": {
-    "rawcode": "A08U",
+  "A08T": {
+    "rawcode": "A08T",
     "name": "Погребение",
     "hotkey": "R",
     "type": "ultimate",
@@ -5614,30 +5245,8 @@ var ABILITY_STATS = {
     ],
     "area": 1200
   },
-  "A08T": {
-    "rawcode": "A08T",
-    "name": "Удар топором",
-    "hotkey": "F",
-    "type": "active",
-    "damage": [
-      {
-        "base": [
-          200,
-          300,
-          400
-        ],
-        "statScale": {
-          "stat": "STR",
-          "mult": 2
-        }
-      }
-    ],
-    "cool": [
-      8
-    ]
-  },
-  "A01X": {
-    "rawcode": "A01X",
+  "A10P": {
+    "rawcode": "A10P",
     "name": "Водяная вспышка",
     "hotkey": "Q",
     "type": "active",
@@ -5670,8 +5279,8 @@ var ABILITY_STATS = {
     ],
     "area": 350
   },
-  "A10P": {
-    "rawcode": "A10P",
+  "A01R": {
+    "rawcode": "A01R",
     "name": "Ядовитый кинжал",
     "hotkey": "W",
     "type": "passive",
@@ -5703,8 +5312,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A01R": {
-    "rawcode": "A01R",
+  "A01S": {
+    "rawcode": "A01S",
     "name": "Дух Воды",
     "hotkey": "E",
     "type": "active",
@@ -5720,8 +5329,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A01S": {
-    "rawcode": "A01S",
+  "A01T": {
+    "rawcode": "A01T",
     "name": "Ядовитые шипы",
     "hotkey": "R",
     "type": "ultimate",
@@ -5750,8 +5359,8 @@ var ABILITY_STATS = {
       120
     ]
   },
-  "A01T": {
-    "rawcode": "A01T",
+  "A01X": {
+    "rawcode": "A01X",
     "name": "Девятый вал",
     "hotkey": "F",
     "type": "active",
@@ -5771,32 +5380,8 @@ var ABILITY_STATS = {
     ],
     "area": 250
   },
-  "A0RJ": {
-    "rawcode": "A0RJ",
-    "name": "Тёмный поток",
-    "hotkey": "Q",
-    "type": "active",
-    "damage": [
-      {
-        "base": [
-          200,
-          400,
-          600,
-          800,
-          1000
-        ],
-        "statScale": {
-          "stat": "INT",
-          "mult": 3
-        }
-      }
-    ],
-    "cool": [
-      12
-    ]
-  },
-  "A0LK": {
-    "rawcode": "A0LK",
+  "A07S": {
+    "rawcode": "A07S",
     "name": "Проклятье",
     "hotkey": "W",
     "type": "active",
@@ -5826,8 +5411,8 @@ var ABILITY_STATS = {
     ],
     "area": 425
   },
-  "A07S": {
-    "rawcode": "A07S",
+  "A17A": {
+    "rawcode": "A17A",
     "name": "Лучи тьмы",
     "hotkey": "E",
     "type": "active",
@@ -5851,8 +5436,8 @@ var ABILITY_STATS = {
     ],
     "area": 650
   },
-  "A17A": {
-    "rawcode": "A17A",
+  "A0OO": {
+    "rawcode": "A0OO",
     "name": "Бездна",
     "hotkey": "R",
     "type": "ultimate",
@@ -5876,8 +5461,8 @@ var ABILITY_STATS = {
     ],
     "area": 550
   },
-  "A0OO": {
-    "rawcode": "A0OO",
+  "A0RJ": {
+    "rawcode": "A0RJ",
     "name": "Могущество Некромонгера",
     "hotkey": "F",
     "type": "passive",
@@ -5896,8 +5481,8 @@ var ABILITY_STATS = {
     ],
     "area": 600
   },
-  "A0R1": {
-    "rawcode": "A0R1",
+  "A0R5": {
+    "rawcode": "A0R5",
     "name": "Поражающий маневр",
     "hotkey": "Q",
     "type": "active",
@@ -5934,8 +5519,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0R5": {
-    "rawcode": "A0R5",
+  "A0R4": {
+    "rawcode": "A0R4",
     "name": "Очищение",
     "hotkey": "W",
     "type": "active",
@@ -5943,8 +5528,8 @@ var ABILITY_STATS = {
       10
     ]
   },
-  "A0R4": {
-    "rawcode": "A0R4",
+  "A0R3": {
+    "rawcode": "A0R3",
     "name": "Метка Кошмара",
     "hotkey": "E",
     "type": "active",
@@ -5973,8 +5558,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0R3": {
-    "rawcode": "A0R3",
+  "A0R2": {
+    "rawcode": "A0R2",
     "name": "Лунная Кара",
     "hotkey": "R",
     "type": "ultimate",
@@ -6007,8 +5592,8 @@ var ABILITY_STATS = {
     ],
     "area": 1200
   },
-  "A0R2": {
-    "rawcode": "A0R2",
+  "A0R1": {
+    "rawcode": "A0R1",
     "name": "Защита Луны",
     "hotkey": "F",
     "type": "active",
@@ -6040,15 +5625,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A1AP": {
-    "rawcode": "A1AP",
-    "name": "Зов Луны",
-    "hotkey": "Q",
-    "type": "passive",
-    "damage": "Ночью: +20/+40 силы и ловкости, обзор 1800, +100% скорость"
-  },
-  "A1CM": {
-    "rawcode": "A1CM",
+  "A1B4": {
+    "rawcode": "A1B4",
     "name": "Волчий голод",
     "hotkey": "W",
     "type": "active",
@@ -6061,8 +5639,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A1B4": {
-    "rawcode": "A1B4",
+  "A1BH": {
+    "rawcode": "A1BH",
     "name": "Волчья охота",
     "hotkey": "E",
     "type": "active",
@@ -6070,20 +5648,20 @@ var ABILITY_STATS = {
       30
     ]
   },
-  "A1BH": {
-    "rawcode": "A1BH",
+  "A1BK": {
+    "rawcode": "A1BK",
     "name": "Волчья стая",
     "hotkey": "R",
     "type": "ultimate"
   },
-  "A1BK": {
-    "rawcode": "A1BK",
+  "A1AP": {
+    "rawcode": "A1AP",
     "name": "Зов Луны",
     "hotkey": "F",
     "type": "passive"
   },
-  "A0BH": {
-    "rawcode": "A0BH",
+  "A0D8": {
+    "rawcode": "A0D8",
     "name": "Рывок",
     "hotkey": "Q",
     "type": "active",
@@ -6116,8 +5694,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0D8": {
-    "rawcode": "A0D8",
+  "A0D3": {
+    "rawcode": "A0D3",
     "name": "Аура крови",
     "hotkey": "W",
     "type": "active",
@@ -6154,8 +5732,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0D3": {
-    "rawcode": "A0D3",
+  "A0D6": {
+    "rawcode": "A0D6",
     "name": "Кровавый вихрь",
     "hotkey": "E",
     "type": "active",
@@ -6176,8 +5754,8 @@ var ABILITY_STATS = {
     ],
     "area": 350
   },
-  "A0D6": {
-    "rawcode": "A0D6",
+  "A0IH": {
+    "rawcode": "A0IH",
     "name": "Кровавая Буря",
     "hotkey": "R",
     "type": "ultimate",
@@ -6201,8 +5779,8 @@ var ABILITY_STATS = {
     ],
     "area": 325
   },
-  "A0IH": {
-    "rawcode": "A0IH",
+  "A0BH": {
+    "rawcode": "A0BH",
     "name": "Удар в спину",
     "hotkey": "F",
     "type": "passive",
@@ -6230,8 +5808,8 @@ var ABILITY_STATS = {
       3
     ]
   },
-  "A03O": {
-    "rawcode": "A03O",
+  "A0T9": {
+    "rawcode": "A0T9",
     "name": "Исцеляющая Сфера",
     "hotkey": "Q",
     "type": "active",
@@ -6267,8 +5845,8 @@ var ABILITY_STATS = {
     ],
     "area": 325
   },
-  "A0T9": {
-    "rawcode": "A0T9",
+  "A19O": {
+    "rawcode": "A19O",
     "name": "Дары света",
     "hotkey": "W",
     "type": "active",
@@ -6289,8 +5867,8 @@ var ABILITY_STATS = {
     ],
     "area": 600
   },
-  "A19O": {
-    "rawcode": "A19O",
+  "A19N": {
+    "rawcode": "A19N",
     "name": "Молитва свету",
     "hotkey": "E",
     "type": "active",
@@ -6325,18 +5903,16 @@ var ABILITY_STATS = {
     ],
     "area": 200
   },
-  "A19N": {
-    "rawcode": "A19N",
+  "A107": {
+    "rawcode": "A107",
     "name": "Святой Щит",
     "hotkey": "R",
     "type": "ultimate",
-    "cool": [
-      120
-    ],
+    "cool": [100],
     "area": 375
   },
-  "A107": {
-    "rawcode": "A107",
+  "A03O": {
+    "rawcode": "A03O",
     "name": "Аура защиты",
     "hotkey": "F",
     "type": "passive",
@@ -6354,8 +5930,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0EK": {
-    "rawcode": "A0EK",
+  "A0EL": {
+    "rawcode": "A0EL",
     "name": "Стрелы",
     "hotkey": "Q",
     "type": "active",
@@ -6379,8 +5955,8 @@ var ABILITY_STATS = {
     ],
     "area": 250
   },
-  "A0C3": {
-    "rawcode": "A0C3",
+  "A0IR": {
+    "rawcode": "A0IR",
     "name": "Прыжок рысью",
     "hotkey": "E",
     "type": "active",
@@ -6421,8 +5997,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0IR": {
-    "rawcode": "A0IR",
+  "A0EN": {
+    "rawcode": "A0EN",
     "name": "Звездопад",
     "hotkey": "R",
     "type": "ultimate",
@@ -6452,8 +6028,8 @@ var ABILITY_STATS = {
       120
     ]
   },
-  "A0EN": {
-    "rawcode": "A0EN",
+  "A0EK": {
+    "rawcode": "A0EK",
     "name": "Боевые совы",
     "hotkey": "F",
     "type": "active",
@@ -6461,8 +6037,8 @@ var ABILITY_STATS = {
       15
     ]
   },
-  "A02G": {
-    "rawcode": "A02G",
+  "A02L": {
+    "rawcode": "A02L",
     "name": "Безмолвие",
     "hotkey": "Q",
     "type": "active",
@@ -6499,8 +6075,8 @@ var ABILITY_STATS = {
     ],
     "area": 350
   },
-  "A02L": {
-    "rawcode": "A02L",
+  "A00Q": {
+    "rawcode": "A00Q",
     "name": "Аура меткости",
     "hotkey": "W",
     "type": "active",
@@ -6515,14 +6091,14 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A00Q": {
-    "rawcode": "A00Q",
+  "A1AD": {
+    "rawcode": "A1AD",
     "name": "Прицельная стрельба",
     "hotkey": "E",
     "type": "passive"
   },
-  "A1AD": {
-    "rawcode": "A1AD",
+  "A02M": {
+    "rawcode": "A02M",
     "name": "Мощная стрельба",
     "hotkey": "R",
     "type": "ultimate",
@@ -6549,8 +6125,8 @@ var ABILITY_STATS = {
     ],
     "area": 300
   },
-  "A02M": {
-    "rawcode": "A02M",
+  "A02G": {
+    "rawcode": "A02G",
     "name": "Невидимость",
     "hotkey": "F",
     "type": "active",
@@ -6563,8 +6139,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0RG": {
-    "rawcode": "A0RG",
+  "A0RA": {
+    "rawcode": "A0RA",
     "name": "Легкие скачки",
     "hotkey": "Q",
     "type": "active",
@@ -6590,8 +6166,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0RA": {
-    "rawcode": "A0RA",
+  "A0RB": {
+    "rawcode": "A0RB",
     "name": "Коварный бросок",
     "hotkey": "W",
     "type": "active",
@@ -6599,8 +6175,8 @@ var ABILITY_STATS = {
       15
     ]
   },
-  "A0RB": {
-    "rawcode": "A0RB",
+  "A0P8": {
+    "rawcode": "A0P8",
     "name": "Скрытность",
     "hotkey": "E",
     "type": "active",
@@ -6628,8 +6204,8 @@ var ABILITY_STATS = {
       26
     ]
   },
-  "A0P8": {
-    "rawcode": "A0P8",
+  "A0RC": {
+    "rawcode": "A0RC",
     "name": "Решающий удар",
     "hotkey": "R",
     "type": "ultimate",
@@ -6652,8 +6228,8 @@ var ABILITY_STATS = {
       80
     ]
   },
-  "A0RC": {
-    "rawcode": "A0RC",
+  "A0RG": {
+    "rawcode": "A0RG",
     "name": "Ловкий прием",
     "hotkey": "F",
     "type": "passive",
@@ -6681,8 +6257,8 @@ var ABILITY_STATS = {
       3
     ]
   },
-  "A081": {
-    "rawcode": "A081",
+  "A07Z": {
+    "rawcode": "A07Z",
     "name": "Волна ярости",
     "hotkey": "Q",
     "type": "active",
@@ -6706,8 +6282,8 @@ var ABILITY_STATS = {
     ],
     "area": 350
   },
-  "A07Z": {
-    "rawcode": "A07Z",
+  "A080": {
+    "rawcode": "A080",
     "name": "Аура ярости",
     "hotkey": "W",
     "type": "active",
@@ -6729,8 +6305,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A080": {
-    "rawcode": "A080",
+  "A10C": {
+    "rawcode": "A10C",
     "name": "Яростные Удары",
     "hotkey": "E",
     "type": "active",
@@ -6738,8 +6314,8 @@ var ABILITY_STATS = {
       20
     ]
   },
-  "A10C": {
-    "rawcode": "A10C",
+  "A07Y": {
+    "rawcode": "A07Y",
     "name": "Огненная кровь",
     "hotkey": "R",
     "type": "ultimate",
@@ -6759,8 +6335,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A07Y": {
-    "rawcode": "A07Y",
+  "A081": {
+    "rawcode": "A081",
     "name": "Сеть",
     "hotkey": "F",
     "type": "active",
@@ -6780,8 +6356,8 @@ var ABILITY_STATS = {
     ],
     "area": 425
   },
-  "A001": {
-    "rawcode": "A001",
+  "A0F0": {
+    "rawcode": "A0F0",
     "name": "Невидимость",
     "hotkey": "Q",
     "type": "active",
@@ -6800,8 +6376,8 @@ var ABILITY_STATS = {
       13
     ]
   },
-  "A0F0": {
-    "rawcode": "A0F0",
+  "A046": {
+    "rawcode": "A046",
     "name": "Мясорубка",
     "hotkey": "W",
     "type": "active",
@@ -6833,8 +6409,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A046": {
-    "rawcode": "A046",
+  "A03Y": {
+    "rawcode": "A03Y",
     "name": "Световое отражение",
     "hotkey": "E",
     "type": "passive",
@@ -6867,8 +6443,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A03Y": {
-    "rawcode": "A03Y",
+  "A0H5": {
+    "rawcode": "A0H5",
     "name": "Смертельная атака",
     "hotkey": "R",
     "type": "ultimate",
@@ -6901,8 +6477,8 @@ var ABILITY_STATS = {
     ],
     "area": 750
   },
-  "A0H5": {
-    "rawcode": "A0H5",
+  "A001": {
+    "rawcode": "A001",
     "name": "Разрез",
     "hotkey": "F",
     "type": "active",
@@ -6919,8 +6495,8 @@ var ABILITY_STATS = {
       10
     ]
   },
-  "A0Y8": {
-    "rawcode": "A0Y8",
+  "A08N": {
+    "rawcode": "A08N",
     "name": "Морская волна",
     "hotkey": "Q",
     "type": "active",
@@ -6953,8 +6529,8 @@ var ABILITY_STATS = {
     ],
     "area": 400
   },
-  "A08N": {
-    "rawcode": "A08N",
+  "A08K": {
+    "rawcode": "A08K",
     "name": "Блок",
     "hotkey": "W",
     "type": "passive",
@@ -6968,8 +6544,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A08K": {
-    "rawcode": "A08K",
+  "A0S3": {
+    "rawcode": "A0S3",
     "name": "Туман",
     "hotkey": "E",
     "type": "active",
@@ -7019,8 +6595,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0S3": {
-    "rawcode": "A0S3",
+  "A0G1": {
+    "rawcode": "A0G1",
     "name": "Мгновенное перемещение",
     "hotkey": "R",
     "type": "ultimate",
@@ -7044,8 +6620,8 @@ var ABILITY_STATS = {
     ],
     "area": 650
   },
-  "A0G1": {
-    "rawcode": "A0G1",
+  "A0Y8": {
+    "rawcode": "A0Y8",
     "name": "Водяной Щит",
     "hotkey": "F",
     "type": "active",
@@ -7063,8 +6639,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0HO": {
-    "rawcode": "A0HO",
+  "A0HS": {
+    "rawcode": "A0HS",
     "name": "Теневой взрыв",
     "hotkey": "Q",
     "type": "active",
@@ -7097,8 +6673,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0HS": {
-    "rawcode": "A0HS",
+  "A0HQ": {
+    "rawcode": "A0HQ",
     "name": "Тёмная атака",
     "hotkey": "W",
     "type": "active",
@@ -7106,8 +6682,8 @@ var ABILITY_STATS = {
       20
     ]
   },
-  "A0HQ": {
-    "rawcode": "A0HQ",
+  "A0V4": {
+    "rawcode": "A0V4",
     "name": "Теневая хватка",
     "hotkey": "E",
     "type": "active",
@@ -7140,8 +6716,8 @@ var ABILITY_STATS = {
     ],
     "area": 350
   },
-  "A0V4": {
-    "rawcode": "A0V4",
+  "A0QW": {
+    "rawcode": "A0QW",
     "name": "Поток Душ",
     "hotkey": "R",
     "type": "ultimate",
@@ -7172,8 +6748,8 @@ var ABILITY_STATS = {
     ],
     "area": 400
   },
-  "A0QW": {
-    "rawcode": "A0QW",
+  "A0HO": {
+    "rawcode": "A0HO",
     "name": "Ярость тьмы",
     "hotkey": "F",
     "type": "active",
@@ -7189,8 +6765,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0LV": {
-    "rawcode": "A0LV",
+  "A0LX": {
+    "rawcode": "A0LX",
     "name": "Волновая атака",
     "hotkey": "Q",
     "type": "active",
@@ -7222,8 +6798,8 @@ var ABILITY_STATS = {
       14
     ]
   },
-  "A0LX": {
-    "rawcode": "A0LX",
+  "A0M0": {
+    "rawcode": "A0M0",
     "name": "Кровавый прыжок",
     "hotkey": "W",
     "type": "active",
@@ -7251,8 +6827,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0M0": {
-    "rawcode": "A0M0",
+  "A0LY": {
+    "rawcode": "A0LY",
     "name": "Резня",
     "hotkey": "E",
     "type": "active",
@@ -7285,8 +6861,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0LY": {
-    "rawcode": "A0LY",
+  "A0UU": {
+    "rawcode": "A0UU",
     "name": "Вихрь Крови",
     "hotkey": "R",
     "type": "ultimate",
@@ -7324,8 +6900,8 @@ var ABILITY_STATS = {
     ],
     "area": 450
   },
-  "A0UU": {
-    "rawcode": "A0UU",
+  "A0LV": {
+    "rawcode": "A0LV",
     "name": "Размашистый Удар",
     "hotkey": "F",
     "type": "active",
@@ -7356,8 +6932,8 @@ var ABILITY_STATS = {
     ],
     "area": 350
   },
-  "A0IS": {
-    "rawcode": "A0IS",
+  "A05B": {
+    "rawcode": "A05B",
     "name": "Ледяной дождь",
     "hotkey": "Q",
     "type": "active",
@@ -7384,8 +6960,8 @@ var ABILITY_STATS = {
     ],
     "area": 325
   },
-  "A05B": {
-    "rawcode": "A05B",
+  "A0IT": {
+    "rawcode": "A0IT",
     "name": "Оледенение",
     "hotkey": "W",
     "type": "active",
@@ -7408,8 +6984,8 @@ var ABILITY_STATS = {
       22
     ]
   },
-  "A0IT": {
-    "rawcode": "A0IT",
+  "A0IU": {
+    "rawcode": "A0IU",
     "name": "Ледяная волна",
     "hotkey": "E",
     "type": "active",
@@ -7429,8 +7005,8 @@ var ABILITY_STATS = {
     ],
     "area": 350
   },
-  "A0IU": {
-    "rawcode": "A0IU",
+  "A0IV": {
+    "rawcode": "A0IV",
     "name": "Ледяной столб",
     "hotkey": "R",
     "type": "ultimate",
@@ -7448,8 +7024,8 @@ var ABILITY_STATS = {
     ],
     "area": 925
   },
-  "A0IV": {
-    "rawcode": "A0IV",
+  "A0IS": {
+    "rawcode": "A0IS",
     "name": "Ледяная атака",
     "hotkey": "F",
     "type": "passive",
@@ -7740,8 +7316,8 @@ var ABILITY_STATS = {
       10
     ]
   },
-  "A0EW": {
-    "rawcode": "A0EW",
+  "A0UZ": {
+    "rawcode": "A0UZ",
     "name": "Печать Огня",
     "hotkey": "Q",
     "type": "active",
@@ -7765,8 +7341,8 @@ var ABILITY_STATS = {
     ],
     "area": 400
   },
-  "A0UZ": {
-    "rawcode": "A0UZ",
+  "A0OK": {
+    "rawcode": "A0OK",
     "name": "Огненный Гейзер",
     "hotkey": "W",
     "type": "active",
@@ -7786,8 +7362,8 @@ var ABILITY_STATS = {
     ],
     "area": 400
   },
-  "A0OK": {
-    "rawcode": "A0OK",
+  "A06F": {
+    "rawcode": "A06F",
     "name": "Возгорание",
     "hotkey": "E",
     "type": "active",
@@ -7809,13 +7385,11 @@ var ABILITY_STATS = {
         ]
       }
     ],
-    "cool": [
-      26
-    ],
+    "cool": [30],
     "area": 280
   },
-  "A06F": {
-    "rawcode": "A06F",
+  "A05G": {
+    "rawcode": "A05G",
     "name": "Полет феникса",
     "hotkey": "R",
     "type": "ultimate",
@@ -7839,8 +7413,8 @@ var ABILITY_STATS = {
     ],
     "area": 425
   },
-  "A05G": {
-    "rawcode": "A05G",
+  "A0EW": {
+    "rawcode": "A0EW",
     "name": "Огненный щит",
     "hotkey": "F",
     "type": "active",
@@ -7851,8 +7425,8 @@ var ABILITY_STATS = {
     ],
     "area": 320
   },
-  "A0J2": {
-    "rawcode": "A0J2",
+  "A0J1": {
+    "rawcode": "A0J1",
     "name": "Энергетические вихри",
     "hotkey": "Q",
     "type": "active",
@@ -7875,8 +7449,8 @@ var ABILITY_STATS = {
       12
     ]
   },
-  "A0J1": {
-    "rawcode": "A0J1",
+  "A0J0": {
+    "rawcode": "A0J0",
     "name": "Энергетический щит",
     "hotkey": "W",
     "type": "active",
@@ -7894,8 +7468,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0J0": {
-    "rawcode": "A0J0",
+  "A0BS": {
+    "rawcode": "A0BS",
     "name": "Плазменный выстрел",
     "hotkey": "E",
     "type": "active",
@@ -7923,8 +7497,8 @@ var ABILITY_STATS = {
     ],
     "area": 325
   },
-  "A0BS": {
-    "rawcode": "A0BS",
+  "A0IY": {
+    "rawcode": "A0IY",
     "name": "Метеоритная буря",
     "hotkey": "R",
     "type": "ultimate",
@@ -7951,8 +7525,8 @@ var ABILITY_STATS = {
     ],
     "area": 275
   },
-  "A0IY": {
-    "rawcode": "A0IY",
+  "A0J2": {
+    "rawcode": "A0J2",
     "name": "Энергетический выстрел",
     "hotkey": "F",
     "type": "active",
@@ -7979,8 +7553,8 @@ var ABILITY_STATS = {
     ],
     "area": 325
   },
-  "A0DH": {
-    "rawcode": "A0DH",
+  "A0DE": {
+    "rawcode": "A0DE",
     "name": "Плазменное поле",
     "hotkey": "Q",
     "type": "active",
@@ -8004,8 +7578,8 @@ var ABILITY_STATS = {
     ],
     "area": 1400
   },
-  "A0DE": {
-    "rawcode": "A0DE",
+  "A0DG": {
+    "rawcode": "A0DG",
     "name": "Большой взрыв",
     "hotkey": "W",
     "type": "active",
@@ -8038,8 +7612,8 @@ var ABILITY_STATS = {
     ],
     "area": 450
   },
-  "A0DG": {
-    "rawcode": "A0DG",
+  "A0DF": {
+    "rawcode": "A0DF",
     "name": "Удар молнией",
     "hotkey": "E",
     "type": "active",
@@ -8059,8 +7633,8 @@ var ABILITY_STATS = {
     ],
     "area": 400
   },
-  "A0DF": {
-    "rawcode": "A0DF",
+  "A0DN": {
+    "rawcode": "A0DN",
     "name": "Дух грозы",
     "hotkey": "R",
     "type": "ultimate",
@@ -8068,8 +7642,8 @@ var ABILITY_STATS = {
       120
     ]
   },
-  "A0DN": {
-    "rawcode": "A0DN",
+  "A0DH": {
+    "rawcode": "A0DH",
     "name": "Грозовое облако",
     "hotkey": "F",
     "type": "active",
@@ -8089,8 +7663,8 @@ var ABILITY_STATS = {
     ],
     "area": 550
   },
-  "A0EM": {
-    "rawcode": "A0EM",
+  "A0KG": {
+    "rawcode": "A0KG",
     "name": "Электрический заряд",
     "hotkey": "Q",
     "type": "active",
@@ -8113,8 +7687,8 @@ var ABILITY_STATS = {
       15
     ]
   },
-  "A0KG": {
-    "rawcode": "A0KG",
+  "A01D": {
+    "rawcode": "A01D",
     "name": "Шаровые молнии",
     "hotkey": "W",
     "type": "active",
@@ -8148,8 +7722,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A01D": {
-    "rawcode": "A01D",
+  "A0FF": {
+    "rawcode": "A0FF",
     "name": "Электрическая кара",
     "hotkey": "E",
     "type": "active",
@@ -8157,8 +7731,8 @@ var ABILITY_STATS = {
       30
     ]
   },
-  "A0FF": {
-    "rawcode": "A0FF",
+  "A0KH": {
+    "rawcode": "A0KH",
     "name": "Гнев гроз",
     "hotkey": "R",
     "type": "ultimate",
@@ -8181,8 +7755,8 @@ var ABILITY_STATS = {
       130
     ]
   },
-  "A0KH": {
-    "rawcode": "A0KH",
+  "A0EM": {
+    "rawcode": "A0EM",
     "name": "Скорость молнии",
     "hotkey": "F",
     "type": "active",
@@ -8239,8 +7813,8 @@ var ABILITY_STATS = {
     "hotkey": "F",
     "type": "passive"
   },
-  "A178": {
-    "rawcode": "A178",
+  "A054": {
+    "rawcode": "A054",
     "name": "Разветвленная молния",
     "hotkey": "Q",
     "type": "active",
@@ -8269,8 +7843,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A054": {
-    "rawcode": "A054",
+  "A04F": {
+    "rawcode": "A04F",
     "name": "Громовой скачок",
     "hotkey": "W",
     "type": "active",
@@ -8311,8 +7885,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A04F": {
-    "rawcode": "A04F",
+  "A058": {
+    "rawcode": "A058",
     "name": "Гроза",
     "hotkey": "E",
     "type": "active",
@@ -8334,87 +7908,17 @@ var ABILITY_STATS = {
     "cool": [
       22
     ],
+    "cost": [
+      275,
+      350,
+      425,
+      500,
+      575
+    ],
     "area": 450
   },
-  "A058": {
-    "rawcode": "A058",
-    "name": "Громовой рёв",
-    "hotkey": "R",
-    "type": "ultimate",
-    "damage": [
-      {
-        "base": [
-          1000,
-          8,
-          12,
-          16,
-          20
-        ]
-      }
-    ],
-    "cool": [
-      130
-    ],
-    "area": 3000
-  },
-  "A04H": {
-    "rawcode": "A04H",
-    "name": "Разряд молнии",
-    "hotkey": "F",
-    "type": "active",
-    "damage": [
-      {
-        "base": [
-          300
-        ],
-        "statScale": {
-          "stat": "INT",
-          "mult": 1.3
-        }
-      }
-    ],
-    "cc": [
-      {
-        "type": "stun",
-        "duration": [
-          1.3
-        ],
-        "weight": 1
-      }
-    ],
-    "cool": [
-      15,
-      14,
-      13
-    ]
-  },
-  "A0BM": {
-    "rawcode": "A0BM",
-    "name": "Воздушная коса",
-    "hotkey": "Q",
-    "type": "active",
-    "damage": [
-      {
-        "base": [
-          240,
-          380,
-          520,
-          660,
-          800
-        ],
-        "statScale": {
-          "stat": "STR",
-          "mult": 3
-        }
-      }
-    ],
-    "cool": [
-      15
-    ],
-    "area": 250
-  },
-  "A0BN": {
-    "rawcode": "A0BN",
+  "A0WY": {
+    "rawcode": "A0WY",
     "name": "Древняя мощь",
     "hotkey": "W",
     "type": "passive",
@@ -8431,8 +7935,8 @@ var ABILITY_STATS = {
       }
     ]
   },
-  "A0WY": {
-    "rawcode": "A0WY",
+  "A0BL": {
+    "rawcode": "A0BL",
     "name": "Серия Ударов",
     "hotkey": "E",
     "type": "active",
@@ -8445,8 +7949,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0BL": {
-    "rawcode": "A0BL",
+  "A0BO": {
+    "rawcode": "A0BO",
     "name": "Гнев Титана",
     "hotkey": "R",
     "type": "ultimate",
@@ -8465,8 +7969,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0BO": {
-    "rawcode": "A0BO",
+  "A0BM": {
+    "rawcode": "A0BM",
     "name": "Ангельское благословение",
     "hotkey": "F",
     "type": "active",
@@ -8474,8 +7978,8 @@ var ABILITY_STATS = {
       14
     ]
   },
-  "A0S0": {
-    "rawcode": "A0S0",
+  "A0S2": {
+    "rawcode": "A0S2",
     "name": "Ритуал крови",
     "hotkey": "Q",
     "type": "active",
@@ -8495,8 +7999,8 @@ var ABILITY_STATS = {
     ],
     "area": 250
   },
-  "A0S2": {
-    "rawcode": "A0S2",
+  "A0S1": {
+    "rawcode": "A0S1",
     "name": "Путь безумия",
     "hotkey": "W",
     "type": "active",
@@ -8531,49 +8035,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0S1": {
-    "rawcode": "A0S1",
-    "name": "Тёмный ритуал",
-    "hotkey": "E",
-    "type": "active",
-    "damage": [
-      {
-        "base": [
-          200,
-          400,
-          600,
-          800,
-          1000
-        ],
-        "statScale": {
-          "stat": "STR",
-          "mult": 4
-        },
-        "hitCount": [
-          6
-        ]
-      }
-    ],
-    "cc": [
-      {
-        "type": "blind",
-        "duration": [
-          4
-        ],
-        "weight": 0.3
-      }
-    ],
-    "cool": [
-      30,
-      28,
-      26,
-      24,
-      22
-    ],
-    "area": 600
-  },
-  "A0S5": {
-    "rawcode": "A0S5",
+  "A0RZ": {
+    "rawcode": "A0RZ",
     "name": "Похищение Жизни",
     "hotkey": "R",
     "type": "ultimate",
@@ -8596,8 +8059,8 @@ var ABILITY_STATS = {
       120
     ]
   },
-  "A0RZ": {
-    "rawcode": "A0RZ",
+  "A0S0": {
+    "rawcode": "A0S0",
     "name": "Поглощение крови",
     "hotkey": "F",
     "type": "passive",
@@ -8622,8 +8085,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A028": {
-    "rawcode": "A028",
+  "A0KY": {
+    "rawcode": "A0KY",
     "name": "Кровавый наскок",
     "hotkey": "Q",
     "type": "active",
@@ -8643,8 +8106,8 @@ var ABILITY_STATS = {
     ],
     "area": 300
   },
-  "A0KY": {
-    "rawcode": "A0KY",
+  "A0CB": {
+    "rawcode": "A0CB",
     "name": "Кровавая ярость",
     "hotkey": "W",
     "type": "active",
@@ -8668,8 +8131,8 @@ var ABILITY_STATS = {
     ],
     "area": 250
   },
-  "A0CB": {
-    "rawcode": "A0CB",
+  "S000": {
+    "rawcode": "S000",
     "name": "Увечье",
     "hotkey": "E",
     "type": "active",
@@ -8696,8 +8159,8 @@ var ABILITY_STATS = {
       24
     ]
   },
-  "S000": {
-    "rawcode": "S000",
+  "A0O0": {
+    "rawcode": "A0O0",
     "name": "Неистовствующая Ярость",
     "hotkey": "R",
     "type": "ultimate",
@@ -8726,14 +8189,14 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0O0": {
-    "rawcode": "A0O0",
+  "A028": {
+    "rawcode": "A028",
     "name": "Сила вурдалака",
     "hotkey": "F",
     "type": "passive"
   },
-  "A04W": {
-    "rawcode": "A04W",
+  "A08M": {
+    "rawcode": "A08M",
     "name": "Молот правосудия",
     "hotkey": "Q",
     "type": "active",
@@ -8766,8 +8229,8 @@ var ABILITY_STATS = {
     ],
     "area": 400
   },
-  "A08M": {
-    "rawcode": "A08M",
+  "A03U": {
+    "rawcode": "A03U",
     "name": "Воля Света",
     "hotkey": "W",
     "type": "active",
@@ -8799,8 +8262,8 @@ var ABILITY_STATS = {
     ],
     "area": 425
   },
-  "A03U": {
-    "rawcode": "A03U",
+  "A04V": {
+    "rawcode": "A04V",
     "name": "Волны Света",
     "hotkey": "E",
     "type": "active",
@@ -8830,8 +8293,8 @@ var ABILITY_STATS = {
       25
     ]
   },
-  "A04V": {
-    "rawcode": "A04V",
+  "A04P": {
+    "rawcode": "A04P",
     "name": "Сила света",
     "hotkey": "R",
     "type": "ultimate",
@@ -8848,8 +8311,8 @@ var ABILITY_STATS = {
     ],
     "area": 5000
   },
-  "A04P": {
-    "rawcode": "A04P",
+  "A04W": {
+    "rawcode": "A04W",
     "name": "Священная Защита",
     "hotkey": "F",
     "type": "passive",
@@ -8861,32 +8324,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A06L": {
-    "rawcode": "A06L",
-    "name": "Сюрикен",
-    "hotkey": "Q",
-    "type": "active",
-    "damage": [
-      {
-        "base": [
-          150,
-          300,
-          450,
-          600,
-          750
-        ],
-        "statScale": {
-          "stat": "AGI",
-          "mult": 1.5
-        }
-      }
-    ],
-    "cool": [
-      15
-    ]
-  },
-  "A0T1": {
-    "rawcode": "A0T1",
+  "A145": {
+    "rawcode": "A145",
     "name": "Скрытый клинок",
     "hotkey": "W",
     "type": "active",
@@ -8894,8 +8333,8 @@ var ABILITY_STATS = {
       20
     ]
   },
-  "A145": {
-    "rawcode": "A145",
+  "A07O": {
+    "rawcode": "A07O",
     "name": "Ловкий удар",
     "hotkey": "E",
     "type": "passive",
@@ -8927,8 +8366,8 @@ var ABILITY_STATS = {
       }
     ]
   },
-  "A07O": {
-    "rawcode": "A07O",
+  "A07Q": {
+    "rawcode": "A07Q",
     "name": "Дождь из лезвий",
     "hotkey": "R",
     "type": "ultimate",
@@ -8952,8 +8391,8 @@ var ABILITY_STATS = {
     ],
     "area": 650
   },
-  "A07Q": {
-    "rawcode": "A07Q",
+  "A06L": {
+    "rawcode": "A06L",
     "name": "Скачок",
     "hotkey": "F",
     "type": "active",
@@ -8971,8 +8410,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0GB": {
-    "rawcode": "A0GB",
+  "A0HU": {
+    "rawcode": "A0HU",
     "name": "Волна",
     "hotkey": "Q",
     "type": "active",
@@ -9005,8 +8444,8 @@ var ABILITY_STATS = {
     ],
     "area": 325
   },
-  "A0HU": {
-    "rawcode": "A0HU",
+  "A093": {
+    "rawcode": "A093",
     "name": "Морские потоки",
     "hotkey": "W",
     "type": "active",
@@ -9033,8 +8472,8 @@ var ABILITY_STATS = {
       20
     ]
   },
-  "A093": {
-    "rawcode": "A093",
+  "A0JD": {
+    "rawcode": "A0JD",
     "name": "Водяная форма",
     "hotkey": "E",
     "type": "active",
@@ -9061,8 +8500,8 @@ var ABILITY_STATS = {
       28
     ]
   },
-  "A0JD": {
-    "rawcode": "A0JD",
+  "A0JE": {
+    "rawcode": "A0JE",
     "name": "Водоворот",
     "hotkey": "R",
     "type": "ultimate",
@@ -9091,8 +8530,8 @@ var ABILITY_STATS = {
       150
     ]
   },
-  "A0JE": {
-    "rawcode": "A0JE",
+  "A0GB": {
+    "rawcode": "A0GB",
     "name": "Водяной барьер",
     "hotkey": "F",
     "type": "active",
@@ -9110,8 +8549,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0FR": {
-    "rawcode": "A0FR",
+  "A0FS": {
+    "rawcode": "A0FS",
     "name": "Воздушный шторм",
     "hotkey": "Q",
     "type": "active",
@@ -9135,8 +8574,8 @@ var ABILITY_STATS = {
     ],
     "area": 330
   },
-  "A0FS": {
-    "rawcode": "A0FS",
+  "A0FU": {
+    "rawcode": "A0FU",
     "name": "Ветряные снаряды",
     "hotkey": "W",
     "type": "active",
@@ -9144,8 +8583,8 @@ var ABILITY_STATS = {
       14
     ]
   },
-  "A0FU": {
-    "rawcode": "A0FU",
+  "A0AB": {
+    "rawcode": "A0AB",
     "name": "Поток ветра",
     "hotkey": "E",
     "type": "active",
@@ -9182,8 +8621,8 @@ var ABILITY_STATS = {
     ],
     "area": 325
   },
-  "A0AB": {
-    "rawcode": "A0AB",
+  "A0FT": {
+    "rawcode": "A0FT",
     "name": "Воздушная стена",
     "hotkey": "R",
     "type": "ultimate",
@@ -9208,8 +8647,8 @@ var ABILITY_STATS = {
     ],
     "area": 825
   },
-  "A0FT": {
-    "rawcode": "A0FT",
+  "A0FR": {
+    "rawcode": "A0FR",
     "name": "Полет",
     "hotkey": "F",
     "type": "active",
@@ -9222,8 +8661,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A08X": {
-    "rawcode": "A08X",
+  "A0S6": {
+    "rawcode": "A0S6",
     "name": "Торнадо",
     "hotkey": "Q",
     "type": "active",
@@ -9242,8 +8681,8 @@ var ABILITY_STATS = {
       12
     ]
   },
-  "A0S6": {
-    "rawcode": "A0S6",
+  "A090": {
+    "rawcode": "A090",
     "name": "Доспехи ветра",
     "hotkey": "W",
     "type": "active",
@@ -9251,8 +8690,8 @@ var ABILITY_STATS = {
       25
     ]
   },
-  "A090": {
-    "rawcode": "A090",
+  "A0SJ": {
+    "rawcode": "A0SJ",
     "name": "Аура ветров",
     "hotkey": "E",
     "type": "active",
@@ -9266,8 +8705,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0SJ": {
-    "rawcode": "A0SJ",
+  "A08Z": {
+    "rawcode": "A08Z",
     "name": "Вихрь",
     "hotkey": "R",
     "type": "ultimate",
@@ -9292,17 +8731,8 @@ var ABILITY_STATS = {
     ],
     "area": 550
   },
-  "A08Z": {
-    "rawcode": "A08Z",
-    "name": "Смерч",
-    "hotkey": "F",
-    "type": "active",
-    "cool": [
-      16
-    ]
-  },
-  "A0RQ": {
-    "rawcode": "A0RQ",
+  "A0RO": {
+    "rawcode": "A0RO",
     "name": "Кристаллы",
     "hotkey": "Q",
     "type": "active",
@@ -9333,10 +8763,10 @@ var ABILITY_STATS = {
     "cool": [
       10
     ],
-    "area": 300
+    "area": 250
   },
-  "A0RP": {
-    "rawcode": "A0RP",
+  "A0RN": {
+    "rawcode": "A0RN",
     "name": "Магическое усиление",
     "hotkey": "E",
     "type": "active",
@@ -9364,8 +8794,8 @@ var ABILITY_STATS = {
       ]
     }
   },
-  "A0RN": {
-    "rawcode": "A0RN",
+  "A0EO": {
+    "rawcode": "A0EO",
     "name": "Плазменный луч",
     "hotkey": "R",
     "type": "ultimate",
@@ -9397,8 +8827,8 @@ var ABILITY_STATS = {
     ],
     "area": 475
   },
-  "A0EO": {
-    "rawcode": "A0EO",
+  "A0RQ": {
+    "rawcode": "A0RQ",
     "name": "Электрическая цепь",
     "hotkey": "F",
     "type": "active",
@@ -9420,7 +8850,7 @@ var ABILITY_STATS = {
     "cool": [
       10
     ],
-    "wip": true,
+    "wip": true
   },
   "A0U9": {
     "rawcode": "A0U9",
@@ -9432,7 +8862,7 @@ var ABILITY_STATS = {
     ],
     "cc": "Оглушение 1.25 сек",
     "area": 325,
-    "damage": "Бросок (дальность 600/700/800)",
+    "damage": "Бросок (дальность 600/700/800)"
   },
   "A0UJ": {
     "rawcode": "A0UJ",
@@ -9442,14 +8872,14 @@ var ABILITY_STATS = {
     "cool": [
       8
     ],
-    "damage": "200/300/400 + AGI",
+    "damage": "200/300/400 + AGI"
   },
   "A0V9": {
     "rawcode": "A0V9",
     "name": "Огненный меч",
     "hotkey": "F",
     "type": "passive",
-    "damage": "Крит 20% x1.7/1.85/2.0; сплэш 20% (75/100/125 + STR), обл 250",
+    "damage": "Крит 20% x1.7/1.85/2.0; сплэш 20% (75/100/125 + STR), обл 250"
   },
   "A0ZM": {
     "rawcode": "A0ZM",
@@ -9459,7 +8889,7 @@ var ABILITY_STATS = {
     "cool": [
       12
     ],
-    "wip": true,
+    "wip": true
   },
   "A177": {
     "rawcode": "A177",
@@ -9478,7 +8908,7 @@ var ABILITY_STATS = {
     "cool": [
       40
     ],
-    "wip": true,
+    "wip": true
   },
   "A007": {
     "rawcode": "A007",
@@ -9503,7 +8933,7 @@ var ABILITY_STATS = {
     "name": "Зов возмездия",
     "hotkey": "F",
     "type": "passive",
-    "damage": "AGI×2 + 100 (шанс 10%), лечение 50% от урона",
+    "damage": "AGI×2 + 100 (шанс 10%), лечение 50% от урона"
   },
     "wip": true,
     "A053": {
@@ -9512,21 +8942,21 @@ var ABILITY_STATS = {
     "hotkey": "R",
     "type": "ultimate",
     "cool": 100,
-    "area": 400,
+    "area": 400
   },
   "A0BR": {
     "rawcode": "A0BR",
     "name": "Свирепый молот",
     "hotkey": "R",
     "type": "ultimate",
-    "cool": 25,
+    "cool": 25
   },
   "A1AV": {
     "rawcode": "A1AV",
     "name": "Бушующее пламя",
     "hotkey": "R",
     "type": "ultimate",
-    "cool": 100,
+    "cool": 100
   },
   "A0R9": {
     "rawcode": "A0R9",
@@ -9534,28 +8964,28 @@ var ABILITY_STATS = {
     "hotkey": "Q",
     "type": "active",
     "cool": 10,
-    "area": 400,
+    "area": 450
   },
   "A0VN": {
     "rawcode": "A0VN",
     "name": "Рывок огня",
     "hotkey": "W",
     "type": "active",
-    "cool": 25,
+    "cool": 25
   },
   "A0V6": {
     "rawcode": "A0V6",
     "name": "Хаотическая форма",
     "hotkey": "E",
     "type": "active",
-    "cool": 33,
+    "cool": 33
   },
   "A19T": {
     "rawcode": "A19T",
     "name": "Огненный Рев",
     "hotkey": "R",
     "type": "ultimate",
-    "cool": 130,
+    "cool": 130
   },
 "A18U": {
     "rawcode": "A18U",
@@ -9563,5 +8993,408 @@ var ABILITY_STATS = {
     "hotkey": "F",
     "type": "active",
     "wip": true
+  },
+  "A00A": {
+    "rawcode": "A00A",
+    "name": "Фантомные Клинки",
+    "hotkey": "W",
+    "type": "passive"
+  },
+  "A0A0": {
+    "rawcode": "A0A0",
+    "name": "Звериный рев",
+    "hotkey": "Q",
+    "type": "active",
+    "cool": [
+      15
+    ],
+    "cost": [
+      175,
+      235,
+      295,
+      355,
+      415
+    ],
+    "area": 400
+  },
+  "A00Z": {
+    "rawcode": "A00Z",
+    "name": "Покой",
+    "hotkey": "R",
+    "type": "active",
+    "cool": [
+      105
+    ],
+    "cost": [
+      550,
+      700,
+      850,
+      1000,
+      1150
+    ]
+  },
+  "A0C3": {
+    "rawcode": "A0C3",
+    "name": "Меткость",
+    "hotkey": "W",
+    "type": "passive"
+  },
+  "A0RP": {
+    "rawcode": "A0RP",
+    "name": "Магическая сила",
+    "hotkey": "W",
+    "type": "passive"
+  },
+  "A1CM": {
+    "rawcode": "A1CM",
+    "name": "Удар когтями",
+    "hotkey": "Q",
+    "type": "passive"
+  },
+  "A08E": {
+    "rawcode": "A08E",
+    "name": "Огненная пушка",
+    "hotkey": "R",
+    "type": "active",
+    "cool": [
+      100
+    ],
+    "cost": [
+      500,
+      600,
+      700,
+      800,
+      900
+    ],
+    "area": 450
+  },
+  "A19L": {
+    "rawcode": "A19L",
+    "name": "Темный выстрел",
+    "hotkey": "Q",
+    "type": "active",
+    "cool": [
+      10
+    ],
+    "cost": [
+      100,
+      175,
+      250,
+      325,
+      400
+    ]
+  },
+  "A0FK": {
+    "rawcode": "A0FK",
+    "name": "Всплекс смерти",
+    "hotkey": "Q",
+    "type": "active",
+    "cool": [
+      10
+    ],
+    "cost": [
+      175,
+      225,
+      275,
+      325,
+      375
+    ]
+  },
+  "A0FN": {
+    "rawcode": "A0FN",
+    "name": "Темная энергия",
+    "hotkey": "R",
+    "type": "active",
+    "cool": [
+      90
+    ],
+    "cost": [
+      450,
+      600,
+      750,
+      900,
+      1050
+    ]
+  },
+  "A0JJ": {
+    "rawcode": "A0JJ",
+    "name": "Подчинение молний",
+    "hotkey": "E",
+    "type": "passive"
+  },
+  "A0LK": {
+    "rawcode": "A0LK",
+    "name": "Темный поток",
+    "hotkey": "Q",
+    "type": "active",
+    "cool": [
+      12
+    ],
+    "cost": [
+      175,
+      210,
+      245,
+      280,
+      315
+    ]
+  },
+  "A0SB": {
+    "rawcode": "A0SB",
+    "name": "Волшебный трезубец",
+    "hotkey": "E",
+    "type": "passive"
+  },
+  "A0WC": {
+    "rawcode": "A0WC",
+    "name": "Чародейская стрела",
+    "hotkey": "Q",
+    "type": "passive"
+  },
+  "A0WB": {
+    "rawcode": "A0WB",
+    "name": "Поглощение маны",
+    "hotkey": "W",
+    "type": "passive"
+  },
+  "A1AI": {
+    "rawcode": "A1AI",
+    "name": "Паралич",
+    "hotkey": "Q",
+    "type": "active",
+    "cool": [
+      15
+    ],
+    "cost": [
+      125,
+      165,
+      205,
+      245,
+      285
+    ]
+  },
+  "A01A": {
+    "rawcode": "A01A",
+    "name": "Пьяный мастер.",
+    "hotkey": "F",
+    "type": "passive"
+  },
+  "A178": {
+    "rawcode": "A178",
+    "name": "Электрический разряд",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      15,
+      14,
+      13
+    ],
+    "cost": [
+      120,
+      145,
+      170
+    ]
+  },
+  "A04H": {
+    "rawcode": "A04H",
+    "name": "Громовой Рев",
+    "hotkey": "R",
+    "type": "active",
+    "cool": [
+      130
+    ],
+    "cost": [
+      600,
+      850,
+      1100,
+      1350,
+      1600
+    ]
+  },
+  "A08P": {
+    "rawcode": "A08P",
+    "name": "Удар топором",
+    "hotkey": "R",
+    "type": "active",
+    "cool": [
+      8
+    ],
+    "cost": [
+      150,
+      175,
+      200
+    ]
+  },
+  "A08X": {
+    "rawcode": "A08X",
+    "name": "Смерч.",
+    "hotkey": "F",
+    "type": "active",
+    "cool": [
+      16
+    ],
+    "cost": [
+      125,
+      150,
+      175
+    ]
+  },
+  "A0BN": {
+    "rawcode": "A0BN",
+    "name": "Воздушная коса",
+    "hotkey": "Q",
+    "type": "active",
+    "cool": [
+      15
+    ],
+    "cost": [
+      175,
+      215,
+      255,
+      295,
+      335
+    ]
+  },
+  "A0E2": {
+    "rawcode": "A0E2",
+    "name": "Темный лик",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      11
+    ],
+    "cost": [175, 215, 255, 295, 335]
+  },
+  "A0P2": {
+    "rawcode": "A0P2",
+    "name": "Плевок яда",
+    "hotkey": "Q",
+    "type": "active",
+    "cool": [
+      16
+    ],
+    "cost": [
+      100,
+      135,
+      170,
+      205,
+      240
+    ],
+    "area": 400
+  },
+  "A0I2": {
+    "rawcode": "A0I2",
+    "name": "Ядовитый всплеск",
+    "hotkey": "R",
+    "type": "active",
+    "cool": [
+      120
+    ],
+    "cost": [
+      425,
+      550,
+      675,
+      800,
+      925
+    ]
+  },
+  "A137": {
+    "rawcode": "A137",
+    "name": "Темный дождь",
+    "hotkey": "Q",
+    "type": "active",
+    "cool": [
+      15
+    ],
+    "cost": [
+      175,
+      220,
+      265,
+      310,
+      355
+    ],
+    "area": 300
+  },
+  "A14I": {
+    "rawcode": "A14I",
+    "name": "Сфера пламени",
+    "hotkey": "W",
+    "type": "active",
+    "cool": [
+      18
+    ],
+    "cost": [
+      70,
+      135,
+      200,
+      265,
+      330
+    ]
+  },
+  "A05C": {
+    "rawcode": "A05C",
+    "name": "Ярость",
+    "hotkey": "Q",
+    "type": "active",
+    "cool": [
+      16
+    ],
+    "cost": [
+      225,
+      250,
+      275,
+      300,
+      325
+    ]
+  },
+  "A0S5": {
+    "rawcode": "A0S5",
+    "name": "Темный ритуал",
+    "hotkey": "E",
+    "type": "active",
+    "cool": [
+      30,
+      28,
+      26,
+      24,
+      22
+    ],
+    "cost": [
+      180,
+      220,
+      260,
+      300,
+      340
+    ]
+  },
+
+  "A0N2": {
+    "rawcode": "A0N2",
+    "name": "Сюрикен",
+    "hotkey": "Q",
+    "type": "active",
+    "damage": [
+      {
+        "base": [
+          150,
+          300,
+          450,
+          600,
+          750
+        ],
+        "statScale": {
+          "stat": "AGI",
+          "mult": 3
+        }
+      }
+    ],
+    "cool": [
+      15,
+      14,
+      13,
+      12,
+      11
+    ],
+    "area": 1600
   }
+
 };
