@@ -728,7 +728,6 @@ var ABILITY_STATS = {
     "type": "active",
     "cool": [25, 22.5, 20],
     "area": 700,
-    "cc": "Метка: −5 брони, раскрытие (5 сек)"
   },
   "A1AE": {
     "rawcode": "A1AE",
@@ -2618,7 +2617,6 @@ var ABILITY_STATS = {
     "area": 400,
     "area": 300,
     "cool": [14],
-    "buffs": "Скорость боя +35%, скорость бега +15% (10 сек)"
   },
   "A00W": {
     "rawcode": "A00W",
@@ -8858,7 +8856,6 @@ var ABILITY_STATS = {
     "cool": [
       14
     ],
-    "cc": "Оглушение 1.25 сек",
     "area": 325,
   },
   "A0UJ": {

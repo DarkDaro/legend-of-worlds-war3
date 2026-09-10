@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
             totalBurst += dmg;
 
             // CC
-            if (abS.cc && abS.cc.length) {
+            if (Array.isArray(abS.cc) && abS.cc.length) {
                 abS.cc.forEach(function(c) {
                     var idx = Math.min(abLvl, c.duration.length) - 1;
                     var dur = c.duration[idx] || 0;
