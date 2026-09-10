@@ -350,7 +350,7 @@ var SEARCH_INDEX = {
     "heroName": "Киборг"
   },
   {
-    "name": "Ракетный залп",
+    "name": "Огненная пушка",
     "heroId": "cyborg",
     "heroName": "Киборг"
   },
@@ -1780,7 +1780,7 @@ var SEARCH_INDEX = {
     "heroName": "Громовержец"
   },
   {
-    "name": "Разряд молнии",
+    "name": "Электрический разряд",
     "heroId": "thundergod",
     "heroName": "Громовержец"
   },
