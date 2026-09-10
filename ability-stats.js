@@ -2616,7 +2616,6 @@ var ABILITY_STATS = {
       15
     ],
     "area": 400,
-    "damage": "150 + 20×уровень героя",
     "area": 300,
     "cool": [14],
     "buffs": "Скорость боя +35%, скорость бега +15% (10 сек)"
@@ -4047,7 +4046,6 @@ var ABILITY_STATS = {
       16
     ],
     "area": 400,
-    "damage": "75 + INT×0.7 за 5 сек (20% шанс), замедление 20%"
   },
   "A0MH": {
     "rawcode": "A0MH",
@@ -8862,7 +8860,6 @@ var ABILITY_STATS = {
     ],
     "cc": "Оглушение 1.25 сек",
     "area": 325,
-    "damage": "Бросок (дальность 600/700/800)"
   },
   "A0UJ": {
     "rawcode": "A0UJ",
@@ -8872,14 +8869,12 @@ var ABILITY_STATS = {
     "cool": [
       8
     ],
-    "damage": "200/300/400 + AGI"
   },
   "A0V9": {
     "rawcode": "A0V9",
     "name": "Огненный меч",
     "hotkey": "F",
     "type": "passive",
-    "damage": "Крит 20% x1.7/1.85/2.0; сплэш 20% (75/100/125 + STR), обл 250"
   },
   "A0ZM": {
     "rawcode": "A0ZM",
@@ -8933,7 +8928,6 @@ var ABILITY_STATS = {
     "name": "Зов возмездия",
     "hotkey": "F",
     "type": "passive",
-    "damage": "AGI×2 + 100 (шанс 10%), лечение 50% от урона"
   },
     "wip": true,
     "A053": {

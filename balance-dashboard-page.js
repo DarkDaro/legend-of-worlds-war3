@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function calcAbilityDamage(abS, heroStats, heroLevel) {
-        if (!abS.damage || !abS.damage.length) return 0;
+        if (!Array.isArray(abS.damage) || !abS.damage.length) return 0;
         var total = 0;
         abS.damage.forEach(function(d) {
             var abD = ABILITIES_DB[abS.rawcode];
