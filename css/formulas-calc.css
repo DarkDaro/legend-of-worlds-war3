@@ -1,0 +1,375 @@
+        .formulas-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .formula-tabs {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .formula-tab {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 8px 16px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .formula-tab:hover {
+            border-color: #00e6ff;
+            color: var(--text-primary);
+        }
+        .formula-tab.active {
+            background: #00e6ff22;
+            border-color: #00e6ff;
+            color: var(--accent-cyan);
+        }
+        .formula-panel {
+            display: none;
+        }
+        .formula-panel.active {
+            display: block;
+        }
+        .formula-input-group {
+            margin-bottom: 16px;
+        }
+        .formula-input-group label {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+        }
+        .formula-input-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .formula-input-row input {
+            flex: 1;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .formula-input-row input:focus {
+            border-color: #00e6ff;
+        }
+        .formula-input-row .unit {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .formula-sources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .formula-source-chip {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 6px 14px;
+            color: var(--text-primary);
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .formula-source-chip:hover {
+            border-color: #00e6ff;
+        }
+        .formula-source-chip.selected {
+            background: #00e6ff22;
+            border-color: #00e6ff;
+            color: var(--accent-cyan);
+        }
+        .formula-source-chip .chip-value {
+            color: #00ffaa;
+            font-weight: 600;
+        }
+        .formula-source-chip.selected .chip-value {
+            color: var(--accent-cyan);
+        }
+        .formula-results {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+        .formula-result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #1a2744;
+        }
+        .formula-result-row:last-child {
+            border-bottom: none;
+        }
+        .formula-result-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .formula-result-value {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .formula-result-value.positive {
+            color: #00ffaa;
+        }
+        .formula-bar-container {
+            margin-top: 12px;
+        }
+        .formula-bar-label {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+        }
+        .formula-bar {
+            background: #1a2744;
+            border-radius: 6px;
+            height: 10px;
+            overflow: hidden;
+        }
+        .formula-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.3s ease;
+        }
+        .formula-bar-fill.cyan { background: linear-gradient(90deg, #00e6ff, #00ffaa); }
+        .formula-bar-fill.red { background: linear-gradient(90deg, #ff5555, #ff9944); }
+        .formula-bar-fill.purple { background: linear-gradient(90deg, #aa55ff, #ff55aa); }
+        .formula-formula-box {
+            margin-top: 20px;
+            background: #0a1020;
+            border: 1px solid #1a2744;
+            border-radius: 8px;
+            padding: 14px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .formula-formula-box strong {
+            color: var(--accent-cyan);
+        }
+        .formula-add-btn {
+            background: var(--glass-bg);
+            border: 1px dashed var(--glass-border);
+            border-radius: 8px;
+            padding: 8px 16px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 8px;
+        }
+        .formula-add-btn:hover {
+            border-color: #00e6ff;
+            color: var(--accent-cyan);
+        }
+        .formula-source-list {
+            margin-top: 8px;
+        }
+        .formula-source-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            margin-bottom: 6px;
+        }
+        .formula-source-item .source-name {
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+        .formula-source-item .source-value {
+            color: #00ffaa;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .formula-source-item .source-remove {
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 2px 8px;
+            border: none;
+            background: none;
+            font-size: 0.9rem;
+        }
+        .formula-source-item .source-remove:hover {
+            color: #ff5555;
+        }
+        .luck-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .luck-item-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 10px 12px;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .luck-item-card:hover {
+            border-color: #00e6ff;
+        }
+        .luck-item-card.selected {
+            background: #00e6ff22;
+            border-color: #00e6ff;
+        }
+        .luck-item-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .luck-item-card .luck-item-icon {
+            width: 32px;
+            height: 32px;
+            image-rendering: pixelated;
+            object-fit: contain;
+        }
+        .luck-item-card .luck-item-name {
+            color: var(--text-primary);
+            font-size: 0.82rem;
+            flex: 1;
+            min-width: 0;
+        }
+        .luck-item-card .luck-item-value {
+            color: #00ffaa;
+            font-weight: 600;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .luck-item-card.selected .luck-item-value {
+            color: var(--accent-cyan);
+        }
+        .luck-item-controls {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 6px;
+        }
+        .luck-item-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            border: 1px solid var(--glass-border);
+            background: #0a1020;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s;
+            line-height: 1;
+            padding: 0;
+        }
+        .luck-item-btn:hover:not(:disabled) {
+            border-color: #00e6ff;
+            color: var(--accent-cyan);
+        }
+        .luck-item-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .luck-item-count {
+            color: var(--accent-cyan);
+            font-weight: 700;
+            font-size: 0.9rem;
+            min-width: 16px;
+            text-align: center;
+        }
+        .luck-item-card .luck-item-total {
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            margin-left: 4px;
+        }
+        .luck-items-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+            padding: 8px 12px;
+            background: #0a1020;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        .luck-items-total-row .total-label {
+            color: var(--text-secondary);
+        }
+        .luck-items-total-row .total-value {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+        .luck-items-total-row .total-value.over-limit {
+            color: #ff5555;
+        }
+        @media (max-width: 600px) {
+            .formulas-container {
+                padding: 0 4px;
+            }
+            .formula-input-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .formula-input-row .unit {
+                text-align: right;
+            }
+            .luck-items-grid {
+                grid-template-columns: 1fr;
+            }
+            .formula-tabs {
+                gap: 4px;
+            }
+            .formula-tab {
+                padding: 6px 10px;
+                font-size: 0.78rem;
+            }
+            .formula-results {
+                padding: 14px;
+            }
+            .formula-result-value {
+                font-size: 1rem;
+            }
+            .formula-formula-box {
+                font-size: 0.78rem;
+                padding: 10px 12px;
+            }
+            .formula-source-item {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .formula-source-item input {
+                width: 70px !important;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+        }
+        @supports not (backdrop-filter: blur(1px)) {
+            .formula-results { background: var(--glass-bg) !important; }
+        }

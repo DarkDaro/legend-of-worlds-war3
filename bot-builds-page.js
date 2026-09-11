@@ -320,3 +320,6 @@ window.selectGroup = selectGroup;
 window.copyToConstructor = copyToConstructor;
 init();
 }); // end DOMContentLoaded
+
+// Scroll-reveal — стадии билдов
+document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.bb-stage'); });

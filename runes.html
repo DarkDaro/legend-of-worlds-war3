@@ -18,92 +18,9 @@
     <script src="icon-loader.js" defer></script>
     <script src="analytics.js" defer></script>
     <script src="ui-effects.js" defer></script>
-    <style>
-        .runes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 12px;
-            margin-top: 20px;
-        }
-        .rune-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 16px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            transition: 0.2s;
-        }
-        .rune-card:hover {
-            border-color: var(--glass-border-hover);
-            box-shadow: var(--neon-glow);
-            transform: translateY(-2px);
-        }
-        .rune-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            flex-shrink: 0;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .rune-info { flex: 1; min-width: 0; }
-        .rune-name {
-            color: var(--text-primary);
-            font-weight: 600;
-            font-size: 0.92rem;
-            margin-bottom: 4px;
-        }
-        .rune-desc {
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-            line-height: 1.4;
-        }
-        .rune-duration {
-            color: var(--text-muted);
-            font-size: 0.72rem;
-            margin-top: 4px;
-        }
-
-        /* Цвета иконок по типу */
-        .rune-icon-defense { background: rgba(0, 180, 255, 0.12); color: #00b4ff; }
-        .rune-icon-movement { background: rgba(0, 230, 118, 0.12); color: #00e676; }
-        .rune-icon-heal { background: rgba(255, 82, 82, 0.12); color: #ff5252; }
-        .rune-icon-mana { background: rgba(124, 77, 255, 0.12); color: #7c4dff; }
-        .rune-icon-level { background: rgba(255, 215, 0, 0.12); color: #ffd700; }
-        .rune-icon-stealth { background: rgba(120, 144, 156, 0.12); color: #78909c; }
-        .rune-icon-damage { background: rgba(255, 71, 87, 0.12); color: #ff4757; }
-        .rune-icon-vamp { background: rgba(180, 0, 0, 0.12); color: #cc0000; }
-        .rune-icon-gold { background: rgba(255, 193, 7, 0.12); color: #ffc107; }
-        .rune-icon-stats { background: rgba(0, 230, 255, 0.12); color: #00e6ff; }
-        .rune-icon-illusion { background: rgba(156, 39, 176, 0.12); color: #9c27b0; }
-        .rune-icon-speed { background: rgba(255, 152, 0, 0.12); color: #ff9800; }
-        .rune-icon-crystal { background: rgba(233, 30, 99, 0.12); color: #e91e63; }
-        .rune-icon-refresh { background: rgba(76, 175, 80, 0.12); color: #4caf50; }
-        .rune-icon-wealth { background: rgba(255, 215, 0, 0.15); color: #ffd700; }
-
-        @media (max-width: 700px) {
-            .runes-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-            .rune-card { padding: 12px; gap: 10px; }
-            .rune-icon { width: 36px; height: 36px; font-size: 1.1rem; border-radius: 8px; }
-            .rune-name { font-size: 0.85rem; }
-            .rune-desc { font-size: 0.75rem; }
-        }
-        @media (max-width: 480px) {
-            .runes-grid { grid-template-columns: 1fr; }
-            .rune-card { padding: 10px; gap: 8px; }
-            .rune-icon { width: 32px; height: 32px; font-size: 1rem; }
-            .rune-name { font-size: 0.82rem; }
-            .rune-desc { font-size: 0.72rem; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/runes.css">
     <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/runes.html">
+    <script src="runes-page.js" defer></script>
 </head>
 <body class="page-runes">
     <header class="site-header">
@@ -162,44 +79,6 @@
         </div>
     </footer>
 
-<script>
-(function() {
-    'use strict';
 
-    // Руны — баффы на карте
-    var RUNES = [
-        { name: 'Руна антимагии', icon: 'fa-hat-wizard', iconClass: 'rune-icon-defense', desc: 'Даёт защиту от магического урона.', duration: '' },
-        { name: 'Руна перемещения', icon: 'fa-bolt', iconClass: 'rune-icon-movement', desc: 'Увеличивает скорость перемещения героя.', duration: '' },
-        { name: 'Руна лечения', icon: 'fa-heart-pulse', iconClass: 'rune-icon-heal', desc: 'Восстанавливает здоровье героя.', duration: '' },
-        { name: 'Руна маны', icon: 'fa-droplet', iconClass: 'rune-icon-mana', desc: 'Восстанавливает ману героя.', duration: '' },
-        { name: 'Руна уровня', icon: 'fa-arrow-up', iconClass: 'rune-icon-level', desc: 'Даёт герою уровень опыта.', duration: '' },
-        { name: 'Руна невидимости', icon: 'fa-eye-slash', iconClass: 'rune-icon-stealth', desc: 'Делает героя невидимым. Снимается при атаке.', duration: '' },
-        { name: 'Руна двойного урона', icon: 'fa-fire', iconClass: 'rune-icon-damage', desc: 'Удваивает наносимый урон.', duration: '' },
-        { name: 'Руна вампиризма', icon: 'fa-skull-crossbones', iconClass: 'rune-icon-vamp', desc: 'Часть нанесённого урона возвращается в виде здоровья.', duration: '' },
-        { name: 'Руна золота', icon: 'fa-coins', iconClass: 'rune-icon-gold', desc: 'Даёт 1000 золота.', duration: '' },
-        { name: 'Руна характеристик', icon: 'fa-chart-line', iconClass: 'rune-icon-stats', desc: 'Увеличивает все характеристики на +10.', duration: '' },
-        { name: 'Руна иллюзий', icon: 'fa-clone', iconClass: 'rune-icon-illusion', desc: 'Создаёт иллюзию героя.', duration: '' },
-        { name: 'Руна скорости боя', icon: 'fa-gauge-high', iconClass: 'rune-icon-speed', desc: 'Увеличивает скорость атаки героя.', duration: '' },
-        { name: 'Руна защиты', icon: 'fa-shield', iconClass: 'rune-icon-defense', desc: 'Увеличивает броню героя.', duration: '' },
-        { name: 'Руна кристаллов', icon: 'fa-gem', iconClass: 'rune-icon-crystal', desc: 'Даёт 5 кристаллов.', duration: '' },
-        { name: 'Руна обновления', icon: 'fa-rotate', iconClass: 'rune-icon-refresh', desc: 'Сбрасывает перезарядки всех способностей.', duration: '' },
-        { name: 'Руна богатства', icon: 'fa-money-bill-wave', iconClass: 'rune-icon-wealth', desc: 'Даёт большое количество золота.', duration: '' }
-    ];
-
-    var grid = document.getElementById('runesGrid');
-    grid.innerHTML = RUNES.map(function(r) {
-        var durationHtml = r.duration ? '<div class="rune-duration">' + r.duration + '</div>' : '';
-        return '<div class="rune-card">' +
-            '<div class="rune-icon ' + r.iconClass + '"><i class="fas ' + r.icon + '"></i></div>' +
-            '<div class="rune-info">' +
-                '<div class="rune-name">' + r.name + '</div>' +
-                '<div class="rune-desc">' + r.desc + '</div>' +
-                durationHtml +
-            '</div>' +
-        '</div>';
-    }).join('');
-})();
-document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.rune-card'); });
-</script>
 </body>
 </html>

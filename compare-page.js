@@ -485,3 +485,6 @@ function getMovementSpeed(hero, level) {
 function sectionRow(label) {
     return '<tr class="section-row"><td colspan="10">' + label + '</td></tr>';
 }
+
+// Scroll-reveal — таблица и карточки сравнения
+document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.compare-table-wrap, .compare-cards'); });
