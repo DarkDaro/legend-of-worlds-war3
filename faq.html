@@ -19,105 +19,9 @@
     <script src="icon-loader.js" defer></script>
     <script src="analytics.js" defer></script>
     <script src="ui-effects.js" defer></script>
-    <style>
-        .faq-section { margin-bottom: 32px; }
-        .faq-section-title {
-            font-size: 1.1rem;
-            color: var(--accent-cyan);
-            margin-bottom: 14px;
-            padding-bottom: 6px;
-            border-bottom: 1px solid var(--glass-border);
-        }
-        .faq-section-title i { margin-right: 8px; font-size: 0.9rem; }
-        .faq-item {
-            margin-bottom: 8px;
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
-            overflow: hidden;
-            background: var(--glass-bg);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-            transition: background 0.2s, border-color 0.2s;
-        }
-        .faq-item:hover {
-            background: var(--glass-bg-hover);
-            border-color: var(--glass-border-hover);
-        }
-        .faq-question {
-            padding: 12px 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            color: var(--text-primary);
-            font-size: 0.92rem;
-            font-weight: 500;
-            user-select: none;
-        }
-        .faq-question:hover { background: rgba(0, 229, 255, 0.04); }
-        .faq-question i {
-            color: var(--text-dim);
-            font-size: 0.7rem;
-            transition: transform 0.2s ease;
-            flex-shrink: 0;
-        }
-        .faq-item.open .faq-question i {
-            transform: rotate(90deg);
-            color: var(--accent-cyan);
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            padding: 0 16px;
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            line-height: 1.6;
-        }
-        .faq-item.open .faq-answer { max-height: 500px; padding: 0 16px 14px; }
-        .faq-answer a { color: var(--accent-cyan); text-decoration: none; }
-        .faq-answer a:hover { text-decoration: underline; }
-        .faq-answer .faq-link {
-            display: inline-block;
-            margin-top: 6px;
-            font-size: 0.8rem;
-            color: var(--text-dim);
-        }
-        .faq-answer .faq-link i { margin-right: 4px; font-size: 0.7rem; }
-        .faq-answer code {
-            background: #0d1b2a;
-            padding: 1px 5px;
-            border-radius: 3px;
-            font-size: 0.82rem;
-            color: #55ff88;
-        }
-
-        @media (max-width: 800px) {
-            .faq-section-title { font-size: 1rem; }
-            .faq-question { font-size: 0.88rem; padding: 11px 14px; }
-            .faq-answer { font-size: 0.84rem; }
-        }
-        @media (max-width: 600px) {
-            .faq-section-title { font-size: 0.95rem; margin-bottom: 10px; }
-            .faq-question { font-size: 0.85rem; padding: 10px 12px; }
-            .faq-answer { font-size: 0.82rem; padding: 0 12px; }
-            .faq-item.open .faq-answer { padding: 0 12px 12px; }
-            .faq-answer code { font-size: 0.78rem; }
-        }
-        @media (max-width: 480px) {
-            h1 { font-size: 1.3rem; }
-            .faq-section-title { font-size: 0.9rem; }
-            .faq-question { font-size: 0.82rem; padding: 9px 10px; gap: 8px; }
-            .faq-answer { font-size: 0.8rem; line-height: 1.5; }
-            .faq-item.open .faq-answer { padding: 0 10px 10px; }
-            .faq-answer .faq-link { font-size: 0.76rem; }
-        }
-        @supports not (backdrop-filter: blur(1px)) {
-            .faq-item { background: #0f172a !important; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/faq.css">
     <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/faq.html">
+    <script src="faq-page.js" defer></script>
 </head>
 <body class="page-faq">
     <header class="site-header">
@@ -278,20 +182,7 @@
         </div>
     </footer>
 
-<script>
-document.querySelectorAll('.faq-question').forEach(function(q) {
-    q.addEventListener('click', function() {
-        var item = q.closest('.faq-item');
-        item.parentElement.querySelectorAll('.faq-item.open').forEach(function(open) {
-            if (open !== item) open.classList.remove('open');
-        });
-        item.classList.toggle('open');
-    });
-});
-</script>
-<script>
-// Scroll-reveal — секции ЧаВо
-document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.faq-section'); });
-</script>
+
+
 </body>
 </html>

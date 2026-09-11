@@ -88,3 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         calculate();
     });
+
+// Scroll-reveal — результаты калькулятора брони
+    document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.armor-results'); });

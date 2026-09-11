@@ -1,0 +1,210 @@
+        .armor-calc-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .armor-input-group {
+            margin-bottom: 20px;
+        }
+        .armor-input-group label {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+        }
+        .armor-input-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .armor-input-row input {
+            flex: 1;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .armor-input-row input:focus {
+            border-color: #00e6ff;
+        }
+        .armor-input-row .armor-unit {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .armor-const-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            cursor: pointer;
+        }
+        .armor-const-toggle input[type="checkbox"] {
+            accent-color: #00e6ff;
+        }
+        .armor-const-input {
+            display: none;
+            margin-top: 8px;
+        }
+        .armor-const-input.visible {
+            display: block;
+        }
+        .armor-results {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .armor-result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #1a2744;
+        }
+        .armor-result-row:last-child {
+            border-bottom: none;
+        }
+        .armor-result-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .armor-result-value {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .armor-result-value.positive {
+            color: #00ffaa;
+        }
+        .armor-result-value.negative {
+            color: #ff5555;
+        }
+        .armor-bar-container {
+            margin-top: 16px;
+        }
+        .armor-bar-label {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+        }
+        .armor-bar {
+            background: #1a2744;
+            border-radius: 6px;
+            height: 12px;
+            overflow: hidden;
+        }
+        .armor-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #00e6ff, #00ffaa);
+            transition: width 0.3s ease;
+        }
+        .armor-formula {
+            margin-top: 24px;
+            background: #0a1020;
+            border: 1px solid #1a2744;
+            border-radius: 8px;
+            padding: 14px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .armor-formula strong {
+            color: var(--accent-cyan);
+        }
+        /* 06.09: справка по броне */
+        .armor-faq {
+            margin-top: 24px;
+        }
+        .armor-faq h2 {
+            font-size: 1.15rem;
+            margin-bottom: 14px;
+            color: var(--text-primary);
+        }
+        .faq-block {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        .faq-block h3 {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            color: var(--accent-cyan);
+        }
+        .faq-block p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 8px;
+        }
+        .faq-block p:last-child { margin-bottom: 0; }
+        .armor-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 0.85rem;
+        }
+        .armor-table th, .armor-table td {
+            padding: 6px 10px;
+            text-align: left;
+            border-bottom: 1px solid #1a2744;
+        }
+        .armor-table th {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+        .armor-table td {
+            color: var(--text-secondary);
+        }
+        .armor-hero-link {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+        .armor-hero-link:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .armor-calc-container {
+                padding: 0 4px;
+            }
+            .armor-input-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .armor-input-row .armor-unit {
+                text-align: right;
+            }
+            .armor-results {
+                padding: 14px;
+            }
+            .armor-result-value {
+                font-size: 1rem;
+            }
+            .armor-formula {
+                font-size: 0.78rem;
+                padding: 10px 12px;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+        }
+        @supports not (backdrop-filter: blur(1px)) {
+            .armor-results { background: var(--glass-bg) !important; }
+        }

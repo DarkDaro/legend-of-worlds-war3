@@ -240,3 +240,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         renderAddSources();
     }); // end DOMContentLoaded
+
+// Scroll-reveal — результаты формул
+    document.addEventListener('DOMContentLoaded', function() { if (typeof revealElements === 'function') revealElements('.formula-results'); });

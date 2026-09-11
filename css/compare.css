@@ -1,0 +1,428 @@
+        /* ── Верхняя панель: селекты + уровень ── */
+        .compare-controls {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            margin-bottom: 24px;
+            padding-left: 130px;
+        }
+        .compare-slot {
+            flex: 1;
+            min-width: 140px;
+        }
+        .compare-slot select {
+            width: 100%;
+            padding: 9px 32px 9px 12px;
+            background: #0d1b2a;
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            font-size: 0.88rem;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238aa0c0' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+        .compare-slot select:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
+        }
+        .compare-slot select option {
+            background: #0d1b2a;
+            color: var(--text-primary);
+        }
+        .compare-slot select option:disabled {
+            color: #3a4a5a;
+        }
+        .compare-slot-label {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        /* ── Адаптив для мобильных ── */
+        @media (max-width: 600px) {
+            .compare-controls {
+                padding-left: 0;
+                gap: 8px;
+                flex-direction: column;
+            }
+            .compare-slot {
+                min-width: 100%;
+            }
+            .compare-slot select {
+                padding: 7px 28px 7px 10px;
+                font-size: 0.8rem;
+            }
+            .compare-level {
+                min-width: 80px;
+                max-width: 100px;
+            }
+            .compare-level input {
+                padding: 7px 8px;
+                font-size: 0.85rem;
+                width: 70px;
+            }
+            .compare-clear-btn {
+                padding: 7px 14px;
+                font-size: 0.8rem;
+            }
+        }
+        .compare-level {
+            min-width: 90px;
+            max-width: 120px;
+        }
+        .compare-level input {
+            width: 100%;
+            padding: 9px 12px;
+            background: #0d1b2a;
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            font-size: 0.88rem;
+            text-align: center;
+        }
+        .compare-level input:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
+        }
+
+        /* ── Таблица ── */
+        .compare-table-wrap {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+        }
+        .compare-table thead th {
+            padding: 10px 10px;
+            text-align: center;
+            background: #0d1f35;
+            border-bottom: 1px solid var(--glass-border);
+            font-weight: 600;
+            color: var(--text-secondary);
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        .compare-table thead th:first-child {
+            text-align: left;
+            color: var(--text-dim);
+            font-weight: 400;
+            width: 120px;
+            min-width: 120px;
+        }
+        .compare-table thead th.hero-col {
+            color: var(--text-primary);
+            width: calc((100% - 120px) / 3);
+            min-width: 140px;
+        }
+        .compare-table thead th.hero-col a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .compare-table thead th.hero-col a:hover {
+            color: var(--accent-cyan);
+        }
+        .hero-col-name {
+            font-size: 0.92rem;
+        }
+        .hero-col-attr {
+            font-size: 0.68rem;
+        }
+        .hero-col-build {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3px;
+            margin-top: 4px;
+        }
+        .hero-build-item {
+            width: 22px;
+            height: 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--glass-border);
+            border-radius: 6px;
+            background: #091421;
+            overflow: hidden;
+            text-decoration: none;
+        }
+        .hero-build-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .compare-table tbody td {
+            padding: 6px 10px;
+            border-bottom: 1px solid #111e30;
+            text-align: center;
+            color: #c0d0e0;
+            vertical-align: middle;
+        }
+        .compare-table tbody td:first-child {
+            text-align: left;
+            color: var(--text-dim);
+            font-size: 0.78rem;
+        }
+        .compare-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .compare-table tbody tr:hover {
+            background: rgba(0, 229, 255, 0.03);
+        }
+
+        /* Подсветка лучшего/худшего */
+        .stat-best { color: var(--accent-cyan); font-weight: 600; }
+        .stat-worst { color: #5a5a7a; }
+
+        /* Полоски-бары */
+        .stat-bar-wrap {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            justify-content: center;
+        }
+        .stat-bar-value {
+            min-width: 36px;
+            text-align: right;
+        }
+        .stat-bar {
+            flex: 0 0 50px;
+            height: 5px;
+            background: #111e30;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .stat-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            background: #1a5a7a;
+            transition: width 0.3s ease;
+        }
+        .stat-best .stat-bar-fill { background: #00e5ff; }
+        .stat-worst .stat-bar-fill { background: #2a2a3a; }
+
+        /* Разделитель секций */
+        .compare-table tbody tr.section-row td {
+            padding: 4px 12px 2px;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #3a5a7a;
+            border-bottom: 1px solid var(--glass-border);
+            background: #0d1a2a;
+        }
+
+        /* Способности */
+        .ability-cell {
+            text-align: left !important;
+            padding: 7px 10px !important;
+        }
+        .ability-cell .ability-name {
+            color: var(--accent-cyan);
+            font-size: 0.82rem;
+            margin-bottom: 1px;
+        }
+        .ability-cell .ability-desc {
+            color: #7a8a9a;
+            font-size: 0.74rem;
+            line-height: 1.3;
+        }
+        .ability-cell .ability-passive {
+            display: inline-block;
+            font-size: 0.62rem;
+            background: #1a3a0a;
+            color: #55ff88;
+            padding: 1px 5px;
+            border-radius: 3px;
+            margin-left: 3px;
+        }
+
+        /* Пустое состояние */
+        .compare-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: #3a5a7a;
+            font-size: 1rem;
+        }
+        .compare-empty i {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: block;
+            color: #3a8aa0;
+        }
+
+        /* ── Мобильные карточки (≤700px) ── */
+        .compare-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .compare-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .compare-card:hover {
+            background: var(--glass-bg-hover);
+            border-color: var(--glass-border-hover);
+        }
+        .compare-card-header {
+            padding: 12px 14px 8px;
+            border-bottom: 1px solid var(--glass-border);
+            background: #0d1f35;
+        }
+        .compare-card-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .compare-card-name:hover { color: var(--accent-cyan); }
+        .compare-card-attr {
+            font-size: 0.72rem;
+            margin-top: 2px;
+        }
+        .compare-card-build {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 6px;
+        }
+        .compare-card-body {
+            padding: 4px 0;
+        }
+        .compare-card-section {
+            padding: 6px 14px 2px;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #3a5a7a;
+            border-bottom: 1px solid var(--glass-border);
+            background: #0d1a2a;
+        }
+        .compare-card-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 14px;
+            border-bottom: 1px solid #111e30;
+            font-size: 0.8rem;
+        }
+        .compare-card-row:last-child { border-bottom: none; }
+        .compare-card-label {
+            color: var(--text-dim);
+            font-size: 0.76rem;
+        }
+        .compare-card-value {
+            color: #c0d0e0;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .compare-card-bar {
+            width: 40px;
+            height: 4px;
+            background: #111e30;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .compare-card-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: #1a5a7a;
+            transition: width 0.3s ease;
+        }
+        .compare-card-row.card-best .compare-card-value { color: var(--accent-cyan); font-weight: 600; }
+        .compare-card-row.card-best .compare-card-bar-fill { background: #00e5ff; }
+        .compare-card-row.card-worst .compare-card-value { color: #5a5a7a; }
+        .compare-card-row.card-worst .compare-card-bar-fill { background: #2a2a3a; }
+
+        /* ── Мобильная адаптация ── */
+        @media (max-width: 900px) {
+            .compare-controls {
+                padding-left: 0;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .compare-slot, .compare-level {
+                max-width: none;
+                min-width: 0;
+            }
+            .compare-table-wrap {
+                -webkit-overflow-scrolling: touch;
+            }
+            .compare-table {
+                min-width: 500px;
+                font-size: 0.75rem;
+            }
+            .compare-table thead th:first-child,
+            .compare-table tbody td:first-child {
+                width: 80px;
+                min-width: 80px;
+                font-size: 0.7rem;
+            }
+            .compare-table thead th.hero-col {
+                min-width: 100px;
+                font-size: 0.8rem;
+            }
+            .hero-col-name { font-size: 0.8rem; }
+            .hero-col-attr { font-size: 0.6rem; }
+            .stat-bar { flex: 0 0 28px; }
+            .ability-cell .ability-desc { display: none; }
+            .ability-cell .ability-name { font-size: 0.75rem; }
+            .compare-table tbody td { padding: 5px 5px; }
+            .compare-table thead th { padding: 8px 5px; }
+        }
+        @media (max-width: 480px) {
+            .compare-controls { gap: 6px; padding-left: 0; flex-direction: column; }
+            .compare-slot { min-width: 100%; }
+            .compare-slot select, .compare-level input {
+                padding: 8px 10px;
+                font-size: 0.82rem;
+            }
+            .compare-table {
+                min-width: 500px;
+                font-size: 0.71rem;
+            }
+            .compare-table thead th.hero-col {
+                min-width: 90px;
+            }
+            .compare-table thead th:first-child,
+            .compare-table tbody td:first-child {
+                width: 60px;
+                min-width: 60px;
+                font-size: 0.66rem;
+            }
+            .stat-bar { display: none; }
+            .stat-bar-value { min-width: auto; }
+            .hero-col-attr { display: none; }
+            .compare-table tbody td { padding: 4px 4px; }
+            .compare-table thead th { padding: 6px 4px; }
+            .ability-cell { padding: 6px 4px !important; }
+            .ability-cell .ability-passive { font-size: 0.56rem; }
+            h1 { font-size: 1.3rem; }
+        }
+        @supports not (backdrop-filter: blur(1px)) {
+            .compare-table-wrap, .compare-card { background: #0f172a !important; }
+        }

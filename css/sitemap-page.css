@@ -1,0 +1,73 @@
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+        .sitemap-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .sitemap-section-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sitemap-section-title i {
+            font-size: 0.95rem;
+        }
+        .sitemap-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sitemap-links li {
+            margin-bottom: 6px;
+        }
+        .sitemap-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .sitemap-links a:hover {
+            color: var(--accent-cyan);
+        }
+        .sitemap-links a i {
+            font-size: 0.75rem;
+            opacity: 0.5;
+        }
+        .sitemap-hero-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .sitemap-hero-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .sitemap-hero-link:hover {
+            background: var(--glass-subtle-hover);
+            color: var(--accent-cyan);
+        }
+        .sitemap-hero-link.attr-strength { border-left: 2px solid #e74c3c; }
+        .sitemap-hero-link.attr-agility { border-left: 2px solid #2ecc71; }
+        .sitemap-hero-link.attr-intelligence { border-left: 2px solid #3498db; }
