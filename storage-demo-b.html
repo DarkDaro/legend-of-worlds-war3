@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хранилище (демо Б) · Legend of Worlds</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/lore.css">
+    <link rel="stylesheet" href="css/storage-demo.css">
+    <link rel="stylesheet" href="css/storage-demo-b.css">
+    <script src="storage-demo-b.js" defer></script>
+</head>
+<body class="page-storage-demo-b">
+    <div class="wiki-container">
+        <div class="demo-banner">
+            <i class="fas fa-flask"></i> ДЕМО-МАКЕТ Б — интерактивный. Наведи на кнопку ящика — увидишь описание. Не подключён к сайту.
+        </div>
+
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"><i class="fas fa-box-open"></i></div>
+                <h1 class="detail-title">
+                    Хранилище игрока
+                    <span class="detail-badge">Интерактив</span>
+                </h1>
+            </div>
+            <p class="detail-description">Интерактивная модель ящика. Нажми на кнопку — узнаешь, что она делает. Слоты справа показывают состояние хранилища.</p>
+
+            <div class="storage-demo-layout">
+                <!-- Левая колонка: описание -->
+                <div class="storage-info-panel" id="storageInfoPanel">
+                    <div class="storage-info-icon"><i class="fas fa-hand-pointer"></i></div>
+                    <h3 class="storage-info-title">Хранилище</h3>
+                    <p class="storage-info-text">Наведи курсор или нажми на кнопку ящика, чтобы увидеть описание.</p>
+                    <div class="storage-info-hint">Кнопки слотов кладут и забирают предметы. Кнопки действий управляют сборкой и настройками.</div>
+                </div>
+
+                <!-- Правая колонка: сам ящик -->
+                <div class="storage-box">
+                    <div class="storage-box-header">
+                        <i class="fas fa-box-open"></i>
+                        <span>Хранилище игрока</span>
+                    </div>
+
+                    <!-- Слоты 1-6 -->
+                    <div class="storage-slots">
+                        <button class="storage-btn storage-slot" data-key="slot"><span class="storage-slot-num">1</span><i class="fas fa-plus"></i></button>
+                        <button class="storage-btn storage-slot" data-key="slot"><span class="storage-slot-num">2</span><i class="fas fa-plus"></i></button>
+                        <button class="storage-btn storage-slot" data-key="slot"><span class="storage-slot-num">3</span><i class="fas fa-plus"></i></button>
+                        <button class="storage-btn storage-slot" data-key="slot"><span class="storage-slot-num">4</span><i class="fas fa-plus"></i></button>
+                        <button class="storage-btn storage-slot" data-key="slot"><span class="storage-slot-num">5</span><i class="fas fa-plus"></i></button>
+                        <button class="storage-btn storage-slot" data-key="slot"><span class="storage-slot-num">6</span><i class="fas fa-plus"></i></button>
+                    </div>
+
+                    <!-- Действия -->
+                    <div class="storage-actions">
+                        <button class="storage-btn storage-action" data-key="takeall"><i class="fas fa-arrow-down"></i> Забрать всё</button>
+                        <button class="storage-btn storage-action" data-key="giveall"><i class="fas fa-arrow-up"></i> Сдать всё</button>
+                        <button class="storage-btn storage-action" data-key="drop"><i class="fas fa-trash-can"></i> Выбросить</button>
+                    </div>
+
+                    <!-- Автосборка -->
+                    <div class="storage-row">
+                        <button class="storage-btn storage-action storage-auto" data-key="autobuild_on"><i class="fas fa-play"></i> Автосборка ВКЛ</button>
+                        <button class="storage-btn storage-action storage-auto" data-key="autobuild_off"><i class="fas fa-stop"></i> Автосборка ВЫКЛ</button>
+                    </div>
+
+                    <!-- Спеллбуки -->
+                    <div class="storage-spellbooks">
+                        <div class="storage-spellbooks-label"><i class="fas fa-book"></i> Спеллбуки</div>
+                        <div class="storage-spellbooks-row">
+                            <button class="storage-btn storage-book" data-key="book1"><i class="fas fa-book-bookmark"></i> Спеллбук 1</button>
+                            <button class="storage-btn storage-book" data-key="book2"><i class="fas fa-book-bookmark"></i> Спеллбук 2</button>
+                            <button class="storage-btn storage-book" data-key="book3"><i class="fas fa-book-bookmark"></i> Спеллбук 3</button>
+                        </div>
+                    </div>
+
+                    <!-- Настройки -->
+                    <div class="storage-settings">
+                        <div class="storage-settings-label"><i class="fas fa-gear"></i> Настройки</div>
+                        <div class="storage-settings-row">
+                            <button class="storage-btn storage-setting" data-key="set1"><i class="fas fa-toggle-on"></i> Настройка 1</button>
+                            <button class="storage-btn storage-setting" data-key="set2"><i class="fas fa-toggle-on"></i> Настройка 2</button>
+                            <button class="storage-btn storage-setting" data-key="set3"><i class="fas fa-toggle-on"></i> Настройка 3</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:24px; text-align:center; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+                <a href="storage-demo-a.html" class="btn-secondary"><i class="fas fa-file-lines"></i> Демо-макет А (текст)</a>
+                <a href="items.html" class="btn-secondary"><i class="fas fa-flask"></i> Предметы</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+/* ===== Демо-макет Б: интерактивный ящик ===== */
+
+.storage-demo-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 20px;
+    margin-top: 8px;
+    align-items: start;
+}
+
+/* Инфо-панель слева */
+.storage-info-panel {
+    background: var(--glass-bg, rgba(15, 23, 42, 0.5));
+    backdrop-filter: blur(var(--glass-blur, 12px));
+    border: 1px solid var(--glass-border, rgba(0, 230, 255, 0.12));
+    border-radius: 14px;
+    padding: 22px 24px;
+    min-height: 320px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.storage-info-panel.active {
+    border-color: var(--glass-border-hover, rgba(0, 230, 255, 0.35));
+    box-shadow: var(--neon-glow, 0 0 20px rgba(0, 230, 255, 0.2));
+}
+.storage-info-icon {
+    font-size: 1.6rem;
+    color: var(--accent-cyan, #00e6ff);
+    margin-bottom: 10px;
+}
+.storage-info-title {
+    margin: 0 0 10px;
+    font-size: 1.15rem;
+    color: var(--text-primary, #e0f0ff);
+}
+.storage-info-text {
+    color: #c8d8f0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 14px;
+}
+.storage-info-hint {
+    font-size: 0.82rem;
+    color: var(--text-secondary, #8aa0c0);
+    border-left: 3px solid rgba(0, 230, 255, 0.35);
+    padding-left: 12px;
+}
+
+/* Сам ящик */
+.storage-box {
+    background: var(--glass-bg, rgba(15, 23, 42, 0.5));
+    backdrop-filter: blur(var(--glass-blur, 12px));
+    border: 1px solid var(--glass-border, rgba(0, 230, 255, 0.12));
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 0 15px #00000080, 0 0 0 1px #00e6ff22 inset;
+}
+.storage-box-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: var(--text-primary, #e0f0ff);
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(0, 230, 255, 0.12);
+}
+.storage-box-header i { color: var(--accent-cyan, #00e6ff); }
+
+/* Кнопки общие */
+.storage-btn {
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid rgba(0, 230, 255, 0.2);
+    border-radius: 10px;
+    color: #d0e0ff;
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 10px 12px;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+}
+.storage-btn:hover {
+    border-color: rgba(0, 230, 255, 0.55);
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 12px rgba(0, 230, 255, 0.25);
+    color: #fff;
+}
+
+/* Слоты */
+.storage-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+}
+.storage-slot {
+    aspect-ratio: 1.4 / 1;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 1rem;
+}
+.storage-slot .storage-slot-num {
+    font-size: 0.7rem;
+    color: var(--text-secondary, #8aa0c0);
+    font-weight: 600;
+}
+
+/* Действия */
+.storage-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+}
+.storage-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+.storage-auto { color: #9fd8ff; }
+
+/* Спеллбуки */
+.storage-spellbooks, .storage-settings {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0, 230, 255, 0.12);
+}
+.storage-spellbooks-label, .storage-settings-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #8aa0c0);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.storage-spellbooks-row, .storage-settings-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+.storage-book, .storage-setting { font-size: 0.78rem; padding: 8px 6px; }
+
+/* Адаптив */
+@media (max-width: 900px) {
+    .storage-demo-layout { grid-template-columns: 1fr; }
+    .storage-info-panel { min-height: 0; order: 2; }
+    .storage-box { order: 1; }
+}
+@media (max-width: 480px) {
+    .storage-slots, .storage-actions, .storage-row,
+    .storage-spellbooks-row, .storage-settings-row { grid-template-columns: repeat(2, 1fr); }
+}
