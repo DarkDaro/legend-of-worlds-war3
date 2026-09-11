@@ -1,54 +1,25 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="images/logo.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Руны · Legend of Worlds</title>
-    <meta property="og:title" content="Руны — Legend of Worlds">
-    <meta property="og:description" content="16 рун на арене: антимагия, лечение, двойной урон, золото и другие. Подбираемые баффы."
-    <meta name="description" content="16 рун на арене: антимагия, лечение, двойной урон, золото и другие. Подбираемые баффы.">
+    <title>Галерея · Legend of Worlds</title>
+    <meta property="og:title" content="Галерея — Legend of Worlds">
+    <meta property="og:description" content="Портреты героев, арты и скриншоты арены Legend of Worlds.">
+    <meta name="description" content="Портреты героев, арты и скриншоты арены Legend of Worlds.">
     <meta property="og:image" content="images/preview.png">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="hero-data.js" defer></script>
-    <script src="search-index.js" defer></script>
-    <script src="search.js" defer></script>
     <script src="icon-loader.js" defer></script>
     <script src="analytics.js" defer></script>
     <script src="ui-effects.js" defer></script>
-    <link rel="stylesheet" href="css/runes.css">
-    <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/runes.html">
-    <script src="runes-page.js" defer></script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Главная",
-      "item": "https://darkdaro.github.io/legend-of-worlds-war3/index.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Предметы",
-      "item": "https://darkdaro.github.io/legend-of-worlds-war3/items.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Руны",
-      "item": "https://darkdaro.github.io/legend-of-worlds-war3/runes.html"
-    }
-  ]
-}
-</script>
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="canonical" href="https://darkdaro.github.io/legend-of-worlds-war3/gallery.html">
+    <script src="gallery-page.js" defer></script>
 </head>
-<body class="page-runes">
+<body class="page-gallery">
     <header class="site-header">
         <a href="index.html" class="logo">
             <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
@@ -57,7 +28,7 @@
         <nav class="header-nav">
             <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
             <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
-            <a href="items.html" class="nav-link active"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
             <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
             <a href="events.html" class="nav-link"><i class="fas fa-bolt"></i> Ивенты</a>
             <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Инфо</a>
@@ -71,20 +42,20 @@
         </nav>
     </header>
     <div class="wiki-container">
-        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="items.html">Предметы</a><span class="sep">›</span><span class="current">Руны</span></div>
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><span class="current">Галерея</span></div>
         <div class="hero-page-container">
             <div class="panel-header">
-                <div class="detail-icon"><img loading="lazy" src="images/preview.png" alt="" class="detail-logo-img" /></div>
-                <h1 class="detail-title">Руны</h1>
+                <div class="detail-icon"><i class="fas fa-images"></i></div>
+                <h1 class="detail-title">Галерея</h1>
             </div>
-            <p class="detail-description">Подбираемые руны на арене. Появляются в определённых точках карты. Каждая даёт временный бафф герою, который её подобрал.</p>
+            <p class="detail-description">Портреты героев, арты и скриншоты арены.</p>
 
-            <div class="runes-grid" id="runesGrid"></div>
+            <div id="galleryRoot"></div>
         </div>
 
         <div style="margin-top:24px; text-align:center; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-            <a href="items.html" class="btn-secondary"><i class="fas fa-flask"></i> Предметы</a>
-            <a href="mechanics.html" class="btn-secondary"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="heroes.html" class="btn-secondary"><i class="fas fa-users"></i> Герои</a>
+            <a href="lore.html" class="btn-secondary"><i class="fas fa-scroll"></i> Лор</a>
         </div>
     </div>
 
@@ -104,7 +75,5 @@
             <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>
-
-
 </body>
 </html>

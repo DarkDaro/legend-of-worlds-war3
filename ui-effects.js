@@ -37,13 +37,20 @@
     }
 
     // ── Cursor glow ──
-    if (window.matchMedia('(hover: hover)').matches) {
+    if (window.matchMedia('(hover: hover)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         var glow = document.createElement('div');
         glow.className = 'cursor-glow';
         document.body.appendChild(glow);
+        var glowX = 0, glowY = 0, glowRaf = null;
         document.addEventListener('mousemove', function(e) {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
+            glowX = e.clientX;
+            glowY = e.clientY;
+            if (!glowRaf) {
+                glowRaf = requestAnimationFrame(function() {
+                    glow.style.transform = 'translate(' + (glowX - 90) + 'px, ' + (glowY - 90) + 'px)';
+                    glowRaf = null;
+                });
+            }
         });
     }
 
