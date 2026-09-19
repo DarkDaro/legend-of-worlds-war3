@@ -16,6 +16,9 @@
         const heroId = location.pathname.split('/').pop().replace('.html', '');
         const detailIcon = document.querySelector('.detail-icon');
         if (!detailIcon || !heroId) return;
+        // 19.09: только страницы героев — на служебных страницах (gallery и т.п.)
+        // detail-icon используется как декоративная иконка, не подменяем её картинкой
+        if (!location.pathname.includes('/heroes/')) return;
 
         // Если уже есть <img> внутри (например, из HTML), не заменяем
         if (detailIcon.querySelector('img')) return;
