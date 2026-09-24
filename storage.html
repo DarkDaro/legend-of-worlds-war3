@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хранилище предметов · Legend of Worlds</title>
+    <meta name="description" content="Хранилище предметов — личный ящик игрока на базе в Legend of Worlds. Слоты, действия, спеллбуки, игровые настройки и донат-функционал.">
+    <meta property="og:title" content="Хранилище предметов · Legend of Worlds">
+    <meta property="og:description" content="Личный ящик игрока на базе: 6 слотов, действия, спеллбуки и настройки.">
+    <meta property="og:image" content="images/preview.png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/storage.css">
+    <script src="storage-db.js" defer></script>
+    <script src="storage-page.js" defer></script>
+    <script src="analytics.js" defer></script>
+    <script src="icon-loader.js" defer></script>
+    <style>
+    /* Хранилище: wiki-контейнер шире (как на monsters.html) */
+    .hero-page-container { max-width: 1200px; }
+    </style>
+</head>
+<body class="page-storage">
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="Legend of Worlds" class="logo-img" />
+            <span class="logo-text">Legend of Worlds <small>Warcraft III</small></span>
+        </a>
+        <nav class="header-nav">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+            <a href="heroes.html" class="nav-link"><i class="fas fa-users"></i> Герои</a>
+            <a href="items.html" class="nav-link"><i class="fas fa-flask"></i> Предметы</a>
+            <a href="mechanics.html" class="nav-link"><i class="fas fa-cogs"></i> Механики</a>
+            <a href="events.html" class="nav-link"><i class="fas fa-bolt"></i> Ивенты</a>
+            <a href="info.html" class="nav-link"><i class="fas fa-info-circle"></i> Инфо</a>
+            <a href="monsters.html" class="nav-link"><i class="fas fa-dragon"></i> Монстры</a>
+            <a href="map.html" class="nav-link"><i class="fas fa-map"></i> Карта</a>
+            <a href="guides.html" class="nav-link"><i class="fas fa-book-open"></i> Гайды</a>
+            <a href="faq.html" class="nav-link"><i class="fas fa-question-circle"></i> ЧаВо</a>
+            <a href="lore.html" class="nav-link"><i class="fas fa-scroll"></i> Лор</a>
+            <a href="support.html" class="nav-link"><i class="fas fa-heart"></i> Поддержать</a>
+            <a href="updates.html" class="nav-link"><i class="fas fa-history"></i> Обновления</a>
+        </nav>
+    </header>
+    <div class="wiki-container">
+        <div class="breadcrumbs"><a href="index.html">Главная</a><span class="sep">›</span><a href="mechanics.html">Механики</a><span class="sep">›</span><span class="current">Хранилище предметов</span></div>
+
+        <div class="hero-page-container">
+            <div class="panel-header">
+                <div class="detail-icon"><img loading="lazy" src="images/preview.png" alt="" class="detail-logo-img" /></div>
+                <h1 class="detail-title">
+                    Хранилище предметов
+                    <span class="detail-badge">Интерактив</span>
+                </h1>
+            </div>
+            <p class="detail-description">Личный ящик игрока на базе. Наведи курсор или нажми на кнопку ящика — увидишь описание с горячей клавишей. Ниже — полное описание всех кнопок, спеллбуков и характеристик.</p>
+
+            <!-- ===== ВЕРХ: интерактивный ящик ===== -->
+            <div class="storage-demo-layout">
+                <!-- Левая колонка: инфо-панель -->
+                <div class="storage-info-panel" id="storageInfoPanel">
+                    <div class="storage-info-icon" id="storageInfoIcon"><i class="fas fa-hand-pointer"></i></div>
+                    <h3 class="storage-info-title" id="storageInfoTitle">Хранилище</h3>
+                    <div class="storage-info-text storage-desc" id="storageInfoText">Наведи курсор или нажми на кнопку ящика, чтобы увидеть описание.</div>
+                    <div class="storage-info-hint" id="storageInfoHint">Кнопки слотов кладут и забирают предметы. Кнопки действий управляют сборкой и настройками.</div>
+                </div>
+
+                <!-- Правая колонка: ящик -->
+                <div class="storage-box" id="storageBox">
+                    <div class="storage-box-header">
+                        <i class="fas fa-box-open"></i>
+                        <span>Хранилище игрока</span>
+                    </div>
+
+                    <!-- Слоты 1-6 (Q W A S Z X) -->
+                    <div class="storage-slots" id="storageSlots"></div>
+
+                    <!-- Действия (D C E) -->
+                    <div class="storage-actions" id="storageActions"></div>
+
+                    <!-- Спеллбуки -->
+                    <div class="storage-spellbooks">
+                        <div class="storage-spellbooks-label"><i class="fas fa-book"></i> Спеллбуки</div>
+                        <div class="storage-spellbooks-row" id="storageBooksRow"></div>
+                        <div class="storage-book-panel" id="storageBookPanel">
+                            <div class="storage-book-panel-title" id="storageBookPanelTitle"></div>
+                            <div class="storage-book-btns" id="storageBookBtns"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== НИЗ: лор-секции ===== -->
+
+            <!-- Что это -->
+            <div class="lore-section">
+                <h2 class="lore-title"><i class="fas fa-circle-question"></i> Что это такое</h2>
+                <div class="lore-text">
+                    <p>Хранилище предметов — <span class="lore-highlight">личный юнит-ящик</span>, который стоит на базе. В командном режиме на базе <span class="lore-highlight">3 ящика</span> — по числу игроков команды. Инвентарь героя ограничен шестью слотами — ящик расширяет его ещё на шесть, плюс даёт управление сборкой и настройками через спеллбуки.</p>
+                    <p>Предметы передаются между героем и ящиком только <span class="lore-highlight">на базе</span>. Ящик неуязвим и не может быть уничтожен.</p>
+                </div>
+            </div>
+
+            <!-- Кнопки-слоты -->
+            <div class="lore-section">
+                <h2 class="lore-title"><i class="fas fa-boxes-stacked"></i> Слоты и действия</h2>
+                <div class="lore-text">
+                    <p>Шесть кнопок на корпусе ящика — по одной на каждый слот. Нажми кнопку с предметом в инвентаре героя — предмет уйдёт в выбранный слот. Нажми кнопку заполненного слота — предмет вернётся к герою.</p>
+                    <table class="storage-table">
+                        <thead><tr><th>Кнопка</th><th>Хоткей</th><th>Действие</th></tr></thead>
+                        <tbody id="storageTableSlots"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Спеллбук: Помощь -->
+            <div class="lore-section">
+                <h2 class="lore-title"><i class="fas fa-circle-question"></i> Спеллбук «Помощь»</h2>
+                <div class="lore-text">
+                    <p>Книга текстовых подсказок: гайды по сборкам предметов под каждый тип характеристики, список игровых команд и донат-кабина. Открывается кнопкой <span class="storage-hk">R</span>.</p>
+                    <div id="storageCollapseA0OR"></div>
+                </div>
+            </div>
+
+            <!-- Спеллбук: Игровые настройки -->
+            <div class="lore-section">
+                <h2 class="lore-title"><i class="fas fa-gear"></i> Спеллбук «Игровые настройки»</h2>
+                <div class="lore-text">
+                    <p>Личные настройки игрока: сборка одним кликом, камера, голосования за дуэли и сдачу, отображение урона. Открывается кнопкой <span class="storage-hk">F</span>.</p>
+                    <div id="storageCollapseA157"></div>
+                </div>
+            </div>
+
+            <!-- Спеллбук: Доп. функционал -->
+            <div class="lore-section">
+                <h2 class="lore-title"><i class="fas fa-gem"></i> Спеллбук «Дополнительный функционал»</h2>
+                <div class="lore-text">
+                    <p>Донат и VIP-функционал: крылья, автосборка, доп. инком, тест-режим и уникальные способности по статусу игрока. Открывается кнопкой <span class="storage-hk">V</span>.</p>
+                    <div id="storageCollapseA158"></div>
+                </div>
+            </div>
+
+            <div style="margin-top:24px; text-align:center; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+                <a href="mechanics.html" class="btn-secondary"><i class="fas fa-cogs"></i> Механики</a>
+                <a href="items.html" class="btn-secondary"><i class="fas fa-flask"></i> Предметы</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo"><img loading="lazy" src="images/preview.png" alt="" width="28" height="28" class="footer-logo-img"> Legend of Worlds</span>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="ВКонтакте"><i class="fab fa-vk"></i></a>
+                <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>

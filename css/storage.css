@@ -1,0 +1,383 @@
+/* ===== Страница: Хранилище предметов ===== */
+
+/* --- Интерактив: макет --- */
+.storage-demo-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 20px;
+    margin-top: 8px;
+    align-items: start;
+}
+
+.storage-info-panel {
+    background: var(--glass-bg, rgba(15, 23, 42, 0.5));
+    backdrop-filter: blur(var(--glass-blur, 12px));
+    border: 1px solid var(--glass-border, rgba(0, 230, 255, 0.12));
+    border-radius: 14px;
+    padding: 22px 24px;
+    min-height: 320px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.storage-info-panel.active {
+    border-color: var(--glass-border-hover, rgba(0, 230, 255, 0.35));
+    box-shadow: var(--neon-glow, 0 0 20px rgba(0, 230, 255, 0.2));
+}
+.storage-info-icon {
+    font-size: 1.6rem;
+    color: var(--accent-cyan, #00e6ff);
+    margin-bottom: 10px;
+}
+.storage-info-title {
+    margin: 0 0 10px;
+    font-size: 1.15rem;
+    color: var(--text-primary, #e0f0ff);
+}
+.storage-info-text {
+    color: #c8d8f0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 14px;
+}
+.storage-info-hint {
+    font-size: 0.82rem;
+    color: var(--text-secondary, #8aa0c0);
+    border-left: 3px solid rgba(0, 230, 255, 0.35);
+    padding-left: 12px;
+}
+
+/* --- Ящик --- */
+.storage-box {
+    background: var(--glass-bg, rgba(15, 23, 42, 0.5));
+    backdrop-filter: blur(var(--glass-blur, 12px));
+    border: 1px solid var(--glass-border, rgba(0, 230, 255, 0.12));
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 0 15px #00000080, 0 0 0 1px #00e6ff22 inset;
+}
+.storage-box-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: var(--text-primary, #e0f0ff);
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(0, 230, 255, 0.12);
+}
+.storage-box-header i { color: var(--accent-cyan, #00e6ff); }
+
+/* Кнопки общие */
+.storage-btn {
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid rgba(0, 230, 255, 0.2);
+    border-radius: 10px;
+    color: #d0e0ff;
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 10px 12px;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+}
+.storage-btn:hover {
+    border-color: rgba(0, 230, 255, 0.55);
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 12px rgba(0, 230, 255, 0.25);
+    color: #fff;
+}
+/* Hover-эффекты только на устройствах с настоящим курсором (на тач не залипают) */
+@media (hover: none) {
+    .storage-btn:hover {
+        border-color: rgba(0, 230, 255, 0.2);
+        background: rgba(0, 255, 255, 0.05);
+        box-shadow: none;
+        color: #d0e0ff;
+    }
+    .storage-collapse:hover { border-color: rgba(0, 230, 255, 0.12); }
+    .storage-table tr:hover td { background: none; }
+}
+.storage-btn.selected {
+    border-color: rgba(0, 230, 255, 0.7);
+    background: rgba(0, 255, 255, 0.14);
+    box-shadow: 0 0 14px rgba(0, 230, 255, 0.35);
+    color: #fff;
+}
+/* Текст кнопок переносится, не распирает сетку */
+.storage-btn span { min-width: 0; overflow-wrap: break-word; }
+
+/* Хоткей-бейдж на кнопке */
+.storage-hotkey {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #ffd700;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    border-radius: 4px;
+    padding: 1px 5px;
+    line-height: 1.4;
+}
+.storage-slot .storage-hotkey { align-self: flex-start; }
+
+/* Слоты */
+.storage-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+}
+.storage-slot {
+    aspect-ratio: 1.4 / 1;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 1rem;
+}
+.storage-slot .storage-slot-num {
+    font-size: 0.7rem;
+    color: var(--text-secondary, #8aa0c0);
+    font-weight: 600;
+}
+/* Грид-детям разрешить сжиматься ниже ширины контента */
+.storage-slots > *, .storage-actions > *,
+.storage-spellbooks-row > *, .storage-book-btns > * { min-width: 0; max-width: 100%; }
+/* Блоки ящика — border-box */
+.storage-box, .storage-info-panel, .storage-book-panel, .storage-collapse { box-sizing: border-box; }
+
+/* Действия */
+.storage-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+/* Спеллбуки */
+.storage-spellbooks {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0, 230, 255, 0.12);
+}
+.storage-spellbooks-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #8aa0c0);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.storage-spellbooks-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+.storage-book { font-size: 0.78rem; padding: 8px 6px; }
+.storage-book { white-space: normal; text-align: center; line-height: 1.3; }
+.storage-book .fas { flex-shrink: 0; }
+.storage-book.expanded {
+    border-color: rgba(0, 230, 255, 0.7);
+    background: rgba(0, 255, 255, 0.14);
+}
+
+/* Раскрытая книга: список кнопок */
+.storage-book-panel {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(0, 230, 255, 0.15);
+    border-radius: 10px;
+}
+.storage-book-panel.open { display: block; }
+.storage-book-panel-title {
+    font-size: 0.75rem;
+    color: var(--accent-cyan, #00e6ff);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.storage-book-btns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+.storage-btn.storage-sub {
+    font-size: 0.72rem;
+    padding: 7px 4px;
+    min-height: 40px;
+    flex-direction: column;
+    gap: 3px;
+    text-align: center;
+}
+.storage-btn.storage-sub .storage-hotkey { font-size: 0.62rem; padding: 0 4px; }
+.storage-btn.storage-sub.req-vip { border-color: rgba(255, 215, 0, 0.35); }
+.storage-btn.storage-sub.req-premium { border-color: rgba(170, 120, 255, 0.4); }
+.storage-btn.storage-sub.req-admin { border-color: rgba(255, 80, 80, 0.4); }
+.storage-btn.storage-sub .storage-req-tag {
+    font-size: 0.58rem;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+.req-vip .storage-req-tag { color: #ffd700; }
+.req-premium .storage-req-tag { color: #c9a6ff; }
+.req-admin .storage-req-tag { color: #ff8080; }
+
+/* --- Лор-секции (низ страницы) --- */
+.storage-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    margin: 12px 0;
+}
+.storage-table th, .storage-table td {
+    padding: 9px 14px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 230, 255, 0.1);
+}
+.storage-table th {
+    color: var(--accent-cyan, #00e6ff);
+    font-weight: 600;
+    white-space: nowrap;
+}
+.storage-table td strong { color: #e0f0ff; }
+.storage-table tr:hover td { background: rgba(0, 230, 255, 0.04); }
+.storage-hk {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: #ffd700;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 4px;
+    padding: 1px 7px;
+    margin-right: 6px;
+}
+.storage-req-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    border-radius: 5px;
+    padding: 2px 8px;
+    white-space: nowrap;
+}
+.storage-req-badge.vip { color: #ffd700; border: 1px solid rgba(255, 215, 0, 0.35); background: rgba(255, 215, 0, 0.06); }
+.storage-req-badge.premium { color: #c9a6ff; border: 1px solid rgba(170, 120, 255, 0.4); background: rgba(170, 120, 255, 0.07); }
+.storage-req-badge.admin { color: #ff8080; border: 1px solid rgba(255, 80, 80, 0.4); background: rgba(255, 80, 80, 0.07); }
+
+/* Мультилайн-описания (desc в таблицах и панелях) */
+.storage-desc {
+    white-space: pre-line;
+    line-height: 1.55;
+}
+
+/* Сворачиваемые карточки кнопок (низ страницы) */
+.storage-collapse {
+    border: 1px solid rgba(0, 230, 255, 0.12);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    background: rgba(0, 255, 255, 0.03);
+    transition: border-color 0.2s ease;
+}
+.storage-collapse:hover { border-color: rgba(0, 230, 255, 0.35); }
+.storage-collapse-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #d0e0ff;
+    font-size: 0.9rem;
+    text-align: left;
+}
+.storage-collapse-head .storage-hk { margin-right: 0; }
+.storage-collapse-head .coll-name {
+    font-weight: 600;
+    color: var(--text-primary, #e0f0ff);
+    flex: 1;
+    min-width: 0;
+}
+.storage-collapse-head .coll-chev {
+    color: var(--accent-cyan, #00e6ff);
+    font-size: 0.8rem;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+}
+.storage-collapse.open .coll-chev { transform: rotate(180deg); }
+.storage-collapse-body {
+    display: none;
+    padding: 4px 16px 12px 44px;
+    color: #c8d8f0;
+    font-size: 0.88rem;
+    border-top: 1px solid rgba(0, 230, 255, 0.08);
+    padding-top: 10px;
+    margin-top: 2px;
+}
+.storage-collapse.open .storage-collapse-body { display: block; }
+.storage-collapse-body .storage-desc { margin: 0; }
+.storage-collapse-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+    font-size: 0.78rem;
+    color: var(--text-secondary, #8aa0c0);
+}
+.storage-collapse-meta .meta-chip {
+    border: 1px solid rgba(0, 230, 255, 0.18);
+    border-radius: 5px;
+    padding: 2px 8px;
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+    .storage-demo-layout { grid-template-columns: 1fr; }
+    .storage-info-panel { min-height: 0; order: 2; }
+    .storage-box { order: 1; }
+    .storage-spellbooks-row { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 700px) {
+    .storage-table th, .storage-table td { padding: 7px 10px; font-size: 0.85rem; }
+    /* Таблицы: на мобиле без hover-строк */
+    .storage-table th { white-space: normal; }
+    .storage-box { padding: 12px; }
+    .storage-info-panel { padding: 16px 18px; }
+    .storage-btn { font-size: 0.78rem; padding: 8px 8px; min-height: 40px; }
+    .storage-book { font-size: 0.72rem; }
+    .storage-collapse-head { padding: 9px 10px; font-size: 0.84rem; gap: 8px; }
+    .storage-collapse-body { font-size: 0.84rem; padding: 8px 12px 10px 34px; }
+    .storage-table { font-size: 0.85rem; }
+}
+@media (max-width: 480px) {
+    .storage-slots, .storage-actions,
+    .storage-spellbooks-row, .storage-book-btns { grid-template-columns: repeat(2, 1fr); }
+    .storage-collapse-body { padding-left: 14px; }
+    .storage-collapse-head .storage-hk { display: none; }
+    .storage-slot { aspect-ratio: auto; min-height: 56px; }
+    .storage-btn { padding: 7px 6px; font-size: 0.74rem; gap: 5px; }
+    .storage-hotkey { font-size: 0.6rem; padding: 0 4px; }
+    .storage-book-btns { grid-template-columns: 1fr; }
+    .storage-btn.storage-sub { flex-direction: row; justify-content: flex-start; text-align: left; padding: 8px 10px; }
+    .storage-btn.storage-sub .storage-req-tag { margin-left: auto; }
+    .storage-collapse-meta { gap: 6px; }
+    .storage-req-badge { font-size: 0.65rem; padding: 2px 6px; }
+    .storage-hk { font-size: 0.7rem; padding: 1px 5px; }
+    /* Действия: иконка + хоткей, текст в title (кнопка слишком узкая для текста) */
+    .storage-action .storage-act-label { display: none; }
+    .storage-table { table-layout: fixed; }
+    .storage-table td:first-child { width: 30%; }
+    .storage-table td:nth-child(2) { width: 14%; }
+}
