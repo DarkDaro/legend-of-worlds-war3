@@ -43,6 +43,16 @@
         return '';
     }
 
+    // Короткое имя требования для бейджа
+    function shortReq(req) {
+        if (!req) return '';
+        if (req.indexOf('Admin') !== -1) return 'Admin';
+        if (req.indexOf('Premium') !== -1) return 'Premium';
+        if (req.indexOf('VIP') !== -1) return 'VIP';
+        if (req.indexOf('Tester') !== -1) return 'Tester';
+        return req;
+    }
+
     // ===== Построение ящика =====
     var slotsEl = document.getElementById('storageSlots');
     var actionsEl = document.getElementById('storageActions');
