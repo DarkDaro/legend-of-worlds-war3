@@ -102,7 +102,26 @@
         btn.addEventListener('focus', fn);
         btn.addEventListener('click', function(e) {
             fn(e);
+            // toggleBook только для кнопок спеллбуков (dataset.book установлен)
             if (btn.dataset.book) toggleBook(btn.dataset.book, bookPanel, btn);
+        });
+    }
+
+    // Кнопка "Сбросить" в инфо-панели
+    var resetBtn = document.getElementById('storageInfoReset');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+            resetPanel();
+            closeBook();
+        });
+    }
+
+    // Кнопка "Закрыть" в спеллбук-панели
+    var bookCloseBtn = document.getElementById('storageBookClose');
+    if (bookCloseBtn) {
+        bookCloseBtn.addEventListener('click', function() {
+            closeBook();
+            resetPanel();
         });
     }
 
@@ -170,7 +189,13 @@
     }
     function panelElOpen() {
         var p = document.getElementById('storageBookPanel');
-        if (p) p.classList.add('open');
+        if (p) {
+            p.classList.add('open');
+            // Мобильные: прокрутить к открытой панели
+            if (window.innerWidth <= 900) {
+                p.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
     }
     function closeBook() {
         openBookRaw = null;
