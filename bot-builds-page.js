@@ -4,7 +4,8 @@
 document.addEventListener('DOMContentLoaded', function() {
 // === Определение параметров URL ===
 const urlParams = new URLSearchParams(window.location.search);
-const heroRawcode = urlParams.get('rawcode');
+// 24.10: поддержка slug-URL ?hero=<heroId> (js/hero-slugs.js). Старый ?rawcode= продолжает работать.
+const heroRawcode = urlParams.get('rawcode') || heroRawcodeFromSlug(urlParams.get('hero'));
 const groupParam = urlParams.get('group');
 
 // === findItemByName загружен из items-db.js ===
@@ -301,6 +302,7 @@ function selectGroup(gid) {
     const url = new URL(window.location);
     url.searchParams.set('group', gid);
     url.searchParams.delete('rawcode');
+    url.searchParams.delete('hero'); // 24.10: чистим hero-slug при явной смене группы
     history.pushState({}, '', url);
 
     // Обновить кнопки
