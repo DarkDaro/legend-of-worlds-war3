@@ -711,3 +711,42 @@
     .info-key-badge { width: 30px; height: 30px; font-size: 0.9rem; }
     .info-key-desc { font-size: 0.8rem; }
 }
+
+/* ===== 24.10: текстовые ссылки внутри разделов info =====
+   Раньше глобального правила для <a> не было — в тексте ссылки выглядели
+   как браузерные (синие, подчёркнутые), выбиваясь из неоновой темы. */
+.info-text a,
+.info-section p a,
+.info-steps a,
+.info-note a,
+.info-list a,
+.info-keys a,
+.auto-level-intro a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 230, 255, 0.35);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s, text-shadow 0.15s;
+}
+.info-text a:hover,
+.info-section p a:hover,
+.info-steps a:hover,
+.info-note a:hover,
+.info-list a:hover,
+.info-keys a:hover,
+.auto-level-intro a:hover {
+    color: #ffffff;
+    border-bottom-color: var(--accent-cyan);
+    text-shadow: 0 0 10px rgba(0, 230, 255, 0.6);
+}
+.info-text a:focus-visible,
+.info-section p a:focus-visible,
+.info-steps a:focus-visible,
+.info-note a:focus-visible,
+.info-list a:focus-visible,
+.info-keys a:focus-visible,
+.auto-level-intro a:focus-visible {
+    outline: 2px solid var(--accent-cyan);
+    outline-offset: 2px;
+    border-radius: 2px;
+}

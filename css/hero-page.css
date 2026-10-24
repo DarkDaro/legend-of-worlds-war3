@@ -716,3 +716,22 @@
         scroll-behavior: auto !important;
     }
 }
+
+/* 24.10: .detail-title стал <h1> для SEO. Глобальное правило h1 в base.css
+   добавляет подчёркивание и синий градиент — гасим их точечно. */
+.panel-header h1.detail-title {
+    border-bottom: 0;
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: currentColor;
+    animation: none;
+    margin: 0;
+    padding: 0;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 0 12px #00e6ffcc;
+    letter-spacing: normal;
+    line-height: inherit;
+}
