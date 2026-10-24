@@ -1757,10 +1757,20 @@ applyItemView();
 updateItemFavoritesTab();
 
 // Обработка URL-параметра ?item=ID или #ID — открывает предмет из внешней ссылки
+
+// 24.10: безопасный вызов idFromSlug. js/item-slugs.js подключён не на всех страницах,
+// поэтому при его отсутствии возвращаем вход как есть (rawcode работает и так).
+function sluggifySafe(value) {
+  if (typeof idFromSlug === 'function') {
+    try { return idFromSlug(value); } catch (e) { return value; }
+  }
+  return value;
+}
+
 function getItemIdFromUrl() {
   // Способ 1: query string (?item=ID) — работает на HTTP-сервере
   var id = new URLSearchParams(window.location.search).get('item');
-  if (id) return idFromSlug(id); // 24.10: slug→rawcode, fallback = как есть (js/item-slugs.js)
+  if (id) return sluggifySafe(id); // 24.10: slug→rawcode, fallback = как есть (js/item-slugs.js)
   // Запасной: парсим href вручную (при file:// location.search может быть пустым)
   var href = window.location.href;
   var idx = href.indexOf('?');
@@ -1771,7 +1781,7 @@ function getItemIdFromUrl() {
   // Способ 2: hash (#ID) — надёжно при file:// протоколе
   var hash = window.location.hash;
   if (hash) {
-    var hashId = idFromSlug(hash.replace(/^#/, '')); // 24.10: slug→rawcode
+    var hashId = sluggifySafe(hash.replace(/^#/, '')); // 24.10: slug→rawcode
     if (hashId && itemsDB[hashId]) return hashId;
   }
   return null;

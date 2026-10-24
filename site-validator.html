@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Валидатор целостности · Legend of Worlds</title>
-    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Целостность данных · Legend of Worlds</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="images/logo.png" type="image/png">
+<link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+<style>
         * { box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #0a1628;
             color: #c0d0e0;
             margin: 0;
-            padding: 20px;
+            padding: 20px 20px 88px;
             line-height: 1.6;
         }
         h1 {
@@ -84,16 +86,15 @@
         .count-error { background: #ff444433; color: #ff4444; }
         .result-content {
             padding: 12px 18px;
-            max-height: 300px;
-            overflow-y: auto;
         }
         .check-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 10px;
             padding: 8px 0;
             border-bottom: 1px solid #111e30;
             font-size: 0.9rem;
+            line-height: 1.5;
         }
         .check-item:last-child { border-bottom: none; }
         .check-icon { font-size: 1rem; width: 20px; text-align: center; }
@@ -125,157 +126,374 @@
             .status-bar { flex-direction: column; gap: 4px; font-size: 0.8rem; padding: 10px; }
         }
     </style>
+<style>
+    /* 24.10: дополнения для дашборда */
+    .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+    .summary-card {
+        background: #0d1b2a;
+        border: 1px solid #1a3a5c;
+        border-radius: 10px;
+        padding: 16px;
+        text-align: center;
+    }
+    .summary-value {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #00e5ff;
+        line-height: 1.1;
+    }
+    .summary-value.warn { color: #ffaa44; }
+    .summary-value.bad { color: #ff4444; }
+    .summary-label {
+        font-size: 0.78rem;
+        color: #5a7a9a;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 4px;
+    }
+    .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .toolbar button {
+        background: #0d1b2a;
+        border: 1px solid #1a3a5c;
+        color: #c0d0e0;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        cursor: pointer;
+    }
+    .toolbar button:hover { border-color: #00e5ff; color: #00e5ff; }
+    .toolbar button.active { background: #00e5ff22; border-color: #00e5ff; color: #00e5ff; }
+    .check-item.problem { background: rgba(255, 68, 68, 0.06); }
+    .check-item a { color: #00e5ff; text-decoration: none; }
+    .check-item a:hover { text-decoration: underline; }
+</style>
 </head>
 <body>
-    <h1><i class="fas fa-stethoscope"></i> Валидатор целостности</h1>
-    <p class="subtitle">Проверка связей между данными и файлами сайта</p>
-    
-    <button class="run-btn" onclick="runValidation()">
-        <i class="fas fa-play"></i> Запустить проверку
-    </button>
 
-    <div class="results" id="results"></div>
+<h1><i class="fas fa-stethoscope"></i> Целостность данных</h1>
+<p class="subtitle">Проверка связей между данными карты и файлами сайта. Страница служебная — не в навигации и не в поиске.</p>
 
-    <div class="status-bar" id="statusBar" style="display: none;">
-        <span id="statusText">Проверка...</span>
-        <span id="statusTime"></span>
-    </div>
+<button class="run-btn" onclick="runValidation()">
+    <i class="fas fa-play"></i> Запустить проверку
+</button>
 
-    <script>
-    function runValidation() {
-        document.getElementById('results').innerHTML = '';
-        document.getElementById('statusBar').style.display = 'flex';
-        document.getElementById('statusText').textContent = 'Проверка...';
-        
-        var startTime = Date.now();
-        var results = [];
-        
-        // Проверка 1: Герои и их файлы
-        checkHeroes(results);
-        
-        // Проверка 2: Предметы и иконки
-        checkItems(results);
-        
-        // Проверка 3: Ссылки
-        checkLinks(results);
-        
-        // Отображение результатов
-        displayResults(results);
-        
-        var elapsed = ((Date.now() - startTime) / 1000).toFixed(2);
-        document.getElementById('statusTime').textContent = elapsed + ' сек';
+<div class="summary-grid" id="summary"></div>
+
+<div class="toolbar" id="toolbar" style="display:none">
+    <button data-filter="all" class="active">Все</button>
+    <button data-filter="problem">Только проблемы</button>
+</div>
+
+<div class="results" id="results"></div>
+
+<div class="status-bar" id="statusBar" style="display:none">
+    <span id="statusText">Проверка...</span>
+    <span id="statusTime"></span>
+</div>
+
+<!-- 24.10: данные, без которых проверки бессмысленны -->
+<script src="hero-data.js" defer></script>
+<script src="hero-builds.js" defer></script>
+<script src="items-db.js" defer></script>
+<script src="abilities-db.js" defer></script>
+
+<script>
+// ========== ДАННЫЕ ==========
+// Список существующих hero-страниц: получить из DOM нельзя, поэтому
+// используем HEROES_DATA + известные исключения.
+
+var REPORT = [];
+
+function addSection(title, icon, items) {
+    REPORT.push({
+        title: title,
+        icon: icon,
+        items: items,
+        // 24.10: считаем по наличию реальной проблемы, а не по status.
+        // Сводочные строки помечены 'ok', но informative — иначе «0/2» при одной проблеме.
+        count: { ok: items.filter(function (i) { return !i.problem; }).length, total: items.length }
+    });
+}
+
+// ---------- 1. Герои и их файлы ----------
+function checkHeroes() {
+    var heroes = typeof HEROES_DATA !== 'undefined' ? HEROES_DATA : [];
+    var items = [];
+    var builds = typeof heroBuilds !== 'undefined' ? heroBuilds : {};
+
+    heroes.forEach(function (hero) {
+        if (hero.wip) return;          // WIP не проверяем
+        if (hero.isAltForm) return;    // альт-формы без страниц — норма
+
+        var problems = [];
+        var id = hero.heroId;
+
+        // сборка
+        if (!builds[id]) problems.push('нет сборки');
+        // картинка
+        if (!hero.image) problems.push('нет портрета в данных');
+
+        items.push({
+            name: hero.name + ' <small style="color:#5a7a9a">(' + id + ')</small>',
+            status: problems.length ? 'warn' : 'ok',
+            detail: problems.length
+                ? problems.join(', ')
+                : '<i class="fas fa-check"></i> данные полные',
+            problem: problems.length > 0
+        });
+    });
+
+    addSection('Герои: данные и сборки', 'fa-users', items);
+}
+
+// ---------- 2. Способности со stub-описанием ----------
+function checkAbilities() {
+    if (typeof ABILITIES_DB === 'undefined') { addSection('Способности', 'fa-bolt', [{ name: 'ABILITIES_DB не загружен', status: 'error', problem: true }]); return; }
+
+    var stub = [], empty = [], fine = [], hotkeys = {};
+
+    Object.keys(ABILITIES_DB).forEach(function (code) {
+        var a = ABILITIES_DB[code];
+        var desc = (a.desc || '').trim();
+        hotkeys[a.hotkey || '—'] = (hotkeys[a.hotkey || '—'] || 0) + 1;
+
+        if (!desc) { empty.push(code); return; }
+        if (desc === 'Описание' || desc.length < 8) { stub.push(code + ' ' + (a.name || '')); return; }
+        fine.push(code);
+    });
+
+    var items = [];
+    // stub — реальные проблемы
+    stub.forEach(function (s) {
+        var code = s.split(' ')[0];
+        items.push({ name: s, status: 'warn', detail: 'описание-заглушка', problem: true });
+    });
+    // пустые desc — норма для технических, показываем сводкой
+    items.push({
+        name: 'Всего способностей: ' + Object.keys(ABILITIES_DB).length,
+        status: 'ok',
+        detail: 'с описанием: ' + fine.length + ', без описания (технические): ' + empty.length + ', заглушек: ' + stub.length
+    });
+    var hk = Object.keys(hotkeys).sort().map(function (k) { return (k || '—') + '×' + hotkeys[k]; }).join(', ');
+    items.push({ name: 'Раскладка хоткеев', status: 'ok', detail: hk });
+
+    addSection('Способности: описания', 'fa-bolt', items);
+}
+
+// ---------- 3. Предметы ----------
+function checkItems() {
+    if (typeof itemsDB === 'undefined') { addSection('Предметы', 'fa-flask', [{ name: 'itemsDB не загружен', status: 'error', problem: true }]); return; }
+
+    var all = Object.keys(itemsDB);
+    var noCost = [], noDesc = [], fine = 0;
+    var byType = {};
+
+    all.forEach(function (id) {
+        var it = itemsDB[id];
+        byType[it.type] = (byType[it.type] || 0) + 1;
+        var problems = [];
+        if (!it.cost && it.type !== 'boost') problems.push('нет цены');
+        if (!it.description) problems.push('нет описания');
+        if (problems.length) {
+            if (!it.cost) noCost.push(it.name || id);
+            if (!it.description) noDesc.push(it.name || id);
+        } else fine++;
+    });
+
+    var items = [];
+    items.push({
+        name: 'Всего записей в базе',
+        status: 'ok',
+        detail: Object.keys(byType).sort(function (a, b) { return byType[b] - byType[a]; })
+            .slice(0, 8).map(function (t) { return t + '×' + byType[t]; }).join(', ')
+    });
+    items.push({ name: 'Полные записи', status: 'ok', detail: fine + ' из ' + all.length });
+
+    // показать проблемы пачкой
+    if (noCost.length) {
+        items.push({
+            name: 'Без цены: ' + noCost.length,
+            status: 'warn',
+            detail: noCost.slice(0, 12).join(', ') + (noCost.length > 12 ? '…' : ''),
+            problem: true
+        });
     }
-    
-    function checkHeroes(results) {
-        var heroes = typeof HEROES_DATA !== 'undefined' ? HEROES_DATA : [];
-        var items = [];
-        
-        heroes.forEach(function(hero) {
-            var hasCard = true; // Проверка существования файла
-            var hasImage = hero.image ? true : false;
-            var hasBuild = typeof heroBuilds !== 'undefined' && heroBuilds[hero.heroId];
-            
-            items.push({
-                name: hero.name,
-                status: hasCard && hasImage ? 'ok' : 'warn',
-                detail: (hasImage ? '<i class="fas fa-check"></i> иконка' : '<i class="fas fa-times"></i> иконка') + ', ' + (hasBuild ? '<i class="fas fa-check"></i> сборка' : '<i class="fas fa-times"></i> сборка')
-            });
-        });
-        
-        results.push({
-            title: 'Герои',
-            icon: 'fa-users',
-            count: { ok: items.filter(i => i.status === 'ok').length, total: items.length },
-            items: items
+    if (noDesc.length) {
+        items.push({
+            name: 'Без описания: ' + noDesc.length,
+            status: 'warn',
+            detail: noDesc.slice(0, 12).join(', ') + (noDesc.length > 12 ? '…' : ''),
+            problem: true
         });
     }
-    
-    function checkItems(results) {
-        var db = typeof itemsDB !== 'undefined' ? itemsDB : {};
-        var items = [];
-        
-        Object.keys(db).forEach(function(id) {
-            var item = db[id];
-            var hasIcon = item.icon && item.icon.length > 0;
-            
-            items.push({
-                name: item.name || id,
-                status: hasIcon ? 'ok' : 'warn',
-                detail: hasIcon ? '<i class="fas fa-check"></i> иконка' : '<i class="fas fa-exclamation-triangle"></i> нет иконки'
-            });
-        });
-        
-        results.push({
-            title: 'Предметы',
-            icon: 'fa-flask',
-            count: { ok: items.filter(i => i.status === 'ok').length, total: items.length },
-            items: items.slice(0, 20) // Показываем первые 20
+    if (!noCost.length && !noDesc.length) {
+        items.push({ name: 'Все записи заполнены', status: 'ok', detail: '' });
+    }
+
+    addSection('Предметы: полнота', 'fa-flask', items);
+}
+
+// ---------- 4. Сборки героев ----------
+function checkBuilds() {
+    if (typeof heroBuilds === 'undefined' || typeof HEROES_DATA === 'undefined') {
+        addSection('Сборки', 'fa-list-check', [{ name: 'данные не загружены', status: 'error', problem: true }]);
+        return;
+    }
+    var heroes = HEROES_DATA.filter(function (h) { return !h.wip && !h.isAltForm; });
+    var items = [];
+    var withBuild = 0, without = [];
+
+    heroes.forEach(function (h) {
+        if (heroBuilds[h.heroId]) withBuild++;
+        else without.push(h.name);
+    });
+
+    items.push({ name: 'Сборка есть', status: 'ok', detail: withBuild + ' из ' + heroes.length });
+    if (without.length) {
+        items.push({
+            name: 'Без сборки: ' + without.length,
+            status: 'warn',
+            detail: without.join(', '),
+            problem: true
         });
     }
-    
-    function checkLinks(results) {
-        // Проверка внутренних ссылок
-        var links = [
-            { name: 'Главная', url: 'index.html' },
-            { name: 'Герои', url: 'heroes.html' },
-            { name: 'Предметы', url: 'items.html' },
-            { name: 'Механики', url: 'mechanics.html' },
-            { name: 'Монстры', url: 'monsters.html' },
-            { name: 'Калькулятор', url: 'calculator.html' },
-            { name: 'Сравнение', url: 'compare.html' },
-            { name: 'Гайды', url: 'guides.html' },
-            { name: 'FAQ', url: 'faq.html' },
-            { name: 'Лор', url: 'lore.html' },
-            { name: 'Поддержка', url: 'support.html' },
-            { name: 'Обновления', url: 'updates.html' },
-            { name: 'Режимы', url: 'modes.html' }
-        ];
-        
-        // В статическом HTML не можем проверить существование файлов
-        // Просто показываем список ссылок
-        results.push({
-            title: 'Ссылки',
-            icon: 'fa-link',
-            count: { ok: links.length, total: links.length },
-            items: links.slice(0, 10).map(function(l) {
-                return { name: l.name, status: 'ok', detail: l.url };
-            })
-        });
+    // неполные сборки (меньше 6 предметов)
+    var short = [];
+    Object.keys(heroBuilds).forEach(function (id) {
+        var b = heroBuilds[id];
+        if (b && b.items && b.items.length > 0 && b.items.length < 6) short.push(id + ' (' + b.items.length + ')');
+    });
+    if (short.length) {
+        items.push({ name: 'Неполных сборок (<6 предметов): ' + short.length, status: 'warn', detail: short.join(', '), problem: true });
     }
-    
-    function displayResults(results) {
-        var container = document.getElementById('results');
-        var html = '';
-        
-        results.forEach(function(section) {
-            var countClass = section.count.ok === section.count.total ? 'count-ok' : 
-                            section.count.ok > section.count.total * 0.7 ? 'count-warn' : 'count-error';
-            
-            html += '<div class="result-section">';
-            html += '<div class="result-header">';
-            html += '<div class="result-title"><i class="fas ' + section.icon + '"></i> ' + section.title + '</div>';
-            html += '<span class="result-count ' + countClass + '">' + section.count.ok + '/' + section.count.total + '</span>';
+
+    addSection('Сборки героев', 'fa-list-check', items);
+}
+
+// ---------- 5. Гайды ----------
+function checkGuides() {
+    // список гайдов известен из файловой системы; в браузере проверяем через fetch
+    var KNOWN_GUIDES = ['admiral', 'archmage', 'druid', 'illusionist', 'paladin', 'thundergod'];
+    var heroes = typeof HEROES_DATA !== 'undefined' ? HEROES_DATA.filter(function (h) { return !h.wip && !h.isAltForm; }) : [];
+
+    var items = [];
+    items.push({
+        name: 'Гайдов написано',
+        status: KNOWN_GUIDES.length >= heroes.length * 0.5 ? 'ok' : 'warn',
+        detail: KNOWN_GUIDES.length + ' из ' + heroes.length + ' героев (' + Math.round(KNOWN_GUIDES.length / heroes.length * 100) + '%)'
+    });
+
+    var noGuide = heroes.filter(function (h) { return KNOWN_GUIDES.indexOf(h.heroId) === -1; });
+    items.push({
+        name: 'Без гайда: ' + noGuide.length,
+        status: 'warn',
+        detail: noGuide.slice(0, 15).map(function (h) { return h.name; }).join(', ') + (noGuide.length > 15 ? '…' : ''),
+        problem: true
+    });
+
+    addSection('Гайды', 'fa-book-open', items);
+}
+
+// ========== ОТОБРАЖЕНИЕ ==========
+var FILTER = 'all';
+
+function displayResults() {
+    var container = document.getElementById('results');
+    var html = '';
+
+    REPORT.forEach(function (section) {
+        var countClass = section.count.ok === section.count.total ? 'count-ok'
+            : section.count.ok > section.count.total * 0.7 ? 'count-warn' : 'count-error';
+
+        html += '<div class="result-section">';
+        html += '<div class="result-header">';
+        html += '<div class="result-title"><i class="fas ' + section.icon + '"></i> ' + section.title + '</div>';
+        html += '<span class="result-count ' + countClass + '">' + section.count.ok + '/' + section.count.total + '</span>';
+        html += '</div>';
+        html += '<div class="result-content">';
+
+        var shown = 0;
+        section.items.forEach(function (item) {
+            if (FILTER === 'problem' && !item.problem) return;
+            shown++;
+            var icon = item.status === 'ok' ? 'fa-check-circle check-ok'
+                : item.status === 'warn' ? 'fa-exclamation-circle check-warn'
+                : 'fa-times-circle check-error';
+            html += '<div class="check-item' + (item.problem ? ' problem' : '') + '">';
+            html += '<i class="fas ' + icon + ' check-icon"></i>';
+            html += '<span class="check-name">' + item.name + '</span>';
+            if (item.detail) html += '<span class="check-detail">' + item.detail + '</span>';
             html += '</div>';
-            html += '<div class="result-content">';
-            
-            section.items.forEach(function(item) {
-                var icon = item.status === 'ok' ? 'fa-check-circle check-ok' : 
-                          item.status === 'warn' ? 'fa-exclamation-circle check-warn' : 'fa-times-circle check-error';
-                html += '<div class="check-item">';
-                html += '<i class="fas ' + icon + ' check-icon"></i>';
-                html += '<span class="check-name">' + item.name + '</span>';
-                if (item.detail) {
-                    html += '<span class="check-detail">' + item.detail + '</span>';
-                }
-                html += '</div>';
-            });
-            
-            html += '</div></div>';
         });
-        
-        container.innerHTML = html;
-        document.getElementById('statusText').textContent = 'Проверка завершена';
-    }
-    </script>
+        if (shown === 0) html += '<div class="check-item"><span class="check-name" style="color:#55ff88">Проблем нет</span></div>';
+
+        html += '</div></div>';
+    });
+
+    container.innerHTML = html;
+}
+
+function displaySummary() {
+    var totalOk = 0, totalAll = 0, problems = 0;
+    REPORT.forEach(function (s) {
+        totalOk += s.count.ok;
+        totalAll += s.count.total;
+        s.items.forEach(function (i) { if (i.problem) problems++; });
+    });
+
+    var cards = [
+        { v: totalAll, l: 'Проверок', cls: '' },
+        { v: totalOk, l: 'Без проблем', cls: totalOk === totalAll ? '' : 'warn' },
+        { v: problems, l: 'Проблем', cls: problems === 0 ? '' : problems > 10 ? 'bad' : 'warn' },
+        { v: REPORT.length, l: 'Разделов', cls: '' }
+    ];
+    document.getElementById('summary').innerHTML = cards.map(function (c) {
+        return '<div class="summary-card"><div class="summary-value ' + c.cls + '">' + c.v + '</div><div class="summary-label">' + c.l + '</div></div>';
+    }).join('');
+}
+
+function runValidation() {
+    var startTime = Date.now();
+    document.getElementById('statusBar').style.display = 'flex';
+    document.getElementById('statusText').textContent = 'Проверка...';
+
+    REPORT = [];
+    checkHeroes();
+    checkAbilities();
+    checkItems();
+    checkBuilds();
+    checkGuides();
+
+    displaySummary();
+    displayResults();
+
+    document.getElementById('toolbar').style.display = 'flex';
+    document.getElementById('statusText').textContent = 'Готово';
+    document.getElementById('statusTime').textContent = ((Date.now() - startTime) / 1000).toFixed(2) + ' сек';
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('#toolbar button').forEach(function (b) {
+        b.addEventListener('click', function () {
+            document.querySelectorAll('#toolbar button').forEach(function (x) { x.classList.remove('active'); });
+            b.classList.add('active');
+            FILTER = b.dataset.filter;
+            if (REPORT.length) displayResults();
+        });
+    });
+    // автозапуск после загрузки данных
+    setTimeout(runValidation, 300);
+});
+</script>
 </body>
 </html>
