@@ -90,6 +90,41 @@
       <input type="text" id="itemSearch" placeholder="Найти предмет...">
     </div>
 
+    <!-- 24.10: фильтр по бонусам и сортировка по золоту -->
+    <div class="bonus-filter" id="bonusFilter">
+      <div class="bonus-filter-row" role="group" aria-label="Фильтр предметов по бонусам">
+        <span class="bonus-filter-label"><i class="fas fa-filter"></i> Бонусы</span>
+        <button class="bonus-chip" data-bonus="attack" type="button"><i class="fas fa-burst"></i> Атака</button>
+        <button class="bonus-chip" data-bonus="defense" type="button"><i class="fas fa-shield-halved"></i> Защита</button>
+        <button class="bonus-chip" data-bonus="hp" type="button"><i class="fas fa-heart"></i> Здоровье</button>
+        <button class="bonus-chip" data-bonus="mana" type="button"><i class="fas fa-droplet"></i> Мана</button>
+        <button class="bonus-chip" data-bonus="stats" type="button"><i class="fas fa-chart-simple"></i> Атрибуты</button>
+        <button class="bonus-chip" data-bonus="speed" type="button"><i class="fas fa-shoe-prints"></i> Скорость</button>
+      </div>
+      <div class="bonus-filter-row bonus-filter-row--secondary">
+        <span class="bonus-filter-label"><i class="fas fa-coins"></i> Золото</span>
+        <label class="bonus-price">
+          <span>до</span>
+          <input type="number" id="priceMax" min="0" step="500" placeholder="любая" inputmode="numeric">
+        </label>
+        <span class="bonus-filter-sep"></span>
+        <label class="bonus-sort-wrap">
+          <span class="bonus-filter-label"><i class="fas fa-arrow-down-wide-short"></i> Сортировка</span>
+          <select id="itemSort" class="bonus-sort">
+            <option value="default">По умолчанию</option>
+            <option value="price-asc">Цена: по возрастанию</option>
+            <option value="price-desc">Цена: по убыванию</option>
+            <option value="name">По названию</option>
+          </select>
+        </label>
+        <button class="bonus-reset" id="bonusReset" type="button" hidden><i class="fas fa-xmark"></i> Сбросить</button>
+      </div>
+    </div>
+    <div class="bonus-filter-empty" id="bonusFilterEmpty" hidden>
+      <i class="fas fa-magnifying-glass"></i>
+      <p>Под выбранные условия ничего не подошло.</p>
+      <button type="button" id="bonusFilterEmptyReset">Сбросить фильтры</button>
+    </div>
     <!-- Основной блок каталога (как в предметном index.html) -->
     <div class="app-container">
       <div class="catalog">
@@ -171,6 +206,7 @@
   <script src="hero-builds.js" defer></script>
     <script src="js/item-slugs.js" defer></script>
     <script src="items-db.js" defer></script>
+    <script src="js/bonus-filter.js" defer></script>
   <script src="js/items-page.js" defer></script>
 
     <footer class="site-footer">
