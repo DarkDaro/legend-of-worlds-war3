@@ -626,3 +626,14 @@
         @supports not (backdrop-filter: blur(1px)) {
             .mc-card { background: #0f172a !important; }
         }
+
+/* 24.10: уважение к настройке ОС "уменьшить движение".
+   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
