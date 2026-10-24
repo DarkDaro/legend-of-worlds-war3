@@ -71,3 +71,9 @@
         .sitemap-hero-link.attr-strength { border-left: 2px solid #e74c3c; }
         .sitemap-hero-link.attr-agility { border-left: 2px solid #2ecc71; }
         .sitemap-hero-link.attr-intelligence { border-left: 2px solid #3498db; }
+/* 24.10: на 768px 5 имён героев обрезались (sw=171 / cw=143) без подсказки */
+.sitemap-hero-link {
+    white-space: normal;
+    overflow-wrap: break-word;
+    line-height: 1.25;
+}

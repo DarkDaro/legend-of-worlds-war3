@@ -291,7 +291,7 @@
     flex-wrap: wrap;
     justify-content: flex-end;
     margin-top: 0;
-    flex: 1 1 520px;
+    flex: 1 1 auto;
     min-width: 0;
 }
 .nav-link {
@@ -355,4 +355,20 @@
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
+}
+
+/* 24.10: flex-basis только на широких экранах.
+   На 601-900px .site-header колонка (info.css) и flex-basis 520px работал
+   как высота -> шапка занимала 620px, меню в 5 строк, гамбургер не появлялся. */
+@media (min-width: 901px) {
+    .header-nav {
+        flex: 1 1 520px;
+    }
+}
+/* 24.10: в storage таблица table-layout:fixed, слово «(максимальное» (95px)
+   выходило за ячейку 88px и наезжало на соседнюю колонку */
+.storage-table td,
+.storage-desc {
+    overflow-wrap: break-word;
+    word-break: break-word;
 }

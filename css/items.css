@@ -767,8 +767,10 @@ body.item-sheet-open {
   box-shadow: 0 0 20px #00e6ff, 0 0 0 2px #00e6ff44 inset;
 }
 @media (max-width: 800px) {
-  .app-container { flex-direction: column;   align-items: stretch;
-}
+  .app-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
   .item-detail-panel { display: none; }
   .item-search {
     width: 100%;
@@ -1163,4 +1165,27 @@ body.item-sheet-open {
     .bonus-sort-wrap { width: 100%; }
     .bonus-sort { flex: 1; }
     .bonus-filter-sep { display: none; }
+}
+
+/* 24.10: hidden побеждает display. Было: .bonus-reset { display: inline-flex }
+   перебивал браузерное [hidden] { display: none } -> кнопка «Сбросить» висела
+   всегда, хотя сбрасывать нечего. */
+.bonus-reset[hidden],
+.bonus-filter-empty[hidden] {
+    display: none !important;
+}
+
+/* 24.10: табы на узком экране скроллятся, а не разворачиваются в 12 рядов.
+   Было: flex-wrap: wrap на <=560px -> полоса 354px = 49% экрана,
+   первая карточка каталога начиналась на 1477px. */
+@media (max-width: 560px) {
+    .category-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 6px;
+    }
+    .tab-btn {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
 }

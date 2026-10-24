@@ -208,3 +208,12 @@
         @supports not (backdrop-filter: blur(1px)) {
             .armor-results { background: var(--glass-bg) !important; }
         }
+
+/* 24.10: чекбокс «Константа 0.05» был 13x13 — мелко для пальца */
+#constToggle,
+.armor-toggle input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--accent-cyan, #00e6ff);
+}

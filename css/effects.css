@@ -289,3 +289,27 @@ body.page-404 {
         scroll-behavior: auto !important;
     }
 }
+/* 24.10: соц-иконки футера были 18-26x31 (padding: 0), крошки 15px по высоте.
+   Мобильный минимум для тап-цели — 28px. */
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    min-height: 28px;
+    padding: 6px 6px;
+}
+.breadcrumbs a,
+.breadcrumbs .current {
+    display: inline-block;
+    padding: 6px 0;
+}
+
+/* 24.10: на 375px кнопка «наверх» (.scroll-top-btn, 44x44, bottom:24px)
+   садилась на копирайт футера — перекрытие 16x38px на 8 страницах.
+   Даём футеру запас снизу. */
+@media (max-width: 900px) {
+    .site-footer {
+        padding-bottom: 72px;
+    }
+}

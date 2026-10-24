@@ -1213,8 +1213,11 @@ function applyItemView() {
       }
     });
 
+    // 24.10: если фильтр по бонусам/цене активен — пустые секции скрываем,
+    // иначе под сообщением «ничего не подошло» оставалось 20 пустых заголовков (1472px).
+    const bonusActive = typeof window !== 'undefined' && window.BonusFilter && window.BonusFilter.active;
     if (activeItemView === 'all') {
-      section.style.display = sectionHasVisible || !query ? '' : 'none';
+      section.style.display = sectionHasVisible || (!query && !bonusActive) ? '' : 'none';
     } else if (favoritesMode) {
       section.style.display = sectionHasVisible ? '' : 'none';
     } else {

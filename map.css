@@ -186,12 +186,12 @@
 .map-marker.duel { background: #ffaa44; color: #0a1628; border: 2px solid #ffcc77; box-shadow: 0 0 4px rgba(255, 170, 68, 0.2); }
 .map-marker.spawn { background: #4488ff; color: #fff; border: 2px solid #77aaff; box-shadow: 0 0 4px rgba(68, 136, 255, 0.2); }
 .map-marker.fountain { background: #aa44ff; color: #fff; border: 2px solid #cc77ff; box-shadow: 0 0 4px rgba(170, 68, 255, 0.2); }
-.map-marker.creep { background: #88aacc; color: #0a1628; border: 2px solid #aaccee; width: 20px; height: 20px; font-size: 0.6rem; }
+.map-marker.creep { background: #88aacc; color: #0a1628; border: 2px solid #aaccee; width: 28px; height: 28px; font-size: 0.6rem; }
 .map-marker.teleport {
     background: #00e5ff; color: #0a1628; border: 2px solid #66f0ff;
     box-shadow: 0 0 8px rgba(0, 229, 255, 0.35);
     animation: markerPulseCyan 2.5s ease-in-out infinite;
-    width: 22px; height: 22px; font-size: 0.6rem;
+    width: 28px; height: 28px; font-size: 0.6rem;
 }
 .map-marker.teleport-out { background: transparent; color: #44ff88; border: 2px dashed #77ffaa; box-shadow: 0 0 5px rgba(68, 255, 136, 0.2); width: 22px; height: 22px; font-size: 0.6rem; }
 .map-marker.megacreep {
@@ -259,7 +259,7 @@
     .map-toolbar-right { justify-content: flex-end; }
     .map-legend { gap: 8px; }
     .map-legend-item { font-size: 0.72rem; }
-    .map-marker { width: 24px; height: 24px; font-size: 0.65rem; }
+    .map-marker { width: 28px; height: 28px; font-size: 0.65rem; }
     .map-info-panel { padding: 12px 14px; min-height: 60px; }
     .map-info-panel h3 { font-size: 0.95rem; }
     .map-info-panel p { font-size: 0.82rem; }
@@ -294,4 +294,21 @@
     outline: 2px solid var(--accent-cyan, #00e6ff);
     outline-offset: 2px;
     border-radius: 2px;
+}
+/* 24.10: маркеры карты были 20-22px, легенда 10.4px — ниже тач-минимума.
+   56 маркеров @375 и 37 @768 были меньше 28px. */
+@media (max-width: 700px) {
+    .map-marker { width: 28px; height: 28px; }
+    .map-marker.creep { width: 28px; height: 28px; }
+    .map-marker.teleport { width: 28px; height: 28px; }
+}
+@media (max-width: 480px) {
+    .map-marker { width: 28px; height: 28px; }
+    .map-marker.creep { width: 28px; height: 28px; }
+    .map-marker.teleport { width: 28px; height: 28px; }
+    .map-legend-item { font-size: 0.75rem; } /* 12px вместо 10.4px */
+}
+.map-type-btn,
+#typeSelector button {
+    min-height: 32px;
 }
