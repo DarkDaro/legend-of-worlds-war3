@@ -1001,3 +1001,166 @@ body.item-sheet-open {
     color: #00e6ff;
     font-size: 11px;
 }
+
+/* ===== 24.10: фильтр по бонусам и сортировка ===== */
+.bonus-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 16px 0 4px;
+    padding: 14px 16px;
+    background: var(--glass-bg);
+    border: 1px solid rgba(0, 230, 255, 0.12);
+    border-radius: 14px;
+}
+.bonus-filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+.bonus-filter-row--secondary {
+    padding-top: 10px;
+    border-top: 1px solid rgba(0, 230, 255, 0.1);
+}
+.bonus-filter-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 2px;
+    white-space: nowrap;
+}
+.bonus-filter-label i { color: var(--accent-cyan); font-size: 0.75rem; }
+
+.bonus-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: rgba(10, 20, 40, 0.6);
+    border: 1px solid #2a5070;
+    border-radius: 30px;
+    color: #b0c8f0;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.12s, border-color 0.12s, color 0.12s, box-shadow 0.12s;
+}
+.bonus-chip i { font-size: 0.72rem; opacity: 0.8; }
+.bonus-chip:hover {
+    background: #1a3050;
+    border-color: var(--accent-cyan);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 230, 255, 0.35);
+}
+.bonus-chip.active {
+    background: var(--accent-cyan);
+    border-color: #fff;
+    color: #0b0e14;
+    box-shadow: 0 0 16px rgba(0, 230, 255, 0.7);
+}
+.bonus-chip.active i { opacity: 1; }
+
+.bonus-price {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+.bonus-price input {
+    width: 92px;
+    padding: 6px 10px;
+    background: rgba(10, 20, 40, 0.8);
+    border: 1px solid #2a5070;
+    border-radius: 8px;
+    color: #e3e9f5;
+    font-size: 0.84rem;
+    font-family: inherit;
+}
+.bonus-price input:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(0, 230, 255, 0.3);
+}
+.bonus-price input::placeholder { color: #4a5f7a; }
+
+.bonus-filter-sep {
+    width: 1px;
+    height: 20px;
+    background: rgba(0, 230, 255, 0.15);
+    margin: 0 4px;
+}
+
+.bonus-sort-wrap { display: inline-flex; align-items: center; gap: 8px; }
+.bonus-sort {
+    padding: 6px 12px;
+    background: rgba(10, 20, 40, 0.8);
+    border: 1px solid #2a5070;
+    border-radius: 8px;
+    color: #e3e9f5;
+    font-size: 0.82rem;
+    font-family: inherit;
+    cursor: pointer;
+}
+.bonus-sort:focus { outline: none; border-color: var(--accent-cyan); }
+
+.bonus-reset {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+    padding: 6px 14px;
+    background: transparent;
+    border: 1px solid rgba(255, 120, 120, 0.4);
+    border-radius: 30px;
+    color: #ff9a9a;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.12s, border-color 0.12s;
+}
+.bonus-reset:hover {
+    background: rgba(255, 120, 120, 0.12);
+    border-color: #ff9a9a;
+}
+
+.bonus-filter-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 40px 20px;
+    margin: 16px 0;
+    text-align: center;
+    color: var(--text-muted);
+    background: var(--glass-bg);
+    border: 1px dashed rgba(0, 230, 255, 0.2);
+    border-radius: 14px;
+}
+.bonus-filter-empty[hidden] { display: none; }
+.bonus-filter-empty > i { font-size: 2rem; color: rgba(0, 230, 255, 0.3); }
+.bonus-filter-empty p { margin: 0; font-size: 0.95rem; }
+.bonus-filter-empty button {
+    padding: 8px 18px;
+    background: transparent;
+    border: 1px solid var(--accent-cyan);
+    border-radius: 30px;
+    color: var(--accent-cyan);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+.bonus-filter-empty button:hover { background: rgba(0, 230, 255, 0.12); }
+
+@media (max-width: 800px) {
+    .bonus-filter { padding: 12px; gap: 8px; }
+    .bonus-filter-label { font-size: 0.72rem; width: 100%; margin-bottom: 2px; }
+    .bonus-chip { padding: 5px 11px; font-size: 0.76rem; }
+    .bonus-reset { margin-left: 0; width: 100%; justify-content: center; }
+    .bonus-sort-wrap { width: 100%; }
+    .bonus-sort { flex: 1; }
+    .bonus-filter-sep { display: none; }
+}

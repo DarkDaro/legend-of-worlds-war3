@@ -1190,7 +1190,11 @@ function applyItemView() {
       const matchesSearch = !query || getItemSearchText(item).includes(query);
       const matchesFavorite = !favoritesMode || isItemFavorite(itemId);
       const notHidden = !item.hidden && item.type !== 'rune';
-      const visible = sectionMatchesView && matchesSearch && matchesFavorite && notHidden;
+      // 24.10: фильтр по бонусам и золоту (js/bonus-filter.js), если он подключён
+      const matchesBonus = (typeof window !== 'undefined' && window.BonusFilter)
+        ? window.BonusFilter.matches(item)
+        : true;
+      const visible = sectionMatchesView && matchesSearch && matchesFavorite && notHidden && matchesBonus;
 
       card.style.display = visible ? '' : 'none';
       card.classList.toggle('is-favorite', isItemFavorite(itemId));
@@ -1217,6 +1221,20 @@ function applyItemView() {
       section.style.display = sectionMatchesView && sectionHasVisible ? '' : 'none';
     }
   });
+
+  // 24.10: сортировка карточек внутри секции (js/bonus-filter.js)
+  if (typeof window !== 'undefined' && window.BonusFilter && window.BonusFilter.sorting) {
+    document.querySelectorAll('.items-grid, .category-section').forEach(function (grid) {
+      const cards = [...grid.querySelectorAll('.item-card')];
+      if (cards.length < 2) return;
+      cards.sort(function (a, b) {
+        const ia = itemsDB[a.dataset.itemId], ib = itemsDB[b.dataset.itemId];
+        if (!ia || !ib) return 0;
+        return window.BonusFilter.compare(ia, ib);
+      });
+      cards.forEach(function (c) { grid.appendChild(c); });
+    });
+  }
 
   updateItemFavoritesTab();
 }
