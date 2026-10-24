@@ -276,3 +276,22 @@
     .map-coords-output { font-size: 0.72rem; padding: 8px 10px; }
     .detail-description { font-size: 0.82rem; }
 }
+
+/* 24.10: ссылки внутри описания карты были браузерными (синие, подчёркнутые) */
+.detail-description a {
+    color: var(--accent-cyan, #00e6ff);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 230, 255, 0.35);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s, text-shadow 0.15s;
+}
+.detail-description a:hover {
+    color: #ffffff;
+    border-bottom-color: var(--accent-cyan, #00e6ff);
+    text-shadow: 0 0 10px rgba(0, 230, 255, 0.6);
+}
+.detail-description a:focus-visible {
+    outline: 2px solid var(--accent-cyan, #00e6ff);
+    outline-offset: 2px;
+    border-radius: 2px;
+}

@@ -133,3 +133,11 @@
     .percentile-table th, .percentile-table td { padding: 4px 4px; }
     .role-filter-wrap { margin-top: 8px; }
 }
+
+/* 24.10: .stat-pct-num получает голые классы best/high/low/mid (см. pctClass в
+   balance-dashboard-page.js), а CSS определял только .pct-best/.pct-high/...
+   Из-за этого проценты в карточках были все одного цвета. */
+.stat-pct-num.best { color: #ffd43b; }
+.stat-pct-num.high { color: #ffa500; }
+.stat-pct-num.low  { color: #ff6b6b; }
+.stat-pct-num.mid  { color: var(--text-primary); }
