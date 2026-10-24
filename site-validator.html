@@ -119,8 +119,9 @@
         .status-ok { color: #55ff88; }
         .status-warn { color: #ffaa44; }
         .status-error { color: #ff4444; }
-        @media (max-width: 700px) {
-            body { padding: 12px; }
+        /* mobile: место под фиксированную панель */
+    @media (max-width: 700px) {
+            body { padding: 12px 12px 96px; }
             h1 { font-size: 1.2rem; }
             .result-header { flex-direction: column; align-items: flex-start; gap: 8px; }
             .status-bar { flex-direction: column; gap: 4px; font-size: 0.8rem; padding: 10px; }
@@ -176,6 +177,17 @@
     .check-item.problem { background: rgba(255, 68, 68, 0.06); }
     .check-item a { color: #00e5ff; text-decoration: none; }
     .check-item a:hover { text-decoration: underline; }
+
+    /* 24.10: имя не сжимается. Было: .check-detail с margin-left:auto
+       отжимал .check-name до 38px -> 3 строки при 239px свободного места. */
+    .check-item { flex-wrap: nowrap; }
+    .check-name { flex: 0 0 auto; min-width: 90px; }
+    .check-detail { flex: 1 1 auto; min-width: 0; text-align: right; }
+    @media (max-width: 560px) {
+        .check-item { flex-wrap: wrap; }
+        .check-name { flex: 1 1 100%; }
+        .check-detail { flex: 1 1 100%; text-align: left; margin-left: 0; }
+    }
 </style>
 </head>
 <body>

@@ -396,3 +396,15 @@
         @supports not (backdrop-filter: blur(1px)) {
             .bb-stage { background: #0f172a !important; }
         }
+/* 24.10: название предмета читаемо. Было 8.8px + ellipsis при ширине 44px —
+   13 названий обрезались до «Кольцо пре…», title на тач-экране недоступен. */
+.bb-slot-name {
+    font-size: 0.7rem;          /* 11.2px вместо 8.8px */
+    line-height: 1.15;
+    white-space: normal;        /* разрешить перенос вместо обрезки */
+    overflow: visible;
+    text-overflow: clip;
+    word-break: break-word;
+}
+.bb-slot-temp-badge { font-size: 0.625rem; }
+.bb-stage-delta { font-size: 0.7rem; }

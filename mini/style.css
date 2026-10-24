@@ -958,7 +958,10 @@ h1 {
 }
 @media (max-width: 800px) {
     h1 { font-size: 1.8rem; }
-    .app-container { flex-direction: column; }
+    .app-container {
+        flex-direction: column;
+        align-items: stretch; /* 24.10: иначе .catalog не сжимается — overflow 1259px на 768px */
+    }
     .item-detail-panel { display: none; }
     .item-search {
         width: 100%;
@@ -1078,4 +1081,13 @@ h1 {
     .item-bottom-sheet .component-item { padding: 6px 8px; gap: 6px; }
     .item-bottom-sheet .component-icon { width: 30px; height: 30px; }
     .item-bottom-sheet .component-icon img { width: 30px; height: 30px; }
+}
+/* 24.10: тап-зоны мини-каталога. Было 197 кнопок 22x22 и 20 кнопок 24x24. */
+.item-fav-btn {
+    min-width: 28px;
+    min-height: 28px;
+}
+.collapse-toggle {
+    min-width: 28px;
+    min-height: 28px;
 }

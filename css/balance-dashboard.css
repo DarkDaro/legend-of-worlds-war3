@@ -141,3 +141,20 @@
 .stat-pct-num.high { color: #ffa500; }
 .stat-pct-num.low  { color: #ff6b6b; }
 .stat-pct-num.mid  { color: var(--text-primary); }
+
+
+/* 24.10: радар квадратный на любой ширине.
+   Было: max-width 280px при фиксированной высоте 299px -> вертикальное растяжение ~6.4%. */
+canvas#radarCanvas,
+.radar-canvas {
+    aspect-ratio: 1 / 1;
+    height: auto !important;
+}
+
+/* 24.10: минимальный шрифт таблицы перцентилей — было 10.4px, нечитаемо на телефоне */
+.percentile-table th,
+.percentile-table td,
+#percentileTable th,
+#percentileTable td {
+    font-size: 0.75rem; /* 12px */
+}
