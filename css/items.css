@@ -973,3 +973,30 @@ body.item-sheet-open {
     height: 16px;
   }
 }
+
+/* ======================= 24.10: тултип слага предмета ======================= */
+/* Код: js/item-slugs.js (initItemSlugTooltip). Виден на items/calculator/build-constructor/bot-builds. */
+.item-slug-tooltip {
+    position: fixed;
+    z-index: 2000;
+    background: rgba(15, 23, 42, 0.96);
+    border: 1px solid #00e6ffaa;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #e2e8f0;
+    pointer-events: none;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    display: none;
+}
+.item-slug-tooltip .ist-name {
+    font-weight: 600;
+    color: #fff;
+}
+.item-slug-tooltip .ist-slug {
+    font-family: Consolas, monospace;
+    color: #00e6ff;
+    font-size: 11px;
+}

@@ -79,6 +79,52 @@
             return base + '?' + params.join('&');
         }
 
+        // 24.10: компактный формат share — индексы героев в heroPool (детерминированный реестр).
+        // Формат: ?c=S:1.5|A:7 — «tier:index.index». Старые slug-ссылки (?S=astral-executioner) работают как раньше.
+        // Реестр: порядок HEROES_DATA стабилен (from Object Editor), фильтр тот же, что в isValidHero.
+
+        function buildHeroIndex() {
+            var idx = {};
+            var pool = HEROES_DATA.filter(function(h) { return !h.isAltForm && !h.wip && !h.unique; });
+            pool.forEach(function(h, i) { idx[h.heroId] = i; });
+            return idx;
+        }
+
+        function buildCompactURL() {
+            var idx = buildHeroIndex();
+            var parts = [];
+            TIERS.forEach(function(t) {
+                if (tierData[t.key].length > 0) {
+                    var ids = tierData[t.key].map(function(id) { return idx[id]; })
+                        .filter(function(i) { return i !== undefined; });
+                    if (ids.length > 0) parts.push(t.key + ':' + ids.join('.'));
+                }
+            });
+            if (parts.length === 0) return null;
+            var base = window.location.href.split('?')[0].split('#')[0];
+            return base + '?c=' + parts.join('|');
+        }
+
+        function expandCompactURL() {
+            var compact = new URLSearchParams(window.location.search).get('c');
+            if (!compact) return false;
+            var pool = HEROES_DATA.filter(function(h) { return !h.isAltForm && !h.wip && !h.unique; });
+            var loaded = false;
+            compact.split('|').forEach(function(part) {
+                var m = part.match(/^([A-Za-z]+):(.+)$/);
+                if (!m) return;
+                var tierKey = m[1];
+                var tierOk = TIERS.some(function(t) { return t.key === tierKey; });
+                if (!tierOk) return;
+                var ids = m[2].split('.').map(function(n) { return pool[parseInt(n, 10)]; })
+                    .filter(function(h) { return h && h.heroId; })
+                    .map(function(h) { return h.heroId; });
+                if (ids.length > 0) { tierData[tierKey] = ids; loaded = true; }
+            });
+            if (loaded) { save(); window.history.replaceState({}, '', 'tierlist.html'); }
+            return loaded;
+        }
+
         // ── Рендер ──
 
         function getAssignedHeroes() {
@@ -280,6 +326,7 @@
 
             load();
             loadFromURL();
+            expandCompactURL(); // 24.10: поддержка ?c= компактных ссылок (после loadFromURL — не конфликтуют)
             render();
 
             // Drop events на пул — один раз
@@ -326,6 +373,28 @@
                     document.execCommand('copy');
                     document.body.removeChild(ta);
                     toast('Ссылка скопирована');
+                }
+            });
+
+            // Компактная ссылка (24.10): индексный формат ?c=...
+            document.getElementById('tlShareCompactBtn').addEventListener('click', function() {
+                var url = buildCompactURL();
+                if (!url) {
+                    toast('Сначала распределите героев');
+                    return;
+                }
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(url).then(function() {
+                        toast('Компактная ссылка скопирована');
+                    });
+                } else {
+                    var ta = document.createElement('textarea');
+                    ta.value = url;
+                    document.body.appendChild(ta);
+                    ta.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(ta);
+                    toast('Компактная ссылка скопирована');
                 }
             });
 
