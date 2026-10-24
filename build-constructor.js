@@ -709,7 +709,7 @@ function bcBuildShareURL() {
             var id = bcSlotId(s);
             var keep = bcSlotKeep(s);
             if (!id) return '';
-            return id + (keep ? '' : '!');
+                return slugFromId(id) + (keep ? '' : '!'); // 24.10: slug в share вместо rawcode (js/item-slugs.js)
         }).filter(Boolean);
         if (items.length > 0) {
             params.push('s' + (si + 1) + '=' + stage.level + ':' + items.join(','));
@@ -742,7 +742,7 @@ function bcLoadFromURL() {
             itemStrs.forEach(function(itemStr, idx) {
                 if (idx >= 6) return;
                 var keep = !itemStr.endsWith('!');
-                var id = keep ? itemStr : itemStr.slice(0, -1);
+                var id = idFromSlug(keep ? itemStr : itemStr.slice(0, -1)); // 24.10: slug→rawcode, fallback = как есть
                 if (itemsDB && itemsDB[id]) {
                     items[idx] = { id: id, keep: keep };
                 }

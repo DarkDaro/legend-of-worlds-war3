@@ -633,10 +633,12 @@ function getShareUrl() {
     const filled = buildSlots.filter(s => calcSlotId(s) !== null);
     if (filled.length === 0) return '';
     const base = window.location.href.split('?')[0];
-    // Формат: items=I02D,I03G!  (! после id = продаётся)
+    // 24.10: slug-формат items=claws,fire-shield! (js/item-slugs.js). Старые rawcode-ссылки читаются через idFromSlug.
+    // Формат: items=slug[,slug!]; (! после slug = продаётся)
     const itemsStr = filled.map(s => {
         const id = calcSlotId(s);
-        return calcSlotKeep(s) ? id : id + '!';
+        const slug = slugFromId(id);
+        return calcSlotKeep(s) ? slug : slug + '!';
     }).join(',');
     return base + '?items=' + itemsStr;
 }
@@ -698,7 +700,7 @@ function loadFromUrl() {
     const parts = itemsParam.split(',');
     const slots = parts.map(p => {
         const sold = p.endsWith('!');
-        const id = sold ? p.slice(0, -1) : p;
+        const id = idFromSlug(sold ? p.slice(0, -1) : p); // 24.10: slug→rawcode, fallback = как есть
         if (!itemsDB[id]) return null;
         return calcMakeSlot(id, !sold);
     }).filter(Boolean);
