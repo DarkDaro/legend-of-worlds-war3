@@ -63,5 +63,8 @@ images/heroes/lich.png
 images/map_preview.PNG
 heroes/sorcerer-demo.html
 
-# Одноразовые скрипты (генераторы/дебаг/тесты slug-работы)
+# РћРґРЅРѕСЂР°Р·РѕРІС‹Рµ СЃРєСЂРёРїС‚С‹ (РіРµРЅРµСЂР°С‚РѕСЂС‹/РґРµР±Р°Рі/С‚РµСЃС‚С‹ slug-СЂР°Р±РѕС‚С‹)
 oneshots/
+
+# РўСЏР¶С‘Р»С‹Р№ РёСЃС…РѕРґРЅРёРє РєР°СЂС‚С‹ (16.6MB). Fallback РґР»СЏ map.html вЂ” images/maplows.jpg
+images/maplows.png

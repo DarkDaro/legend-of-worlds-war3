@@ -278,3 +278,14 @@ body.page-404 {
         radial-gradient(ellipse at 50% 50%, rgba(0, 230, 255, 0.03) 0%, transparent 50%),
         radial-gradient(circle at 30% 10%, #1a2230 0%, #05070a 100%);
 }
+
+/* 24.10: уважение к настройке ОС "уменьшить движение".
+   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
