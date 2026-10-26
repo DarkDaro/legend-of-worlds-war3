@@ -102,11 +102,11 @@
             });
             if (parts.length === 0) return null;
             var base = window.location.href.split('?')[0].split('#')[0];
-            return base + '?c=' + parts.join('|');
+            return base + '?t=' + parts.join('|'); // 26.10: ?c= конфликтовал со старым ключом C-тира (?c=<герои>) — loadFromURL стирал URL до декода
         }
 
         function expandCompactURL() {
-            var compact = new URLSearchParams(window.location.search).get('c');
+            var compact = new URLSearchParams(window.location.search).get('t'); // ?t= компактный формат (26.10, был ?c= — конфликт)
             if (!compact) return false;
             var pool = HEROES_DATA.filter(function(h) { return !h.isAltForm && !h.wip && !h.unique; });
             var loaded = false;
@@ -121,7 +121,7 @@
                     .map(function(h) { return h.heroId; });
                 if (ids.length > 0) { tierData[tierKey] = ids; loaded = true; }
             });
-            if (loaded) { save(); window.history.replaceState({}, '', 'tierlist.html'); }
+                    if (loaded) { save(); window.history.replaceState({}, '', 'tierlist.html'); }
             return loaded;
         }
 

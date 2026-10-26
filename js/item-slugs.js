@@ -412,7 +412,16 @@ function idFromSlug(slug) {
 }
 
 // ======================= ТУЛТИП СЛАГА (24.10) =======================
-// Показывает «Название + slug» при наведении (350мс) или удержании (350мс) на иконку предмета.
+// Показывает «Название + slug» при удержании (350мс) на иконку предмета.
+// 26.10: показ при наведении отключён (юзер) — остался только hold.
+// ОТКЛЮЧЕНО (26.10, юзер: показалось лишним): показ при наведении. Вернуть — раскомментировать блок ниже:
+// document.addEventListener('mouseover', function(e) {
+//   var img = e.target && e.target.tagName === 'IMG' ? e.target : null;
+//   if (!img || e.relatedTarget === img) return;
+//   var id = itemIdFromImg(img);
+//   if (!id || !(typeof itemsDB !== 'undefined' && itemsDB[id])) { hide(); return; }
+//   scheduleShow(img, e.clientX, e.clientY, 350);
+// });
 // Делегирование на document — работает на всех страницах с этим скриптом. itemsDB не изменяется.
 (function initItemSlugTooltip() {
   var tip = null;
@@ -464,14 +473,6 @@ function idFromSlug(slug) {
     if (showTimer) clearTimeout(showTimer);
     showTimer = setTimeout(function() { show(img, x, y); }, delay);
   }
-
-  document.addEventListener('mouseover', function(e) {
-    var img = e.target && e.target.tagName === 'IMG' ? e.target : null;
-    if (!img || e.relatedTarget === img) return;
-    var id = itemIdFromImg(img);
-    if (!id || !(typeof itemsDB !== 'undefined' && itemsDB[id])) { hide(); return; }
-    scheduleShow(img, e.clientX, e.clientY, 350);
-  });
 
   document.addEventListener('mousedown', function(e) {
     var img = e.target && e.target.tagName === 'IMG' ? e.target : null;
