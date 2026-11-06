@@ -40,9 +40,14 @@ test-item-preview.html
 tools/
 text/
 
-# Инструменты графики (не часть сайта); archive/ теперь tracked-папка репозитория
+# Инструменты графики (не часть сайта)
 soft/
 downloads/
+
+# Локальные папки владельца — не публикуем.
+# repo-archive/ — tracked-папка репозитория, игнор её не задевает.
+HeroData/
+archive/
 
 # JASS скрипты (не для публикации)
 JassCode/
