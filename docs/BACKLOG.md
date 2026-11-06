@@ -4,7 +4,8 @@
 
 ## Ждёт
 
-- ☐ Правка истории filter-repo; после неё в VS Code-клоне: git fetch и git reset --hard origin/main
+- ☐ Ресинк VS Code-клона: git fetch и git reset --hard origin/main (история переписана 2026-11-07; незатреканные папки не пострадают)
+- ☐ Этап D: 71 односложное сообщение («карточки», «герои», «обнова 6.2»…) — отдельная таблица замен
 - ☐ Перенос линтеров check-links.mjs и check-slop.py + CI-гейт; токену добавить право Workflows
 - ☐ Фикс check-slop.py: исключения матчат части абсолютного пути, запуск из каталога-предка scripts даёт «нет текстовых файлов»
 - ☐ Сжать images/fullscreen.png (1,2 МБ)
@@ -19,3 +20,4 @@
 - ✅ template table в archive/template-table, из main удалён (00f0afe)
 - ✅ Аудит целостности пройден; mini/ в archive/mini-site (e32aabc)
 - ✅ Скрипты в scripts/ (bb8006e); docs/ и archive/ заведены (см. git log)
+- ✅ Правка истории filter-repo: 299 коммитов от DarkDaro, 22 сообщения, −19 МБ мёртвых блобов; деревья кончиков не изменились (2f1768e)
