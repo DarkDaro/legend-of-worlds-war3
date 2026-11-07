@@ -4,26 +4,24 @@
 
 ## Этап 1 — порядок в репозитории
 
-- ✅ Токен, доступ, git-identity DarkDaro, пробный коммит
-- ✅ Лицензия LICENSE.md (все права защищены)
+- ✅ Лицензия LICENSE.md (все права защищены), коммиты от DarkDaro
 - ✅ Инвентаризация среза: 752 файла, 44,8 МБ
-- ✅ template table/ → archive/template-table, удалён из main
+- ✅ template table/ в archive/template-table, удалён из main
 - ✅ Аудит целостности: JS и HTML целы
-- ✅ mini/ → archive/mini-site, удалён из main
-- ✅ Папки docs/, scripts/, archive/
-- ✅ Правка истории filter-repo: 299 коммитов от DarkDaro, 22 сообщения, −19 МБ мёртвых блобов (2f1768e; детали в BACKLOG, этап D)
-- ✅ После правки истории: пересинхронизация VS Code-клона (fetch + reset --hard, BACKLOG 2026-11-07)
+- ✅ mini/ в archive/mini-site, удалён из main
+- ✅ Папки docs/, scripts/, repo-archive/
+- ✅ История вычищена: авторы везде DarkDaro, мусорные сообщения и мёртвые блобы убраны, вес 43 МБ стал 12 МБ
 
-## Этап 2 — инфраструктура комплекта правил
+## Этап 2 — проверки
 
-- ✅ Линтеры в scripts/ (bb8006e); правила живут у владельца, в репо не хранятся
-- ✅ CI-гейт до деплоя (.github/workflows/lint.yml: check-links.mjs + check-slop.py)
-- ✅ Фикс check-slop.py: привязка к корню, заякоренные исключения (e83d16f)
+- ✅ Линтеры в scripts/: check-links.mjs и check-text.py
+- ✅ CI до деплоя: .github/workflows/lint.yml, третья проверка следит за шапкой
+- ✅ Сообщения коммитов по всей истории переписаны в короткие
 
 ## Этап 3 — редизайн
 
 - ☐ Чанк = одна страница; перед правкой инвентаризация, контент дословно
 - ☐ Карта редиректов при переименованиях
-- ✅ Сжать images/fullscreen.png: 1,2 МБ → 183 КБ (5535b03); прочие тяжёлые — в BACKLOG (lore-bag, maplows)
-- ✅ Футер: единый шаблон place-footer.py на 115 страницах (fa9b0b4)
+- ✅ images/fullscreen.png сжат (1,2 МБ стал 183 КБ); прочие тяжёлые — в BACKLOG
+- ✅ Футер: единый шаблон place-footer.py на 115 страницах
 - ☐ Решить судьбу site-validator.html; вернуть ли «Лавку предметов» из архива

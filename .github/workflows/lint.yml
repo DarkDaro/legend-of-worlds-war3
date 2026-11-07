@@ -17,15 +17,15 @@ jobs:
           node-version: 20
       - run: node scripts/check-links.mjs
 
-  slop:
-    name: check-slop — заглушки в текстах
+  text:
+    name: check-text — мусор в текстах
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python scripts/check-slop.py
+      - run: python scripts/check-text.py
 
   header-sync:
     name: check-header-sync — синхронность общей шапки

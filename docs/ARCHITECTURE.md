@@ -47,7 +47,7 @@
 | `images/` | `heroes/` 77, `items/` ~201, `abilities/`, `creeps/`, баннеры (`.webp` + `.png` fallback) |
 | `sitemap.xml`, `robots.txt`, `404.html` | SEO-инфраструктура |
 | `site-validator.html` | Служебный валидатор кросс-баз в браузере (`noindex`, в бэклоге на решение) |
-| `scripts/`, `.github/workflows/lint.yml` | CI-гейт: check-links.mjs + check-slop.py |
+| `scripts/`, `.github/workflows/lint.yml` | Проверки в CI: check-links.mjs, check-text.py, check-header-sync.mjs |
 | `docs/`, `repo-archive/` | Метафайлы проекта и архив бывших разделов |
 
 ## 4. Скелет страницы
@@ -124,7 +124,7 @@
 ## 10. Инфраструктура и SEO
 
 - **GitHub Pages** из корня `main`, `.nojekyll`.
-- **CI-гейт** `.github/workflows/lint.yml` (пуш/PR в `main`): `check-links.mjs` (все внутренние ссылки, 4093 шт.) и `check-slop.py` (маркеры незавершённости в текстах).
+- **Проверки в CI** `.github/workflows/lint.yml` (пуш/PR в `main`): `check-links.mjs` (все внутренние ссылки, 4093 шт.), `check-text.py` (мусорные маркеры в текстах) и `check-header-sync.mjs` (одинаковая шапка на всех страницах).
 - **SEO**: canonical с абсолютными URL на каждой странице, OG/Twitter, JSON-LD (`WebSite` на главной, `BreadcrumbList` на внутренних), `sitemap.xml` — генерируется `scripts/gen-sitemap.py` (lastmod по git-истории каждого файла) + `robots.txt` со ссылкой на него, человекочитаемая карта `sitemap-page.html`, кастомный `404.html`.
 - **Аналитика**: Яндекс.Метрика через общий `analytics.js`.
 - Изображения: критичный баннер — `<picture>` webp→png; остальное `loading="lazy"` + `decoding="async"`, явные width/height против layout shift.
