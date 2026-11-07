@@ -9,19 +9,19 @@
 - ✅ Аудит целостности: JS и HTML целы
 - ✅ mini/ → archive/mini-site, удалён из main
 - ✅ Папки docs/, scripts/, archive/
-- ☐ Правка истории filter-repo: сообщения мусорных коммитов, имена User и Dark Daro → DarkDaro, тяжёлые мёртвые блобы (maplows.png 16,6 МБ, старые версии template table 25,3 МБ, map_preview.PNG 2,4 МБ)
-- ☐ После правки истории: пересинхронизация VS Code-клона (git fetch; git reset --hard origin/main)
+- ✅ Правка истории filter-repo: 299 коммитов от DarkDaro, 22 сообщения, −19 МБ мёртвых блобов (2f1768e; детали в BACKLOG, этап D)
+- ✅ После правки истории: пересинхронизация VS Code-клона (fetch + reset --hard, BACKLOG 2026-11-07)
 
 ## Этап 2 — инфраструктура комплекта правил
 
-- ☐ Перенос правил в rules/, линтеров в scripts/ (check-links.mjs, check-slop.py)
-- ☐ CI-гейт до деплоя (.github/workflows/); токену добавить право Workflows
-- ☐ Фикс check-slop.py: фильтр исключений матчит части абсолютного пути — «нет текстовых файлов» при запуске из каталога-предка scripts
+- ✅ Линтеры в scripts/ (bb8006e); правила живут у владельца, в репо не хранятся
+- ✅ CI-гейт до деплоя (.github/workflows/lint.yml: check-links.mjs + check-slop.py)
+- ✅ Фикс check-slop.py: привязка к корню, заякоренные исключения (e83d16f)
 
 ## Этап 3 — редизайн
 
 - ☐ Чанк = одна страница; перед правкой инвентаризация, контент дословно
 - ☐ Карта редиректов при переименованиях
-- ☐ Сжать images/fullscreen.png (1,2 МБ) и другие тяжёлые картинки
-- ☐ Футер: строка авторства и лицензии
+- ✅ Сжать images/fullscreen.png: 1,2 МБ → 183 КБ (5535b03); прочие тяжёлые — в BACKLOG (lore-bag, maplows)
+- ✅ Футер: единый шаблон place-footer.py на 115 страницах (fa9b0b4)
 - ☐ Решить судьбу site-validator.html; вернуть ли «Лавку предметов» из архива
