@@ -59,7 +59,7 @@
     width: 120px;
     height: 120px;
     border-radius: 24px;
-    border: 3px solid #00e6ff;
+    border: 3px solid var(--accent-cyan);
     box-shadow: 0 0 30px #00e6ff66, 0 0 60px #00e6ff33;
     margin-bottom: 24px;
     animation: float 3s ease-in-out infinite, logoBorderPulse 2.5s ease-in-out infinite;
@@ -70,7 +70,7 @@
     50% { transform: translateY(-14px); }
 }
 @keyframes logoBorderPulse {
-    0%, 100% { border-color: #00e6ff; box-shadow: 0 0 30px #00e6ff66, 0 0 60px #00e6ff33; }
+    0%, 100% { border-color: var(--accent-cyan); box-shadow: 0 0 30px #00e6ff66, 0 0 60px #00e6ff33; }
     50% { border-color: #55ffff; box-shadow: 0 0 40px #00e6ff88, 0 0 80px #00e6ff44; }
 }
 .hero-banner-title {
@@ -83,7 +83,7 @@
     margin-bottom: 12px;
     line-height: 1.1;
     /* Shimmer-эффект на заголовке */
-    background: linear-gradient(90deg, #fff 0%, #00e6ff 40%, #fff 60%, #00e6ff 100%);
+    background: linear-gradient(90deg, #fff 0%, var(--accent-cyan) 40%, #fff 60%, var(--accent-cyan) 100%);
     background-size: 200% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -96,7 +96,7 @@
 }
 .hero-subtitle {
     font-size: 1.2rem;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     letter-spacing: 2px;
     margin-bottom: 24px;
 }
@@ -139,11 +139,11 @@
     gap: 10px;
     padding: 16px 36px;
     background: transparent;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-weight: 600;
     font-size: 1.1rem;
     border-radius: 50px;
-    border: 2px solid #00e6ff;
+    border: 2px solid var(--accent-cyan);
     text-decoration: none;
     box-shadow: 0 0 15px #00e6ff33;
     transition: 0.2s;
@@ -197,7 +197,7 @@
 }
 .stat-icon {
     font-size: 1.8rem;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     margin-bottom: 8px;
 }
 .stat-number {
@@ -209,7 +209,7 @@
 }
 .stat-label {
     font-size: 0.85rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: 4px;
@@ -218,14 +218,14 @@
 /* Секция с заголовком */
 .section-title {
     font-size: 1.5rem;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 .section-title i {
-    color: #00e6ff;
+    color: var(--accent-cyan);
 }
 
 /* Быстрые ссылки */
@@ -293,19 +293,19 @@
     align-items: center;
     justify-content: center;
     font-size: 1.4rem;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     margin-bottom: 12px;
     transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 .quick-link-title {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-bottom: 6px;
 }
 .quick-link-desc {
     font-size: 0.85rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
     line-height: 1.5;
 }
 
@@ -329,7 +329,7 @@
 .change-list-mini li {
     padding: 4px 0 4px 16px;
     position: relative;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 0.9rem;
 }
 .change-list-mini li::before {
@@ -345,7 +345,7 @@
 .updates-link {
     display: inline-block;
     margin-top: 12px;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 600;
@@ -388,7 +388,7 @@
 }
 @keyframes ctaBorderPulse {
     0%, 100% { border-color: var(--glass-border); box-shadow: none; }
-    50% { border-color: #00e6ff44; box-shadow: 0 0 30px rgba(0, 230, 255, 0.12); }
+    50% { border-color: #00e6ff44; box-shadow: 0 0 30px var(--glass-border); }
 }
 @keyframes auroraShift {
     0% { transform: translateX(-30%) translateY(-10%) rotate(0deg); }
@@ -406,7 +406,7 @@
     text-shadow: 0 0 20px #00e6ff44;
 }
 .cta-content p {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 1.05rem;
     margin-bottom: 24px;
 }
@@ -453,7 +453,7 @@
 .footer-brand .footer-logo {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #e0f0ff;
+    color: var(--text-primary);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -468,7 +468,7 @@
     flex-shrink: 0;
 }
 .footer-brand p {
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 0.85rem;
     margin-top: 4px;
 }
@@ -480,7 +480,7 @@
     justify-content: center;
     gap: 12px 20px;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .footer-links a {
@@ -489,20 +489,20 @@
     font-size: 0.9rem;
     transition: 0.15s;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .footer-links a:hover {
     color: #00e6ff;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .footer-social {
     display: flex;
     gap: 16px;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .footer-social a {
@@ -510,14 +510,14 @@
     font-size: 1.3rem;
     transition: 0.15s;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .footer-social a:hover {
     color: #00e6ff;
     text-shadow: 0 0 10px #00e6ff66;
 }
-*/
+
 .footer-bottom {
     text-align: center;
     padding-top: 20px;
@@ -594,7 +594,7 @@
 }
 .lore-banner-subtitle {
     font-size: 0.95rem;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     line-height: 1.5;
 }
 @media (max-width: 900px) {
@@ -610,7 +610,7 @@
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;

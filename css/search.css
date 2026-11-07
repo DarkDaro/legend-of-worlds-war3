@@ -4,7 +4,7 @@
 .gs-trigger {
     background: var(--glass-bg);
     border: 1px solid #2a5070;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     padding: 8px 14px;
     border-radius: 30px;
     cursor: pointer;
@@ -17,8 +17,8 @@
     line-height: 1.35;
 }
 .gs-trigger:hover {
-    border-color: #00e6ff;
-    color: #00e6ff;
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
     box-shadow: 0 0 12px #00e6ff44;
 }
 .gs-trigger kbd {
@@ -28,7 +28,7 @@
     padding: 1px 5px;
     font-size: 0.7rem;
     font-family: inherit;
-    color: #5a7a9a;
+    color: var(--text-dim);
     margin-left: 4px;
 }
 
@@ -81,7 +81,7 @@
     border-bottom: 1px solid #1a3050;
 }
 .gs-search-icon {
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 1rem;
     flex-shrink: 0;
 }
@@ -90,18 +90,18 @@
     background: none;
     border: none;
     outline: none;
-    color: #e0f0ff;
+    color: var(--text-primary);
     font-size: 1.05rem;
     font-family: inherit;
 }
 .gs-input::placeholder {
-    color: #5a7a9a;
+    color: var(--text-dim);
 }
 .gs-close {
     background: none;
     border: 1px solid #2a5070;
     border-radius: 8px;
-    color: #5a7a9a;
+    color: var(--text-dim);
     width: 32px;
     height: 32px;
     display: flex;
@@ -130,7 +130,7 @@
     padding: 8px 18px 4px;
     font-size: 0.75rem;
     font-weight: 700;
-    color: #5a7a9a;
+    color: var(--text-dim);
     text-transform: uppercase;
     letter-spacing: 1px;
     display: flex;
@@ -138,7 +138,7 @@
     gap: 6px;
 }
 .gs-group-title i {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 0.8rem;
 }
 
@@ -161,13 +161,13 @@
 }
 .gs-result-name mark {
     background: #00e6ff33;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     border-radius: 2px;
     padding: 0 2px;
 }
 .gs-result-sub {
     font-size: 0.8rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
 }
 .gs-result-desc {
     max-width: 260px;
@@ -180,7 +180,7 @@
 .gs-empty {
     padding: 32px 18px;
     text-align: center;
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 0.95rem;
 }
 
@@ -254,7 +254,7 @@ body.page-leaving {
     top: 0;
     left: 0;
     height: 3px;
-    background: linear-gradient(90deg, #00e6ff, #0080ff);
+    background: linear-gradient(90deg, var(--accent-cyan), #0080ff);
     box-shadow: 0 0 8px #00e6ff88;
     z-index: 9999;
     transition: width 0.1s ease-out;
@@ -272,7 +272,7 @@ body.page-leaving {
     left: 14px;
     right: 14px;
     height: 2px;
-    background: #00e6ff;
+    background: var(--accent-cyan);
     border-radius: 1px;
     transform: scaleX(0);
     transform-origin: left;
@@ -400,7 +400,7 @@ body.page-leaving {
 
 /* ==========================================================================
    Конструктор сборок (build-constructor)
-   ========================================================================== */
+
 
 .bc-intro {
     color: #8e97aa;
@@ -439,7 +439,7 @@ body.page-leaving {
     background: #0a1520;
     border: 1px solid rgba(0, 230, 255, 0.2);
     border-radius: 4px;
-    color: #e0f0ff;
+    color: var(--text-primary);
     font-size: 0.85rem;
     text-align: center;
 }
@@ -474,7 +474,7 @@ body.page-leaving {
 
 .bc-stage-num {
     font-weight: 600;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 0.9rem;
 }
 
@@ -503,7 +503,7 @@ body.page-leaving {
     background: #0a1520;
     border: 1px solid rgba(0, 230, 255, 0.2);
     border-radius: 4px;
-    color: #e0f0ff;
+    color: var(--text-primary);
     font-size: 0.8rem;
     text-align: center;
 }
@@ -704,7 +704,7 @@ body.page-leaving {
     background: rgba(0, 230, 255, 0.05);
     border: 2px dashed rgba(0, 230, 255, 0.2);
     border-radius: 6px;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 0.85rem;
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
@@ -744,7 +744,7 @@ body.page-leaving {
     transition: background 0.2s, border-color 0.2s;
     white-space: nowrap;
 }
-*/
+
 
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
@@ -752,7 +752,7 @@ body.page-leaving {
     background: rgba(0, 230, 255, 0.1);
     border-color: rgba(0, 230, 255, 0.4);
 }
-*/
+
 
 .bc-clear-btn {
     display: inline-flex;
@@ -786,7 +786,7 @@ body.page-leaving {
 }
 
 .bc-stage-copy:hover {
-    color: #00e6ff;
+    color: var(--accent-cyan);
 }
 
 .bc-stage-paste {
@@ -835,7 +835,7 @@ body.page-leaving {
     text-align: left;
     padding: 6px 8px;
     border-bottom: 1px solid rgba(0, 230, 255, 0.15);
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-weight: 600;
 }
 
@@ -846,7 +846,7 @@ body.page-leaving {
 }
 
 .bc-td-stage {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-weight: 600;
     width: 60px;
 }
@@ -938,7 +938,7 @@ body.page-leaving {
     background: rgba(0, 230, 255, 0.1);
     border: 1px solid rgba(0, 230, 255, 0.3);
     border-radius: 4px;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     cursor: pointer;
     font-size: 0.75rem;
     transition: background 0.2s;

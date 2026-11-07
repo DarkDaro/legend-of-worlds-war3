@@ -18,7 +18,7 @@
         }
         .balance-filters .attr-btn:hover,
         .balance-filters .attr-btn.active {
-            background: rgba(0, 230, 255, 0.12);
+            background: var(--glass-border);
             border-color: var(--accent-cyan);
             color: var(--text-primary);
         }
@@ -38,10 +38,10 @@
 
         /* ── Шире контейнер для таблицы ── */
         /* [off 08.11 css-аудит] дубль бандла: hero-page.css уже ставит 1200px,
-           правило ничего не делало (хвост «1000px → 1200px»); вернуть = снять обёртку */
+
         /*
         .hero-page-container { max-width: 1200px; }
-        */
+
 
         /* ── Таблица 1 ── */
         .balance-table-wrap {
@@ -116,7 +116,7 @@
 .balance-page-icon {
             animation: float 3s ease-in-out infinite;
         }
-        */
+
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-14px); }
@@ -156,7 +156,7 @@
         .role-damager { background: rgba(244,67,54,0.15); color: #ef5350; }
         .role-controller { background: rgba(33,150,243,0.15); color: #42a5f5; }
         .role-healer { background: rgba(76,175,80,0.15); color: #66bb6a; }
-        .role-support { background: rgba(0,230,255,0.12); color: #00e6ff; }
+        .role-support { background: var(--glass-border); color: var(--accent-cyan); }
         .role-other { background: rgba(150,150,150,0.1); color: #999; }
 
         /* ── Фильтр по ролям ── */
@@ -177,7 +177,7 @@
         }
         .role-btn:hover { border-color: var(--accent-cyan); color: var(--text-primary); }
         .role-btn.active {
-            background: rgba(0, 230, 255, 0.12);
+            background: var(--glass-border);
             border-color: var(--accent-cyan);
             color: var(--text-primary);
         }
@@ -214,7 +214,7 @@
         }
         .col-toggle:hover { border-color: var(--accent-cyan); color: var(--text-primary); }
         .col-toggle.active {
-            background: rgba(0, 230, 255, 0.12);
+            background: var(--glass-border);
             border-color: var(--accent-cyan);
             color: var(--text-primary);
         }
@@ -249,7 +249,7 @@
         }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;

@@ -66,14 +66,14 @@ body {
 h1 {
     font-size: 2.4rem;
     font-weight: 600;
-    border-bottom: 2px solid #00e6ff;
+    border-bottom: 2px solid var(--accent-cyan);
     padding-bottom: 12px;
     margin-bottom: 24px;
     color: #ffffff;
     text-shadow: 0 0 12px #00e6ff88, 0 0 25px #00e6ff44;
     letter-spacing: 1px;
     /* Shimmer-перелив на заголовках */
-    background: linear-gradient(90deg, #fff 0%, #00e6ff 45%, #fff 55%, #00e6ff 100%);
+    background: linear-gradient(90deg, #fff 0%, var(--accent-cyan) 45%, #fff 55%, var(--accent-cyan) 100%);
     background-size: 200% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -130,13 +130,13 @@ h1 {
     background: #1a3050;
     color: white;
     box-shadow: 0 0 20px #00e6ffaa;
-    border-color: #00e6ff;
+    border-color: var(--accent-cyan);
 }
 .filter-btn.active {
-    background: #00e6ff;
+    background: var(--accent-cyan);
     border-color: white;
     color: #0b0e14;
-    box-shadow: 0 0 25px #00e6ff;
+    box-shadow: 0 0 25px var(--accent-cyan);
 }
 
 /* === Сетка героев (4 в ряд) === */
@@ -203,7 +203,7 @@ h1 {
     inset: 0;
     border-radius: 12px;
     padding: 1px;
-    background: linear-gradient(135deg, #00e6ff, #0080ff, #00e6ff);
+    background: linear-gradient(135deg, var(--accent-cyan), #0080ff, var(--accent-cyan));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -272,7 +272,7 @@ h1 {
     font-size: 0.85rem;
     font-weight: 700;
     color: white;
-    text-shadow: 0 0 8px #00e6ff;
+    text-shadow: 0 0 8px var(--accent-cyan);
     margin-bottom: 1px;
     line-height: 1.2;
 }
@@ -386,12 +386,12 @@ h1 {
     flex: 0 0 auto;
 }
 .hero-nav-btn:hover {
-    border-color: #00e6ff;
+    border-color: var(--accent-cyan);
     box-shadow: 0 0 18px #00e6ff55;
     transform: translateY(-1px);
 }
 .hero-nav-btn i {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     flex: 0 0 auto;
     font-size: 0.95rem;
 }
@@ -404,17 +404,17 @@ h1 {
 .breadcrumbs {
     margin-bottom: 20px;
     font-size: 0.9rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 .breadcrumbs a {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     text-decoration: none;
 }
 .breadcrumbs a:hover {
-    text-shadow: 0 0 8px #00e6ff;
+    text-shadow: 0 0 8px var(--accent-cyan);
 }
 .breadcrumbs .sep {
     margin: 0 6px;
@@ -435,7 +435,7 @@ h1 {
     height: 100px;
     background: radial-gradient(circle at 30% 20%, #1e3a5a, #0e1a2b);
     border-radius: 20px;
-    border: 2px solid #00e6ff;
+    border: 2px solid var(--accent-cyan);
     box-shadow: 0 0 20px #00e6ff66;
     display: flex;
     align-items: center;
@@ -539,7 +539,7 @@ h1 {
 .recipe-title {
     font-size: 1rem;
     font-weight: 500;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     margin: 25px 0 15px;
     text-shadow: 0 0 8px #00e6ffaa;
 }
@@ -565,7 +565,7 @@ h1 {
     gap: 4px;
 }
 .build-slot:hover {
-    border-color: #00e6ff;
+    border-color: var(--accent-cyan);
     box-shadow: 0 0 12px #00e6ff44;
     transform: translateY(-2px);
 }
@@ -613,7 +613,7 @@ h1 {
     padding: 16px 20px;
     margin: 12px 0 20px;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .hero-tips h4 {
@@ -622,7 +622,7 @@ h1 {
     margin-bottom: 8px;
     text-shadow: 0 0 6px #ffb34744;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .hero-tips ul {
@@ -630,7 +630,7 @@ h1 {
     padding: 0;
     margin: 0;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .hero-tips li {
@@ -640,7 +640,7 @@ h1 {
     padding: 4px 0 4px 18px;
     position: relative;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .hero-tips li::before {
@@ -650,7 +650,7 @@ h1 {
     color: #00e6ff;
     font-weight: 700;
 }
-*/
+
 .abilities-grid {
     display: flex;
     flex-direction: column;
@@ -662,7 +662,7 @@ h1 {
     backdrop-filter: blur(var(--glass-blur));
     -webkit-backdrop-filter: blur(var(--glass-blur));
     border: 1px solid var(--glass-border);
-    border-left: 4px solid #00e6ff;
+    border-left: 4px solid var(--accent-cyan);
     padding: 16px;
     border-radius: 8px;
     box-shadow: inset 0 0 10px #00000055, 0 0 10px #00e6ff22;
@@ -698,14 +698,14 @@ h1 {
 .ability-card.innate:hover {
     box-shadow: inset 0 0 10px #00000055, 0 0 15px #00ff8844;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .ability-card.innate:hover .ability-icon {
     box-shadow: 0 0 18px #00ff8888;
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
-*/
+
 @keyframes abilityIconPulse {
     0%, 100% { filter: brightness(1); }
     50% { filter: brightness(1.3); }
@@ -724,7 +724,7 @@ h1 {
     border-left-color: #00ff88;
     box-shadow: inset 0 0 10px #00000055, 0 0 10px #00ff8822;
 }
-*/
+
 .ability-header {
     display: flex;
     align-items: center;
@@ -741,7 +741,7 @@ h1 {
     align-items: center;
     justify-content: center;
     font-size: 26px;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     overflow: hidden;
     flex-shrink: 0;
     box-shadow: 0 0 10px #00e6ff44;
@@ -775,7 +775,7 @@ h1 {
     border-radius: 6px;
     font-size: 0.8rem;
     font-weight: 800;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     flex-shrink: 0;
     text-shadow: 0 0 6px #00e6ff88;
     box-shadow: 0 0 8px #00e6ff44;
@@ -833,7 +833,7 @@ h1 {
     color: #00ff88;
     border-color: #00ff8866;
 }
-*/
+
 .ability-tag {
     display: inline-block;
     font-size: 0.65rem;
@@ -890,7 +890,7 @@ h1 {
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .luck-chance { color: #55ff55; font-weight: 600; }
-*/
+
 .ability-params {
     display: flex;
     flex-wrap: wrap;
@@ -914,7 +914,7 @@ h1 {
     content: ':';
 }
 .param-values {
-    color: #e0f0ff;
+    color: var(--text-primary);
     font-weight: 600;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
@@ -951,7 +951,7 @@ h1 {
     margin-right: 2px;
 }
 .param-label.radius {
-    color: #00e6ff;
+    color: var(--accent-cyan);
 }
 .param-label.radius::before {
     content: '\f05b';
@@ -974,7 +974,7 @@ h1 {
     background: var(--glass-bg);
     backdrop-filter: blur(var(--glass-blur));
     -webkit-backdrop-filter: blur(var(--glass-blur));
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
@@ -982,13 +982,13 @@ h1 {
     transition: all 0.2s;
 }
 .form-tab:hover {
-    border-color: #00e6ff;
+    border-color: var(--accent-cyan);
     color: #c0d4ff;
 }
 .form-tab.active {
     background: #1a2a45;
-    border-color: #00e6ff;
-    color: #00e6ff;
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
     box-shadow: 0 0 12px #00e6ff44;
 }
 .form-tab.active.alt-form {
@@ -1037,7 +1037,7 @@ h1 {
 .ability-cycle-group {
     margin-bottom: 12px;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .cycle-label {
@@ -1054,7 +1054,7 @@ h1 {
     font-size: 0.8rem;
     color: #8aa0c0;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .cycle-label .cycle-key {
@@ -1065,7 +1065,7 @@ h1 {
     font-weight: 700;
     font-size: 0.75rem;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .cycle-label .cycle-hint {
@@ -1073,35 +1073,35 @@ h1 {
     color: #5a7a9a;
     font-size: 0.75rem;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .ability-cycle-group .ability-card {
     border-left: 3px solid #00e6ff44;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .ability-cycle-group .ability-card:nth-child(1) { border-left-color: #bf7fff; }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .ability-cycle-group .ability-card:nth-child(2) { border-left-color: #ff5555; }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .ability-cycle-group .ability-card:nth-child(3) { border-left-color: #55aaff; }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .ability-cycle-group .ability-card:nth-child(4) { border-left-color: #8800ff; }
-*/
+
 .back-button, .back-link {
     display: inline-block;
     margin-top: 20px;
     background: var(--glass-bg);
     border: 1px solid #00e6ffcc;
-    color: #e0f0ff;
+    color: var(--text-primary);
     padding: 12px 24px;
     border-radius: 30px;
     cursor: pointer;
@@ -1112,14 +1112,14 @@ h1 {
     transition: 0.15s;
 }
 .back-button:hover, .back-link:hover {
-    background: #00e6ff;
+    background: var(--accent-cyan);
     border-color: white;
     color: #0b0e14;
-    box-shadow: 0 0 25px #00e6ff;
+    box-shadow: 0 0 25px var(--accent-cyan);
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -1130,7 +1130,7 @@ h1 {
 }
 
 /* 24.10: .detail-title стал <h1> для SEO. Глобальное правило h1 в base.css
-   добавляет подчёркивание и синий градиент — гасим их точечно. */
+
 .panel-header h1.detail-title {
     border-bottom: 0;
     background: none;
@@ -1344,10 +1344,10 @@ h1 {
 }
 .lore-title {
     font-size: 1.8rem;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     margin-bottom: 15px;
     text-shadow: 0 0 8px #00e6ffaa;
-    border-left: 4px solid #00e6ff;
+    border-left: 4px solid var(--accent-cyan);
     padding-left: 20px;
     position: relative;
 }
@@ -1472,12 +1472,12 @@ h1 {
 .mode-name {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-bottom: 6px;
 }
 .mode-desc {
     font-size: 0.85rem;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     line-height: 1.4;
 }
 
@@ -1539,7 +1539,7 @@ h1 {
     background: rgba(15, 23, 42, 0.93);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 18px;
     cursor: pointer;
     z-index: 1000;
@@ -1558,9 +1558,9 @@ h1 {
     pointer-events: auto;
 }
 .scroll-top-btn:hover {
-    background: #00e6ff;
+    background: var(--accent-cyan);
     color: #0b0e14;
-    box-shadow: 0 0 25px #00e6ff;
+    box-shadow: 0 0 25px var(--accent-cyan);
 }
 
 /* === Шапка сайта (адаптивная) === */
@@ -1591,7 +1591,7 @@ h1 {
     min-width: 0;
 }
 .logo:hover {
-    text-shadow: 0 0 15px #00e6ff;
+    text-shadow: 0 0 15px var(--accent-cyan);
 }
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
@@ -1608,7 +1608,7 @@ h1 {
     font-size: 28px;
     color: #00e6ff;
 }
-*/
+
 .logo-text {
     font-size: clamp(1.15rem, 1.4vw, 1.6rem);
     font-weight: 700;
@@ -1654,15 +1654,15 @@ h1 {
 }
 .nav-link:hover {
     background: #1a3050;
-    border-color: #00e6ff;
+    border-color: var(--accent-cyan);
     color: white;
     box-shadow: 0 0 20px #00e6ffaa;
 }
 .nav-link.active {
-    background: #00e6ff;
+    background: var(--accent-cyan);
     border-color: white;
     color: #0b0e14;
-    box-shadow: 0 0 20px #00e6ff;
+    box-shadow: 0 0 20px var(--accent-cyan);
 }
 .nav-download {
     color: #0b0e14;
@@ -1688,7 +1688,7 @@ h1 {
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -1700,14 +1700,14 @@ h1 {
 
 /* 24.10: flex-basis только на широких экранах.
    На 601-900px .site-header колонка (info.css) и flex-basis 520px работал
-   как высота -> шапка занимала 620px, меню в 5 строк, гамбургер не появлялся. */
+
 @media (min-width: 901px) {
     .header-nav {
         flex: 1 1 520px;
     }
 }
 /* 24.10: в storage таблица table-layout:fixed, слово «(максимальное» (95px)
-   выходило за ячейку 88px и наезжало на соседнюю колонку */
+
 .storage-table td,
 .storage-desc {
     overflow-wrap: break-word;
@@ -1744,7 +1744,7 @@ h1 {
     margin-bottom: 16px;
 }
 .version-badge {
-    background: #00e6ff;
+    background: var(--accent-cyan);
     color: #0b0e14;
     padding: 4px 12px;
     border-radius: 20px;
@@ -1756,13 +1756,13 @@ h1 {
     color: #fff;
 }
 .version-date {
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 0.85rem;
 }
 .version-title {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #e0f0ff;
+    color: var(--text-primary);
 }
 .change-list {
     list-style: none;
@@ -1988,11 +1988,11 @@ h1 {
 }
 .mechanic-card h3 {
     font-size: 1.1rem;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-bottom: 8px;
 }
 .mechanic-card p {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     line-height: 1.6;
     margin-bottom: 12px;
@@ -2006,7 +2006,7 @@ h1 {
     border-radius: 10px;
     padding: 12px 16px;
     font-family: 'Consolas', 'Courier New', monospace;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 0.85rem;
     margin-top: 8px;
 }
@@ -2027,8 +2027,8 @@ h1 {
     transition: border-color 0.2s, color 0.2s;
 }
 .mech-calc-link:hover {
-    border-color: #00e6ff;
-    color: #00e6ff;
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
 }
 
 /* ===== Уникальные анимации карточек механик ===== */
@@ -2762,7 +2762,7 @@ h1 {
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -2788,7 +2788,7 @@ h1 {
 }
 */
 .support-desc {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 1.05rem;
     line-height: 1.7;
     margin-bottom: 32px;
@@ -2820,11 +2820,11 @@ h1 {
     margin-bottom: 12px;
 }
 .support-card h3 {
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-bottom: 8px;
 }
 .support-card p {
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 0.85rem;
 }
 .support-card .method-link {
@@ -2832,20 +2832,20 @@ h1 {
     margin-top: 12px;
     padding: 8px 20px;
     background: #00e6ff22;
-    border: 1px solid #00e6ff;
+    border: 1px solid var(--accent-cyan);
     border-radius: 30px;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.85rem;
     transition: 0.2s;
 }
 .support-card .method-link:hover {
-    background: #00e6ff;
+    background: var(--accent-cyan);
     color: #0b0e14;
 }
 .support-thanks {
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 0.9rem;
     margin-top: 24px;
     font-style: italic;
@@ -2858,7 +2858,7 @@ h1 {
 }
 .monsters-section h2 {
     font-size: 1.4rem;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-bottom: 16px;
     display: flex;
     align-items: center;
@@ -2876,14 +2876,14 @@ h1 {
 }
 .boss-drops-title {
     font-size: 1.1rem;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     margin-bottom: 12px;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 .boss-drops-title i {
-    color: #00e6ff;
+    color: var(--accent-cyan);
 }
 .boss-drops-grid {
     display: flex;
@@ -2948,7 +2948,7 @@ h1 {
     padding: 1px 6px;
     border-radius: 6px;
     background: #00e6ff22;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-weight: 600;
 }
 .boss-drop-chance-low {
@@ -3079,7 +3079,7 @@ h1 {
 .monster-name {
     font-size: 1rem;
     font-weight: 600;
-    color: #e0f0ff;
+    color: var(--text-primary);
     flex: 1;
 }
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
@@ -3092,9 +3092,9 @@ h1 {
     padding: 2px 8px;
     border-radius: 6px;
 }
-*/
+
 .monster-toggle {
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 0.8rem;
     transition: 0.2s;
     display: flex;
@@ -3128,18 +3128,18 @@ h1 {
 }
 .monster-stat .stat-label {
     font-size: 0.75rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 .monster-stat .stat-value {
     font-size: 1rem;
     font-weight: 600;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-top: 2px;
 }
 .monster-desc {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     line-height: 1.6;
     margin-top: 12px;
@@ -3215,12 +3215,12 @@ h1 {
 }
 .boss-ability-name {
     font-weight: 600;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 0.9rem;
     margin-bottom: 4px;
 }
 .boss-ability-desc {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 0.85rem;
     line-height: 1.5;
 }
@@ -3233,7 +3233,7 @@ h1 {
     margin-bottom: 24px;
     font-size: 1.05rem;
 }
-*/
+
 
 /* Иконка заголовка "Боссы" */
 .boss-heading-icon {
@@ -3244,7 +3244,7 @@ h1 {
 .boss-section-title {
     font-size: 1rem;
     font-weight: 500;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     margin: 16px 0 8px;
     text-shadow: 0 0 8px #00e6ffaa;
 }
@@ -3272,7 +3272,7 @@ h1 {
     margin-bottom: 4px;
 }
 .boss-passive-desc {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 0.85rem;
     line-height: 1.5;
 }
@@ -3283,7 +3283,7 @@ h1 {
 .boss-stages {
     margin-top: 12px;
 }
-*/
+
 .boss-stage {
     display: flex;
     align-items: baseline;
@@ -3303,7 +3303,7 @@ h1 {
     min-width: 70px;
     flex-shrink: 0;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .boss-stage-desc {
@@ -3311,7 +3311,7 @@ h1 {
     font-size: 0.85rem;
     line-height: 1.4;
 }
-*/
+
 
 /* Награда за босса */
 .monster-reward {
@@ -3331,11 +3331,11 @@ h1 {
     border: 1px solid #ff555544;
 }
 .reward-label {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 0.85rem;
 }
 .reward-value {
-    color: #e0f0ff;
+    color: var(--text-primary);
     font-size: 0.85rem;
     font-weight: 600;
     text-align: right;
@@ -3365,14 +3365,14 @@ h1 {
     vertical-align: middle;
 }
 .item-link {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     text-decoration: none;
     border-bottom: 1px dashed #00e6ff66;
     transition: 0.15s;
 }
 .item-link:hover {
     color: #fff;
-    border-bottom-color: #00e6ff;
+    border-bottom-color: var(--accent-cyan);
     text-shadow: 0 0 8px #00e6ff88;
 }
 .monster-card .reward-row.drop .item-link {
@@ -3391,7 +3391,7 @@ h1 {
     font-size: 0.8rem;
     margin-left: 4px;
 }
-*/
+
 
 /* === css/home.css === */
 
@@ -3456,7 +3456,7 @@ h1 {
     width: 120px;
     height: 120px;
     border-radius: 24px;
-    border: 3px solid #00e6ff;
+    border: 3px solid var(--accent-cyan);
     box-shadow: 0 0 30px #00e6ff66, 0 0 60px #00e6ff33;
     margin-bottom: 24px;
     animation: float 3s ease-in-out infinite, logoBorderPulse 2.5s ease-in-out infinite;
@@ -3467,7 +3467,7 @@ h1 {
     50% { transform: translateY(-14px); }
 }
 @keyframes logoBorderPulse {
-    0%, 100% { border-color: #00e6ff; box-shadow: 0 0 30px #00e6ff66, 0 0 60px #00e6ff33; }
+    0%, 100% { border-color: var(--accent-cyan); box-shadow: 0 0 30px #00e6ff66, 0 0 60px #00e6ff33; }
     50% { border-color: #55ffff; box-shadow: 0 0 40px #00e6ff88, 0 0 80px #00e6ff44; }
 }
 .hero-banner-title {
@@ -3480,7 +3480,7 @@ h1 {
     margin-bottom: 12px;
     line-height: 1.1;
     /* Shimmer-эффект на заголовке */
-    background: linear-gradient(90deg, #fff 0%, #00e6ff 40%, #fff 60%, #00e6ff 100%);
+    background: linear-gradient(90deg, #fff 0%, var(--accent-cyan) 40%, #fff 60%, var(--accent-cyan) 100%);
     background-size: 200% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -3493,7 +3493,7 @@ h1 {
 }
 .hero-subtitle {
     font-size: 1.2rem;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     letter-spacing: 2px;
     margin-bottom: 24px;
 }
@@ -3536,11 +3536,11 @@ h1 {
     gap: 10px;
     padding: 16px 36px;
     background: transparent;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-weight: 600;
     font-size: 1.1rem;
     border-radius: 50px;
-    border: 2px solid #00e6ff;
+    border: 2px solid var(--accent-cyan);
     text-decoration: none;
     box-shadow: 0 0 15px #00e6ff33;
     transition: 0.2s;
@@ -3594,7 +3594,7 @@ h1 {
 }
 .stat-icon {
     font-size: 1.8rem;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     margin-bottom: 8px;
 }
 .stat-number {
@@ -3606,7 +3606,7 @@ h1 {
 }
 .stat-label {
     font-size: 0.85rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: 4px;
@@ -3615,14 +3615,14 @@ h1 {
 /* Секция с заголовком */
 .section-title {
     font-size: 1.5rem;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 .section-title i {
-    color: #00e6ff;
+    color: var(--accent-cyan);
 }
 
 /* Быстрые ссылки */
@@ -3690,19 +3690,19 @@ h1 {
     align-items: center;
     justify-content: center;
     font-size: 1.4rem;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     margin-bottom: 12px;
     transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 .quick-link-title {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-bottom: 6px;
 }
 .quick-link-desc {
     font-size: 0.85rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
     line-height: 1.5;
 }
 
@@ -3726,7 +3726,7 @@ h1 {
 .change-list-mini li {
     padding: 4px 0 4px 16px;
     position: relative;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 0.9rem;
 }
 .change-list-mini li::before {
@@ -3742,7 +3742,7 @@ h1 {
 .updates-link {
     display: inline-block;
     margin-top: 12px;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 600;
@@ -3785,7 +3785,7 @@ h1 {
 }
 @keyframes ctaBorderPulse {
     0%, 100% { border-color: var(--glass-border); box-shadow: none; }
-    50% { border-color: #00e6ff44; box-shadow: 0 0 30px rgba(0, 230, 255, 0.12); }
+    50% { border-color: #00e6ff44; box-shadow: 0 0 30px var(--glass-border); }
 }
 @keyframes auroraShift {
     0% { transform: translateX(-30%) translateY(-10%) rotate(0deg); }
@@ -3803,7 +3803,7 @@ h1 {
     text-shadow: 0 0 20px #00e6ff44;
 }
 .cta-content p {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 1.05rem;
     margin-bottom: 24px;
 }
@@ -3850,7 +3850,7 @@ h1 {
 .footer-brand .footer-logo {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #e0f0ff;
+    color: var(--text-primary);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -3865,7 +3865,7 @@ h1 {
     flex-shrink: 0;
 }
 .footer-brand p {
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 0.85rem;
     margin-top: 4px;
 }
@@ -3877,7 +3877,7 @@ h1 {
     justify-content: center;
     gap: 12px 20px;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .footer-links a {
@@ -3886,20 +3886,20 @@ h1 {
     font-size: 0.9rem;
     transition: 0.15s;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .footer-links a:hover {
     color: #00e6ff;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .footer-social {
     display: flex;
     gap: 16px;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .footer-social a {
@@ -3907,14 +3907,14 @@ h1 {
     font-size: 1.3rem;
     transition: 0.15s;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .footer-social a:hover {
     color: #00e6ff;
     text-shadow: 0 0 10px #00e6ff66;
 }
-*/
+
 .footer-bottom {
     text-align: center;
     padding-top: 20px;
@@ -3991,7 +3991,7 @@ h1 {
 }
 .lore-banner-subtitle {
     font-size: 0.95rem;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     line-height: 1.5;
 }
 @media (max-width: 900px) {
@@ -4007,7 +4007,7 @@ h1 {
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -4062,7 +4062,7 @@ h1 {
     color: #55ffff;
 }
 .info-list li i {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     width: 20px;
     text-align: center;
     flex-shrink: 0;
@@ -4111,12 +4111,12 @@ h1 {
 }
 .info-stat-icon {
     font-size: 1.3rem;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     margin-bottom: 8px;
 }
 .info-stat-label {
     font-size: 0.72rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 4px;
@@ -4124,7 +4124,7 @@ h1 {
 .info-stat-value {
     font-size: 1rem;
     font-weight: 700;
-    color: #e0f0ff;
+    color: var(--text-primary);
 }
 .info-steps {
     color: #c0d0e8;
@@ -4138,7 +4138,7 @@ h1 {
 }
 .info-steps code {
     background: var(--glass-subtle-hover);
-    color: #00e6ff;
+    color: var(--accent-cyan);
     padding: 2px 8px;
     border-radius: 4px;
     font-size: 0.85rem;
@@ -4149,7 +4149,7 @@ h1 {
     margin-top: 16px;
     padding: 12px 16px;
     background: #0a1525;
-    border-left: 3px solid #00e6ff;
+    border-left: 3px solid var(--accent-cyan);
     border-radius: 0 8px 8px 0;
 }
 .info-guides-grid {
@@ -4226,12 +4226,12 @@ h1 {
     height: 48px;
     border-radius: 50%;
     background: var(--glass-subtle-hover);
-    border: 2px solid #00e6ff;
+    border: 2px solid var(--accent-cyan);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     flex-shrink: 0;
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
@@ -4242,11 +4242,11 @@ h1 {
 .author-name {
     font-size: 1.1rem;
     font-weight: 700;
-    color: #e0f0ff;
+    color: var(--text-primary);
 }
 .author-role {
     font-size: 0.82rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
     margin-top: 2px;
 }
 .info-links-grid {
@@ -4263,7 +4263,7 @@ h1 {
     border: 1px solid rgba(0,229,255,0.35);
     border-radius: 10px;
     padding: 12px 20px;
-    color: #e0f0ff;
+    color: var(--text-primary);
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
@@ -4272,13 +4272,13 @@ h1 {
     overflow: hidden;
 }
 .info-link-card i {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 1rem;
     transition: transform 0.25s ease, color 0.25s ease;
 }
 .info-link-card:hover {
     background: linear-gradient(135deg, rgba(0,229,255,0.18) 0%, rgba(0,229,255,0.06) 100%);
-    border-color: #00e6ff;
+    border-color: var(--accent-cyan);
     box-shadow: 0 0 12px rgba(0,229,255,0.3), 0 0 24px rgba(0,229,255,0.1);
     transform: translateY(-3px);
 }
@@ -4349,7 +4349,7 @@ h1 {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #00e6ff;
+    background: var(--accent-cyan);
     box-shadow: 0 0 10px #00e6ff88;
     animation: timelinePulse 2.5s ease-in-out infinite;
 }
@@ -4391,7 +4391,7 @@ h1 {
 .timeline-era {
     font-size: 1rem;
     font-weight: 700;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     margin-bottom: 4px;
 }
 .timeline-entry p {
@@ -4548,7 +4548,7 @@ h1 {
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .mc-tag-fix { background: rgba(100,255,100,0.1); border: 1px solid rgba(100,255,100,0.3); color: #64ff64; }
-*/
+
 .mc-note { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; padding-left: 10px; border-left: 2px solid var(--glass-border); }
 .mc-pie-wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
 .mc-pie-svg { width: 160px; height: 160px; flex-shrink: 0; }
@@ -4652,7 +4652,7 @@ h1 {
         }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -4667,7 +4667,7 @@ h1 {
     margin-top: 24px;
     padding: 18px 20px;
     background: var(--glass-bg);
-    border: 1px solid rgba(0, 230, 255, 0.12);
+    border: 1px solid var(--glass-border);
     border-radius: 14px;
 }
 .info-keys-title {
@@ -4698,7 +4698,7 @@ h1 {
 }
 .info-key:hover {
     background: rgba(10, 20, 40, 0.8);
-    border-color: rgba(0, 230, 255, 0.35);
+    border-color: var(--glass-border-hover);
 }
 .info-key-badge {
     flex: 0 0 auto;
@@ -4707,7 +4707,7 @@ h1 {
     justify-content: center;
     width: 34px;
     height: 34px;
-    background: rgba(0, 230, 255, 0.12);
+    background: var(--glass-border);
     border: 1px solid rgba(0, 230, 255, 0.45);
     border-radius: 8px;
     color: var(--accent-cyan);
@@ -4738,7 +4738,7 @@ h1 {
 
 /* ===== 24.10: текстовые ссылки внутри разделов info =====
    Раньше глобального правила для <a> не было — в тексте ссылки выглядели
-   как браузерные (синие, подчёркнутые), выбиваясь из неоновой темы. */
+
 .info-text a,
 .info-section p a,
 .info-steps a,
@@ -4748,7 +4748,7 @@ h1 {
 .auto-level-intro a {
     color: var(--accent-cyan);
     text-decoration: none;
-    border-bottom: 1px solid rgba(0, 230, 255, 0.35);
+    border-bottom: 1px solid var(--glass-border-hover);
     padding-bottom: 1px;
     transition: color 0.15s, border-color 0.15s, text-shadow 0.15s;
 }
@@ -4839,12 +4839,12 @@ h1 {
     display: block;
     width: 22px;
     height: 2px;
-    background: #00e6ff;
+    background: var(--accent-cyan);
     border-radius: 2px;
     transition: 0.3s;
 }
 .hamburger-btn:hover {
-    border-color: #00e6ff;
+    border-color: var(--accent-cyan);
     box-shadow: 0 0 10px #00e6ff44;
 }
 .hamburger-btn.open span:nth-child(1) {
@@ -4874,14 +4874,14 @@ h1 {
     width: 48px;
     height: 48px;
     border-radius: 14px;
-    border: 2px solid #00e6ff;
+    border: 2px solid var(--accent-cyan);
     box-shadow: 0 0 15px #00e6ff88;
     object-fit: cover;
 }
 
 /* Улучшение для логотипа-картинки при наведении */
 .logo:hover .logo-img {
-    box-shadow: 0 0 20px #00e6ff, 0 0 30px #00e6ffaa;
+    box-shadow: 0 0 20px var(--accent-cyan), 0 0 30px #00e6ffaa;
     border-color: #ffffff;
 }
 
@@ -5008,8 +5008,8 @@ h1 {
   z-index: 2;
 }
 .item-sheet-close:hover {
-  border-color: #00e6ff;
-  color: #00e6ff;
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
   box-shadow: 0 0 10px #00e6ff33;
 }
 body.item-sheet-open {
@@ -5043,7 +5043,7 @@ body.item-sheet-open {
 }
 .tree-toggle:hover {
   background: #1a2e44;
-  color: #00e6ff;
+  color: var(--accent-cyan);
   border-color: #00e6ff88;
   box-shadow: 0 0 8px #00e6ff33;
 }
@@ -5058,7 +5058,7 @@ body.item-sheet-open {
   background: var(--glass-bg);
   padding: 8px 12px;
   border-radius: 40px;
-  border-left: 4px solid #00e6ff;
+  border-left: 4px solid var(--accent-cyan);
   box-shadow: 0 0 8px #00e6ff33;
   cursor: pointer;
   transition: 0.15s;
@@ -5148,10 +5148,10 @@ body.item-sheet-open {
   box-shadow: 0 0 6px #00e6ff33;
 }
 .used-in-chip:hover {
-  background: #00e6ff;
+  background: var(--accent-cyan);
   border-color: #ffffff;
   color: #0b0e14;
-  box-shadow: 0 0 20px #00e6ff;
+  box-shadow: 0 0 20px var(--accent-cyan);
 }
 
 /* Босс-дроп ссылка */
@@ -5185,7 +5185,7 @@ body.item-sheet-open {
   flex-wrap: wrap;
   gap: 8px;
 }
-*/
+
 
 .hero-reco-chip {
   display: inline-flex;
@@ -5203,10 +5203,10 @@ body.item-sheet-open {
 }
 
 .hero-reco-chip:hover {
-  background: #00e6ff;
+  background: var(--accent-cyan);
   border-color: #ffffff;
   color: #0b0e14;
-  box-shadow: 0 0 20px #00e6ff;
+  box-shadow: 0 0 20px var(--accent-cyan);
 }
 
 .hero-reco-wrap {
@@ -5221,16 +5221,16 @@ body.item-sheet-open {
   padding: 6px 14px;
   border-radius: 30px;
   font-size: 0.9rem;
-  color: #00e6ff;
+  color: var(--accent-cyan);
   cursor: pointer;
   transition: 0.15s;
 }
 
 .hero-reco-toggle:hover {
-  background: #00e6ff;
+  background: var(--accent-cyan);
   border-color: #ffffff;
   color: #0b0e14;
-  box-shadow: 0 0 20px #00e6ff;
+  box-shadow: 0 0 20px var(--accent-cyan);
 }
 
 .hero-reco-hidden {
@@ -5253,7 +5253,7 @@ body.item-sheet-open {
 .upgrade-btn {
   background: var(--glass-bg-hover);
   border: 1px solid #00e6ffcc;
-  color: #e0f0ff;
+  color: var(--text-primary);
   padding: 8px 16px;
   border-radius: 30px;
   cursor: pointer;
@@ -5262,10 +5262,10 @@ body.item-sheet-open {
   box-shadow: 0 0 10px #00e6ff33;
 }
 .upgrade-btn:hover {
-  background: #00e6ff;
+  background: var(--accent-cyan);
   border-color: #ffffff;
   color: #0b0e14;
-  box-shadow: 0 0 25px #00e6ff;
+  box-shadow: 0 0 25px var(--accent-cyan);
   transform: scale(1.02);
 }
 /* .back-button уже определён выше в блоке героев — добавляем только width:100% для предметов */
@@ -5291,7 +5291,7 @@ body.item-sheet-open {
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 500;
-  color: #e0f0ff;
+  color: var(--text-primary);
 }
 .cost-badge.cost-crystals { border: 1px solid #55aaff55; color: #aaccff; }
 .cost-badge.cost-wood     { border: 1px solid #55ff5555; color: #aaffaa; }
@@ -5466,7 +5466,7 @@ body.item-sheet-open {
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .item-card.consumable    { border-bottom: 4px solid #00ffaa; box-shadow: 0 0 15px #00ffaa55; }
-*/
+
 .item-card.neutral       { border-bottom: 4px solid #bf7fff; box-shadow: 0 0 15px #bf7fff55; }
 .item-card.boost         { border-bottom: 4px solid #ffaa33; box-shadow: 0 0 15px #ffaa3355; }
 .item-card.strength      { border-bottom: 4px solid #ff5555; box-shadow: 0 0 15px #ff555555; }
@@ -5488,14 +5488,14 @@ body.item-sheet-open {
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .item-card.consumable:hover { border-color: #00ffaa; box-shadow: 0 0 20px #00ffaaaa, 0 0 40px #00ffaa44; }
-*/
+
 /* Редкость предметов по стоимости */
 .item-card.rarity-cheap  { opacity: 0.85; }
 .item-card.rarity-mid    { opacity: 0.92; }
 .item-card.rarity-expensive { opacity: 1; }
 .item-card.rarity-cheap .item-name   { text-shadow: 0 0 4px #00e6ff44; }
-.item-card.rarity-mid .item-name     { text-shadow: 0 0 6px #00e6ff; }
-.item-card.rarity-expensive .item-name { text-shadow: 0 0 8px #00e6ff, 0 0 16px #00e6ff88; }
+.item-card.rarity-mid .item-name     { text-shadow: 0 0 6px var(--accent-cyan); }
+.item-card.rarity-expensive .item-name { text-shadow: 0 0 8px var(--accent-cyan), 0 0 16px #00e6ff88; }
 
 /* Градиентная рамка при hover — cyan → blue */
 .item-card::before {
@@ -5504,7 +5504,7 @@ body.item-sheet-open {
   inset: 0;
   border-radius: 16px;
   padding: 1px;
-  background: linear-gradient(135deg, #00e6ff, #0080ff, #00e6ff);
+  background: linear-gradient(135deg, var(--accent-cyan), #0080ff, var(--accent-cyan));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -5546,12 +5546,12 @@ body.item-sheet-open {
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .item-card.consumable .item-icon img { border-color: #00ffaaaa; box-shadow: 0 0 10px #00ffaa44; }
-*/
+
 .item-name {
   font-size: 0.9rem;
   font-weight: 600;
   color: #f0f5ff;
-  text-shadow: 0 0 6px #00e6ff;
+  text-shadow: 0 0 6px var(--accent-cyan);
   word-break: break-word;
 }
 .hero-search {
@@ -5568,19 +5568,19 @@ body.item-sheet-open {
   max-width: 400px;
 }
 .hero-search i {
-  color: #00e6ff;
+  color: var(--accent-cyan);
   font-size: 16px;
 }
 .hero-search input {
   background: transparent;
   border: none;
   outline: none;
-  color: #e0f0ff;
+  color: var(--text-primary);
   font-size: 15px;
   width: 100%;
 }
 .hero-search input::placeholder {
-  color: #6b7c99;
+  color: var(--text-muted);
 }
 .hero-count {
   color: #7a8faa;
@@ -5603,7 +5603,7 @@ body.item-sheet-open {
   justify-content: center;
   cursor: pointer;
   font-size: 14px;
-  color: #6b7c99;
+  color: var(--text-muted);
   transition: 0.15s;
   z-index: 2;
 }
@@ -5628,19 +5628,19 @@ body.item-sheet-open {
   max-width: 400px;
 }
 .item-search i {
-  color: #00e6ff;
+  color: var(--accent-cyan);
   font-size: 16px;
 }
 .item-search input {
   background: transparent;
   border: none;
   outline: none;
-  color: #e0f0ff;
+  color: var(--text-primary);
   font-size: 15px;
   width: 100%;
 }
 .item-search input::placeholder {
-  color: #6b7c99;
+  color: var(--text-muted);
 }
 .category-tabs {
   display: flex;
@@ -5666,13 +5666,13 @@ body.item-sheet-open {
   background: #1a3050;
   color: #ffffff;
   box-shadow: 0 0 12px #00e6ff88;
-  border-color: #00e6ff;
+  border-color: var(--accent-cyan);
 }
 .tab-btn.active {
-  background: #00e6ff;
+  background: var(--accent-cyan);
   border-color: #ffffff;
   color: #0b0e14;
-  box-shadow: 0 0 20px #00e6ff, 0 0 0 2px #00e6ff44 inset;
+  box-shadow: 0 0 20px var(--accent-cyan), 0 0 0 2px #00e6ff44 inset;
 }
 @media (max-width: 800px) {
   .app-container {
@@ -5908,7 +5908,7 @@ body.item-sheet-open {
 }
 .item-slug-tooltip .ist-slug {
     font-family: Consolas, monospace;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 11px;
 }
 
@@ -5920,7 +5920,7 @@ body.item-sheet-open {
     margin: 16px 0 4px;
     padding: 14px 16px;
     background: var(--glass-bg);
-    border: 1px solid rgba(0, 230, 255, 0.12);
+    border: 1px solid var(--glass-border);
     border-radius: 14px;
 }
 .bonus-filter-row {
@@ -5965,7 +5965,7 @@ body.item-sheet-open {
     background: #1a3050;
     border-color: var(--accent-cyan);
     color: #fff;
-    box-shadow: 0 0 10px rgba(0, 230, 255, 0.35);
+    box-shadow: 0 0 10px var(--glass-border-hover);
 }
 .bonus-chip.active {
     background: var(--accent-cyan);
@@ -6063,7 +6063,7 @@ body.item-sheet-open {
     font-size: 0.85rem;
     cursor: pointer;
 }
-.bonus-filter-empty button:hover { background: rgba(0, 230, 255, 0.12); }
+.bonus-filter-empty button:hover { background: var(--glass-border); }
 
 @media (max-width: 800px) {
     .bonus-filter { padding: 12px; gap: 8px; }
@@ -6077,7 +6077,7 @@ body.item-sheet-open {
 
 /* 24.10: hidden побеждает display. Было: .bonus-reset { display: inline-flex }
    перебивал браузерное [hidden] { display: none } -> кнопка «Сбросить» висела
-   всегда, хотя сбрасывать нечего. */
+
 .bonus-reset[hidden],
 .bonus-filter-empty[hidden] {
     display: none !important;
@@ -6085,7 +6085,7 @@ body.item-sheet-open {
 
 /* 24.10: табы на узком экране скроллятся, а не разворачиваются в 12 рядов.
    Было: flex-wrap: wrap на <=560px -> полоса 354px = 49% экрана,
-   первая карточка каталога начиналась на 1477px. */
+
 @media (max-width: 560px) {
     .category-tabs {
         flex-wrap: nowrap;
@@ -6143,7 +6143,7 @@ body.item-sheet-open {
     font-weight: 600;
     padding: 10px;
     text-align: center;
-    border-bottom: 2px solid #00e6ff;
+    border-bottom: 2px solid var(--accent-cyan);
 }
 .hero-stats-table td {
     padding: 8px 12px;
@@ -6159,7 +6159,7 @@ body.item-sheet-open {
     color: #ffd966;
     font-weight: bold;
 }
-*/
+
 .stat-strength { color: #ff5555; }
 .stat-agility { color: #55ff55; }
 .stat-intelligence { color: #55aaff; }
@@ -6388,7 +6388,7 @@ body.page-404 {
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -6398,7 +6398,7 @@ body.page-404 {
     }
 }
 /* 24.10: соц-иконки футера были 18-26x31 (padding: 0), крошки 15px по высоте.
-   Мобильный минимум для тап-цели — 28px. */
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .footer-social a {
@@ -6409,7 +6409,7 @@ body.page-404 {
     min-height: 28px;
     padding: 6px 6px;
 }
-*/
+
 .breadcrumbs a,
 .breadcrumbs .current {
     display: inline-block;
@@ -6418,7 +6418,7 @@ body.page-404 {
 
 /* 24.10: на 375px кнопка «наверх» (.scroll-top-btn, 44x44, bottom:24px)
    садилась на копирайт футера — перекрытие 16x38px на 8 страницах.
-   Даём футеру запас снизу. */
+
 @media (max-width: 900px) {
     .site-footer {
         padding-bottom: 72px;
@@ -6600,7 +6600,7 @@ body.page-map-changes::after {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.8rem;
     background: var(--glass-bg);
@@ -6613,7 +6613,7 @@ body.page-map-changes::after {
 }
 
 .calc-back-link:hover {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     border-color: #00e6ff88;
 }
 
@@ -6637,7 +6637,7 @@ body.page-map-changes::after {
     backdrop-filter: blur(var(--glass-blur));
     -webkit-backdrop-filter: blur(var(--glass-blur));
     border: 1px solid var(--glass-border);
-    color: #e0f0ff;
+    color: var(--text-primary);
     padding: 4px 10px;
     border-radius: 6px;
     font-size: 0.8rem;
@@ -6654,7 +6654,7 @@ body.page-map-changes::after {
 .calc-share-btn {
     background: transparent;
     border: 1px solid #2a4060;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     padding: 4px 10px;
     border-radius: 6px;
     cursor: pointer;
@@ -6665,7 +6665,7 @@ body.page-map-changes::after {
 
 .calc-share-btn:hover {
     border-color: #00e6ff88;
-    color: #00e6ff;
+    color: var(--accent-cyan);
 }
 
 .calc-toast {
@@ -6677,7 +6677,7 @@ body.page-map-changes::after {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid #00e6ff66;
-    color: #e0f0ff;
+    color: var(--text-primary);
     padding: 8px 16px;
     border-radius: 8px;
     font-size: 0.8rem;
@@ -6699,7 +6699,7 @@ body.page-map-changes::after {
     gap: 6px;
     background: linear-gradient(135deg, #0a1a2a, #0f2535);
     border: 1px solid #00e6ff44;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     padding: 8px 16px;
     border-radius: 8px;
     text-decoration: none;
@@ -6782,13 +6782,13 @@ body.page-map-changes::after {
     border: 1px solid var(--glass-border);
     border-radius: 6px;
     padding: 6px 10px;
-    color: #e0f0ff;
+    color: var(--text-primary);
     font-size: 0.9rem;
     outline: none;
     box-sizing: border-box;
 }
 .formula-source-input:focus {
-    border-color: #00e6ff;
+    border-color: var(--accent-cyan);
 }
 .calc-page-link {
     display: inline-block;
@@ -6820,7 +6820,7 @@ body.page-map-changes::after {
 .compare-back-link {
     margin-top: 32px;
 }
-*/
+
 .compare-attr-strength {
     color: #ff5555;
 }
@@ -6892,7 +6892,7 @@ body.page-map-changes::after {
 }
 
 .calc-slot-empty:hover {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     border-color: #00e6ff88;
 }
 
@@ -6941,7 +6941,7 @@ body.page-map-changes::after {
 .calc-slot-name {
     font-size: 0.7rem;
     font-weight: 600;
-    color: #e0f0ff;
+    color: var(--text-primary);
     text-align: center;
     margin-bottom: 0;
     word-break: break-word;
@@ -6950,7 +6950,7 @@ body.page-map-changes::after {
 
 .calc-slot-cost {
     font-size: 0.65rem;
-    color: #8aa0c0;
+    color: var(--text-secondary);
 }
 
 .calc-slot-remove {
@@ -6987,7 +6987,7 @@ body.page-map-changes::after {
     left: 2px;
     background: rgba(0, 230, 255, 0.1);
     border: none;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     width: 18px;
     height: 18px;
     border-radius: 50%;
@@ -7039,7 +7039,7 @@ body.page-map-changes::after {
 }
 
 .calc-results-net .calc-results-row-value {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-weight: 700;
 }
 
@@ -7053,7 +7053,7 @@ body.page-map-changes::after {
 .calc-slots-counter {
     font-size: 0.75rem;
     font-weight: 700;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     background: var(--glass-bg);
     backdrop-filter: blur(var(--glass-blur));
     -webkit-backdrop-filter: blur(var(--glass-blur));
@@ -7066,7 +7066,7 @@ body.page-map-changes::after {
 .calc-clear-btn {
     background: transparent;
     border: 1px solid #2a4060;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     padding: 3px 10px;
     border-radius: 6px;
     cursor: pointer;
@@ -7092,7 +7092,7 @@ body.page-map-changes::after {
 }
 
 .calc-results-empty {
-    color: #5a7a9a;
+    color: var(--text-dim);
     text-align: center;
     padding: 16px 8px;
     font-size: 0.82rem;
@@ -7142,11 +7142,11 @@ body.page-map-changes::after {
 }
 
 .calc-results-row-label {
-    color: #8aa0c0;
+    color: var(--text-secondary);
 }
 
 .calc-results-row-value {
-    color: #e0f0ff;
+    color: var(--text-primary);
     font-weight: 600;
 }
 
@@ -7160,7 +7160,7 @@ body.page-map-changes::after {
 
 .calc-results-summary {
     font-size: 0.68rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
     text-align: center;
     padding-top: 6px;
     border-top: 1px solid #1a2a40;
@@ -7169,7 +7169,7 @@ body.page-map-changes::after {
 .calc-shopping-title {
     font-size: 0.72rem;
     font-weight: 700;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-top: 8px;
     padding-top: 6px;
     border-top: 1px solid #1a2a40;
@@ -7179,7 +7179,7 @@ body.page-map-changes::after {
 .calc-bonuses-title {
     font-size: 0.72rem;
     font-weight: 700;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-bottom: 6px;
 }
 
@@ -7214,7 +7214,7 @@ body.page-map-changes::after {
 }
 
 .calc-shopping-cost {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-weight: 600;
     white-space: nowrap;
 }
@@ -7223,7 +7223,7 @@ body.page-map-changes::after {
 .calc-tree-title {
     font-size: 0.82rem;
     font-weight: 700;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-bottom: 6px;
 }
 
@@ -7258,7 +7258,7 @@ body.page-map-changes::after {
 
 .calc-tree-chevron {
     font-size: 0.65rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
     width: 12px;
     flex-shrink: 0;
     transition: transform 0.15s;
@@ -7276,13 +7276,13 @@ body.page-map-changes::after {
 .calc-tree-name {
     font-size: 0.78rem;
     font-weight: 600;
-    color: #e0f0ff;
+    color: var(--text-primary);
     flex: 1;
 }
 
 .calc-tree-cost {
     font-size: 0.72rem;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-weight: 600;
     white-space: nowrap;
 }
@@ -7311,7 +7311,7 @@ body.page-map-changes::after {
 }
 
 .calc-search i {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 13px;
 }
 
@@ -7319,13 +7319,13 @@ body.page-map-changes::after {
     background: transparent;
     border: none;
     outline: none;
-    color: #e0f0ff;
+    color: var(--text-primary);
     font-size: 13px;
     width: 100%;
 }
 
 .calc-search input::placeholder {
-    color: #6b7c99;
+    color: var(--text-muted);
 }
 
 .calc-catalog-grid {
@@ -7370,7 +7370,7 @@ body.page-map-changes::after {
 .calc-catalog-name {
     font-size: 0.66rem;
     font-weight: 600;
-    color: #e0f0ff;
+    color: var(--text-primary);
     word-break: break-word;
     margin-bottom: 0;
     line-height: 1.2;
@@ -7378,7 +7378,7 @@ body.page-map-changes::after {
 
 .calc-catalog-cost {
     font-size: 0.58rem;
-    color: #8aa0c0;
+    color: var(--text-secondary);
 }
 
 /* Мобильная адаптация калькулятора */
@@ -7498,7 +7498,7 @@ body.page-map-changes::after {
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -7516,7 +7516,7 @@ body.page-map-changes::after {
 .gs-trigger {
     background: var(--glass-bg);
     border: 1px solid #2a5070;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     padding: 8px 14px;
     border-radius: 30px;
     cursor: pointer;
@@ -7529,8 +7529,8 @@ body.page-map-changes::after {
     line-height: 1.35;
 }
 .gs-trigger:hover {
-    border-color: #00e6ff;
-    color: #00e6ff;
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
     box-shadow: 0 0 12px #00e6ff44;
 }
 .gs-trigger kbd {
@@ -7540,7 +7540,7 @@ body.page-map-changes::after {
     padding: 1px 5px;
     font-size: 0.7rem;
     font-family: inherit;
-    color: #5a7a9a;
+    color: var(--text-dim);
     margin-left: 4px;
 }
 
@@ -7593,7 +7593,7 @@ body.page-map-changes::after {
     border-bottom: 1px solid #1a3050;
 }
 .gs-search-icon {
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 1rem;
     flex-shrink: 0;
 }
@@ -7602,18 +7602,18 @@ body.page-map-changes::after {
     background: none;
     border: none;
     outline: none;
-    color: #e0f0ff;
+    color: var(--text-primary);
     font-size: 1.05rem;
     font-family: inherit;
 }
 .gs-input::placeholder {
-    color: #5a7a9a;
+    color: var(--text-dim);
 }
 .gs-close {
     background: none;
     border: 1px solid #2a5070;
     border-radius: 8px;
-    color: #5a7a9a;
+    color: var(--text-dim);
     width: 32px;
     height: 32px;
     display: flex;
@@ -7642,7 +7642,7 @@ body.page-map-changes::after {
     padding: 8px 18px 4px;
     font-size: 0.75rem;
     font-weight: 700;
-    color: #5a7a9a;
+    color: var(--text-dim);
     text-transform: uppercase;
     letter-spacing: 1px;
     display: flex;
@@ -7650,7 +7650,7 @@ body.page-map-changes::after {
     gap: 6px;
 }
 .gs-group-title i {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 0.8rem;
 }
 
@@ -7673,13 +7673,13 @@ body.page-map-changes::after {
 }
 .gs-result-name mark {
     background: #00e6ff33;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     border-radius: 2px;
     padding: 0 2px;
 }
 .gs-result-sub {
     font-size: 0.8rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
 }
 .gs-result-desc {
     max-width: 260px;
@@ -7692,7 +7692,7 @@ body.page-map-changes::after {
 .gs-empty {
     padding: 32px 18px;
     text-align: center;
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 0.95rem;
 }
 
@@ -7766,7 +7766,7 @@ body.page-leaving {
     top: 0;
     left: 0;
     height: 3px;
-    background: linear-gradient(90deg, #00e6ff, #0080ff);
+    background: linear-gradient(90deg, var(--accent-cyan), #0080ff);
     box-shadow: 0 0 8px #00e6ff88;
     z-index: 9999;
     transition: width 0.1s ease-out;
@@ -7784,7 +7784,7 @@ body.page-leaving {
     left: 14px;
     right: 14px;
     height: 2px;
-    background: #00e6ff;
+    background: var(--accent-cyan);
     border-radius: 1px;
     transform: scaleX(0);
     transform-origin: left;
@@ -7912,7 +7912,7 @@ body.page-leaving {
 
 /* ==========================================================================
    Конструктор сборок (build-constructor)
-   ========================================================================== */
+
 
 .bc-intro {
     color: #8e97aa;
@@ -7951,7 +7951,7 @@ body.page-leaving {
     background: #0a1520;
     border: 1px solid rgba(0, 230, 255, 0.2);
     border-radius: 4px;
-    color: #e0f0ff;
+    color: var(--text-primary);
     font-size: 0.85rem;
     text-align: center;
 }
@@ -7986,7 +7986,7 @@ body.page-leaving {
 
 .bc-stage-num {
     font-weight: 600;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 0.9rem;
 }
 
@@ -8015,7 +8015,7 @@ body.page-leaving {
     background: #0a1520;
     border: 1px solid rgba(0, 230, 255, 0.2);
     border-radius: 4px;
-    color: #e0f0ff;
+    color: var(--text-primary);
     font-size: 0.8rem;
     text-align: center;
 }
@@ -8216,7 +8216,7 @@ body.page-leaving {
     background: rgba(0, 230, 255, 0.05);
     border: 2px dashed rgba(0, 230, 255, 0.2);
     border-radius: 6px;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 0.85rem;
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
@@ -8256,7 +8256,7 @@ body.page-leaving {
     transition: background 0.2s, border-color 0.2s;
     white-space: nowrap;
 }
-*/
+
 
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
@@ -8264,7 +8264,7 @@ body.page-leaving {
     background: rgba(0, 230, 255, 0.1);
     border-color: rgba(0, 230, 255, 0.4);
 }
-*/
+
 
 .bc-clear-btn {
     display: inline-flex;
@@ -8298,7 +8298,7 @@ body.page-leaving {
 }
 
 .bc-stage-copy:hover {
-    color: #00e6ff;
+    color: var(--accent-cyan);
 }
 
 .bc-stage-paste {
@@ -8347,7 +8347,7 @@ body.page-leaving {
     text-align: left;
     padding: 6px 8px;
     border-bottom: 1px solid rgba(0, 230, 255, 0.15);
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-weight: 600;
 }
 
@@ -8358,7 +8358,7 @@ body.page-leaving {
 }
 
 .bc-td-stage {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-weight: 600;
     width: 60px;
 }
@@ -8450,7 +8450,7 @@ body.page-leaving {
     background: rgba(0, 230, 255, 0.1);
     border: 1px solid rgba(0, 230, 255, 0.3);
     border-radius: 4px;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     cursor: pointer;
     font-size: 0.75rem;
     transition: background 0.2s;

@@ -60,7 +60,7 @@
         .rune-icon-damage { background: rgba(255, 71, 87, 0.12); color: #ff4757; }
         .rune-icon-vamp { background: rgba(180, 0, 0, 0.12); color: #cc0000; }
         .rune-icon-gold { background: rgba(255, 193, 7, 0.12); color: #ffc107; }
-        .rune-icon-stats { background: rgba(0, 230, 255, 0.12); color: #00e6ff; }
+        .rune-icon-stats { background: var(--glass-border); color: var(--accent-cyan); }
         .rune-icon-illusion { background: rgba(156, 39, 176, 0.12); color: #9c27b0; }
         .rune-icon-speed { background: rgba(255, 152, 0, 0.12); color: #ff9800; }
         .rune-icon-crystal { background: rgba(233, 30, 99, 0.12); color: #e91e63; }
@@ -476,7 +476,7 @@
         }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;

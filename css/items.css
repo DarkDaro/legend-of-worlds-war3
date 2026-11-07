@@ -112,8 +112,8 @@
   z-index: 2;
 }
 .item-sheet-close:hover {
-  border-color: #00e6ff;
-  color: #00e6ff;
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
   box-shadow: 0 0 10px #00e6ff33;
 }
 body.item-sheet-open {
@@ -147,7 +147,7 @@ body.item-sheet-open {
 }
 .tree-toggle:hover {
   background: #1a2e44;
-  color: #00e6ff;
+  color: var(--accent-cyan);
   border-color: #00e6ff88;
   box-shadow: 0 0 8px #00e6ff33;
 }
@@ -162,7 +162,7 @@ body.item-sheet-open {
   background: var(--glass-bg);
   padding: 8px 12px;
   border-radius: 40px;
-  border-left: 4px solid #00e6ff;
+  border-left: 4px solid var(--accent-cyan);
   box-shadow: 0 0 8px #00e6ff33;
   cursor: pointer;
   transition: 0.15s;
@@ -252,10 +252,10 @@ body.item-sheet-open {
   box-shadow: 0 0 6px #00e6ff33;
 }
 .used-in-chip:hover {
-  background: #00e6ff;
+  background: var(--accent-cyan);
   border-color: #ffffff;
   color: #0b0e14;
-  box-shadow: 0 0 20px #00e6ff;
+  box-shadow: 0 0 20px var(--accent-cyan);
 }
 
 /* Босс-дроп ссылка */
@@ -289,7 +289,7 @@ body.item-sheet-open {
   flex-wrap: wrap;
   gap: 8px;
 }
-*/
+
 
 .hero-reco-chip {
   display: inline-flex;
@@ -307,10 +307,10 @@ body.item-sheet-open {
 }
 
 .hero-reco-chip:hover {
-  background: #00e6ff;
+  background: var(--accent-cyan);
   border-color: #ffffff;
   color: #0b0e14;
-  box-shadow: 0 0 20px #00e6ff;
+  box-shadow: 0 0 20px var(--accent-cyan);
 }
 
 .hero-reco-wrap {
@@ -325,16 +325,16 @@ body.item-sheet-open {
   padding: 6px 14px;
   border-radius: 30px;
   font-size: 0.9rem;
-  color: #00e6ff;
+  color: var(--accent-cyan);
   cursor: pointer;
   transition: 0.15s;
 }
 
 .hero-reco-toggle:hover {
-  background: #00e6ff;
+  background: var(--accent-cyan);
   border-color: #ffffff;
   color: #0b0e14;
-  box-shadow: 0 0 20px #00e6ff;
+  box-shadow: 0 0 20px var(--accent-cyan);
 }
 
 .hero-reco-hidden {
@@ -357,7 +357,7 @@ body.item-sheet-open {
 .upgrade-btn {
   background: var(--glass-bg-hover);
   border: 1px solid #00e6ffcc;
-  color: #e0f0ff;
+  color: var(--text-primary);
   padding: 8px 16px;
   border-radius: 30px;
   cursor: pointer;
@@ -366,10 +366,10 @@ body.item-sheet-open {
   box-shadow: 0 0 10px #00e6ff33;
 }
 .upgrade-btn:hover {
-  background: #00e6ff;
+  background: var(--accent-cyan);
   border-color: #ffffff;
   color: #0b0e14;
-  box-shadow: 0 0 25px #00e6ff;
+  box-shadow: 0 0 25px var(--accent-cyan);
   transform: scale(1.02);
 }
 /* .back-button уже определён выше в блоке героев — добавляем только width:100% для предметов */
@@ -395,7 +395,7 @@ body.item-sheet-open {
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 500;
-  color: #e0f0ff;
+  color: var(--text-primary);
 }
 .cost-badge.cost-crystals { border: 1px solid #55aaff55; color: #aaccff; }
 .cost-badge.cost-wood     { border: 1px solid #55ff5555; color: #aaffaa; }
@@ -570,7 +570,7 @@ body.item-sheet-open {
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .item-card.consumable    { border-bottom: 4px solid #00ffaa; box-shadow: 0 0 15px #00ffaa55; }
-*/
+
 .item-card.neutral       { border-bottom: 4px solid #bf7fff; box-shadow: 0 0 15px #bf7fff55; }
 .item-card.boost         { border-bottom: 4px solid #ffaa33; box-shadow: 0 0 15px #ffaa3355; }
 .item-card.strength      { border-bottom: 4px solid #ff5555; box-shadow: 0 0 15px #ff555555; }
@@ -592,14 +592,14 @@ body.item-sheet-open {
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .item-card.consumable:hover { border-color: #00ffaa; box-shadow: 0 0 20px #00ffaaaa, 0 0 40px #00ffaa44; }
-*/
+
 /* Редкость предметов по стоимости */
 .item-card.rarity-cheap  { opacity: 0.85; }
 .item-card.rarity-mid    { opacity: 0.92; }
 .item-card.rarity-expensive { opacity: 1; }
 .item-card.rarity-cheap .item-name   { text-shadow: 0 0 4px #00e6ff44; }
-.item-card.rarity-mid .item-name     { text-shadow: 0 0 6px #00e6ff; }
-.item-card.rarity-expensive .item-name { text-shadow: 0 0 8px #00e6ff, 0 0 16px #00e6ff88; }
+.item-card.rarity-mid .item-name     { text-shadow: 0 0 6px var(--accent-cyan); }
+.item-card.rarity-expensive .item-name { text-shadow: 0 0 8px var(--accent-cyan), 0 0 16px #00e6ff88; }
 
 /* Градиентная рамка при hover — cyan → blue */
 .item-card::before {
@@ -608,7 +608,7 @@ body.item-sheet-open {
   inset: 0;
   border-radius: 16px;
   padding: 1px;
-  background: linear-gradient(135deg, #00e6ff, #0080ff, #00e6ff);
+  background: linear-gradient(135deg, var(--accent-cyan), #0080ff, var(--accent-cyan));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -650,12 +650,12 @@ body.item-sheet-open {
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .item-card.consumable .item-icon img { border-color: #00ffaaaa; box-shadow: 0 0 10px #00ffaa44; }
-*/
+
 .item-name {
   font-size: 0.9rem;
   font-weight: 600;
   color: #f0f5ff;
-  text-shadow: 0 0 6px #00e6ff;
+  text-shadow: 0 0 6px var(--accent-cyan);
   word-break: break-word;
 }
 .hero-search {
@@ -672,19 +672,19 @@ body.item-sheet-open {
   max-width: 400px;
 }
 .hero-search i {
-  color: #00e6ff;
+  color: var(--accent-cyan);
   font-size: 16px;
 }
 .hero-search input {
   background: transparent;
   border: none;
   outline: none;
-  color: #e0f0ff;
+  color: var(--text-primary);
   font-size: 15px;
   width: 100%;
 }
 .hero-search input::placeholder {
-  color: #6b7c99;
+  color: var(--text-muted);
 }
 .hero-count {
   color: #7a8faa;
@@ -707,7 +707,7 @@ body.item-sheet-open {
   justify-content: center;
   cursor: pointer;
   font-size: 14px;
-  color: #6b7c99;
+  color: var(--text-muted);
   transition: 0.15s;
   z-index: 2;
 }
@@ -732,19 +732,19 @@ body.item-sheet-open {
   max-width: 400px;
 }
 .item-search i {
-  color: #00e6ff;
+  color: var(--accent-cyan);
   font-size: 16px;
 }
 .item-search input {
   background: transparent;
   border: none;
   outline: none;
-  color: #e0f0ff;
+  color: var(--text-primary);
   font-size: 15px;
   width: 100%;
 }
 .item-search input::placeholder {
-  color: #6b7c99;
+  color: var(--text-muted);
 }
 .category-tabs {
   display: flex;
@@ -770,13 +770,13 @@ body.item-sheet-open {
   background: #1a3050;
   color: #ffffff;
   box-shadow: 0 0 12px #00e6ff88;
-  border-color: #00e6ff;
+  border-color: var(--accent-cyan);
 }
 .tab-btn.active {
-  background: #00e6ff;
+  background: var(--accent-cyan);
   border-color: #ffffff;
   color: #0b0e14;
-  box-shadow: 0 0 20px #00e6ff, 0 0 0 2px #00e6ff44 inset;
+  box-shadow: 0 0 20px var(--accent-cyan), 0 0 0 2px #00e6ff44 inset;
 }
 @media (max-width: 800px) {
   .app-container {
@@ -1012,7 +1012,7 @@ body.item-sheet-open {
 }
 .item-slug-tooltip .ist-slug {
     font-family: Consolas, monospace;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 11px;
 }
 
@@ -1024,7 +1024,7 @@ body.item-sheet-open {
     margin: 16px 0 4px;
     padding: 14px 16px;
     background: var(--glass-bg);
-    border: 1px solid rgba(0, 230, 255, 0.12);
+    border: 1px solid var(--glass-border);
     border-radius: 14px;
 }
 .bonus-filter-row {
@@ -1069,7 +1069,7 @@ body.item-sheet-open {
     background: #1a3050;
     border-color: var(--accent-cyan);
     color: #fff;
-    box-shadow: 0 0 10px rgba(0, 230, 255, 0.35);
+    box-shadow: 0 0 10px var(--glass-border-hover);
 }
 .bonus-chip.active {
     background: var(--accent-cyan);
@@ -1167,7 +1167,7 @@ body.item-sheet-open {
     font-size: 0.85rem;
     cursor: pointer;
 }
-.bonus-filter-empty button:hover { background: rgba(0, 230, 255, 0.12); }
+.bonus-filter-empty button:hover { background: var(--glass-border); }
 
 @media (max-width: 800px) {
     .bonus-filter { padding: 12px; gap: 8px; }
@@ -1181,7 +1181,7 @@ body.item-sheet-open {
 
 /* 24.10: hidden побеждает display. Было: .bonus-reset { display: inline-flex }
    перебивал браузерное [hidden] { display: none } -> кнопка «Сбросить» висела
-   всегда, хотя сбрасывать нечего. */
+
 .bonus-reset[hidden],
 .bonus-filter-empty[hidden] {
     display: none !important;
@@ -1189,7 +1189,7 @@ body.item-sheet-open {
 
 /* 24.10: табы на узком экране скроллятся, а не разворачиваются в 12 рядов.
    Было: flex-wrap: wrap на <=560px -> полоса 354px = 49% экрана,
-   первая карточка каталога начиналась на 1477px. */
+
 @media (max-width: 560px) {
     .category-tabs {
         flex-wrap: nowrap;

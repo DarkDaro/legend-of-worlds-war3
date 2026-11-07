@@ -24,13 +24,13 @@
     background: #1a3050;
     color: white;
     box-shadow: 0 0 20px #00e6ffaa;
-    border-color: #00e6ff;
+    border-color: var(--accent-cyan);
 }
 .filter-btn.active {
-    background: #00e6ff;
+    background: var(--accent-cyan);
     border-color: white;
     color: #0b0e14;
-    box-shadow: 0 0 25px #00e6ff;
+    box-shadow: 0 0 25px var(--accent-cyan);
 }
 
 /* === Сетка героев (4 в ряд) === */
@@ -97,7 +97,7 @@
     inset: 0;
     border-radius: 12px;
     padding: 1px;
-    background: linear-gradient(135deg, #00e6ff, #0080ff, #00e6ff);
+    background: linear-gradient(135deg, var(--accent-cyan), #0080ff, var(--accent-cyan));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -166,7 +166,7 @@
     font-size: 0.85rem;
     font-weight: 700;
     color: white;
-    text-shadow: 0 0 8px #00e6ff;
+    text-shadow: 0 0 8px var(--accent-cyan);
     margin-bottom: 1px;
     line-height: 1.2;
 }

@@ -171,7 +171,7 @@ body.page-map-changes::after {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.8rem;
     background: var(--glass-bg);
@@ -184,7 +184,7 @@ body.page-map-changes::after {
 }
 
 .calc-back-link:hover {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     border-color: #00e6ff88;
 }
 
@@ -208,7 +208,7 @@ body.page-map-changes::after {
     backdrop-filter: blur(var(--glass-blur));
     -webkit-backdrop-filter: blur(var(--glass-blur));
     border: 1px solid var(--glass-border);
-    color: #e0f0ff;
+    color: var(--text-primary);
     padding: 4px 10px;
     border-radius: 6px;
     font-size: 0.8rem;
@@ -225,7 +225,7 @@ body.page-map-changes::after {
 .calc-share-btn {
     background: transparent;
     border: 1px solid #2a4060;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     padding: 4px 10px;
     border-radius: 6px;
     cursor: pointer;
@@ -236,7 +236,7 @@ body.page-map-changes::after {
 
 .calc-share-btn:hover {
     border-color: #00e6ff88;
-    color: #00e6ff;
+    color: var(--accent-cyan);
 }
 
 .calc-toast {
@@ -248,7 +248,7 @@ body.page-map-changes::after {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid #00e6ff66;
-    color: #e0f0ff;
+    color: var(--text-primary);
     padding: 8px 16px;
     border-radius: 8px;
     font-size: 0.8rem;
@@ -270,7 +270,7 @@ body.page-map-changes::after {
     gap: 6px;
     background: linear-gradient(135deg, #0a1a2a, #0f2535);
     border: 1px solid #00e6ff44;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     padding: 8px 16px;
     border-radius: 8px;
     text-decoration: none;
@@ -353,13 +353,13 @@ body.page-map-changes::after {
     border: 1px solid var(--glass-border);
     border-radius: 6px;
     padding: 6px 10px;
-    color: #e0f0ff;
+    color: var(--text-primary);
     font-size: 0.9rem;
     outline: none;
     box-sizing: border-box;
 }
 .formula-source-input:focus {
-    border-color: #00e6ff;
+    border-color: var(--accent-cyan);
 }
 .calc-page-link {
     display: inline-block;
@@ -391,7 +391,7 @@ body.page-map-changes::after {
 .compare-back-link {
     margin-top: 32px;
 }
-*/
+
 .compare-attr-strength {
     color: #ff5555;
 }
@@ -463,7 +463,7 @@ body.page-map-changes::after {
 }
 
 .calc-slot-empty:hover {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     border-color: #00e6ff88;
 }
 
@@ -512,7 +512,7 @@ body.page-map-changes::after {
 .calc-slot-name {
     font-size: 0.7rem;
     font-weight: 600;
-    color: #e0f0ff;
+    color: var(--text-primary);
     text-align: center;
     margin-bottom: 0;
     word-break: break-word;
@@ -521,7 +521,7 @@ body.page-map-changes::after {
 
 .calc-slot-cost {
     font-size: 0.65rem;
-    color: #8aa0c0;
+    color: var(--text-secondary);
 }
 
 .calc-slot-remove {
@@ -558,7 +558,7 @@ body.page-map-changes::after {
     left: 2px;
     background: rgba(0, 230, 255, 0.1);
     border: none;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     width: 18px;
     height: 18px;
     border-radius: 50%;
@@ -610,7 +610,7 @@ body.page-map-changes::after {
 }
 
 .calc-results-net .calc-results-row-value {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-weight: 700;
 }
 
@@ -624,7 +624,7 @@ body.page-map-changes::after {
 .calc-slots-counter {
     font-size: 0.75rem;
     font-weight: 700;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     background: var(--glass-bg);
     backdrop-filter: blur(var(--glass-blur));
     -webkit-backdrop-filter: blur(var(--glass-blur));
@@ -637,7 +637,7 @@ body.page-map-changes::after {
 .calc-clear-btn {
     background: transparent;
     border: 1px solid #2a4060;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     padding: 3px 10px;
     border-radius: 6px;
     cursor: pointer;
@@ -663,7 +663,7 @@ body.page-map-changes::after {
 }
 
 .calc-results-empty {
-    color: #5a7a9a;
+    color: var(--text-dim);
     text-align: center;
     padding: 16px 8px;
     font-size: 0.82rem;
@@ -713,11 +713,11 @@ body.page-map-changes::after {
 }
 
 .calc-results-row-label {
-    color: #8aa0c0;
+    color: var(--text-secondary);
 }
 
 .calc-results-row-value {
-    color: #e0f0ff;
+    color: var(--text-primary);
     font-weight: 600;
 }
 
@@ -731,7 +731,7 @@ body.page-map-changes::after {
 
 .calc-results-summary {
     font-size: 0.68rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
     text-align: center;
     padding-top: 6px;
     border-top: 1px solid #1a2a40;
@@ -740,7 +740,7 @@ body.page-map-changes::after {
 .calc-shopping-title {
     font-size: 0.72rem;
     font-weight: 700;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-top: 8px;
     padding-top: 6px;
     border-top: 1px solid #1a2a40;
@@ -750,7 +750,7 @@ body.page-map-changes::after {
 .calc-bonuses-title {
     font-size: 0.72rem;
     font-weight: 700;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-bottom: 6px;
 }
 
@@ -785,7 +785,7 @@ body.page-map-changes::after {
 }
 
 .calc-shopping-cost {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-weight: 600;
     white-space: nowrap;
 }
@@ -794,7 +794,7 @@ body.page-map-changes::after {
 .calc-tree-title {
     font-size: 0.82rem;
     font-weight: 700;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-bottom: 6px;
 }
 
@@ -829,7 +829,7 @@ body.page-map-changes::after {
 
 .calc-tree-chevron {
     font-size: 0.65rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
     width: 12px;
     flex-shrink: 0;
     transition: transform 0.15s;
@@ -847,13 +847,13 @@ body.page-map-changes::after {
 .calc-tree-name {
     font-size: 0.78rem;
     font-weight: 600;
-    color: #e0f0ff;
+    color: var(--text-primary);
     flex: 1;
 }
 
 .calc-tree-cost {
     font-size: 0.72rem;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-weight: 600;
     white-space: nowrap;
 }
@@ -882,7 +882,7 @@ body.page-map-changes::after {
 }
 
 .calc-search i {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 13px;
 }
 
@@ -890,13 +890,13 @@ body.page-map-changes::after {
     background: transparent;
     border: none;
     outline: none;
-    color: #e0f0ff;
+    color: var(--text-primary);
     font-size: 13px;
     width: 100%;
 }
 
 .calc-search input::placeholder {
-    color: #6b7c99;
+    color: var(--text-muted);
 }
 
 .calc-catalog-grid {
@@ -941,7 +941,7 @@ body.page-map-changes::after {
 .calc-catalog-name {
     font-size: 0.66rem;
     font-weight: 600;
-    color: #e0f0ff;
+    color: var(--text-primary);
     word-break: break-word;
     margin-bottom: 0;
     line-height: 1.2;
@@ -949,7 +949,7 @@ body.page-map-changes::after {
 
 .calc-catalog-cost {
     font-size: 0.58rem;
-    color: #8aa0c0;
+    color: var(--text-secondary);
 }
 
 /* Мобильная адаптация калькулятора */
@@ -1069,7 +1069,7 @@ body.page-map-changes::after {
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;

@@ -12,7 +12,7 @@
 }
 */
 .support-desc {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 1.05rem;
     line-height: 1.7;
     margin-bottom: 32px;
@@ -44,11 +44,11 @@
     margin-bottom: 12px;
 }
 .support-card h3 {
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-bottom: 8px;
 }
 .support-card p {
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 0.85rem;
 }
 .support-card .method-link {
@@ -56,20 +56,20 @@
     margin-top: 12px;
     padding: 8px 20px;
     background: #00e6ff22;
-    border: 1px solid #00e6ff;
+    border: 1px solid var(--accent-cyan);
     border-radius: 30px;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.85rem;
     transition: 0.2s;
 }
 .support-card .method-link:hover {
-    background: #00e6ff;
+    background: var(--accent-cyan);
     color: #0b0e14;
 }
 .support-thanks {
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 0.9rem;
     margin-top: 24px;
     font-style: italic;
@@ -82,7 +82,7 @@
 }
 .monsters-section h2 {
     font-size: 1.4rem;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-bottom: 16px;
     display: flex;
     align-items: center;
@@ -100,14 +100,14 @@
 }
 .boss-drops-title {
     font-size: 1.1rem;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     margin-bottom: 12px;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 .boss-drops-title i {
-    color: #00e6ff;
+    color: var(--accent-cyan);
 }
 .boss-drops-grid {
     display: flex;
@@ -172,7 +172,7 @@
     padding: 1px 6px;
     border-radius: 6px;
     background: #00e6ff22;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-weight: 600;
 }
 .boss-drop-chance-low {
@@ -303,7 +303,7 @@
 .monster-name {
     font-size: 1rem;
     font-weight: 600;
-    color: #e0f0ff;
+    color: var(--text-primary);
     flex: 1;
 }
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
@@ -316,9 +316,9 @@
     padding: 2px 8px;
     border-radius: 6px;
 }
-*/
+
 .monster-toggle {
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 0.8rem;
     transition: 0.2s;
     display: flex;
@@ -352,18 +352,18 @@
 }
 .monster-stat .stat-label {
     font-size: 0.75rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 .monster-stat .stat-value {
     font-size: 1rem;
     font-weight: 600;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-top: 2px;
 }
 .monster-desc {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     line-height: 1.6;
     margin-top: 12px;
@@ -439,12 +439,12 @@
 }
 .boss-ability-name {
     font-weight: 600;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 0.9rem;
     margin-bottom: 4px;
 }
 .boss-ability-desc {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 0.85rem;
     line-height: 1.5;
 }
@@ -457,7 +457,7 @@
     margin-bottom: 24px;
     font-size: 1.05rem;
 }
-*/
+
 
 /* Иконка заголовка "Боссы" */
 .boss-heading-icon {
@@ -468,7 +468,7 @@
 .boss-section-title {
     font-size: 1rem;
     font-weight: 500;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     margin: 16px 0 8px;
     text-shadow: 0 0 8px #00e6ffaa;
 }
@@ -496,7 +496,7 @@
     margin-bottom: 4px;
 }
 .boss-passive-desc {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 0.85rem;
     line-height: 1.5;
 }
@@ -507,7 +507,7 @@
 .boss-stages {
     margin-top: 12px;
 }
-*/
+
 .boss-stage {
     display: flex;
     align-items: baseline;
@@ -527,7 +527,7 @@
     min-width: 70px;
     flex-shrink: 0;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .boss-stage-desc {
@@ -535,7 +535,7 @@
     font-size: 0.85rem;
     line-height: 1.4;
 }
-*/
+
 
 /* Награда за босса */
 .monster-reward {
@@ -555,11 +555,11 @@
     border: 1px solid #ff555544;
 }
 .reward-label {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 0.85rem;
 }
 .reward-value {
-    color: #e0f0ff;
+    color: var(--text-primary);
     font-size: 0.85rem;
     font-weight: 600;
     text-align: right;
@@ -589,14 +589,14 @@
     vertical-align: middle;
 }
 .item-link {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     text-decoration: none;
     border-bottom: 1px dashed #00e6ff66;
     transition: 0.15s;
 }
 .item-link:hover {
     color: #fff;
-    border-bottom-color: #00e6ff;
+    border-bottom-color: var(--accent-cyan);
     text-shadow: 0 0 8px #00e6ff88;
 }
 .monster-card .reward-row.drop .item-link {
@@ -615,4 +615,4 @@
     font-size: 0.8rem;
     margin-left: 4px;
 }
-*/
+

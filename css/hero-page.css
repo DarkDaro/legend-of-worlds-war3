@@ -32,12 +32,12 @@
     flex: 0 0 auto;
 }
 .hero-nav-btn:hover {
-    border-color: #00e6ff;
+    border-color: var(--accent-cyan);
     box-shadow: 0 0 18px #00e6ff55;
     transform: translateY(-1px);
 }
 .hero-nav-btn i {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     flex: 0 0 auto;
     font-size: 0.95rem;
 }
@@ -50,17 +50,17 @@
 .breadcrumbs {
     margin-bottom: 20px;
     font-size: 0.9rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 .breadcrumbs a {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     text-decoration: none;
 }
 .breadcrumbs a:hover {
-    text-shadow: 0 0 8px #00e6ff;
+    text-shadow: 0 0 8px var(--accent-cyan);
 }
 .breadcrumbs .sep {
     margin: 0 6px;
@@ -81,7 +81,7 @@
     height: 100px;
     background: radial-gradient(circle at 30% 20%, #1e3a5a, #0e1a2b);
     border-radius: 20px;
-    border: 2px solid #00e6ff;
+    border: 2px solid var(--accent-cyan);
     box-shadow: 0 0 20px #00e6ff66;
     display: flex;
     align-items: center;
@@ -185,7 +185,7 @@
 .recipe-title {
     font-size: 1rem;
     font-weight: 500;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     margin: 25px 0 15px;
     text-shadow: 0 0 8px #00e6ffaa;
 }
@@ -211,7 +211,7 @@
     gap: 4px;
 }
 .build-slot:hover {
-    border-color: #00e6ff;
+    border-color: var(--accent-cyan);
     box-shadow: 0 0 12px #00e6ff44;
     transform: translateY(-2px);
 }
@@ -259,7 +259,7 @@
     padding: 16px 20px;
     margin: 12px 0 20px;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .hero-tips h4 {
@@ -268,7 +268,7 @@
     margin-bottom: 8px;
     text-shadow: 0 0 6px #ffb34744;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .hero-tips ul {
@@ -276,7 +276,7 @@
     padding: 0;
     margin: 0;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .hero-tips li {
@@ -286,7 +286,7 @@
     padding: 4px 0 4px 18px;
     position: relative;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .hero-tips li::before {
@@ -296,7 +296,7 @@
     color: #00e6ff;
     font-weight: 700;
 }
-*/
+
 .abilities-grid {
     display: flex;
     flex-direction: column;
@@ -308,7 +308,7 @@
     backdrop-filter: blur(var(--glass-blur));
     -webkit-backdrop-filter: blur(var(--glass-blur));
     border: 1px solid var(--glass-border);
-    border-left: 4px solid #00e6ff;
+    border-left: 4px solid var(--accent-cyan);
     padding: 16px;
     border-radius: 8px;
     box-shadow: inset 0 0 10px #00000055, 0 0 10px #00e6ff22;
@@ -344,14 +344,14 @@
 .ability-card.innate:hover {
     box-shadow: inset 0 0 10px #00000055, 0 0 15px #00ff8844;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .ability-card.innate:hover .ability-icon {
     box-shadow: 0 0 18px #00ff8888;
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
-*/
+
 @keyframes abilityIconPulse {
     0%, 100% { filter: brightness(1); }
     50% { filter: brightness(1.3); }
@@ -370,7 +370,7 @@
     border-left-color: #00ff88;
     box-shadow: inset 0 0 10px #00000055, 0 0 10px #00ff8822;
 }
-*/
+
 .ability-header {
     display: flex;
     align-items: center;
@@ -387,7 +387,7 @@
     align-items: center;
     justify-content: center;
     font-size: 26px;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     overflow: hidden;
     flex-shrink: 0;
     box-shadow: 0 0 10px #00e6ff44;
@@ -421,7 +421,7 @@
     border-radius: 6px;
     font-size: 0.8rem;
     font-weight: 800;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     flex-shrink: 0;
     text-shadow: 0 0 6px #00e6ff88;
     box-shadow: 0 0 8px #00e6ff44;
@@ -479,7 +479,7 @@
     color: #00ff88;
     border-color: #00ff8866;
 }
-*/
+
 .ability-tag {
     display: inline-block;
     font-size: 0.65rem;
@@ -536,7 +536,7 @@
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .luck-chance { color: #55ff55; font-weight: 600; }
-*/
+
 .ability-params {
     display: flex;
     flex-wrap: wrap;
@@ -560,7 +560,7 @@
     content: ':';
 }
 .param-values {
-    color: #e0f0ff;
+    color: var(--text-primary);
     font-weight: 600;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
@@ -597,7 +597,7 @@
     margin-right: 2px;
 }
 .param-label.radius {
-    color: #00e6ff;
+    color: var(--accent-cyan);
 }
 .param-label.radius::before {
     content: '\f05b';
@@ -620,7 +620,7 @@
     background: var(--glass-bg);
     backdrop-filter: blur(var(--glass-blur));
     -webkit-backdrop-filter: blur(var(--glass-blur));
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
@@ -628,13 +628,13 @@
     transition: all 0.2s;
 }
 .form-tab:hover {
-    border-color: #00e6ff;
+    border-color: var(--accent-cyan);
     color: #c0d4ff;
 }
 .form-tab.active {
     background: #1a2a45;
-    border-color: #00e6ff;
-    color: #00e6ff;
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
     box-shadow: 0 0 12px #00e6ff44;
 }
 .form-tab.active.alt-form {
@@ -683,7 +683,7 @@
 .ability-cycle-group {
     margin-bottom: 12px;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .cycle-label {
@@ -700,7 +700,7 @@
     font-size: 0.8rem;
     color: #8aa0c0;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .cycle-label .cycle-key {
@@ -711,7 +711,7 @@
     font-weight: 700;
     font-size: 0.75rem;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .cycle-label .cycle-hint {
@@ -719,35 +719,35 @@
     color: #5a7a9a;
     font-size: 0.75rem;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .ability-cycle-group .ability-card {
     border-left: 3px solid #00e6ff44;
 }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .ability-cycle-group .ability-card:nth-child(1) { border-left-color: #bf7fff; }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .ability-cycle-group .ability-card:nth-child(2) { border-left-color: #ff5555; }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .ability-cycle-group .ability-card:nth-child(3) { border-left-color: #55aaff; }
-*/
+
 /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
 /*
 .ability-cycle-group .ability-card:nth-child(4) { border-left-color: #8800ff; }
-*/
+
 .back-button, .back-link {
     display: inline-block;
     margin-top: 20px;
     background: var(--glass-bg);
     border: 1px solid #00e6ffcc;
-    color: #e0f0ff;
+    color: var(--text-primary);
     padding: 12px 24px;
     border-radius: 30px;
     cursor: pointer;
@@ -758,14 +758,14 @@
     transition: 0.15s;
 }
 .back-button:hover, .back-link:hover {
-    background: #00e6ff;
+    background: var(--accent-cyan);
     border-color: white;
     color: #0b0e14;
-    box-shadow: 0 0 25px #00e6ff;
+    box-shadow: 0 0 25px var(--accent-cyan);
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -776,7 +776,7 @@
 }
 
 /* 24.10: .detail-title стал <h1> для SEO. Глобальное правило h1 в base.css
-   добавляет подчёркивание и синий градиент — гасим их точечно. */
+
 .panel-header h1.detail-title {
     border-bottom: 0;
     background: none;

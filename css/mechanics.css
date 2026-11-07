@@ -26,7 +26,7 @@
     margin-bottom: 16px;
 }
 .version-badge {
-    background: #00e6ff;
+    background: var(--accent-cyan);
     color: #0b0e14;
     padding: 4px 12px;
     border-radius: 20px;
@@ -38,13 +38,13 @@
     color: #fff;
 }
 .version-date {
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 0.85rem;
 }
 .version-title {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #e0f0ff;
+    color: var(--text-primary);
 }
 .change-list {
     list-style: none;
@@ -270,11 +270,11 @@
 }
 .mechanic-card h3 {
     font-size: 1.1rem;
-    color: #e0f0ff;
+    color: var(--text-primary);
     margin-bottom: 8px;
 }
 .mechanic-card p {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     line-height: 1.6;
     margin-bottom: 12px;
@@ -288,7 +288,7 @@
     border-radius: 10px;
     padding: 12px 16px;
     font-family: 'Consolas', 'Courier New', monospace;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 0.85rem;
     margin-top: 8px;
 }
@@ -309,8 +309,8 @@
     transition: border-color 0.2s, color 0.2s;
 }
 .mech-calc-link:hover {
-    border-color: #00e6ff;
-    color: #00e6ff;
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
 }
 
 /* ===== Уникальные анимации карточек механик ===== */
@@ -1044,7 +1044,7 @@
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;

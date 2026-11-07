@@ -60,12 +60,12 @@
     display: block;
     width: 22px;
     height: 2px;
-    background: #00e6ff;
+    background: var(--accent-cyan);
     border-radius: 2px;
     transition: 0.3s;
 }
 .hamburger-btn:hover {
-    border-color: #00e6ff;
+    border-color: var(--accent-cyan);
     box-shadow: 0 0 10px #00e6ff44;
 }
 .hamburger-btn.open span:nth-child(1) {
@@ -95,14 +95,14 @@
     width: 48px;
     height: 48px;
     border-radius: 14px;
-    border: 2px solid #00e6ff;
+    border: 2px solid var(--accent-cyan);
     box-shadow: 0 0 15px #00e6ff88;
     object-fit: cover;
 }
 
 /* Улучшение для логотипа-картинки при наведении */
 .logo:hover .logo-img {
-    box-shadow: 0 0 20px #00e6ff, 0 0 30px #00e6ffaa;
+    box-shadow: 0 0 20px var(--accent-cyan), 0 0 30px #00e6ffaa;
     border-color: #ffffff;
 }
 

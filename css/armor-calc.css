@@ -28,7 +28,7 @@
             transition: border-color 0.2s;
         }
         .armor-input-row input:focus {
-            border-color: #00e6ff;
+            border-color: var(--accent-cyan);
         }
         .armor-input-row .armor-unit {
             color: var(--text-muted);
@@ -45,7 +45,7 @@
             cursor: pointer;
         }
         .armor-const-toggle input[type="checkbox"] {
-            accent-color: #00e6ff;
+            accent-color: var(--accent-cyan);
         }
         .armor-const-input {
             display: none;
@@ -107,7 +107,7 @@
         .armor-bar-fill {
             height: 100%;
             border-radius: 6px;
-            background: linear-gradient(90deg, #00e6ff, #00ffaa);
+            background: linear-gradient(90deg, var(--accent-cyan), #00ffaa);
             transition: width 0.3s ease;
         }
         .armor-formula {
@@ -211,10 +211,10 @@
 
 /* 24.10: чекбокс «Константа 0.05» был 13x13 — мелко для пальца */
 /* [off 08.11 css-аудит] из селектора убрана мёртвая часть «.armor-toggle input[type="checkbox"]»
-   (класс armor-toggle не используется нигде: HTML, JS, живой DOM); было: «#constToggle, .armor-toggle input[type="checkbox"]» */
+
 #constToggle {
     width: 20px;
     height: 20px;
     cursor: pointer;
-    accent-color: var(--accent-cyan, #00e6ff);
+    accent-color: var(--accent-cyan, var(--accent-cyan));
 }

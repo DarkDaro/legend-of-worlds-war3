@@ -10,27 +10,27 @@
 }
 
 .storage-info-panel {
-    background: var(--glass-bg, rgba(15, 23, 42, 0.5));
+    background: var(--glass-bg, var(--glass-bg));
     backdrop-filter: blur(var(--glass-blur, 12px));
-    border: 1px solid var(--glass-border, rgba(0, 230, 255, 0.12));
+    border: 1px solid var(--glass-border, var(--glass-border));
     border-radius: 14px;
     padding: 22px 24px;
     min-height: 320px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .storage-info-panel.active {
-    border-color: var(--glass-border-hover, rgba(0, 230, 255, 0.35));
+    border-color: var(--glass-border-hover, var(--glass-border-hover));
     box-shadow: var(--neon-glow, 0 0 20px rgba(0, 230, 255, 0.2));
 }
 .storage-info-icon {
     font-size: 1.6rem;
-    color: var(--accent-cyan, #00e6ff);
+    color: var(--accent-cyan, var(--accent-cyan));
     margin-bottom: 10px;
 }
 .storage-info-title {
     margin: 0 0 10px;
     font-size: 1.15rem;
-    color: var(--text-primary, #e0f0ff);
+    color: var(--text-primary, var(--text-primary));
 }
 .storage-info-text {
     color: #c8d8f0;
@@ -40,16 +40,16 @@
 }
 .storage-info-hint {
     font-size: 0.82rem;
-    color: var(--text-secondary, #8aa0c0);
-    border-left: 3px solid rgba(0, 230, 255, 0.35);
+    color: var(--text-secondary, var(--text-secondary));
+    border-left: 3px solid var(--glass-border-hover);
     padding-left: 12px;
 }
 
 /* --- Ящик --- */
 .storage-box {
-    background: var(--glass-bg, rgba(15, 23, 42, 0.5));
+    background: var(--glass-bg, var(--glass-bg));
     backdrop-filter: blur(var(--glass-blur, 12px));
-    border: 1px solid var(--glass-border, rgba(0, 230, 255, 0.12));
+    border: 1px solid var(--glass-border, var(--glass-border));
     border-radius: 14px;
     padding: 16px;
     box-shadow: 0 0 15px #00000080, 0 0 0 1px #00e6ff22 inset;
@@ -59,12 +59,12 @@
     align-items: center;
     gap: 10px;
     font-weight: 600;
-    color: var(--text-primary, #e0f0ff);
+    color: var(--text-primary, var(--text-primary));
     padding-bottom: 12px;
     margin-bottom: 12px;
-    border-bottom: 1px solid rgba(0, 230, 255, 0.12);
+    border-bottom: 1px solid var(--glass-border);
 }
-.storage-box-header i { color: var(--accent-cyan, #00e6ff); }
+.storage-box-header i { color: var(--accent-cyan, var(--accent-cyan)); }
 
 /* Кнопки общие */
 .storage-btn {
@@ -99,13 +99,13 @@
         box-shadow: none;
         color: #d0e0ff;
     }
-    .storage-collapse:hover { border-color: rgba(0, 230, 255, 0.12); }
+    .storage-collapse:hover { border-color: var(--glass-border); }
     .storage-table tr:hover td { background: none; }
 }
 .storage-btn.selected {
     border-color: rgba(0, 230, 255, 0.7);
     background: rgba(0, 255, 255, 0.14);
-    box-shadow: 0 0 14px rgba(0, 230, 255, 0.35);
+    box-shadow: 0 0 14px var(--glass-border-hover);
     color: #fff;
 }
 /* Текст кнопок переносится, не распирает сетку */
@@ -139,7 +139,7 @@
 }
 .storage-slot .storage-slot-num {
     font-size: 0.7rem;
-    color: var(--text-secondary, #8aa0c0);
+    color: var(--text-secondary, var(--text-secondary));
     font-weight: 600;
 }
 /* Грид-детям разрешить сжиматься ниже ширины контента */
@@ -160,11 +160,11 @@
 .storage-spellbooks {
     margin-top: 12px;
     padding-top: 12px;
-    border-top: 1px solid rgba(0, 230, 255, 0.12);
+    border-top: 1px solid var(--glass-border);
 }
 .storage-spellbooks-label {
     font-size: 0.8rem;
-    color: var(--text-secondary, #8aa0c0);
+    color: var(--text-secondary, var(--text-secondary));
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 8px;
@@ -197,7 +197,7 @@
 .storage-book-panel.open { display: block; }
 .storage-book-panel-title {
     font-size: 0.75rem;
-    color: var(--accent-cyan, #00e6ff);
+    color: var(--accent-cyan, var(--accent-cyan));
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 8px;
@@ -244,11 +244,11 @@
     border-bottom: 1px solid rgba(0, 230, 255, 0.1);
 }
 .storage-table th {
-    color: var(--accent-cyan, #00e6ff);
+    color: var(--accent-cyan, var(--accent-cyan));
     font-weight: 600;
     white-space: nowrap;
 }
-.storage-table td strong { color: #e0f0ff; }
+.storage-table td strong { color: var(--text-primary); }
 .storage-table tr:hover td { background: rgba(0, 230, 255, 0.04); }
 .storage-hk {
     display: inline-block;
@@ -282,13 +282,13 @@
 
 /* Сворачиваемые карточки кнопок (низ страницы) */
 .storage-collapse {
-    border: 1px solid rgba(0, 230, 255, 0.12);
+    border: 1px solid var(--glass-border);
     border-radius: 10px;
     margin-bottom: 8px;
     background: rgba(0, 255, 255, 0.03);
     transition: border-color 0.2s ease;
 }
-.storage-collapse:hover { border-color: rgba(0, 230, 255, 0.35); }
+.storage-collapse:hover { border-color: var(--glass-border-hover); }
 .storage-collapse-head {
     display: flex;
     align-items: center;
@@ -305,12 +305,12 @@
 .storage-collapse-head .storage-hk { margin-right: 0; }
 .storage-collapse-head .coll-name {
     font-weight: 600;
-    color: var(--text-primary, #e0f0ff);
+    color: var(--text-primary, var(--text-primary));
     flex: 1;
     min-width: 0;
 }
 .storage-collapse-head .coll-chev {
-    color: var(--accent-cyan, #00e6ff);
+    color: var(--accent-cyan, var(--accent-cyan));
     font-size: 0.8rem;
     transition: transform 0.25s ease;
     flex-shrink: 0;
@@ -334,7 +334,7 @@
     flex-wrap: wrap;
     margin-top: 8px;
     font-size: 0.78rem;
-    color: var(--text-secondary, #8aa0c0);
+    color: var(--text-secondary, var(--text-secondary));
 }
 .storage-collapse-meta .meta-chip {
     border: 1px solid rgba(0, 230, 255, 0.18);
@@ -350,7 +350,7 @@
     .storage-spellbooks-row { grid-template-columns: repeat(3, 1fr); }
     /* Мобильные GPU: backdrop-filter дорог и вызывает мерцание/дрожание соседних
        слоёв (переливание заголовка при скролле). На мобиле отключаем blur,
-       компенсируем более плотным фоном. */
+
     .storage-box, .storage-info-panel, .storage-book-panel {
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
@@ -414,15 +414,15 @@
     color: var(--text-secondary, #9ab);
     background: transparent;
     /* 08.11 css-аудит: было var(--border-color, #2a3a4a) — переменной нигде нет,
-       всегда работал fallback; заменено на точное значение, вид не менялся */
+
     border: 1px solid #2a3a4a;
     border-radius: 4px;
     cursor: pointer;
     transition: color 0.2s, border-color 0.2s;
 }
 .storage-info-reset:hover {
-    color: var(--accent-cyan, #00e6ff);
-    border-color: var(--accent-cyan, #00e6ff);
+    color: var(--accent-cyan, var(--accent-cyan));
+    border-color: var(--accent-cyan, var(--accent-cyan));
 }
 .storage-info-reset:active {
     transform: scale(0.96);

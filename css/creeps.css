@@ -18,7 +18,7 @@
         }
         .creep-filters .passive-btn:hover,
         .creep-filters .passive-btn.active {
-            background: rgba(0, 230, 255, 0.12);
+            background: var(--glass-border);
             border-color: var(--accent-cyan);
             color: var(--text-primary);
         }
@@ -35,10 +35,10 @@
 
         /* ── Шире контейнер для таблицы ── */
         /* [off 08.11 css-аудит] дубль бандла: hero-page.css уже ставит 1200px,
-           правило ничего не делало; вернуть = снять обёртку */
+
         /*
         .hero-page-container { max-width: 1200px; }
-        */
+
 
         /* ── Таблица ── */
         .creep-table-wrap {
@@ -165,7 +165,7 @@
         }
         .col-toggle:hover { border-color: var(--accent-cyan); color: var(--text-primary); }
         .col-toggle.active {
-            background: rgba(0, 230, 255, 0.12);
+            background: var(--glass-border);
             border-color: var(--accent-cyan);
             color: var(--text-primary);
         }
@@ -258,7 +258,7 @@
 
 /* 31.08: wiki-контейнер шире (hero-page-container 1000px -> 1200px, только эта страница) */
 /* [off 08.11 css-аудит] дубль бандла: с тех пор 1200px переехало в hero-page.css и действует на всех страницах,
-   этот повтор ничего не делал; вернуть = снять обёртку */
+
 /*
 .hero-page-container { max-width: 1200px; }
-*/
+

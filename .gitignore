@@ -70,5 +70,8 @@ heroes/sorcerer-demo.html
 # Одноразовые скрипты (генераторы/дебаг/тесты slug-работы)
 oneshots/
 
+# Временные скрипты правок (node.js/python) — не часть сайта
+scripts/tmp/
+
 # Тяжёлый исходник карты (16.6MB). Fallback для map.html — images/maplows.jpg
 images/maplows.png
