@@ -14,6 +14,7 @@
 
 ## Готово
 
+- ✅ Пуш сессии аудита: 11 коммитов (e4bba47…bc6aada), CI lint success, Pages success, живая сверка пройдена (2026-11-07)
 - ✅ Техаудит прочности: гигиена чистая (defer 1064/1064, canonical/OG/description 115/116, title без дублей, favicon 116/116), пробелы закрыты тремя чанками ниже; хвост — в ARCHITECTURE §11 (2026-11-07)
 - ✅ SEO-пакет: JSON-LD — WebSite на главной, BreadcrumbList на галерее/хранилище/сборке ИИ; scripts/gen-sitemap.py — lastmod по git-истории (98 без изменений, 16 свежих), состав 114 URL не менялся (e4bba47, cbe4527, 463bb3a, 2026-11-07)
 - ✅ Единый футер на 115 страницах: place-footer.py (бренд, 7 разделов, GitHub, копирайт) вместо шести вариантов с соцссылками на #; .footer-links flex-wrap; рендер 360/1280 без overflow (ccace8a, fa9b0b4, 2026-11-07)
