@@ -1,13 +1,14 @@
-/* === hero-page-container: глобальный 1000px, переопределён на balance.html (1200px) === */
+/* === hero-page-container: глобальный 1200px (07.11 — шире по решению владельца, было 1000;
+     balance/creeps уже были 1200 — их локальные оверрайды теперь неоперационны, но безвредны) === */
 .hero-page-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     background: rgba(18, 25, 40, 0.9);
     backdrop-filter: blur(8px);
     border-radius: 24px;
     border: 1px solid #2a4060;
     box-shadow: 0 0 30px #00000080, 0 0 0 1px #00e6ff22 inset, 0 0 20px #00e6ff33;
-    padding: 25px;
+    padding: 28px 32px;
 }
 .hero-nav {
     display: flex;

@@ -39,16 +39,16 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
-/* === wiki-container: глобальный 1600px === */
+/* === wiki-container: глобальный 1760px (07.11 — шире и свободнее по решению владельца, было 1600) === */
 .wiki-container {
-    max-width: 1600px;
+    max-width: 1760px;
     margin: 0 auto;
     background: rgba(10, 20, 40, 0.45);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(0, 230, 255, 0.08);
     border-radius: 16px;
-    padding: 24px 32px;
+    padding: 28px 40px;
     margin-top: 16px;
     margin-bottom: 24px;
 }
