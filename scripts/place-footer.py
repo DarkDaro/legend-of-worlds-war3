@@ -9,10 +9,11 @@
 подкаталогах (heroes/, guides/). Служебные каталоги (.git, archive,
 repo-archive) и site-validator.html не обрабатываются.
 
-Канонический футер: бренд, ссылки на разделы (Герои, Предметы, Гайды,
-Калькулятор, Обновления, Информация, Поддержать), GitHub репозитория,
-копирайт. Мёртвые соцсети (href="#") убраны: реальных ссылок на
-сообщества у проекта нет, выдумывать запрещено правилом anti-slop.
+Канонический футер — минимализм по решению владельца (07.11.2026):
+иконка с именем и строка копирайта © 2026. Ссылки на разделы и GitHub
+убраны как дублирующие навигацию шапки. Ранее мёртвые соцсети
+(href="#") убраны ещё в fa9b0b4: реальных ссылок на сообщества у
+проекта нет, выдумывать запрещено правилом anti-slop.
 """
 import re
 import sys
@@ -22,31 +23,14 @@ SITE_ROOT = Path(__file__).resolve().parent.parent
 EXCLUDE_DIRS = {".git", "archive", "repo-archive", "docs", "scripts", "vendor"}
 EXCLUDE_FILES = {"site-validator.html"}
 
-GITHUB = "https://github.com/DarkDaro/legend-of-worlds-war3"
-LINKS = [
-    ("heroes.html", "Герои"),
-    ("items.html", "Предметы"),
-    ("guides.html", "Гайды"),
-    ("calculator.html", "Калькулятор"),
-    ("updates.html", "Обновления"),
-    ("info.html", "Информация"),
-    ("support.html", "Поддержать"),
-]
-
 TEMPLATE = """    <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-brand">
                 <span class="footer-logo"><img loading="lazy" src="{p}images/preview.png" alt="" width="28" height="28" class="footer-logo-img" decoding="async"> Legend of Worlds</span>
             </div>
-            <div class="footer-links">
-{links}
-            </div>
-            <div class="footer-social">
-                <a href="{github}" title="GitHub репозиторий" aria-label="GitHub репозиторий карты" rel="noopener"><i class="fab fa-github"></i></a>
-            </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025&ndash;2026 Legend of Worlds. Все права защищены.</p>
+            <p>&copy; 2026 Legend of Worlds. Все права защищены.</p>
         </div>
     </footer>"""
 
@@ -54,11 +38,7 @@ FOOTER_RE = re.compile(r'<footer class="site-footer">.*?</footer>', re.DOTALL)
 
 
 def render(prefix: str) -> str:
-    links = "\n".join(
-        f'                <a href="{prefix}{href}">{name}</a>'
-        for href, name in LINKS
-    )
-    return TEMPLATE.format(p=prefix, links=links, github=GITHUB)
+    return TEMPLATE.format(p=prefix)
 
 
 def main() -> int:
