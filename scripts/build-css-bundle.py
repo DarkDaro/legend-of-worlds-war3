@@ -1,26 +1,26 @@
 #!/usr/bin/env python3
-"""Сборка css/all.css из @import-списка корневого style.css и замена
+"""Сборка css/all.css из @import-списка style.css и замена
 ссылок на страницах.
 
 Без зависимостей. Запуск из корня репозитория:
     python3 scripts/build-css-bundle.py
 
 Что делает:
-  1. читает style.css, извлекает порядок @import url('css/…');
+  1. читает repo-archive/style.css (перенесён из корня в e4b72f6
+     по правилу «файлы не удалять»), извлекает порядок @import url('css/…');
   2. конкатенирует файлы в том же порядке в css/all.css (каскад
      идентичен прежнему: тот же набор, тот же порядок, те же байты);
   3. заменяет в HTML-страницах href="style.css" → href="css/all.css"
-     (и ../style.css → ../css/all.css в подкаталогах).
+     (и ../style.css → ../css/all.css в подкаталогах) — идемпотентно.
 
-Файл style.css скрипт не трогает и не удаляет: перенос в repo-archive/
-делается вручную git mv по прецеденту «файлы не удалять».
+Файл style.css скрипт не трогает и не удаляет.
 """
 import re
 import sys
 from pathlib import Path
 
 SITE_ROOT = Path(__file__).resolve().parent.parent
-STYLE = SITE_ROOT / "style.css"
+STYLE = SITE_ROOT / "repo-archive" / "style.css"
 BUNDLE = SITE_ROOT / "css" / "all.css"
 IMPORT_RE = re.compile(r"@import\s+url\('([^']+)'\);")
 EXCLUDE_DIRS = {".git", "archive", "repo-archive", "docs", "scripts", "vendor"}
