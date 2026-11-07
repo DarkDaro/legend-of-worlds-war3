@@ -474,7 +474,9 @@
 }
 .footer-links {
     display: flex;
-    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 20px;
 }
 .footer-links a {
     color: #8aa0c0;
