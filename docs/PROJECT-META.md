@@ -1,5 +1,7 @@
 # PROJECT-META — паспорт проекта
 
+Паспорт: кто, где и по каким правилам работает. Сухой, и должен быть сухим.
+
 **Проект:** Legend of Worlds — сайт карты для Warcraft III
 **Репозиторий:** DarkDaro/legend-of-worlds-war3
 **Сайт:** https://darkdaro.github.io/legend-of-worlds-war3/
