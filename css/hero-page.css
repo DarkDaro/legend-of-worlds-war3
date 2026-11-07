@@ -250,6 +250,8 @@
 }
 
 /* === Тактика и советы === */
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .hero-tips {
     background: #0a1018;
     border: 1px solid #1a3050;
@@ -257,17 +259,26 @@
     padding: 16px 20px;
     margin: 12px 0 20px;
 }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .hero-tips h4 {
     color: #ffcc66;
     font-size: 0.95rem;
     margin-bottom: 8px;
     text-shadow: 0 0 6px #ffb34744;
 }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .hero-tips ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .hero-tips li {
     color: #8aa0c0;
     font-size: 0.85rem;
@@ -275,6 +286,9 @@
     padding: 4px 0 4px 18px;
     position: relative;
 }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .hero-tips li::before {
     content: '›';
     position: absolute;
@@ -282,6 +296,7 @@
     color: #00e6ff;
     font-weight: 700;
 }
+*/
 .abilities-grid {
     display: flex;
     flex-direction: column;
@@ -324,13 +339,19 @@
     box-shadow: 0 0 18px #ff8c0088;
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .ability-card.innate:hover {
     box-shadow: inset 0 0 10px #00000055, 0 0 15px #00ff8844;
 }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .ability-card.innate:hover .ability-icon {
     box-shadow: 0 0 18px #00ff8888;
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
+*/
 @keyframes abilityIconPulse {
     0%, 100% { filter: brightness(1); }
     50% { filter: brightness(1.3); }
@@ -343,10 +364,13 @@
     border-left-color: #ff8c00;
     box-shadow: inset 0 0 10px #00000055, 0 0 10px #ff8c0022;
 }
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .ability-card.innate {
     border-left-color: #00ff88;
     box-shadow: inset 0 0 10px #00000055, 0 0 10px #00ff8822;
 }
+*/
 .ability-header {
     display: flex;
     align-items: center;
@@ -448,11 +472,14 @@
     color: #ff8c00;
     border-color: #ff8c0066;
 }
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .ability-card.innate .ability-type-badge {
     background: #0a2a1a;
     color: #00ff88;
     border-color: #00ff8866;
 }
+*/
 .ability-tag {
     display: inline-block;
     font-size: 0.65rem;
@@ -506,7 +533,10 @@
     margin-bottom: 10px;
 }
 /* Удача: зелёный «шанс» в описаниях способностей (из цветокода |c00FF5555) */
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .luck-chance { color: #55ff55; font-weight: 600; }
+*/
 .ability-params {
     display: flex;
     flex-wrap: wrap;
@@ -648,9 +678,14 @@
     display: block;
 }
 /* === Цикличные способности (Q с вариантами) === */
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .ability-cycle-group {
     margin-bottom: 12px;
 }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .cycle-label {
     display: flex;
     align-items: center;
@@ -665,6 +700,9 @@
     font-size: 0.8rem;
     color: #8aa0c0;
 }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .cycle-label .cycle-key {
     background: #00e6ff22;
     color: #00e6ff;
@@ -673,18 +711,37 @@
     font-weight: 700;
     font-size: 0.75rem;
 }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .cycle-label .cycle-hint {
     margin-left: auto;
     color: #5a7a9a;
     font-size: 0.75rem;
 }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .ability-cycle-group .ability-card {
     border-left: 3px solid #00e6ff44;
 }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .ability-cycle-group .ability-card:nth-child(1) { border-left-color: #bf7fff; }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .ability-cycle-group .ability-card:nth-child(2) { border-left-color: #ff5555; }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .ability-cycle-group .ability-card:nth-child(3) { border-left-color: #55aaff; }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .ability-cycle-group .ability-card:nth-child(4) { border-left-color: #8800ff; }
+*/
 .back-button, .back-link {
     display: inline-block;
     margin-top: 20px;

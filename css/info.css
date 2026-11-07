@@ -524,7 +524,10 @@
 .mc-tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; margin-left: 6px; }
 .mc-tag-balance { background: rgba(255,200,0,0.12); border: 1px solid rgba(255,200,0,0.3); color: #ffc800; }
 .mc-tag-rework { background: rgba(0,200,255,0.1); border: 1px solid rgba(0,200,255,0.3); color: #00c8ff; }
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .mc-tag-fix { background: rgba(100,255,100,0.1); border: 1px solid rgba(100,255,100,0.3); color: #64ff64; }
+*/
 .mc-note { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; padding-left: 10px; border-left: 2px solid var(--glass-border); }
 .mc-pie-wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
 .mc-pie-svg { width: 160px; height: 160px; flex-shrink: 0; }

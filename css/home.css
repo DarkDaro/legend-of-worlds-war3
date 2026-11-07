@@ -472,34 +472,52 @@
     font-size: 0.85rem;
     margin-top: 4px;
 }
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .footer-links {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px 20px;
 }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .footer-links a {
     color: #8aa0c0;
     text-decoration: none;
     font-size: 0.9rem;
     transition: 0.15s;
 }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .footer-links a:hover {
     color: #00e6ff;
 }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .footer-social {
     display: flex;
     gap: 16px;
 }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .footer-social a {
     color: #5a7a9a;
     font-size: 1.3rem;
     transition: 0.15s;
 }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .footer-social a:hover {
     color: #00e6ff;
     text-shadow: 0 0 10px #00e6ff66;
 }
+*/
 .footer-bottom {
     text-align: center;
     padding-top: 20px;

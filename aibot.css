@@ -1,6 +1,8 @@
 /* ── ИИ-боты: стили страницы ── */
 
-/* 31.08: контейнер шире (было 960px, затем 1280px) */
+/* 31.08: контейнер шире (было 960px, затем 1280px).
+   Зависимость от бандла (осознанная): фон/рамки/отступы контейнера приходят
+   из hero-page.css, здесь переопределяется только ширина. */
 .hero-page-container { max-width: 1440px; }
 h2 { color: var(--accent-cyan); font-size: 1.2rem; margin: 32px 0 12px; border-bottom: 1px solid var(--glass-border); padding-bottom: 6px; }
 h2:first-child { margin-top: 0; }
@@ -106,25 +108,25 @@ h3 { color: var(--text-primary); font-size: 1rem; margin: 20px 0 8px; }
 .state-ready { background: rgba(0,230,255,0.12); color: #00e6ff; }
 
 /* ── Таблица сравнения ── */
-.compare-table {
+.ai-compare-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.85rem;
 }
-.compare-table th {
+.ai-compare-table th {
     padding: 10px 14px; text-align: left;
     color: var(--text-muted); font-weight: 500;
     border-bottom: 1px solid var(--glass-border);
     background: rgba(13,27,42,0.95);
 }
-.compare-table th:first-child { width: 35%; }
-.compare-table td {
+.ai-compare-table th:first-child { width: 35%; }
+.ai-compare-table td {
     padding: 8px 14px;
     border-bottom: 1px solid rgba(255,255,255,0.04);
     color: var(--text-secondary);
 }
-.compare-table tr:hover td { background: rgba(0,230,255,0.04); }
-.compare-table td:first-child { color: var(--text-primary); font-weight: 500; }
+.ai-compare-table tr:hover td { background: rgba(0,230,255,0.04); }
+.ai-compare-table td:first-child { color: var(--text-primary); font-weight: 500; }
 
 /* ── Спойлер ── */
 .spoiler-toggle {
@@ -170,9 +172,9 @@ h3 { color: var(--text-primary); font-size: 1rem; margin: 20px 0 8px; }
     .priority-step .step-desc { font-size: 0.78rem; }
     .ai-card { padding: 14px 16px; }
     .ai-card p, .ai-card li { font-size: 0.84rem; }
-    .state-table, .compare-table { font-size: 0.82rem; }
+    .state-table, .ai-compare-table { font-size: 0.82rem; }
     .state-table th, .state-table td,
-    .compare-table th, .compare-table td { padding: 8px 10px; }
+    .ai-compare-table th, .ai-compare-table td { padding: 8px 10px; }
     .mana-gate { font-size: 0.82rem; padding: 7px 10px; }
     h2 { font-size: 1.1rem; margin: 24px 0 10px; }
     h3 { font-size: 0.95rem; }
@@ -185,16 +187,16 @@ h3 { color: var(--text-primary); font-size: 1rem; margin: 20px 0 8px; }
     .ai-card { padding: 12px 14px; margin-bottom: 12px; }
     .ai-card p, .ai-card li { font-size: 0.8rem; }
     .ai-card ul, .ai-card ol { padding-left: 14px; }
-    .state-table, .compare-table { font-size: 0.75rem; }
+    .state-table, .ai-compare-table { font-size: 0.75rem; }
     .state-table th, .state-table td,
-    .compare-table th, .compare-table td { padding: 6px 8px; }
+    .ai-compare-table th, .ai-compare-table td { padding: 6px 8px; }
     .state-badge { font-size: 0.72rem; padding: 1px 6px; }
     .mana-gate { font-size: 0.78rem; padding: 6px 8px; gap: 8px; }
     .mana-gate-icon { font-size: 0.85rem; }
     h2 { font-size: 1rem; margin: 20px 0 8px; }
     h3 { font-size: 0.9rem; margin: 14px 0 6px; }
     .spoiler-toggle { font-size: 0.8rem; padding: 6px 12px; }
-    .compare-table th:first-child { width: 40%; }
+    .ai-compare-table th:first-child { width: 40%; }
 }
 @media (max-width: 480px) {
     .priority-chain { margin: 8px 0; }
@@ -203,9 +205,9 @@ h3 { color: var(--text-primary); font-size: 1rem; margin: 20px 0 8px; }
     .ai-card p, .ai-card li { font-size: 0.76rem; }
     .ai-card ul { padding-left: 14px; }
     .ai-card ul li { margin-bottom: 2px; }
-    .state-table, .compare-table { font-size: 0.7rem; }
+    .state-table, .ai-compare-table { font-size: 0.7rem; }
     .state-table th, .state-table td,
-    .compare-table th, .compare-table td { padding: 5px 6px; }
+    .ai-compare-table th, .ai-compare-table td { padding: 5px 6px; }
     .mana-gate { font-size: 0.74rem; padding: 5px 7px; gap: 6px; flex-wrap: wrap; }
     h2 { font-size: 0.95rem; }
     h3 { font-size: 0.85rem; }

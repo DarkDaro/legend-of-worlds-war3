@@ -28,16 +28,31 @@
 .radar-values .hero-values h3 .color-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
 .stat-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
 .stat-row:last-child { border-bottom: none; }
-.stat-label { color: var(--text-secondary); }
+/* 08.11 css-аудит: развязка с home.css (бандл). Раньше .stat-label получал отсюда
+   только цвет, а размер/капс/трекинг/отступ прилетали из home.css — правка там
+   молча меняла эту страницу. Закрепил текущие эффективные значения, вид тот же. */
+.stat-label { color: var(--text-secondary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
 .stat-right { display: flex; align-items: center; gap: 8px; }
 .stat-pct-bar { width: 60px; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
 .stat-pct-fill { height: 100%; border-radius: 3px; transition: width 0.3s ease; }
 .stat-pct-num { font-weight: 600; min-width: 28px; text-align: right; }
 .stat-raw { color: var(--text-muted); font-size: 0.7rem; }
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .pct-low { color: #ff6b6b; }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .pct-mid { color: var(--text-primary); }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .pct-high { color: #ffa500; }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .pct-best { color: #ffd43b; }
+*/
 
 .percentile-table-wrap {
     margin-top: 32px; overflow-x: auto; max-height: 600px;

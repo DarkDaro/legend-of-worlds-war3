@@ -282,11 +282,14 @@ body.item-sheet-open {
 }
 
 /* Рекомендуется героям */
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .hero-reco-list {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
+*/
 
 .hero-reco-chip {
   display: inline-flex;
@@ -564,7 +567,10 @@ body.item-sheet-open {
   display: block;
   color: #d0e0ff;
 }
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .item-card.consumable    { border-bottom: 4px solid #00ffaa; box-shadow: 0 0 15px #00ffaa55; }
+*/
 .item-card.neutral       { border-bottom: 4px solid #bf7fff; box-shadow: 0 0 15px #bf7fff55; }
 .item-card.boost         { border-bottom: 4px solid #ffaa33; box-shadow: 0 0 15px #ffaa3355; }
 .item-card.strength      { border-bottom: 4px solid #ff5555; box-shadow: 0 0 15px #ff555555; }
@@ -583,7 +589,10 @@ body.item-sheet-open {
 .item-card.weapon:hover      { border-color: #ff8800; box-shadow: 0 0 20px #ff8800aa, 0 0 40px #ff880044; }
 .item-card.boost:hover      { border-color: #ffaa33; box-shadow: 0 0 20px #ffaa33aa, 0 0 40px #ffaa3344; }
 .item-card.neutral:hover    { border-color: #bf7fff; box-shadow: 0 0 20px #bf7fffaa, 0 0 40px #bf7fff44; }
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .item-card.consumable:hover { border-color: #00ffaa; box-shadow: 0 0 20px #00ffaaaa, 0 0 40px #00ffaa44; }
+*/
 /* Редкость предметов по стоимости */
 .item-card.rarity-cheap  { opacity: 0.85; }
 .item-card.rarity-mid    { opacity: 0.92; }
@@ -638,7 +647,10 @@ body.item-sheet-open {
 .item-card.weapon .item-icon img     { border-color: #ff8800aa; box-shadow: 0 0 10px #ff880044; }
 .item-card.boost .item-icon img      { border-color: #ffaa33aa; box-shadow: 0 0 10px #ffaa3344; }
 .item-card.neutral .item-icon img    { border-color: #bf7fffaa; box-shadow: 0 0 10px #bf7fff44; }
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .item-card.consumable .item-icon img { border-color: #00ffaaaa; box-shadow: 0 0 10px #00ffaa44; }
+*/
 .item-name {
   font-size: 0.9rem;
   font-weight: 600;

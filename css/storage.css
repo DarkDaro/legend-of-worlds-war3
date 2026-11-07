@@ -413,7 +413,9 @@
     font-size: 0.78rem;
     color: var(--text-secondary, #9ab);
     background: transparent;
-    border: 1px solid var(--border-color, #2a3a4a);
+    /* 08.11 css-аудит: было var(--border-color, #2a3a4a) — переменной нигде нет,
+       всегда работал fallback; заменено на точное значение, вид не менялся */
+    border: 1px solid #2a3a4a;
     border-radius: 4px;
     cursor: pointer;
     transition: color 0.2s, border-color 0.2s;

@@ -255,6 +255,8 @@
 .logo:hover {
     text-shadow: 0 0 15px #00e6ff;
 }
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .logo-icon {
     width: 48px;
     height: 48px;
@@ -268,6 +270,7 @@
     font-size: 28px;
     color: #00e6ff;
 }
+*/
 .logo-text {
     font-size: clamp(1.15rem, 1.4vw, 1.6rem);
     font-weight: 700;

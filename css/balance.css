@@ -37,7 +37,11 @@
         .balance-search::placeholder { color: var(--text-muted); }
 
         /* ── Шире контейнер для таблицы ── */
+        /* [off 08.11 css-аудит] дубль бандла: hero-page.css уже ставит 1200px,
+           правило ничего не делало (хвост «1000px → 1200px»); вернуть = снять обёртку */
+        /*
         .hero-page-container { max-width: 1200px; }
+        */
 
         /* ── Таблица 1 ── */
         .balance-table-wrap {
@@ -107,9 +111,12 @@
         .balance-table td:has(.role-cell) { white-space: normal; }
 
         /* Парящая иконка */
-        .balance-page-icon {
+                /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+        /*
+.balance-page-icon {
             animation: float 3s ease-in-out infinite;
         }
+        */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-14px); }

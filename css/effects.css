@@ -12,6 +12,9 @@
     letter-spacing: 0.5px;
 }
 
+/* Цвета ролей — эталон для каталога героев (там бейджи с рамкой, 90 шт.).
+   balance.css и guides.css задают свои цвета для своих бейджей без рамок;
+   править палитру здесь — только вместе с проверкой каталога. */
 .role-tank { color: #ffaa66; border-color: #ffaa66; }
 .role-bruiser { color: #ff8844; border-color: #ff8844; }
 .role-damager { color: #ff6666; border-color: #ff6666; }
@@ -48,10 +51,13 @@
 .hero-stats-table tr:last-child td {
     border-bottom: none;
 }
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .stat-primary {
     color: #ffd966;
     font-weight: bold;
 }
+*/
 .stat-strength { color: #ff5555; }
 .stat-agility { color: #55ff55; }
 .stat-intelligence { color: #55aaff; }
@@ -291,6 +297,8 @@ body.page-404 {
 }
 /* 24.10: соц-иконки футера были 18-26x31 (padding: 0), крошки 15px по высоте.
    Мобильный минимум для тап-цели — 28px. */
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .footer-social a {
     display: inline-flex;
     align-items: center;
@@ -299,6 +307,7 @@ body.page-404 {
     min-height: 28px;
     padding: 6px 6px;
 }
+*/
 .breadcrumbs a,
 .breadcrumbs .current {
     display: inline-block;

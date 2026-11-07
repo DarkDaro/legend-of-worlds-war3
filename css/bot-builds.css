@@ -238,10 +238,13 @@
             font-size: 0.9rem;
             color: var(--text-secondary);
         }
+        /* 08.11 css-аудит: здесь и в .bb-group-btn.active/.bb-copy-btn было var(--accent) —
+           такой переменной никогда не существовало, цвет молча падал до цвета текста.
+           Фикс: существующий --accent-cyan (#00e6ff). */
         .bb-total-value {
             font-size: 1.1rem;
             font-weight: 700;
-            color: var(--accent);
+            color: var(--accent-cyan);
         }
 
         /* === Выбор группы === */
@@ -267,8 +270,8 @@
         }
         .bb-group-btn.active {
             background: var(--glass-tag-active);
-            border-color: var(--accent);
-            color: var(--accent);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
         }
 
         /* === Кнопка «Скопировать в конструктор» === */
@@ -281,14 +284,14 @@
             background: rgba(0, 230, 255, 0.08);
             border: 1px solid rgba(0, 230, 255, 0.25);
             border-radius: 6px;
-            color: var(--accent);
+            color: var(--accent-cyan);
             font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.2s;
         }
         .bb-copy-btn:hover {
             background: rgba(0, 230, 255, 0.15);
-            border-color: var(--accent);
+            border-color: var(--accent-cyan);
         }
 
         /* === Мобильная адаптация === */

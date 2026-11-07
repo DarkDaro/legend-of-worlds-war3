@@ -4,10 +4,13 @@
     margin: 0 auto;
     text-align: center;
 }
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .support-hero {
     font-size: 4rem;
     margin-bottom: 16px;
 }
+*/
 .support-desc {
     color: #8aa0c0;
     font-size: 1.05rem;
@@ -303,6 +306,8 @@
     color: #e0f0ff;
     flex: 1;
 }
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .monster-code {
     font-family: 'Consolas', monospace;
     font-size: 0.75rem;
@@ -311,6 +316,7 @@
     padding: 2px 8px;
     border-radius: 6px;
 }
+*/
 .monster-toggle {
     color: #5a7a9a;
     font-size: 0.8rem;
@@ -444,11 +450,14 @@
 }
 
 /* Вступительный текст на странице монстров */
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .monsters-intro {
     color: #8aa0c0;
     margin-bottom: 24px;
     font-size: 1.05rem;
 }
+*/
 
 /* Иконка заголовка "Боссы" */
 .boss-heading-icon {
@@ -493,9 +502,12 @@
 }
 
 /* Стадии босса */
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .boss-stages {
     margin-top: 12px;
 }
+*/
 .boss-stage {
     display: flex;
     align-items: baseline;
@@ -506,6 +518,8 @@
     border-radius: 8px;
     margin-bottom: 4px;
 }
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .boss-stage-threshold {
     font-weight: 700;
     color: #bf7fff;
@@ -513,11 +527,15 @@
     min-width: 70px;
     flex-shrink: 0;
 }
+*/
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .boss-stage-desc {
     color: #8aa0c0;
     font-size: 0.85rem;
     line-height: 1.4;
 }
+*/
 
 /* Награда за босса */
 .monster-reward {
@@ -590,8 +608,11 @@
     border-bottom-color: #ff6b6b;
     text-shadow: 0 0 8px #ff6b6b88;
 }
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .drop-bonus {
     color: #bf7fff;
     font-size: 0.8rem;
     margin-left: 4px;
 }
+*/

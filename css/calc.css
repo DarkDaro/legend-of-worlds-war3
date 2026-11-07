@@ -386,9 +386,12 @@ body.page-map-changes::after {
 .compare-clear-btn {
     align-self: flex-end;
 }
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .compare-back-link {
     margin-top: 32px;
 }
+*/
 .compare-attr-strength {
     color: #ff5555;
 }

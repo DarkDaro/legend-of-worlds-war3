@@ -727,6 +727,8 @@ body.page-leaving {
     margin-bottom: 0;
 }
 
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .bc-paste-stage-btn {
     display: inline-flex;
     align-items: center;
@@ -742,11 +744,15 @@ body.page-leaving {
     transition: background 0.2s, border-color 0.2s;
     white-space: nowrap;
 }
+*/
 
+/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
+/*
 .bc-paste-stage-btn:hover {
     background: rgba(0, 230, 255, 0.1);
     border-color: rgba(0, 230, 255, 0.4);
 }
+*/
 
 .bc-clear-btn {
     display: inline-flex;
