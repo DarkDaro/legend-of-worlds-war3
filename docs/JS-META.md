@@ -1,7 +1,7 @@
-# JS-META: предметный блок изнутри — обработчики, формулы, согласованность
+# JS-META: скрипты изнутри — обработчики, формулы, согласованность
 
-_Обновлено: 2026-11-08 · дополнение к docs/JS-MAP.md (там — «что делает и где подключён», здесь — как устроено). Раздел дополняется блоками: сейчас — предметы и их обработчики._
-_Разовая проверка инвариантов блока: `node scripts/check-items.mjs` (exit 1 — на битые ссылки/целостность; расхождения цен и слепые зоны парсера печатаются как известные особенности)._
+_Обновлено: 2026-11-08 · дополнение к docs/JS-MAP.md (там — «что делает и где подключён», здесь — как устроено). Раздел дополняется блоками: предметы и их обработчики; герои._
+_Разовые проверки инвариантов: `node scripts/check-items.mjs` (предметы) и `node scripts/check-heroes.mjs` (герои) — exit 1 только на битые ссылки/целостность; известные особенности данных печатаются как INFO._
 
 ## Схема данных предметного блока
 
@@ -49,3 +49,39 @@ _Разовая проверка инвариантов блока: `node script
 - «+N уровней», «+N опыта» (3 шт.) — расходники, статов не дают.
 
 **Решение владельца (08.11): книги, расходники и усиления НЕ парсить — они расходуются сразу при получении, постоянных бонусов не дают; чипы/фильтр их не видят — это ожидаемо, а не баг.** Статус всей группы: отложено (пропускаем как есть). Сферы «% урона», если когда-нибудь понадобится, — единственная группа, которую имеет смысл возвращать к обсуждению.
+
+---
+
+# Герои: схема данных и обработчики
+
+_Дополняется после предметного блока. Чекер блока: `node scripts/check-heroes.mjs` (exit 1 — на битые страницы/ссылки; wip-особенности и нули статов — INFO)._
+
+## Схема данных
+
+- `hero-data.js` — `HEROES_DATA`, 90 записей = 74 полноценных + 8 wip + 8 альт-форм. Ключ связи — `heroId` (слаг), плюс `rawcode`. Поля: имя/титул/атрибут/роли, базовые статы и приросты (str/agi/int Base+Gain), hp, mp, atk, def, atkSpeed, регены, speed, range, обзор, attackType. `wip: true` — только приросты, база ждёт заполнения из карты (шапка файла: «Поля с 0 — ждут заполнения»). Здесь же живут рендеры: `renderHeroStats(heroId)`, `renderHeroNav(heroId)`, `findHero`, `statVal` (undefined → «—») — их вызывают inline-скрипты страниц героев.
+- `hero-lore.js` — `HERO_LORE` по heroId: {description, lore}. 77 записей — ровно по числу страниц.
+- `hero-builds.js` — `heroBuilds`, 74 героя, автоген из bot-builds.js («стадия до босс-дропов»). ВАЖНО: генератор `tools/generate-hero-builds.js` в репо ОТСУТСТВУЕТ — регенерировать нечем, править руками с оговоркой в шапке файла.
+- `jass-data.js` — `HERO_BUILD_DATA` (81): rawcode → {name, internal, group, heroId}; это герои БОТОВ (для bot-builds и формул-calc), не все герои сайта.
+- `js/hero-slugs.js` — `HERO_RAWCODES` (81): rawcode → slug для `bot-builds.html?hero=<slug>`; автоген из HERO_BUILD_DATA, в шапке путь регенерации `C:/AgentLetta/...` — внешняя машина, здесь не воспроизвести.
+- Поиск: `search.js` строит индекс героев из HEROES_DATA на лету (wip/альт исключает); `search-index.js` (автоген, генератора тоже нет в репо) героев НЕ содержит — только abilities/mechanics/bosses/modes.
+
+## Скрипты блока: глобалы и обработчики
+
+| Файл | Глобалы | Что запускает |
+|---|---|---|
+| `hero-data.js` | `HEROES_DATA`, `renderHeroStats`, `renderHeroNav`, `findHero`, `statVal` | вызывается inline из всех 77 страниц `heroes/*.html` (статы, таблица приростов, листание prev/next) |
+| `js/heroes-page.js` | рендер сетки heroes.html | 90 карточек, вкладки Все/Сила/Ловкость/Интеллект/Уникальные/Избранное/В разработке; wip-карточка некликабельна (`if (hero.wip) return`) с бейджем «В разработке»; избранное в localStorage |
+| `js/hero-stats-page.js` | info.html | «Распределение героев» + «Приросты характеристик»; фильтр `!wip && !isAltForm` |
+| `js/compare-page.js` | compare.html | сравнение 3 героев (75 опций = 74 + плейсхолдер); фильтр `isAltForm || wip || noPage` (noPage нигде не выставлен — защита на будущее); все производные статы строго через GAME_CONSTANTS: MAX_LEVEL, STR_HP_FACTOR, INT_MP_FACTOR, ARMOR_C, AGI_ARMOR_FACTOR, AGI_ATK_SPEED_FACTOR, STR_HP_REGEN_FACTOR, INT_MP_REGEN_FACTOR, MP_REGEN_BASE, MELEE_ATTACK_RANGE — литералов нет |
+| `js/tierlist-page.js` | tierlist.html | тир-лист поверх HEROES_DATA; тир-оценки редакционные, не данные карты |
+| `js/balance-page.js`, `js/balance-dashboard-page.js` | balance.html, balance-dashboard.html | оба фильтруют `!wip && !isAltForm`; dashboard дополнительно зависит от abilities-db.js + ability-stats.js (числовые статы способностей) — способности отдельный блок аудита |
+| `js/gallery-page.js` | gallery.html | массив GALLERY ПУСТ (все записи закомментированы); карточки type: 'hero' ведут `link` на heroes/*.html — проверяется чекером |
+
+## Связи и известные особенности
+
+- **Вселенная слагов** (сверяется чекером): 77 страниц = 74 полноценных героя + 3 страницы wip (arbiter, blademaster, thunder-lord-2). Страницы wip СУЩЕСТВУЮТ, но скрыты: некликабельны в сетке, исключены из поиска (search.js) и листания (renderHeroNav фильтрует wip) — доступны только по прямой ссылке. Это осознанное состояние, не баг.
+- **heroBuilds 74 из 77 страниц**: у трёх wip автосборок нет (боты в них не играют) — согласовано с автогеном из bot-builds.
+- **wip/альт вне карт ботов** (9 шт.: rock, knight-of-light, tyrion, angel-of-death, bonebreaker-alt, arbiter, blademaster, bloodsucker, thunder-lord-2) отсутствуют в HERO_BUILD_DATA и HERO_RAWCODES — по замыслу: там только герои ботов. Чекер следит, чтобы среди ОПУБЛИКОВАННЫХ героев таких не было (сейчас 0).
+- **Нули в статах — 14 полей у 4 героев** (данные карты не заполнены): arbiter atk/def/atkSpeed/hpRegen, bloodsucker mp/atk/def/atkSpeed/hpRegen, thunder-lord-2 atk/def/atkSpeed/hpRegen, illusionist-demon atkSpeed. На живых страницах это видно у arbiter и thunder-lord-2 («Атака: 0», «Защита: 0») — страницы по URL доступны. hp/speed/обзор у wip выглядят шаблонными (300/1800/800 у троих). Править только после сверки с Object Editor карты.
+- **Формулы**: renderHeroStats ничего не вычисляет (база + прирост как есть); все производные величины (HP от силы, броня от ловкости и т.д.) — в compare/balance/dashboard через GAME_CONSTANTS, дублирования формул нет (сверено grep'ом).
+- **Связка с предметами**: heroBuilds → itemsDB проверяется в scripts/check-items.mjs (444 ссылки по {id, name}); имена сверяются, расхождений нет.
