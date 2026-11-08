@@ -97,26 +97,29 @@ const bossBroken = [...new Set(bossRefs.filter(id => !items[id]))];
 P(`босс-дропы: ссылок ${bossRefs.length}, битых ${bossBroken.length}`);
 bossBroken.forEach(x => ERR(`босс-дропы: нет предмета ${x}`));
 
-// 6. Деревья компонентов
-let trees = 0, costDiff = 0;
+// 6. Деревья компонентов. Две методики:
+//    глубокая сумма = «Общая» на сайте (calculateItemCost, дропы бесплатны) — главная;
+//    прямая = сумма записанных цен детей — видно, у кого расходится собственная бухгалтерия.
+const deepDiff = [], directDiff = [];
+let trees = 0;
 for (const [k, it] of Object.entries(items)) {
   if (!Array.isArray(it.components) || !it.components.length) continue;
   trees++;
-  let sum = 0;
+  const deep = vm.runInContext(`calculateItemCost('${k}')`, ctx);
+  if (typeof it.cost === 'number' && it.cost !== deep) deepDiff.push(k);
+  let direct = 0, bad = false;
   for (const c of it.components) {
     const child = items[c.itemId];
-    if (!child) { ERR(`дерево ${k} (${it.name}): нет компонента ${c.itemId}`); sum = NaN; break; }
-    sum += (c.costOverride !== undefined ? c.costOverride : child.cost) * (c.quantity || 1);
+    if (!child) { ERR(`дерево ${k} (${it.name}): нет компонента ${c.itemId}`); bad = true; break; }
+    direct += (c.costOverride !== undefined ? c.costOverride : child.cost) * (c.quantity || 1);
   }
-  if (!isNaN(sum) && typeof it.cost === 'number' && it.cost !== sum) costDiff++;
+  if (!bad && typeof it.cost === 'number' && it.cost !== direct) directDiff.push(k);
 }
-P(`составных предметов (деревья): ${trees}; цена ≠ сумме дерева: ${costDiff} (INFO — свойство данных карты, см. ITEMS-TOOLS-AUDIT.md №3)`);
-if (costDiff) P(`  список: ${Object.entries(items)
-  .filter(([, it]) => Array.isArray(it.components) && it.components.length)
-  .filter(([k, it]) => it.components.every(c => items[c.itemId]) &&
-    it.cost !== it.components.reduce((s, c) =>
-      s + (c.costOverride !== undefined ? c.costOverride : items[c.itemId].cost) * (c.quantity || 1), 0))
-  .map(([k]) => k).join(', ')}`);
+P(`составных предметов (деревья): ${trees}`);
+P(`цена ≠ глубокой сумме («Общая» на сайте): ${deepDiff.length} (INFO — разбор по группам: docs/COST-AUDIT.md, КРИТИЧНО)`);
+if (deepDiff.length) P(`  список: ${deepDiff.join(', ')}`);
+P(`цена ≠ сумме записанных детей (корни собственной бухгалтерии): ${directDiff.length}`);
+if (directDiff.length) P(`  список: ${directDiff.join(', ')}`);
 
 // 7. Парсер бонусов
 let withPlus = 0, zero = 0, samples = [];
