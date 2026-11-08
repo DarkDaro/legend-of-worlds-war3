@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="info-auto-level.css">
+    <link rel="stylesheet" href="css/manifesto-support.css">
     <script src="search-index.js" defer></script>
     <script src="search.js" defer></script>
     <script src="icon-loader.js" defer></script>
@@ -73,8 +74,22 @@
 
         <h1><i class="fas fa-bullhorn"></i> Манифест</h1>
 
+        <!-- hero -->
+        <div class="mf-hero">
+            <p class="mf-hero-line">Один человек. Без команды. Без бюджета.<br><em>Шесть месяцев по ночам.</em></p>
+            <p class="mf-hero-sub">Карта, сайт и лор Legend of Worlds — это один автор и его свободное время. Ниже — цифры вместо обещаний.</p>
+            <div class="mf-stats">
+                <div class="mf-stat"><span class="mf-stat-num">31</span><span class="mf-stat-cap">версия карты</span></div>
+                <div class="mf-stat"><span class="mf-stat-num">350</span><span class="mf-stat-cap">коммитов за полгода</span></div>
+                <div class="mf-stat"><span class="mf-stat-num">116</span><span class="mf-stat-cap">страниц руками</span></div>
+                <div class="mf-stat"><span class="mf-stat-num">74</span><span class="mf-stat-cap">героя</span></div>
+                <div class="mf-stat"><span class="mf-stat-num">222</span><span class="mf-stat-cap">предмета</span></div>
+                <div class="mf-stat"><span class="mf-stat-num">408</span><span class="mf-stat-cap">стадий ИИ</span></div>
+            </div>
+        </div>
+
         <!-- Как это делалось -->
-        <div class="info-section">
+        <div class="info-section mf-section">
             <h2 class="section-title"><i class="fas fa-code-branch"></i> Как это делалось</h2>
             <p class="info-text">
                 Карта старше сайта. В архиве обновлений 31 версия, от v3.0 до v6.9. Архив начинается с тройки. Что было до неё, я уже толком не помню, и записано было далеко не всё, если честно.
@@ -83,7 +98,15 @@
                 Сайт появился 2 мая 2026. Один коммит, 258 файлов разом. Без плана, просто чтобы был. Дальше был май, и май я у себя ни о чём не спрашивал: 234 коммита за месяц. Встал, сел, герои. Сел, предметы. Калькуляторы, стили, страницы. Сплошной поток без пауз и выходных.
             </p>
             <p class="info-text">
-                Теперь открываю лог и вижу: 89 коммитов сделаны между полуночью и пятью утра. 152 после десяти вечера. В полдень, в самое обычное человеческое время, их два. Два. Так не выглядит человек, который работает днём как все. Так выглядит человек, который не может остановиться.
+                Теперь открываю лог и вижу картину, которую не придумаешь:
+            </p>
+            <div class="mf-night">
+                <div class="mf-night-item"><span class="mf-night-num">89</span><span class="mf-night-cap">коммитов между полуночью и пятью утра</span></div>
+                <div class="mf-night-item"><span class="mf-night-num">152</span><span class="mf-night-cap">после десяти вечера</span></div>
+                <div class="mf-night-item mf-night-item--quiet"><span class="mf-night-num">2</span><span class="mf-night-cap">в полдень. В самое обычное человеческое время — два.</span></div>
+            </div>
+            <p class="info-text">
+                Так не выглядит человек, который работает днём как все. Так выглядит человек, который не может остановиться.
             </p>
             <p class="info-text">
                 Потом июнь, десять коммитов. Июль. Ноль. Открой лог, там дыра, месяц выпал как выключили свет. Я не планировал перерыв и никуда не уезжал. Я однажды открыл проект, посмотрел на него и закрыл. Август двенадцать, сентябрь двадцать три, возвращался рывками, через силу. В ноябре 61, доделываю то, что сам же бросил.
@@ -94,58 +117,52 @@
         </div>
 
         <!-- Зачем -->
-        <div class="info-section">
+        <div class="info-section mf-section">
             <h2 class="section-title"><i class="fas fa-question-circle"></i> Зачем</h2>
-            <p class="info-text">
-                Не знаю, если честно. За 31 версией слишком много вечеров, чтобы просто выкинуть карту. Вроде для игроков. По сути, чтобы не сгорело.
-            </p>
+            <p class="mf-accent">За 31 версией слишком много вечеров, чтобы просто выкинуть карту. <em>Вроде для игроков. По сути, чтобы не сгорело.</em></p>
             <p class="info-text">
                 Карта делает то, что должна делать: 74 героя, 222 предмета, боты с 408 стадиями покупок, баланс, формулы, ИИ. В голове это не удержать. Кто-то должен был это выложить. Других желающих не нашлось, сделал я. Сайт отвечает ночью, когда я сплю. Или не сплю.
             </p>
         </div>
 
         <!-- Кому это надо -->
-        <div class="info-section">
+        <div class="info-section mf-section">
             <h2 class="section-title"><i class="fas fa-comment-slash"></i> Да кому это надо</h2>
-            <p class="info-text">
-                Отвечу один раз. Не потому что должен. Чтобы потом не отвлекаться.
-            </p>
+            <p class="info-text">Отвечу один раз. Не потому что должен. Чтобы потом не отвлекаться.</p>
 
-            <div class="info-block" style="margin: 1.25rem 0; padding-left: 1rem; border-left: 2px solid var(--accent, #00d4ff);">
-                <p class="info-text"><strong>«Да кому нужен твой сайт?»</strong></p>
-                <p class="info-text">
+            <div class="mf-qa">
+                <div class="mf-q">«Да кому нужен твой сайт?»</div>
+                <div class="mf-a">
                     Мне. Потом тем, кто играет. В карте 74 героя, 222 предмета, боты с 408 стадиями покупок. Это в голове не удержать. Кто-то должен был это выложить. Других желающих не нашлось, сделал я. Сайт отвечает ночью, когда я сплю. Или не сплю. Больше мне аудитория не нужна.
-                </p>
+                </div>
             </div>
 
-            <div class="info-block" style="margin: 1.25rem 0; padding-left: 1rem; border-left: 2px solid var(--accent, #00d4ff);">
-                <p class="info-text"><strong>«Это никому не надо»</strong></p>
-                <p class="info-text">
+            <div class="mf-qa">
+                <div class="mf-q">«Это никому не надо»</div>
+                <div class="mf-a">
                     Пусть. Аквариум тоже никому не нужен, и спичечные модели. Никто у аквариума не спрашивает КПД. Я не брал денег, не съедал ничьё время, никому не мешал. Не нужен рынку, нужен был мне. Хотя нет, вообще никому не нужен, в этом и смысл хобби. Но всё равно объясняю. Всем объясняю. Всю жизнь всем что-то объясняешь.
-                </p>
+                </div>
             </div>
 
-            <div class="info-block" style="margin: 1.25rem 0; padding-left: 1rem; border-left: 2px solid var(--accent, #00d4ff);">
-                <p class="info-text"><strong>«Сайт по карте? Ты угораешь?»</strong></p>
-                <p class="info-text">
+            <div class="mf-qa">
+                <div class="mf-q">«Сайт по карте? Ты угораешь?»</div>
+                <div class="mf-a">
                     Warcraft III вышел в 2002. Кастомки живы до сих пор. У этой карты 31 версия, свой баланс, формулы, ИИ. У любой живой игры рано или поздно появляется вики. Её всегда пишут фанаты, бесплатно, по ночам. Тут фанат один, и он же автор карты. Поэтому вики есть. Если это угар, то вот вопрос тебе: что ты сам сделал за последние полгода? Жду. Не жду.
-                </p>
+                </div>
             </div>
 
-            <div class="info-block" style="margin: 1.25rem 0; padding-left: 1rem; border-left: 2px solid var(--accent, #00d4ff);">
-                <p class="info-text"><strong>«Ну прикольно»</strong></p>
-                <p class="info-text">
+            <div class="mf-qa">
+                <div class="mf-q">«Ну прикольно»</div>
+                <div class="mf-a">
                     Два слова. За полгода по ночам два слова. Окей, я не сдавал проект и оценку не заказывал, засчитано. Только замечу: почти все, кто так отвечает, сами не закончили ни одной своей затеи. Те, кто доводил что-то до конца, отвечают по-другому, конкретнее. Они знают, сколько это стоит. Не в деньгах. Тут денег нет вообще.
-                </p>
+                </div>
             </div>
 
-            <p class="info-text">
-                Иногда я сам себе задаю первый вопрос из этого списка. Чаще всего это случается в месяцы, когда коммитов ноль. Ответ не меняется: тебе. В июле я думал всё удалить. Не удалил и не знаю почему.
-            </p>
+            <p class="mf-accent">Иногда я сам себе задаю первый вопрос из этого списка. Чаще всего это случается в месяцы, когда коммитов ноль. Ответ не меняется: <em>тебе</em>. В июле я думал всё удалить. Не удалил и не знаю почему.</p>
         </div>
 
-        <!-- Если ты пришёл критиковать формой -->
-        <div class="info-section">
+        <!-- Если ты пришёл критиковать -->
+        <div class="info-section mf-section">
             <h2 class="section-title"><i class="fas fa-shield-alt"></i> Если ты пришёл критиковать</h2>
             <p class="info-text">
                 Я готов обсуждать конкретные ошибки, недостатки, коммерческую состоятельность, распределение внимания между картой и сайтом, отсутствие дистрибуции. Это содержательно. На это есть ответ.
@@ -156,11 +173,9 @@
             <p class="info-text">
                 Полный разбор пяти смысловых установок, которыми критика подменяет анализ чужой работы проекцией и чужими кейсами, лежит в репозитории проекта: <a href="https://github.com/DarkDaro/legend-of-worlds-war3/blob/main/docs/ARGUMENT-FALLACIES.md" target="_blank" rel="noopener">docs/ARGUMENT-FALLACIES.md</a>. Это не психология, это формальная карта уловок с контр-ходами. То же, что чекер делает для битых ссылок — детектор формы.
             </p>
-            <p class="info-text">
-                Сказать «нахуй не нужен» — это не отзыв на проект, это отзыв на собственное нежелание разобраться. Я такой отзыв не запрашивал.
-            </p>
         </div>
 
+        <p class="mf-final">Сказать «нахуй не нужен» — это не отзыв на проект.<br>Это <em>отзыв на собственное нежелание разобраться</em>.<br>Я такой отзыв не запрашивал.</p>
     </div>
 
 
