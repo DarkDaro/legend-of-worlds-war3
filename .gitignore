@@ -27,6 +27,7 @@ tasks.md
 # Локальные служебные файлы
 .letta/
 download/
+AGENT-META.md
 mdlog/*.af
 mdlog/resource.txt
 
