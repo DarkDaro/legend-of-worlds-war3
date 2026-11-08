@@ -19,7 +19,8 @@
 | [SESSIONS.md](SESSIONS.md) | Журнал сессий: что, когда и почему менялось |
 | [DEFENSE-PROTOCOL.md](DEFENSE-PROTOCOL.md) | Протокол против обесценивающих форм — рабочий, применим ко всем проектам автора |
 | [ARCHITECTURE.md](ARCHITECTURE.md) | Как устроен сайт и почему именно так |
-| [DESIGN.md](DESIGN.md) | Дизайн-система: токены, палитра, эффекты, правила |
+| [DESIGN.md](DESIGN.md) | Дизайн-система: неон и циан, стекломорфизм, токены, геометрия, подготовка к темам |
+| [CSS-INVENTORY.md](CSS-INVENTORY.md) | Сырой инвентарь дизайн-значений CSS: 577 цветов, токены, blur, радиусы; генерится scripts/design-tokens.mjs |
 | [JS-MAP.md](JS-MAP.md) / [JS-META.md](JS-META.md) | Карта скриптов и их внутреннее устройство |
 | [CSS-AUDIT.md](CSS-AUDIT.md) / [HARDCODE-AUDIT.md](HARDCODE-AUDIT.md) | Аудиты стилей: снимок состояния с датой |
 | [ITEMS-TOOLS-AUDIT.md](ITEMS-TOOLS-AUDIT.md) / [COST-AUDIT.md](COST-AUDIT.md) | Аудиты предметов, инструментов и цен |
