@@ -11,6 +11,9 @@ const GAME_CONSTANTS = {
   // ── Дальность ──
   MELEE_ATTACK_RANGE: 128,    // Дальность ближнего боя (h.stats.range == 128 → «Ближний»)
 
+  // ── Экономика ──
+  SELL_REFUND_FACTOR: 0.5,    // Возврат при продаже предмета: 50% цены (08.11: был литералом в calculator.js, build-constructor.js, bot-builds-page.js)
+
   // ── Броня ──
   ARMOR_C: 0.05,              // Константа снижения урона (не 0.06 как в стандартном WC3)
   AGI_ARMOR_FACTOR: 0.05,     // Ловкость → броня: +0.05 за единицу (= 1 броня за 20 ловкости)

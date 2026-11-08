@@ -123,7 +123,7 @@ function renderStage(stageData, stageIndex, prevItems) {
                 if (!slot || slot.keep || !slot.name) return;
                 const item = findItemByName(slot.name);
                 if (!item || isBossItem(item)) return;
-                refund += Math.floor((item.cost || 0) * 0.5);
+                refund += Math.floor((item.cost || 0) * GAME_CONSTANTS.SELL_REFUND_FACTOR);
             });
         }
 

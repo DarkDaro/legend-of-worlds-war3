@@ -135,7 +135,7 @@ function calculateBuildStats() {
 
         // Босс-дропы бесплатные — возврат не начисляется
         if (!keep && !isBossDrop) {
-            refundCost += Math.floor(cost * 0.5);
+            refundCost += Math.floor(cost * GAME_CONSTANTS.SELL_REFUND_FACTOR);
         }
 
         if (isBossDrop) {

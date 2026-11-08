@@ -384,14 +384,14 @@ function bcCalcTransitionCost(si) {
         buyCost += calculateItemCost(id);
     });
 
-    // Возврат от проданных предметов предыдущей стадии (50%)
+    // Возврат от проданных предметов предыдущей стадии (50%, GAME_CONSTANTS.SELL_REFUND_FACTOR)
     let refund = 0;
     prevStage.items.forEach(slot => {
         const id = bcSlotId(slot);
         const keep = bcSlotKeep(slot);
         if (!id || keep || !itemsDB[id]) return;
         if (bcIsBossDrop(itemsDB[id])) return; // босс-дропы не продаются
-        refund += Math.floor(calculateItemCost(id) * 0.5);
+        refund += Math.floor(calculateItemCost(id) * GAME_CONSTANTS.SELL_REFUND_FACTOR);
     });
 
     return Math.max(0, buyCost - refund);
