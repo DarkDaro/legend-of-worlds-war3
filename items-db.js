@@ -995,13 +995,20 @@ function itemIcon(id, emoji, size, type) {
 }
 
 const ITEM_FAVORITES_KEY = 'itemFavorites';
-let itemFavorites = JSON.parse(localStorage.getItem(ITEM_FAVORITES_KEY) || '[]');
+// 08.11: битый JSON в localStorage больше не роняет весь скрипт (как в items-page.js/calculator.js)
+let itemFavorites = [];
+try {
+  const _parsedFav = JSON.parse(localStorage.getItem(ITEM_FAVORITES_KEY) || '[]');
+  if (Array.isArray(_parsedFav)) itemFavorites = _parsedFav;
+} catch (e) { /* битый JSON — начинаем с пустого списка */ }
 let activeItemView = 'all';
 let itemSearchQuery = '';
 let itemFavoritesTab = null;
 
 function saveItemFavorites() {
-  localStorage.setItem(ITEM_FAVORITES_KEY, JSON.stringify(itemFavorites));
+  try {
+    localStorage.setItem(ITEM_FAVORITES_KEY, JSON.stringify(itemFavorites));
+  } catch (e) { /* переполнение квоты/приватный режим — избранное не сохранится, страница работает */ }
 }
 
 function isItemFavorite(itemId) {
@@ -1017,6 +1024,11 @@ function toggleItemFavorite(itemId) {
   saveItemFavorites();
   applyItemView();
   updateItemFavoritesTab();
+  // 08.11: сердце в открытой панели деталей / bottom-sheet обновляется на месте,
+  // а не только после переоткрытия панели
+  document.querySelectorAll('.item-detail-fav-btn[data-item-id]').forEach(function (btn) {
+    if (btn.dataset.itemId === itemId) updateFavoriteButtonElement(btn, itemId);
+  });
 }
 
 window.clearItemFavorites = function() {
@@ -1052,6 +1064,7 @@ function buildDetailFavoriteButton(itemId) {
   const button = document.createElement('button');
   button.type = 'button';
   button.className = 'item-fav-btn item-detail-fav-btn';
+  button.dataset.itemId = itemId; // 08.11: для обновления сердца при toggleItemFavorite
   updateFavoriteButtonElement(button, itemId);
   button.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -1226,8 +1239,10 @@ function applyItemView() {
   });
 
   // 24.10: сортировка карточек внутри секции (js/bonus-filter.js)
+  // 08.11: перебираем ТОЛЬКО .items-grid — раньше селектор захватывал и .category-section,
+  // карточки appendChild'ились в секцию мимо грида и раскладка ломалась до перезагрузки
   if (typeof window !== 'undefined' && window.BonusFilter && window.BonusFilter.sorting) {
-    document.querySelectorAll('.items-grid, .category-section').forEach(function (grid) {
+    document.querySelectorAll('.items-grid').forEach(function (grid) {
       const cards = [...grid.querySelectorAll('.item-card')];
       if (cards.length < 2) return;
       cards.sort(function (a, b) {
@@ -1401,16 +1416,43 @@ function calculateItemCost(itemId, visited = new Set()) {
     if (comp.costOverride !== undefined) return sum + comp.costOverride;
     const compItem = itemsDB[comp.itemId];
     if (!compItem) return sum;
+    // 08.11: босс-дроп в дереве бесплатен — как уже считают лист покупок и конструктор.
+    // Записанная item.cost остаётся в данных (см. bossDropValueInTree и бейдж в панели).
+    if (compItem.type === 'boss_drop' || (compItem.tags && compItem.tags.includes('boss_drop'))) return sum;
     return sum + calculateItemCost(comp.itemId, new Set(visited)) * (comp.quantity || 1);
   }, 0);
 }
 
-function getRecipeCost(item) {
+// 08.11: стоимость всех рецептов (costOverride) в глубину дерева.
+// Старый вариант считал только прямых детей — из-за этого «Рецепты» в калькуляторе
+// и бейдж «Рецепт» в панели деталей видели 80 000 из 118 300 у Меча падшего.
+function getRecipeCost(item, visited = new Set()) {
+  if (!item) return 0;
+  if (item.id) {
+    if (visited.has(item.id)) return 0;
+    visited.add(item.id);
+  }
+  if (item.type === 'boss_drop' || (item.tags && item.tags.includes('boss_drop'))) return 0;
   if (!item.components) return 0;
   return item.components.reduce((sum, comp) => {
     const c = itemsDB[comp.itemId];
-    if (c?.type === 'recipe') return sum + (comp.costOverride ?? c.cost);
-    return sum;
+    if (c?.type === 'recipe') return sum + (comp.costOverride ?? c.cost ?? 0);
+    return sum + getRecipeCost(c, new Set(visited));
+  }, 0);
+}
+
+// 08.11: записанная стоимость босс-дропов в дереве. Дропы бесплатны (см. calculateItemCost),
+// но входят в записанную item.cost — бейдж в панели деталей честно показывает разницу.
+function bossDropValueInTree(itemId, visited = new Set()) {
+  const item = itemsDB[itemId];
+  if (!item || visited.has(itemId)) return 0;
+  visited.add(itemId);
+  return (item.components || []).reduce((sum, comp) => {
+    const child = itemsDB[comp.itemId];
+    if (!child) return sum;
+    const isDrop = child.type === 'boss_drop' || (child.tags && child.tags.includes('boss_drop'));
+    if (isDrop) return sum + (child.cost ?? 0) * (comp.quantity || 1);
+    return sum + bossDropValueInTree(comp.itemId, new Set(visited)) * (comp.quantity || 1);
   }, 0);
 }
 
@@ -1421,7 +1463,10 @@ function renderComponentTree(components, visited = new Set()) {
     const item = itemsDB[comp.itemId];
     if (!item || visited.has(item.id)) return;
     const newVisited = new Set(visited); newVisited.add(item.id);
-    const cost = calculateItemCost(item.id);
+    // 08.11: босс-дроп в дереве помечается как бесплатный (как в дереве калькулятора),
+    // а не собственной записанной стоимостью
+    const isDropNode = item.type === 'boss_drop' || (item.tags && item.tags.includes('boss_drop'));
+    const cost = isDropNode ? '' : calculateItemCost(item.id);
     const hasChildren = item.components?.length > 0;
     const qty = comp.quantity > 1 ? ` (x${comp.quantity})` : '';
     html += `<div class="tree-node">
@@ -1430,7 +1475,7 @@ function renderComponentTree(components, visited = new Set()) {
         <div class="component-item" data-item-id="${item.id}">
           <div class="component-icon">${itemIcon(item.id, item.icon, 36, item.type)}</div>
           <span class="component-name">${item.name}${qty}</span>
-          <span class="component-cost">${cost} 🪙</span>
+          <span class="component-cost">${isDropNode ? '<i class="fas fa-skull"></i> бесплатно' : cost + ' 🪙'}</span>
         </div>
       </div>`;
     if (hasChildren) html += `<div class="children-tree">${renderComponentTree(item.components, newVisited)}</div>`;
@@ -1593,6 +1638,9 @@ function closeItemSheet() {
 }
 
 function buildItemDetailHtml(itemId, item, total, recipe, base, includeBackButton) {
+  // 08.11: если в дереве есть босс-дропы — честный бейдж, куда ушла разница между
+  // записанным «Золото» и покупаемым «Общая»
+  const dropValue = bossDropValueInTree(itemId);
   return `
     <div class="panel-header"><div class="detail-icon">${itemIcon(item.id, item.icon, 96, item.type)}</div><div class="detail-title item-detail-title"><div class="item-detail-title-main"><span class="item-detail-name">${item.name}</span>${renderItemTypeBadges(item)}</div></div></div>
     <div class="detail-description">${item.description||''}<br>
@@ -1602,6 +1650,7 @@ function buildItemDetailHtml(itemId, item, total, recipe, base, includeBackButto
         ${item.costWood ? `<span class="cost-badge cost-wood">🪵 Дерево: ${item.costWood}</span>` : ''}
         ${!item.costCrystals && !item.costWood && item.cost === 0 && item.type === 'boost' ? `<span class="cost-badge cost-free"> Бесплатно</span>` : ''}
         ${item.cost > 0 || item.components ? `<span class="cost-badge cost-total"> Общая: ${total}</span>` : ''}
+        ${dropValue > 0 ? `<span class="cost-badge cost-boss"><i class="fas fa-skull"></i> Босс-дропы: ${dropValue} (бесплатно)</span>` : ''}
         ${base > 0 && item.cost > 0 ? `<span class="cost-badge cost-base"> Базовая: ${base}</span>` : ''}
         ${recipe>0?`<span class="cost-badge cost-recipe"> Рецепт: ${recipe}</span>`:''}
       </div>

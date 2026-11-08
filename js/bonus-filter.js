@@ -46,6 +46,10 @@
     if (!item) return Infinity;
     var cost = Number(item.cost);
     if (isFinite(cost) && cost > 0) return cost;
+    // 08.11: бесплатные предметы без компонентов (книги/усиления, cost=0) —
+    // это честный ноль, а не «цена неизвестна»: раньше фильтр «до N» прятал
+    // все 18 усилений «Книги и руны»
+    if (cost === 0 && (!item.components || item.components.length === 0)) return 0;
     // предметы с компонентами — посчитать по рецепту, если доступно
     if (typeof calculateItemCost === 'function') {
       try {

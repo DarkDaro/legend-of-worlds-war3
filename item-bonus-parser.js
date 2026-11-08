@@ -78,6 +78,13 @@
 
     // ── Проход 1: комбинированные бонусы (вырезаем из текста, чтобы не удвоить) ──
 
+    // 08.11: «+N маны/сек» — реген маны (Сфера магии). Раньше первым срабатывал
+    // слэш-комбо регэксп ниже, вырезал текст и бонус терялся целиком.
+    text = text.replace(/\+(\d+(?:[.,]\d+)?)\s+ман[ыа]\/сек/g, function (_match, value) {
+      bonus.manaRegenFlat += normalizeNumber(value);
+      return '';
+    });
+
     // «+N здоровья и маны» / «+N маны и здоровья»
     text = text.replace(/\+(\d+(?:[.,]\d+)?)\s+здоровья\s+и\s+маны/g, function (_match, value) {
       value = normalizeNumber(value);
@@ -186,11 +193,17 @@
       bonus.evasionPct += normalizeNumber(value);
       return _match;
     });
-    text.replace(/\+(\d+(?:[.,]\d+)?)%\s+критическ[а-яё\s]*удар/g, function (_match, value) {
+    // 08.11: шанс крита — форматы данных «Критический удар (N% xM)» и
+    // «Критический удар: N% [шанс] xM [урона]». Требуем начало клаузы (начало
+    // строки или после запятой/точки с запятой), чтобы не задеть
+    // «Активация: 100% критический удар x1.5» — временный баф, не пассивка.
+    text.replace(/(?:^|[,;])\s*критический удар:?\s*\(?\s*(\d+(?:[.,]\d+)?)%/g, function (_match, value) {
       bonus.critChancePct += normalizeNumber(value);
       return _match;
     });
-    text.replace(/x(\d+(?:[.,]\d+)?)\s*урон/g, function (_match, value) {
+    // Урон крита — xM в той же клаузе (те же 10 предметов; старый регэксп
+    // «xN урон» ловил только 2 из 10)
+    text.replace(/(?:^|[,;])\s*критический удар[^,;]*?x(\d+(?:[.,]\d+)?)/g, function (_match, value) {
       bonus.critDamagePct += normalizeNumber(value) * 100;
       return _match;
     });
@@ -209,6 +222,23 @@
       return _match;
     });
     text.replace(/(\d+(?:[.,]\d+)?)%\s+маг(?:ический)?\s+блок/g, function (_match, value) {
+      bonus.magicBlockPct += normalizeNumber(value);
+      return _match;
+    });
+    // 08.11: «+N% множитель маг. вампиризма[/блока]» — формат данных Проклятого черепа
+    // и Алебарды (точка после «маг» старым регэкспам не давалась).
+    // Комбинированная форма «вампиризма/блока» кладёт N в ОБЕ статистики;
+    // лукэхед (?![а]?\/) исключает её из одиночной формы без отката — не удвоить вампиризм.
+    text.replace(/(\d+(?:[.,]\d+)?)%\s+множитель\s+маг\.?\s*вампиризм(?![а]?\/)/g, function (_match, value) {
+      bonus.magicVampirismPct += normalizeNumber(value);
+      return _match;
+    });
+    text.replace(/(\d+(?:[.,]\d+)?)%\s+множитель\s+маг\.?\s*блок/g, function (_match, value) {
+      bonus.magicBlockPct += normalizeNumber(value);
+      return _match;
+    });
+    text.replace(/(\d+(?:[.,]\d+)?)%\s+множитель\s+маг\.?\s*вампиризм(?:а)?\/блок/g, function (_match, value) {
+      bonus.magicVampirismPct += normalizeNumber(value);
       bonus.magicBlockPct += normalizeNumber(value);
       return _match;
     });

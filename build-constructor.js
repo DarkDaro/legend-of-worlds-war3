@@ -1,6 +1,9 @@
 /* ===== Конструктор сборок (многостадийный) ===== */
 
 const BC_STORAGE_KEY = 'buildConstructor';
+// 08.11: верхняя граница уровня стадии — раньше была только в max= атрибуте инпута,
+// и setStageLevel пропускал 999 в данные и JASS
+const BC_STAGE_MAX_LEVEL = 25;
 
 // Данные: массив стадий
 // Каждый слот: null (пустой) или { id: 'I02D', keep: true/false }
@@ -130,7 +133,8 @@ function removeStage(index) {
 
 function setStageLevel(index, level) {
     if (buildStages[index]) {
-        buildStages[index].level = Math.max(1, parseInt(level) || 1);
+        // 08.11: кламп с двух сторон — 1..BC_STAGE_MAX_LEVEL (как max= у инпута)
+        buildStages[index].level = Math.min(BC_STAGE_MAX_LEVEL, Math.max(1, parseInt(level) || 1));
         bcSave();
         bcRender();
     }
@@ -232,7 +236,7 @@ function bcRenderSlots() {
         html += `<i class="fas fa-chevron-${collapsed ? 'right' : 'down'} bc-stage-chevron" data-si="${si}"></i>`;
         html += `<div class="bc-stage-level">`;
         html += `<label for="bcLevel${si}">Уровень:</label>`;
-        html += `<input type="number" id="bcLevel${si}" class="bc-level-input" value="${stage.level}" min="1" max="25" data-si="${si}">`;
+        html += `<input type="number" id="bcLevel${si}" class="bc-level-input" value="${stage.level}" min="1" max="${BC_STAGE_MAX_LEVEL}" data-si="${si}">`;
         html += `</div>`;
         html += `<div class="bc-stage-cost">${stageCost.toLocaleString('ru-RU')} <i class="fas fa-coins"></i>${bossCount > 0 ? ' · <i class="fas fa-skull"></i> ' + bossCount : ''} <span class="bc-stage-delta">(+${bcCalcTransitionCost(si).toLocaleString('ru-RU')})</span></div>`;
         html += `<button class="bc-stage-copy" data-si="${si}" title="Копировать стадию"><i class="fas fa-copy"></i></button>`;

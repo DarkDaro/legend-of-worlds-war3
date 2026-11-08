@@ -125,9 +125,13 @@ function calculateBuildStats() {
         const item = itemsDB[id];
         if (!item) return;
         const cost = calculateItemCost(id);
-        totalCost += cost;
-
         const isBossDrop = item.type === 'boss_drop' || (item.tags && item.tags.includes('boss_drop'));
+
+        // Босс-дропы бесплатные — в «Итого» не входят (08.11: раньше дроп-корень
+        // добавлял свою записанную стоимость в Итого рядом с строкой «бесплатно»)
+        if (!isBossDrop) {
+            totalCost += cost;
+        }
 
         // Босс-дропы бесплатные — возврат не начисляется
         if (!keep && !isBossDrop) {
@@ -139,13 +143,13 @@ function calculateBuildStats() {
             bossDropCost += cost;
         }
 
-        const recipe = getRecipeCost(item);
+        const recipe = getRecipeCost(item); // 08.11: глубокая — со всеми рецептами дерева
         recipeCost += recipe;
 
         items.push({ id, item, cost, isBossDrop, recipe, keep });
     });
 
-    baseCost = Math.max(0, totalCost - bossDropCost - recipeCost);
+    baseCost = Math.max(0, totalCost - recipeCost);
     const netCost = totalCost - refundCost;
 
     return { totalCost, refundCost, netCost, bossDropCount, bossDropCost, recipeCost, baseCost, items };
@@ -173,9 +177,10 @@ function collectBaseComponents(itemId, quantity, visited) {
         // Босс-дроп внутри дерева — бесплатный, не покупаем
         const isBossDrop = child.type === 'boss_drop' || (child.tags && child.tags.includes('boss_drop'));
         if (isBossDrop) return;
-        // Рецепт — тоже базовая покупка
+        // Рецепт — тоже базовая покупка; 08.11: edge-овый costOverride не теряем,
+        // иначе «Свиток рецепта» в листе показывается за 0 вместо реальной цены
         if (child.type === 'recipe') {
-            result.push({ itemId: comp.itemId, quantity: qty * quantity });
+            result.push({ itemId: comp.itemId, quantity: qty * quantity, costOverride: comp.costOverride });
             return;
         }
         const sub = collectBaseComponents(comp.itemId, qty * quantity, new Set(visited));
@@ -197,16 +202,19 @@ function getDeduplicatedComponents() {
         if (isBossDrop) return;
 
         const bases = collectBaseComponents(id, 1, new Set());
-        bases.forEach(({ itemId, quantity }) => {
-            if (componentMap[itemId]) {
-                componentMap[itemId].quantity += quantity;
+        bases.forEach(({ itemId, quantity, costOverride }) => {
+            // 08.11: рецепты с разными costOverride — разные строки (у «Свитка рецепта»
+            // цена живёт на ребре, а не в item.cost, который всегда 0)
+            const mapKey = costOverride !== undefined ? itemId + ':' + costOverride : itemId;
+            if (componentMap[mapKey]) {
+                componentMap[mapKey].quantity += quantity;
             } else {
                 const compItem = itemsDB[itemId];
-                componentMap[itemId] = {
+                componentMap[mapKey] = {
                     itemId,
                     quantity,
                     name: compItem ? compItem.name : itemId,
-                    cost: compItem ? (compItem.cost || 0) : 0,
+                    cost: costOverride !== undefined ? costOverride : (compItem ? (compItem.cost || 0) : 0),
                     icon: compItem ? compItem.icon : '',
                     type: compItem ? compItem.type : ''
                 };

@@ -403,6 +403,8 @@ body.item-sheet-open {
 .cost-badge.cost-total    { border: 1px solid #ffcc4455; color: #ffd966; }
 .cost-badge.cost-base     { border: 1px solid #00e6ff55; color: #8ab4f0; }
 .cost-badge.cost-recipe   { border: 1px solid #ff555555; color: #ffaaaa; }
+/* 08.11: босс-дропы в дереве (бесплатны, но входят в записанную item.cost) */
+.cost-badge.cost-boss     { border: 1px solid #ff444488; color: #ff8888; }
 
 /* ===== Бейджи предмета (detail-badge) ===== */
 /* Контейнер бейджей */

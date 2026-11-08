@@ -188,7 +188,8 @@ function renderComparison() {
 
     var levelInput = document.getElementById('heroLevel');
     var level = parseInt(levelInput.value) || 1;
-    level = Math.max(1, Math.min(500, level));
+    // 08.11: литерал 500 → GAME_CONSTANTS.MAX_LEVEL (единый источник чисел)
+    level = Math.max(1, Math.min(GAME_CONSTANTS.MAX_LEVEL, level));
     levelInput.value = level;
 
     if (COMPARE_MOBILE) {
@@ -265,7 +266,7 @@ function buildCompareRows(heroes, level) {
     }, false);
     pushStatRow(rows, 'Скорость атаки', heroes, function(h) { return getAttackSpeed(h, level); }, true);
     pushStatRow(rows, 'Скорость передвижения', heroes, function(h) { return getMovementSpeed(h, level); }, false);
-    pushStatRow(rows, 'Дальность атаки', heroes, function(h) { return h.stats.range == 128 ? 'Ближний' : h.stats.range; }, false);
+    pushStatRow(rows, 'Дальность атаки', heroes, function(h) { return h.stats.range == GAME_CONSTANTS.MELEE_ATTACK_RANGE ? 'Ближний' : h.stats.range; }, false);
     pushStatRow(rows, 'Реген. здоровья', heroes, function(h) {
         var bonus = getCompareHeroBuildBonus(h.id);
         var base = (h.stats.hpRegen || 0) + getAttrTotalWithBuild(h, 'strength', level) * GAME_CONSTANTS.STR_HP_REGEN_FACTOR + bonus.hpRegenFlat;
