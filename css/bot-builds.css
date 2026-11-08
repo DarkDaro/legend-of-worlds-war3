@@ -240,7 +240,7 @@
         }
         /* 08.11 css-аудит: здесь и в .bb-group-btn.active/.bb-copy-btn было var(--accent) —
            такой переменной никогда не существовало, цвет молча падал до цвета текста.
-
+           Фикс: существующий --accent-cyan (#00e6ff). */
         .bb-total-value {
             font-size: 1.1rem;
             font-weight: 700;
@@ -400,7 +400,7 @@
             .bb-stage { background: #0f172a !important; }
         }
 /* 24.10: название предмета читаемо. Было 8.8px + ellipsis при ширине 44px —
-
+   13 названий обрезались до «Кольцо пре…», title на тач-экране недоступен. */
 .bb-slot-name {
     font-size: 0.7rem;          /* 11.2px вместо 8.8px */
     line-height: 1.15;

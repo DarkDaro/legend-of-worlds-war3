@@ -386,12 +386,9 @@ body.page-map-changes::after {
 .compare-clear-btn {
     align-self: flex-end;
 }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .compare-back-link {
     margin-top: 32px;
 }
-
 .compare-attr-strength {
     color: #ff5555;
 }
@@ -1069,7 +1066,7 @@ body.page-map-changes::after {
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-
+   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;

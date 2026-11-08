@@ -1044,7 +1044,7 @@
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-
+   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;

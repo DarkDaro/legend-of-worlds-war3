@@ -37,22 +37,10 @@
 .stat-pct-fill { height: 100%; border-radius: 3px; transition: width 0.3s ease; }
 .stat-pct-num { font-weight: 600; min-width: 28px; text-align: right; }
 .stat-raw { color: var(--text-muted); font-size: 0.7rem; }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .pct-low { color: #ff6b6b; }
-*/
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .pct-mid { color: var(--text-primary); }
-*/
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .pct-high { color: #ffa500; }
-*/
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .pct-best { color: #ffd43b; }
-*/
 
 .percentile-table-wrap {
     margin-top: 32px; overflow-x: auto; max-height: 600px;

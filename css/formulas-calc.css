@@ -66,17 +66,12 @@
             font-size: 0.85rem;
             white-space: nowrap;
         }
-                /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-        /*
 .formula-sources {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             margin-top: 8px;
         }
-
-                /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-        /*
 .formula-source-chip {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
@@ -90,34 +85,21 @@
             align-items: center;
             gap: 6px;
         }
-
-                /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-        /*
 .formula-source-chip:hover {
-            border-color: #00e6ff;
+            border-color: var(--accent-cyan);
         }
-
-                /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-        /*
 .formula-source-chip.selected {
             background: #00e6ff22;
-            border-color: #00e6ff;
+            border-color: var(--accent-cyan);
             color: var(--accent-cyan);
         }
-
-                /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-        /*
 .formula-source-chip .chip-value {
             color: #00ffaa;
             font-weight: 600;
         }
-
-                /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-        /*
 .formula-source-chip.selected .chip-value {
             color: var(--accent-cyan);
         }
-
         .formula-results {
             background: var(--glass-bg);
             backdrop-filter: blur(var(--glass-blur));
@@ -321,14 +303,11 @@
             min-width: 16px;
             text-align: center;
         }
-                /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-        /*
 .luck-item-card .luck-item-total {
             color: var(--text-muted);
             font-size: 0.78rem;
             margin-left: 4px;
         }
-
         .luck-items-total-row {
             display: flex;
             justify-content: space-between;

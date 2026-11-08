@@ -229,31 +229,20 @@
         }
 
         /* Способности */
-                /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-        /*
 .ability-cell {
             text-align: left !important;
             padding: 7px 10px !important;
         }
-        */
-                /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-        /*
 .ability-cell .ability-name {
             color: var(--accent-cyan);
             font-size: 0.82rem;
             margin-bottom: 1px;
         }
-        */
-                /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-        /*
 .ability-cell .ability-desc {
             color: #7a8a9a;
             font-size: 0.74rem;
             line-height: 1.3;
         }
-        */
-                /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-        /*
 .ability-cell .ability-passive {
             display: inline-block;
             font-size: 0.62rem;
@@ -263,7 +252,6 @@
             border-radius: 3px;
             margin-left: 3px;
         }
-        */
 
         /* Пустое состояние */
         .compare-empty {
@@ -314,15 +302,12 @@
             font-size: 0.72rem;
             margin-top: 2px;
         }
-                /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-        /*
 .compare-card-build {
             display: flex;
             flex-wrap: wrap;
             gap: 4px;
             margin-top: 6px;
         }
-        */
         .compare-card-body {
             padding: 4px 0;
         }
@@ -404,14 +389,8 @@
             .hero-col-name { font-size: 0.8rem; }
             .hero-col-attr { font-size: 0.6rem; }
             .stat-bar { flex: 0 0 28px; }
-                        /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-            /*
 .ability-cell .ability-desc { display: none; }
-            */
-                        /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-            /*
 .ability-cell .ability-name { font-size: 0.75rem; }
-            */
             .compare-table tbody td { padding: 5px 5px; }
             .compare-table thead th { padding: 8px 5px; }
         }
@@ -440,14 +419,8 @@
             .hero-col-attr { display: none; }
             .compare-table tbody td { padding: 4px 4px; }
             .compare-table thead th { padding: 6px 4px; }
-                        /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-            /*
 .ability-cell { padding: 6px 4px !important; }
-            */
-                        /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-            /*
 .ability-cell .ability-passive { font-size: 0.56rem; }
-            */
             h1 { font-size: 1.3rem; }
         }
         @supports not (backdrop-filter: blur(1px)) {

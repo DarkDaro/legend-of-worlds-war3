@@ -472,52 +472,34 @@
     font-size: 0.85rem;
     margin-top: 4px;
 }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .footer-links {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px 20px;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .footer-links a {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.9rem;
     transition: 0.15s;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .footer-links a:hover {
-    color: #00e6ff;
+    color: var(--accent-cyan);
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .footer-social {
     display: flex;
     gap: 16px;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .footer-social a {
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 1.3rem;
     transition: 0.15s;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .footer-social a:hover {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     text-shadow: 0 0 10px #00e6ff66;
 }
-
 .footer-bottom {
     text-align: center;
     padding-top: 20px;
@@ -610,7 +592,7 @@
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-
+   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;

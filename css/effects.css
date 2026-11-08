@@ -51,13 +51,10 @@
 .hero-stats-table tr:last-child td {
     border-bottom: none;
 }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .stat-primary {
     color: #ffd966;
     font-weight: bold;
 }
-
 .stat-strength { color: #ff5555; }
 .stat-agility { color: #55ff55; }
 .stat-intelligence { color: #55aaff; }
@@ -286,7 +283,7 @@ body.page-404 {
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-
+   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -296,9 +293,7 @@ body.page-404 {
     }
 }
 /* 24.10: соц-иконки футера были 18-26x31 (padding: 0), крошки 15px по высоте.
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
+   Мобильный минимум для тап-цели — 28px. */
 .footer-social a {
     display: inline-flex;
     align-items: center;
@@ -307,7 +302,6 @@ body.page-404 {
     min-height: 28px;
     padding: 6px 6px;
 }
-
 .breadcrumbs a,
 .breadcrumbs .current {
     display: inline-block;
@@ -316,7 +310,7 @@ body.page-404 {
 
 /* 24.10: на 375px кнопка «наверх» (.scroll-top-btn, 44x44, bottom:24px)
    садилась на копирайт футера — перекрытие 16x38px на 8 страницах.
-
+   Даём футеру запас снизу. */
 @media (max-width: 900px) {
     .site-footer {
         padding-bottom: 72px;

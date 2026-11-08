@@ -210,11 +210,10 @@
         }
 
 /* 24.10: чекбокс «Константа 0.05» был 13x13 — мелко для пальца */
-/* [off 08.11 css-аудит] из селектора убрана мёртвая часть «.armor-toggle input[type="checkbox"]»
-
+/* 08.11: из селектора убрана мёртвая часть «.armor-toggle input[type="checkbox"]» — класс armor-toggle не используется нигде (HTML, JS, живой DOM); было: «#constToggle, .armor-toggle input[type="checkbox"]» */
 #constToggle {
     width: 20px;
     height: 20px;
     cursor: pointer;
-    accent-color: var(--accent-cyan, var(--accent-cyan));
+    accent-color: var(--accent-cyan, #00e6ff);
 }

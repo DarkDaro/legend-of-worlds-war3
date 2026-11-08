@@ -604,8 +604,6 @@ h1 {
 }
 
 /* === Тактика и советы === */
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .hero-tips {
     background: #0a1018;
     border: 1px solid #1a3050;
@@ -613,44 +611,31 @@ h1 {
     padding: 16px 20px;
     margin: 12px 0 20px;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .hero-tips h4 {
     color: #ffcc66;
     font-size: 0.95rem;
     margin-bottom: 8px;
     text-shadow: 0 0 6px #ffb34744;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .hero-tips ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .hero-tips li {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 0.85rem;
     line-height: 1.5;
     padding: 4px 0 4px 18px;
     position: relative;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .hero-tips li::before {
     content: '›';
     position: absolute;
     left: 4px;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-weight: 700;
 }
-
 .abilities-grid {
     display: flex;
     flex-direction: column;
@@ -693,19 +678,13 @@ h1 {
     box-shadow: 0 0 18px #ff8c0088;
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .ability-card.innate:hover {
     box-shadow: inset 0 0 10px #00000055, 0 0 15px #00ff8844;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .ability-card.innate:hover .ability-icon {
     box-shadow: 0 0 18px #00ff8888;
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
-
 @keyframes abilityIconPulse {
     0%, 100% { filter: brightness(1); }
     50% { filter: brightness(1.3); }
@@ -718,13 +697,10 @@ h1 {
     border-left-color: #ff8c00;
     box-shadow: inset 0 0 10px #00000055, 0 0 10px #ff8c0022;
 }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .ability-card.innate {
     border-left-color: #00ff88;
     box-shadow: inset 0 0 10px #00000055, 0 0 10px #00ff8822;
 }
-
 .ability-header {
     display: flex;
     align-items: center;
@@ -826,14 +802,11 @@ h1 {
     color: #ff8c00;
     border-color: #ff8c0066;
 }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .ability-card.innate .ability-type-badge {
     background: #0a2a1a;
     color: #00ff88;
     border-color: #00ff8866;
 }
-
 .ability-tag {
     display: inline-block;
     font-size: 0.65rem;
@@ -887,10 +860,7 @@ h1 {
     margin-bottom: 10px;
 }
 /* Удача: зелёный «шанс» в описаниях способностей (из цветокода |c00FF5555) */
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .luck-chance { color: #55ff55; font-weight: 600; }
-
 .ability-params {
     display: flex;
     flex-wrap: wrap;
@@ -1032,14 +1002,9 @@ h1 {
     display: block;
 }
 /* === Цикличные способности (Q с вариантами) === */
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .ability-cycle-group {
     margin-bottom: 12px;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .cycle-label {
     display: flex;
     align-items: center;
@@ -1052,50 +1017,28 @@ h1 {
     border: 1px solid var(--glass-border);
     border-radius: 10px;
     font-size: 0.8rem;
-    color: #8aa0c0;
+    color: var(--text-secondary);
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .cycle-label .cycle-key {
     background: #00e6ff22;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     padding: 2px 8px;
     border-radius: 6px;
     font-weight: 700;
     font-size: 0.75rem;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .cycle-label .cycle-hint {
     margin-left: auto;
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 0.75rem;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .ability-cycle-group .ability-card {
     border-left: 3px solid #00e6ff44;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .ability-cycle-group .ability-card:nth-child(1) { border-left-color: #bf7fff; }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .ability-cycle-group .ability-card:nth-child(2) { border-left-color: #ff5555; }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .ability-cycle-group .ability-card:nth-child(3) { border-left-color: #55aaff; }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .ability-cycle-group .ability-card:nth-child(4) { border-left-color: #8800ff; }
-
 .back-button, .back-link {
     display: inline-block;
     margin-top: 20px;
@@ -1119,7 +1062,7 @@ h1 {
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-
+   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -1130,7 +1073,7 @@ h1 {
 }
 
 /* 24.10: .detail-title стал <h1> для SEO. Глобальное правило h1 в base.css
-
+   добавляет подчёркивание и синий градиент — гасим их точечно. */
 .panel-header h1.detail-title {
     border-bottom: 0;
     background: none;
@@ -1264,12 +1207,9 @@ h1 {
         grid-template-columns: repeat(2, 1fr);
         gap: 6px;
     }
-        /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-    /*
 .hero-tips {
         padding: 14px 16px;
     }
-    */
     .ability-icon {
         width: 40px;
         height: 40px;
@@ -1593,22 +1533,19 @@ h1 {
 .logo:hover {
     text-shadow: 0 0 15px var(--accent-cyan);
 }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .logo-icon {
     width: 48px;
     height: 48px;
     background: radial-gradient(circle at 30% 20%, #1e3a5a, #0e1a2b);
     border-radius: 14px;
-    border: 2px solid #00e6ff;
+    border: 2px solid var(--accent-cyan);
     box-shadow: 0 0 15px #00e6ff88, inset 0 0 8px #00e6ff44;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 28px;
-    color: #00e6ff;
+    color: var(--accent-cyan);
 }
-
 .logo-text {
     font-size: clamp(1.15rem, 1.4vw, 1.6rem);
     font-weight: 700;
@@ -1688,7 +1625,7 @@ h1 {
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-
+   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -1700,14 +1637,14 @@ h1 {
 
 /* 24.10: flex-basis только на широких экранах.
    На 601-900px .site-header колонка (info.css) и flex-basis 520px работал
-
+   как высота -> шапка занимала 620px, меню в 5 строк, гамбургер не появлялся. */
 @media (min-width: 901px) {
     .header-nav {
         flex: 1 1 520px;
     }
 }
 /* 24.10: в storage таблица table-layout:fixed, слово «(максимальное» (95px)
-
+   выходило за ячейку 88px и наезжало на соседнюю колонку */
 .storage-table td,
 .storage-desc {
     overflow-wrap: break-word;
@@ -2762,7 +2699,7 @@ h1 {
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-
+   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -2780,13 +2717,10 @@ h1 {
     margin: 0 auto;
     text-align: center;
 }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .support-hero {
     font-size: 4rem;
     margin-bottom: 16px;
 }
-*/
 .support-desc {
     color: var(--text-secondary);
     font-size: 1.05rem;
@@ -3082,17 +3016,14 @@ h1 {
     color: var(--text-primary);
     flex: 1;
 }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .monster-code {
     font-family: 'Consolas', monospace;
     font-size: 0.75rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
     background: #0a0f1a;
     padding: 2px 8px;
     border-radius: 6px;
 }
-
 .monster-toggle {
     color: var(--text-dim);
     font-size: 0.8rem;
@@ -3226,14 +3157,11 @@ h1 {
 }
 
 /* Вступительный текст на странице монстров */
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .monsters-intro {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     margin-bottom: 24px;
     font-size: 1.05rem;
 }
-
 
 /* Иконка заголовка "Боссы" */
 .boss-heading-icon {
@@ -3278,12 +3206,9 @@ h1 {
 }
 
 /* Стадии босса */
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .boss-stages {
     margin-top: 12px;
 }
-
 .boss-stage {
     display: flex;
     align-items: baseline;
@@ -3294,8 +3219,6 @@ h1 {
     border-radius: 8px;
     margin-bottom: 4px;
 }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .boss-stage-threshold {
     font-weight: 700;
     color: #bf7fff;
@@ -3303,15 +3226,11 @@ h1 {
     min-width: 70px;
     flex-shrink: 0;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .boss-stage-desc {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     font-size: 0.85rem;
     line-height: 1.4;
 }
-
 
 /* Награда за босса */
 .monster-reward {
@@ -3384,14 +3303,11 @@ h1 {
     border-bottom-color: #ff6b6b;
     text-shadow: 0 0 8px #ff6b6b88;
 }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .drop-bonus {
     color: #bf7fff;
     font-size: 0.8rem;
     margin-left: 4px;
 }
-
 
 /* === css/home.css === */
 
@@ -3869,52 +3785,34 @@ h1 {
     font-size: 0.85rem;
     margin-top: 4px;
 }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .footer-links {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px 20px;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .footer-links a {
-    color: #8aa0c0;
+    color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.9rem;
     transition: 0.15s;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .footer-links a:hover {
-    color: #00e6ff;
+    color: var(--accent-cyan);
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .footer-social {
     display: flex;
     gap: 16px;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .footer-social a {
-    color: #5a7a9a;
+    color: var(--text-dim);
     font-size: 1.3rem;
     transition: 0.15s;
 }
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .footer-social a:hover {
-    color: #00e6ff;
+    color: var(--accent-cyan);
     text-shadow: 0 0 10px #00e6ff66;
 }
-
 .footer-bottom {
     text-align: center;
     padding-top: 20px;
@@ -4007,7 +3905,7 @@ h1 {
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-
+   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -4545,10 +4443,7 @@ h1 {
 .mc-tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; margin-left: 6px; }
 .mc-tag-balance { background: rgba(255,200,0,0.12); border: 1px solid rgba(255,200,0,0.3); color: #ffc800; }
 .mc-tag-rework { background: rgba(0,200,255,0.1); border: 1px solid rgba(0,200,255,0.3); color: #00c8ff; }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .mc-tag-fix { background: rgba(100,255,100,0.1); border: 1px solid rgba(100,255,100,0.3); color: #64ff64; }
-
 .mc-note { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; padding-left: 10px; border-left: 2px solid var(--glass-border); }
 .mc-pie-wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
 .mc-pie-svg { width: 160px; height: 160px; flex-shrink: 0; }
@@ -4652,7 +4547,7 @@ h1 {
         }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-
+   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -4738,7 +4633,7 @@ h1 {
 
 /* ===== 24.10: текстовые ссылки внутри разделов info =====
    Раньше глобального правила для <a> не было — в тексте ссылки выглядели
-
+   как браузерные (синие, подчёркнутые), выбиваясь из неоновой темы. */
 .info-text a,
 .info-section p a,
 .info-steps a,
@@ -5178,14 +5073,11 @@ body.item-sheet-open {
 }
 
 /* Рекомендуется героям */
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .hero-reco-list {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
-
 
 .hero-reco-chip {
   display: inline-flex;
@@ -5299,6 +5191,8 @@ body.item-sheet-open {
 .cost-badge.cost-total    { border: 1px solid #ffcc4455; color: #ffd966; }
 .cost-badge.cost-base     { border: 1px solid #00e6ff55; color: #8ab4f0; }
 .cost-badge.cost-recipe   { border: 1px solid #ff555555; color: #ffaaaa; }
+/* 08.11: босс-дропы в дереве (бесплатны, но входят в записанную item.cost) */
+.cost-badge.cost-boss     { border: 1px solid #ff444488; color: #ff8888; }
 
 /* ===== Бейджи предмета (detail-badge) ===== */
 /* Контейнер бейджей */
@@ -5463,10 +5357,7 @@ body.item-sheet-open {
   display: block;
   color: #d0e0ff;
 }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .item-card.consumable    { border-bottom: 4px solid #00ffaa; box-shadow: 0 0 15px #00ffaa55; }
-
 .item-card.neutral       { border-bottom: 4px solid #bf7fff; box-shadow: 0 0 15px #bf7fff55; }
 .item-card.boost         { border-bottom: 4px solid #ffaa33; box-shadow: 0 0 15px #ffaa3355; }
 .item-card.strength      { border-bottom: 4px solid #ff5555; box-shadow: 0 0 15px #ff555555; }
@@ -5485,10 +5376,7 @@ body.item-sheet-open {
 .item-card.weapon:hover      { border-color: #ff8800; box-shadow: 0 0 20px #ff8800aa, 0 0 40px #ff880044; }
 .item-card.boost:hover      { border-color: #ffaa33; box-shadow: 0 0 20px #ffaa33aa, 0 0 40px #ffaa3344; }
 .item-card.neutral:hover    { border-color: #bf7fff; box-shadow: 0 0 20px #bf7fffaa, 0 0 40px #bf7fff44; }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .item-card.consumable:hover { border-color: #00ffaa; box-shadow: 0 0 20px #00ffaaaa, 0 0 40px #00ffaa44; }
-
 /* Редкость предметов по стоимости */
 .item-card.rarity-cheap  { opacity: 0.85; }
 .item-card.rarity-mid    { opacity: 0.92; }
@@ -5543,10 +5431,7 @@ body.item-sheet-open {
 .item-card.weapon .item-icon img     { border-color: #ff8800aa; box-shadow: 0 0 10px #ff880044; }
 .item-card.boost .item-icon img      { border-color: #ffaa33aa; box-shadow: 0 0 10px #ffaa3344; }
 .item-card.neutral .item-icon img    { border-color: #bf7fffaa; box-shadow: 0 0 10px #bf7fff44; }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .item-card.consumable .item-icon img { border-color: #00ffaaaa; box-shadow: 0 0 10px #00ffaa44; }
-
 .item-name {
   font-size: 0.9rem;
   font-weight: 600;
@@ -6077,7 +5962,7 @@ body.item-sheet-open {
 
 /* 24.10: hidden побеждает display. Было: .bonus-reset { display: inline-flex }
    перебивал браузерное [hidden] { display: none } -> кнопка «Сбросить» висела
-
+   всегда, хотя сбрасывать нечего. */
 .bonus-reset[hidden],
 .bonus-filter-empty[hidden] {
     display: none !important;
@@ -6085,7 +5970,7 @@ body.item-sheet-open {
 
 /* 24.10: табы на узком экране скроллятся, а не разворачиваются в 12 рядов.
    Было: flex-wrap: wrap на <=560px -> полоса 354px = 49% экрана,
-
+   первая карточка каталога начиналась на 1477px. */
 @media (max-width: 560px) {
     .category-tabs {
         flex-wrap: nowrap;
@@ -6153,13 +6038,10 @@ body.item-sheet-open {
 .hero-stats-table tr:last-child td {
     border-bottom: none;
 }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .stat-primary {
     color: #ffd966;
     font-weight: bold;
 }
-
 .stat-strength { color: #ff5555; }
 .stat-agility { color: #55ff55; }
 .stat-intelligence { color: #55aaff; }
@@ -6388,7 +6270,7 @@ body.page-404 {
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-
+   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -6398,9 +6280,7 @@ body.page-404 {
     }
 }
 /* 24.10: соц-иконки футера были 18-26x31 (padding: 0), крошки 15px по высоте.
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
+   Мобильный минимум для тап-цели — 28px. */
 .footer-social a {
     display: inline-flex;
     align-items: center;
@@ -6409,7 +6289,6 @@ body.page-404 {
     min-height: 28px;
     padding: 6px 6px;
 }
-
 .breadcrumbs a,
 .breadcrumbs .current {
     display: inline-block;
@@ -6418,7 +6297,7 @@ body.page-404 {
 
 /* 24.10: на 375px кнопка «наверх» (.scroll-top-btn, 44x44, bottom:24px)
    садилась на копирайт футера — перекрытие 16x38px на 8 страницах.
-
+   Даём футеру запас снизу. */
 @media (max-width: 900px) {
     .site-footer {
         padding-bottom: 72px;
@@ -6815,12 +6694,9 @@ body.page-map-changes::after {
 .compare-clear-btn {
     align-self: flex-end;
 }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .compare-back-link {
     margin-top: 32px;
 }
-
 .compare-attr-strength {
     color: #ff5555;
 }
@@ -7498,7 +7374,7 @@ body.page-map-changes::after {
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-
+   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -7912,7 +7788,7 @@ body.page-leaving {
 
 /* ==========================================================================
    Конструктор сборок (build-constructor)
-
+   ========================================================================== */
 
 .bc-intro {
     color: #8e97aa;
@@ -8239,8 +8115,6 @@ body.page-leaving {
     margin-bottom: 0;
 }
 
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .bc-paste-stage-btn {
     display: inline-flex;
     align-items: center;
@@ -8250,21 +8124,17 @@ body.page-leaving {
     background: rgba(0, 230, 255, 0.05);
     border: 2px dashed rgba(0, 230, 255, 0.2);
     border-radius: 6px;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 0.85rem;
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
     white-space: nowrap;
 }
 
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .bc-paste-stage-btn:hover {
     background: rgba(0, 230, 255, 0.1);
     border-color: rgba(0, 230, 255, 0.4);
 }
-
 
 .bc-clear-btn {
     display: inline-flex;

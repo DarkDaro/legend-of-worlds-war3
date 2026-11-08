@@ -255,22 +255,19 @@
 .logo:hover {
     text-shadow: 0 0 15px var(--accent-cyan);
 }
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .logo-icon {
     width: 48px;
     height: 48px;
     background: radial-gradient(circle at 30% 20%, #1e3a5a, #0e1a2b);
     border-radius: 14px;
-    border: 2px solid #00e6ff;
+    border: 2px solid var(--accent-cyan);
     box-shadow: 0 0 15px #00e6ff88, inset 0 0 8px #00e6ff44;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 28px;
-    color: #00e6ff;
+    color: var(--accent-cyan);
 }
-
 .logo-text {
     font-size: clamp(1.15rem, 1.4vw, 1.6rem);
     font-weight: 700;
@@ -350,7 +347,7 @@
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
-
+   Гасим бесконечные анимации и сокращаем переходы; layout не затрагивается. */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -362,14 +359,14 @@
 
 /* 24.10: flex-basis только на широких экранах.
    На 601-900px .site-header колонка (info.css) и flex-basis 520px работал
-
+   как высота -> шапка занимала 620px, меню в 5 строк, гамбургер не появлялся. */
 @media (min-width: 901px) {
     .header-nav {
         flex: 1 1 520px;
     }
 }
 /* 24.10: в storage таблица table-layout:fixed, слово «(максимальное» (95px)
-
+   выходило за ячейку 88px и наезжало на соседнюю колонку */
 .storage-table td,
 .storage-desc {
     overflow-wrap: break-word;

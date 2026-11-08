@@ -112,12 +112,9 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 6px;
     }
-        /* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-    /*
 .hero-tips {
         padding: 14px 16px;
     }
-    */
     .ability-icon {
         width: 40px;
         height: 40px;

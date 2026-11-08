@@ -350,7 +350,7 @@
     .storage-spellbooks-row { grid-template-columns: repeat(3, 1fr); }
     /* Мобильные GPU: backdrop-filter дорог и вызывает мерцание/дрожание соседних
        слоёв (переливание заголовка при скролле). На мобиле отключаем blur,
-
+       компенсируем более плотным фоном. */
     .storage-box, .storage-info-panel, .storage-book-panel {
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
@@ -414,7 +414,7 @@
     color: var(--text-secondary, #9ab);
     background: transparent;
     /* 08.11 css-аудит: было var(--border-color, #2a3a4a) — переменной нигде нет,
-
+       всегда работал fallback; заменено на точное значение, вид не менялся */
     border: 1px solid #2a3a4a;
     border-radius: 4px;
     cursor: pointer;

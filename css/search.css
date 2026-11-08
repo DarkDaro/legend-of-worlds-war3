@@ -400,7 +400,7 @@ body.page-leaving {
 
 /* ==========================================================================
    Конструктор сборок (build-constructor)
-
+   ========================================================================== */
 
 .bc-intro {
     color: #8e97aa;
@@ -727,8 +727,6 @@ body.page-leaving {
     margin-bottom: 0;
 }
 
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .bc-paste-stage-btn {
     display: inline-flex;
     align-items: center;
@@ -738,21 +736,17 @@ body.page-leaving {
     background: rgba(0, 230, 255, 0.05);
     border: 2px dashed rgba(0, 230, 255, 0.2);
     border-radius: 6px;
-    color: #00e6ff;
+    color: var(--accent-cyan);
     font-size: 0.85rem;
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
     white-space: nowrap;
 }
 
-
-/* [off 08.11 css-аудит] класс не используется нигде (HTML, JS, живой DOM 115 страниц) — отключено и зарезервировано; вернуть = снять обёртку */
-/*
 .bc-paste-stage-btn:hover {
     background: rgba(0, 230, 255, 0.1);
     border-color: rgba(0, 230, 255, 0.4);
 }
-
 
 .bc-clear-btn {
     display: inline-flex;

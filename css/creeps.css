@@ -34,11 +34,7 @@
         .creep-search::placeholder { color: var(--text-muted); }
 
         /* ── Шире контейнер для таблицы ── */
-        /* [off 08.11 css-аудит] дубль бандла: hero-page.css уже ставит 1200px,
-
-        /*
         .hero-page-container { max-width: 1200px; }
-
 
         /* ── Таблица ── */
         .creep-table-wrap {
@@ -257,8 +253,4 @@
         }
 
 /* 31.08: wiki-контейнер шире (hero-page-container 1000px -> 1200px, только эта страница) */
-/* [off 08.11 css-аудит] дубль бандла: с тех пор 1200px переехало в hero-page.css и действует на всех страницах,
-
-/*
 .hero-page-container { max-width: 1200px; }
-
