@@ -30,7 +30,7 @@
     /* Акцент и неоновое свечение */
     --accent-cyan: rgb(var(--cyan-rgb));
     --neon-glow: 0 0 20px rgba(var(--cyan-rgb), 0.2), 0 0 60px rgba(var(--cyan-rgb), 0.08);
-    --neon-glow-strong: 0 0 20px rgba(var(--cyan-rgb), 0.4), 0 0 60px rgba(var(--cyan-rgb), 0.15), inset 0 0 15px rgba(var(--cyan-rgb), 0.03);
+    --neon-glow-strong: 0 0 20px rgba(var(--cyan-rgb), 0.35), 0 0 60px rgba(var(--cyan-rgb), 0.12), inset 0 0 15px rgba(var(--cyan-rgb), 0.04);
 
     /* Алиасы старых имён на переход: в HTML живёт var(--glass-*) (404.html), закрыть после выноса инлайна (TECH-DEBT TD-4) */
     --glass-bg: var(--surface-bg);
@@ -91,7 +91,7 @@ h1 {
     padding-bottom: 12px;
     margin-bottom: 24px;
     color: #ffffff;
-    text-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.533), 0 0 25px rgba(var(--cyan-rgb), 0.267);
+    text-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.6), 0 0 25px rgba(var(--cyan-rgb), 0.2);
     letter-spacing: 1px;
     /* Shimmer-перелив на заголовках */
     background: linear-gradient(90deg, #fff 0%, var(--accent-cyan) 45%, #fff 55%, var(--accent-cyan) 100%);

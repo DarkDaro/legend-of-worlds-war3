@@ -372,8 +372,8 @@
             line-height: 1.5;
         }
         .guide-key-item {
-            background: rgba(var(--cyan-rgb), 0.05);
-            border: 1px solid rgba(var(--cyan-rgb), 0.15);
+            background: rgba(var(--cyan-rgb), 0.04);
+            border: 1px solid rgba(var(--cyan-rgb), 0.12);
             border-radius: 8px;
             padding: 14px 16px;
             margin-top: 14px;
@@ -645,8 +645,8 @@
             line-height: 1.5;
         }
         .guide-key-item {
-            background: rgba(var(--cyan-rgb), 0.05);
-            border: 1px solid rgba(var(--cyan-rgb), 0.15);
+            background: rgba(var(--cyan-rgb), 0.04);
+            border: 1px solid rgba(var(--cyan-rgb), 0.12);
             border-radius: 8px;
             padding: 14px 16px;
             margin-top: 14px;
@@ -789,7 +789,7 @@
         .guide-ability-link { display: inline-block; margin-top: 8px; color: var(--accent-cyan); text-decoration: none; font-size: 0.85rem; }
         .guide-ability-link:hover { text-decoration: underline; }
         .tag-dispel { display: inline-block; background: rgba(255,85,85,0.15); color: #ff5555; padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
-        .tag-scepter { display: inline-block; background: rgba(var(--cyan-rgb), 0.1); color: var(--accent-cyan); padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
+        .tag-scepter { display: inline-block; background: rgba(var(--cyan-rgb), 0.12); color: var(--accent-cyan); padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
         .guide-combo { background: var(--surface-bg); border: 1px solid var(--surface-border); border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; }
         .guide-combo h3 { font-size: 0.95rem; color: var(--text-primary); margin: 0 0 6px; }
         .guide-combo-sequence { font-family: monospace; color: var(--accent-cyan); font-size: 0.9rem; margin-bottom: 4px; }
@@ -799,16 +799,16 @@
         .guide-buy-items { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
         .guide-buy-item { background: var(--surface-tag-bg); border: 1px solid var(--surface-tag-border); padding: 3px 10px; border-radius: 6px; font-size: 0.82rem; color: var(--text-secondary); }
         .guide-buy-note { color: var(--text-secondary); font-size: 0.85rem; }
-        .guide-key-item { background: rgba(var(--cyan-rgb), 0.06); border: 1px solid rgba(var(--cyan-rgb), 0.2); border-radius: 10px; padding: 14px 18px; margin-top: 12px; }
+        .guide-key-item { background: rgba(var(--cyan-rgb), 0.04); border: 1px solid rgba(var(--cyan-rgb), 0.2); border-radius: 10px; padding: 14px 18px; margin-top: 12px; }
         .guide-key-item h3 { color: var(--accent-cyan); font-size: 0.95rem; margin: 0 0 6px; }
         .guide-key-item p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; }
         .guide-list { list-style: none; padding: 0; }
         .guide-list li { margin-bottom: 10px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; }
-        .guide-list-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: rgba(var(--cyan-rgb), 0.15); color: var(--accent-cyan); border-radius: 50%; font-size: 0.75rem; font-weight: 700; margin-right: 6px; }
+        .guide-list-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: rgba(var(--cyan-rgb), 0.12); color: var(--accent-cyan); border-radius: 50%; font-size: 0.75rem; font-weight: 700; margin-right: 6px; }
         .error { color: #ff5555; }
         .guide-synergy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
         .guide-synergy-card { border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; }
-        .guide-synergy-card.ally { background: rgba(var(--cyan-rgb), 0.06); border: 1px solid rgba(var(--cyan-rgb), 0.15); }
+        .guide-synergy-card.ally { background: rgba(var(--cyan-rgb), 0.04); border: 1px solid rgba(var(--cyan-rgb), 0.12); }
         .guide-synergy-card.enemy { background: rgba(255,85,85,0.06); border: 1px solid rgba(255,85,85,0.15); }
         .guide-synergy-name { font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
         .guide-synergy-reason { color: var(--text-secondary); font-size: 0.8rem; }
@@ -827,7 +827,7 @@
         .guide-ability-list strong { color: var(--text-primary); }
         .guide-ability-link { display: inline-block; margin-top: 8px; color: var(--accent-cyan); text-decoration: none; font-size: 0.85rem; }
         .guide-ability-link:hover { text-decoration: underline; }
-        .tag-scepter { display: inline-block; background: rgba(var(--cyan-rgb), 0.1); color: var(--accent-cyan); padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
+        .tag-scepter { display: inline-block; background: rgba(var(--cyan-rgb), 0.12); color: var(--accent-cyan); padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
         .tag-dispellable { display: inline-block; background: rgba(255,119,119,0.1); color: #ff7777; padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
         .guide-combo { background: var(--surface-bg); border: 1px solid var(--surface-border); border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; }
         .guide-combo h3 { font-size: 0.95rem; color: var(--text-primary); margin: 0 0 6px; }
@@ -838,16 +838,16 @@
         .guide-buy-items { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
         .guide-buy-item { background: var(--surface-tag-bg); border: 1px solid var(--surface-tag-border); padding: 3px 10px; border-radius: 6px; font-size: 0.82rem; color: var(--text-secondary); }
         .guide-buy-note { color: var(--text-secondary); font-size: 0.85rem; }
-        .guide-key-item { background: rgba(var(--cyan-rgb), 0.06); border: 1px solid rgba(var(--cyan-rgb), 0.2); border-radius: 10px; padding: 14px 18px; margin-top: 12px; }
+        .guide-key-item { background: rgba(var(--cyan-rgb), 0.04); border: 1px solid rgba(var(--cyan-rgb), 0.2); border-radius: 10px; padding: 14px 18px; margin-top: 12px; }
         .guide-key-item h3 { color: var(--accent-cyan); font-size: 0.95rem; margin: 0 0 6px; }
         .guide-key-item p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; }
         .guide-list { list-style: none; padding: 0; }
         .guide-list li { margin-bottom: 10px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; }
-        .guide-list-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: rgba(var(--cyan-rgb), 0.15); color: var(--accent-cyan); border-radius: 50%; font-size: 0.75rem; font-weight: 700; margin-right: 6px; }
+        .guide-list-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: rgba(var(--cyan-rgb), 0.12); color: var(--accent-cyan); border-radius: 50%; font-size: 0.75rem; font-weight: 700; margin-right: 6px; }
         .error { color: #ff5555; }
         .guide-synergy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
         .guide-synergy-card { border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; }
-        .guide-synergy-card.ally { background: rgba(var(--cyan-rgb), 0.06); border: 1px solid rgba(var(--cyan-rgb), 0.15); }
+        .guide-synergy-card.ally { background: rgba(var(--cyan-rgb), 0.04); border: 1px solid rgba(var(--cyan-rgb), 0.12); }
         .guide-synergy-card.enemy { background: rgba(255,85,85,0.06); border: 1px solid rgba(255,85,85,0.15); }
         .guide-synergy-name { font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
         .guide-synergy-reason { color: var(--text-secondary); font-size: 0.8rem; }
@@ -866,7 +866,7 @@
         .guide-ability-list strong { color: var(--text-primary); }
         .guide-ability-link { display: inline-block; margin-top: 8px; color: var(--accent-cyan); text-decoration: none; font-size: 0.85rem; }
         .guide-ability-link:hover { text-decoration: underline; }
-        .tag-scepter { display: inline-block; background: rgba(var(--cyan-rgb), 0.1); color: var(--accent-cyan); padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
+        .tag-scepter { display: inline-block; background: rgba(var(--cyan-rgb), 0.12); color: var(--accent-cyan); padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
         .guide-combo { background: var(--surface-bg); border: 1px solid var(--surface-border); border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; }
         .guide-combo h3 { font-size: 0.95rem; color: var(--text-primary); margin: 0 0 6px; }
         .guide-combo-sequence { font-family: monospace; color: var(--accent-cyan); font-size: 0.9rem; margin-bottom: 4px; }
@@ -876,16 +876,16 @@
         .guide-buy-items { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
         .guide-buy-item { background: var(--surface-tag-bg); border: 1px solid var(--surface-tag-border); padding: 3px 10px; border-radius: 6px; font-size: 0.82rem; color: var(--text-secondary); }
         .guide-buy-note { color: var(--text-secondary); font-size: 0.85rem; }
-        .guide-key-item { background: rgba(var(--cyan-rgb), 0.06); border: 1px solid rgba(var(--cyan-rgb), 0.2); border-radius: 10px; padding: 14px 18px; margin-top: 12px; }
+        .guide-key-item { background: rgba(var(--cyan-rgb), 0.04); border: 1px solid rgba(var(--cyan-rgb), 0.2); border-radius: 10px; padding: 14px 18px; margin-top: 12px; }
         .guide-key-item h3 { color: var(--accent-cyan); font-size: 0.95rem; margin: 0 0 6px; }
         .guide-key-item p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; }
         .guide-list { list-style: none; padding: 0; }
         .guide-list li { margin-bottom: 10px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; }
-        .guide-list-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: rgba(var(--cyan-rgb), 0.15); color: var(--accent-cyan); border-radius: 50%; font-size: 0.75rem; font-weight: 700; margin-right: 6px; }
+        .guide-list-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: rgba(var(--cyan-rgb), 0.12); color: var(--accent-cyan); border-radius: 50%; font-size: 0.75rem; font-weight: 700; margin-right: 6px; }
         .error { color: #ff5555; }
         .guide-synergy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
         .guide-synergy-card { border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; }
-        .guide-synergy-card.ally { background: rgba(var(--cyan-rgb), 0.06); border: 1px solid rgba(var(--cyan-rgb), 0.15); }
+        .guide-synergy-card.ally { background: rgba(var(--cyan-rgb), 0.04); border: 1px solid rgba(var(--cyan-rgb), 0.12); }
         .guide-synergy-card.enemy { background: rgba(255,85,85,0.06); border: 1px solid rgba(255,85,85,0.15); }
         .guide-synergy-name { font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
         .guide-synergy-reason { color: var(--text-secondary); font-size: 0.8rem; }
@@ -904,7 +904,7 @@
         .guide-ability-list strong { color: var(--text-primary); }
         .guide-ability-link { display: inline-block; margin-top: 8px; color: var(--accent-cyan); text-decoration: none; font-size: 0.85rem; }
         .guide-ability-link:hover { text-decoration: underline; }
-        .tag-scepter { display: inline-block; background: rgba(var(--cyan-rgb), 0.1); color: var(--accent-cyan); padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
+        .tag-scepter { display: inline-block; background: rgba(var(--cyan-rgb), 0.12); color: var(--accent-cyan); padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
         .guide-combo { background: var(--surface-bg); border: 1px solid var(--surface-border); border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; }
         .guide-combo h3 { font-size: 0.95rem; color: var(--text-primary); margin: 0 0 6px; }
         .guide-combo-sequence { font-family: monospace; color: var(--accent-cyan); font-size: 0.9rem; margin-bottom: 4px; }
@@ -914,16 +914,16 @@
         .guide-buy-items { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
         .guide-buy-item { background: var(--surface-tag-bg); border: 1px solid var(--surface-tag-border); padding: 3px 10px; border-radius: 6px; font-size: 0.82rem; color: var(--text-secondary); }
         .guide-buy-note { color: var(--text-secondary); font-size: 0.85rem; }
-        .guide-key-item { background: rgba(var(--cyan-rgb), 0.06); border: 1px solid rgba(var(--cyan-rgb), 0.2); border-radius: 10px; padding: 14px 18px; margin-top: 12px; }
+        .guide-key-item { background: rgba(var(--cyan-rgb), 0.04); border: 1px solid rgba(var(--cyan-rgb), 0.2); border-radius: 10px; padding: 14px 18px; margin-top: 12px; }
         .guide-key-item h3 { color: var(--accent-cyan); font-size: 0.95rem; margin: 0 0 6px; }
         .guide-key-item p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; }
         .guide-list { list-style: none; padding: 0; }
         .guide-list li { margin-bottom: 10px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; }
-        .guide-list-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: rgba(var(--cyan-rgb), 0.15); color: var(--accent-cyan); border-radius: 50%; font-size: 0.75rem; font-weight: 700; margin-right: 6px; }
+        .guide-list-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: rgba(var(--cyan-rgb), 0.12); color: var(--accent-cyan); border-radius: 50%; font-size: 0.75rem; font-weight: 700; margin-right: 6px; }
         .error { color: #ff5555; }
         .guide-synergy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
         .guide-synergy-card { border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; }
-        .guide-synergy-card.ally { background: rgba(var(--cyan-rgb), 0.06); border: 1px solid rgba(var(--cyan-rgb), 0.15); }
+        .guide-synergy-card.ally { background: rgba(var(--cyan-rgb), 0.04); border: 1px solid rgba(var(--cyan-rgb), 0.12); }
         .guide-synergy-card.enemy { background: rgba(255,85,85,0.06); border: 1px solid rgba(255,85,85,0.15); }
         .guide-synergy-name { font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
         .guide-synergy-reason { color: var(--text-secondary); font-size: 0.8rem; }

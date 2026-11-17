@@ -23,7 +23,7 @@
             color: var(--text-primary);
         }
         .formula-tab.active {
-            background: rgba(var(--cyan-rgb), 0.133);
+            background: rgba(var(--cyan-rgb), 0.12);
             border-color: var(--accent-cyan);
             color: var(--accent-cyan);
         }
@@ -89,7 +89,7 @@
             border-color: var(--accent-cyan);
         }
 .formula-source-chip.selected {
-            background: rgba(var(--cyan-rgb), 0.133);
+            background: rgba(var(--cyan-rgb), 0.12);
             border-color: var(--accent-cyan);
             color: var(--accent-cyan);
         }
@@ -237,7 +237,7 @@
             border-color: var(--accent-cyan);
         }
         .luck-item-card.selected {
-            background: rgba(var(--cyan-rgb), 0.133);
+            background: rgba(var(--cyan-rgb), 0.12);
             border-color: var(--accent-cyan);
         }
         .luck-item-row {

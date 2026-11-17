@@ -7,7 +7,7 @@
     backdrop-filter: blur(8px);
     border-radius: 24px;
     border: 1px solid #2a4060;
-    box-shadow: 0 0 30px #00000080, 0 0 0 1px rgba(var(--cyan-rgb), 0.133) inset, 0 0 20px rgba(var(--cyan-rgb), 0.2);
+    box-shadow: 0 0 30px #00000080, 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset, 0 0 20px rgba(var(--cyan-rgb), 0.2);
     padding: 28px 32px;
 }
 .hero-nav {
@@ -27,13 +27,13 @@
     background: rgba(15, 26, 43, 0.9);
     color: #d0e0ff;
     text-decoration: none;
-    box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.133);
+    box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.12);
     transition: 0.2s ease;
     flex: 0 0 auto;
 }
 .hero-nav-btn:hover {
     border-color: var(--accent-cyan);
-    box-shadow: 0 0 18px rgba(var(--cyan-rgb), 0.333);
+    box-shadow: 0 0 18px rgba(var(--cyan-rgb), 0.35);
     transform: translateY(-1px);
 }
 .hero-nav-btn i {
@@ -82,7 +82,7 @@
     background: radial-gradient(circle at 30% 20%, #1e3a5a, #0e1a2b);
     border-radius: 20px;
     border: 2px solid var(--accent-cyan);
-    box-shadow: 0 0 20px rgba(var(--cyan-rgb), 0.4);
+    box-shadow: 0 0 20px rgba(var(--cyan-rgb), 0.35);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -107,7 +107,7 @@
     font-size: 2.2rem;
     font-weight: 600;
     color: white;
-    text-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.8);
+    text-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.9);
 }
 /* detail-badges и detail-badge перенесены в items.css (секция бейджей) */
 .detail-description {
@@ -187,7 +187,7 @@
     font-weight: 500;
     color: var(--accent-cyan);
     margin: 25px 0 15px;
-    text-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.667);
+    text-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.6);
 }
 
 /* === Рекомендуемые предметы === */
@@ -212,7 +212,7 @@
 }
 .build-slot:hover {
     border-color: var(--accent-cyan);
-    box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.267);
+    box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.2);
     transform: translateY(-2px);
 }
 .build-slot .build-icon {
@@ -296,19 +296,19 @@
     border-left: 4px solid var(--accent-cyan);
     padding: 16px;
     border-radius: 8px;
-    box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--cyan-rgb), 0.133);
+    box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--cyan-rgb), 0.12);
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.25s ease, background 0.2s;
 }
 .ability-card:hover {
-    box-shadow: inset 0 0 10px #00000055, 0 0 15px rgba(var(--cyan-rgb), 0.267);
+    box-shadow: inset 0 0 10px #00000055, 0 0 15px rgba(var(--cyan-rgb), 0.2);
     background: #132030;
 }
 .ability-card:hover .ability-icon {
-    box-shadow: 0 0 18px rgba(var(--cyan-rgb), 0.533);
+    box-shadow: 0 0 18px rgba(var(--cyan-rgb), 0.6);
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
 .ability-card:hover .param-row {
-    background: rgba(var(--cyan-rgb), 0.03);
+    background: rgba(var(--cyan-rgb), 0.04);
 }
 .ability-card.passive:hover {
     box-shadow: inset 0 0 10px #00000055, 0 0 15px #bf7fff44;
@@ -357,7 +357,7 @@
     width: 64px;
     height: 64px;
     border-radius: 12px;
-    border: 2px solid rgba(var(--cyan-rgb), 0.667);
+    border: 2px solid rgba(var(--cyan-rgb), 0.6);
     background: radial-gradient(circle at 30% 20%, #1e3a5a, #0e1a2b);
     display: flex;
     align-items: center;
@@ -366,7 +366,7 @@
     color: var(--accent-cyan);
     overflow: hidden;
     flex-shrink: 0;
-    box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.267);
+    box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.2);
     position: relative;
 }
 .ability-icon img {
@@ -393,14 +393,14 @@
     width: 28px;
     height: 28px;
     background: #0b0e14;
-    border: 2px solid rgba(var(--cyan-rgb), 0.533);
+    border: 2px solid rgba(var(--cyan-rgb), 0.6);
     border-radius: 6px;
     font-size: 0.8rem;
     font-weight: 800;
     color: var(--accent-cyan);
     flex-shrink: 0;
-    text-shadow: 0 0 6px rgba(var(--cyan-rgb), 0.533);
-    box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.267);
+    text-shadow: 0 0 6px rgba(var(--cyan-rgb), 0.6);
+    box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.2);
 }
 .ability-card.passive .ability-hotkey {
     color: #bf7fff;
@@ -605,7 +605,7 @@
     background: #1a2a45;
     border-color: var(--accent-cyan);
     color: var(--accent-cyan);
-    box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.267);
+    box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.2);
 }
 .form-tab.active.alt-form {
     border-color: #bf7fff;
@@ -666,7 +666,7 @@
     color: var(--text-secondary);
 }
 .cycle-label .cycle-key {
-    background: rgba(var(--cyan-rgb), 0.133);
+    background: rgba(var(--cyan-rgb), 0.12);
     color: var(--accent-cyan);
     padding: 2px 8px;
     border-radius: 6px;
@@ -679,7 +679,7 @@
     font-size: 0.75rem;
 }
 .ability-cycle-group .ability-card {
-    border-left: 3px solid rgba(var(--cyan-rgb), 0.267);
+    border-left: 3px solid rgba(var(--cyan-rgb), 0.2);
 }
 .ability-cycle-group .ability-card:nth-child(1) { border-left-color: #bf7fff; }
 .ability-cycle-group .ability-card:nth-child(2) { border-left-color: #ff5555; }
@@ -689,7 +689,7 @@
     display: inline-block;
     margin-top: 20px;
     background: var(--surface-bg);
-    border: 1px solid rgba(var(--cyan-rgb), 0.8);
+    border: 1px solid rgba(var(--cyan-rgb), 0.9);
     color: var(--text-primary);
     padding: 12px 24px;
     border-radius: 30px;
@@ -732,7 +732,7 @@
     font-size: 2.2rem;
     font-weight: 600;
     color: white;
-    text-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.8);
+    text-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.9);
     letter-spacing: normal;
     line-height: inherit;
 }

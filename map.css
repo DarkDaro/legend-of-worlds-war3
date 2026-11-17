@@ -57,7 +57,7 @@
 }
 .map-edit-btn:hover { background: #2a5070; color: #e0e8f0; }
 .map-edit-btn.active {
-    background: rgba(var(--cyan-rgb), 0.133);
+    background: rgba(var(--cyan-rgb), 0.12);
     color: var(--accent-cyan);
     border-color: var(--accent-cyan);
 }
@@ -97,7 +97,7 @@
     transition: all 0.2s;
 }
 .map-type-btn:hover { background: #2a5070; color: #e0e8f0; }
-.map-type-btn.active { border-color: var(--accent-cyan); color: var(--accent-cyan); background: rgba(var(--cyan-rgb), 0.133); }
+.map-type-btn.active { border-color: var(--accent-cyan); color: var(--accent-cyan); background: rgba(var(--cyan-rgb), 0.12); }
 .map-type-btn.type-boss { border-color: #ff4444; }
 .map-type-btn.type-boss.active { color: #ff4444; background: #ff444422; border-color: #ff4444; }
 .map-type-btn.type-shop { border-color: #44ff88; }
@@ -111,7 +111,7 @@
 .map-type-btn.type-creep { border-color: #88aacc; }
 .map-type-btn.type-creep.active { color: #88aacc; background: #88aacc22; border-color: #88aacc; }
 .map-type-btn.type-teleport { border-color: var(--accent-cyan); }
-.map-type-btn.type-teleport.active { color: var(--accent-cyan); background: rgba(var(--cyan-rgb), 0.133); border-color: var(--accent-cyan); }
+.map-type-btn.type-teleport.active { color: var(--accent-cyan); background: rgba(var(--cyan-rgb), 0.12); border-color: var(--accent-cyan); }
 .map-type-btn.type-teleport-out { border-color: #44ff88; border-style: dashed; }
 .map-type-btn.type-teleport-out.active { color: #44ff88; background: #44ff8822; border-color: #44ff88; }
 .map-type-btn.type-megacreep { border-color: #ff66aa; }
@@ -130,7 +130,7 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow:
-        0 0 80px rgba(var(--cyan-rgb), 0.07),
+        0 0 80px rgba(var(--cyan-rgb), 0.08),
         0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
@@ -140,7 +140,7 @@
     width: 100%;
     padding-bottom: 97.4%;
     overflow: hidden;
-    background: radial-gradient(ellipse at 50% 50%, rgba(var(--cyan-rgb), 0.06) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 50% 50%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 60%);
 }
 
 .map-image {

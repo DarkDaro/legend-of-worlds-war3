@@ -19,7 +19,7 @@
 .gs-trigger:hover {
     border-color: var(--accent-cyan);
     color: var(--accent-cyan);
-    box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.267);
+    box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.2);
 }
 .gs-trigger kbd {
     background: var(--surface-subtle-hover);
@@ -242,7 +242,7 @@ body.page-leaving {
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.03) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
     pointer-events: none;
     z-index: -1;
     will-change: transform;
@@ -255,7 +255,7 @@ body.page-leaving {
     left: 0;
     height: 3px;
     background: linear-gradient(90deg, var(--accent-cyan), #0080ff);
-    box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.533);
+    box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.6);
     z-index: 9999;
     transition: width 0.1s ease-out;
     border-radius: 0 2px 2px 0;
@@ -423,7 +423,7 @@ body.page-leaving {
     margin-bottom: 14px;
     padding: 8px 12px;
     background: rgba(var(--cyan-rgb), 0.04);
-    border: 1px solid rgba(var(--cyan-rgb), 0.1);
+    border: 1px solid rgba(var(--cyan-rgb), 0.12);
     border-radius: 6px;
 }
 
@@ -458,8 +458,8 @@ body.page-leaving {
 }
 
 .bc-stage {
-    background: rgba(var(--cyan-rgb), 0.03);
-    border: 1px solid rgba(var(--cyan-rgb), 0.1);
+    background: rgba(var(--cyan-rgb), 0.04);
+    border: 1px solid rgba(var(--cyan-rgb), 0.12);
     border-radius: 6px;
     padding: 10px 12px;
 }
@@ -538,7 +538,7 @@ body.page-leaving {
 
 .bc-slot {
     min-height: 76px;
-    border: 2px dashed rgba(var(--cyan-rgb), 0.15);
+    border: 2px dashed rgba(var(--cyan-rgb), 0.12);
     border-radius: 6px;
     display: flex;
     flex-direction: column;
@@ -559,13 +559,13 @@ body.page-leaving {
 
 .bc-slot-empty:hover,
 .bc-slot-active {
-    border-color: rgba(var(--cyan-rgb), 0.5);
-    background: rgba(var(--cyan-rgb), 0.05);
+    border-color: rgba(var(--cyan-rgb), 0.6);
+    background: rgba(var(--cyan-rgb), 0.04);
 }
 
 .bc-slot-active {
     border-style: solid;
-    box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.15);
+    box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.12);
 }
 
 .bc-slot-filled {
@@ -688,7 +688,7 @@ body.page-leaving {
 
 /* Стоимость перехода между стадиями */
 .bc-stage-delta {
-    color: rgba(var(--cyan-rgb), 0.5);
+    color: rgba(var(--cyan-rgb), 0.6);
     font-size: 0.75em;
     font-weight: 400;
 }
@@ -701,7 +701,7 @@ body.page-leaving {
     gap: 6px;
     width: 100%;
     padding: 8px;
-    background: rgba(var(--cyan-rgb), 0.05);
+    background: rgba(var(--cyan-rgb), 0.04);
     border: 2px dashed rgba(var(--cyan-rgb), 0.2);
     border-radius: 6px;
     color: var(--accent-cyan);
@@ -712,8 +712,8 @@ body.page-leaving {
 }
 
 .bc-add-stage-btn:hover {
-    background: rgba(var(--cyan-rgb), 0.1);
-    border-color: rgba(var(--cyan-rgb), 0.4);
+    background: rgba(var(--cyan-rgb), 0.12);
+    border-color: rgba(var(--cyan-rgb), 0.35);
 }
 
 .bc-stage-actions {
@@ -733,7 +733,7 @@ body.page-leaving {
     justify-content: center;
     gap: 6px;
     padding: 8px 16px;
-    background: rgba(var(--cyan-rgb), 0.05);
+    background: rgba(var(--cyan-rgb), 0.04);
     border: 2px dashed rgba(var(--cyan-rgb), 0.2);
     border-radius: 6px;
     color: var(--accent-cyan);
@@ -744,8 +744,8 @@ body.page-leaving {
 }
 
 .bc-paste-stage-btn:hover {
-    background: rgba(var(--cyan-rgb), 0.1);
-    border-color: rgba(var(--cyan-rgb), 0.4);
+    background: rgba(var(--cyan-rgb), 0.12);
+    border-color: rgba(var(--cyan-rgb), 0.35);
 }
 
 .bc-clear-btn {
@@ -828,14 +828,14 @@ body.page-leaving {
 .bc-preview-table th {
     text-align: left;
     padding: 6px 8px;
-    border-bottom: 1px solid rgba(var(--cyan-rgb), 0.15);
+    border-bottom: 1px solid rgba(var(--cyan-rgb), 0.12);
     color: var(--accent-cyan);
     font-weight: 600;
 }
 
 .bc-preview-table td {
     padding: 6px 8px;
-    border-bottom: 1px solid rgba(var(--cyan-rgb), 0.05);
+    border-bottom: 1px solid rgba(var(--cyan-rgb), 0.04);
     vertical-align: top;
 }
 
@@ -929,8 +929,8 @@ body.page-leaving {
 
 .bc-copy-btn {
     padding: 4px 10px;
-    background: rgba(var(--cyan-rgb), 0.1);
-    border: 1px solid rgba(var(--cyan-rgb), 0.3);
+    background: rgba(var(--cyan-rgb), 0.12);
+    border: 1px solid rgba(var(--cyan-rgb), 0.35);
     border-radius: 4px;
     color: var(--accent-cyan);
     cursor: pointer;
@@ -950,7 +950,7 @@ body.page-leaving {
 
 .bc-jass-code {
     background: #060d14;
-    border: 1px solid rgba(var(--cyan-rgb), 0.1);
+    border: 1px solid rgba(var(--cyan-rgb), 0.12);
     border-radius: 4px;
     padding: 10px 12px;
     color: #a0c0e0;

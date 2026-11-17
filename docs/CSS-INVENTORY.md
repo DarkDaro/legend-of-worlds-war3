@@ -38,7 +38,7 @@
 | --surface-subtle-hover | `rgba(0, 255, 255, 0.08)` | 14 | 1 | :root css/base.css |
 | --surface-tag-bg | `rgba(0, 255, 255, 0.06)` | 8 | 1 | :root css/base.css |
 | --surface-tag-border | `rgba(0, 255, 255, 0.15)` | 8 | 1 | :root css/base.css |
-| --neon-glow-strong | `0 0 20px rgba(var(--cyan-rgb), 0.4), 0 0 60px rgba(var(--cyan-rgb), 0.15), inset 0 0 15px rgba(var(--cyan-rgb), 0.03)` | 8 | 1 | :root css/base.css |
+| --neon-glow-strong | `0 0 20px rgba(var(--cyan-rgb), 0.35), 0 0 60px rgba(var(--cyan-rgb), 0.12), inset 0 0 15px rgba(var(--cyan-rgb), 0.04)` | 8 | 1 | :root css/base.css |
 | --surface-subtle | `rgba(0, 255, 255, 0.04)` | 5 | 1 | :root css/base.css |
 | --glass-border | `var(--surface-border)` | 5 | 1 | :root css/base.css |
 | --glass-bg | `var(--surface-bg)` | 4 | 1 | :root css/base.css |

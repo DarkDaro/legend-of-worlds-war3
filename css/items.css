@@ -29,7 +29,7 @@
   -webkit-backdrop-filter: blur(8px);
   border-radius: 24px;
   border: 1px solid #2a4060;
-  box-shadow: 0 0 30px #00000080, 0 0 0 1px rgba(var(--cyan-rgb), 0.133) inset, 0 0 20px rgba(var(--cyan-rgb), 0.2);
+  box-shadow: 0 0 30px #00000080, 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset, 0 0 20px rgba(var(--cyan-rgb), 0.2);
   padding: 20px;
   position: sticky;
   top: 20px;
@@ -76,7 +76,7 @@
   background: rgba(18, 25, 40, 0.98);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(var(--cyan-rgb), 0.533);
+  border-top: 1px solid rgba(var(--cyan-rgb), 0.6);
   border-radius: 20px 20px 0 0;
   box-shadow: 0 -8px 40px #000000cc;
   max-height: 78vh;
@@ -148,7 +148,7 @@ body.item-sheet-open {
 .tree-toggle:hover {
   background: #1a2e44;
   color: var(--accent-cyan);
-  border-color: rgba(var(--cyan-rgb), 0.533);
+  border-color: rgba(var(--cyan-rgb), 0.6);
   box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.2);
 }
 .tree-toggle-spacer {
@@ -178,7 +178,7 @@ body.item-sheet-open {
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  border: 1px solid rgba(var(--cyan-rgb), 0.667);
+  border: 1px solid rgba(var(--cyan-rgb), 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -211,8 +211,8 @@ body.item-sheet-open {
   border-radius: 16px;
   padding: 16px;
   margin: 16px 0;
-  border: 1px solid rgba(var(--cyan-rgb), 0.4);
-  box-shadow: inset 0 0 20px #00000055, 0 0 15px rgba(var(--cyan-rgb), 0.133);
+  border: 1px solid rgba(var(--cyan-rgb), 0.35);
+  box-shadow: inset 0 0 20px #00000055, 0 0 15px rgba(var(--cyan-rgb), 0.12);
 }
 /* .ability-name и .ability-stats уже определены выше в блоке героев */
 .ability-box .ability-stats {
@@ -239,7 +239,7 @@ body.item-sheet-open {
 }
 .used-in-chip {
   background: var(--surface-bg-hover);
-  border: 1px solid rgba(var(--cyan-rgb), 0.667);
+  border: 1px solid rgba(var(--cyan-rgb), 0.6);
   padding: 6px 14px;
   border-radius: 30px;
   font-size: 0.9rem;
@@ -293,7 +293,7 @@ body.item-sheet-open {
   align-items: center;
   gap: 6px;
   background: var(--surface-bg-hover);
-  border: 1px solid rgba(var(--cyan-rgb), 0.667);
+  border: 1px solid rgba(var(--cyan-rgb), 0.6);
   padding: 6px 14px;
   border-radius: 30px;
   font-size: 0.9rem;
@@ -318,7 +318,7 @@ body.item-sheet-open {
 
 .hero-reco-toggle {
   background: var(--surface-bg-hover);
-  border: 1px solid rgba(var(--cyan-rgb), 0.667);
+  border: 1px solid rgba(var(--cyan-rgb), 0.6);
   padding: 6px 14px;
   border-radius: 30px;
   font-size: 0.9rem;
@@ -353,7 +353,7 @@ body.item-sheet-open {
 }
 .upgrade-btn {
   background: var(--surface-bg-hover);
-  border: 1px solid rgba(var(--cyan-rgb), 0.8);
+  border: 1px solid rgba(var(--cyan-rgb), 0.9);
   color: var(--text-primary);
   padding: 8px 16px;
   border-radius: 30px;
@@ -398,7 +398,7 @@ body.item-sheet-open {
 .cost-badge.cost-wood     { border: 1px solid #55ff5555; color: #aaffaa; }
 .cost-badge.cost-free      { border: 1px solid #00ffaa55; color: #00ffaa; }
 .cost-badge.cost-total    { border: 1px solid #ffcc4455; color: #ffd966; }
-.cost-badge.cost-base     { border: 1px solid rgba(var(--cyan-rgb), 0.333); color: #8ab4f0; }
+.cost-badge.cost-base     { border: 1px solid rgba(var(--cyan-rgb), 0.35); color: #8ab4f0; }
 .cost-badge.cost-recipe   { border: 1px solid #ff555555; color: #ffaaaa; }
 /* 08.11: босс-дропы в дереве (бесплатны, но входят в записанную item.cost) */
 .cost-badge.cost-boss     { border: 1px solid #ff444488; color: #ff8888; }
@@ -419,7 +419,7 @@ body.item-sheet-open {
   font-size: 0.9rem;
   margin-left: 0;
   color: #c0e4ff;
-  border: 1px solid rgba(var(--cyan-rgb), 0.533);
+  border: 1px solid rgba(var(--cyan-rgb), 0.6);
 }
 /* Бейдж «Выпадает при смерти» (boss_drop) */
 .detail-badge.badge-danger {
@@ -561,7 +561,7 @@ body.item-sheet-open {
   text-align: center;
   transition: all 0.25s ease;
   border: 1px solid var(--surface-border);
-  box-shadow: 0 0 10px #00000080, 0 0 0 1px rgba(var(--cyan-rgb), 0.133) inset;
+  box-shadow: 0 0 10px #00000080, 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset;
   cursor: pointer;
   display: block;
   color: #d0e0ff;
@@ -590,9 +590,9 @@ body.item-sheet-open {
 .item-card.rarity-cheap  { opacity: 0.85; }
 .item-card.rarity-mid    { opacity: 0.92; }
 .item-card.rarity-expensive { opacity: 1; }
-.item-card.rarity-cheap .item-name   { text-shadow: 0 0 4px rgba(var(--cyan-rgb), 0.267); }
+.item-card.rarity-cheap .item-name   { text-shadow: 0 0 4px rgba(var(--cyan-rgb), 0.2); }
 .item-card.rarity-mid .item-name     { text-shadow: 0 0 6px var(--accent-cyan); }
-.item-card.rarity-expensive .item-name { text-shadow: 0 0 8px var(--accent-cyan), 0 0 16px rgba(var(--cyan-rgb), 0.533); }
+.item-card.rarity-expensive .item-name { text-shadow: 0 0 8px var(--accent-cyan), 0 0 16px rgba(var(--cyan-rgb), 0.6); }
 
 /* Градиентная рамка при hover — cyan → blue */
 .item-card::before {
@@ -631,8 +631,8 @@ body.item-sheet-open {
   object-fit: contain;
   image-rendering: pixelated;
   border-radius: 10px;
-  border: 2px solid rgba(var(--cyan-rgb), 0.667);
-  box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.267);
+  border: 2px solid rgba(var(--cyan-rgb), 0.6);
+  box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.2);
 }
 .item-card.strength .item-icon img   { border-color: #ff5555aa; box-shadow: 0 0 10px #ff555544; }
 .item-card.agility .item-icon img    { border-color: #55ff55aa; box-shadow: 0 0 10px #55ff5544; }
@@ -753,20 +753,20 @@ body.item-sheet-open {
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 0 6px rgba(var(--cyan-rgb), 0.133);
+  box-shadow: 0 0 6px rgba(var(--cyan-rgb), 0.12);
   transition: 0.1s;
 }
 .tab-btn:hover {
   background: #1a3050;
   color: #ffffff;
-  box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.533);
+  box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.6);
   border-color: var(--accent-cyan);
 }
 .tab-btn.active {
   background: var(--accent-cyan);
   border-color: #ffffff;
   color: #0b0e14;
-  box-shadow: 0 0 20px var(--accent-cyan), 0 0 0 2px rgba(var(--cyan-rgb), 0.267) inset;
+  box-shadow: 0 0 20px var(--accent-cyan), 0 0 0 2px rgba(var(--cyan-rgb), 0.2) inset;
 }
 @media (max-width: 800px) {
   .app-container {
@@ -784,13 +784,13 @@ body.item-sheet-open {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    scrollbar-color: rgba(var(--cyan-rgb), 0.267) transparent;
+    scrollbar-color: rgba(var(--cyan-rgb), 0.2) transparent;
     padding-bottom: 6px;
     gap: 6px;
   }
   .category-tabs::-webkit-scrollbar { height: 4px; }
   .category-tabs::-webkit-scrollbar-track { background: transparent; }
-  .category-tabs::-webkit-scrollbar-thumb { background: rgba(var(--cyan-rgb), 0.267); border-radius: 2px; }
+  .category-tabs::-webkit-scrollbar-thumb { background: rgba(var(--cyan-rgb), 0.2); border-radius: 2px; }
   .tab-btn { flex-shrink: 0; padding: 5px 12px; font-size: 0.78rem; line-height: 1.1; }
   .item-bottom-sheet {
     left: 10px;
@@ -985,7 +985,7 @@ body.item-sheet-open {
     position: fixed;
     z-index: 2000;
     background: rgba(15, 23, 42, 0.96);
-    border: 1px solid rgba(var(--cyan-rgb), 0.667);
+    border: 1px solid rgba(var(--cyan-rgb), 0.6);
     border-radius: 6px;
     padding: 8px 12px;
     font-size: 12px;
@@ -1025,7 +1025,7 @@ body.item-sheet-open {
 }
 .bonus-filter-row--secondary {
     padding-top: 10px;
-    border-top: 1px solid rgba(var(--cyan-rgb), 0.1);
+    border-top: 1px solid rgba(var(--cyan-rgb), 0.12);
 }
 .bonus-filter-label {
     display: inline-flex;
@@ -1065,7 +1065,7 @@ body.item-sheet-open {
     background: var(--accent-cyan);
     border-color: #fff;
     color: #0b0e14;
-    box-shadow: 0 0 16px rgba(var(--cyan-rgb), 0.7);
+    box-shadow: 0 0 16px rgba(var(--cyan-rgb), 0.6);
 }
 .bonus-chip.active i { opacity: 1; }
 
@@ -1089,14 +1089,14 @@ body.item-sheet-open {
 .bonus-price input:focus {
     outline: none;
     border-color: var(--accent-cyan);
-    box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.3);
+    box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.35);
 }
 .bonus-price input::placeholder { color: #4a5f7a; }
 
 .bonus-filter-sep {
     width: 1px;
     height: 20px;
-    background: rgba(var(--cyan-rgb), 0.15);
+    background: rgba(var(--cyan-rgb), 0.12);
     margin: 0 4px;
 }
 
@@ -1146,7 +1146,7 @@ body.item-sheet-open {
     border-radius: 14px;
 }
 .bonus-filter-empty[hidden] { display: none; }
-.bonus-filter-empty > i { font-size: 2rem; color: rgba(var(--cyan-rgb), 0.3); }
+.bonus-filter-empty > i { font-size: 2rem; color: rgba(var(--cyan-rgb), 0.35); }
 .bonus-filter-empty p { margin: 0; font-size: 0.95rem; }
 .bonus-filter-empty button {
     padding: 8px 18px;

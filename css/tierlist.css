@@ -25,7 +25,7 @@
         }
         .tl-controls button.primary {
             background: linear-gradient(135deg, #0a1a2a, #0f2535);
-            border-color: rgba(var(--cyan-rgb), 0.267);
+            border-color: rgba(var(--cyan-rgb), 0.2);
             color: var(--accent-cyan);
         }
         .tl-filter-btns {
@@ -115,11 +115,11 @@
         .tl-hero:hover {
             border-color: var(--accent-cyan);
             transform: translateY(-1px);
-            box-shadow: 0 2px 8px rgba(var(--cyan-rgb), 0.1);
+            box-shadow: 0 2px 8px rgba(var(--cyan-rgb), 0.12);
         }
         .tl-hero.selected {
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.3);
+            box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.35);
         }
         .tl-hero.dragging {
             opacity: 0.4;

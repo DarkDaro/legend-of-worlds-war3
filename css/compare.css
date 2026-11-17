@@ -183,7 +183,7 @@
             border-bottom: none;
         }
         .compare-table tbody tr:hover {
-            background: rgba(var(--cyan-rgb), 0.03);
+            background: rgba(var(--cyan-rgb), 0.04);
         }
 
         /* Подсветка лучшего/худшего */

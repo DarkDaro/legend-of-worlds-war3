@@ -37,7 +37,7 @@
             align-items: center;
             gap: 6px;
             background: #162433;
-            border: 1px solid rgba(var(--cyan-rgb), 0.667);
+            border: 1px solid rgba(var(--cyan-rgb), 0.6);
             padding: 6px 14px;
             border-radius: 30px;
             font-size: 0.85rem;
@@ -58,7 +58,7 @@
         }
         .bb-hero-chip-nolink:hover {
             background: #162433;
-            border-color: rgba(var(--cyan-rgb), 0.667);
+            border-color: rgba(var(--cyan-rgb), 0.6);
             color: #d0e4ff;
             box-shadow: none;
         }
@@ -125,7 +125,7 @@
             font-style: italic;
         }
         .bb-stage-delta {
-            color: rgba(var(--cyan-rgb), 0.5);
+            color: rgba(var(--cyan-rgb), 0.6);
             font-size: 0.75em;
             font-weight: 400;
         }
@@ -282,7 +282,7 @@
             padding: 8px 18px;
             margin: 12px 0 4px;
             background: rgba(var(--cyan-rgb), 0.08);
-            border: 1px solid rgba(var(--cyan-rgb), 0.25);
+            border: 1px solid rgba(var(--cyan-rgb), 0.2);
             border-radius: 6px;
             color: var(--accent-cyan);
             font-size: 0.85rem;
@@ -290,7 +290,7 @@
             transition: all 0.2s;
         }
         .bb-copy-btn:hover {
-            background: rgba(var(--cyan-rgb), 0.15);
+            background: rgba(var(--cyan-rgb), 0.12);
             border-color: var(--accent-cyan);
         }
 
