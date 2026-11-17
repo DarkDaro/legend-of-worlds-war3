@@ -16,7 +16,7 @@
             padding: 9px 32px 9px 12px;
             background: #0d1b2a;
             color: var(--text-primary);
-            border: 1px solid var(--glass-border);
+            border: 1px solid var(--surface-border);
             border-radius: 8px;
             font-size: 0.88rem;
             cursor: pointer;
@@ -29,7 +29,7 @@
         .compare-slot select:focus {
             outline: none;
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
+            box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.2);
         }
         .compare-slot select option {
             background: #0d1b2a;
@@ -82,7 +82,7 @@
             padding: 9px 12px;
             background: #0d1b2a;
             color: var(--text-primary);
-            border: 1px solid var(--glass-border);
+            border: 1px solid var(--surface-border);
             border-radius: 8px;
             font-size: 0.88rem;
             text-align: center;
@@ -90,17 +90,17 @@
         .compare-level input:focus {
             outline: none;
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
+            box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.2);
         }
 
         /* ── Таблица ── */
         .compare-table-wrap {
             overflow-x: auto;
             border-radius: 10px;
-            border: 1px solid var(--glass-border);
-            background: var(--glass-bg);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--surface-border);
+            background: var(--surface-bg);
+            backdrop-filter: blur(var(--surface-blur));
+            -webkit-backdrop-filter: blur(var(--surface-blur));
         }
         .compare-table {
             width: 100%;
@@ -111,7 +111,7 @@
             padding: 10px 10px;
             text-align: center;
             background: #0d1f35;
-            border-bottom: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--surface-border);
             font-weight: 600;
             color: var(--text-secondary);
             position: sticky;
@@ -156,7 +156,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid var(--glass-border);
+            border: 1px solid var(--surface-border);
             border-radius: 6px;
             background: #091421;
             overflow: hidden;
@@ -183,7 +183,7 @@
             border-bottom: none;
         }
         .compare-table tbody tr:hover {
-            background: rgba(0, 229, 255, 0.03);
+            background: rgba(var(--cyan-rgb), 0.03);
         }
 
         /* Подсветка лучшего/худшего */
@@ -214,7 +214,7 @@
             background: #1a5a7a;
             transition: width 0.3s ease;
         }
-        .stat-best .stat-bar-fill { background: #00e5ff; }
+        .stat-best .stat-bar-fill { background: var(--accent-cyan); }
         .stat-worst .stat-bar-fill { background: #2a2a3a; }
 
         /* Разделитель секций */
@@ -224,7 +224,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #3a5a7a;
-            border-bottom: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--surface-border);
             background: #0d1a2a;
         }
 
@@ -274,21 +274,21 @@
             gap: 16px;
         }
         .compare-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-            border: 1px solid var(--glass-border);
+            background: var(--surface-bg);
+            backdrop-filter: blur(var(--surface-blur));
+            -webkit-backdrop-filter: blur(var(--surface-blur));
+            border: 1px solid var(--surface-border);
             border-radius: 10px;
             overflow: hidden;
             transition: background 0.2s, border-color 0.2s;
         }
         .compare-card:hover {
-            background: var(--glass-bg-hover);
-            border-color: var(--glass-border-hover);
+            background: var(--surface-bg-hover);
+            border-color: var(--surface-border-hover);
         }
         .compare-card-header {
             padding: 12px 14px 8px;
-            border-bottom: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--surface-border);
             background: #0d1f35;
         }
         .compare-card-name {
@@ -317,7 +317,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #3a5a7a;
-            border-bottom: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--surface-border);
             background: #0d1a2a;
         }
         .compare-card-row {
@@ -354,7 +354,7 @@
             transition: width 0.3s ease;
         }
         .compare-card-row.card-best .compare-card-value { color: var(--accent-cyan); font-weight: 600; }
-        .compare-card-row.card-best .compare-card-bar-fill { background: #00e5ff; }
+        .compare-card-row.card-best .compare-card-bar-fill { background: var(--accent-cyan); }
         .compare-card-row.card-worst .compare-card-value { color: #5a5a7a; }
         .compare-card-row.card-worst .compare-card-bar-fill { background: #2a2a3a; }
 

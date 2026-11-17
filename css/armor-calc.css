@@ -18,8 +18,8 @@
         }
         .armor-input-row input {
             flex: 1;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
+            background: var(--surface-bg);
+            border: 1px solid var(--surface-border);
             border-radius: 8px;
             padding: 10px 14px;
             color: var(--text-primary);
@@ -55,10 +55,10 @@
             display: block;
         }
         .armor-results {
-            background: var(--glass-bg);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-            border: 1px solid var(--glass-border);
+            background: var(--surface-bg);
+            backdrop-filter: blur(var(--surface-blur));
+            -webkit-backdrop-filter: blur(var(--surface-blur));
+            border: 1px solid var(--surface-border);
             border-radius: 12px;
             padding: 20px;
             margin-top: 20px;
@@ -134,8 +134,8 @@
             color: var(--text-primary);
         }
         .faq-block {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
+            background: var(--surface-bg);
+            border: 1px solid var(--surface-border);
             border-radius: 10px;
             padding: 16px;
             margin-bottom: 12px;
@@ -206,7 +206,7 @@
             }
         }
         @supports not (backdrop-filter: blur(1px)) {
-            .armor-results { background: var(--glass-bg) !important; }
+            .armor-results { background: var(--surface-bg) !important; }
         }
 
 /* 24.10: чекбокс «Константа 0.05» был 13x13 — мелко для пальца */
@@ -215,5 +215,5 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
-    accent-color: var(--accent-cyan, #00e6ff);
+    accent-color: var(--accent-cyan);
 }

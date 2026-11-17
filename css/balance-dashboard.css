@@ -5,7 +5,7 @@
 .dash-controls .ctrl-group { display: flex; flex-direction: column; gap: 4px; }
 .dash-controls label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 .dash-controls select, .dash-controls input[type=range] {
-    background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-primary);
+    background: var(--surface-bg); border: 1px solid var(--surface-border); color: var(--text-primary);
     border-radius: 8px; padding: 8px 12px; font-size: 0.9rem; min-width: 180px;
 }
 .dash-controls select:focus { outline: none; border-color: var(--accent-cyan); }
@@ -15,13 +15,13 @@
 
 .radar-wrap { display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start; }
 .radar-canvas-wrap {
-    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    background: var(--surface-bg); border: 1px solid var(--surface-border);
     border-radius: 16px; padding: 20px; flex-shrink: 0;
 }
 .radar-canvas-wrap canvas { display: block; }
 .radar-values { flex: 1; min-width: 280px; }
 .radar-values .hero-values {
-    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    background: var(--surface-bg); border: 1px solid var(--surface-border);
     border-radius: 12px; padding: 16px; margin-bottom: 12px;
 }
 .radar-values .hero-values h3 { font-size: 0.95rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
@@ -44,18 +44,18 @@
 
 .percentile-table-wrap {
     margin-top: 32px; overflow-x: auto; max-height: 600px;
-    border-radius: 12px; border: 1px solid var(--glass-border);
-    background: var(--glass-bg);
+    border-radius: 12px; border: 1px solid var(--surface-border);
+    background: var(--surface-bg);
 }
 .percentile-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; white-space: nowrap; }
 .percentile-table th {
     padding: 10px 12px; text-align: left; color: var(--text-muted); font-weight: 500;
-    border-bottom: 1px solid var(--glass-border); cursor: pointer; user-select: none;
+    border-bottom: 1px solid var(--surface-border); cursor: pointer; user-select: none;
     position: sticky; top: 0; background: rgba(13,27,42,0.95); backdrop-filter: blur(8px); z-index: 2;
 }
 .percentile-table th:hover { color: var(--accent-cyan); }
 .percentile-table td { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text-secondary); }
-.percentile-table tr:hover td { background: rgba(0,230,255,0.04); }
+.percentile-table tr:hover td { background: rgba(var(--cyan-rgb), 0.04); }
 .pct-cell { font-weight: 600; }
 .pct-cell.low { color: #ff6b6b; background: rgba(255,107,107,0.08); }
 .pct-cell.mid { color: var(--text-primary); }
@@ -63,7 +63,7 @@
 .pct-cell.best { color: #ffd43b; background: rgba(255,212,59,0.08); }
 
 .role-filter-select {
-    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    background: var(--surface-bg); border: 1px solid var(--surface-border);
     color: var(--text-primary); border-radius: 8px; padding: 6px 12px; font-size: 0.85rem;
 }
 

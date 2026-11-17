@@ -4,7 +4,7 @@
     font-size: 0.7rem;
     padding: 3px 10px;
     border-radius: 20px;
-    background: var(--glass-subtle);
+    background: var(--surface-subtle);
     color: #ffd966;
     margin-top: 5px;
     border: 1px solid #ffd96666;
@@ -28,15 +28,15 @@
     width: 100%;
     border-collapse: collapse;
     margin: 15px 0;
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
+    background: var(--surface-bg);
+    backdrop-filter: blur(var(--surface-blur));
+    -webkit-backdrop-filter: blur(var(--surface-blur));
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: inset 0 0 10px #00000055, 0 0 10px #00e6ff22;
+    box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--cyan-rgb), 0.133);
 }
 .hero-stats-table th {
-    background: var(--glass-subtle-hover);
+    background: var(--surface-subtle-hover);
     color: #ffd966;
     font-weight: 600;
     padding: 10px;
@@ -111,7 +111,7 @@
 .btn-primary:active,
 .btn-secondary:active {
     transform: translateY(1px) !important;
-    box-shadow: 0 0 8px rgba(0, 230, 255, 0.3) !important;
+    box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.3) !important;
 }
 .filter-btn:active {
     transform: translateY(1px);
@@ -148,7 +148,7 @@
 /* Герои — cyan отсвет правее + лёгкий тёплый тон */
 body.page-heroes {
     background-image:
-        radial-gradient(ellipse at 70% 80%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
         radial-gradient(circle at 30% 10%, #1c2230 0%, #05070a 100%);
 }
 /* Orb для стекла — правый нижний */
@@ -159,7 +159,7 @@ body.page-heroes::after {
     right: -5%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(0, 230, 255, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.05) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
@@ -168,7 +168,7 @@ body.page-heroes::after {
 /* Предметы — cyan отсвет ниже + лёгкий teal тон */
 body.page-items {
     background-image:
-        radial-gradient(ellipse at 50% 90%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 90%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
         radial-gradient(circle at 30% 10%, #1a2430 0%, #05070a 100%);
 }
 /* Orb для стекла — левый верхний */
@@ -192,7 +192,7 @@ body.page-items::after {
     right: 5%;
     width: 350px;
     height: 350px;
-    background: radial-gradient(circle, rgba(0, 230, 255, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.05) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
@@ -206,14 +206,14 @@ body.page-items::after {
 /* Механики — cyan отсвет левее + лёгкий фиолетовый тон */
 body.page-mechanics {
     background-image:
-        radial-gradient(ellipse at 20% 70%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 70%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
         radial-gradient(circle at 30% 10%, #1e2230 0%, #05070a 100%);
 }
 
 /* Монстры — cyan отсвет выше + лёгкий тёплый тон */
 body.page-monsters {
     background-image:
-        radial-gradient(ellipse at 60% 20%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 60% 20%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
         radial-gradient(circle at 30% 10%, #1e2030 0%, #05070a 100%);
 }
 /* Orb для стекла — левый нижний */
@@ -233,7 +233,7 @@ body.page-monsters::after {
 /* Лор — cyan отсвет шире + глубокий синий тон */
 body.page-lore {
     background-image:
-        radial-gradient(ellipse at 40% 60%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 40% 60%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
         radial-gradient(circle at 30% 10%, #182530 0%, #05070a 100%);
 }
 /* Orb для стекла — правый верхний */
@@ -244,7 +244,7 @@ body.page-lore::after {
     right: -5%;
     width: 450px;
     height: 450px;
-    background: radial-gradient(circle, rgba(0, 230, 255, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.05) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
@@ -254,13 +254,13 @@ body.page-calculator,
 body.page-build-constructor,
 body.page-bot-builds {
     background-image:
-        radial-gradient(ellipse at 60% 30%, rgba(0, 230, 255, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 60% 30%, rgba(var(--cyan-rgb), 0.05) 0%, transparent 50%),
         radial-gradient(circle at 50% 80%, #182530 0%, #05070a 100%);
 }
 
 body.page-map-changes {
     background-image:
-        radial-gradient(ellipse at 50% 20%, rgba(0, 230, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 20%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
         radial-gradient(circle at 50% 80%, #182530 0%, #05070a 100%);
 }
 
@@ -278,7 +278,7 @@ body.page-runes,
 body.page-home,
 body.page-404 {
     background-image:
-        radial-gradient(ellipse at 50% 50%, rgba(0, 230, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(var(--cyan-rgb), 0.03) 0%, transparent 50%),
         radial-gradient(circle at 30% 10%, #1a2230 0%, #05070a 100%);
 }
 

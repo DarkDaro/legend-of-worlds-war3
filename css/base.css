@@ -1,27 +1,54 @@
-/* === Неоновая вики героев (совместимо с hero-grid) === */
+/* === Неоновая вики героев (совместимо с hero-grid) ===
+   Три слоя токенов (DESIGN.md §2): примитив --cyan-rgb, семантика ниже, тема через html[data-theme].
+   Несовместимые со старыми браузерами конструкции не применяются: rgb()/rgba(var()) работает
+   везде, где работают кастомные свойства (тот же базовый уровень, что у всего var() на сайте). */
 :root {
-    /* Стекломорфизм */
-    --glass-bg: rgba(15, 23, 42, 0.5);
-    --glass-bg-hover: rgba(15, 23, 42, 0.65);
-    --glass-blur: 12px;
-    --glass-border: rgba(0, 230, 255, 0.12);
-    --glass-border-hover: rgba(0, 230, 255, 0.35);
-    /* Тонкие фоны для подзаголовков, кнопок, тегов */
-    --glass-subtle: rgba(0, 255, 255, 0.04);
-    --glass-subtle-hover: rgba(0, 255, 255, 0.08);
-    --glass-tag-bg: rgba(0, 255, 255, 0.06);
-    --glass-tag-border: rgba(0, 255, 255, 0.15);
-    --glass-tag-active: rgba(0, 255, 255, 0.15);
+    color-scheme: dark;
+
+    /* Примитив: один триплет красит весь неон, альфа берётся поверх него (DESIGN.md §3) */
+    --cyan-rgb: 0, 230, 255;
+
+    /* Поверхности (стекломорфизм): тема перекрашивает материал этими же именами (DESIGN.md §4) */
+    --surface-bg: rgba(15, 23, 42, 0.5);
+    --surface-bg-hover: rgba(15, 23, 42, 0.65);
+    --surface-blur: 12px;
+    --surface-border: rgba(var(--cyan-rgb), 0.12);
+    --surface-border-hover: rgba(var(--cyan-rgb), 0.35);
+    /* Тонкие фоны для подзаголовков, кнопок, тегов; оттенок 0,255,255 пока отдельный примитив (TECH-DEBT TD-2) */
+    --surface-subtle: rgba(0, 255, 255, 0.04);
+    --surface-subtle-hover: rgba(0, 255, 255, 0.08);
+    --surface-tag-bg: rgba(0, 255, 255, 0.06);
+    --surface-tag-border: rgba(0, 255, 255, 0.15);
+    --surface-tag-active: rgba(0, 255, 255, 0.15);
+
     /* Текстовые цвета */
     --text-primary: #e0f0ff;
     --text-secondary: #8aa0c0;
     --text-muted: #6b7c99;
     --text-dim: #5a7a9a;
-    --accent-cyan: #00e6ff;
-    /* Неоновый glow */
-    --neon-glow: 0 0 20px rgba(0, 230, 255, 0.2), 0 0 60px rgba(0, 230, 255, 0.08);
-    --neon-glow-strong: 0 0 20px rgba(0, 230, 255, 0.4), 0 0 60px rgba(0, 230, 255, 0.15), inset 0 0 15px rgba(0, 230, 255, 0.03);
+
+    /* Акцент и неоновое свечение */
+    --accent-cyan: rgb(var(--cyan-rgb));
+    --neon-glow: 0 0 20px rgba(var(--cyan-rgb), 0.2), 0 0 60px rgba(var(--cyan-rgb), 0.08);
+    --neon-glow-strong: 0 0 20px rgba(var(--cyan-rgb), 0.4), 0 0 60px rgba(var(--cyan-rgb), 0.15), inset 0 0 15px rgba(var(--cyan-rgb), 0.03);
+
+    /* Алиасы старых имён на переход: в HTML живёт var(--glass-*) (404.html), закрыть после выноса инлайна (TECH-DEBT TD-4) */
+    --glass-bg: var(--surface-bg);
+    --glass-bg-hover: var(--surface-bg-hover);
+    --glass-blur: var(--surface-blur);
+    --glass-border: var(--surface-border);
+    --glass-border-hover: var(--surface-border-hover);
+    --glass-subtle: var(--surface-subtle);
+    --glass-subtle-hover: var(--surface-subtle-hover);
+    --glass-tag-bg: var(--surface-tag-bg);
+    --glass-tag-border: var(--surface-tag-border);
+    --glass-tag-active: var(--surface-tag-active);
 }
+
+/* === Темы (DESIGN.md §11): html[data-theme="имя"] переопределяет только значения токенов,
+   имена, HTML и геометрия у всех тем общие. Отсутствие атрибута — неон, ни один пиксель не сдвигается.
+   Палитра темы пишется по скринам контрольных страниц, не по памяти; при заведении темы
+   первым переопределяется --cyan-rgb, остальное — точечно. */
 
 * {
     margin: 0;
@@ -46,7 +73,7 @@ body {
     background: rgba(10, 20, 40, 0.45);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(0, 230, 255, 0.08);
+    border: 1px solid rgba(var(--cyan-rgb), 0.08);
     border-radius: 16px;
     padding: 28px 40px;
     margin-top: 16px;
@@ -64,7 +91,7 @@ h1 {
     padding-bottom: 12px;
     margin-bottom: 24px;
     color: #ffffff;
-    text-shadow: 0 0 12px #00e6ff88, 0 0 25px #00e6ff44;
+    text-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.533), 0 0 25px rgba(var(--cyan-rgb), 0.267);
     letter-spacing: 1px;
     /* Shimmer-перелив на заголовках */
     background: linear-gradient(90deg, #fff 0%, var(--accent-cyan) 45%, #fff 55%, var(--accent-cyan) 100%);
