@@ -66,7 +66,7 @@
 }
 .hamburger-btn:hover {
     border-color: var(--accent-cyan);
-    box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.267);
+    box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.2);
 }
 .hamburger-btn.open span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
@@ -96,13 +96,13 @@
     height: 48px;
     border-radius: 14px;
     border: 2px solid var(--accent-cyan);
-    box-shadow: 0 0 15px rgba(var(--cyan-rgb), 0.533);
+    box-shadow: 0 0 15px rgba(var(--cyan-rgb), 0.6);
     object-fit: cover;
 }
 
 /* Улучшение для логотипа-картинки при наведении */
 .logo:hover .logo-img {
-    box-shadow: 0 0 20px var(--accent-cyan), 0 0 30px rgba(var(--cyan-rgb), 0.667);
+    box-shadow: 0 0 20px var(--accent-cyan), 0 0 30px rgba(var(--cyan-rgb), 0.6);
     border-color: #ffffff;
 }
 

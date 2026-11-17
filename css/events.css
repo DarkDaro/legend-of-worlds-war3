@@ -147,9 +147,9 @@
             border: 1px solid rgba(255, 165, 0, 0.3);
         }
         .mode-badge.normal {
-            background: rgba(var(--cyan-rgb), 0.1);
+            background: rgba(var(--cyan-rgb), 0.12);
             color: var(--accent-cyan);
-            border: 1px solid rgba(var(--cyan-rgb), 0.3);
+            border: 1px solid rgba(var(--cyan-rgb), 0.35);
         }
         .mode-badge.boss {
             background: rgba(220, 38, 38, 0.15);
@@ -199,14 +199,14 @@
             margin: 0;
         }
         .pair-split code {
-            background: rgba(var(--cyan-rgb), 0.1);
+            background: rgba(var(--cyan-rgb), 0.12);
             color: var(--accent-cyan);
             padding: 1px 5px;
             border-radius: 3px;
             font-size: 0.82rem;
         }
         .highlight-box {
-            background: rgba(var(--cyan-rgb), 0.06);
+            background: rgba(var(--cyan-rgb), 0.04);
             border: 1px solid rgba(var(--cyan-rgb), 0.2);
             border-radius: 10px;
             padding: 16px 20px;

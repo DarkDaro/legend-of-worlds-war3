@@ -28,7 +28,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 30%, rgba(var(--cyan-rgb), 0.082) 0%, transparent 60%),
+    background: radial-gradient(ellipse at 50% 30%, rgba(var(--cyan-rgb), 0.08) 0%, transparent 60%),
                 radial-gradient(ellipse at 20% 80%, #ff555510 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 70%, #bf7fff10 0%, transparent 50%);
     z-index: 1;
@@ -60,7 +60,7 @@
     height: 120px;
     border-radius: 24px;
     border: 3px solid var(--accent-cyan);
-    box-shadow: 0 0 30px rgba(var(--cyan-rgb), 0.4), 0 0 60px rgba(var(--cyan-rgb), 0.2);
+    box-shadow: 0 0 30px rgba(var(--cyan-rgb), 0.35), 0 0 60px rgba(var(--cyan-rgb), 0.2);
     margin-bottom: 24px;
     animation: float 3s ease-in-out infinite, logoBorderPulse 2.5s ease-in-out infinite;
     object-fit: cover;
@@ -70,8 +70,8 @@
     50% { transform: translateY(-14px); }
 }
 @keyframes logoBorderPulse {
-    0%, 100% { border-color: var(--accent-cyan); box-shadow: 0 0 30px rgba(var(--cyan-rgb), 0.4), 0 0 60px rgba(var(--cyan-rgb), 0.2); }
-    50% { border-color: #55ffff; box-shadow: 0 0 40px rgba(var(--cyan-rgb), 0.533), 0 0 80px rgba(var(--cyan-rgb), 0.267); }
+    0%, 100% { border-color: var(--accent-cyan); box-shadow: 0 0 30px rgba(var(--cyan-rgb), 0.35), 0 0 60px rgba(var(--cyan-rgb), 0.2); }
+    50% { border-color: #55ffff; box-shadow: 0 0 40px rgba(var(--cyan-rgb), 0.6), 0 0 80px rgba(var(--cyan-rgb), 0.2); }
 }
 .hero-banner-title {
     font-size: 3.5rem;
@@ -79,7 +79,7 @@
     letter-spacing: 3px;
     text-transform: uppercase;
     color: #fff;
-    text-shadow: 0 0 30px rgba(var(--cyan-rgb), 0.533), 0 0 60px rgba(var(--cyan-rgb), 0.267), 0 0 100px rgba(var(--cyan-rgb), 0.133);
+    text-shadow: 0 0 30px rgba(var(--cyan-rgb), 0.6), 0 0 60px rgba(var(--cyan-rgb), 0.2), 0 0 100px rgba(var(--cyan-rgb), 0.12);
     margin-bottom: 12px;
     line-height: 1.1;
     /* Shimmer-эффект на заголовке */
@@ -149,8 +149,8 @@
     transition: 0.2s;
 }
 .btn-secondary:hover {
-    background: rgba(var(--cyan-rgb), 0.082);
-    box-shadow: 0 0 25px rgba(var(--cyan-rgb), 0.333);
+    background: rgba(var(--cyan-rgb), 0.08);
+    box-shadow: 0 0 25px rgba(var(--cyan-rgb), 0.35);
     transform: translateY(-2px);
 }
 
@@ -187,7 +187,7 @@
 }
 .stat-box:hover .stat-number {
     transform: scale(1.12);
-    text-shadow: 0 0 20px rgba(var(--cyan-rgb), 0.4);
+    text-shadow: 0 0 20px rgba(var(--cyan-rgb), 0.35);
 }
 @keyframes statIconBounce {
     0%   { transform: scale(1); }
@@ -204,7 +204,7 @@
     font-size: 2.2rem;
     font-weight: 800;
     color: #fff;
-    text-shadow: 0 0 15px rgba(var(--cyan-rgb), 0.267);
+    text-shadow: 0 0 15px rgba(var(--cyan-rgb), 0.2);
     transition: transform 0.25s ease, text-shadow 0.25s ease;
 }
 .stat-label {
@@ -255,8 +255,8 @@
 }
 .quick-link-card:hover .quick-link-icon {
     animation: qlIconPop 0.35s ease-out;
-    background: rgba(var(--cyan-rgb), 0.145);
-    border-color: rgba(var(--cyan-rgb), 0.533);
+    background: rgba(var(--cyan-rgb), 0.12);
+    border-color: rgba(var(--cyan-rgb), 0.6);
 }
 .quick-link-card:hover .quick-link-icon i {
     color: #55ffff;
@@ -287,8 +287,8 @@
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    background: rgba(var(--cyan-rgb), 0.082);
-    border: 1px solid rgba(var(--cyan-rgb), 0.267);
+    background: rgba(var(--cyan-rgb), 0.08);
+    border: 1px solid rgba(var(--cyan-rgb), 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -352,7 +352,7 @@
     transition: 0.15s;
 }
 .updates-link:hover {
-    text-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.533);
+    text-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.6);
 }
 
 /* Призыв к действию */
@@ -379,7 +379,7 @@
     background: linear-gradient(
         45deg,
         transparent 25%,
-        rgba(var(--cyan-rgb), 0.1) 33%,
+        rgba(var(--cyan-rgb), 0.12) 33%,
         rgba(0, 128, 255, 0.07) 40%,
         transparent 50%
     );
@@ -388,7 +388,7 @@
 }
 @keyframes ctaBorderPulse {
     0%, 100% { border-color: var(--surface-border); box-shadow: none; }
-    50% { border-color: rgba(var(--cyan-rgb), 0.267); box-shadow: 0 0 30px var(--surface-border); }
+    50% { border-color: rgba(var(--cyan-rgb), 0.2); box-shadow: 0 0 30px var(--surface-border); }
 }
 @keyframes auroraShift {
     0% { transform: translateX(-30%) translateY(-10%) rotate(0deg); }
@@ -403,7 +403,7 @@
     font-size: 2rem;
     color: #fff;
     margin-bottom: 12px;
-    text-shadow: 0 0 20px rgba(var(--cyan-rgb), 0.267);
+    text-shadow: 0 0 20px rgba(var(--cyan-rgb), 0.2);
 }
 .cta-content p {
     color: var(--text-secondary);
@@ -498,7 +498,7 @@
 }
 .footer-social a:hover {
     color: var(--accent-cyan);
-    text-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.4);
+    text-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.35);
 }
 .footer-bottom {
     text-align: center;
@@ -571,7 +571,7 @@
     font-size: 2rem;
     font-weight: 700;
     color: #fff;
-    text-shadow: 0 0 20px rgba(var(--cyan-rgb), 0.267);
+    text-shadow: 0 0 20px rgba(var(--cyan-rgb), 0.2);
     margin-bottom: 6px;
 }
 .lore-banner-subtitle {

@@ -19,7 +19,7 @@
     line-height: 1.25;
     letter-spacing: 0.01em;
     color: var(--text-primary);
-    text-shadow: 0 0 24px rgba(var(--cyan-rgb), 0.25);
+    text-shadow: 0 0 24px rgba(var(--cyan-rgb), 0.2);
     margin-bottom: 10px;
 }
 .mf-hero-line em {
@@ -62,7 +62,7 @@
     font-weight: 800;
     color: var(--accent-cyan);
     line-height: 1.1;
-    text-shadow: 0 0 18px rgba(var(--cyan-rgb), 0.45);
+    text-shadow: 0 0 18px rgba(var(--cyan-rgb), 0.35);
 }
 .mf-stat-cap {
     display: block;
@@ -97,7 +97,7 @@
     font-weight: 800;
     line-height: 1;
     color: var(--accent-cyan);
-    text-shadow: 0 0 26px rgba(var(--cyan-rgb), 0.5);
+    text-shadow: 0 0 26px rgba(var(--cyan-rgb), 0.6);
 }
 .mf-night-item--quiet .mf-night-num { color: var(--text-primary); text-shadow: none; }
 .mf-night-cap {
@@ -166,7 +166,7 @@
 .mf-final em {
     font-style: normal;
     color: var(--accent-cyan);
-    text-shadow: 0 0 18px rgba(var(--cyan-rgb), 0.4);
+    text-shadow: 0 0 18px rgba(var(--cyan-rgb), 0.35);
 }
 
 @media (max-width: 640px) {
@@ -213,8 +213,8 @@
 
 /* денежные карточки: главный акцент страницы */
 .support-card--money {
-    border-color: rgba(var(--cyan-rgb), 0.3);
-    background: linear-gradient(180deg, rgba(var(--cyan-rgb), 0.06), rgba(15, 23, 42, 0.5));
+    border-color: rgba(var(--cyan-rgb), 0.35);
+    background: linear-gradient(180deg, rgba(var(--cyan-rgb), 0.04), rgba(15, 23, 42, 0.5));
 }
 .support-card--money:hover { box-shadow: var(--neon-glow-strong); }
 .support-card--money .method-link {
@@ -232,5 +232,5 @@
 }
 .support-thanks .fa-heart {
     color: var(--accent-cyan);
-    text-shadow: 0 0 14px rgba(var(--cyan-rgb), 0.5);
+    text-shadow: 0 0 14px rgba(var(--cyan-rgb), 0.6);
 }
