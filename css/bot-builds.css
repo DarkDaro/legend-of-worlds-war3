@@ -5,8 +5,8 @@
             gap: 16px;
             margin: 16px 0;
             padding: 12px 16px;
-            background: var(--glass-subtle);
-            border: 1px solid var(--glass-border);
+            background: var(--surface-subtle);
+            border: 1px solid var(--surface-border);
             border-radius: 8px;
             font-size: 0.85rem;
         }
@@ -21,7 +21,7 @@
             border-radius: 3px;
             flex-shrink: 0;
         }
-        .bb-legend-dot.normal { background: var(--glass-tag-active); border: 1px solid var(--glass-border-hover); }
+        .bb-legend-dot.normal { background: var(--surface-tag-active); border: 1px solid var(--surface-border-hover); }
         .bb-legend-dot.boss { background: rgba(255, 60, 60, 0.15); border: 1px solid rgba(255, 60, 60, 0.4); }
         .bb-legend-dot.temp { background: rgba(255, 255, 255, 0.06); border: 1px dashed rgba(255, 255, 255, 0.25); opacity: 0.5; }
 
@@ -37,7 +37,7 @@
             align-items: center;
             gap: 6px;
             background: #162433;
-            border: 1px solid #00e6ffaa;
+            border: 1px solid rgba(var(--cyan-rgb), 0.667);
             padding: 6px 14px;
             border-radius: 30px;
             font-size: 0.85rem;
@@ -58,7 +58,7 @@
         }
         .bb-hero-chip-nolink:hover {
             background: #162433;
-            border-color: #00e6ffaa;
+            border-color: rgba(var(--cyan-rgb), 0.667);
             color: #d0e4ff;
             box-shadow: none;
         }
@@ -66,12 +66,12 @@
         /* === Стадия === */
         .bb-stage {
             margin: 12px 0;
-            border: 1px solid var(--glass-border);
+            border: 1px solid var(--surface-border);
             border-radius: 8px;
             overflow: hidden;
-            background: var(--glass-bg);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
+            background: var(--surface-bg);
+            backdrop-filter: blur(var(--surface-blur));
+            -webkit-backdrop-filter: blur(var(--surface-blur));
             transition: border-color 0.2s, box-shadow 0.2s;
         }
         .bb-stage.boss-stage {
@@ -85,14 +85,14 @@
             padding: 10px 14px;
             cursor: pointer;
             user-select: none;
-            background: var(--glass-subtle);
+            background: var(--surface-subtle);
             transition: background 0.2s;
         }
         .bb-stage.boss-stage .bb-stage-header {
             background: rgba(255, 40, 40, 0.06);
         }
         .bb-stage-header:hover {
-            background: var(--glass-subtle-hover);
+            background: var(--surface-subtle-hover);
         }
         .bb-stage.boss-stage .bb-stage-header:hover {
             background: rgba(255, 40, 40, 0.1);
@@ -125,7 +125,7 @@
             font-style: italic;
         }
         .bb-stage-delta {
-            color: rgba(0, 230, 255, 0.5);
+            color: rgba(var(--cyan-rgb), 0.5);
             font-size: 0.75em;
             font-weight: 400;
         }
@@ -156,8 +156,8 @@
             width: 64px;
             height: 64px;
             border-radius: 6px;
-            border: 1px solid var(--glass-border);
-            background: var(--glass-bg);
+            border: 1px solid var(--surface-border);
+            background: var(--surface-bg);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             display: flex;
@@ -168,7 +168,7 @@
             transition: border-color 0.2s, box-shadow 0.2s;
         }
         .bb-slot-img:hover {
-            border-color: var(--glass-border-hover);
+            border-color: var(--surface-border-hover);
             box-shadow: var(--neon-glow);
         }
         .bb-slot-img img {
@@ -225,8 +225,8 @@
         .bb-total {
             margin-top: 20px;
             padding: 14px 18px;
-            background: var(--glass-tag-bg);
-            border: 1px solid var(--glass-border);
+            background: var(--surface-tag-bg);
+            border: 1px solid var(--surface-border);
             border-radius: 8px;
             display: flex;
             justify-content: space-between;
@@ -240,7 +240,7 @@
         }
         /* 08.11 css-аудит: здесь и в .bb-group-btn.active/.bb-copy-btn было var(--accent) —
            такой переменной никогда не существовало, цвет молча падал до цвета текста.
-           Фикс: существующий --accent-cyan (#00e6ff). */
+           Фикс: существующий --accent-cyan (var(--accent-cyan)). */
         .bb-total-value {
             font-size: 1.1rem;
             font-weight: 700;
@@ -256,8 +256,8 @@
         }
         .bb-group-btn {
             padding: 6px 14px;
-            background: var(--glass-tag-bg);
-            border: 1px solid var(--glass-border);
+            background: var(--surface-tag-bg);
+            border: 1px solid var(--surface-border);
             border-radius: 6px;
             color: var(--text-secondary);
             cursor: pointer;
@@ -265,11 +265,11 @@
             transition: all 0.2s;
         }
         .bb-group-btn:hover {
-            background: var(--glass-tag-border);
+            background: var(--surface-tag-border);
             color: var(--text-primary);
         }
         .bb-group-btn.active {
-            background: var(--glass-tag-active);
+            background: var(--surface-tag-active);
             border-color: var(--accent-cyan);
             color: var(--accent-cyan);
         }
@@ -281,8 +281,8 @@
             gap: 8px;
             padding: 8px 18px;
             margin: 12px 0 4px;
-            background: rgba(0, 230, 255, 0.08);
-            border: 1px solid rgba(0, 230, 255, 0.25);
+            background: rgba(var(--cyan-rgb), 0.08);
+            border: 1px solid rgba(var(--cyan-rgb), 0.25);
             border-radius: 6px;
             color: var(--accent-cyan);
             font-size: 0.85rem;
@@ -290,7 +290,7 @@
             transition: all 0.2s;
         }
         .bb-copy-btn:hover {
-            background: rgba(0, 230, 255, 0.15);
+            background: rgba(var(--cyan-rgb), 0.15);
             border-color: var(--accent-cyan);
         }
 

@@ -9,8 +9,8 @@
             flex-wrap: wrap;
         }
         .formula-tab {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
+            background: var(--surface-bg);
+            border: 1px solid var(--surface-border);
             border-radius: 8px;
             padding: 8px 16px;
             color: var(--text-secondary);
@@ -23,7 +23,7 @@
             color: var(--text-primary);
         }
         .formula-tab.active {
-            background: #00e6ff22;
+            background: rgba(var(--cyan-rgb), 0.133);
             border-color: var(--accent-cyan);
             color: var(--accent-cyan);
         }
@@ -49,8 +49,8 @@
         }
         .formula-input-row input {
             flex: 1;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
+            background: var(--surface-bg);
+            border: 1px solid var(--surface-border);
             border-radius: 8px;
             padding: 10px 14px;
             color: var(--text-primary);
@@ -73,8 +73,8 @@
             margin-top: 8px;
         }
 .formula-source-chip {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
+            background: var(--surface-bg);
+            border: 1px solid var(--surface-border);
             border-radius: 20px;
             padding: 6px 14px;
             color: var(--text-primary);
@@ -89,7 +89,7 @@
             border-color: var(--accent-cyan);
         }
 .formula-source-chip.selected {
-            background: #00e6ff22;
+            background: rgba(var(--cyan-rgb), 0.133);
             border-color: var(--accent-cyan);
             color: var(--accent-cyan);
         }
@@ -101,10 +101,10 @@
             color: var(--accent-cyan);
         }
         .formula-results {
-            background: var(--glass-bg);
-            backdrop-filter: blur(var(--glass-blur));
-            -webkit-backdrop-filter: blur(var(--glass-blur));
-            border: 1px solid var(--glass-border);
+            background: var(--surface-bg);
+            backdrop-filter: blur(var(--surface-blur));
+            -webkit-backdrop-filter: blur(var(--surface-blur));
+            border: 1px solid var(--surface-border);
             border-radius: 12px;
             padding: 20px;
             margin-top: 16px;
@@ -170,8 +170,8 @@
             color: var(--accent-cyan);
         }
         .formula-add-btn {
-            background: var(--glass-bg);
-            border: 1px dashed var(--glass-border);
+            background: var(--surface-bg);
+            border: 1px dashed var(--surface-border);
             border-radius: 8px;
             padding: 8px 16px;
             color: var(--text-muted);
@@ -192,8 +192,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 8px 12px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
+            background: var(--surface-bg);
+            border: 1px solid var(--surface-border);
             border-radius: 8px;
             margin-bottom: 6px;
         }
@@ -224,8 +224,8 @@
             margin-top: 12px;
         }
         .luck-item-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
+            background: var(--surface-bg);
+            border: 1px solid var(--surface-border);
             border-radius: 8px;
             padding: 10px 12px;
             transition: all 0.2s;
@@ -237,7 +237,7 @@
             border-color: var(--accent-cyan);
         }
         .luck-item-card.selected {
-            background: #00e6ff22;
+            background: rgba(var(--cyan-rgb), 0.133);
             border-color: var(--accent-cyan);
         }
         .luck-item-row {
@@ -276,7 +276,7 @@
             width: 24px;
             height: 24px;
             border-radius: 6px;
-            border: 1px solid var(--glass-border);
+            border: 1px solid var(--surface-border);
             background: #0a1020;
             color: var(--text-secondary);
             font-size: 0.75rem;
@@ -371,5 +371,5 @@
             }
         }
         @supports not (backdrop-filter: blur(1px)) {
-            .formula-results { background: var(--glass-bg) !important; }
+            .formula-results { background: var(--surface-bg) !important; }
         }

@@ -5,9 +5,9 @@
             margin-top: 24px;
         }
         .sitemap-section {
-            background: var(--glass-bg);
-            backdrop-filter: blur(var(--glass-blur));
-            border: 1px solid var(--glass-border);
+            background: var(--surface-bg);
+            backdrop-filter: blur(var(--surface-blur));
+            border: 1px solid var(--surface-border);
             border-radius: 12px;
             padding: 20px;
         }
@@ -65,7 +65,7 @@
             text-overflow: ellipsis;
         }
         .sitemap-hero-link:hover {
-            background: var(--glass-subtle-hover);
+            background: var(--surface-subtle-hover);
             color: var(--accent-cyan);
         }
         .sitemap-hero-link.attr-strength { border-left: 2px solid #e74c3c; }

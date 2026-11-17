@@ -7,7 +7,7 @@
     backdrop-filter: blur(8px);
     border-radius: 24px;
     border: 1px solid #2a4060;
-    box-shadow: 0 0 30px #00000080, 0 0 0 1px #00e6ff22 inset, 0 0 20px #00e6ff33;
+    box-shadow: 0 0 30px #00000080, 0 0 0 1px rgba(var(--cyan-rgb), 0.133) inset, 0 0 20px rgba(var(--cyan-rgb), 0.2);
     padding: 28px 32px;
 }
 .hero-nav {
@@ -27,13 +27,13 @@
     background: rgba(15, 26, 43, 0.9);
     color: #d0e0ff;
     text-decoration: none;
-    box-shadow: 0 0 12px #00e6ff22;
+    box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.133);
     transition: 0.2s ease;
     flex: 0 0 auto;
 }
 .hero-nav-btn:hover {
     border-color: var(--accent-cyan);
-    box-shadow: 0 0 18px #00e6ff55;
+    box-shadow: 0 0 18px rgba(var(--cyan-rgb), 0.333);
     transform: translateY(-1px);
 }
 .hero-nav-btn i {
@@ -82,7 +82,7 @@
     background: radial-gradient(circle at 30% 20%, #1e3a5a, #0e1a2b);
     border-radius: 20px;
     border: 2px solid var(--accent-cyan);
-    box-shadow: 0 0 20px #00e6ff66;
+    box-shadow: 0 0 20px rgba(var(--cyan-rgb), 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -107,7 +107,7 @@
     font-size: 2.2rem;
     font-weight: 600;
     color: white;
-    text-shadow: 0 0 12px #00e6ffcc;
+    text-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.8);
 }
 /* detail-badges и detail-badge перенесены в items.css (секция бейджей) */
 .detail-description {
@@ -165,10 +165,10 @@
     gap: 20px;
     flex-wrap: wrap;
     margin: 20px 0;
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--glass-border);
+    background: var(--surface-bg);
+    backdrop-filter: blur(var(--surface-blur));
+    -webkit-backdrop-filter: blur(var(--surface-blur));
+    border: 1px solid var(--surface-border);
     padding: 15px 20px;
     border-radius: 12px;
 }
@@ -187,7 +187,7 @@
     font-weight: 500;
     color: var(--accent-cyan);
     margin: 25px 0 15px;
-    text-shadow: 0 0 8px #00e6ffaa;
+    text-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.667);
 }
 
 /* === Рекомендуемые предметы === */
@@ -212,7 +212,7 @@
 }
 .build-slot:hover {
     border-color: var(--accent-cyan);
-    box-shadow: 0 0 12px #00e6ff44;
+    box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.267);
     transform: translateY(-2px);
 }
 .build-slot .build-icon {
@@ -289,26 +289,26 @@
     margin-bottom: 25px;
 }
 .ability-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--glass-border);
+    background: var(--surface-bg);
+    backdrop-filter: blur(var(--surface-blur));
+    -webkit-backdrop-filter: blur(var(--surface-blur));
+    border: 1px solid var(--surface-border);
     border-left: 4px solid var(--accent-cyan);
     padding: 16px;
     border-radius: 8px;
-    box-shadow: inset 0 0 10px #00000055, 0 0 10px #00e6ff22;
+    box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--cyan-rgb), 0.133);
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.25s ease, background 0.2s;
 }
 .ability-card:hover {
-    box-shadow: inset 0 0 10px #00000055, 0 0 15px #00e6ff44;
+    box-shadow: inset 0 0 10px #00000055, 0 0 15px rgba(var(--cyan-rgb), 0.267);
     background: #132030;
 }
 .ability-card:hover .ability-icon {
-    box-shadow: 0 0 18px #00e6ff88;
+    box-shadow: 0 0 18px rgba(var(--cyan-rgb), 0.533);
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
 .ability-card:hover .param-row {
-    background: rgba(0, 230, 255, 0.03);
+    background: rgba(var(--cyan-rgb), 0.03);
 }
 .ability-card.passive:hover {
     box-shadow: inset 0 0 10px #00000055, 0 0 15px #bf7fff44;
@@ -357,7 +357,7 @@
     width: 64px;
     height: 64px;
     border-radius: 12px;
-    border: 2px solid #00e6ffaa;
+    border: 2px solid rgba(var(--cyan-rgb), 0.667);
     background: radial-gradient(circle at 30% 20%, #1e3a5a, #0e1a2b);
     display: flex;
     align-items: center;
@@ -366,7 +366,7 @@
     color: var(--accent-cyan);
     overflow: hidden;
     flex-shrink: 0;
-    box-shadow: 0 0 10px #00e6ff44;
+    box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.267);
     position: relative;
 }
 .ability-icon img {
@@ -393,14 +393,14 @@
     width: 28px;
     height: 28px;
     background: #0b0e14;
-    border: 2px solid #00e6ff88;
+    border: 2px solid rgba(var(--cyan-rgb), 0.533);
     border-radius: 6px;
     font-size: 0.8rem;
     font-weight: 800;
     color: var(--accent-cyan);
     flex-shrink: 0;
-    text-shadow: 0 0 6px #00e6ff88;
-    box-shadow: 0 0 8px #00e6ff44;
+    text-shadow: 0 0 6px rgba(var(--cyan-rgb), 0.533);
+    box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.267);
 }
 .ability-card.passive .ability-hotkey {
     color: #bf7fff;
@@ -434,7 +434,7 @@
     border-radius: 10px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    background: var(--glass-subtle-hover);
+    background: var(--surface-subtle-hover);
     color: #8ab4f0;
     border: 1px solid #2a5070;
 }
@@ -512,7 +512,7 @@
     flex-wrap: wrap;
     gap: 6px 16px;
     padding-top: 8px;
-    border-top: 1px solid var(--glass-border);
+    border-top: 1px solid var(--surface-border);
 }
 .param-row {
     display: flex;
@@ -586,10 +586,10 @@
     flex: 1;
     padding: 10px 16px;
     border-radius: 12px;
-    border: 1px solid var(--glass-border);
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--surface-border);
+    background: var(--surface-bg);
+    backdrop-filter: blur(var(--surface-blur));
+    -webkit-backdrop-filter: blur(var(--surface-blur));
     color: var(--text-secondary);
     font-size: 0.9rem;
     font-weight: 600;
@@ -605,7 +605,7 @@
     background: #1a2a45;
     border-color: var(--accent-cyan);
     color: var(--accent-cyan);
-    box-shadow: 0 0 12px #00e6ff44;
+    box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.267);
 }
 .form-tab.active.alt-form {
     border-color: #bf7fff;
@@ -620,9 +620,9 @@
     gap: 8px 16px;
     padding: 10px 14px;
     margin-bottom: 16px;
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
+    background: var(--surface-bg);
+    backdrop-filter: blur(var(--surface-blur));
+    -webkit-backdrop-filter: blur(var(--surface-blur));
     border: 1px solid #bf7fff44;
     border-radius: 10px;
 }
@@ -657,16 +657,16 @@
     gap: 8px;
     margin-bottom: 8px;
     padding: 6px 12px;
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--glass-border);
+    background: var(--surface-bg);
+    backdrop-filter: blur(var(--surface-blur));
+    -webkit-backdrop-filter: blur(var(--surface-blur));
+    border: 1px solid var(--surface-border);
     border-radius: 10px;
     font-size: 0.8rem;
     color: var(--text-secondary);
 }
 .cycle-label .cycle-key {
-    background: #00e6ff22;
+    background: rgba(var(--cyan-rgb), 0.133);
     color: var(--accent-cyan);
     padding: 2px 8px;
     border-radius: 6px;
@@ -679,7 +679,7 @@
     font-size: 0.75rem;
 }
 .ability-cycle-group .ability-card {
-    border-left: 3px solid #00e6ff44;
+    border-left: 3px solid rgba(var(--cyan-rgb), 0.267);
 }
 .ability-cycle-group .ability-card:nth-child(1) { border-left-color: #bf7fff; }
 .ability-cycle-group .ability-card:nth-child(2) { border-left-color: #ff5555; }
@@ -688,8 +688,8 @@
 .back-button, .back-link {
     display: inline-block;
     margin-top: 20px;
-    background: var(--glass-bg);
-    border: 1px solid #00e6ffcc;
+    background: var(--surface-bg);
+    border: 1px solid rgba(var(--cyan-rgb), 0.8);
     color: var(--text-primary);
     padding: 12px 24px;
     border-radius: 30px;
@@ -697,7 +697,7 @@
     font-weight: 500;
     text-decoration: none;
     text-align: center;
-    box-shadow: 0 0 10px #00e6ff33;
+    box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.2);
     transition: 0.15s;
 }
 .back-button:hover, .back-link:hover {
@@ -732,7 +732,7 @@
     font-size: 2.2rem;
     font-weight: 600;
     color: white;
-    text-shadow: 0 0 12px #00e6ffcc;
+    text-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.8);
     letter-spacing: normal;
     line-height: inherit;
 }
