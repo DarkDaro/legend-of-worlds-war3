@@ -15,6 +15,8 @@
         const start = () => {
             if (animated) return;
             animated = true;
+            // при data-anim="off" счётчик не трогается: в HTML уже стоит конечное число
+            if (window.SiteSettings && !SiteSettings.get('anim')) return;
             counters.forEach(el => {
                 const target = parseInt(el.dataset.target);
                 if (!Number.isFinite(target)) return;

@@ -153,7 +153,9 @@
         });
 
         btn.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // при data-anim="off" скролл мгновенный
+            var smooth = !window.SiteSettings || SiteSettings.get('anim');
+            window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
         });
     }
 
