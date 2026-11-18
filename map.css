@@ -34,7 +34,7 @@
     height: 12px;
     border-radius: 50%;
 }
-.map-legend-dot.boss { background: #ff4444; }
+.map-legend-dot.boss { background: var(--danger-deep); }
 .map-legend-dot.shop { background: #44ff88; }
 .map-legend-dot.duel { background: #ffaa44; }
 .map-legend-dot.spawn { background: #4488ff; }
@@ -48,14 +48,14 @@
 .map-edit-btn {
     background: #1a3a5c;
     color: var(--text-secondary);
-    border: 1px solid #2a5070;
+    border: 1px solid var(--steel-blue);
     padding: 6px 12px;
     border-radius: 6px;
     font-size: 0.82rem;
     cursor: pointer;
     transition: all 0.2s;
 }
-.map-edit-btn:hover { background: #2a5070; color: #e0e8f0; }
+.map-edit-btn:hover { background: var(--steel-blue); color: #e0e8f0; }
 .map-edit-btn.active {
     background: rgba(var(--cyan-rgb), 0.12);
     color: var(--accent-cyan);
@@ -91,15 +91,15 @@
     border-radius: 6px;
     font-size: 0.75rem;
     cursor: pointer;
-    border: 1px solid #2a5070;
+    border: 1px solid var(--steel-blue);
     background: #1a3a5c;
     color: var(--text-secondary);
     transition: all 0.2s;
 }
-.map-type-btn:hover { background: #2a5070; color: #e0e8f0; }
+.map-type-btn:hover { background: var(--steel-blue); color: #e0e8f0; }
 .map-type-btn.active { border-color: var(--accent-cyan); color: var(--accent-cyan); background: rgba(var(--cyan-rgb), 0.12); }
-.map-type-btn.type-boss { border-color: #ff4444; }
-.map-type-btn.type-boss.active { color: #ff4444; background: #ff444422; border-color: #ff4444; }
+.map-type-btn.type-boss { border-color: var(--danger-deep); }
+.map-type-btn.type-boss.active { color: var(--danger-deep); background: rgba(var(--red-deep-rgb), 0.12); border-color: var(--danger-deep); }
 .map-type-btn.type-shop { border-color: #44ff88; }
 .map-type-btn.type-shop.active { color: #44ff88; background: #44ff8822; border-color: #44ff88; }
 .map-type-btn.type-duel { border-color: #ffaa44; }
@@ -178,8 +178,8 @@
     cursor: grabbing;
 }
 .map-marker.boss {
-    background: #ff4444; color: #fff; border: 2px solid #ff7777;
-    box-shadow: 0 0 6px rgba(255, 68, 68, 0.35);
+    background: var(--danger-deep); color: #fff; border: 2px solid var(--danger-soft);
+    box-shadow: 0 0 6px rgba(var(--red-deep-rgb), 0.35);
     animation: markerPulseRed 3s ease-in-out infinite;
 }
 .map-marker.shop { background: #44ff88; color: #0a1628; border: 2px solid #77ffaa; box-shadow: 0 0 4px rgba(68, 255, 136, 0.2); }
@@ -200,8 +200,8 @@
 }
 
 @keyframes markerPulseRed {
-    0%, 100% { box-shadow: 0 0 6px rgba(255, 68, 68, 0.35); }
-    50% { box-shadow: 0 0 14px rgba(255, 68, 68, 0.6); }
+    0%, 100% { box-shadow: 0 0 6px rgba(var(--red-deep-rgb), 0.35); }
+    50% { box-shadow: 0 0 14px rgba(var(--red-deep-rgb), 0.6); }
 }
 @keyframes markerPulseCyan {
     0%, 100% { box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.35); }

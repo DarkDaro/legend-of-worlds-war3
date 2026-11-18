@@ -37,7 +37,7 @@
 .stat-pct-fill { height: 100%; border-radius: 3px; transition: width 0.3s ease; }
 .stat-pct-num { font-weight: 600; min-width: 28px; text-align: right; }
 .stat-raw { color: var(--text-muted); font-size: 0.7rem; }
-.pct-low { color: #ff6b6b; }
+.pct-low { color: var(--danger-soft); }
 .pct-mid { color: var(--text-primary); }
 .pct-high { color: #ffa500; }
 .pct-best { color: #ffd43b; }
@@ -57,7 +57,7 @@
 .percentile-table td { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text-secondary); }
 .percentile-table tr:hover td { background: rgba(var(--cyan-rgb), 0.04); }
 .pct-cell { font-weight: 600; }
-.pct-cell.low { color: #ff6b6b; background: rgba(255,107,107,0.08); }
+.pct-cell.low { color: var(--danger-soft); background: rgba(var(--red-soft-rgb), 0.08); }
 .pct-cell.mid { color: var(--text-primary); }
 .pct-cell.high { color: #ffa500; background: rgba(255,165,0,0.06); }
 .pct-cell.best { color: #ffd43b; background: rgba(255,212,59,0.08); }
@@ -142,7 +142,7 @@
    Из-за этого проценты в карточках были все одного цвета. */
 .stat-pct-num.best { color: #ffd43b; }
 .stat-pct-num.high { color: #ffa500; }
-.stat-pct-num.low  { color: #ff6b6b; }
+.stat-pct-num.low  { color: var(--danger-soft); }
 .stat-pct-num.mid  { color: var(--text-primary); }
 
 

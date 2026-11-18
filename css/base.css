@@ -19,6 +19,12 @@
     --backdrop-rgb: 13, 27, 42;
     --steel-rgb: 42, 64, 96;
     --steel-deep-rgb: 26, 48, 80;
+    /* Третий тон стали и две панели глубже (чанк 4): стальные рамки с синевой,
+       шапки таблиц, почти чёрные заливки (порог слияния почти-чёрных 8 — глаз
+       не различает) */
+    --steel-blue-rgb: 42, 80, 112;
+    --panel-raised-rgb: 26, 39, 68;
+    --abyss-rgb: 10, 16, 32;
     --info-rgb: 85, 170, 255;
 
     /* Поверхности (стекломорфизм): тема перекрашивает материал этими же именами (DESIGN.md §4) */
@@ -52,8 +58,53 @@
     --backdrop-solid: rgb(var(--backdrop-rgb));
     --steel: rgb(var(--steel-rgb));
     --steel-deep: rgb(var(--steel-deep-rgb));
+    --steel-blue: rgb(var(--steel-blue-rgb));
+    --panel-raised: rgb(var(--panel-raised-rgb));
+    --abyss: rgb(var(--abyss-rgb));
     /* Информационный синий и цвет разума: семантика контента §5, темой не перекрашивается */
     --info-blue: rgb(var(--info-rgb));
+
+    /* Статусные семейства (§5, чанк 4): примитивы контента — сила, опасность,
+       золото, магия, позитив одинаковы при любом оформлении, темы их не
+       перекрашивают. Альфа берётся поверх триплета ступенями циановой шкалы
+       0.04 / 0.08 / 0.12 / 0.2 / 0.35 / 0.6 / 0.9 */
+    --red-rgb: 255, 85, 85;
+    --red-deep-rgb: 255, 68, 68;
+    --red-soft-rgb: 255, 107, 107;
+    --orange-rgb: 255, 136, 0;
+    --orange-soft-rgb: 255, 153, 68;
+    --gold-rgb: 255, 200, 0;
+    --gold-bright-rgb: 255, 215, 0;
+    --gold-soft-rgb: 255, 217, 102;
+    --amber-rgb: 255, 193, 7;
+    --gold-dim-rgb: 170, 170, 68;
+    --violet-rgb: 191, 127, 255;
+    --green-rgb: 85, 255, 136;
+    --mint-rgb: 0, 255, 136;
+    --mint-deep-rgb: 0, 204, 102;
+    --spring-rgb: 0, 255, 170;
+    --agility-rgb: 85, 255, 85;
+    --green-muted-rgb: 76, 175, 80;
+
+    /* Статусы: опасность трёх ступеней, предупреждение двух, золото четырёх
+       тонов, магия, позитив и его неоновые собратья, ловкость */
+    --danger: rgb(var(--red-rgb));
+    --danger-deep: rgb(var(--red-deep-rgb));
+    --danger-soft: rgb(var(--red-soft-rgb));
+    --warning: rgb(var(--orange-rgb));
+    --warning-soft: rgb(var(--orange-soft-rgb));
+    --gold: rgb(var(--gold-rgb));
+    --gold-bright: rgb(var(--gold-bright-rgb));
+    --gold-soft: rgb(var(--gold-soft-rgb));
+    --amber: rgb(var(--amber-rgb));
+    --gold-dim: rgb(var(--gold-dim-rgb));
+    --magic: rgb(var(--violet-rgb));
+    --success: rgb(var(--green-rgb));
+    --mint: rgb(var(--mint-rgb));
+    --mint-deep: rgb(var(--mint-deep-rgb));
+    --spring: rgb(var(--spring-rgb));
+    --agility: rgb(var(--agility-rgb));
+    --green-muted: rgb(var(--green-muted-rgb));
 
     /* Акцент и неоновое свечение */
     --accent-cyan: rgb(var(--cyan-rgb));

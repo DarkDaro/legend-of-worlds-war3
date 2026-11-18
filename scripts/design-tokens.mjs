@@ -8,6 +8,9 @@
  * Запуск:  node scripts/design-tokens.mjs
  *          node scripts/design-tokens.mjs --md docs/CSS-INVENTORY.md
  * Режим --md перезаписывает файл целиком (только сырые данные).
+ *
+ * Исключаются: vendor/, генерируемый css/all.css, замороженные файлы repo-archive/
+ * (погашено TD-14: архив не живая вёрстка сайта, мёртвые цвета снимку не нужны).
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { execSync } from 'node:child_process';
@@ -25,7 +28,7 @@ if (!sanity.includes(':root') || !sanity.includes('--accent-cyan')) {
 
 const files = execSync('git ls-files -- "*.css"', { cwd: ROOT, encoding: 'utf8' })
     .split('\n').map(s => s.trim()).filter(Boolean)
-    .filter(f => !f.startsWith('vendor/') && f !== 'css/all.css'); // бандл генерится отдельно
+    .filter(f => !f.startsWith('vendor/') && f !== 'css/all.css' && !f.startsWith('repo-archive/')); // бандл генерится отдельно, repo-archive заморожен (TD-14)
 if (files.length < 10) {
     console.error('Ожидались десятки css-файлов, получено ' + files.length + '. Отмена.');
     process.exit(2);
@@ -185,7 +188,7 @@ if (process.argv.includes('--md')) {
         '| ' + head.join(' | ') + ' |\n|' + head.map(() => '---').join('|') + '|\n' +
         rows.map(r => '| ' + r.join(' | ') + ' |').join('\n') + '\n';
     let md = '# CSS-INVENTORY — сырой инвентарь дизайн-значений в css\n\n';
-    md += 'Генератор: `scripts/design-tokens.mjs` (node scripts/design-tokens.mjs --md docs/CSS-INVENTORY.md), перегенерация перезаписывает файл целиком. vendor/ и генерируемый css/all.css исключены. Осмысленные выводы и токен-система — docs/DESIGN.md.\n\n';
+    md += 'Генератор: `scripts/design-tokens.mjs` (node scripts/design-tokens.mjs --md docs/CSS-INVENTORY.md), перегенерация перезаписывает файл целиком. vendor/, генерируемый css/all.css и замороженный repo-archive/ исключены. Осмысленные выводы и токен-система — docs/DESIGN.md.\n\n';
     md += '## Итог\n' + tbl(['Показатель', 'Значение'], [
         ['css-файлов', files.length],
         ['уникальных цветов', colors.length],

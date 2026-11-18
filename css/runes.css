@@ -53,19 +53,19 @@
         /* Цвета иконок по типу */
         .rune-icon-defense { background: rgba(0, 180, 255, 0.12); color: #00b4ff; }
         .rune-icon-movement { background: rgba(0, 230, 118, 0.12); color: #00e676; }
-        .rune-icon-heal { background: rgba(255, 82, 82, 0.12); color: #ff5252; }
+        .rune-icon-heal { background: rgba(var(--red-rgb), 0.12); color: var(--danger); }
         .rune-icon-mana { background: rgba(124, 77, 255, 0.12); color: #7c4dff; }
-        .rune-icon-level { background: rgba(255, 215, 0, 0.12); color: #ffd700; }
+        .rune-icon-level { background: rgba(var(--gold-bright-rgb), 0.12); color: var(--gold-bright); }
         .rune-icon-stealth { background: rgba(120, 144, 156, 0.12); color: #78909c; }
         .rune-icon-damage { background: rgba(255, 71, 87, 0.12); color: #ff4757; }
         .rune-icon-vamp { background: rgba(180, 0, 0, 0.12); color: #cc0000; }
-        .rune-icon-gold { background: rgba(255, 193, 7, 0.12); color: #ffc107; }
+        .rune-icon-gold { background: rgba(var(--amber-rgb), 0.12); color: var(--amber); }
         .rune-icon-stats { background: var(--surface-border); color: var(--accent-cyan); }
         .rune-icon-illusion { background: rgba(156, 39, 176, 0.12); color: #9c27b0; }
         .rune-icon-speed { background: rgba(255, 152, 0, 0.12); color: #ff9800; }
         .rune-icon-crystal { background: rgba(233, 30, 99, 0.12); color: #e91e63; }
-        .rune-icon-refresh { background: rgba(76, 175, 80, 0.12); color: #4caf50; }
-        .rune-icon-wealth { background: rgba(255, 215, 0, 0.15); color: #ffd700; }
+        .rune-icon-refresh { background: rgba(var(--green-muted-rgb), 0.12); color: var(--green-muted); }
+        .rune-icon-wealth { background: rgba(var(--gold-bright-rgb), 0.12); color: var(--gold-bright); }
 
         @media (max-width: 700px) {
             .runes-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -154,7 +154,7 @@
             position: absolute;
             inset: -4px;
             border-radius: 12px;
-            border: 2px solid rgba(255, 82, 82, 0.35);
+            border: 2px solid rgba(var(--red-rgb), 0.35);
             opacity: 0;
             pointer-events: none;
         }
@@ -216,7 +216,7 @@
             position: absolute;
             inset: 0;
             border-radius: 10px;
-            background: linear-gradient(0deg, transparent 55%, rgba(255, 215, 0, 0.3) 85%, transparent);
+            background: linear-gradient(0deg, transparent 55%, rgba(var(--gold-bright-rgb), 0.35) 85%, transparent);
             opacity: 0;
             pointer-events: none;
         }
@@ -310,7 +310,7 @@
             left: -100%;
             width: 60%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.35), transparent);
+            background: linear-gradient(90deg, transparent, rgba(var(--amber-rgb), 0.35), transparent);
             pointer-events: none;
         }
         .rune-gold:hover .rune-icon::after {
@@ -461,7 +461,7 @@
             position: absolute;
             inset: -4px;
             border-radius: 12px;
-            box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+            box-shadow: 0 0 12px rgba(var(--gold-bright-rgb), 0.6);
             opacity: 0;
             pointer-events: none;
         }

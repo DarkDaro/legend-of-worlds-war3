@@ -68,7 +68,7 @@
             padding: 1px 5px;
             border-radius: 3px;
             font-size: 0.82rem;
-            color: #55ff88;
+            color: var(--success);
         }
 
         @media (max-width: 800px) {

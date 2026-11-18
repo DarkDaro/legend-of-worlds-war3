@@ -115,9 +115,9 @@
 .storage-hotkey {
     font-size: 0.68rem;
     font-weight: 700;
-    color: #ffd700;
+    color: var(--gold-bright);
     background: rgba(0, 0, 0, 0.35);
-    border: 1px solid rgba(255, 215, 0, 0.25);
+    border: 1px solid rgba(var(--gold-bright-rgb), 0.2);
     border-radius: 4px;
     padding: 1px 5px;
     line-height: 1.4;
@@ -219,15 +219,15 @@
     text-align: center;
 }
 .storage-btn.storage-sub .storage-hotkey { font-size: 0.62rem; padding: 0 4px; }
-.storage-btn.storage-sub.req-vip { border-color: rgba(255, 215, 0, 0.35); }
+.storage-btn.storage-sub.req-vip { border-color: rgba(var(--gold-bright-rgb), 0.35); }
 .storage-btn.storage-sub.req-premium { border-color: rgba(170, 120, 255, 0.4); }
-.storage-btn.storage-sub.req-admin { border-color: rgba(255, 80, 80, 0.4); }
+.storage-btn.storage-sub.req-admin { border-color: rgba(var(--red-rgb), 0.35); }
 .storage-btn.storage-sub .storage-req-tag {
     font-size: 0.58rem;
     letter-spacing: 0.3px;
     text-transform: uppercase;
 }
-.req-vip .storage-req-tag { color: #ffd700; }
+.req-vip .storage-req-tag { color: var(--gold-bright); }
 .req-premium .storage-req-tag { color: #c9a6ff; }
 .req-admin .storage-req-tag { color: #ff8080; }
 
@@ -254,8 +254,8 @@
     display: inline-block;
     font-weight: 700;
     font-size: 0.78rem;
-    color: #ffd700;
-    border: 1px solid rgba(255, 215, 0, 0.3);
+    color: var(--gold-bright);
+    border: 1px solid rgba(var(--gold-bright-rgb), 0.35);
     border-radius: 4px;
     padding: 1px 7px;
     margin-right: 6px;
@@ -270,9 +270,9 @@
     padding: 2px 8px;
     white-space: nowrap;
 }
-.storage-req-badge.vip { color: #ffd700; border: 1px solid rgba(255, 215, 0, 0.35); background: rgba(255, 215, 0, 0.06); }
+.storage-req-badge.vip { color: var(--gold-bright); border: 1px solid rgba(var(--gold-bright-rgb), 0.35); background: rgba(var(--gold-bright-rgb), 0.04); }
 .storage-req-badge.premium { color: #c9a6ff; border: 1px solid rgba(170, 120, 255, 0.4); background: rgba(170, 120, 255, 0.07); }
-.storage-req-badge.admin { color: #ff8080; border: 1px solid rgba(255, 80, 80, 0.4); background: rgba(255, 80, 80, 0.07); }
+.storage-req-badge.admin { color: #ff8080; border: 1px solid rgba(var(--red-rgb), 0.35); background: rgba(var(--red-rgb), 0.08); }
 
 /* Мультилайн-описания (desc в таблицах и панелях) */
 .storage-desc {
@@ -354,7 +354,7 @@
     .storage-box, .storage-info-panel, .storage-book-panel {
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
-        background: rgba(13, 22, 36, 0.92);
+        background: rgba(var(--backdrop-rgb), 0.9);
     }
 }
 @media (max-width: 700px) {

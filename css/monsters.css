@@ -140,11 +140,11 @@
     min-width: 140px;
 }
 .boss-drop-arrow {
-    color: #2a5070;
+    color: var(--steel-blue);
     font-size: 0.7rem;
 }
 .boss-drop-item-name {
-    color: #ff6b6b;
+    color: var(--danger-soft);
     text-decoration: none;
     font-weight: 500;
     white-space: nowrap;
@@ -173,8 +173,8 @@
     font-weight: 600;
 }
 .boss-drop-chance-low {
-    background: #ff555522;
-    color: #ff7777;
+    background: rgba(var(--red-rgb), 0.12);
+    color: var(--danger-soft);
 }
 .boss-drops-section::after {
     content: '';
@@ -260,10 +260,10 @@
     transform: translateY(-2px);
 }
 .monster-card.boss {
-    border-left: 4px solid #ff5555;
+    border-left: 4px solid var(--danger);
 }
 .monster-card.creep {
-    border-left: 4px solid #ff9944;
+    border-left: 4px solid var(--warning-soft);
 }
 .monster-header {
     display: flex;
@@ -289,13 +289,13 @@
 }
 .monster-card.boss .monster-icon {
     background: #2a0a0a;
-    border: 1px solid #ff555544;
-    color: #ff5555;
+    border: 1px solid rgba(var(--red-rgb), 0.2);
+    color: var(--danger);
 }
 .monster-card.creep .monster-icon {
     background: #2a1a0a;
-    border: 1px solid #ff994444;
-    color: #ff9944;
+    border: 1px solid rgba(var(--orange-soft-rgb), 0.2);
+    color: var(--warning-soft);
 }
 .monster-name {
     font-size: 1rem;
@@ -307,7 +307,7 @@
     font-family: 'Consolas', monospace;
     font-size: 0.75rem;
     color: var(--text-dim);
-    background: #0a0f1a;
+    background: var(--abyss);
     padding: 2px 8px;
     border-radius: 6px;
 }
@@ -340,7 +340,7 @@
     margin-top: 12px;
 }
 .monster-stat {
-    background: #0a0f1a;
+    background: var(--abyss);
     border-radius: 8px;
     padding: 8px 12px;
 }
@@ -425,7 +425,7 @@
 
 /* Способности босса */
 .boss-ability {
-    background: #0a0f1a;
+    background: var(--abyss);
     border: 1px solid var(--steel-deep);
     border-radius: 10px;
     padding: 10px 14px;
@@ -452,7 +452,7 @@
 
 /* Иконка заголовка "Боссы" */
 .boss-heading-icon {
-    color: #ff5555;
+    color: var(--danger);
 }
 
 /* Заголовки секций внутри карточки босса */
@@ -475,14 +475,14 @@
 /* Пассивные способности босса */
 .boss-passive {
     background: #0a1a0a;
-    border: 1px solid #55ff8833;
+    border: 1px solid rgba(var(--green-rgb), 0.2);
     border-radius: 10px;
     padding: 10px 14px;
     margin-bottom: 6px;
 }
 .boss-passive-name {
     font-weight: 600;
-    color: #55ff88;
+    color: var(--success);
     font-size: 0.9rem;
     margin-bottom: 4px;
 }
@@ -502,13 +502,13 @@
     gap: 12px;
     padding: 8px 12px;
     background: #0f0a1a;
-    border: 1px solid #bf7fff22;
+    border: 1px solid rgba(var(--violet-rgb), 0.12);
     border-radius: 8px;
     margin-bottom: 4px;
 }
 .boss-stage-threshold {
     font-weight: 700;
-    color: #bf7fff;
+    color: var(--magic);
     font-size: 0.85rem;
     min-width: 70px;
     flex-shrink: 0;
@@ -530,11 +530,11 @@
     padding: 6px 12px;
     border-radius: 8px;
     margin-bottom: 4px;
-    background: #0a0f1a;
+    background: var(--abyss);
 }
 .reward-row.drop {
     background: #1a0a0a;
-    border: 1px solid #ff555544;
+    border: 1px solid rgba(var(--red-rgb), 0.2);
 }
 .reward-label {
     color: var(--text-secondary);
@@ -551,22 +551,22 @@
     font-size: 0.85rem;
     margin-top: 8px;
     padding: 8px 12px;
-    background: #0a1525;
-    border-left: 3px solid #ffd966;
+    background: var(--backdrop);
+    border-left: 3px solid var(--gold-soft);
     border-radius: 0 8px 8px 0;
 }
 .monster-require i {
-    color: #ffd966;
+    color: var(--gold-soft);
     margin-right: 6px;
 }
 .motivation-badge {
     display: inline-block;
     background: #2a1a3a;
-    color: #bf7fff;
+    color: var(--magic);
     font-size: 0.75rem;
     padding: 1px 8px;
     border-radius: 10px;
-    border: 1px solid #bf7fff44;
+    border: 1px solid rgba(var(--violet-rgb), 0.2);
     margin-left: 6px;
     vertical-align: middle;
 }
@@ -582,16 +582,16 @@
     text-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.6);
 }
 .monster-card .reward-row.drop .item-link {
-    color: #ff6b6b;
-    border-bottom-color: #ff6b6b66;
+    color: var(--danger-soft);
+    border-bottom-color: rgba(var(--red-soft-rgb), 0.35);
 }
 .monster-card .reward-row.drop .item-link:hover {
     color: #ff8888;
-    border-bottom-color: #ff6b6b;
-    text-shadow: 0 0 8px #ff6b6b88;
+    border-bottom-color: var(--danger-soft);
+    text-shadow: 0 0 8px rgba(var(--red-soft-rgb), 0.6);
 }
 .drop-bonus {
-    color: #bf7fff;
+    color: var(--magic);
     font-size: 0.8rem;
     margin-left: 4px;
 }

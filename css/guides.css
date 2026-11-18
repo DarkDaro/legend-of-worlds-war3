@@ -155,7 +155,7 @@
         }
         .guide-section ul li + li { margin-top: 4px; }
         .guide-section .warn {
-            color: #ff7777;
+            color: var(--danger-soft);
             font-size: 0.82rem;
             margin-top: 10px;
             display: flex;
@@ -190,10 +190,10 @@
             color: var(--text-secondary);
         }
         .guide-boss-table tr:hover td { background: rgba(var(--cyan-rgb), 0.04); }
-        .guide-boss-table .item-link { color: #ff6b6b; text-decoration: none; }
+        .guide-boss-table .item-link { color: var(--danger-soft); text-decoration: none; }
         .guide-boss-table .item-link:hover { text-decoration: underline; }
         .guide-boss-table .chance { color: var(--accent-cyan); font-weight: 600; }
-        .guide-boss-table .chance-low { color: #ff7777; font-weight: 600; }
+        .guide-boss-table .chance-low { color: var(--danger-soft); font-weight: 600; }
 
         /* Разделитель */
         .guides-divider {
@@ -265,7 +265,7 @@
             color: var(--text-secondary);
         }
         .guide-hero-role .role-support {
-            color: #55ff88;
+            color: var(--success);
             font-weight: 600;
         }
 
@@ -298,11 +298,11 @@
         }
         .guide-ability-list strong { color: var(--text-primary); }
         .guide-ability-list .tag-dispel {
-            color: #ff7777;
+            color: var(--danger-soft);
             font-size: 0.78rem;
         }
         .guide-ability-list .tag-scepter {
-            color: #ffd700;
+            color: var(--gold-bright);
             font-size: 0.78rem;
         }
         .guide-ability-link {
@@ -402,8 +402,8 @@
             border-radius: 8px;
             padding: 12px;
         }
-        .guide-synergy-card.ally { border-left: 3px solid #55ff88; }
-        .guide-synergy-card.enemy { border-left: 3px solid #ff5555; }
+        .guide-synergy-card.ally { border-left: 3px solid var(--success); }
+        .guide-synergy-card.enemy { border-left: 3px solid var(--danger); }
         .guide-synergy-name {
             font-size: 0.88rem;
             font-weight: 600;
@@ -431,11 +431,11 @@
         }
         .guide-list li:last-child { border-bottom: none; }
         .guide-list li strong { color: var(--text-primary); }
-        .guide-list li strong.error { color: #ff7777; }
+        .guide-list li strong.error { color: var(--danger-soft); }
         .guide-list-num {
             display: inline-block;
-            background: rgba(255,85,85,0.12);
-            color: #ff7777;
+            background: rgba(var(--red-rgb), 0.12);
+            color: var(--danger-soft);
             font-weight: 700;
             font-size: 0.72rem;
             padding: 1px 7px;
@@ -571,11 +571,11 @@
         }
         .guide-ability-list strong { color: var(--text-primary); }
         .guide-ability-list .tag-dispel {
-            color: #ff7777;
+            color: var(--danger-soft);
             font-size: 0.78rem;
         }
         .guide-ability-list .tag-scepter {
-            color: #ffd700;
+            color: var(--gold-bright);
             font-size: 0.78rem;
         }
         .guide-ability-link {
@@ -675,8 +675,8 @@
             border-radius: 8px;
             padding: 12px;
         }
-        .guide-synergy-card.ally { border-left: 3px solid #55ff88; }
-        .guide-synergy-card.enemy { border-left: 3px solid #ff5555; }
+        .guide-synergy-card.ally { border-left: 3px solid var(--success); }
+        .guide-synergy-card.enemy { border-left: 3px solid var(--danger); }
         .guide-synergy-name {
             font-size: 0.88rem;
             font-weight: 600;
@@ -704,11 +704,11 @@
         }
         .guide-list li:last-child { border-bottom: none; }
         .guide-list li strong { color: var(--text-primary); }
-        .guide-list li strong.error { color: #ff7777; }
+        .guide-list li strong.error { color: var(--danger-soft); }
         .guide-list-num {
             display: inline-block;
-            background: rgba(255,85,85,0.12);
-            color: #ff7777;
+            background: rgba(var(--red-rgb), 0.12);
+            color: var(--danger-soft);
             font-weight: 700;
             font-size: 0.72rem;
             padding: 1px 7px;
@@ -780,7 +780,7 @@
         .guide-hero-icon { width: 80px; height: 80px; border-radius: 12px; border: 2px solid var(--surface-border); }
         .guide-hero-info h1 { font-size: 1.6rem; margin: 0; }
         .guide-hero-role { color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px; }
-        .role-damager { color: #ff6b6b; }
+        .role-damager { color: var(--danger-soft); }
         .role-controller { color: #74c0fc; }
         .guide-section { margin-bottom: 28px; }
         .guide-section h2 { font-size: 1.2rem; color: var(--accent-cyan); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
@@ -788,7 +788,7 @@
         .guide-ability-list strong { color: var(--text-primary); }
         .guide-ability-link { display: inline-block; margin-top: 8px; color: var(--accent-cyan); text-decoration: none; font-size: 0.85rem; }
         .guide-ability-link:hover { text-decoration: underline; }
-        .tag-dispel { display: inline-block; background: rgba(255,85,85,0.15); color: #ff5555; padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
+        .tag-dispel { display: inline-block; background: rgba(var(--red-rgb), 0.12); color: var(--danger); padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
         .tag-scepter { display: inline-block; background: rgba(var(--cyan-rgb), 0.12); color: var(--accent-cyan); padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
         .guide-combo { background: var(--surface-bg); border: 1px solid var(--surface-border); border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; }
         .guide-combo h3 { font-size: 0.95rem; color: var(--text-primary); margin: 0 0 6px; }
@@ -805,11 +805,11 @@
         .guide-list { list-style: none; padding: 0; }
         .guide-list li { margin-bottom: 10px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; }
         .guide-list-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: rgba(var(--cyan-rgb), 0.12); color: var(--accent-cyan); border-radius: 50%; font-size: 0.75rem; font-weight: 700; margin-right: 6px; }
-        .error { color: #ff5555; }
+        .error { color: var(--danger); }
         .guide-synergy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
         .guide-synergy-card { border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; }
         .guide-synergy-card.ally { background: rgba(var(--cyan-rgb), 0.04); border: 1px solid rgba(var(--cyan-rgb), 0.12); }
-        .guide-synergy-card.enemy { background: rgba(255,85,85,0.06); border: 1px solid rgba(255,85,85,0.15); }
+        .guide-synergy-card.enemy { background: rgba(var(--red-rgb), 0.04); border: 1px solid rgba(var(--red-rgb), 0.12); }
         .guide-synergy-name { font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
         .guide-synergy-reason { color: var(--text-secondary); font-size: 0.8rem; }
         .guide-bottom { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
@@ -828,7 +828,7 @@
         .guide-ability-link { display: inline-block; margin-top: 8px; color: var(--accent-cyan); text-decoration: none; font-size: 0.85rem; }
         .guide-ability-link:hover { text-decoration: underline; }
         .tag-scepter { display: inline-block; background: rgba(var(--cyan-rgb), 0.12); color: var(--accent-cyan); padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
-        .tag-dispellable { display: inline-block; background: rgba(255,119,119,0.1); color: #ff7777; padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
+        .tag-dispellable { display: inline-block; background: rgba(var(--red-soft-rgb), 0.12); color: var(--danger-soft); padding: 1px 6px; border-radius: 4px; font-size: 0.75rem; }
         .guide-combo { background: var(--surface-bg); border: 1px solid var(--surface-border); border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; }
         .guide-combo h3 { font-size: 0.95rem; color: var(--text-primary); margin: 0 0 6px; }
         .guide-combo-sequence { font-family: monospace; color: var(--accent-cyan); font-size: 0.9rem; margin-bottom: 4px; }
@@ -844,11 +844,11 @@
         .guide-list { list-style: none; padding: 0; }
         .guide-list li { margin-bottom: 10px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; }
         .guide-list-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: rgba(var(--cyan-rgb), 0.12); color: var(--accent-cyan); border-radius: 50%; font-size: 0.75rem; font-weight: 700; margin-right: 6px; }
-        .error { color: #ff5555; }
+        .error { color: var(--danger); }
         .guide-synergy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
         .guide-synergy-card { border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; }
         .guide-synergy-card.ally { background: rgba(var(--cyan-rgb), 0.04); border: 1px solid rgba(var(--cyan-rgb), 0.12); }
-        .guide-synergy-card.enemy { background: rgba(255,85,85,0.06); border: 1px solid rgba(255,85,85,0.15); }
+        .guide-synergy-card.enemy { background: rgba(var(--red-rgb), 0.04); border: 1px solid rgba(var(--red-rgb), 0.12); }
         .guide-synergy-name { font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
         .guide-synergy-reason { color: var(--text-secondary); font-size: 0.8rem; }
         .guide-bottom { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
@@ -858,7 +858,7 @@
         .guide-hero-icon { width: 80px; height: 80px; border-radius: 12px; border: 2px solid var(--surface-border); }
         .guide-hero-info h1 { font-size: 1.6rem; margin: 0; }
         .guide-hero-role { color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px; }
-        .role-damager { color: #ff6b6b; }
+        .role-damager { color: var(--danger-soft); }
         .role-controller { color: #a78bfa; }
         .guide-section { margin-bottom: 28px; }
         .guide-section h2 { font-size: 1.2rem; color: var(--accent-cyan); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
@@ -882,11 +882,11 @@
         .guide-list { list-style: none; padding: 0; }
         .guide-list li { margin-bottom: 10px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; }
         .guide-list-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: rgba(var(--cyan-rgb), 0.12); color: var(--accent-cyan); border-radius: 50%; font-size: 0.75rem; font-weight: 700; margin-right: 6px; }
-        .error { color: #ff5555; }
+        .error { color: var(--danger); }
         .guide-synergy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
         .guide-synergy-card { border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; }
         .guide-synergy-card.ally { background: rgba(var(--cyan-rgb), 0.04); border: 1px solid rgba(var(--cyan-rgb), 0.12); }
-        .guide-synergy-card.enemy { background: rgba(255,85,85,0.06); border: 1px solid rgba(255,85,85,0.15); }
+        .guide-synergy-card.enemy { background: rgba(var(--red-rgb), 0.04); border: 1px solid rgba(var(--red-rgb), 0.12); }
         .guide-synergy-name { font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
         .guide-synergy-reason { color: var(--text-secondary); font-size: 0.8rem; }
         .guide-bottom { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
@@ -896,7 +896,7 @@
         .guide-hero-icon { width: 80px; height: 80px; border-radius: 12px; border: 2px solid var(--surface-border); }
         .guide-hero-info h1 { font-size: 1.6rem; margin: 0; }
         .guide-hero-role { color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px; }
-        .role-damager { color: #ff6b6b; }
+        .role-damager { color: var(--danger-soft); }
         .role-initiator { color: #ff922b; }
         .guide-section { margin-bottom: 28px; }
         .guide-section h2 { font-size: 1.2rem; color: var(--accent-cyan); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
@@ -920,11 +920,11 @@
         .guide-list { list-style: none; padding: 0; }
         .guide-list li { margin-bottom: 10px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; }
         .guide-list-num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: rgba(var(--cyan-rgb), 0.12); color: var(--accent-cyan); border-radius: 50%; font-size: 0.75rem; font-weight: 700; margin-right: 6px; }
-        .error { color: #ff5555; }
+        .error { color: var(--danger); }
         .guide-synergy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
         .guide-synergy-card { border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; }
         .guide-synergy-card.ally { background: rgba(var(--cyan-rgb), 0.04); border: 1px solid rgba(var(--cyan-rgb), 0.12); }
-        .guide-synergy-card.enemy { background: rgba(255,85,85,0.06); border: 1px solid rgba(255,85,85,0.15); }
+        .guide-synergy-card.enemy { background: rgba(var(--red-rgb), 0.04); border: 1px solid rgba(var(--red-rgb), 0.12); }
         .guide-synergy-name { font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
         .guide-synergy-reason { color: var(--text-secondary); font-size: 0.8rem; }
         .guide-bottom { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }

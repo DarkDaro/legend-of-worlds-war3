@@ -68,7 +68,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 0;
-            border-bottom: 1px solid #1a2744;
+            border-bottom: 1px solid var(--panel-raised);
         }
         .armor-result-row:last-child {
             border-bottom: none;
@@ -83,10 +83,10 @@
             font-weight: 600;
         }
         .armor-result-value.positive {
-            color: #00ffaa;
+            color: var(--spring);
         }
         .armor-result-value.negative {
-            color: #ff5555;
+            color: var(--danger);
         }
         .armor-bar-container {
             margin-top: 16px;
@@ -99,7 +99,7 @@
             margin-bottom: 4px;
         }
         .armor-bar {
-            background: #1a2744;
+            background: var(--panel-raised);
             border-radius: 6px;
             height: 12px;
             overflow: hidden;
@@ -107,13 +107,13 @@
         .armor-bar-fill {
             height: 100%;
             border-radius: 6px;
-            background: linear-gradient(90deg, var(--accent-cyan), #00ffaa);
+            background: linear-gradient(90deg, var(--accent-cyan), var(--spring));
             transition: width 0.3s ease;
         }
         .armor-formula {
             margin-top: 24px;
-            background: #0a1020;
-            border: 1px solid #1a2744;
+            background: var(--abyss);
+            border: 1px solid var(--panel-raised);
             border-radius: 8px;
             padding: 14px;
             font-family: monospace;
@@ -161,7 +161,7 @@
         .armor-table th, .armor-table td {
             padding: 6px 10px;
             text-align: left;
-            border-bottom: 1px solid #1a2744;
+            border-bottom: 1px solid var(--panel-raised);
         }
         .armor-table th {
             color: var(--accent-cyan);

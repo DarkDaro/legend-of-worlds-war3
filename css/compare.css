@@ -158,7 +158,7 @@
             justify-content: center;
             border: 1px solid var(--surface-border);
             border-radius: 6px;
-            background: #091421;
+            background: var(--abyss);
             overflow: hidden;
             text-decoration: none;
         }
@@ -171,7 +171,7 @@
             padding: 6px 10px;
             border-bottom: 1px solid #111e30;
             text-align: center;
-            color: #c0d0e0;
+            color: var(--text-soft);
             vertical-align: middle;
         }
         .compare-table tbody td:first-child {
@@ -225,7 +225,7 @@
             letter-spacing: 1px;
             color: #3a5a7a;
             border-bottom: 1px solid var(--surface-border);
-            background: #0d1a2a;
+            background: var(--backdrop);
         }
 
         /* Способности */
@@ -247,7 +247,7 @@
             display: inline-block;
             font-size: 0.62rem;
             background: #1a3a0a;
-            color: #55ff88;
+            color: var(--success);
             padding: 1px 5px;
             border-radius: 3px;
             margin-left: 3px;
@@ -318,7 +318,7 @@
             letter-spacing: 1px;
             color: #3a5a7a;
             border-bottom: 1px solid var(--surface-border);
-            background: #0d1a2a;
+            background: var(--backdrop);
         }
         .compare-card-row {
             display: flex;
@@ -334,7 +334,7 @@
             font-size: 0.76rem;
         }
         .compare-card-value {
-            color: #c0d0e0;
+            color: var(--text-soft);
             font-weight: 500;
             display: flex;
             align-items: center;

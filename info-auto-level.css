@@ -102,7 +102,7 @@
 
 /* Цвета слотов — полоска сверху */
 .slot-f::before { background: linear-gradient(90deg, #ff9800, #ffb74d); }
-.slot-q::before { background: linear-gradient(90deg, #4caf50, #81c784); }
+.slot-q::before { background: linear-gradient(90deg, var(--green-muted), #81c784); }
 .slot-w::before { background: linear-gradient(90deg, #2196f3, #64b5f6); }
 .slot-e::before { background: linear-gradient(90deg, #9c27b0, #ce93d8); }
 .slot-r::before { background: linear-gradient(90deg, #f44336, #ef5350); }
@@ -111,8 +111,8 @@
 .slot-f .auto-level-slot { color: #ff9800; }
 .slot-f .auto-level-num { background: rgba(255,152,0,0.12); border-color: rgba(255,152,0,0.3); color: #ff9800; }
 
-.slot-q .auto-level-slot { color: #4caf50; }
-.slot-q .auto-level-num { background: rgba(76,175,80,0.12); border-color: rgba(76,175,80,0.3); color: #4caf50; }
+.slot-q .auto-level-slot { color: var(--green-muted); }
+.slot-q .auto-level-num { background: rgba(var(--green-muted-rgb), 0.12); border-color: rgba(var(--green-muted-rgb), 0.35); color: var(--green-muted); }
 
 .slot-w .auto-level-slot { color: #2196f3; }
 .slot-w .auto-level-num { background: rgba(33,150,243,0.12); border-color: rgba(33,150,243,0.3); color: #2196f3; }

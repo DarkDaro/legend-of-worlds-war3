@@ -66,7 +66,7 @@
     animation: sparkleSweep 0.6s ease-out;
 }
 .lore-highlight {
-    color: #ffd966;
+    color: var(--gold-soft);
     font-weight: 600;
 }
 .call-to-action {
@@ -100,7 +100,7 @@
 }
 .cta-title {
     font-size: 1.5rem;
-    color: #ffd966;
+    color: var(--gold-soft);
     margin-bottom: 12px;
 }
 /* Режимы игры */
@@ -146,38 +146,38 @@
 /* Цветовые акценты карточек режимов */
 .mode-spell-half .mechanic-icon {
     background: #2a0a1a;
-    border: 1px solid #ff555544;
-    color: #ff5555;
+    border: 1px solid rgba(var(--red-rgb), 0.2);
+    color: var(--danger);
 }
 .mode-bosses .mechanic-icon {
     background: #1a0a2a;
-    border: 1px solid #bf7fff44;
-    color: #bf7fff;
+    border: 1px solid rgba(var(--violet-rgb), 0.2);
+    color: var(--magic);
 }
 .mode-gold-loss .mechanic-icon {
     background: #2a1a0a;
-    border: 1px solid #ff994444;
-    color: #ff9944;
+    border: 1px solid rgba(var(--orange-soft-rgb), 0.2);
+    color: var(--warning-soft);
 }
 .mode-turbo .mechanic-icon {
     background: #0a2a1a;
-    border: 1px solid #55ff8844;
-    color: #55ff88;
+    border: 1px solid rgba(var(--green-rgb), 0.2);
+    color: var(--success);
 }
 .mode-no-books .mechanic-icon {
-    background: #0a1a2a;
+    background: var(--backdrop);
     border: 1px solid rgba(var(--info-rgb), 0.2);
     color: var(--info-blue);
 }
 .mode-team-rewards .mechanic-icon {
     background: #1a1a0a;
-    border: 1px solid #aaaa4444;
-    color: #aaaa44;
+    border: 1px solid rgba(var(--gold-dim-rgb), 0.2);
+    color: var(--gold-dim);
 }
 .mode-solo .mechanic-icon {
     background: #2a0a0a;
-    border: 1px solid #ff444444;
-    color: #ff4444;
+    border: 1px solid rgba(var(--red-deep-rgb), 0.2);
+    color: var(--danger-deep);
 }
 .mode-hero-ban .mechanic-icon {
     background: #1a0a1a;
@@ -329,10 +329,10 @@
     font-weight: 700;
     padding: 8px 14px;
     border-radius: 30px;
-    border: 1px solid #00ff88;
+    border: 1px solid var(--mint);
     transition: 0.15s;
-    background: linear-gradient(135deg, #00cc66, #00ff88);
-    box-shadow: 0 0 12px #00ff8866;
+    background: linear-gradient(135deg, var(--mint-deep), var(--mint));
+    box-shadow: 0 0 12px rgba(var(--mint-rgb), 0.35);
     font-size: 0.84rem;
     letter-spacing: 0.5px;
     white-space: nowrap;
@@ -342,7 +342,7 @@
     margin-right: 5px;
 }
 .nav-download:hover {
-    box-shadow: 0 0 25px #00ff88aa;
+    box-shadow: 0 0 25px rgba(var(--mint-rgb), 0.6);
     transform: translateY(-1px);
 }
 

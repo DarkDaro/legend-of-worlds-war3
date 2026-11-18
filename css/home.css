@@ -29,8 +29,8 @@
     position: absolute;
     inset: 0;
     background: radial-gradient(ellipse at 50% 30%, rgba(var(--cyan-rgb), 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 20% 80%, #ff555510 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 70%, #bf7fff10 0%, transparent 50%);
+                radial-gradient(ellipse at 20% 80%, rgba(var(--red-rgb), 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(var(--violet-rgb), 0.08) 0%, transparent 50%);
     z-index: 1;
     animation: auroraBanner 8s ease-in-out infinite;
 }
@@ -119,18 +119,18 @@
     align-items: center;
     gap: 10px;
     padding: 16px 36px;
-    background: linear-gradient(135deg, #00cc66, #00ff88);
+    background: linear-gradient(135deg, var(--mint-deep), var(--mint));
     color: var(--text-ink);
     font-weight: 700;
     font-size: 1.1rem;
     border-radius: 50px;
     text-decoration: none;
-    box-shadow: 0 0 25px #00ff8866, 0 4px 15px #00000055;
+    box-shadow: 0 0 25px rgba(var(--mint-rgb), 0.35), 0 4px 15px #00000055;
     transition: 0.2s;
     letter-spacing: 0.5px;
 }
 .btn-primary:hover {
-    box-shadow: 0 0 40px #00ff88aa, 0 4px 20px #00000077;
+    box-shadow: 0 0 40px rgba(var(--mint-rgb), 0.6), 0 4px 20px #00000077;
     transform: translateY(-2px);
 }
 .btn-secondary {
@@ -340,7 +340,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #00ff88;
+    background: var(--mint);
 }
 .updates-link {
     display: inline-block;
@@ -422,17 +422,17 @@
     gap: 10px;
     padding: 16px 36px;
     background: transparent;
-    color: #bf7fff;
+    color: var(--magic);
     font-weight: 600;
     font-size: 1.1rem;
     border-radius: 50px;
-    border: 2px solid #bf7fff;
+    border: 2px solid var(--magic);
     text-decoration: none;
     transition: 0.2s;
 }
 .btn-outline:hover {
-    background: #bf7fff15;
-    box-shadow: 0 0 25px #bf7fff55;
+    background: rgba(var(--violet-rgb), 0.08);
+    box-shadow: 0 0 25px rgba(var(--violet-rgb), 0.35);
     transform: translateY(-2px);
 }
 

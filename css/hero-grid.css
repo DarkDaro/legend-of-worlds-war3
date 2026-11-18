@@ -8,7 +8,7 @@
 }
 .filter-btn {
     background: var(--surface-bg);
-    border: 1px solid #2a5070;
+    border: 1px solid var(--steel-blue);
     color: #b0c8f0;
     padding: 12px 24px;
     border-radius: 40px;
@@ -110,8 +110,8 @@
 }
 
 /* Цветные акценты по атрибуту */
-.hero-card.strength    { border-bottom: 4px solid #ff5555; box-shadow: 0 0 15px #ff555555, 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset; }
-.hero-card.agility     { border-bottom: 4px solid #55ff55; box-shadow: 0 0 15px #55ff5555, 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset; }
+.hero-card.strength    { border-bottom: 4px solid var(--danger); box-shadow: 0 0 15px rgba(var(--red-rgb), 0.35), 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset; }
+.hero-card.agility     { border-bottom: 4px solid var(--agility); box-shadow: 0 0 15px rgba(var(--agility-rgb), 0.35), 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset; }
 .hero-card.intelligence{ border-bottom: 4px solid var(--info-blue); box-shadow: 0 0 15px rgba(var(--info-rgb), 0.35), 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset; }
 
 /* Tilt-эффект + блик на hero-card */
@@ -153,14 +153,14 @@
 }
 .hero-image.no-icon {
     font-size: 48px;
-    color: #2a5070;
+    color: var(--steel-blue);
 }
 .hero-image.no-icon::after {
     content: '\f71d';
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
     font-size: 36px;
-    color: #2a5070;
+    color: var(--steel-blue);
 }
 .hero-name {
     font-size: 0.85rem;
@@ -185,8 +185,8 @@
     background: var(--surface-bg);
     border: 1px solid;
 }
-.hero-card.strength .hero-attr-badge    { border-color: #ff5555; color: #ffaaaa; }
-.hero-card.agility .hero-attr-badge     { border-color: #55ff55; color: #aaffaa; }
+.hero-card.strength .hero-attr-badge    { border-color: var(--danger); color: #ffaaaa; }
+.hero-card.agility .hero-attr-badge     { border-color: var(--agility); color: #aaffaa; }
 .hero-card.intelligence .hero-attr-badge{ border-color: var(--info-blue); color: #aaccff; }
 .unique-badge {
     position: absolute;
@@ -196,19 +196,19 @@
     height: 24px;
     border-radius: 50%;
     background: #1a1a2e;
-    border: 1px solid #ffd966;
-    color: #ffd966;
+    border: 1px solid var(--gold-soft);
+    color: var(--gold-soft);
     font-size: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 8px #ffd96666;
+    box-shadow: 0 0 8px rgba(var(--gold-soft-rgb), 0.35);
     z-index: 2;
 }
 .hero-card:hover .unique-badge {
-    background: #ffd966;
+    background: var(--gold-soft);
     color: var(--text-ink);
-    box-shadow: 0 0 15px #ffd966aa;
+    box-shadow: 0 0 15px rgba(var(--gold-soft-rgb), 0.6);
 }
 
 .wip-badge {

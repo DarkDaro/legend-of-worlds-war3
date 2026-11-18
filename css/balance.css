@@ -22,7 +22,7 @@
             border-color: var(--accent-cyan);
             color: var(--text-primary);
         }
-        .balance-filters .attr-btn.active-strength { border-color: #ff6b6b; color: #ff6b6b; background: rgba(255,107,107,0.1); }
+        .balance-filters .attr-btn.active-strength { border-color: var(--danger-soft); color: var(--danger-soft); background: rgba(var(--red-soft-rgb), 0.12); }
         .balance-filters .attr-btn.active-agility { border-color: #51cf66; color: #51cf66; background: rgba(81,207,102,0.1); }
         .balance-filters .attr-btn.active-intelligence { border-color: #74c0fc; color: #74c0fc; background: rgba(116,192,252,0.1); }
         .balance-search {
@@ -96,13 +96,13 @@
             font-weight: 500;
         }
         .balance-table .hero-name-cell a:hover { text-decoration: underline; }
-        .balance-table td.attr-strength { color: #ff6b6b; }
+        .balance-table td.attr-strength { color: var(--danger-soft); }
         .balance-table td.attr-agility { color: #51cf66; }
         .balance-table td.attr-intelligence { color: #74c0fc; }
         .balance-table td.type-melee { color: #adb5bd; }
         .balance-table td.type-ranged { color: #74c0fc; }
         .balance-table .best-val { color: #ffd43b; font-weight: 600; }
-        .balance-table .worst-val { color: #ff6b6b; opacity: 0.7; }
+        .balance-table .worst-val { color: var(--danger-soft); opacity: 0.7; }
         .balance-table .zero-val { opacity: 0.3; }
         .balance-table td:has(.role-cell) { white-space: normal; }
 
@@ -144,11 +144,11 @@
         .role-tag i { font-size: 0.65rem; }
         .role-tank { background: rgba(96,125,139,0.2); color: #90a4ae; }
         .role-bruiser { background: rgba(255,87,34,0.15); color: #ff7043; }
-        .role-initiator { background: rgba(255,193,7,0.15); color: #ffc107; }
+        .role-initiator { background: rgba(var(--amber-rgb), 0.12); color: var(--amber); }
         .role-assassin { background: rgba(156,39,176,0.15); color: #ab47bc; }
         .role-damager { background: rgba(244,67,54,0.15); color: #ef5350; }
         .role-controller { background: rgba(33,150,243,0.15); color: #42a5f5; }
-        .role-healer { background: rgba(76,175,80,0.15); color: #66bb6a; }
+        .role-healer { background: rgba(var(--green-muted-rgb), 0.12); color: #66bb6a; }
         .role-support { background: var(--surface-border); color: var(--accent-cyan); }
         .role-other { background: rgba(150,150,150,0.1); color: #999; }
 
