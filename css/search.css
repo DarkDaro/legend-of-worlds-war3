@@ -3,7 +3,7 @@
 /* Кнопка поиска в шапке */
 .gs-trigger {
     background: var(--surface-bg);
-    border: 1px solid #2a5070;
+    border: 1px solid var(--steel-blue);
     color: var(--text-secondary);
     padding: 8px 14px;
     border-radius: 30px;
@@ -23,7 +23,7 @@
 }
 .gs-trigger kbd {
     background: var(--surface-subtle-hover);
-    border: 1px solid #2a5070;
+    border: 1px solid var(--steel-blue);
     border-radius: 4px;
     padding: 1px 5px;
     font-size: 0.7rem;
@@ -99,7 +99,7 @@
 }
 .gs-close {
     background: none;
-    border: 1px solid #2a5070;
+    border: 1px solid var(--steel-blue);
     border-radius: 8px;
     color: var(--text-dim);
     width: 32px;
@@ -112,9 +112,9 @@
     flex-shrink: 0;
 }
 .gs-close:hover {
-    border-color: #ff5555;
-    color: #ff5555;
-    box-shadow: 0 0 8px #ff555544;
+    border-color: var(--danger);
+    color: var(--danger);
+    box-shadow: 0 0 8px rgba(var(--red-rgb), 0.2);
 }
 
 /* Результаты */
@@ -428,7 +428,7 @@ body.page-leaving {
 }
 
 .bc-group-label {
-    color: #c0d0e0;
+    color: var(--text-soft);
     font-size: 0.85rem;
     white-space: nowrap;
 }
@@ -436,7 +436,7 @@ body.page-leaving {
 .bc-group-input {
     width: 50px;
     padding: 3px 6px;
-    background: #0a1520;
+    background: var(--abyss);
     border: 1px solid rgba(var(--cyan-rgb), 0.2);
     border-radius: 4px;
     color: var(--text-primary);
@@ -500,7 +500,7 @@ body.page-leaving {
 .bc-level-input {
     width: 44px;
     padding: 2px 4px;
-    background: #0a1520;
+    background: var(--abyss);
     border: 1px solid rgba(var(--cyan-rgb), 0.2);
     border-radius: 4px;
     color: var(--text-primary);
@@ -525,8 +525,8 @@ body.page-leaving {
 }
 
 .bc-stage-remove:hover {
-    color: #ff4444;
-    background: rgba(255, 68, 68, 0.1);
+    color: var(--danger-deep);
+    background: rgba(var(--red-deep-rgb), 0.12);
 }
 
 /* Слоты */
@@ -580,8 +580,8 @@ body.page-leaving {
 }
 
 .bc-slot-boss-drop {
-    border-color: rgba(255, 68, 68, 0.3);
-    background: rgba(255, 68, 68, 0.05);
+    border-color: rgba(var(--red-deep-rgb), 0.35);
+    background: rgba(var(--red-deep-rgb), 0.04);
 }
 
 .bc-slot-boss-craft {
@@ -600,7 +600,7 @@ body.page-leaving {
 
 .bc-slot-name {
     font-size: 0.62rem;
-    color: #c0d0e0;
+    color: var(--text-soft);
     text-align: center;
     line-height: 1.15;
     max-height: 2.3em;
@@ -634,7 +634,7 @@ body.page-leaving {
 }
 
 .bc-slot-remove:hover {
-    color: #ff4444;
+    color: var(--danger-deep);
 }
 
 /* Кнопка toggle «продаётся» на слоте */
@@ -659,27 +659,27 @@ body.page-leaving {
 }
 
 .bc-slot-keep-toggle:hover {
-    color: #ffc800;
+    color: var(--gold);
 }
 
 /* Временный предмет (продаётся при переходе) */
 .bc-slot-temp {
     border-style: dashed;
-    border-color: rgba(255, 200, 0, 0.35);
-    background: rgba(255, 200, 0, 0.03);
+    border-color: rgba(var(--gold-rgb), 0.35);
+    background: rgba(var(--gold-rgb), 0.04);
 }
 
 .bc-slot-temp .bc-slot-name.temp-name {
     text-decoration: line-through;
-    text-decoration-color: rgba(255, 200, 0, 0.5);
+    text-decoration-color: rgba(var(--gold-rgb), 0.6);
     opacity: 0.7;
 }
 
 /* Бейдж «Продаётся» в превью */
 .bc-badge-temp {
-    background: rgba(255, 200, 0, 0.12);
-    border: 1px solid rgba(255, 200, 0, 0.3);
-    color: #ffc800;
+    background: rgba(var(--gold-rgb), 0.12);
+    border: 1px solid rgba(var(--gold-rgb), 0.35);
+    color: var(--gold);
     font-size: 0.65rem;
     padding: 1px 5px;
     border-radius: 3px;
@@ -754,8 +754,8 @@ body.page-leaving {
     justify-content: center;
     gap: 6px;
     padding: 8px 16px;
-    background: rgba(255, 80, 80, 0.05);
-    border: 2px dashed rgba(255, 80, 80, 0.2);
+    background: rgba(var(--red-rgb), 0.04);
+    border: 2px dashed rgba(var(--red-rgb), 0.2);
     border-radius: 6px;
     color: #ff5050;
     font-size: 0.85rem;
@@ -765,8 +765,8 @@ body.page-leaving {
 }
 
 .bc-clear-btn:hover {
-    background: rgba(255, 80, 80, 0.1);
-    border-color: rgba(255, 80, 80, 0.4);
+    background: rgba(var(--red-rgb), 0.12);
+    border-color: rgba(var(--red-rgb), 0.35);
 }
 
 .bc-stage-copy {
@@ -794,7 +794,7 @@ body.page-leaving {
 }
 
 .bc-stage-paste:hover {
-    color: #4caf50;
+    color: var(--green-muted);
 }
 
 .bc-section-toggle {
@@ -869,7 +869,7 @@ body.page-leaving {
 }
 
 .bc-preview-name {
-    color: #c0d0e0;
+    color: var(--text-soft);
 }
 
 .bc-preview-badge {
@@ -880,9 +880,9 @@ body.page-leaving {
 }
 
 .bc-badge-drop {
-    background: rgba(255, 68, 68, 0.15);
+    background: rgba(var(--red-deep-rgb), 0.12);
     color: #ff6666;
-    border: 1px solid rgba(255, 68, 68, 0.3);
+    border: 1px solid rgba(var(--red-deep-rgb), 0.35);
 }
 
 .bc-badge-craft {

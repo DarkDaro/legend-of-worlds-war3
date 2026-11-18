@@ -101,7 +101,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid #2a5070;
+  border: 1px solid var(--steel-blue);
   background: var(--surface-bg);
   color: #8ab4f0;
   display: flex;
@@ -132,7 +132,7 @@ body.item-sheet-open {
 }
 .tree-toggle {
   background: var(--surface-bg);
-  border: 1px solid #2a5070;
+  border: 1px solid var(--steel-blue);
   color: #6a9ec0;
   width: 28px;
   height: 28px;
@@ -197,14 +197,14 @@ body.item-sheet-open {
 }
 .component-cost {
   margin-left: auto;
-  color: #ffd966;
+  color: var(--gold-soft);
   font-weight: 600;
   text-shadow: 0 0 8px #ffb347;
 }
 .children-tree {
   margin-left: 28px;
   padding-left: 12px;
-  border-left: 2px dashed #2a5070;
+  border-left: 2px dashed var(--steel-blue);
 }
 .ability-box {
   background: var(--surface-bg);
@@ -225,7 +225,7 @@ body.item-sheet-open {
   margin-top: 10px;
   padding: 8px 12px;
   background: #2a1a0a;
-  border: 1px solid #ff994444;
+  border: 1px solid rgba(var(--orange-soft-rgb), 0.2);
   border-radius: 10px;
   color: #ffbb66;
   font-size: 0.85rem;
@@ -264,21 +264,21 @@ body.item-sheet-open {
   align-items: center;
   gap: 6px;
   background: #1a1020;
-  border: 1px solid #ff880066;
+  border: 1px solid rgba(var(--orange-rgb), 0.35);
   padding: 6px 14px;
   border-radius: 30px;
   font-size: 0.9rem;
-  color: #ff8800;
+  color: var(--warning);
   text-decoration: none;
   cursor: pointer;
   transition: 0.15s;
 }
 
 .boss-drop-link:hover {
-  background: #ff8800;
+  background: var(--warning);
   border-color: #ffffff;
   color: var(--text-ink);
-  box-shadow: 0 0 15px #ff880066;
+  box-shadow: 0 0 15px rgba(var(--orange-rgb), 0.35);
 }
 
 /* Рекомендуется героям */
@@ -395,13 +395,13 @@ body.item-sheet-open {
   color: var(--text-primary);
 }
 .cost-badge.cost-crystals { border: 1px solid rgba(var(--info-rgb), 0.35); color: #aaccff; }
-.cost-badge.cost-wood     { border: 1px solid #55ff5555; color: #aaffaa; }
-.cost-badge.cost-free      { border: 1px solid #00ffaa55; color: #00ffaa; }
-.cost-badge.cost-total    { border: 1px solid #ffcc4455; color: #ffd966; }
+.cost-badge.cost-wood     { border: 1px solid rgba(var(--agility-rgb), 0.35); color: #aaffaa; }
+.cost-badge.cost-free      { border: 1px solid rgba(var(--spring-rgb), 0.35); color: var(--spring); }
+.cost-badge.cost-total    { border: 1px solid #ffcc4455; color: var(--gold-soft); }
 .cost-badge.cost-base     { border: 1px solid rgba(var(--cyan-rgb), 0.35); color: #8ab4f0; }
-.cost-badge.cost-recipe   { border: 1px solid #ff555555; color: #ffaaaa; }
+.cost-badge.cost-recipe   { border: 1px solid rgba(var(--red-rgb), 0.35); color: #ffaaaa; }
 /* 08.11: босс-дропы в дереве (бесплатны, но входят в записанную item.cost) */
-.cost-badge.cost-boss     { border: 1px solid #ff444488; color: #ff8888; }
+.cost-badge.cost-boss     { border: 1px solid rgba(var(--red-deep-rgb), 0.6); color: #ff8888; }
 
 /* ===== Бейджи предмета (detail-badge) ===== */
 /* Контейнер бейджей */
@@ -424,8 +424,8 @@ body.item-sheet-open {
 /* Бейдж «Выпадает при смерти» (boss_drop) */
 .detail-badge.badge-danger {
   background: #3a1a1a;
-  color: #ff4444;
-  border-color: #ff444488;
+  color: var(--danger-deep);
+  border-color: rgba(var(--red-deep-rgb), 0.6);
 }
 /* Бейдж «1 на героя» — уникальный предмет, нельзя носить больше одного */
 .badge-unique {
@@ -481,7 +481,7 @@ body.item-sheet-open {
   padding: 0;
   border-radius: 50%;
   border: 1px solid rgba(90, 122, 154, 0.4);
-  background: linear-gradient(180deg, rgba(var(--backdrop-rgb), 0.95), rgba(9, 15, 28, 0.95));
+  background: linear-gradient(180deg, rgba(var(--backdrop-rgb), 0.95), rgba(var(--abyss-rgb), 0.9));
   color: #a9c7ff;
   font-size: 0.72em;
   line-height: 1;
@@ -566,26 +566,26 @@ body.item-sheet-open {
   display: block;
   color: var(--text-strong);
 }
-.item-card.consumable    { border-bottom: 4px solid #00ffaa; box-shadow: 0 0 15px #00ffaa55; }
-.item-card.neutral       { border-bottom: 4px solid #bf7fff; box-shadow: 0 0 15px #bf7fff55; }
+.item-card.consumable    { border-bottom: 4px solid var(--spring); box-shadow: 0 0 15px rgba(var(--spring-rgb), 0.35); }
+.item-card.neutral       { border-bottom: 4px solid var(--magic); box-shadow: 0 0 15px rgba(var(--violet-rgb), 0.35); }
 .item-card.boost         { border-bottom: 4px solid #ffaa33; box-shadow: 0 0 15px #ffaa3355; }
-.item-card.strength      { border-bottom: 4px solid #ff5555; box-shadow: 0 0 15px #ff555555; }
-.item-card.agility       { border-bottom: 4px solid #55ff55; box-shadow: 0 0 15px #55ff5555; }
+.item-card.strength      { border-bottom: 4px solid var(--danger); box-shadow: 0 0 15px rgba(var(--red-rgb), 0.35); }
+.item-card.agility       { border-bottom: 4px solid var(--agility); box-shadow: 0 0 15px rgba(var(--agility-rgb), 0.35); }
 .item-card.intelligence  { border-bottom: 4px solid var(--info-blue); box-shadow: 0 0 15px rgba(var(--info-rgb), 0.35); }
-.item-card.weapon        { border-bottom: 4px solid #ff8800; box-shadow: 0 0 15px #ff880055; }
+.item-card.weapon        { border-bottom: 4px solid var(--warning); box-shadow: 0 0 15px rgba(var(--orange-rgb), 0.35); }
 .item-card:hover {
   background: var(--surface-bg-hover);
   border-color: var(--surface-border-hover);
   transform: translateY(-3px);
   box-shadow: var(--neon-glow-strong);
 }
-.item-card.strength:hover   { border-color: #ff5555; box-shadow: 0 0 20px #ff5555aa, 0 0 40px #ff555544; }
-.item-card.agility:hover    { border-color: #55ff55; box-shadow: 0 0 20px #55ff55aa, 0 0 40px #55ff5544; }
+.item-card.strength:hover   { border-color: var(--danger); box-shadow: 0 0 20px rgba(var(--red-rgb), 0.6), 0 0 40px rgba(var(--red-rgb), 0.2); }
+.item-card.agility:hover    { border-color: var(--agility); box-shadow: 0 0 20px rgba(var(--agility-rgb), 0.6), 0 0 40px rgba(var(--agility-rgb), 0.2); }
 .item-card.intelligence:hover { border-color: var(--info-blue); box-shadow: 0 0 20px rgba(var(--info-rgb), 0.6), 0 0 40px rgba(var(--info-rgb), 0.2); }
-.item-card.weapon:hover      { border-color: #ff8800; box-shadow: 0 0 20px #ff8800aa, 0 0 40px #ff880044; }
+.item-card.weapon:hover      { border-color: var(--warning); box-shadow: 0 0 20px rgba(var(--orange-rgb), 0.6), 0 0 40px rgba(var(--orange-rgb), 0.2); }
 .item-card.boost:hover      { border-color: #ffaa33; box-shadow: 0 0 20px #ffaa33aa, 0 0 40px #ffaa3344; }
-.item-card.neutral:hover    { border-color: #bf7fff; box-shadow: 0 0 20px #bf7fffaa, 0 0 40px #bf7fff44; }
-.item-card.consumable:hover { border-color: #00ffaa; box-shadow: 0 0 20px #00ffaaaa, 0 0 40px #00ffaa44; }
+.item-card.neutral:hover    { border-color: var(--magic); box-shadow: 0 0 20px rgba(var(--violet-rgb), 0.6), 0 0 40px rgba(var(--violet-rgb), 0.2); }
+.item-card.consumable:hover { border-color: var(--spring); box-shadow: 0 0 20px rgba(var(--spring-rgb), 0.6), 0 0 40px rgba(var(--spring-rgb), 0.2); }
 /* Редкость предметов по стоимости */
 .item-card.rarity-cheap  { opacity: 0.85; }
 .item-card.rarity-mid    { opacity: 0.92; }
@@ -634,13 +634,13 @@ body.item-sheet-open {
   border: 2px solid rgba(var(--cyan-rgb), 0.6);
   box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.2);
 }
-.item-card.strength .item-icon img   { border-color: #ff5555aa; box-shadow: 0 0 10px #ff555544; }
-.item-card.agility .item-icon img    { border-color: #55ff55aa; box-shadow: 0 0 10px #55ff5544; }
+.item-card.strength .item-icon img   { border-color: rgba(var(--red-rgb), 0.6); box-shadow: 0 0 10px rgba(var(--red-rgb), 0.2); }
+.item-card.agility .item-icon img    { border-color: rgba(var(--agility-rgb), 0.6); box-shadow: 0 0 10px rgba(var(--agility-rgb), 0.2); }
 .item-card.intelligence .item-icon img { border-color: rgba(var(--info-rgb), 0.6); box-shadow: 0 0 10px rgba(var(--info-rgb), 0.2); }
-.item-card.weapon .item-icon img     { border-color: #ff8800aa; box-shadow: 0 0 10px #ff880044; }
+.item-card.weapon .item-icon img     { border-color: rgba(var(--orange-rgb), 0.6); box-shadow: 0 0 10px rgba(var(--orange-rgb), 0.2); }
 .item-card.boost .item-icon img      { border-color: #ffaa33aa; box-shadow: 0 0 10px #ffaa3344; }
-.item-card.neutral .item-icon img    { border-color: #bf7fffaa; box-shadow: 0 0 10px #bf7fff44; }
-.item-card.consumable .item-icon img { border-color: #00ffaaaa; box-shadow: 0 0 10px #00ffaa44; }
+.item-card.neutral .item-icon img    { border-color: rgba(var(--violet-rgb), 0.6); box-shadow: 0 0 10px rgba(var(--violet-rgb), 0.2); }
+.item-card.consumable .item-icon img { border-color: rgba(var(--spring-rgb), 0.6); box-shadow: 0 0 10px rgba(var(--spring-rgb), 0.2); }
 .item-name {
   font-size: 0.9rem;
   font-weight: 600;
@@ -702,11 +702,11 @@ body.item-sheet-open {
   z-index: 2;
 }
 .hero-fav-btn .fas {
-  color: #ff5555;
+  color: var(--danger);
 }
 .hero-fav-btn:hover {
-  background: #ff555533;
-  border-color: #ff5555;
+  background: rgba(var(--red-rgb), 0.2);
+  border-color: var(--danger);
 }
 .item-search {
   display: flex;
@@ -746,7 +746,7 @@ body.item-sheet-open {
 }
 .tab-btn {
   background: var(--surface-bg);
-  border: 1px solid #2a5070;
+  border: 1px solid var(--steel-blue);
   color: #b0c8f0;
   padding: 8px 18px;
   border-radius: 30px;
@@ -1046,7 +1046,7 @@ body.item-sheet-open {
     gap: 6px;
     padding: 6px 14px;
     background: rgba(var(--container-rgb), 0.6);
-    border: 1px solid #2a5070;
+    border: 1px solid var(--steel-blue);
     border-radius: 30px;
     color: #b0c8f0;
     font-size: 0.82rem;
@@ -1080,7 +1080,7 @@ body.item-sheet-open {
     width: 92px;
     padding: 6px 10px;
     background: rgba(var(--container-rgb), 0.8);
-    border: 1px solid #2a5070;
+    border: 1px solid var(--steel-blue);
     border-radius: 8px;
     color: #e3e9f5;
     font-size: 0.84rem;
@@ -1104,7 +1104,7 @@ body.item-sheet-open {
 .bonus-sort {
     padding: 6px 12px;
     background: rgba(var(--container-rgb), 0.8);
-    border: 1px solid #2a5070;
+    border: 1px solid var(--steel-blue);
     border-radius: 8px;
     color: #e3e9f5;
     font-size: 0.82rem;

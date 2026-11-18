@@ -34,7 +34,7 @@
     font-size: 0.85rem;
 }
 .version-badge.hot {
-    background: #ff5555;
+    background: var(--danger);
     color: #fff;
 }
 .version-date {
@@ -67,10 +67,10 @@
     height: 8px;
     border-radius: 50%;
 }
-.change-list li.new::before { background: #00ff88; }
-.change-list li.fix::before { background: #ff9944; }
-.change-list li.balance::before { background: #ff5555; }
-.change-list li.rework::before { background: #bf7fff; }
+.change-list li.new::before { background: var(--mint); }
+.change-list li.fix::before { background: var(--warning-soft); }
+.change-list li.balance::before { background: var(--danger); }
+.change-list li.rework::before { background: var(--magic); }
 
 @media (max-width: 500px) {
     .changelog-section {
@@ -175,68 +175,68 @@
 /* Цветные акценты иконок механик */
 .mech-luck .mechanic-icon {
     background: #1a2a0a;
-    border: 1px solid #00ff8844;
-    color: #00ff88;
+    border: 1px solid rgba(var(--mint-rgb), 0.2);
+    color: var(--mint);
 }
 .mech-magic-crit .mechanic-icon {
     background: #2a0a1a;
-    border: 1px solid #ff555544;
-    color: #ff5555;
+    border: 1px solid rgba(var(--red-rgb), 0.2);
+    color: var(--danger);
 }
 .mech-magic-vamp .mechanic-icon {
     background: #1a0a2a;
-    border: 1px solid #bf7fff44;
-    color: #bf7fff;
+    border: 1px solid rgba(var(--violet-rgb), 0.2);
+    color: var(--magic);
 }
 .mech-armor .mechanic-icon {
-    background: #0a1a2a;
+    background: var(--backdrop);
     border: 1px solid rgba(var(--info-rgb), 0.2);
     color: var(--info-blue);
 }
 .mech-block .mechanic-icon {
-    background: #0a1a2a;
+    background: var(--backdrop);
     border: 1px solid rgba(var(--info-rgb), 0.2);
     color: var(--info-blue);
 }
 .mech-stun-resist .mechanic-icon {
     background: #2a1a0a;
-    border: 1px solid #ff994444;
-    color: #ff9944;
+    border: 1px solid rgba(var(--orange-soft-rgb), 0.2);
+    color: var(--warning-soft);
 }
 .mech-phys-vamp .mechanic-icon {
     background: #2a0a0a;
-    border: 1px solid #ff444444;
-    color: #ff4444;
+    border: 1px solid rgba(var(--red-deep-rgb), 0.2);
+    color: var(--danger-deep);
 }
 .mech-heal-reduce .mechanic-icon {
     background: #1a1a0a;
-    border: 1px solid #aaaa4444;
-    color: #aaaa44;
+    border: 1px solid rgba(var(--gold-dim-rgb), 0.2);
+    color: var(--gold-dim);
 }
 .mech-scepter .mechanic-icon {
     background: #1a0a2a;
-    border: 1px solid #bf7fff44;
-    color: #bf7fff;
+    border: 1px solid rgba(var(--violet-rgb), 0.2);
+    color: var(--magic);
 }
 .mech-spell-dmg .mechanic-icon {
     background: #2a0a1a;
-    border: 1px solid #ff555544;
-    color: #ff5555;
+    border: 1px solid rgba(var(--red-rgb), 0.2);
+    color: var(--danger);
 }
 .mech-heal-amp .mechanic-icon {
     background: #0a2a1a;
-    border: 1px solid #55ff8844;
-    color: #55ff88;
+    border: 1px solid rgba(var(--green-rgb), 0.2);
+    color: var(--success);
 }
 .mech-magic-resist .mechanic-icon {
-    background: #0a1a2a;
+    background: var(--backdrop);
     border: 1px solid rgba(var(--info-rgb), 0.2);
     color: var(--info-blue);
 }
 .mech-auto-build .mechanic-icon {
     background: #2a1a0a;
-    border: 1px solid #ff994444;
-    color: #ff9944;
+    border: 1px solid rgba(var(--orange-soft-rgb), 0.2);
+    color: var(--warning-soft);
 }
 .mech-corruption .mechanic-icon {
     background: #1a0a1a;
@@ -249,7 +249,7 @@
     color: #ff6644;
 }
 .mech-dispel .mechanic-icon {
-    background: #0a1a2a;
+    background: var(--backdrop);
     border: 1px solid #55ccff44;
     color: #55ccff;
 }
@@ -265,8 +265,8 @@
 }
 .mech-motivation .mechanic-icon {
     background: #2a1a2a;
-    border: 1px solid #bf7fff44;
-    color: #bf7fff;
+    border: 1px solid rgba(var(--violet-rgb), 0.2);
+    color: var(--magic);
 }
 .mechanic-card h3 {
     font-size: 1.1rem;
@@ -283,7 +283,7 @@
     word-break: break-all;
 }
 .mechanic-formula {
-    background: #0a0f1a;
+    background: var(--abyss);
     border: 1px solid var(--steel-deep);
     border-radius: 10px;
     padding: 12px 16px;
@@ -334,7 +334,7 @@
     position: absolute;
     inset: 0;
     border-radius: 12px;
-    background: linear-gradient(120deg, transparent 30%, rgba(0,255,136,0.15) 50%, transparent 70%);
+    background: linear-gradient(120deg, transparent 30%, rgba(var(--mint-rgb), 0.12) 50%, transparent 70%);
     background-size: 200% 100%;
     opacity: 0;
     pointer-events: none;
@@ -364,7 +364,7 @@
     position: absolute;
     inset: 0;
     border-radius: 12px;
-    background: radial-gradient(circle, rgba(255,85,85,0.3) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--red-rgb), 0.35) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
     pointer-events: none;
 }
@@ -393,7 +393,7 @@
     position: absolute;
     inset: -4px;
     border-radius: 16px;
-    border: 2px solid rgba(191,127,255,0.3);
+    border: 2px solid rgba(var(--violet-rgb), 0.35);
     opacity: 0;
     pointer-events: none;
 }
@@ -499,7 +499,7 @@
     position: absolute;
     inset: -3px;
     border-radius: 14px;
-    box-shadow: 0 0 12px rgba(255,68,68,0.4);
+    box-shadow: 0 0 12px rgba(var(--red-deep-rgb), 0.35);
     animation: mechHeartGlow 0.8s ease-out;
     pointer-events: none;
 }
@@ -531,7 +531,7 @@
     position: absolute;
     inset: 0;
     border-radius: 12px;
-    background: rgba(170,170,68,0.15);
+    background: rgba(var(--gold-dim-rgb), 0.12);
     animation: mechSuppressOverlay 0.6s ease-out;
     pointer-events: none;
 }
@@ -561,7 +561,7 @@
     position: absolute;
     inset: -2px;
     border-radius: 14px;
-    background: conic-gradient(from 0deg, rgba(191,127,255,0.2), rgba(var(--cyan-rgb), 0.2), rgba(255,85,85,0.2), rgba(0,255,136,0.2), rgba(191,127,255,0.2));
+    background: conic-gradient(from 0deg, rgba(var(--violet-rgb), 0.2), rgba(var(--cyan-rgb), 0.2), rgba(var(--red-rgb), 0.2), rgba(var(--mint-rgb), 0.2), rgba(var(--violet-rgb), 0.2));
     opacity: 0;
     pointer-events: none;
 }
@@ -593,7 +593,7 @@
     position: absolute;
     inset: 0;
     border-radius: 12px;
-    background: radial-gradient(circle, rgba(255,85,85,0.25) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--red-rgb), 0.2) 0%, transparent 70%);
     animation: mechFireGlow 0.6s ease-out;
     pointer-events: none;
 }
@@ -605,9 +605,9 @@
 
 /* --- Усиление маг. лечения — мягкое сияние --- */
 @keyframes mechRadiance {
-    0%   { transform: scale(1); box-shadow: 0 0 0 rgba(85,255,136,0); }
-    50%  { transform: scale(1.08); box-shadow: 0 0 20px rgba(85,255,136,0.3); }
-    100% { transform: scale(1); box-shadow: 0 0 0 rgba(85,255,136,0); }
+    0%   { transform: scale(1); box-shadow: 0 0 0 rgba(var(--green-rgb), 0); }
+    50%  { transform: scale(1.08); box-shadow: 0 0 20px rgba(var(--green-rgb), 0.35); }
+    100% { transform: scale(1); box-shadow: 0 0 0 rgba(var(--green-rgb), 0); }
 }
 .mech-heal-amp .mechanic-icon {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -665,7 +665,7 @@
     position: absolute;
     inset: 0;
     border-radius: 12px;
-    background: radial-gradient(circle, rgba(255,153,68,0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--orange-soft-rgb), 0.2) 0%, transparent 70%);
     animation: mechFlashFade 0.4s ease-out forwards;
     pointer-events: none;
 }
@@ -827,7 +827,7 @@
     position: absolute;
     inset: 0;
     border-radius: 12px;
-    background: radial-gradient(circle, rgba(255,85,85,0.2) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--red-rgb), 0.2) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
     pointer-events: none;
 }
@@ -851,7 +851,7 @@
     position: absolute;
     inset: -4px;
     border-radius: 16px;
-    border: 2px solid rgba(191,127,255,0.4);
+    border: 2px solid rgba(var(--violet-rgb), 0.35);
     animation: mechDrainRing 0.7s ease-out;
     pointer-events: none;
 }
@@ -877,7 +877,7 @@
     position: absolute;
     inset: 0;
     border-radius: 12px;
-    background: linear-gradient(120deg, transparent 30%, rgba(255,153,68,0.15) 50%, transparent 70%);
+    background: linear-gradient(120deg, transparent 30%, rgba(var(--orange-soft-rgb), 0.12) 50%, transparent 70%);
     background-size: 200% 100%;
     animation: sparkleSweep 0.6s ease-out;
     pointer-events: none;
@@ -903,7 +903,7 @@
     position: absolute;
     inset: 0;
     border-radius: 12px;
-    background: linear-gradient(90deg, transparent, rgba(85,255,136,0.15), transparent);
+    background: linear-gradient(90deg, transparent, rgba(var(--green-rgb), 0.12), transparent);
     background-size: 200% 100%;
     animation: sparkleSweep 0.4s ease-out;
     pointer-events: none;
@@ -961,7 +961,7 @@
     position: absolute;
     inset: 0;
     border-radius: 12px;
-    background: linear-gradient(120deg, transparent 30%, rgba(170,170,68,0.12) 50%, transparent 70%);
+    background: linear-gradient(120deg, transparent 30%, rgba(var(--gold-dim-rgb), 0.12) 50%, transparent 70%);
     background-size: 200% 100%;
     animation: sparkleSweep 0.6s ease-out;
     pointer-events: none;
@@ -987,7 +987,7 @@
     position: absolute;
     inset: 0;
     border-radius: 12px;
-    background: radial-gradient(circle, rgba(255,68,68,0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--red-deep-rgb), 0.12) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
     pointer-events: none;
 }

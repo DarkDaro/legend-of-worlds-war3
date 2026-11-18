@@ -5,9 +5,9 @@
     padding: 3px 10px;
     border-radius: 20px;
     background: var(--surface-subtle);
-    color: #ffd966;
+    color: var(--gold-soft);
     margin-top: 5px;
-    border: 1px solid #ffd96666;
+    border: 1px solid rgba(var(--gold-soft-rgb), 0.35);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -19,9 +19,9 @@
 .role-bruiser { color: #ff8844; border-color: #ff8844; }
 .role-damager { color: #ff6666; border-color: #ff6666; }
 .role-assassin { color: #cc44ff; border-color: #cc44ff; }
-.role-initiator { color: #ffcc00; border-color: #ffcc00; }
+.role-initiator { color: var(--gold); border-color: var(--gold); }
 .role-controller { color: #44ccff; border-color: #44ccff; }
-.role-healer { color: #55ff55; border-color: #55ff55; }
+.role-healer { color: var(--agility); border-color: var(--agility); }
 .role-support { color: #66aaff; border-color: #66aaff; }
 
 .hero-stats-table {
@@ -37,7 +37,7 @@
 }
 .hero-stats-table th {
     background: var(--surface-subtle-hover);
-    color: #ffd966;
+    color: var(--gold-soft);
     font-weight: 600;
     padding: 10px;
     text-align: center;
@@ -52,11 +52,11 @@
     border-bottom: none;
 }
 .stat-primary {
-    color: #ffd966;
+    color: var(--gold-soft);
     font-weight: bold;
 }
-.stat-strength { color: #ff5555; }
-.stat-agility { color: #55ff55; }
+.stat-strength { color: var(--danger); }
+.stat-agility { color: var(--agility); }
 .stat-intelligence { color: var(--info-blue); }
 
 /* passive-ability и ability-stats заменены на .ability-card.passive и .ability-params */
@@ -224,7 +224,7 @@ body.page-monsters::after {
     left: -5%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(255, 85, 85, 0.04) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--red-rgb), 0.04) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;

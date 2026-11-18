@@ -24,7 +24,7 @@
             color: var(--accent-cyan);
         }
         .tl-controls button.primary {
-            background: linear-gradient(135deg, #0a1a2a, #0f2535);
+            background: linear-gradient(135deg, var(--backdrop), #0f2535);
             border-color: rgba(var(--cyan-rgb), 0.2);
             color: var(--accent-cyan);
         }

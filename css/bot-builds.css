@@ -113,7 +113,7 @@
             border: 1px solid rgba(255, 60, 60, 0.3);
             border-radius: 4px;
             font-size: 0.72rem;
-            color: #ff6b6b;
+            color: var(--danger-soft);
             font-weight: 600;
         }
         .bb-stage-cost {
@@ -121,7 +121,7 @@
             color: var(--text-secondary);
         }
         .bb-stage-cost .boss-cost {
-            color: #ff6b6b;
+            color: var(--danger-soft);
             font-style: italic;
         }
         .bb-stage-delta {
@@ -190,10 +190,10 @@
             right: 2px;
             font-size: 0.55rem;
             padding: 1px 3px;
-            background: rgba(255, 200, 0, 0.2);
-            border: 1px solid rgba(255, 200, 0, 0.4);
+            background: rgba(var(--gold-rgb), 0.2);
+            border: 1px solid rgba(var(--gold-rgb), 0.35);
             border-radius: 3px;
-            color: #ffc800;
+            color: var(--gold);
             font-weight: 600;
         }
         .bb-slot-boss-badge {
@@ -213,7 +213,7 @@
             white-space: nowrap;
         }
         .bb-slot-name.boss-name {
-            color: #ff6b6b;
+            color: var(--danger-soft);
         }
         .bb-slot-name.temp-name {
             opacity: 0.5;

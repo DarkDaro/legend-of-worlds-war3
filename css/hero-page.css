@@ -23,7 +23,7 @@
     width: 44px;
     height: 44px;
     border-radius: 14px;
-    border: 1px solid #2a5070;
+    border: 1px solid var(--steel-blue);
     background: rgba(var(--surface-rgb), 0.9);
     color: var(--text-strong);
     text-decoration: none;
@@ -116,13 +116,13 @@
     padding: 15px 20px;
     border: 1px solid var(--steel);
     border-radius: 10px;
-    background: #0d1520;
+    background: var(--abyss);
 }
 .lore-accordion {
     margin: 12px 0 20px;
     border: 1px solid var(--steel);
     border-radius: 10px;
-    background: #0d1520;
+    background: var(--abyss);
     overflow: hidden;
 }
 .lore-toggle {
@@ -198,8 +198,8 @@
     margin: 12px 0 20px;
 }
 .build-slot {
-    background: #0a0f1a;
-    border: 1px solid #2a5070;
+    background: var(--abyss);
+    border: 1px solid var(--steel-blue);
     border-radius: 10px;
     padding: 8px;
     text-align: center;
@@ -251,7 +251,7 @@
 
 /* === Тактика и советы === */
 .hero-tips {
-    background: #0a1018;
+    background: var(--abyss);
     border: 1px solid var(--steel-deep);
     border-radius: 12px;
     padding: 16px 20px;
@@ -311,24 +311,24 @@
     background: rgba(var(--cyan-rgb), 0.04);
 }
 .ability-card.passive:hover {
-    box-shadow: inset 0 0 10px #00000055, 0 0 15px #bf7fff44;
+    box-shadow: inset 0 0 10px #00000055, 0 0 15px rgba(var(--violet-rgb), 0.2);
 }
 .ability-card.passive:hover .ability-icon {
-    box-shadow: 0 0 18px #bf7fff88;
+    box-shadow: 0 0 18px rgba(var(--violet-rgb), 0.6);
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
 .ability-card.ultimate:hover {
-    box-shadow: inset 0 0 10px #00000055, 0 0 15px #ff8c0044;
+    box-shadow: inset 0 0 10px #00000055, 0 0 15px rgba(var(--orange-rgb), 0.2);
 }
 .ability-card.ultimate:hover .ability-icon {
-    box-shadow: 0 0 18px #ff8c0088;
+    box-shadow: 0 0 18px rgba(var(--orange-rgb), 0.6);
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
 .ability-card.innate:hover {
-    box-shadow: inset 0 0 10px #00000055, 0 0 15px #00ff8844;
+    box-shadow: inset 0 0 10px #00000055, 0 0 15px rgba(var(--mint-rgb), 0.2);
 }
 .ability-card.innate:hover .ability-icon {
-    box-shadow: 0 0 18px #00ff8888;
+    box-shadow: 0 0 18px rgba(var(--mint-rgb), 0.6);
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
 @keyframes abilityIconPulse {
@@ -336,16 +336,16 @@
     50% { filter: brightness(1.3); }
 }
 .ability-card.passive {
-    border-left-color: #bf7fff;
-    box-shadow: inset 0 0 10px #00000055, 0 0 10px #bf7fff22;
+    border-left-color: var(--magic);
+    box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--violet-rgb), 0.12);
 }
 .ability-card.ultimate {
-    border-left-color: #ff8c00;
-    box-shadow: inset 0 0 10px #00000055, 0 0 10px #ff8c0022;
+    border-left-color: var(--warning);
+    box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--orange-rgb), 0.12);
 }
 .ability-card.innate {
-    border-left-color: #00ff88;
-    box-shadow: inset 0 0 10px #00000055, 0 0 10px #00ff8822;
+    border-left-color: var(--mint);
+    box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--mint-rgb), 0.12);
 }
 .ability-header {
     display: flex;
@@ -377,14 +377,14 @@
     border-radius: 10px;
 }
 .ability-card.passive .ability-icon {
-    border-color: #bf7fffaa;
-    box-shadow: 0 0 10px #bf7fff44;
-    color: #bf7fff;
+    border-color: rgba(var(--violet-rgb), 0.6);
+    box-shadow: 0 0 10px rgba(var(--violet-rgb), 0.2);
+    color: var(--magic);
 }
 .ability-card.ultimate .ability-icon {
-    border-color: #ff8c00aa;
-    box-shadow: 0 0 10px #ff8c0044;
-    color: #ff8c00;
+    border-color: rgba(var(--orange-rgb), 0.6);
+    box-shadow: 0 0 10px rgba(var(--orange-rgb), 0.2);
+    color: var(--warning);
 }
 .ability-hotkey {
     display: inline-flex;
@@ -403,16 +403,16 @@
     box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.2);
 }
 .ability-card.passive .ability-hotkey {
-    color: #bf7fff;
-    border-color: #bf7fffaa;
-    text-shadow: 0 0 6px #bf7fff88;
-    box-shadow: 0 0 8px #bf7fff44;
+    color: var(--magic);
+    border-color: rgba(var(--violet-rgb), 0.6);
+    text-shadow: 0 0 6px rgba(var(--violet-rgb), 0.6);
+    box-shadow: 0 0 8px rgba(var(--violet-rgb), 0.2);
 }
 .ability-card.ultimate .ability-hotkey {
-    color: #ff8c00;
-    border-color: #ff8c00aa;
-    text-shadow: 0 0 6px #ff8c0088;
-    box-shadow: 0 0 8px #ff8c0044;
+    color: var(--warning);
+    border-color: rgba(var(--orange-rgb), 0.6);
+    text-shadow: 0 0 6px rgba(var(--orange-rgb), 0.6);
+    box-shadow: 0 0 8px rgba(var(--orange-rgb), 0.2);
 }
 .ability-info {
     display: flex;
@@ -436,22 +436,22 @@
     letter-spacing: 0.5px;
     background: var(--surface-subtle-hover);
     color: #8ab4f0;
-    border: 1px solid #2a5070;
+    border: 1px solid var(--steel-blue);
 }
 .ability-card.passive .ability-type-badge {
     background: #2a1a3a;
-    color: #bf7fff;
-    border-color: #bf7fff66;
+    color: var(--magic);
+    border-color: rgba(var(--violet-rgb), 0.35);
 }
 .ability-card.ultimate .ability-type-badge {
     background: #2a1a0a;
-    color: #ff8c00;
-    border-color: #ff8c0066;
+    color: var(--warning);
+    border-color: rgba(var(--orange-rgb), 0.35);
 }
 .ability-card.innate .ability-type-badge {
     background: #0a2a1a;
-    color: #00ff88;
-    border-color: #00ff8866;
+    color: var(--mint);
+    border-color: rgba(var(--mint-rgb), 0.35);
 }
 .ability-tag {
     display: inline-block;
@@ -465,36 +465,36 @@
 }
 .ability-tag.dispellable {
     background: #3a1a0a;
-    color: #ff9944;
-    border: 1px solid #ff994466;
+    color: var(--warning-soft);
+    border: 1px solid rgba(var(--orange-soft-rgb), 0.35);
 }
 .ability-tag.scepter {
     background: #1a0a2a;
-    color: #bf7fff;
-    border: 1px solid #bf7fff66;
+    color: var(--magic);
+    border: 1px solid rgba(var(--violet-rgb), 0.35);
 }
 .param-row.scepter-row {
     background: #1a0a2a;
-    border: 1px solid #bf7fff44;
+    border: 1px solid rgba(var(--violet-rgb), 0.2);
     border-radius: 8px;
     padding: 6px 10px;
     margin: 6px 0;
 }
 .param-row.scepter-row .param-label {
-    color: #bf7fff;
+    color: var(--magic);
 }
 .param-row.scepter-row .param-values {
     color: #e0b0ff;
 }
 .param-row.passive-row {
     background: #0a1a1a;
-    border: 1px solid #00cc6644;
+    border: 1px solid rgba(var(--mint-deep-rgb), 0.2);
     border-radius: 8px;
     padding: 6px 10px;
     margin: 6px 0;
 }
 .param-row.passive-row .param-label {
-    color: #00cc66;
+    color: var(--mint-deep);
 }
 .param-row.passive-row .param-values {
     color: #66ffaa;
@@ -506,7 +506,7 @@
     margin-bottom: 10px;
 }
 /* Удача: зелёный «шанс» в описаниях способностей (из цветокода |c00FF5555) */
-.luck-chance { color: #55ff55; font-weight: 600; }
+.luck-chance { color: var(--agility); font-weight: 600; }
 .ability-params {
     display: flex;
     flex-wrap: wrap;
@@ -557,7 +557,7 @@
     margin-right: 2px;
 }
 .param-label.damage {
-    color: #ff5555;
+    color: var(--danger);
 }
 .param-label.damage::before {
     content: '\f6de';
@@ -608,9 +608,9 @@
     box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.2);
 }
 .form-tab.active.alt-form {
-    border-color: #bf7fff;
-    color: #bf7fff;
-    box-shadow: 0 0 12px #bf7fff44;
+    border-color: var(--magic);
+    color: var(--magic);
+    box-shadow: 0 0 12px rgba(var(--violet-rgb), 0.2);
 }
 /* === Формы героя (вкладки на странице основного героя) === */
 .form-stats-bar {
@@ -623,11 +623,11 @@
     background: var(--surface-bg);
     backdrop-filter: blur(var(--surface-blur));
     -webkit-backdrop-filter: blur(var(--surface-blur));
-    border: 1px solid #bf7fff44;
+    border: 1px solid rgba(var(--violet-rgb), 0.2);
     border-radius: 10px;
 }
 .form-stats-title {
-    color: #bf7fff;
+    color: var(--magic);
     font-weight: 600;
     font-size: 0.85rem;
 }
@@ -636,7 +636,7 @@
     font-size: 0.8rem;
 }
 .form-stat b {
-    color: #bf7fff;
+    color: var(--magic);
     font-weight: 600;
     margin-right: 4px;
 }
@@ -681,8 +681,8 @@
 .ability-cycle-group .ability-card {
     border-left: 3px solid rgba(var(--cyan-rgb), 0.2);
 }
-.ability-cycle-group .ability-card:nth-child(1) { border-left-color: #bf7fff; }
-.ability-cycle-group .ability-card:nth-child(2) { border-left-color: #ff5555; }
+.ability-cycle-group .ability-card:nth-child(1) { border-left-color: var(--magic); }
+.ability-cycle-group .ability-card:nth-child(2) { border-left-color: var(--danger); }
 .ability-cycle-group .ability-card:nth-child(3) { border-left-color: var(--info-blue); }
 .ability-cycle-group .ability-card:nth-child(4) { border-left-color: #8800ff; }
 .back-button, .back-link {

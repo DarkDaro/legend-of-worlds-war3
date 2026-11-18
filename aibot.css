@@ -49,15 +49,15 @@ h3 { color: var(--text-primary); font-size: 1rem; margin: 20px 0 8px; }
     transition: background 0.2s;
 }
 .priority-step:hover { background: rgba(var(--cyan-rgb), 0.04); }
-.priority-step:first-child { border-left-color: #ff6b6b; }
-.priority-step:nth-child(2) { border-left-color: #ffc107; }
-.priority-step:nth-child(3) { border-left-color: #ffc107; }
+.priority-step:first-child { border-left-color: var(--danger-soft); }
+.priority-step:nth-child(2) { border-left-color: var(--amber); }
+.priority-step:nth-child(3) { border-left-color: var(--amber); }
 .priority-step:nth-child(4) { border-left-color: #ff9800; }
 .priority-step:nth-child(5) { border-left-color: #ff9800; }
 .priority-step:nth-child(6) { border-left-color: #2196f3; }
 .priority-step:nth-child(7) { border-left-color: #2196f3; }
-.priority-step:nth-child(8) { border-left-color: #4caf50; }
-.priority-step:nth-child(9) { border-left-color: #4caf50; }
+.priority-step:nth-child(8) { border-left-color: var(--green-muted); }
+.priority-step:nth-child(9) { border-left-color: var(--green-muted); }
 .priority-step:last-child { border-left-color: #607d8b; }
 .priority-num {
     min-width: 24px; height: 24px;
@@ -98,9 +98,9 @@ h3 { color: var(--text-primary); font-size: 1rem; margin: 20px 0 8px; }
     font-weight: 600;
 }
 .state-idle { background: rgba(96,125,139,0.2); color: #90a4ae; }
-.state-farm { background: rgba(76,175,80,0.15); color: #66bb6a; }
+.state-farm { background: rgba(var(--green-muted-rgb), 0.12); color: #66bb6a; }
 .state-fight { background: rgba(255,87,34,0.15); color: #ff7043; }
-.state-duel { background: rgba(255,193,7,0.15); color: #ffc107; }
+.state-duel { background: rgba(var(--amber-rgb), 0.12); color: var(--amber); }
 .state-retreat { background: rgba(244,67,54,0.15); color: #ef5350; }
 .state-heal { background: rgba(33,150,243,0.15); color: #42a5f5; }
 .state-dead { background: rgba(120,120,120,0.15); color: #999; }
@@ -157,12 +157,12 @@ h3 { color: var(--text-primary); font-size: 1rem; margin: 20px 0 8px; }
     color: var(--text-secondary);
 }
 .mana-gate-icon { font-size: 0.95rem; flex-shrink: 0; }
-.mana-gate-no { border-left: 3px solid #ff6b6b; }
-.mana-gate-no .mana-gate-icon { color: #ff6b6b; }
-.mana-gate-warn { border-left: 3px solid #ffc107; }
-.mana-gate-warn .mana-gate-icon { color: #ffc107; }
-.mana-gate-yes { border-left: 3px solid #4caf50; }
-.mana-gate-yes .mana-gate-icon { color: #4caf50; }
+.mana-gate-no { border-left: 3px solid var(--danger-soft); }
+.mana-gate-no .mana-gate-icon { color: var(--danger-soft); }
+.mana-gate-warn { border-left: 3px solid var(--amber); }
+.mana-gate-warn .mana-gate-icon { color: var(--amber); }
+.mana-gate-yes { border-left: 3px solid var(--green-muted); }
+.mana-gate-yes .mana-gate-icon { color: var(--green-muted); }
 
 /* ── Мобильная адаптация ── */
 @media (max-width: 900px) {

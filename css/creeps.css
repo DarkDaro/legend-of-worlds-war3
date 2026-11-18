@@ -98,7 +98,7 @@
             font-weight: 500;
         }
         .creep-table .best-val { color: #ffd43b; font-weight: 600; }
-        .creep-table .worst-val { color: #ff6b6b; opacity: 0.7; }
+        .creep-table .worst-val { color: var(--danger-soft); opacity: 0.7; }
         .creep-table .zero-val { opacity: 0.3; }
         .creep-table .passive-list {
             font-size: 0.8rem;
@@ -125,8 +125,8 @@
             opacity: 0.7;
         }
         .def-type-small { background: rgba(0,150,255,0.12); color: #5cb8ff; }
-        .def-type-medium { background: rgba(255,200,0,0.12); color: #ffc800; }
-        .def-type-heavy { background: rgba(255,80,80,0.12); color: #ff6b6b; }
+        .def-type-medium { background: rgba(var(--gold-rgb), 0.12); color: var(--gold); }
+        .def-type-heavy { background: rgba(var(--red-rgb), 0.12); color: var(--danger-soft); }
         .def-type-flesh { background: rgba(150,150,150,0.12); color: #999; }
 
         /* ── Счётчик ── */
@@ -198,12 +198,12 @@
         }
         .tier-1 { background: rgba(150,150,150,0.15); color: #aaa; }
         .tier-2 { background: rgba(139,195,74,0.15); color: #8bc34a; }
-        .tier-3 { background: rgba(76,175,80,0.15); color: #4caf50; }
+        .tier-3 { background: rgba(var(--green-muted-rgb), 0.12); color: var(--green-muted); }
         .tier-4 { background: rgba(33,150,243,0.15); color: #42a5f5; }
         .tier-5 { background: rgba(92,107,192,0.15); color: #7986cb; }
         .tier-6 { background: rgba(171,71,188,0.15); color: #ab47bc; }
         .tier-7 { background: rgba(255,112,67,0.15); color: #ff7043; }
-        .tier-8 { background: rgba(255,193,7,0.18); color: #ffc107; }
+        .tier-8 { background: rgba(var(--amber-rgb), 0.2); color: var(--amber); }
 
         /* ── Фильтр по тирам ── */
         .creep-tier-select {
