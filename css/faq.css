@@ -64,7 +64,7 @@
         }
         .faq-answer .faq-link i { margin-right: 4px; font-size: 0.7rem; }
         .faq-answer code {
-            background: #0d1b2a;
+            background: var(--backdrop-solid);
             padding: 1px 5px;
             border-radius: 3px;
             font-size: 0.82rem;
@@ -92,7 +92,7 @@
             .faq-answer .faq-link { font-size: 0.76rem; }
         }
         @supports not (backdrop-filter: blur(1px)) {
-            .faq-item { background: #0f172a !important; }
+            .faq-item { background: var(--surface-solid) !important; }
         }
 
         /* === 09.11: укрупнение катов и ответов («жалко и не убедительно» — укрупнили, развернули, обрезку 500px сняли) === */

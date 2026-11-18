@@ -60,7 +60,7 @@
             user-select: none;
             position: sticky;
             top: 0;
-            background: rgba(13, 27, 42, 0.95);
+            background: rgba(var(--backdrop-rgb), 0.95);
             backdrop-filter: blur(8px);
             z-index: 2;
             white-space: nowrap;
@@ -212,7 +212,7 @@
             background: var(--surface-bg); color: var(--text-primary);
             font-size: 0.85rem; cursor: pointer;
         }
-        .creep-tier-select option { background: #0d1b2a; }
+        .creep-tier-select option { background: var(--backdrop-solid); }
 
         /* ── Справочник бонусов ── */
         .bonus-info { margin-bottom: 16px; }
@@ -239,7 +239,7 @@
             padding: 8px 12px; text-align: left;
             color: var(--text-muted); font-weight: 500;
             border-bottom: 1px solid var(--surface-border);
-            background: rgba(13,27,42,0.9);
+            background: rgba(var(--backdrop-rgb), 0.9);
         }
         .bonus-table td {
             padding: 7px 12px; border-bottom: 1px solid rgba(255,255,255,0.04);

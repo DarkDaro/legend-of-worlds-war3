@@ -8,9 +8,23 @@
     /* Примитив: один триплет красит весь неон, альфа берётся поверх него (DESIGN.md §3) */
     --cyan-rgb: 0, 230, 255;
 
+    /* Примитивы окружения (DESIGN.md §6, чанк 3): тёмные подложки, панели, рамки,
+       информационный синий. Тема перекрашивает окружение этими триплетами (§11) */
+    --bg-rgb: 11, 14, 20;
+    --bg-deep-rgb: 5, 7, 10;
+    --bg-glow-rgb: 26, 35, 48;
+    --container-rgb: 10, 20, 40;
+    --panel-rgb: 18, 25, 40;
+    --surface-rgb: 15, 23, 42;
+    --backdrop-rgb: 13, 27, 42;
+    --steel-rgb: 42, 64, 96;
+    --steel-deep-rgb: 26, 48, 80;
+    --info-rgb: 85, 170, 255;
+
     /* Поверхности (стекломорфизм): тема перекрашивает материал этими же именами (DESIGN.md §4) */
-    --surface-bg: rgba(15, 23, 42, 0.5);
-    --surface-bg-hover: rgba(15, 23, 42, 0.65);
+    --surface-bg: rgba(var(--surface-rgb), 0.5);
+    --surface-bg-hover: rgba(var(--surface-rgb), 0.65);
+    --surface-solid: rgb(var(--surface-rgb));
     --surface-blur: 12px;
     --surface-border: rgba(var(--cyan-rgb), 0.12);
     --surface-border-hover: rgba(var(--cyan-rgb), 0.35);
@@ -21,11 +35,25 @@
     --surface-tag-border: rgba(0, 255, 255, 0.15);
     --surface-tag-active: rgba(0, 255, 255, 0.15);
 
-    /* Текстовые цвета */
+    /* Текстовые цвета: шкала от яркого к глухому; --text-ink это чернила на ярких
+       поверхностях, следует за --bg-rgb (DESIGN.md §7) */
     --text-primary: #e0f0ff;
+    --text-strong: #d0e0ff;
+    --text-soft: #c0d0e8;
     --text-secondary: #8aa0c0;
     --text-muted: #6b7c99;
     --text-dim: #5a7a9a;
+    --text-ink: rgb(var(--bg-rgb));
+
+    /* Семантика подложек и рамок поверх примитивов §6 */
+    --bg-base: rgb(var(--bg-rgb));
+    --bg-deep: rgb(var(--bg-deep-rgb));
+    --bg-glow: rgb(var(--bg-glow-rgb));
+    --backdrop-solid: rgb(var(--backdrop-rgb));
+    --steel: rgb(var(--steel-rgb));
+    --steel-deep: rgb(var(--steel-deep-rgb));
+    /* Информационный синий и цвет разума: семантика контента §5, темой не перекрашивается */
+    --info-blue: rgb(var(--info-rgb));
 
     /* Акцент и неоновое свечение */
     --accent-cyan: rgb(var(--cyan-rgb));
@@ -58,8 +86,8 @@
 }
 
 body {
-    background: #0b0e14;
-    background-image: radial-gradient(circle at 30% 10%, #1a2330 0%, #05070a 100%);
+    background: var(--bg-base);
+    background-image: radial-gradient(circle at 30% 10%, var(--bg-glow) 0%, var(--bg-deep) 100%);
     color: #e3e9f5;
     padding: 24px 32px;
     line-height: 1.5;
@@ -70,7 +98,7 @@ body {
 .wiki-container {
     max-width: 1760px;
     margin: 0 auto;
-    background: rgba(10, 20, 40, 0.45);
+    background: rgba(var(--container-rgb), 0.45);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(var(--cyan-rgb), 0.08);

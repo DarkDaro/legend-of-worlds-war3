@@ -27,7 +27,7 @@
         flex-direction: column;
         gap: 4px;
         padding: 12px 0;
-        border-top: 1px solid #1a3050;
+        border-top: 1px solid var(--steel-deep);
     }
     .header-nav.hamburger-open {
         display: flex;

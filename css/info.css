@@ -14,7 +14,7 @@
     border-color: var(--surface-border-hover);
 }
 .info-text {
-    color: #c0d0e8;
+    color: var(--text-soft);
     font-size: 0.95rem;
     line-height: 1.7;
     margin-bottom: 12px;
@@ -24,7 +24,7 @@
     padding: 0;
 }
 .info-list li {
-    color: #c0d0e8;
+    color: var(--text-soft);
     font-size: 0.92rem;
     padding: 8px 0;
     border-bottom: 1px solid #1a2a40;
@@ -106,7 +106,7 @@
     color: var(--text-primary);
 }
 .info-steps {
-    color: #c0d0e8;
+    color: var(--text-soft);
     font-size: 0.92rem;
     line-height: 1.8;
     padding-left: 24px;
@@ -147,7 +147,7 @@
     border: 1px solid var(--surface-border);
     border-radius: 12px;
     padding: 14px 16px;
-    color: #c0d0e8;
+    color: var(--text-soft);
     text-decoration: none;
     transition: 0.25s ease;
     position: relative;
@@ -374,7 +374,7 @@
     margin-bottom: 4px;
 }
 .timeline-entry p {
-    color: #c0d0e8;
+    color: var(--text-soft);
     font-size: 0.9rem;
     line-height: 1.6;
     margin: 0;
@@ -441,7 +441,7 @@
 .support-social-section {
     margin-top: 40px;
     padding-top: 24px;
-    border-top: 1px solid #2a4060;
+    border-top: 1px solid var(--steel);
 }
 @media (max-width: 800px) {
     .support-banner { min-height: 260px; padding: 40px 24px; }
@@ -544,7 +544,7 @@
     .mc-pie-svg { width: 130px; height: 130px; }
 }
 @supports not (backdrop-filter: blur(1px)) {
-    .mc-card { background: #0f172a !important; }
+    .mc-card { background: var(--surface-solid) !important; }
 }
 
 /* ── info.html: modes-promo и прочее (вынесено из инлайна 11.09) ── */
@@ -624,7 +624,7 @@
             .mc-pie-svg { width: 130px; height: 130px; }
         }
         @supports not (backdrop-filter: blur(1px)) {
-            .mc-card { background: #0f172a !important; }
+            .mc-card { background: var(--surface-solid) !important; }
         }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".
@@ -667,13 +667,13 @@
     align-items: center;
     gap: 12px;
     padding: 10px 12px;
-    background: rgba(10, 20, 40, 0.55);
+    background: rgba(var(--container-rgb), 0.55);
     border: 1px solid rgba(var(--cyan-rgb), 0.12);
     border-radius: 10px;
     transition: border-color 0.15s, background 0.15s;
 }
 .info-key:hover {
-    background: rgba(10, 20, 40, 0.8);
+    background: rgba(var(--container-rgb), 0.8);
     border-color: var(--surface-border-hover);
 }
 .info-key-badge {

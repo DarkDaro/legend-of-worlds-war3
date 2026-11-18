@@ -40,7 +40,7 @@
     box-shadow: 0 0 15px #00000080, 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset;
     cursor: pointer;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    color: #d0e0ff;
+    color: var(--text-strong);
     text-decoration: none;
     display: block;
     will-change: transform;
@@ -102,7 +102,7 @@
     position: fixed;
     inset: 0;
     z-index: 10000;
-    background: rgba(5, 8, 14, 0.92);
+    background: rgba(var(--bg-deep-rgb), 0.92);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     display: flex;
@@ -146,7 +146,7 @@
     height: 44px;
     border-radius: 50%;
     border: 1px solid var(--surface-border-hover);
-    background: rgba(15, 23, 42, 0.8);
+    background: rgba(var(--surface-rgb), 0.8);
     color: var(--text-primary);
     font-size: 1.1rem;
     cursor: pointer;

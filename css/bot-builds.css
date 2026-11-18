@@ -36,12 +36,12 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: #162433;
+            background: var(--bg-glow);
             border: 1px solid rgba(var(--cyan-rgb), 0.6);
             padding: 6px 14px;
             border-radius: 30px;
             font-size: 0.85rem;
-            color: #d0e4ff;
+            color: var(--text-strong);
             text-decoration: none;
             cursor: pointer;
             transition: 0.15s;
@@ -49,7 +49,7 @@
         .bb-hero-chip:hover {
             background: var(--accent-cyan);
             border-color: #ffffff;
-            color: #0b0e14;
+            color: var(--text-ink);
             box-shadow: 0 0 20px var(--accent-cyan);
         }
         .bb-hero-chip-nolink {
@@ -57,9 +57,9 @@
             opacity: 0.6;
         }
         .bb-hero-chip-nolink:hover {
-            background: #162433;
+            background: var(--bg-glow);
             border-color: rgba(var(--cyan-rgb), 0.6);
-            color: #d0e4ff;
+            color: var(--text-strong);
             box-shadow: none;
         }
 
@@ -397,7 +397,7 @@
             }
         }
         @supports not (backdrop-filter: blur(1px)) {
-            .bb-stage { background: #0f172a !important; }
+            .bb-stage { background: var(--surface-solid) !important; }
         }
 /* 24.10: название предмета читаемо. Было 8.8px + ellipsis при ширине 44px —
    13 названий обрезались до «Кольцо пре…», title на тач-экране недоступен. */

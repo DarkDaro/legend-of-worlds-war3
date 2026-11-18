@@ -313,6 +313,6 @@
         }
         @supports not (backdrop-filter: blur(1px)) {
             .event-card, .event-flow, .pair-split {
-                background: #0f172a !important;
+                background: var(--surface-solid) !important;
             }
         }
