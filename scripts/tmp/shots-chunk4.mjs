@@ -44,17 +44,23 @@ console.log('сервер на 8138, стреляем');
 const browser = await chromium.launch();
 let problems = 0;
 
-for (const width of [1280, 390]) {
+// ширины можно передать аргументами (сегментные прогоны: node shots-chunk4.mjs 1280 390),
+// длинный прогон в один вызов среда прибивает — сегменты короче и надёжнее
+const argvW = process.argv.slice(2).map(Number).filter(Boolean);
+for (const width of (argvW.length ? argvW : [1280, 390])) {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
     const consoleMsgs = [];
-    page.on('console', m => { if (['error', 'warning'].includes(m.type())) consoleMsgs.push(m.type() + ': ' + m.text()); });
+    page.on('console', m => {
+        // внешние https-ресурсы в песочнице дают ERR_CERT_* — шум среды, не сайта
+        if (['error', 'warning'].includes(m.type()) && !/ERR_CERT|ERR_NAME|net::/.test(m.text())) consoleMsgs.push(m.type() + ': ' + m.text());
+    });
     page.on('pageerror', e => consoleMsgs.push('pageerror: ' + e.message));
     for (const p of PAGES) {
         try {
             await page.goto('http://localhost:8138/' + p, { waitUntil: 'load', timeout: 15000 });
             await page.addStyleTag({ content: '*, *::before, *::after { animation: none !important; }' });
-            await page.evaluate(() => Promise.all([...document.images].map(i =>
-                i.complete ? Promise.resolve() : new Promise(r => { i.onload = i.onerror = r; }))));
+            // Картинки ниже вьюпорта НЕ ждём: lazy-изображения вне зоны триггера
+            // не загрузятся и onload не придёт — здесь скрипт зависал.
             await page.waitForTimeout(400);
             const overflow = await page.evaluate(() =>
                 document.documentElement.scrollWidth - document.documentElement.clientWidth);

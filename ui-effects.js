@@ -5,8 +5,11 @@
     'use strict';
 
     // ── Ripple при клике ──
+    // при data-anim="off" ripple не создаётся: анимация его схлопывания убита,
+    // и без гварда спан оставался бы в кнопке навсегда (animationend не придёт)
     document.addEventListener('pointerdown', function(e) {
         if (e.pointerType === 'touch') return;
+        if (window.SiteSettings && !SiteSettings.get('anim')) return;
         var target = e.target.closest('.hero-card, .nav-link, .filter-btn, .btn-primary, .btn-secondary, .calc-link-btn, .ability-card, .item-card, .quick-link-card, .stat-box, .guide-card, .monster-card, .mechanic-card, .mode-card');
         if (!target) return;
         var rect = target.getBoundingClientRect();
@@ -37,7 +40,8 @@
     }
 
     // ── Cursor glow ──
-    if (window.matchMedia('(hover: hover)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // тяжёлый декоративный эффект: живёт только при data-fx="on"
+    if (window.matchMedia('(hover: hover)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && (!window.SiteSettings || SiteSettings.get('fx'))) {
         var glow = document.createElement('div');
         glow.className = 'cursor-glow';
         document.body.appendChild(glow);
