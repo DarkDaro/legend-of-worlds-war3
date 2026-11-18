@@ -21,7 +21,7 @@
 }
 .filter-btn i { margin-right: 8px; }
 .filter-btn:hover {
-    background: #1a3050;
+    background: var(--steel-deep);
     color: white;
     box-shadow: 0 0 20px rgba(var(--cyan-rgb), 0.6);
     border-color: var(--accent-cyan);
@@ -29,7 +29,7 @@
 .filter-btn.active {
     background: var(--accent-cyan);
     border-color: white;
-    color: #0b0e14;
+    color: var(--text-ink);
     box-shadow: 0 0 25px var(--accent-cyan);
 }
 
@@ -78,7 +78,7 @@
     box-shadow: 0 0 15px #00000080, 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset;
     cursor: pointer;
     transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-    color: #d0e0ff;
+    color: var(--text-strong);
     text-decoration: none;
     display: block;
     will-change: transform;
@@ -112,7 +112,7 @@
 /* Цветные акценты по атрибуту */
 .hero-card.strength    { border-bottom: 4px solid #ff5555; box-shadow: 0 0 15px #ff555555, 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset; }
 .hero-card.agility     { border-bottom: 4px solid #55ff55; box-shadow: 0 0 15px #55ff5555, 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset; }
-.hero-card.intelligence{ border-bottom: 4px solid #55aaff; box-shadow: 0 0 15px #55aaff55, 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset; }
+.hero-card.intelligence{ border-bottom: 4px solid var(--info-blue); box-shadow: 0 0 15px rgba(var(--info-rgb), 0.35), 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset; }
 
 /* Tilt-эффект + блик на hero-card */
 .hero-card .tilt-glare {
@@ -187,7 +187,7 @@
 }
 .hero-card.strength .hero-attr-badge    { border-color: #ff5555; color: #ffaaaa; }
 .hero-card.agility .hero-attr-badge     { border-color: #55ff55; color: #aaffaa; }
-.hero-card.intelligence .hero-attr-badge{ border-color: #55aaff; color: #aaccff; }
+.hero-card.intelligence .hero-attr-badge{ border-color: var(--info-blue); color: #aaccff; }
 .unique-badge {
     position: absolute;
     top: 8px;
@@ -207,7 +207,7 @@
 }
 .hero-card:hover .unique-badge {
     background: #ffd966;
-    color: #0b0e14;
+    color: var(--text-ink);
     box-shadow: 0 0 15px #ffd966aa;
 }
 
@@ -215,7 +215,7 @@
     position: absolute;
     top: 8px;
     left: 8px;
-    background: rgba(10, 14, 20, 0.85);
+    background: rgba(var(--bg-rgb), 0.85);
     border: 1px solid #ff8844aa;
     color: #ff8844;
     font-size: 0.55rem;

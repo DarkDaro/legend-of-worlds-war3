@@ -45,8 +45,8 @@
 }
 .hero-stats-table td {
     padding: 8px 12px;
-    border-bottom: 1px solid #2a4060;
-    color: #d0e4ff;
+    border-bottom: 1px solid var(--steel);
+    color: var(--text-strong);
 }
 .hero-stats-table tr:last-child td {
     border-bottom: none;
@@ -57,7 +57,7 @@
 }
 .stat-strength { color: #ff5555; }
 .stat-agility { color: #55ff55; }
-.stat-intelligence { color: #55aaff; }
+.stat-intelligence { color: var(--info-blue); }
 
 /* passive-ability и ability-stats заменены на .ability-card.passive и .ability-params */
 
@@ -149,7 +149,7 @@
 body.page-heroes {
     background-image:
         radial-gradient(ellipse at 70% 80%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
-        radial-gradient(circle at 30% 10%, #1c2230 0%, #05070a 100%);
+        radial-gradient(circle at 30% 10%, var(--bg-glow) 0%, var(--bg-deep) 100%);
 }
 /* Orb для стекла — правый нижний */
 body.page-heroes::after {
@@ -169,7 +169,7 @@ body.page-heroes::after {
 body.page-items {
     background-image:
         radial-gradient(ellipse at 50% 90%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
-        radial-gradient(circle at 30% 10%, #1a2430 0%, #05070a 100%);
+        radial-gradient(circle at 30% 10%, var(--bg-glow) 0%, var(--bg-deep) 100%);
 }
 /* Orb для стекла — левый верхний */
 body.page-items::after {
@@ -207,14 +207,14 @@ body.page-items::after {
 body.page-mechanics {
     background-image:
         radial-gradient(ellipse at 20% 70%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
-        radial-gradient(circle at 30% 10%, #1e2230 0%, #05070a 100%);
+        radial-gradient(circle at 30% 10%, var(--bg-glow) 0%, var(--bg-deep) 100%);
 }
 
 /* Монстры — cyan отсвет выше + лёгкий тёплый тон */
 body.page-monsters {
     background-image:
         radial-gradient(ellipse at 60% 20%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
-        radial-gradient(circle at 30% 10%, #1e2030 0%, #05070a 100%);
+        radial-gradient(circle at 30% 10%, var(--bg-glow) 0%, var(--bg-deep) 100%);
 }
 /* Orb для стекла — левый нижний */
 body.page-monsters::after {
@@ -234,7 +234,7 @@ body.page-monsters::after {
 body.page-lore {
     background-image:
         radial-gradient(ellipse at 40% 60%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
-        radial-gradient(circle at 30% 10%, #182530 0%, #05070a 100%);
+        radial-gradient(circle at 30% 10%, var(--bg-glow) 0%, var(--bg-deep) 100%);
 }
 /* Orb для стекла — правый верхний */
 body.page-lore::after {
@@ -255,13 +255,13 @@ body.page-build-constructor,
 body.page-bot-builds {
     background-image:
         radial-gradient(ellipse at 60% 30%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
-        radial-gradient(circle at 50% 80%, #182530 0%, #05070a 100%);
+        radial-gradient(circle at 50% 80%, var(--bg-glow) 0%, var(--bg-deep) 100%);
 }
 
 body.page-map-changes {
     background-image:
         radial-gradient(ellipse at 50% 20%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
-        radial-gradient(circle at 50% 80%, #182530 0%, #05070a 100%);
+        radial-gradient(circle at 50% 80%, var(--bg-glow) 0%, var(--bg-deep) 100%);
 }
 
 body.page-guides,
@@ -279,7 +279,7 @@ body.page-home,
 body.page-404 {
     background-image:
         radial-gradient(ellipse at 50% 50%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
-        radial-gradient(circle at 30% 10%, #1a2230 0%, #05070a 100%);
+        radial-gradient(circle at 30% 10%, var(--bg-glow) 0%, var(--bg-deep) 100%);
 }
 
 /* 24.10: уважение к настройке ОС "уменьшить движение".

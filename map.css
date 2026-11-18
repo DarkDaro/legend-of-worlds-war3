@@ -7,7 +7,7 @@
     align-items: center;
     margin-bottom: 16px;
     padding: 12px 16px;
-    background: var(--surface-bg, rgba(13, 27, 42, 0.6));
+    background: var(--surface-bg);
     border: 1px solid var(--surface-border, rgba(var(--cyan-rgb), 0.12));
     border-radius: 8px;
     backdrop-filter: blur(8px);
@@ -27,7 +27,7 @@
     align-items: center;
     gap: 6px;
     font-size: 0.8rem;
-    color: #8aa0c0;
+    color: var(--text-secondary);
 }
 .map-legend-dot {
     width: 12px;
@@ -47,7 +47,7 @@
 /* Кнопки редактирования */
 .map-edit-btn {
     background: #1a3a5c;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     border: 1px solid #2a5070;
     padding: 6px 12px;
     border-radius: 6px;
@@ -71,7 +71,7 @@
     flex-wrap: wrap;
     margin-bottom: 12px;
     padding: 10px 14px;
-    background: var(--surface-bg, rgba(13, 27, 42, 0.6));
+    background: var(--surface-bg);
     border: 1px solid var(--surface-border, rgba(var(--cyan-rgb), 0.12));
     border-radius: 8px;
     backdrop-filter: blur(8px);
@@ -82,7 +82,7 @@
 }
 .map-type-selector-label {
     font-size: 0.78rem;
-    color: #5a7a9a;
+    color: var(--text-dim);
     width: 100%;
     margin-bottom: 4px;
 }
@@ -93,7 +93,7 @@
     cursor: pointer;
     border: 1px solid #2a5070;
     background: #1a3a5c;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     transition: all 0.2s;
 }
 .map-type-btn:hover { background: #2a5070; color: #e0e8f0; }
@@ -123,7 +123,7 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    background: var(--surface-bg, rgba(13, 27, 42, 0.6));
+    background: var(--surface-bg);
     border: 1px solid var(--surface-border, rgba(var(--cyan-rgb), 0.12));
     border-radius: 12px;
     overflow: hidden;
@@ -211,14 +211,14 @@
 /* Инфо-панель */
 .map-info-panel {
     padding: 16px 20px;
-    background: rgba(13, 27, 42, 0.7);
+    background: rgba(var(--backdrop-rgb), 0.7);
     border-top: 1px solid var(--surface-border, rgba(var(--cyan-rgb), 0.12));
     min-height: 80px;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
 .map-info-panel.empty {
-    color: #5a7a9a;
+    color: var(--text-dim);
     text-align: center;
     font-size: 0.92rem;
 }
@@ -230,7 +230,7 @@
 .map-info-panel p {
     margin: 0;
     font-size: 0.88rem;
-    color: #8aa0c0;
+    color: var(--text-secondary);
     line-height: 1.5;
 }
 
@@ -238,7 +238,7 @@
 .map-coords-output {
     margin-top: 12px;
     padding: 10px 14px;
-    background: rgba(13, 27, 42, 0.6);
+    background: rgba(var(--backdrop-rgb), 0.6);
     border: 1px solid var(--surface-border, rgba(var(--cyan-rgb), 0.12));
     border-radius: 6px;
     font-family: monospace;

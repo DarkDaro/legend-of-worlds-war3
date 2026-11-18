@@ -6,10 +6,10 @@
 | Показатель | Значение |
 |---|---|
 | css-файлов | 35 |
-| уникальных цветов | 530 |
-| вхождений цветов | 1666 |
-| кастомных свойств объявлено | 28 |
-| из них в :root | 28 |
+| уникальных цветов | 498 |
+| вхождений цветов | 1550 |
+| кастомных свойств объявлено | 49 |
+| из них в :root | 49 |
 | backdrop-filter: blur() | 44 |
 | box-shadow | 201 |
 | text-shadow | 45 |
@@ -26,23 +26,44 @@
 | --cyan-rgb | `0, 230, 255` | 329 | 1 | :root css/base.css |
 | --accent-cyan | `rgb(var(--cyan-rgb))` | 312 | 1 | :root css/base.css |
 | --surface-border | `rgba(var(--cyan-rgb), 0.12)` | 174 | 1 | :root css/base.css |
-| --text-secondary | `#8aa0c0` | 151 | 1 | :root css/base.css |
+| --text-secondary | `#8aa0c0` | 155 | 1 | :root css/base.css |
 | --text-primary | `#e0f0ff` | 144 | 1 | :root css/base.css |
-| --surface-bg | `rgba(15, 23, 42, 0.5)` | 122 | 1 | :root css/base.css |
+| --surface-bg | `rgba(var(--surface-rgb), 0.5)` | 122 | 1 | :root css/base.css |
 | --surface-blur | `12px` | 122 | 1 | :root css/base.css |
 | --text-muted | `#6b7c99` | 47 | 1 | :root css/base.css |
 | --surface-border-hover | `rgba(var(--cyan-rgb), 0.35)` | 42 | 1 | :root css/base.css |
-| --text-dim | `#5a7a9a` | 34 | 1 | :root css/base.css |
-| --surface-bg-hover | `rgba(15, 23, 42, 0.65)` | 25 | 1 | :root css/base.css |
+| --text-dim | `#5a7a9a` | 36 | 1 | :root css/base.css |
+| --surface-bg-hover | `rgba(var(--surface-rgb), 0.65)` | 25 | 1 | :root css/base.css |
+| --info-rgb | `85, 170, 255` | 19 | 1 | :root css/base.css |
+| --text-ink | `rgb(var(--bg-rgb))` | 19 | 1 | :root css/base.css |
 | --neon-glow | `0 0 20px rgba(var(--cyan-rgb), 0.2), 0 0 60px rgba(var(--cyan-rgb), 0.08)` | 18 | 1 | :root css/base.css |
+| --text-strong | `#d0e0ff` | 15 | 1 | :root css/base.css |
+| --steel | `rgb(var(--steel-rgb))` | 15 | 1 | :root css/base.css |
 | --surface-subtle-hover | `rgba(0, 255, 255, 0.08)` | 14 | 1 | :root css/base.css |
+| --bg-glow | `rgb(var(--bg-glow-rgb))` | 13 | 1 | :root css/base.css |
+| --surface-rgb | `15, 23, 42` | 12 | 1 | :root css/base.css |
+| --bg-deep | `rgb(var(--bg-deep-rgb))` | 12 | 1 | :root css/base.css |
+| --info-blue | `rgb(var(--info-rgb))` | 12 | 1 | :root css/base.css |
+| --steel-deep | `rgb(var(--steel-deep-rgb))` | 11 | 1 | :root css/base.css |
+| --backdrop-rgb | `13, 27, 42` | 10 | 1 | :root css/base.css |
 | --surface-tag-bg | `rgba(0, 255, 255, 0.06)` | 8 | 1 | :root css/base.css |
 | --surface-tag-border | `rgba(0, 255, 255, 0.15)` | 8 | 1 | :root css/base.css |
 | --neon-glow-strong | `0 0 20px rgba(var(--cyan-rgb), 0.35), 0 0 60px rgba(var(--cyan-rgb), 0.12), inset 0 0 15px rgba(var(--cyan-rgb), 0.04)` | 8 | 1 | :root css/base.css |
+| --surface-solid | `rgb(var(--surface-rgb))` | 7 | 1 | :root css/base.css |
+| --text-soft | `#c0d0e8` | 7 | 1 | :root css/base.css |
+| --container-rgb | `10, 20, 40` | 6 | 1 | :root css/base.css |
 | --surface-subtle | `rgba(0, 255, 255, 0.04)` | 5 | 1 | :root css/base.css |
+| --backdrop-solid | `rgb(var(--backdrop-rgb))` | 5 | 1 | :root css/base.css |
 | --glass-border | `var(--surface-border)` | 5 | 1 | :root css/base.css |
+| --bg-deep-rgb | `5, 7, 10` | 4 | 1 | :root css/base.css |
 | --glass-bg | `var(--surface-bg)` | 4 | 1 | :root css/base.css |
+| --bg-rgb | `11, 14, 20` | 3 | 1 | :root css/base.css |
+| --panel-rgb | `18, 25, 40` | 3 | 1 | :root css/base.css |
 | --surface-tag-active | `rgba(0, 255, 255, 0.15)` | 3 | 1 | :root css/base.css |
+| --bg-base | `rgb(var(--bg-rgb))` | 2 | 1 | :root css/base.css |
+| --bg-glow-rgb | `26, 35, 48` | 1 | 1 | :root css/base.css |
+| --steel-rgb | `42, 64, 96` | 1 | 1 | :root css/base.css |
+| --steel-deep-rgb | `26, 48, 80` | 1 | 1 | :root css/base.css |
 | --glass-bg-hover | `var(--surface-bg-hover)` | 0 | 1 | :root css/base.css |
 | --glass-blur | `var(--surface-blur)` | 0 | 1 | :root css/base.css |
 | --glass-border-hover | `var(--surface-border-hover)` | 0 | 1 | :root css/base.css |
@@ -54,7 +75,7 @@
 
 ## Цвета по семействам
 
-### циан — 60 значений, 123 вхождений
+### циан — 59 значений, 119 вхождений
 
 | Значение | Вхождений | Файлов | Где |
 |---|---|---|---|
@@ -62,7 +83,6 @@
 | `#55ffff` | 7 | 3 | home.css, info.css, lore.css |
 | `#74c0fc` | 6 | 3 | balance.css, calc.css, guides.css |
 | `#2196f3` | 5 | 2 | aibot.css, info-auto-level.css |
-| `#182530` | 4 | 2 | calc.css, effects.css |
 | `rgba(33,150,243,0.15)` | 3 | 3 | aibot.css, balance.css, creeps.css |
 | `#42a5f5` | 3 | 3 | aibot.css, balance.css, creeps.css |
 | `rgba(0,128,255,0.05)` | 3 | 2 | calc.css, effects.css |
@@ -119,29 +139,16 @@
 | `#66f0ff` | 1 | 1 | map.css |
 | `rgba(0,230,255,0.04)` | 1 | 1 | repo-archive/balance-dashboard.css |
 
-### синий — 129 значений, 343 вхождений
+### синий — 83 значений, 171 вхождений
 
 | Значение | Вхождений | Файлов | Где |
 |---|---|---|---|
-| `#0b0e14` | 21 | 11 | base.css, bot-builds.css, hero-grid.css, hero-page.css, home.css, items.css, lore.css, manifesto-support.css, mechanics.css, monsters.css, tierlist.css |
-| `#2a4060` | 15 | 7 | calc.css, effects.css, hero-page.css, home.css, info.css, items.css, lore.css |
-| `#05070a` | 12 | 4 | base.css, calc.css, effects.css, home.css |
-| `#55aaff` | 12 | 7 | calc.css, effects.css, hero-grid.css, hero-page.css, items.css, lore.css, mechanics.css |
-| `#1a3050` | 11 | 9 | header-mobile.css, hero-grid.css, hero-page.css, home.css, items.css, lore.css, mechanics.css, monsters.css, search.css |
-| `#d0e0ff` | 10 | 7 | gallery.css, hero-grid.css, hero-page.css, items.css, monsters.css, search.css, storage.css |
 | `#1a2744` | 7 | 2 | armor-calc.css, formulas-calc.css |
-| `#0f172a` | 7 | 6 | bot-builds.css, compare.css, events.css, faq.css, info.css, search.css |
-| `#c0d0e8` | 7 | 2 | calc.css, info.css |
 | `#0a1a2a` | 7 | 4 | calc.css, lore.css, mechanics.css, tierlist.css |
-| `#55aaff44` | 7 | 4 | calc.css, items.css, lore.css, mechanics.css |
 | `#8e97aa` | 7 | 1 | search.css |
-| `rgba(13,27,42,0.95)` | 6 | 5 | aibot.css, balance-dashboard.css, balance.css, creeps.css, repo-archive/balance-dashboard.css |
 | `#0a0f1a` | 6 | 3 | hero-page.css, mechanics.css, monsters.css |
 | `#0a1628` | 6 | 2 | info.css, map.css |
 | `#0a1020` | 5 | 3 | armor-calc.css, calc.css, formulas-calc.css |
-| `#8aa0c0` | 5 | 2 | base.css, map.css |
-| `#d0e4ff` | 5 | 3 | bot-builds.css, effects.css, items.css |
-| `#0d1b2a` | 5 | 3 | compare.css, creeps.css, faq.css |
 | `#c0d0e0` | 5 | 2 | compare.css, search.css |
 | `#5a6a7a` | 5 | 1 | search.css |
 | `#4488ff` | 5 | 1 | map.css |
@@ -151,28 +158,18 @@
 | `#b0c8f0` | 4 | 3 | hero-grid.css, items.css, lore.css |
 | `#c0d4ff` | 4 | 2 | hero-page.css, lore.css |
 | `#b0c4de` | 4 | 3 | hero-page.css, home.css, mechanics.css |
-| `rgba(13,27,42,0.6)` | 4 | 1 | map.css |
-| `#5a7a9a` | 3 | 2 | base.css, map.css |
-| `#55aaffaa` | 3 | 2 | calc.css, items.css |
 | `#0a1520` | 3 | 2 | calc.css, search.css |
 | `#3a5a7a` | 3 | 1 | compare.css |
-| `#55aaff55` | 3 | 2 | hero-grid.css, items.css |
 | `#1e3a5a` | 3 | 2 | hero-page.css, lore.css |
 | `#0e1a2b` | 3 | 2 | hero-page.css, lore.css |
 | `#8ab4f0` | 3 | 2 | hero-page.css, items.css |
-| `rgba(10,20,40,0.8)` | 3 | 2 | info.css, items.css |
-| `rgba(15,23,42,0.5)` | 2 | 2 | base.css, manifesto-support.css |
-| `#162433` | 2 | 1 | bot-builds.css |
-| `#1a2230` | 2 | 2 | calc.css, effects.css |
 | `#b0b9d0` | 2 | 1 | calc.css |
-| `rgba(15,23,42,0.93)` | 2 | 2 | calc.css, lore.css |
 | `#3a4a5a` | 2 | 2 | compare.css, search.css |
 | `#0d1f35` | 2 | 1 | compare.css |
 | `#5a5a7a` | 2 | 1 | compare.css |
 | `#2a2a3a` | 2 | 1 | compare.css |
 | `#0d1a2a` | 2 | 1 | compare.css |
 | `#66aaff` | 2 | 1 | effects.css |
-| `rgba(15,23,42,0.8)` | 2 | 2 | gallery.css, items.css |
 | `#aaccff` | 2 | 2 | hero-grid.css, items.css |
 | `#3a5070` | 2 | 2 | hero-page.css, home.css |
 | `#0d1520` | 2 | 1 | hero-page.css |
@@ -181,30 +178,21 @@
 | `#c8d8f0` | 2 | 1 | storage.css |
 | `#9ab` | 2 | 1 | storage.css |
 | `#1a3a5c` | 2 | 1 | map.css |
-| `rgba(15,23,42,0.65)` | 1 | 1 | base.css |
+| `#d0e0ff` | 1 | 1 | base.css |
+| `#c0d0e8` | 1 | 1 | base.css |
+| `#8aa0c0` | 1 | 1 | base.css |
 | `#6b7c99` | 1 | 1 | base.css |
-| `#1a2330` | 1 | 1 | base.css |
-| `rgba(10,20,40,0.45)` | 1 | 1 | base.css |
+| `#5a7a9a` | 1 | 1 | base.css |
 | `#4a76a8` | 1 | 1 | calc.css |
 | `#5865f2` | 1 | 1 | calc.css |
-| `#55aaff66` | 1 | 1 | calc.css |
 | `#091421` | 1 | 1 | compare.css |
 | `#7a8a9a` | 1 | 1 | compare.css |
 | `rgba(92,107,192,0.15)` | 1 | 1 | creeps.css |
 | `#7986cb` | 1 | 1 | creeps.css |
-| `rgba(13,27,42,0.9)` | 1 | 1 | creeps.css |
-| `#1c2230` | 1 | 1 | effects.css |
-| `#1a2430` | 1 | 1 | effects.css |
-| `#1e2230` | 1 | 1 | effects.css |
-| `#1e2030` | 1 | 1 | effects.css |
 | `rgba(0,20,40,0.4)` | 1 | 1 | gallery.css |
-| `rgba(5,8,14,0.92)` | 1 | 1 | gallery.css |
 | `#1e1e2a` | 1 | 1 | hero-grid.css |
 | `#a0b5d0` | 1 | 1 | hero-grid.css |
 | `#1a1a2e` | 1 | 1 | hero-grid.css |
-| `rgba(10,14,20,0.85)` | 1 | 1 | hero-grid.css |
-| `rgba(18,25,40,0.9)` | 1 | 1 | hero-page.css |
-| `rgba(15,26,43,0.9)` | 1 | 1 | hero-page.css |
 | `#b8cef0` | 1 | 1 | hero-page.css |
 | `#8ab4f8` | 1 | 1 | hero-page.css |
 | `#152030` | 1 | 1 | hero-page.css |
@@ -214,33 +202,19 @@
 | `#7a8fa8` | 1 | 1 | hero-page.css |
 | `#4da6ff` | 1 | 1 | hero-page.css |
 | `#1a2a45` | 1 | 1 | hero-page.css |
-| `#05070acc` | 1 | 1 | home.css |
-| `#05070a66` | 1 | 1 | home.css |
 | `#0a0e18` | 1 | 1 | info.css |
 | `#050a12` | 1 | 1 | info.css |
-| `rgba(10,20,40,0.55)` | 1 | 1 | info.css |
-| `rgba(18,25,40,0.85)` | 1 | 1 | items.css |
 | `#d0dff0` | 1 | 1 | items.css |
-| `rgba(18,25,40,0.98)` | 1 | 1 | items.css |
 | `#1a2e44` | 1 | 1 | items.css |
 | `#e0ecff` | 1 | 1 | items.css |
 | `#aac4f0` | 1 | 1 | items.css |
 | `#2a334a` | 1 | 1 | items.css |
 | `rgba(90,122,154,0.4)` | 1 | 1 | items.css |
-| `rgba(13,24,42,0.95)` | 1 | 1 | items.css |
 | `rgba(9,15,28,0.95)` | 1 | 1 | items.css |
 | `#a9c7ff` | 1 | 1 | items.css |
-| `rgba(15,23,42,0.96)` | 1 | 1 | items.css |
-| `rgba(10,20,40,0.6)` | 1 | 1 | items.css |
 | `#4a5f7a` | 1 | 1 | items.css |
-| `rgba(15,23,42,0.86)` | 1 | 1 | lore.css |
 | `#aac8ff` | 1 | 1 | lore.css |
-| `rgba(85,170,255,0.25)` | 1 | 1 | mechanics.css |
-| `rgba(85,170,255,0.2)` | 1 | 1 | mechanics.css |
-| `rgba(85,170,255,0.4)` | 1 | 1 | mechanics.css |
-| `rgba(85,170,255,0.6)` | 1 | 1 | mechanics.css |
 | `#1a2540` | 1 | 1 | monsters.css |
-| `rgba(15,23,42,0.92)` | 1 | 1 | search.css |
 | `#5a6a80` | 1 | 1 | search.css |
 | `#060d14` | 1 | 1 | search.css |
 | `#a0c0e0` | 1 | 1 | search.css |
@@ -251,7 +225,7 @@
 | `#77aaff` | 1 | 1 | map.css |
 | `rgba(68,136,255,0.2)` | 1 | 1 | map.css |
 | `#aaccee` | 1 | 1 | map.css |
-| `rgba(13,27,42,0.7)` | 1 | 1 | map.css |
+| `rgba(13,27,42,0.95)` | 1 | 1 | repo-archive/balance-dashboard.css |
 
 ### фиолет/магента — 52 значений, 122 вхождений
 
@@ -508,27 +482,34 @@
 | `rgba(255,215,0,0.25)` | 1 | 1 | storage.css |
 | `rgba(255,215,0,0.06)` | 1 | 1 | storage.css |
 
-### зелёный — 59 значений, 472 вхождений
+### зелёный — 74 значений, 532 вхождений
 
 | Значение | Вхождений | Файлов | Где |
 |---|---|---|---|
 | `rgba(var(--cyan-rgb)` | 328 | 28 | aibot.css, balance-dashboard.css, balance.css, base.css, bot-builds.css, calc.css, compare.css, creeps.css, effects.css, events.css, faq.css, formulas-calc.css, gallery.css, guides.css, header-mobile.css, hero-grid.css, hero-page.css, home.css, info.css, items.css, lore.css, manifesto-support.css, mechanics.css, monsters.css, search.css, storage.css, tierlist.css, map.css |
+| `rgba(var(--info-rgb)` | 18 | 5 | calc.css, hero-grid.css, items.css, lore.css, mechanics.css |
+| `rgba(var(--surface-rgb)` | 11 | 8 | base.css, calc.css, gallery.css, hero-page.css, items.css, lore.css, manifesto-support.css, search.css |
 | `#4caf50` | 10 | 5 | aibot.css, creeps.css, runes.css, search.css, info-auto-level.css |
 | `#00ffaa` | 10 | 3 | armor-calc.css, formulas-calc.css, items.css |
 | `#55ff55` | 10 | 5 | calc.css, effects.css, hero-grid.css, hero-page.css, items.css |
 | `#44ff88` | 10 | 1 | map.css |
+| `rgba(var(--backdrop-rgb)` | 9 | 6 | aibot.css, balance-dashboard.css, balance.css, creeps.css, items.css, map.css |
 | `#55ff88` | 9 | 7 | calc.css, compare.css, faq.css, guides.css, lore.css, mechanics.css, monsters.css |
 | `#00ff88` | 8 | 4 | hero-page.css, home.css, lore.css, mechanics.css |
+| `rgba(var(--container-rgb)` | 6 | 3 | base.css, info.css, items.css |
 | `#51cf66` | 4 | 2 | balance.css, calc.css |
 | `rgba(76,175,80,0.15)` | 3 | 3 | aibot.css, balance.css, creeps.css |
 | `#55ff55aa` | 3 | 2 | calc.css, items.css |
 | `#55ff5544` | 3 | 2 | calc.css, items.css |
+| `rgba(var(--bg-deep-rgb)` | 3 | 2 | gallery.css, home.css |
 | `#55ff5555` | 3 | 2 | hero-grid.css, items.css |
+| `rgba(var(--panel-rgb)` | 3 | 2 | hero-page.css, items.css |
 | `#0a2a1a` | 3 | 3 | hero-page.css, lore.css, mechanics.css |
 | `#00ff8866` | 3 | 3 | hero-page.css, home.css, lore.css |
 | `#00cc66` | 3 | 3 | hero-page.css, home.css, lore.css |
 | `#77ffaa` | 3 | 1 | map.css |
 | `#66bb6a` | 2 | 2 | aibot.css, balance.css |
+| `rgb(var(--bg-rgb)` | 2 | 1 | base.css |
 | `#aaffaa` | 2 | 2 | hero-grid.css, items.css |
 | `#00ff8844` | 2 | 2 | hero-page.css, mechanics.css |
 | `#00ff88aa` | 2 | 2 | home.css, lore.css |
@@ -545,6 +526,13 @@
 | `#44ff8822` | 2 | 1 | map.css |
 | `rgba(68,255,136,0.2)` | 2 | 1 | map.css |
 | `rgba(81,207,102,0.1)` | 1 | 1 | balance.css |
+| `rgb(var(--surface-rgb)` | 1 | 1 | base.css |
+| `rgb(var(--bg-deep-rgb)` | 1 | 1 | base.css |
+| `rgb(var(--bg-glow-rgb)` | 1 | 1 | base.css |
+| `rgb(var(--backdrop-rgb)` | 1 | 1 | base.css |
+| `rgb(var(--steel-rgb)` | 1 | 1 | base.css |
+| `rgb(var(--steel-deep-rgb)` | 1 | 1 | base.css |
+| `rgb(var(--info-rgb)` | 1 | 1 | base.css |
 | `rgb(var(--cyan-rgb)` | 1 | 1 | base.css |
 | `#55ff5566` | 1 | 1 | calc.css |
 | `#4ade80` | 1 | 1 | calc.css |
@@ -552,6 +540,7 @@
 | `rgba(139,195,74,0.15)` | 1 | 1 | creeps.css |
 | `#8bc34a` | 1 | 1 | creeps.css |
 | `#6bcb77` | 1 | 1 | guides.css |
+| `rgba(var(--bg-rgb)` | 1 | 1 | hero-grid.css |
 | `#00ff8888` | 1 | 1 | hero-page.css |
 | `#00ff8822` | 1 | 1 | hero-page.css |
 | `#00cc6644` | 1 | 1 | hero-page.css |
@@ -683,23 +672,23 @@ abilityIconPulse, auroraBanner, auroraShift, bannerFadeIn, crownFloat, ctaBorder
 
 | Файл | Цветовых литералов |
 |---|---|
-| css/items.css | 201 |
-| css/hero-page.css | 134 |
-| css/calc.css | 115 |
-| map.css | 112 |
-| css/mechanics.css | 102 |
-| css/search.css | 98 |
+| css/items.css | 183 |
+| css/hero-page.css | 126 |
+| map.css | 103 |
+| css/calc.css | 102 |
+| css/mechanics.css | 97 |
+| css/search.css | 95 |
 | css/guides.css | 80 |
-| css/info.css | 76 |
-| css/lore.css | 68 |
-| css/effects.css | 57 |
-| css/home.css | 56 |
-| css/storage.css | 54 |
-| css/monsters.css | 51 |
-| css/hero-grid.css | 50 |
+| css/info.css | 68 |
+| css/lore.css | 62 |
+| css/home.css | 52 |
+| css/storage.css | 51 |
+| css/monsters.css | 47 |
+| css/hero-grid.css | 44 |
 | aibot.css | 43 |
 | css/runes.css | 41 |
+| css/base.css | 38 |
+| css/effects.css | 38 |
 | css/balance.css | 35 |
-| css/creeps.css | 34 |
-| css/bot-builds.css | 32 |
-| css/compare.css | 32 |
+| css/creeps.css | 33 |
+| info-auto-level.css | 32 |

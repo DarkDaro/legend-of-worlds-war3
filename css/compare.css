@@ -14,7 +14,7 @@
         .compare-slot select {
             width: 100%;
             padding: 9px 32px 9px 12px;
-            background: #0d1b2a;
+            background: var(--backdrop-solid);
             color: var(--text-primary);
             border: 1px solid var(--surface-border);
             border-radius: 8px;
@@ -32,7 +32,7 @@
             box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.2);
         }
         .compare-slot select option {
-            background: #0d1b2a;
+            background: var(--backdrop-solid);
             color: var(--text-primary);
         }
         .compare-slot select option:disabled {
@@ -80,7 +80,7 @@
         .compare-level input {
             width: 100%;
             padding: 9px 12px;
-            background: #0d1b2a;
+            background: var(--backdrop-solid);
             color: var(--text-primary);
             border: 1px solid var(--surface-border);
             border-radius: 8px;
@@ -424,5 +424,5 @@
             h1 { font-size: 1.3rem; }
         }
         @supports not (backdrop-filter: blur(1px)) {
-            .compare-table-wrap, .compare-card { background: #0f172a !important; }
+            .compare-table-wrap, .compare-card { background: var(--surface-solid) !important; }
         }

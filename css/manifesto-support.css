@@ -214,12 +214,12 @@
 /* денежные карточки: главный акцент страницы */
 .support-card--money {
     border-color: rgba(var(--cyan-rgb), 0.35);
-    background: linear-gradient(180deg, rgba(var(--cyan-rgb), 0.04), rgba(15, 23, 42, 0.5));
+    background: linear-gradient(180deg, rgba(var(--cyan-rgb), 0.04), rgba(var(--surface-rgb), 0.5));
 }
 .support-card--money:hover { box-shadow: var(--neon-glow-strong); }
 .support-card--money .method-link {
     background: var(--accent-cyan);
-    color: #0b0e14;
+    color: var(--text-ink);
 }
 
 /* «Спасибо. Серьёзно.» — не жалкая приписка */

@@ -2,7 +2,7 @@
 body.page-hero-guide {
     background-image:
         radial-gradient(ellipse at 50% 50%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
-        radial-gradient(circle at 30% 10%, #1a2230 0%, #05070a 100%);
+        radial-gradient(circle at 30% 10%, var(--bg-glow) 0%, var(--bg-deep) 100%);
 }
 body.page-hero-guide .wiki-container {
     max-width: 1300px;
@@ -78,7 +78,7 @@ body.page-armor-calc,
 body.page-formulas-calc {
     background-image:
         radial-gradient(ellipse at 70% 20%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
-        radial-gradient(circle at 50% 80%, #182530 0%, #05070a 100%);
+        radial-gradient(circle at 50% 80%, var(--bg-glow) 0%, var(--bg-deep) 100%);
 }
 
 /* Orb для калькуляторов брони/формул — правый верхний */
@@ -199,7 +199,7 @@ body.page-map-changes::after {
 .calc-hero-label {
     font-size: 0.8rem;
     font-weight: 600;
-    color: #c0d0e8;
+    color: var(--text-soft);
     white-space: nowrap;
 }
 
@@ -224,7 +224,7 @@ body.page-map-changes::after {
 
 .calc-share-btn {
     background: transparent;
-    border: 1px solid #2a4060;
+    border: 1px solid var(--steel);
     color: var(--text-secondary);
     padding: 4px 10px;
     border-radius: 6px;
@@ -244,7 +244,7 @@ body.page-map-changes::after {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%) translateY(16px);
-    background: rgba(15, 23, 42, 0.93);
+    background: rgba(var(--surface-rgb), 0.93);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(var(--cyan-rgb), 0.35);
@@ -313,7 +313,7 @@ body.page-map-changes::after {
 /* Цвета атрибутов */
 .attr-str { color: #ff5555; }
 .attr-agi { color: #55ff55; }
-.attr-int { color: #55aaff; }
+.attr-int { color: var(--info-blue); }
 .attr-chaos { color: #bf7fff; }
 .attr-mech { color: #ff9944; }
 .attr-gold { color: #ffcc00; }
@@ -396,7 +396,7 @@ body.page-map-changes::after {
     color: #55ff55;
 }
 .compare-attr-intelligence {
-    color: #55aaff;
+    color: var(--info-blue);
 }
 .compare-level-gain {
     color: #55ff88;
@@ -436,7 +436,7 @@ body.page-map-changes::after {
     background: var(--surface-bg);
     backdrop-filter: blur(var(--surface-blur));
     -webkit-backdrop-filter: blur(var(--surface-blur));
-    border: 2px dashed #2a4060;
+    border: 2px dashed var(--steel);
     border-radius: 8px;
     padding: 6px 4px;
     display: flex;
@@ -455,7 +455,7 @@ body.page-map-changes::after {
 }
 
 .calc-slot-empty {
-    color: #2a4060;
+    color: var(--steel);
     font-size: 1.2rem;
 }
 
@@ -481,8 +481,8 @@ body.page-map-changes::after {
 .calc-attr-strength .calc-slot-icon img { border-color: #ff5555aa; box-shadow: 0 0 8px #ff555544; }
 .calc-attr-agility { border-color: #55ff5566; }
 .calc-attr-agility .calc-slot-icon img { border-color: #55ff55aa; box-shadow: 0 0 8px #55ff5544; }
-.calc-attr-intelligence { border-color: #55aaff66; }
-.calc-attr-intelligence .calc-slot-icon img { border-color: #55aaffaa; box-shadow: 0 0 8px #55aaff44; }
+.calc-attr-intelligence { border-color: rgba(var(--info-rgb), 0.35); }
+.calc-attr-intelligence .calc-slot-icon img { border-color: rgba(var(--info-rgb), 0.6); box-shadow: 0 0 8px rgba(var(--info-rgb), 0.2); }
 .calc-attr-weapon { border-color: #ff880066; }
 .calc-attr-weapon .calc-slot-icon img { border-color: #ff8800aa; box-shadow: 0 0 8px #ff880044; }
 .calc-attr-armor { border-color: rgba(var(--cyan-rgb), 0.35); }
@@ -633,7 +633,7 @@ body.page-map-changes::after {
 /* Кнопка очистки */
 .calc-clear-btn {
     background: transparent;
-    border: 1px solid #2a4060;
+    border: 1px solid var(--steel);
     color: var(--text-secondary);
     padding: 3px 10px;
     border-radius: 6px;
@@ -670,7 +670,7 @@ body.page-map-changes::after {
     display: block;
     font-size: 1.2rem;
     margin-bottom: 6px;
-    color: #2a4060;
+    color: var(--steel);
 }
 
 .calc-results-total {
@@ -777,7 +777,7 @@ body.page-map-changes::after {
 
 .calc-shopping-name {
     flex: 1;
-    color: #c0d0e8;
+    color: var(--text-soft);
     word-break: break-word;
 }
 

@@ -64,7 +64,7 @@
             user-select: none;
             position: sticky;
             top: 0;
-            background: rgba(13, 27, 42, 0.95);
+            background: rgba(var(--backdrop-rgb), 0.95);
             backdrop-filter: blur(8px);
             z-index: 2;
         }

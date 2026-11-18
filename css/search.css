@@ -78,7 +78,7 @@
     align-items: center;
     gap: 10px;
     padding: 14px 18px;
-    border-bottom: 1px solid #1a3050;
+    border-bottom: 1px solid var(--steel-deep);
 }
 .gs-search-icon {
     color: var(--text-dim);
@@ -149,7 +149,7 @@
     gap: 10px;
     padding: 10px 18px;
     text-decoration: none;
-    color: #d0e0ff;
+    color: var(--text-strong);
     transition: 0.1s;
 }
 .gs-result:hover {
@@ -314,7 +314,7 @@ body.page-leaving {
     .bb-stage {
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
-        background: rgba(15, 23, 42, 0.92) !important;
+        background: rgba(var(--surface-rgb), 0.92) !important;
     }
     /* Упрощаем box-shadow — убираем glow */
     .hero-card,
@@ -394,7 +394,7 @@ body.page-leaving {
     .formula-panel,
     .formula-results,
     .bb-stage {
-        background: #0f172a !important;
+        background: var(--surface-solid) !important;
     }
 }
 

@@ -166,8 +166,8 @@
 }
 .mode-no-books .mechanic-icon {
     background: #0a1a2a;
-    border: 1px solid #55aaff44;
-    color: #55aaff;
+    border: 1px solid rgba(var(--info-rgb), 0.2);
+    color: var(--info-blue);
 }
 .mode-team-rewards .mechanic-icon {
     background: #1a1a0a;
@@ -198,7 +198,7 @@
     height: 44px;
     border-radius: 50%;
     border: 1px solid rgba(var(--cyan-rgb), 0.6);
-    background: rgba(15, 23, 42, 0.93);
+    background: rgba(var(--surface-rgb), 0.93);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     color: var(--accent-cyan);
@@ -221,7 +221,7 @@
 }
 .scroll-top-btn:hover {
     background: var(--accent-cyan);
-    color: #0b0e14;
+    color: var(--text-ink);
     box-shadow: 0 0 25px var(--accent-cyan);
 }
 
@@ -234,9 +234,9 @@
     gap: 16px 24px;
     padding: clamp(16px, 2.5vw, 26px) clamp(16px, 3vw, 32px);
     margin-bottom: clamp(20px, 3vw, 32px);
-    border: 1px solid #2a4060;
+    border: 1px solid var(--steel);
     border-radius: 24px;
-    background: rgba(15, 23, 42, 0.86);
+    background: rgba(var(--surface-rgb), 0.86);
     box-shadow: 0 0 30px #00000055, 0 0 20px rgba(var(--cyan-rgb), 0.12);
     backdrop-filter: blur(8px);
     min-height: 68px;
@@ -312,7 +312,7 @@
     margin-right: 5px;
 }
 .nav-link:hover {
-    background: #1a3050;
+    background: var(--steel-deep);
     border-color: var(--accent-cyan);
     color: white;
     box-shadow: 0 0 20px rgba(var(--cyan-rgb), 0.6);
@@ -320,11 +320,11 @@
 .nav-link.active {
     background: var(--accent-cyan);
     border-color: white;
-    color: #0b0e14;
+    color: var(--text-ink);
     box-shadow: 0 0 20px var(--accent-cyan);
 }
 .nav-download {
-    color: #0b0e14;
+    color: var(--text-ink);
     text-decoration: none;
     font-weight: 700;
     padding: 8px 14px;
