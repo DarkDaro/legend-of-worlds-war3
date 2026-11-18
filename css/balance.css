@@ -65,7 +65,7 @@
             position: sticky;
             top: 0;
             background: rgba(var(--backdrop-rgb), 0.95);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(var(--surface-blur-soft));
             z-index: 2;
         }
         .balance-table th:hover { color: var(--accent-cyan); }

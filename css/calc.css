@@ -245,8 +245,8 @@ body.page-map-changes::after {
     left: 50%;
     transform: translateX(-50%) translateY(16px);
     background: rgba(var(--surface-rgb), 0.93);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(var(--surface-blur-soft));
+    -webkit-backdrop-filter: blur(var(--surface-blur-soft));
     border: 1px solid rgba(var(--cyan-rgb), 0.35);
     color: var(--text-primary);
     padding: 8px 16px;

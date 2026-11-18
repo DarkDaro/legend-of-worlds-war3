@@ -158,8 +158,8 @@
             border-radius: 6px;
             border: 1px solid var(--surface-border);
             background: var(--surface-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(var(--surface-blur));
+            -webkit-backdrop-filter: blur(var(--surface-blur));
             display: flex;
             align-items: center;
             justify-content: center;

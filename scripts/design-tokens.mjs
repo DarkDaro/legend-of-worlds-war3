@@ -10,7 +10,8 @@
  * Режим --md перезаписывает файл целиком (только сырые данные).
  *
  * Исключаются: vendor/, генерируемый css/all.css, замороженные файлы repo-archive/
- * (погашено TD-14: архив не живая вёрстка сайта, мёртвые цвета снимку не нужны).
+ * (погашено TD-14: архив не живая вёрстка сайта, мёртвые цвета снимку не нужны),
+ * условия @supports в счёте blur (запрос blur(1px) — проверка поддержки, не ступень).
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { execSync } from 'node:child_process';
@@ -142,9 +143,12 @@ for (const f of files) {
     }
     gl.perFile.push({ file: f, colors: colorCount });
 
-    const bd = [...src.matchAll(/backdrop-filter:\s*blur\((\d+(?:\.\d+)?)px\)/g)];
+    const bd = [...src.replace(/@supports\s+not\s*\([^)]*\)/g, ' ').matchAll(/backdrop-filter:\s*blur\((?:var\((--[\w-]+)\)|(\d+(?:\.\d+)?)px)\)/g)];
     gl.backdrop += bd.length;
-    for (const m of bd) gl.blurVals.set(m[1] + 'px', (gl.blurVals.get(m[1] + 'px') || 0) + 1);
+    for (const m of bd) {
+        const key = m[1] ? m[1] : m[2] + 'px';
+        gl.blurVals.set(key, (gl.blurVals.get(key) || 0) + 1);
+    }
     gl.boxShadow += (src.match(/box-shadow\s*:/g) || []).length;
     gl.textShadow += (src.match(/text-shadow\s*:/g) || []).length;
     gl.gradLin += (src.match(/linear-gradient\(/g) || []).length;

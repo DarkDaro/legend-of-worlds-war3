@@ -32,6 +32,9 @@
     --surface-bg-hover: rgba(var(--surface-rgb), 0.65);
     --surface-solid: rgb(var(--surface-rgb));
     --surface-blur: 12px;
+    /* Вторая ступень стекломорфизма (чанк 5): контейнеры, шапки, мелкие поверхности;
+       6px и 4px влиты сюда, 16px — на сильную ступень. Шкала из двух значений (TD-8) */
+    --surface-blur-soft: 8px;
     --surface-border: rgba(var(--cyan-rgb), 0.12);
     --surface-border-hover: rgba(var(--cyan-rgb), 0.35);
     /* Тонкие фоны для подзаголовков, кнопок, тегов; оттенок 0,255,255 пока отдельный примитив (TECH-DEBT TD-2) */
@@ -150,8 +153,8 @@ body {
     max-width: 1760px;
     margin: 0 auto;
     background: rgba(var(--container-rgb), 0.45);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(var(--surface-blur-soft));
+    -webkit-backdrop-filter: blur(var(--surface-blur-soft));
     border: 1px solid rgba(var(--cyan-rgb), 0.08);
     border-radius: 16px;
     padding: 28px 40px;
