@@ -8,9 +8,9 @@
 | css-файлов | 33 |
 | уникальных цветов | 388 |
 | вхождений цветов | 1268 |
-| кастомных свойств объявлено | 89 |
-| из них в :root | 89 |
-| backdrop-filter: blur() | 43 |
+| кастомных свойств объявлено | 90 |
+| из них в :root | 90 |
+| backdrop-filter: blur() | 153 |
 | box-shadow | 201 |
 | text-shadow | 45 |
 | linear-gradient() | 52 |
@@ -28,8 +28,8 @@
 | --surface-border | `rgba(var(--cyan-rgb), 0.12)` | 174 | 1 | :root css/base.css |
 | --text-secondary | `#8aa0c0` | 152 | 1 | :root css/base.css |
 | --text-primary | `#e0f0ff` | 141 | 1 | :root css/base.css |
+| --surface-blur | `12px` | 128 | 1 | :root css/base.css |
 | --surface-bg | `rgba(var(--surface-rgb), 0.5)` | 122 | 1 | :root css/base.css |
-| --surface-blur | `12px` | 122 | 1 | :root css/base.css |
 | --red-rgb | `255, 85, 85` | 57 | 1 | :root css/base.css |
 | --text-muted | `#6b7c99` | 44 | 1 | :root css/base.css |
 | --surface-border-hover | `rgba(var(--cyan-rgb), 0.35)` | 42 | 1 | :root css/base.css |
@@ -37,6 +37,7 @@
 | --text-dim | `#5a7a9a` | 36 | 1 | :root css/base.css |
 | --danger | `rgb(var(--red-rgb))` | 36 | 1 | :root css/base.css |
 | --violet-rgb | `191, 127, 255` | 35 | 1 | :root css/base.css |
+| --surface-blur-soft | `8px` | 28 | 1 | :root css/base.css |
 | --surface-bg-hover | `rgba(var(--surface-rgb), 0.65)` | 25 | 1 | :root css/base.css |
 | --magic | `rgb(var(--violet-rgb))` | 24 | 1 | :root css/base.css |
 | --orange-rgb | `255, 136, 0` | 23 | 1 | :root css/base.css |
@@ -557,12 +558,8 @@
 
 | Значение blur | Вхождений |
 |---|---|
-| 8px | 23 |
-| 1px | 9 |
-| 12px | 4 |
-| 6px | 4 |
-| 16px | 2 |
-| 4px | 1 |
+| --surface-blur | 125 |
+| --surface-blur-soft | 28 |
 
 ## border-radius
 

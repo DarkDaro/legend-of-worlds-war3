@@ -103,8 +103,8 @@
     inset: 0;
     z-index: 10000;
     background: rgba(var(--bg-deep-rgb), 0.92);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(var(--surface-blur-soft));
+    -webkit-backdrop-filter: blur(var(--surface-blur-soft));
     display: flex;
     align-items: center;
     justify-content: center;

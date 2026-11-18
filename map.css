@@ -10,8 +10,8 @@
     background: var(--surface-bg);
     border: 1px solid var(--surface-border, rgba(var(--cyan-rgb), 0.12));
     border-radius: 8px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(var(--surface-blur-soft));
+    -webkit-backdrop-filter: blur(var(--surface-blur-soft));
 }
 .map-toolbar-left { display: flex; align-items: center; gap: 12px; }
 .map-toolbar-right { display: flex; align-items: center; gap: 8px; }
@@ -74,8 +74,8 @@
     background: var(--surface-bg);
     border: 1px solid var(--surface-border, rgba(var(--cyan-rgb), 0.12));
     border-radius: 8px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(var(--surface-blur-soft));
+    -webkit-backdrop-filter: blur(var(--surface-blur-soft));
 }
 .map-type-selector.visible {
     display: flex;
@@ -127,8 +127,8 @@
     border: 1px solid var(--surface-border, rgba(var(--cyan-rgb), 0.12));
     border-radius: 12px;
     overflow: hidden;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(var(--surface-blur));
+    -webkit-backdrop-filter: blur(var(--surface-blur));
     box-shadow:
         0 0 80px rgba(var(--cyan-rgb), 0.08),
         0 8px 32px rgba(0, 0, 0, 0.4);
@@ -214,8 +214,8 @@
     background: rgba(var(--backdrop-rgb), 0.7);
     border-top: 1px solid var(--surface-border, rgba(var(--cyan-rgb), 0.12));
     min-height: 80px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(var(--surface-blur-soft));
+    -webkit-backdrop-filter: blur(var(--surface-blur-soft));
 }
 .map-info-panel.empty {
     color: var(--text-dim);
@@ -245,8 +245,8 @@
     font-size: 0.82rem;
     color: var(--accent-cyan);
     display: none;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(var(--surface-blur-soft));
+    -webkit-backdrop-filter: blur(var(--surface-blur-soft));
 }
 .map-coords-output.visible { display: block; }
 

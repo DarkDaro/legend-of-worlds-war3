@@ -38,7 +38,7 @@
     inset: 0;
     z-index: 5000;
     background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(var(--surface-blur-soft));
     display: flex;
     align-items: flex-start;
     justify-content: center;
