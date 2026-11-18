@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 : Math.min(Math.abs(reduction * 100) / 80 * 100, 100);
             document.getElementById('reductionBar').style.width = barPct + '%';
             document.getElementById('reductionBar').style.background = reduction >= 0
-                ? 'linear-gradient(90deg, #00e6ff, #00ffaa)'
-                : 'linear-gradient(90deg, #ff5555, #ff9944)';
+                ? 'linear-gradient(90deg, var(--accent-cyan), var(--spring))'
+                : 'linear-gradient(90deg, var(--danger), var(--warning-soft))';
             document.getElementById('reductionBarLabel').textContent = reductionEl.textContent;
 
             // Формула

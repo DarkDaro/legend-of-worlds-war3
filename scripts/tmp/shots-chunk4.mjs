@@ -2,6 +2,9 @@
 /**
  * Скрины контрольных страниц 1280 и 390 + контроль консоли и горизонтального
  * overflow (ритуал чанков §10). Снимки в /tmp/render-chunk4/<page>-<w>.png.
+ * Анимации заморожены, но только animation (сброс к базе): transition:none
+ * застревает на середине перехода и даёт недетерминированные снимки.
+ * JS-циклы (rAF) заморозить так нельзя, их фазовый шум классифицируется отдельно.
  * Запуск: node scripts/tmp/shots-chunk4.mjs
  */
 import { mkdirSync } from 'node:fs';
@@ -34,7 +37,9 @@ const server = http.createServer(async (req, res) => {
         res.end(data);
     } catch { res.writeHead(404); res.end('no'); }
 });
+server.on('error', e => { console.error('Порт 8138: ' + e.message); process.exit(3); });
 await new Promise(r => server.listen(8138, r));
+console.log('сервер на 8138, стреляем');
 
 const browser = await chromium.launch();
 let problems = 0;
@@ -47,6 +52,9 @@ for (const width of [1280, 390]) {
     for (const p of PAGES) {
         try {
             await page.goto('http://localhost:8138/' + p, { waitUntil: 'load', timeout: 15000 });
+            await page.addStyleTag({ content: '*, *::before, *::after { animation: none !important; }' });
+            await page.evaluate(() => Promise.all([...document.images].map(i =>
+                i.complete ? Promise.resolve() : new Promise(r => { i.onload = i.onerror = r; }))));
             await page.waitForTimeout(400);
             const overflow = await page.evaluate(() =>
                 document.documentElement.scrollWidth - document.documentElement.clientWidth);

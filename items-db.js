@@ -1104,16 +1104,16 @@ function injectItemFavoritesStyles() {
       transition: 0.15s ease;
       z-index: 2;
     }
-    .item-fav-btn .fas { color: #ff5555; }
+    .item-fav-btn .fas { color: var(--danger); }
     .item-fav-btn:hover {
-      background: #ff555533;
-      border-color: #ff5555;
+      background: rgba(var(--red-rgb), 0.2);
+      border-color: var(--danger);
     }
     .item-card.is-favorite {
-      box-shadow: 0 0 20px #ff555533, 0 0 0 1px #ff555533 inset;
+      box-shadow: 0 0 20px rgba(var(--red-rgb), 0.2), 0 0 0 1px rgba(var(--red-rgb), 0.2) inset;
     }
     .item-card.is-favorite .item-name {
-      text-shadow: 0 0 8px #ff5555aa;
+      text-shadow: 0 0 8px rgba(var(--red-rgb), 0.6);
     }
     /* Адаптив для мобильных: уменьшаем кнопку избранного */
     @media (max-width: 600px) {

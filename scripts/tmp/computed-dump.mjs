@@ -6,6 +6,8 @@
  * рамки, тени, svg fill/stroke. Результат — JSON {страница: [значения]}.
  *
  * Запуск: node scripts/tmp/computed-dump.mjs /tmp/computed-before.json
+ * Дамп идёт с замороженными анимациями (урок чанка 3): пульсации свечений
+ * дают фазовый шум на кадрах и путают сверку.
  */
 import { writeFileSync } from 'node:fs';
 import http from 'node:http';
@@ -32,6 +34,7 @@ const PAGES = [
     'faq.html', 'runes.html', 'creeps.html', 'storage.html', 'aibot.html',
     'bot-builds.html', 'gallery.html', 'updates.html', 'manifesto.html',
     'modes.html', 'sitemap-page.html', '404.html',
+    'site-validator.html', 'heroes/admiral.html',
 ];
 
 const MIME = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.webp': 'image/webp' };
@@ -56,6 +59,7 @@ const dump = {};
 for (const p of PAGES) {
     try {
         await page.goto('http://localhost:8137/' + p, { waitUntil: 'load', timeout: 15000 });
+        await page.addStyleTag({ content: '*, *::before, *::after { animation: none !important; transition: none !important; }' });
         await page.waitForTimeout(500);
         dump[p] = await page.evaluate(() => {
             const vals = new Set();

@@ -19,7 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
         farm: 'AoE-урон + количество AoE + бёрст',
         scaling: 'Во сколько раз растёт DPS от 30 к 500 уровню'
     };
-    var HERO_COLORS = ['#00e6ff', '#ff6b6b', '#51cf66'];
+    // серия 1 красится акцентом темы: в html уходит var(), canvas берёт значение из примитива
+    var HERO_COLORS = ['var(--accent-cyan)', '#ff6b6b', '#51cf66'];
+    function cssVar(name) {
+        return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    }
 
     // === Расчёт способностей ===
     function abilityLevel(heroLevel, reqLevel, maxLevels) {
@@ -247,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (pct >= 90) return '#ffd43b';
         if (pct >= 70) return '#ffa500';
         if (pct <= 20) return '#ff6b6b';
-        return '#00e6ff';
+        return 'var(--accent-cyan)';
     }
 
     function formatRaw(axis, val) {
@@ -310,7 +314,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 var y = cy + r * Math.sin(angle);
                 if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
             }
-            ctx.strokeStyle = pct === 50 ? 'rgba(0,230,255,0.15)' : 'rgba(0,230,255,0.08)';
+            ctx.strokeStyle = pct === 50 ? 'rgba(' + cssVar('--cyan-rgb') + ', 0.15)' : 'rgba(' + cssVar('--cyan-rgb') + ', 0.08)';
             ctx.lineWidth = pct === 50 ? 1.5 : 1;
             ctx.stroke();
         });
@@ -318,11 +322,11 @@ document.addEventListener('DOMContentLoaded', function() {
         AXES.forEach(function(axis, i) {
             var angle = (Math.PI * 2 * i / n) - Math.PI / 2;
             ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + R * Math.cos(angle), cy + R * Math.sin(angle));
-            ctx.strokeStyle = 'rgba(0,230,255,0.12)';
+            ctx.strokeStyle = 'rgba(' + cssVar('--cyan-rgb') + ', 0.12)';
             ctx.stroke();
             var lx = cx + (R + 32) * Math.cos(angle);
             var ly = cy + (R + 32) * Math.sin(angle);
-            ctx.fillStyle = '#8aa0c0';
+            ctx.fillStyle = cssVar('--text-secondary');
             ctx.font = '11px Segoe UI, sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
@@ -340,9 +344,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
             });
             ctx.closePath();
-            ctx.fillStyle = HERO_COLORS[pi] + '20';
+            ctx.fillStyle = pi === 0 ? 'rgba(' + cssVar('--cyan-rgb') + ', 0.125)' : HERO_COLORS[pi] + '20';
             ctx.fill();
-            ctx.strokeStyle = HERO_COLORS[pi];
+            ctx.strokeStyle = pi === 0 ? 'rgb(' + cssVar('--cyan-rgb') + ')' : HERO_COLORS[pi];
             ctx.lineWidth = 2;
             ctx.stroke();
 
@@ -352,7 +356,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 var angle = (Math.PI * 2 * i / n) - Math.PI / 2;
                 ctx.beginPath();
                 ctx.arc(cx + r * Math.cos(angle), cy + r * Math.sin(angle), 3, 0, Math.PI * 2);
-                ctx.fillStyle = HERO_COLORS[pi];
+                ctx.fillStyle = pi === 0 ? 'rgb(' + cssVar('--cyan-rgb') + ')' : HERO_COLORS[pi];
                 ctx.fill();
             });
         });
