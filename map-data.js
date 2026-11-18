@@ -259,7 +259,7 @@ var MAP_TYPES = {
         for (var k in MAP_TYPES) typeLabels[k] = MAP_TYPES[k].label;
         panel.innerHTML =
             '<h3>' + marker.title + '</h3>' +
-            '<p><span style="color:#00e5ff;">' + (typeLabels[marker.type] || marker.type) + '</span>' +
+            '<p><span style="color:var(--accent-cyan);">' + (typeLabels[marker.type] || marker.type) + '</span>' +
             (marker.desc ? ' — ' + marker.desc : '') + '</p>';
     }
 

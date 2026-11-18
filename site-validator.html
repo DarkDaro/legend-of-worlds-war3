@@ -256,7 +256,7 @@ function checkHeroes() {
         if (!hero.image) problems.push('нет портрета в данных');
 
         items.push({
-            name: hero.name + ' <small style="color:#5a7a9a">(' + id + ')</small>',
+            name: hero.name + ' <small style="color:var(--text-dim)">(' + id + ')</small>',
             status: problems.length ? 'warn' : 'ok',
             detail: problems.length
                 ? problems.join(', ')
@@ -447,7 +447,7 @@ function displayResults() {
             if (item.detail) html += '<span class="check-detail">' + item.detail + '</span>';
             html += '</div>';
         });
-        if (shown === 0) html += '<div class="check-item"><span class="check-name" style="color:#55ff88">Проблем нет</span></div>';
+        if (shown === 0) html += '<div class="check-item"><span class="check-name" style="color:var(--success)">Проблем нет</span></div>';
 
         html += '</div></div>';
     });

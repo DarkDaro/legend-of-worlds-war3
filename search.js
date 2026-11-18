@@ -167,7 +167,7 @@
     // ── Отрисовка результатов ──
 
     var ATTR_LABELS = { strength: 'Сила', agility: 'Ловкость', intelligence: 'Разум' };
-    var ATTR_COLORS = { strength: '#ff5555', agility: '#55ff55', intelligence: '#55aaff' };
+    var ATTR_COLORS = { strength: 'var(--danger)', agility: 'var(--agility)', intelligence: 'var(--info-blue)' };
 
     function highlightMatch(text, query) {
         if (!query) return text;
@@ -204,7 +204,7 @@
                 var row = document.createElement('div');
                 row.className = 'gs-result gs-hero-result';
                 row.setAttribute('data-hero-id', h.heroId);
-                var attrColor = ATTR_COLORS[h.attr] || '#8aa0c0';
+                var attrColor = ATTR_COLORS[h.attr] || 'var(--text-secondary)';
                 var attrLabel = ATTR_LABELS[h.attr] || h.attr;
                 row.innerHTML =
                     '<span class="gs-result-name">' + highlightMatch(h.name, query) + '</span>'

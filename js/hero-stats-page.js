@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     var svg = '<svg viewBox="0 0 180 180" class="mc-pie-svg">' + slices.join('') +
-      '<circle cx="90" cy="90" r="40" fill="var(--bg-primary, #0f172a)"/>' +
+      '<circle cx="90" cy="90" r="40" fill="var(--surface-solid)"/>' +
       '<text x="90" y="86" text-anchor="middle" fill="var(--text-primary)" font-size="18" font-weight="700">' + total + '</text>' +
       '<text x="90" y="102" text-anchor="middle" fill="var(--text-secondary)" font-size="9">героев</text>' +
       '</svg>';
