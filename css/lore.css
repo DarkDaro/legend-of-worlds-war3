@@ -92,7 +92,7 @@
         45deg,
         transparent 30%,
         rgba(var(--cyan-rgb), 0.04) 35%,
-        rgba(0, 128, 255, 0.03) 40%,
+        rgba(var(--info-rgb), 0.03) 40%,
         transparent 45%
     );
     animation: auroraShift 8s ease-in-out infinite;
