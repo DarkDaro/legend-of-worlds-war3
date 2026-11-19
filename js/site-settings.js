@@ -37,6 +37,11 @@
         };
     }
 
+    // дефолт разметки запоминается до первого apply: «по странице» всегда
+    // возвращает страницу к тому, что написано в её HTML
+    var PAGE_THEME = document.documentElement.getAttribute('data-theme');
+    var MARKUP_TC = (document.querySelector('meta[name="theme-color"]') || {}).content || null;
+
     // фон темы для meta theme-color (TD-7): неон и «Ашенваль»
     var THEME_COLORS = { neon: '#0b0e14', ashenvale: '#09100c' };
 
@@ -46,12 +51,17 @@
         h.setAttribute('data-glass', f.glass ? 'on' : 'off');
         h.setAttribute('data-fx', f.fx ? 'on' : 'off');
         h.setAttribute('data-sound', f.sound ? 'on' : 'off');
-        // тема: пусто — страница решает сама (атрибут в разметке остаётся),
-        // явный выбор перекрывает разметку на всех страницах
+        // тема: пусто — возврат к дефолту разметки, явный выбор перекрывает
+        // разметку на всех страницах
         if (f.theme === 'ashenvale') h.setAttribute('data-theme', 'ashenvale');
         else if (f.theme === 'neon') h.removeAttribute('data-theme');
+        else if (PAGE_THEME) h.setAttribute('data-theme', PAGE_THEME);
+        else h.removeAttribute('data-theme');
         var meta = document.querySelector('meta[name="theme-color"]');
-        if (meta && THEME_COLORS[f.theme]) meta.setAttribute('content', THEME_COLORS[f.theme]);
+        if (meta) {
+            if (THEME_COLORS[f.theme]) meta.setAttribute('content', THEME_COLORS[f.theme]);
+            else if (MARKUP_TC) meta.setAttribute('content', MARKUP_TC);
+        }
     }
 
     var api = {
