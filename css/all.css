@@ -360,6 +360,31 @@ html[data-fx="off"] * {
     border-color: var(--surface-border-hover);
     box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.25);
 }
+/* строка темы: пилюли выбора вместо тумблера; материал из токенов,
+   активная пилюля подсвечивается акцентом темы */
+.settings-row-theme { display: block; }
+.settings-themes {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+.settings-theme-btn {
+    font: inherit;
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    background: rgba(var(--cyan-rgb), 0.04);
+    border: 1px solid var(--surface-border);
+    border-radius: 8px;
+    padding: 4px 9px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.settings-theme-btn.active {
+    color: var(--text-primary);
+    border-color: var(--surface-border-hover);
+    background: rgba(var(--cyan-rgb), 0.12);
+}
 /* подпись шестерёнки видна только в раскрытом меню бургера */
 .settings-btn-label { display: none; }
 .header-nav.hamburger-open .settings-btn-label { display: inline; }

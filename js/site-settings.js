@@ -1,10 +1,14 @@
 /**
- * site-settings.js — настройки сайта: звук, анимации, стекломорфизм,
+ * site-settings.js — настройки сайта: тема, звук, анимации, стекломорфизм,
  * тяжёлые эффекты.
  *
  * Флаги лежат в localStorage (ключ site-settings-v1), хранятся только
  * выключенные — дефолт «всё включено». Флаги ставятся атрибутами на <html>:
  *   data-anim="on|off", data-glass="on|off", data-fx="on|off", data-sound="on|off".
+ * Тема — строка: SiteSettings.get('theme') даёт '' (по странице), 'neon' или 'ashenvale';
+ * пустое значение оставляет разметку в покое — так прототип «Ашенваля» живёт
+ * на lore.html и index.html через атрибут в HTML, а явный выбор перекрывает
+ * разметку на всех страницах. meta theme-color следует за темой (TD-7).
  * Значения читает блок «Настройки сайта» в конце css/base.css.
  * Скрипт подключается сразу после <body> на всех страницах — атрибуты
  * ставятся до первой отрисовки, мигания эффектами нет.
@@ -21,16 +25,20 @@
         catch (e) { return {}; }
     }
 
-    // значения по умолчанию: всё включено
+    // значения по умолчанию: всё включено, тема не выбрана («по странице»)
     function flags() {
         var s = read();
         return {
             sound: s.sound !== false,
             anim: s.anim !== false,
             glass: s.glass !== false,
-            fx: s.fx !== false
+            fx: s.fx !== false,
+            theme: s.theme || ''
         };
     }
+
+    // фон темы для meta theme-color (TD-7): неон и «Ашенваль»
+    var THEME_COLORS = { neon: '#0b0e14', ashenvale: '#09100c' };
 
     function apply(f) {
         var h = document.documentElement;
@@ -38,17 +46,24 @@
         h.setAttribute('data-glass', f.glass ? 'on' : 'off');
         h.setAttribute('data-fx', f.fx ? 'on' : 'off');
         h.setAttribute('data-sound', f.sound ? 'on' : 'off');
+        // тема: пусто — страница решает сама (атрибут в разметке остаётся),
+        // явный выбор перекрывает разметку на всех страницах
+        if (f.theme === 'ashenvale') h.setAttribute('data-theme', 'ashenvale');
+        else if (f.theme === 'neon') h.removeAttribute('data-theme');
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta && THEME_COLORS[f.theme]) meta.setAttribute('content', THEME_COLORS[f.theme]);
     }
 
     var api = {
         get: function (k) { return flags()[k]; },
         set: function (k, v) {
             var s = read();
-            s[k] = !!v;
+            if (k === 'theme') s.theme = v || '';
+            else s[k] = !!v;
             try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) { /* приватный режим — работаем без хранения */ }
             apply(flags());
             try {
-                document.dispatchEvent(new CustomEvent('site-settings:change', { detail: { key: k, value: !!v } }));
+                document.dispatchEvent(new CustomEvent('site-settings:change', { detail: { key: k, value: k === 'theme' ? (v || '') : !!v } }));
             } catch (e) { /* CustomEvent нет — только очень старые браузеры */ }
         }
     };
@@ -65,6 +80,13 @@
         ['anim', 'Анимации', 'Пульсации, счётчики, плавные появления'],
         ['glass', 'Стекломорфизм', 'Размытие фона под шапкой и панелями'],
         ['fx', 'Тяжёлые эффекты', 'Декоративные орбы, свечение курсора, неоновые тени текста']
+    ];
+
+    // темы: пустой id — «по странице», прототип «Ашенваля» живёт в разметке lore и главной
+    var THEMES = [
+        ['', 'По странице'],
+        ['neon', 'Неон'],
+        ['ashenvale', 'Ашенваль']
     ];
 
     function buildPanel() {
@@ -124,7 +146,52 @@
             panel.appendChild(line);
         });
 
+        // строка темы: пилюли выбора вместо тумблера, активная подсвечивается
+        var trow = document.createElement('div');
+        trow.className = 'settings-row settings-row-theme';
+
+        var tbox = document.createElement('div');
+        var tlabel = document.createElement('div');
+        tlabel.className = 'settings-name';
+        tlabel.textContent = 'Тема';
+        var thint = document.createElement('div');
+        thint.className = 'settings-hint';
+        thint.textContent = '«По странице» оставляет разметке решать';
+        tbox.appendChild(tlabel);
+        tbox.appendChild(thint);
+
+        var seg = document.createElement('div');
+        seg.className = 'settings-themes';
+        seg.setAttribute('role', 'group');
+        seg.setAttribute('aria-label', 'Тема оформления');
+        THEMES.forEach(function (t) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'settings-theme-btn';
+            b.setAttribute('data-theme-id', t[0]);
+            b.textContent = t[1];
+            b.addEventListener('click', function () {
+                api.set('theme', t[0]);
+            });
+            seg.appendChild(b);
+        });
+
+        trow.appendChild(tbox);
+        trow.appendChild(seg);
+        panel.appendChild(trow);
+
         document.body.appendChild(panel);
+
+        function syncThemeButtons() {
+            var cur = api.get('theme') || '';
+            var btns = panel.querySelectorAll('.settings-theme-btn');
+            for (var i = 0; i < btns.length; i++) {
+                var active = btns[i].getAttribute('data-theme-id') === cur;
+                btns[i].classList.toggle('active', active);
+                btns[i].setAttribute('aria-pressed', String(active));
+            }
+        }
+        syncThemeButtons();
 
         gear.addEventListener('click', function (e) {
             e.stopPropagation();
@@ -146,7 +213,7 @@
             }
         });
 
-        // внешние смены флага (из ui-effects и т.п.) синхронизируют тумблеры
+        // внешние смены флага (из ui-effects и т.п.) синхронизируют тумблеры и тему
         document.addEventListener('site-settings:change', function () {
             var switches = panel.querySelectorAll('.settings-switch');
             for (var i = 0; i < switches.length; i++) {
@@ -155,6 +222,7 @@
                 sw.setAttribute('aria-checked', String(on));
                 sw.classList.toggle('off', !on);
             }
+            syncThemeButtons();
         });
     }
 
