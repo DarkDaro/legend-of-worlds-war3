@@ -248,9 +248,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function pctColor(pct) {
-        if (pct >= 90) return '#ffd43b';
-        if (pct >= 70) return '#ffa500';
-        if (pct <= 20) return '#ff6b6b';
+        if (pct >= 90) return 'var(--gold-bright)';
+        if (pct >= 70) return 'var(--warning)';
+        if (pct <= 20) return 'var(--danger-soft)';
         return 'var(--accent-cyan)';
     }
 

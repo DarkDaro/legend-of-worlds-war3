@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   var ATTR_LABELS = {
-    strength: { label: 'Сила', color: '#e74c3c', icon: 'fas fa-fist-raised' },
-    agility: { label: 'Ловкость', color: '#2ecc71', icon: 'fas fa-feather-alt' },
-    intelligence: { label: 'Разум', color: '#3498db', icon: 'fas fa-hat-wizard' }
+    strength: { label: 'Сила', color: 'var(--danger)', icon: 'fas fa-fist-raised' },
+    agility: { label: 'Ловкость', color: 'var(--agility)', icon: 'fas fa-feather-alt' },
+    intelligence: { label: 'Разум', color: 'var(--info-blue)', icon: 'fas fa-hat-wizard' }
   };
 
   // ── Круговая диаграмма (SVG) ──
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       var d = 'M ' + cx + ' ' + cy + ' L ' + x1 + ' ' + y1 + ' A ' + r + ' ' + r + ' 0 ' + largeArc + ' 1 ' + x2 + ' ' + y2 + ' Z';
 
-      slices.push('<path d="' + d + '" fill="' + ATTR_LABELS[attr].color + '" opacity="0.85"><title>' + ATTR_LABELS[attr].label + ': ' + count + '</title></path>');
+      slices.push('<path d="' + d + '" style="fill:' + ATTR_LABELS[attr].color + '" opacity="0.85"><title>' + ATTR_LABELS[attr].label + ': ' + count + '</title></path>');
 
       startAngle = endAngle;
     });
@@ -85,8 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
       initiator: 'Инициатор', controller: 'Контролёр', healer: 'Целитель', support: 'Помощник'
     };
     var ROLE_COLORS = {
-      tank: '#3498db', bruiser: '#e67e22', damager: '#e74c3c', assassin: '#9b59b6',
-      initiator: '#f1c40f', controller: '#1abc9c', healer: '#2ecc71', support: '#95a5a6'
+      tank: 'var(--info-blue)', bruiser: 'var(--warning)', damager: 'var(--danger)', assassin: 'var(--magic)',
+      initiator: 'var(--amber)', controller: 'var(--spring)', healer: 'var(--success)', support: 'var(--text-muted)'
     };
 
     var sortedRoles = Object.entries(roleCounts).sort(function(a, b) { return b[1] - a[1]; });
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
     sortedRoles.forEach(function(pair) {
       var key = pair[0], count = pair[1];
       var name = ROLE_NAMES[key] || key;
-      var color = ROLE_COLORS[key] || '#999';
+      var color = ROLE_COLORS[key] || 'var(--text-muted)';
       html += '<div class="mc-role-chip" style="border-color:' + color + '; color:' + color + '">' +
         name + ' <strong>' + count + '</strong></div>';
     });
