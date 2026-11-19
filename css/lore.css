@@ -21,7 +21,7 @@
     top: 0;
     bottom: 0;
     width: 4px;
-    background: linear-gradient(180deg, transparent, #55ffff, transparent);
+    background: linear-gradient(180deg, transparent, rgb(var(--cyan-rgb)), transparent);
     background-size: 100% 200%;
     animation: loreBorderShimmer 3s ease-in-out infinite;
     border-radius: 2px;

@@ -71,7 +71,7 @@
 }
 @keyframes logoBorderPulse {
     0%, 100% { border-color: var(--accent-cyan); box-shadow: 0 0 30px rgba(var(--cyan-rgb), 0.35), 0 0 60px rgba(var(--cyan-rgb), 0.2); }
-    50% { border-color: #55ffff; box-shadow: 0 0 40px rgba(var(--cyan-rgb), 0.6), 0 0 80px rgba(var(--cyan-rgb), 0.2); }
+    50% { border-color: rgb(var(--cyan-rgb)); box-shadow: 0 0 40px rgba(var(--cyan-rgb), 0.6), 0 0 80px rgba(var(--cyan-rgb), 0.2); }
 }
 .hero-banner-title {
     font-size: 3.5rem;
@@ -259,7 +259,7 @@
     border-color: rgba(var(--cyan-rgb), 0.6);
 }
 .quick-link-card:hover .quick-link-icon i {
-    color: #55ffff;
+    color: var(--accent-cyan);
 }
 @keyframes qlIconPop {
     0%   { transform: scale(1); }

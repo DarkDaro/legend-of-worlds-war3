@@ -38,7 +38,7 @@
 }
 .info-list li:hover i {
     animation: infoListIconPop 0.3s ease-out;
-    color: #55ffff;
+    color: var(--accent-cyan);
 }
 .info-list li i {
     color: var(--accent-cyan);
@@ -79,7 +79,7 @@
     animation: infoStatBounce 0.35s ease-out;
 }
 .info-stat-card:hover .info-stat-value {
-    color: #55ffff;
+    color: var(--accent-cyan);
     text-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.2);
 }
 @keyframes infoStatBounce {
@@ -195,7 +195,7 @@
 }
 .info-author-card:hover .author-avatar {
     box-shadow: 0 0 20px rgba(var(--cyan-rgb), 0.35);
-    border-color: #55ffff;
+    border-color: var(--accent-cyan);
 }
 .info-author-card:hover .author-avatar i {
     animation: crownFloat 1.5s ease-in-out infinite;
@@ -263,7 +263,7 @@
 }
 .info-link-card:hover i {
     transform: translateX(3px);
-    color: #55ffff;
+    color: var(--accent-cyan);
     text-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.6);
 }
 .info-link-card::after {
@@ -523,7 +523,7 @@
 .mc-table .mc-new { color: #4ecdc4; }
 .mc-tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; margin-left: 6px; }
 .mc-tag-balance { background: rgba(var(--gold-rgb), 0.12); border: 1px solid rgba(var(--gold-rgb), 0.35); color: var(--gold); }
-.mc-tag-rework { background: rgba(0,200,255,0.1); border: 1px solid rgba(0,200,255,0.3); color: #00c8ff; }
+.mc-tag-rework { background: rgba(var(--cyan-rgb), 0.1); border: 1px solid rgba(var(--cyan-rgb), 0.3); color: var(--accent-cyan); }
 .mc-tag-fix { background: rgba(100,255,100,0.1); border: 1px solid rgba(100,255,100,0.3); color: #64ff64; }
 .mc-note { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; padding-left: 10px; border-left: 2px solid var(--surface-border); }
 .mc-pie-wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
