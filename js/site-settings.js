@@ -5,7 +5,8 @@
  * Флаги лежат в localStorage (ключ site-settings-v1), хранятся только
  * выключенные — дефолт «всё включено». Флаги ставятся атрибутами на <html>:
  *   data-anim="on|off", data-glass="on|off", data-fx="on|off", data-sound="on|off".
- * Тема — строка: SiteSettings.get('theme') даёт '' (по странице), 'neon' или 'ashenvale';
+ * Тема — строка: SiteSettings.get('theme') даёт '' (по странице), 'neon',
+ * 'ashenvale' или 'dark';
  * пустое значение оставляет разметку в покое — так прототип «Ашенваля» живёт
  * на lore.html и index.html через атрибут в HTML, а явный выбор перекрывает
  * разметку на всех страницах. meta theme-color следует за темой (TD-7).
@@ -42,8 +43,8 @@
     var PAGE_THEME = document.documentElement.getAttribute('data-theme');
     var MARKUP_TC = (document.querySelector('meta[name="theme-color"]') || {}).content || null;
 
-    // фон темы для meta theme-color (TD-7): неон и «Ашенваль»
-    var THEME_COLORS = { neon: '#0b0e14', ashenvale: '#09100c' };
+    // фон темы для meta theme-color (TD-7): неон, «Ашенваль», «Тёмная»
+    var THEME_COLORS = { neon: '#0b0e14', ashenvale: '#09100c', dark: '#0d0d0f' };
 
     function apply(f) {
         var h = document.documentElement;
@@ -54,6 +55,7 @@
         // тема: пусто — возврат к дефолту разметки, явный выбор перекрывает
         // разметку на всех страницах
         if (f.theme === 'ashenvale') h.setAttribute('data-theme', 'ashenvale');
+        else if (f.theme === 'dark') h.setAttribute('data-theme', 'dark');
         else if (f.theme === 'neon') h.removeAttribute('data-theme');
         else if (PAGE_THEME) h.setAttribute('data-theme', PAGE_THEME);
         else h.removeAttribute('data-theme');
@@ -99,7 +101,8 @@
     var THEMES = [
         ['', 'По странице'],
         ['neon', 'Неон'],
-        ['ashenvale', 'Ашенваль']
+        ['ashenvale', 'Ашенваль'],
+        ['dark', 'Тёмная']
     ];
 
     function buildPanel() {

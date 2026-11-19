@@ -158,6 +158,41 @@ html[data-theme="ashenvale"] {
     --surface-tag-active: rgba(var(--cyan-rgb), 0.15);
 }
 
+/* Тема «Тёмная» (чанк 6 §10, 19.11): нейтральный графит вместо синего космоса.
+   Глубина взята как у неона, тон окружения обесцвечен до графита; акцент —
+   приглушённый циан-тил, чтобы свечение не спорило с ровным фоном. Статусные
+   семейства §5, геометрия и HTML не трогаются; текстовая шкала общесайтовая,
+   как в «Ашенвале». */
+html[data-theme="dark"] {
+    color-scheme: dark;
+
+    /* примитив акцента: приглушённый циан; свечение, альфа-ступени,
+       рамки поверхностей и шиммер следуют за одним триплетом */
+    --cyan-rgb: 0, 210, 235;
+
+    /* окружение: нейтральный графит той же глубины, что у неона (DESIGN.md §6) */
+    --bg-rgb: 13, 13, 15;
+    --bg-deep-rgb: 7, 7, 9;
+    --bg-glow-rgb: 25, 25, 29;
+    --container-rgb: 16, 16, 20;
+    --panel-rgb: 22, 22, 27;
+    --surface-rgb: 18, 18, 23;
+    --backdrop-rgb: 16, 16, 21;
+    --steel-rgb: 50, 50, 58;
+    --steel-deep-rgb: 32, 32, 39;
+    --steel-blue-rgb: 46, 52, 62;
+    --panel-raised-rgb: 30, 30, 37;
+    --abyss-rgb: 9, 9, 12;
+
+    /* тонкие поверхности: в неоне оттенок 0,255,255 живёт вне --cyan-rgb (TD-2),
+       теме приходится перекрашивать их явно, альфы те же */
+    --surface-subtle: rgba(var(--cyan-rgb), 0.04);
+    --surface-subtle-hover: rgba(var(--cyan-rgb), 0.08);
+    --surface-tag-bg: rgba(var(--cyan-rgb), 0.06);
+    --surface-tag-border: rgba(var(--cyan-rgb), 0.15);
+    --surface-tag-active: rgba(var(--cyan-rgb), 0.15);
+}
+
 * {
     margin: 0;
     padding: 0;
