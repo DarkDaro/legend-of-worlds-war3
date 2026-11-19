@@ -30,7 +30,7 @@
             color: var(--accent-cyan);
             line-height: 1;
             margin-bottom: 8px;
-            text-shadow: 0 0 30px #00e6ff44;
+            text-shadow: 0 0 30px rgba(var(--cyan-rgb), 0.2667);
         }
         .not-found-title {
             font-size: 1.4rem;
@@ -63,12 +63,12 @@
             transition: border-color 0.2s, color 0.2s;
         }
         .not-found-links a:hover {
-            border-color: #00e6ff;
+            border-color: var(--accent-cyan);
             color: var(--accent-cyan);
         }
         .not-found-links a.primary {
             background: linear-gradient(135deg, #0a1a2a, #0f2535);
-            border-color: #00e6ff44;
+            border-color: rgba(var(--cyan-rgb), 0.2667);
             color: var(--accent-cyan);
         }
         @media (max-width: 500px) {
