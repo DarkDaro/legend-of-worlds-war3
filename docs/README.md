@@ -23,6 +23,7 @@
 | [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md) | Собранная карта системы: слои токенов, темы, стекло, настройки, проверки |
 | [themes/](themes/README.md) | Метфайл каждой цветовой темы: значения, подключение, проверки |
 | [TECH-DEBT.md](TECH-DEBT.md) | Реестр техдолга: что копится, чем мешает, цена закрытия каждой записи |
+| [IMPROVEMENTS-PLAN.md](IMPROVEMENTS-PLAN.md) | План доработок и закрытия проблем: чанки P1–P11 и F1–F7, порядок старта и точки решений |
 | [CSS-INVENTORY.md](CSS-INVENTORY.md) | Сырой инвентарь дизайн-значений CSS: 530 цветов, токены, blur, радиусы; генерится scripts/design-tokens.mjs |
 | [JS-MAP.md](JS-MAP.md) / [JS-META.md](JS-META.md) | Карта скриптов и их внутреннее устройство |
 | [CSS-AUDIT.md](CSS-AUDIT.md) / [HARDCODE-AUDIT.md](HARDCODE-AUDIT.md) | Аудиты стилей: снимок состояния с датой |
