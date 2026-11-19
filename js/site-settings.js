@@ -5,8 +5,8 @@
  * Флаги лежат в localStorage (ключ site-settings-v1), хранятся только
  * выключенные — дефолт «всё включено». Флаги ставятся атрибутами на <html>:
  *   data-anim="on|off", data-glass="on|off", data-fx="on|off", data-sound="on|off".
- * Тема — строка: SiteSettings.get('theme') даёт '' (по странице), 'neon',
- * 'ashenvale' или 'dark';
+ * Тема — строка: SiteSettings.get('theme') даёт '' (по странице) или id темы
+ * из THEMES ниже ('neon', 'ashenvale', 'dark', 'contrast', 'astral');
  * пустое значение оставляет разметку в покое — так прототип «Ашенваля» живёт
  * на lore.html и index.html через атрибут в HTML, а явный выбор перекрывает
  * разметку на всех страницах. meta theme-color следует за темой (TD-7).
@@ -45,8 +45,9 @@
     var PAGE_THEME = document.documentElement.getAttribute('data-theme');
     var MARKUP_TC = (document.querySelector('meta[name="theme-color"]') || {}).content || null;
 
-    // фон темы для meta theme-color (TD-7): неон, «Ашенваль», «Тёмная», «Высокий контраст»
-    var THEME_COLORS = { neon: '#0b0e14', ashenvale: '#09100c', dark: '#0d0d0f', contrast: '#040406' };
+    // фон темы для meta theme-color (TD-7): неон, «Ашенваль», «Тёмная»,
+    // «Высокий контраст», «Астральная»
+    var THEME_COLORS = { neon: '#0b0e14', ashenvale: '#09100c', dark: '#0d0d0f', contrast: '#040406', astral: '#0d0a14' };
 
     function apply(f) {
         var h = document.documentElement;
@@ -61,6 +62,7 @@
         if (f.theme === 'ashenvale') h.setAttribute('data-theme', 'ashenvale');
         else if (f.theme === 'dark') h.setAttribute('data-theme', 'dark');
         else if (f.theme === 'contrast') h.setAttribute('data-theme', 'contrast');
+        else if (f.theme === 'astral') h.setAttribute('data-theme', 'astral');
         else if (f.theme === 'neon') h.removeAttribute('data-theme');
         else if (PAGE_THEME) h.setAttribute('data-theme', PAGE_THEME);
         else h.removeAttribute('data-theme');
@@ -110,7 +112,8 @@
         ['neon', 'Неон'],
         ['ashenvale', 'Ашенваль'],
         ['dark', 'Тёмная'],
-        ['contrast', 'Высокий контраст']
+        ['contrast', 'Высокий контраст'],
+        ['astral', 'Астральная']
     ];
 
     function buildPanel() {
