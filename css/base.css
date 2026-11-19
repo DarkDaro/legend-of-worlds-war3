@@ -106,8 +106,16 @@
     --neon-glow: 0 0 20px rgba(var(--cyan-rgb), 0.2), 0 0 60px rgba(var(--cyan-rgb), 0.08);
     --neon-glow-strong: 0 0 20px rgba(var(--cyan-rgb), 0.35), 0 0 60px rgba(var(--cyan-rgb), 0.12), inset 0 0 15px rgba(var(--cyan-rgb), 0.04);
 
-    /* Алиасы старых имён на переход: в HTML живёт var(--glass-*) (404.html), закрыть после выноса инлайна (TECH-DEBT TD-4) */
-    --glass-bg: var(--surface-bg);
+    /* === ОТКЛЮЧЕНО 19.11 (чанк P10, TD-4) — мёртвый CSS, НЕ УДАЛЯТЬ (правило 2.13) ===
+       Что отключено: алиасы старых имён --glass-* на --surface-* (10 определений).
+       Чем доказано: grep var(--glass- по живым файлам — ноль в 116 HTML и во всех
+       js после выноса в тот же чанк инлайна 404.html и блока избранного
+       items-db.js; остаются только repo-archive, исторические генераторы scripts/
+       и docs. Проба scripts/tmp/p404-probe.mjs — computed 404 и кнопки избранного
+       в неоне байт в байт, theme-check зелёный.
+       Как откатить: раскомментировать блок ниже — потребители вернутся на старые
+       имена, --surface-* не трогается. */
+    /* --glass-bg: var(--surface-bg);
     --glass-bg-hover: var(--surface-bg-hover);
     --glass-blur: var(--surface-blur);
     --glass-border: var(--surface-border);
@@ -116,7 +124,7 @@
     --glass-subtle-hover: var(--surface-subtle-hover);
     --glass-tag-bg: var(--surface-tag-bg);
     --glass-tag-border: var(--surface-tag-border);
-    --glass-tag-active: var(--surface-tag-active);
+    --glass-tag-active: var(--surface-tag-active); */
 }
 
 /* === Темы (DESIGN.md §11): html[data-theme="имя"] переопределяет только значения токенов,
