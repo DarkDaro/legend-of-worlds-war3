@@ -11,6 +11,7 @@
  * 6) тёмная тема: выбор на items, персистентность, перекрытие разметки ашенваля на index;
  * 7) высокий контраст: выбор на items, персистентность, перекрытие разметки, theme-color;
  * 7b) астральная: выбор на items, персистентность, перекрытие разметки, theme-color;
+ * 7c) зимняя морозная: выбор на items, персистентность, перекрытие разметки, theme-color;
  * 8) стекломорфизм: вкл/выкл на items (фон 0.92, blur 0, шапка none), мобильный авто-режим;
  * 9) примерные настройки: яркий текст (#e0f0ff → #ffffff) и фон главной (картинка убирается);
  * 10) все темы по списку на heroes: акцент, theme-color, скролл, возврат неона;
@@ -149,10 +150,10 @@ if (gearMobile) {
     await page.waitForTimeout(200);
     themeMobile = await page.evaluate(() => {
         const p = document.getElementById('site-settings-root');
-        return p && !p.hidden && p.querySelectorAll('.settings-theme-btn').length === 6;
+        return p && !p.hidden && p.querySelectorAll('.settings-theme-btn').length === 7;
     });
 }
-ok(themeMobile, 'мобильный 390: панель с шестью пилюлями темы открылась из бургера');
+ok(themeMobile, 'мобильный 390: панель с семью пилюлями темы открылась из бургера');
 s = await snap();
 ok(s.overflow <= 0, 'мобильный 390: горизонтального скролла нет', String(s.overflow));
 await page.screenshot({ path: path.join(OUTDIR, 'panel-theme-mobile-390.png') });
@@ -238,6 +239,33 @@ ok(s.theme === 'astral' && s.overflow <= 0, 'index 390 астральная: в�
 await page.screenshot({ path: path.join(OUTDIR, 'index-astral-390.png') });
 await page.evaluate(() => localStorage.clear());
 
+// 8e. зимняя морозная: выбор на items, персистентность, перекрытие разметки, скрины
+await page.setViewportSize({ width: 1280, height: 900 });
+await page.goto('http://localhost:8141/items.html', { waitUntil: 'load', timeout: 15000 });
+await page.waitForTimeout(300);
+await page.click('.settings-btn');
+await page.waitForTimeout(200);
+const pillWinter = await page.$('.settings-theme-btn[data-theme-id="winter"]');
+ok(!!pillWinter, 'панель: пилюля «Зимняя морозная» есть');
+await pillWinter.click();
+await page.waitForTimeout(200);
+s = await snap();
+ok(s.theme === 'winter' && s.accent === 'rgb(175, 220, 255)' && s.bg === 'rgb(14, 18, 24)' && s.tc === '#0e1218', 'items: зимняя включена выбором, фон ледяной, theme-color темы', s.accent + ' | ' + s.bg + ' | ' + s.tc);
+ok(s.overflow <= 0, 'items 1280 зимняя: горизонтального скролла нет', String(s.overflow));
+await page.screenshot({ path: path.join(OUTDIR, 'items-winter-1280.png') });
+await page.reload({ waitUntil: 'load' });
+await page.waitForTimeout(300);
+s = await snap();
+ok(s.theme === 'winter' && s.accent === 'rgb(175, 220, 255)', 'перезагрузка держит зимнюю', s.accent);
+// мобильный 390: главная в зимней поверх разметки ашенваля — выбор перекрывает
+await page.setViewportSize({ width: 390, height: 844 });
+await page.goto('http://localhost:8141/index.html', { waitUntil: 'load', timeout: 15000 });
+await page.waitForTimeout(300);
+s = await snap();
+ok(s.theme === 'winter' && s.overflow <= 0, 'index 390 зимняя: выбор перекрыл ашенваль разметки, скролла нет', String(s.overflow));
+await page.screenshot({ path: path.join(OUTDIR, 'index-winter-390.png') });
+await page.evaluate(() => localStorage.clear());
+
 // 9. стекломорфизм: включён, выключен, мобильный авто-режим
 await page.setViewportSize({ width: 1280, height: 900 });
 await page.goto('http://localhost:8141/items.html', { waitUntil: 'load', timeout: 15000 });
@@ -308,7 +336,8 @@ const THEME_LIST = [
     ['ashenvale', 'rgb(128, 255, 178)', '#09100c'],
     ['dark', 'rgb(0, 210, 235)', '#0d0d0f'],
     ['contrast', 'rgb(0, 255, 255)', '#040406'],
-    ['astral', 'rgb(178, 102, 255)', '#0d0a14']
+    ['astral', 'rgb(178, 102, 255)', '#0d0a14'],
+    ['winter', 'rgb(175, 220, 255)', '#0e1218']
 ];
 for (const [id, accent, tc] of THEME_LIST) {
     await page.evaluate(t => window.SiteSettings.set('theme', t), id);
