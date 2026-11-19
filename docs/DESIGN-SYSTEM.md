@@ -27,8 +27,9 @@ PROJECT-META.md и SESSIONS.md. Этот файл — навигация и те
 - Альфа-ступени поверх примитивов: 0.04 / 0.08 / 0.12 / 0.2 / 0.35 / 0.6 / 0.9.
 - Темы: [neon](themes/neon.md) (дефолт), [ashenvale](themes/ashenvale.md),
   [dark](themes/dark.md), [contrast](themes/contrast.md),
-  [astral](themes/astral.md). Дорожная карта §11: дальше зимняя морозная;
-  TD-15 (нейтральные белый/чёрный) — вне карты, решается с владельцем.
+  [astral](themes/astral.md), [winter](themes/winter.md). Дорожная карта
+  палитр закрыта — все темы конвейера заведены; TD-15 (нейтральные
+  белый/чёрный) — вне карты, решается с владельцем.
 
 ## Стекломорфизм (css/glass.css)
 
@@ -60,7 +61,7 @@ PROJECT-META.md и SESSIONS.md. Этот файл — навигация и те
 | data-fx="off" | Тяжёлые эффекты | орб и свечение курсора убраны, text-shadow none |
 | data-text="on" | Яркий текст | шкала §7 светлеет на ступень (примерная, e1b623f) |
 | data-decor="off" | Фон главной | картинка арены убрана, раскладка не сдвигается (примерная) |
-| data-theme | Тема | ashenvale / dark / contrast / astral, «По странице» возвращает разметку |
+| data-theme | Тема | ashenvale / dark / contrast / astral / winter, «По странице» возвращает разметку |
 
 theme-color на 117 страницах следует за темой через карту THEME_COLORS.
 
@@ -72,7 +73,7 @@ theme-color на 117 страницах следует за темой чере�
 
 ## Проверки
 
-- scripts/tmp/theme-check.mjs — 41 пункт: разметка, пилюли, персистентность,
+- scripts/tmp/theme-check.mjs — 46 пунктов: разметка, пилюли, персистентность,
   стекло (вкл/выкл/мобильный авто), примерные настройки, все темы на heroes,
   консоль. Трекается в репо.
 - scripts/tmp/settings-check.mjs — 14 проверок панели.
