@@ -27,7 +27,7 @@ EXCLUDE_DIRS = {".git", "archive", "repo-archive", "docs", "scripts", "vendor"}
 EXCLUDE_FILES = {"site-validator.html"}
 
 HEADER = (
-    "/* Единый сбор стилей сайта: конкатенация 14 файлов по порядку\n"
+    "/* Единый сбор стилей сайта: конкатенация 15 файлов по порядку\n"
     "   @import из style.css. Генератор: scripts/build-css-bundle.py.\n"
     "   После правки любого css/*.css — перезапустить генератор. */\n\n"
 )

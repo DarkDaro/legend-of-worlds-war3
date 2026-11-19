@@ -1,4 +1,4 @@
-/* Единый сбор стилей сайта: конкатенация 14 файлов по порядку
+/* Единый сбор стилей сайта: конкатенация 15 файлов по порядку
    @import из style.css. Генератор: scripts/build-css-bundle.py.
    После правки любого css/*.css — перезапустить генератор. */
 
@@ -33,22 +33,8 @@
     --abyss-rgb: 10, 16, 32;
     --info-rgb: 85, 170, 255;
 
-    /* Поверхности (стекломорфизм): тема перекрашивает материал этими же именами (DESIGN.md §4) */
-    --surface-bg: rgba(var(--surface-rgb), 0.5);
-    --surface-bg-hover: rgba(var(--surface-rgb), 0.65);
-    --surface-solid: rgb(var(--surface-rgb));
-    --surface-blur: 12px;
-    /* Вторая ступень стекломорфизма (чанк 5): контейнеры, шапки, мелкие поверхности;
-       6px и 4px влиты сюда, 16px — на сильную ступень. Шкала из двух значений (TD-8) */
-    --surface-blur-soft: 8px;
-    --surface-border: rgba(var(--cyan-rgb), 0.12);
-    --surface-border-hover: rgba(var(--cyan-rgb), 0.35);
-    /* Тонкие фоны для подзаголовков, кнопок, тегов; оттенок 0,255,255 пока отдельный примитив (TECH-DEBT TD-2) */
-    --surface-subtle: rgba(0, 255, 255, 0.04);
-    --surface-subtle-hover: rgba(0, 255, 255, 0.08);
-    --surface-tag-bg: rgba(0, 255, 255, 0.06);
-    --surface-tag-border: rgba(0, 255, 255, 0.15);
-    --surface-tag-active: rgba(0, 255, 255, 0.15);
+    /* Поверхности (стекломорфизм) — в css/glass.css: материал вынесен 19.11
+       по решению владельца (DESIGN.md §11, вопрос 1), имена --surface-* общие */
 
     /* Текстовые цвета: шкала от яркого к глухому; --text-ink это чернила на ярких
        поверхностях, следует за --bg-rgb (DESIGN.md §7) */
@@ -249,7 +235,8 @@ h1 {
    Флаги пользователя ставятся атрибутами на <html>: data-anim, data-glass,
    data-fx, data-sound (звук — только флаг, css его не читает). Дефолт «on»
    ни на один байт рендера не влияет: все блоки ниже срабатывают только
-   при явном «off». */
+   при явном «off». Правило data-glass живёт в css/glass.css — рядом с
+   материалом стекла, который оно глушит. */
 
 /* анимации выключены: пульсации, переходы, плавный скролл */
 html[data-anim="off"] *,
@@ -258,19 +245,6 @@ html[data-anim="off"] *::after {
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
-}
-
-/* стекломорфизм выключен: размытий нет, стекло становится почти глухим
-   ради читаемости текста на фоне */
-html[data-glass="off"] {
-    --surface-bg: rgba(var(--surface-rgb), 0.92);
-    --surface-bg-hover: rgba(var(--surface-rgb), 0.96);
-    --surface-blur: 0px;
-    --surface-blur-soft: 0px;
-}
-html[data-glass="off"] * {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
 }
 
 /* тяжёлые эффекты выключены: декоративный орб и свечение курсора убираются
@@ -405,6 +379,49 @@ html[data-fx="off"] * {
         justify-content: center;
         font-size: 1.05rem;
     }
+}
+
+/* === css/glass.css === */
+
+/* === Стекломорфизм: материал поверхностей (css/glass.css) ===
+   Вынесен из base.css 19.11 по решению владельца (DESIGN.md §11, вопрос 1):
+   материал стекла — в одном файле, темы перекрашивают его из блока тем в
+   base.css (html[data-theme]), компоненты читают var() как раньше.
+   В бандле файл идёт сразу после base.css, до всех компонентов; компоненты
+   читают имена через var(), поэтому их файлы не менялись.
+   Переключатель «Стекломорфизм» в панели настроек ставит data-glass="off"
+   на <html> (js/site-settings.js). */
+
+:root {
+    /* Поверхности (стекломорфизм): тема перекрашивает материал этими же именами (DESIGN.md §4) */
+    --surface-bg: rgba(var(--surface-rgb), 0.5);
+    --surface-bg-hover: rgba(var(--surface-rgb), 0.65);
+    --surface-solid: rgb(var(--surface-rgb));
+    --surface-blur: 12px;
+    /* Вторая ступень стекломорфизма (чанк 5): контейнеры, шапки, мелкие поверхности;
+       6px и 4px влиты сюда, 16px — на сильную ступень. Шкала из двух значений (TD-8) */
+    --surface-blur-soft: 8px;
+    --surface-border: rgba(var(--cyan-rgb), 0.12);
+    --surface-border-hover: rgba(var(--cyan-rgb), 0.35);
+    /* Тонкие фоны для подзаголовков, кнопок, тегов; оттенок 0,255,255 пока отдельный примитив (TECH-DEBT TD-2) */
+    --surface-subtle: rgba(0, 255, 255, 0.04);
+    --surface-subtle-hover: rgba(0, 255, 255, 0.08);
+    --surface-tag-bg: rgba(0, 255, 255, 0.06);
+    --surface-tag-border: rgba(0, 255, 255, 0.15);
+    --surface-tag-active: rgba(0, 255, 255, 0.15);
+}
+
+/* стекломорфизм выключен: размытий нет, стекло становится почти глухим
+   ради читаемости текста на фоне */
+html[data-glass="off"] {
+    --surface-bg: rgba(var(--surface-rgb), 0.92);
+    --surface-bg-hover: rgba(var(--surface-rgb), 0.96);
+    --surface-blur: 0px;
+    --surface-blur-soft: 0px;
+}
+html[data-glass="off"] * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
 }
 
 /* === css/hero-grid.css === */

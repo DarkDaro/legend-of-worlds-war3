@@ -9,6 +9,7 @@
 | Файл | Размер | Страница | Зона ответственности |
 |------|--------|----------|----------------------|
 | `base.css` | 2.4 KB | Все | `.wiki-container`, ресеты, переменные, body |
+| `glass.css` | 1.6 KB | Все | Стекломорфизм: токены `--surface-*` и переключатель `data-glass="off"` |
 | `hero-grid.css` | 6.2 KB | heroes.html | Фильтры, сетка героев, карточки героев, бейджи атрибутов |
 | `hero-page.css` | 15.4 KB | heroes.html (детали) | Страница героя: навигация, иконка, статы, способности, билды, советы |
 | `hero-mobile.css` | 3.5 KB | heroes.html | Мобайл-оверрайды для страницы героя |
@@ -69,19 +70,20 @@
 ## Порядок загрузки (style.css)
 ```
 1. base.css
-2. hero-grid.css
-3. hero-page.css
-4. hero-mobile.css
-5. lore.css
-6. mechanics.css
-7. monsters.css
-8. home.css
-9. info.css
-10. header-mobile.css
-11. items.css        ← бейджи здесь
-12. effects.css
-13. calc.css
-14. search.css
+2. glass.css       ← материал стекла: --surface-*, data-glass="off"
+3. hero-grid.css
+4. hero-page.css
+5. hero-mobile.css
+6. lore.css
+7. mechanics.css
+8. monsters.css
+9. home.css
+10. info.css
+11. header-mobile.css
+12. items.css      ← бейджи здесь
+13. effects.css
+14. calc.css
+15. search.css
 ```
 Позже = выше приоритет при одинаковой специфичности.
 
