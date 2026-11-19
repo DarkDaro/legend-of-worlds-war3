@@ -9,7 +9,8 @@
  * 4) персистентность: перезагрузка держит выбор, «По странице» возвращает разметку;
  * 5) мобильный 390: панель с темой из бургера, скролла нет;
  * 6) тёмная тема: выбор на items, персистентность, перекрытие разметки ашенваля на index;
- * 7) скрины в /tmp/render-theme/.
+ * 7) высокий контраст: выбор на items, персистентность, перекрытие разметки, theme-color;
+ * 8) скрины в /tmp/render-theme/.
  * Ошибки консоли: внешние https-ресурсы в песочнице дают ERR_CERT_* — не считаются.
  * Запуск из корня: node scripts/tmp/theme-check.mjs
  */
@@ -144,10 +145,10 @@ if (gearMobile) {
     await page.waitForTimeout(200);
     themeMobile = await page.evaluate(() => {
         const p = document.getElementById('site-settings-root');
-        return p && !p.hidden && p.querySelectorAll('.settings-theme-btn').length === 4;
+        return p && !p.hidden && p.querySelectorAll('.settings-theme-btn').length === 5;
     });
 }
-ok(themeMobile, 'мобильный 390: панель с четырьмя пилюлями темы открылась из бургера');
+ok(themeMobile, 'мобильный 390: панель с пятью пилюлями темы открылась из бургера');
 s = await snap();
 ok(s.overflow <= 0, 'мобильный 390: горизонтального скролла нет', String(s.overflow));
 await page.screenshot({ path: path.join(OUTDIR, 'panel-theme-mobile-390.png') });
@@ -177,6 +178,33 @@ await page.waitForTimeout(300);
 s = await snap();
 ok(s.theme === 'dark' && s.overflow <= 0, 'index 390 тёмная: выбор перекрыл ашенваль разметки, скролла нет', String(s.overflow));
 await page.screenshot({ path: path.join(OUTDIR, 'index-dark-390.png') });
+await page.evaluate(() => localStorage.clear());
+
+// 8c. высокий контраст: выбор на items, персистентность, перекрытие разметки, скрины
+await page.setViewportSize({ width: 1280, height: 900 });
+await page.goto('http://localhost:8141/items.html', { waitUntil: 'load', timeout: 15000 });
+await page.waitForTimeout(300);
+await page.click('.settings-btn');
+await page.waitForTimeout(200);
+const pillContrast = await page.$('.settings-theme-btn[data-theme-id="contrast"]');
+ok(!!pillContrast, 'панель: пилюля «Высокий контраст» есть');
+await pillContrast.click();
+await page.waitForTimeout(200);
+s = await snap();
+ok(s.theme === 'contrast' && s.accent === 'rgb(0, 255, 255)' && s.bg === 'rgb(4, 4, 6)' && s.tc === '#040406', 'items: высокий контраст включён выбором, фон почти чёрный, theme-color темы', s.accent + ' | ' + s.bg + ' | ' + s.tc);
+ok(s.overflow <= 0, 'items 1280 контраст: горизонтального скролла нет', String(s.overflow));
+await page.screenshot({ path: path.join(OUTDIR, 'items-contrast-1280.png') });
+await page.reload({ waitUntil: 'load' });
+await page.waitForTimeout(300);
+s = await snap();
+ok(s.theme === 'contrast' && s.accent === 'rgb(0, 255, 255)', 'перезагрузка держит высокий контраст', s.accent);
+// мобильный 390: главная в контрасте поверх разметки ашенваля — выбор перекрывает
+await page.setViewportSize({ width: 390, height: 844 });
+await page.goto('http://localhost:8141/index.html', { waitUntil: 'load', timeout: 15000 });
+await page.waitForTimeout(300);
+s = await snap();
+ok(s.theme === 'contrast' && s.overflow <= 0, 'index 390 контраст: выбор перекрыл ашенваль разметки, скролла нет', String(s.overflow));
+await page.screenshot({ path: path.join(OUTDIR, 'index-contrast-390.png') });
 await page.evaluate(() => localStorage.clear());
 
 // 9. консоль

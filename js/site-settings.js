@@ -43,8 +43,8 @@
     var PAGE_THEME = document.documentElement.getAttribute('data-theme');
     var MARKUP_TC = (document.querySelector('meta[name="theme-color"]') || {}).content || null;
 
-    // фон темы для meta theme-color (TD-7): неон, «Ашенваль», «Тёмная»
-    var THEME_COLORS = { neon: '#0b0e14', ashenvale: '#09100c', dark: '#0d0d0f' };
+    // фон темы для meta theme-color (TD-7): неон, «Ашенваль», «Тёмная», «Высокий контраст»
+    var THEME_COLORS = { neon: '#0b0e14', ashenvale: '#09100c', dark: '#0d0d0f', contrast: '#040406' };
 
     function apply(f) {
         var h = document.documentElement;
@@ -56,6 +56,7 @@
         // разметку на всех страницах
         if (f.theme === 'ashenvale') h.setAttribute('data-theme', 'ashenvale');
         else if (f.theme === 'dark') h.setAttribute('data-theme', 'dark');
+        else if (f.theme === 'contrast') h.setAttribute('data-theme', 'contrast');
         else if (f.theme === 'neon') h.removeAttribute('data-theme');
         else if (PAGE_THEME) h.setAttribute('data-theme', PAGE_THEME);
         else h.removeAttribute('data-theme');
@@ -102,7 +103,8 @@
         ['', 'По странице'],
         ['neon', 'Неон'],
         ['ashenvale', 'Ашенваль'],
-        ['dark', 'Тёмная']
+        ['dark', 'Тёмная'],
+        ['contrast', 'Высокий контраст']
     ];
 
     function buildPanel() {
