@@ -4,11 +4,12 @@
  * 1) прототип в разметке: index и lore открываются в ашенвале без JS-выбора
  *    (accent rgb(128,255,178), фон rgb(9,16,12), theme-color #09100c);
  * 2) неон не тронут: items без атрибута остаётся циановым;
- * 3) панель: пилюли Неон/Ашенваль/По странице перекрывают разметку на любой
+ * 3) панель: пилюли Неон/Ашенваль/Тёмная/По странице перекрывают разметку на любой
  *    странице, meta theme-color следует за выбором;
  * 4) персистентность: перезагрузка держит выбор, «По странице» возвращает разметку;
  * 5) мобильный 390: панель с темой из бургера, скролла нет;
- * 6) скрины в /tmp/render-theme/.
+ * 6) тёмная тема: выбор на items, персистентность, перекрытие разметки ашенваля на index;
+ * 7) скрины в /tmp/render-theme/.
  * Ошибки консоли: внешние https-ресурсы в песочнице дают ERR_CERT_* — не считаются.
  * Запуск из корня: node scripts/tmp/theme-check.mjs
  */
@@ -143,13 +144,40 @@ if (gearMobile) {
     await page.waitForTimeout(200);
     themeMobile = await page.evaluate(() => {
         const p = document.getElementById('site-settings-root');
-        return p && !p.hidden && p.querySelectorAll('.settings-theme-btn').length === 3;
+        return p && !p.hidden && p.querySelectorAll('.settings-theme-btn').length === 4;
     });
 }
-ok(themeMobile, 'мобильный 390: панель с тремя пилюлями темы открылась из бургера');
+ok(themeMobile, 'мобильный 390: панель с четырьмя пилюлями темы открылась из бургера');
 s = await snap();
 ok(s.overflow <= 0, 'мобильный 390: горизонтального скролла нет', String(s.overflow));
 await page.screenshot({ path: path.join(OUTDIR, 'panel-theme-mobile-390.png') });
+
+// 8b. тёмная тема: выбор на items, персистентность, скрины
+await page.setViewportSize({ width: 1280, height: 900 });
+await page.goto('http://localhost:8141/items.html', { waitUntil: 'load', timeout: 15000 });
+await page.waitForTimeout(300);
+await page.click('.settings-btn');
+await page.waitForTimeout(200);
+const pillDark = await page.$('.settings-theme-btn[data-theme-id="dark"]');
+ok(!!pillDark, 'панель: пилюля «Тёмная» есть');
+await pillDark.click();
+await page.waitForTimeout(200);
+s = await snap();
+ok(s.theme === 'dark' && s.accent === 'rgb(0, 210, 235)' && s.bg === 'rgb(13, 13, 15)' && s.tc === '#0d0d0f', 'items: тёмная включена выбором, фон графит, theme-color темы', s.accent + ' | ' + s.bg + ' | ' + s.tc);
+ok(s.overflow <= 0, 'items 1280 тёмная: горизонтального скролла нет', String(s.overflow));
+await page.screenshot({ path: path.join(OUTDIR, 'items-dark-1280.png') });
+await page.reload({ waitUntil: 'load' });
+await page.waitForTimeout(300);
+s = await snap();
+ok(s.theme === 'dark' && s.accent === 'rgb(0, 210, 235)', 'перезагрузка держит тёмную', s.accent);
+// мобильный 390: главная в тёмной поверх разметки ашенваля — выбор перекрывает
+await page.setViewportSize({ width: 390, height: 844 });
+await page.goto('http://localhost:8141/index.html', { waitUntil: 'load', timeout: 15000 });
+await page.waitForTimeout(300);
+s = await snap();
+ok(s.theme === 'dark' && s.overflow <= 0, 'index 390 тёмная: выбор перекрыл ашенваль разметки, скролла нет', String(s.overflow));
+await page.screenshot({ path: path.join(OUTDIR, 'index-dark-390.png') });
+await page.evaluate(() => localStorage.clear());
 
 // 9. консоль
 ok(consoleMsgs.length === 0, 'консоль чиста (без внешних сертификатов)', consoleMsgs.slice(0, 3).join(' | '));
