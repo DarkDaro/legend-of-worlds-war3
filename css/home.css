@@ -78,7 +78,7 @@
     font-weight: 800;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--text-primary);
     text-shadow: 0 0 30px rgba(var(--cyan-rgb), 0.6), 0 0 60px rgba(var(--cyan-rgb), 0.2), 0 0 100px rgba(var(--cyan-rgb), 0.12);
     margin-bottom: 12px;
     line-height: 1.1;
@@ -102,7 +102,7 @@
 }
 .hero-desc {
     font-size: 1.15rem;
-    color: #b0c4de;
+    color: var(--text-soft);
     line-height: 1.6;
     margin-bottom: 32px;
 }
@@ -203,7 +203,7 @@
 .stat-number {
     font-size: 2.2rem;
     font-weight: 800;
-    color: #fff;
+    color: var(--text-primary);
     text-shadow: 0 0 15px rgba(var(--cyan-rgb), 0.2);
     transition: transform 0.25s ease, text-shadow 0.25s ease;
 }
@@ -401,7 +401,7 @@
 }
 .cta-content h2 {
     font-size: 2rem;
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 12px;
     text-shadow: 0 0 20px rgba(var(--cyan-rgb), 0.2);
 }
@@ -506,7 +506,7 @@
     border-top: 1px solid var(--steel-deep);
 }
 .footer-bottom p {
-    color: #3a5070;
+    color: var(--text-dim);
     font-size: 0.8rem;
 }
 
@@ -570,7 +570,7 @@
 .lore-banner-title {
     font-size: 2rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--text-primary);
     text-shadow: 0 0 20px rgba(var(--cyan-rgb), 0.2);
     margin-bottom: 6px;
 }
