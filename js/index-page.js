@@ -17,6 +17,8 @@
             animated = true;
             // при data-anim="off" счётчик не трогается: в HTML уже стоит конечное число
             if (window.SiteSettings && !SiteSettings.get('anim')) return;
+            // при prefers-reduced-motion тоже: глобальное CSS-отключение и JS-динамика согласованы (TD-22)
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
             counters.forEach(el => {
                 const target = parseInt(el.dataset.target);
                 if (!Number.isFinite(target)) return;
