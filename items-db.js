@@ -1093,8 +1093,8 @@ function injectItemFavoritesStyles() {
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      border: 1px solid var(--glass-border);
-      background: var(--glass-bg);
+      border: 1px solid var(--surface-border);
+      background: var(--surface-bg);
       color: var(--text-muted);
       display: flex;
       align-items: center;

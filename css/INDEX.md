@@ -41,7 +41,7 @@
 | `--red/gold/violet/green/mint/…-rgb` | base.css `:root`, темы **не** перекрашивают | Статусные семейства контента (DESIGN §5) |
 | `--surface-bg/-solid/-blur/-border` | glass.css `:root`; `data-glass="off"` глушит blur и уплотняет фон | Стекломорфизм (DESIGN §4) |
 | `--surface-subtle/-subtle-hover/-tag-bg/-tag-border/-tag-active` | glass.css `:root`, читают `--subtle-rgb` | Тонкие фоны подзаголовков, кнопок, тегов; контраст — исключение с удвоенными альфами (base.css, блок темы) |
-| `--glass-bg/-blur/-border/…` | base.css `:root` — алиасы старых имён | Только 404.html инлайн; закрываются чанком P10 (TD-4) |
+| `--glass-*` (10 имён) | base.css — **отключены** по 2.13 (TD-4 закрыт 19.11) | Мёртвые имена: живые потребители (404.html, избранное в items-db.js) ушли на `--surface-*`; откат — раскомментировать блок в base.css |
 | `--text-primary … --text-dim` | base.css `:root`, панель настроек светлит | Текстовая шкала (DESIGN §7) |
 
 Новые темы: перекрасить `--cyan-rgb`, `--subtle-rgb`, окружение — точечно по precedent'у (DESIGN §11).
