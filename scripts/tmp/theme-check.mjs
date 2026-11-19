@@ -10,7 +10,10 @@
  * 5) мобильный 390: панель с темой из бургера, скролла нет;
  * 6) тёмная тема: выбор на items, персистентность, перекрытие разметки ашенваля на index;
  * 7) высокий контраст: выбор на items, персистентность, перекрытие разметки, theme-color;
- * 8) скрины в /tmp/render-theme/.
+ * 8) стекломорфизм: вкл/выкл на items (фон 0.92, blur 0, шапка none), мобильный авто-режим;
+ * 9) примерные настройки: яркий текст (#e0f0ff → #ffffff) и фон главной (картинка убирается);
+ * 10) все темы по списку на heroes: акцент, theme-color, скролл, возврат неона;
+ * 11) скрины в /tmp/render-theme/.
  * Ошибки консоли: внешние https-ресурсы в песочнице дают ERR_CERT_* — не считаются.
  * Запуск из корня: node scripts/tmp/theme-check.mjs
  */
@@ -207,7 +210,93 @@ ok(s.theme === 'contrast' && s.overflow <= 0, 'index 390 контраст: вы�
 await page.screenshot({ path: path.join(OUTDIR, 'index-contrast-390.png') });
 await page.evaluate(() => localStorage.clear());
 
-// 9. консоль
+// 9. стекломорфизм: включён, выключен, мобильный авто-режим
+await page.setViewportSize({ width: 1280, height: 900 });
+await page.goto('http://localhost:8141/items.html', { waitUntil: 'load', timeout: 15000 });
+await page.waitForTimeout(300);
+let glassOn = await page.evaluate(() => {
+    const el = document.querySelector('.site-header');
+    return {
+        blur: getComputedStyle(document.documentElement).getPropertyValue('--surface-blur').trim(),
+        header: getComputedStyle(el).backdropFilter || getComputedStyle(el).webkitBackdropFilter || ''
+    };
+});
+ok(glassOn.blur === '12px' && glassOn.header.indexOf('blur(') === 0, 'стекло 1280 включено: шкала 12px, шапка размывается (8px)', glassOn.blur + ' | ' + glassOn.header);
+await page.evaluate(() => window.SiteSettings.set('glass', false));
+await page.waitForTimeout(200);
+let glassOff = await page.evaluate(() => {
+    const el = document.querySelector('.site-header');
+    return {
+        bg: getComputedStyle(document.documentElement).getPropertyValue('--surface-bg').trim(),
+        blur: getComputedStyle(document.documentElement).getPropertyValue('--surface-blur').trim(),
+        header: getComputedStyle(el).backdropFilter || getComputedStyle(el).webkitBackdropFilter || ''
+    };
+});
+ok(glassOff.bg.indexOf('0.92') > -1 && glassOff.blur === '0px' && glassOff.header === 'none', 'стекло выключено: фон почти глухой 0.92, blur 0, у шапки none', glassOff.bg + ' | ' + glassOff.blur + ' | ' + glassOff.header);
+await page.evaluate(() => window.SiteSettings.set('glass', true));
+await page.waitForTimeout(200);
+// мобильный 768-: стекло гаснет само медиа-запросом, флаг включён
+await page.setViewportSize({ width: 390, height: 844 });
+await page.waitForTimeout(300);
+const glassMobile = await page.evaluate(() => {
+    const el = document.querySelector('.site-header');
+    return getComputedStyle(el).backdropFilter || getComputedStyle(el).webkitBackdropFilter || '';
+});
+ok(glassMobile === 'none', 'мобильный 390: стекло гаснет само медиа-запросом, шапка глухая', glassMobile);
+
+// 10. примерные настройки: яркий текст и фон главной
+await page.setViewportSize({ width: 1280, height: 900 });
+await page.waitForTimeout(300);
+const textOff = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim());
+await page.evaluate(() => window.SiteSettings.set('text', true));
+await page.waitForTimeout(200);
+const textOn = await page.evaluate(() => ({
+    primary: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim(),
+    body: getComputedStyle(document.body).color
+}));
+ok(textOff === '#e0f0ff' && textOn.primary === '#ffffff', 'яркий текст: шкала светлеет с #e0f0ff до #ffffff', textOff + ' | ' + textOn.primary);
+await page.evaluate(() => window.SiteSettings.set('text', false));
+await page.waitForTimeout(200);
+await page.goto('http://localhost:8141/index.html', { waitUntil: 'load', timeout: 15000 });
+await page.waitForTimeout(300);
+const decorOn = await page.evaluate(() => getComputedStyle(document.querySelector('.hero-banner-bg')).display);
+await page.evaluate(() => window.SiteSettings.set('decor', false));
+await page.waitForTimeout(200);
+const decorOff = await page.evaluate(() => ({
+    bg: getComputedStyle(document.querySelector('.hero-banner-bg')).display,
+    btn: getComputedStyle(document.querySelector('.hero-banner .btn, .hero-actions .btn, .hero-content .btn') || document.body).display,
+    scroll: document.documentElement.scrollWidth - document.documentElement.clientWidth
+}));
+ok(decorOn !== 'none' && decorOff.bg === 'none' && decorOff.scroll <= 0, 'фон главной: картинка убирается, раскладка не сдвигается', decorOn + ' | ' + decorOff.bg + ' | overflow ' + decorOff.scroll);
+await page.screenshot({ path: path.join(OUTDIR, 'index-nodecor-1280.png') });
+await page.evaluate(() => window.SiteSettings.set('decor', true));
+await page.waitForTimeout(200);
+await page.evaluate(() => localStorage.clear());
+
+// 11. все темы по списку на контентной странице heroes
+await page.goto('http://localhost:8141/heroes.html', { waitUntil: 'load', timeout: 15000 });
+await page.waitForTimeout(300);
+const THEME_LIST = [
+    ['ashenvale', 'rgb(128, 255, 178)', '#09100c'],
+    ['dark', 'rgb(0, 210, 235)', '#0d0d0f'],
+    ['contrast', 'rgb(0, 255, 255)', '#040406']
+];
+for (const [id, accent, tc] of THEME_LIST) {
+    await page.evaluate(t => window.SiteSettings.set('theme', t), id);
+    await page.waitForTimeout(200);
+    s = await snap();
+    ok(s.theme === id && s.accent === accent && s.tc === tc && s.overflow <= 0, 'heroes: тема ' + id + ' — акцент, theme-color, без скролла', s.accent + ' | ' + s.tc);
+}
+await page.evaluate(() => window.SiteSettings.set('theme', 'neon'));
+await page.waitForTimeout(200);
+s = await snap();
+ok(s.theme === null && s.accent === 'rgb(0, 230, 255)', 'heroes: неон возвращается снятием атрибута', s.accent);
+await page.evaluate(() => window.SiteSettings.set('theme', 'contrast'));
+await page.waitForTimeout(200);
+await page.screenshot({ path: path.join(OUTDIR, 'heroes-contrast-1280.png') });
+await page.evaluate(() => localStorage.clear());
+
+// 12. консоль
 ok(consoleMsgs.length === 0, 'консоль чиста (без внешних сертификатов)', consoleMsgs.slice(0, 3).join(' | '));
 
 await browser.close();
