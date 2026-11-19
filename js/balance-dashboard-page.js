@@ -515,6 +515,14 @@ document.addEventListener('DOMContentLoaded', function() {
         resizeTimer = setTimeout(function() { resizeCanvas(); update(); }, 100);
     });
 
+    // TD-23: радар берёт --cyan-rgb в момент отрисовки; DOM перекрашивается при
+    // смене темы сам, а канвас перерисовываем здесь — иначе после смены темы
+    // он остаётся в старом акценте до следующего update()
+    document.addEventListener('site-settings:change', function(e) {
+        if (!e.detail || e.detail.key !== 'theme') return;
+        update();
+    });
+
     resizeCanvas();
     update();
 })();
