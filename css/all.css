@@ -693,7 +693,7 @@ html[data-glass="off"] * {
     inset: 0;
     border-radius: 12px;
     padding: 1px;
-    background: linear-gradient(135deg, var(--accent-cyan), #0080ff, var(--accent-cyan));
+    background: linear-gradient(135deg, var(--accent-cyan), rgb(var(--info-rgb)), var(--accent-cyan));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -1860,7 +1860,7 @@ html[data-glass="off"] * {
         45deg,
         transparent 30%,
         rgba(var(--cyan-rgb), 0.04) 35%,
-        rgba(0, 128, 255, 0.03) 40%,
+        rgba(var(--info-rgb), 0.03) 40%,
         transparent 45%
     );
     animation: auroraShift 8s ease-in-out infinite;
@@ -4183,7 +4183,7 @@ html[data-glass="off"] * {
         45deg,
         transparent 25%,
         rgba(var(--cyan-rgb), 0.12) 33%,
-        rgba(0, 128, 255, 0.07) 40%,
+        rgba(var(--info-rgb), 0.07) 40%,
         transparent 50%
     );
     animation: auroraShift 6s ease-in-out infinite;
@@ -5882,7 +5882,7 @@ body.item-sheet-open {
   inset: 0;
   border-radius: 16px;
   padding: 1px;
-  background: linear-gradient(135deg, var(--accent-cyan), #0080ff, var(--accent-cyan));
+  background: linear-gradient(135deg, var(--accent-cyan), rgb(var(--info-rgb)), var(--accent-cyan));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -6817,7 +6817,7 @@ body.page-home::after {
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
-    box-shadow: -200px 300px 0 -100px rgba(0, 128, 255, 0.04);
+    box-shadow: -200px 300px 0 -100px rgba(var(--info-rgb), 0.04);
     animation: homeOrbPulse 5s ease-in-out infinite;
 }
 @keyframes homeOrbPulse {
@@ -6830,7 +6830,7 @@ body.page-home::after {
     left: 8%;
     width: 350px;
     height: 350px;
-    background: radial-gradient(circle, rgba(0, 128, 255, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--info-rgb), 0.05) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
@@ -6866,7 +6866,7 @@ body.page-compare::after {
     left: -5%;
     width: 450px;
     height: 450px;
-    background: radial-gradient(circle, rgba(0, 128, 255, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--info-rgb), 0.05) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
@@ -6916,7 +6916,7 @@ body.page-faq::after {
     left: -5%;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(0, 128, 255, 0.04) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--info-rgb), 0.04) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
@@ -8132,7 +8132,7 @@ body.page-leaving {
     top: 0;
     left: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--accent-cyan), #0080ff);
+    background: linear-gradient(90deg, var(--accent-cyan), rgb(var(--info-rgb)));
     box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.6);
     z-index: 9999;
     transition: width 0.1s ease-out;

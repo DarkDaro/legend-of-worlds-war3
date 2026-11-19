@@ -19,7 +19,7 @@ body.page-home::after {
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
-    box-shadow: -200px 300px 0 -100px rgba(0, 128, 255, 0.04);
+    box-shadow: -200px 300px 0 -100px rgba(var(--info-rgb), 0.04);
     animation: homeOrbPulse 5s ease-in-out infinite;
 }
 @keyframes homeOrbPulse {
@@ -32,7 +32,7 @@ body.page-home::after {
     left: 8%;
     width: 350px;
     height: 350px;
-    background: radial-gradient(circle, rgba(0, 128, 255, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--info-rgb), 0.05) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
@@ -68,7 +68,7 @@ body.page-compare::after {
     left: -5%;
     width: 450px;
     height: 450px;
-    background: radial-gradient(circle, rgba(0, 128, 255, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--info-rgb), 0.05) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
@@ -118,7 +118,7 @@ body.page-faq::after {
     left: -5%;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(0, 128, 255, 0.04) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--info-rgb), 0.04) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     z-index: 0;
