@@ -8,6 +8,12 @@
     /* Примитив: один триплет красит весь неон, альфа берётся поверх него (DESIGN.md §3) */
     --cyan-rgb: 0, 230, 255;
 
+    /* Второй световой примитив (TD-2 закрыт 19.11): резервный оттенок шкалы
+       0,255,255 красит тонкие поверхности (glass.css); раньше жил литералом
+       внутри пяти поверхностей, темы перекрашивали пять строк вместо одного
+       примитива. Тема контраста берёт этот же оттенок акцентом (§11) */
+    --subtle-rgb: 0, 255, 255;
+
     /* Примитивы окружения (DESIGN.md §6, чанк 3): тёмные подложки, панели, рамки,
        информационный синий. Тема перекрашивает окружение этими триплетами (§11) */
     --bg-rgb: 11, 14, 20;
@@ -143,13 +149,9 @@ html[data-theme="ashenvale"] {
     --panel-raised-rgb: 24, 40, 30;
     --abyss-rgb: 5, 10, 8;
 
-    /* тонкие поверхности: в неоне оттенок 0,255,255 живёт вне --cyan-rgb (TD-2),
-       теме приходится перекрашивать их явно, альфы те же */
-    --surface-subtle: rgba(var(--cyan-rgb), 0.04);
-    --surface-subtle-hover: rgba(var(--cyan-rgb), 0.08);
-    --surface-tag-bg: rgba(var(--cyan-rgb), 0.06);
-    --surface-tag-border: rgba(var(--cyan-rgb), 0.15);
-    --surface-tag-active: rgba(var(--cyan-rgb), 0.15);
+    /* тонкие поверхности: тема красит один примитив --subtle-rgb (TD-2 закрыт),
+       триплет — акцент темы, альфы общие в glass.css */
+    --subtle-rgb: 128, 255, 178;
 }
 
 /* Тема «Тёмная» (чанк 6 §10, 19.11): нейтральный графит вместо синего космоса.
@@ -178,13 +180,9 @@ html[data-theme="dark"] {
     --panel-raised-rgb: 30, 30, 37;
     --abyss-rgb: 9, 9, 12;
 
-    /* тонкие поверхности: в неоне оттенок 0,255,255 живёт вне --cyan-rgb (TD-2),
-       теме приходится перекрашивать их явно, альфы те же */
-    --surface-subtle: rgba(var(--cyan-rgb), 0.04);
-    --surface-subtle-hover: rgba(var(--cyan-rgb), 0.08);
-    --surface-tag-bg: rgba(var(--cyan-rgb), 0.06);
-    --surface-tag-border: rgba(var(--cyan-rgb), 0.15);
-    --surface-tag-active: rgba(var(--cyan-rgb), 0.15);
+    /* тонкие поверхности: тема красит один примитив --subtle-rgb (TD-2 закрыт),
+       триплет — акцент темы, альфы общие в glass.css */
+    --subtle-rgb: 0, 210, 235;
 }
 
 /* Тема «Высокий контраст» (чанк 6 §10, 19.11): предельная различимость вместо
@@ -255,12 +253,9 @@ html[data-theme="astral"] {
     --panel-raised-rgb: 28, 20, 48;
     --abyss-rgb: 9, 6, 16;
 
-    /* тонкие поверхности: альфы неоновые — тема обычной глубины, как ашенваль и тёмная */
-    --surface-subtle: rgba(var(--cyan-rgb), 0.04);
-    --surface-subtle-hover: rgba(var(--cyan-rgb), 0.08);
-    --surface-tag-bg: rgba(var(--cyan-rgb), 0.06);
-    --surface-tag-border: rgba(var(--cyan-rgb), 0.15);
-    --surface-tag-active: rgba(var(--cyan-rgb), 0.15);
+    /* тонкие поверхности: один примитив --subtle-rgb (TD-2 закрыт), альфы
+       неоновые — тема обычной глубины, как ашенваль и тёмная */
+    --subtle-rgb: 178, 102, 255;
 }
 
 /* Тема «Зимняя морозная» (чанк 6 §10, 19.11): ледяная — холодный серебристый
@@ -292,12 +287,9 @@ html[data-theme="winter"] {
     --panel-raised-rgb: 30, 38, 52;
     --abyss-rgb: 10, 13, 18;
 
-    /* тонкие поверхности: альфы неоновые — тема обычной глубины, как ашенваль и тёмная */
-    --surface-subtle: rgba(var(--cyan-rgb), 0.04);
-    --surface-subtle-hover: rgba(var(--cyan-rgb), 0.08);
-    --surface-tag-bg: rgba(var(--cyan-rgb), 0.06);
-    --surface-tag-border: rgba(var(--cyan-rgb), 0.15);
-    --surface-tag-active: rgba(var(--cyan-rgb), 0.15);
+    /* тонкие поверхности: один примитив --subtle-rgb (TD-2 закрыт), альфы
+       неоновые — тема обычной глубины, как ашенваль и тёмная */
+    --subtle-rgb: 175, 220, 255;
 }
 
 * {

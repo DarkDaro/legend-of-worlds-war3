@@ -18,12 +18,14 @@
     --surface-blur-soft: 8px;
     --surface-border: rgba(var(--cyan-rgb), 0.12);
     --surface-border-hover: rgba(var(--cyan-rgb), 0.35);
-    /* Тонкие фоны для подзаголовков, кнопок, тегов; оттенок 0,255,255 пока отдельный примитив (TECH-DEBT TD-2) */
-    --surface-subtle: rgba(0, 255, 255, 0.04);
-    --surface-subtle-hover: rgba(0, 255, 255, 0.08);
-    --surface-tag-bg: rgba(0, 255, 255, 0.06);
-    --surface-tag-border: rgba(0, 255, 255, 0.15);
-    --surface-tag-active: rgba(0, 255, 255, 0.15);
+    /* Тонкие фоны для подзаголовков, кнопок, тегов: красятся из второго
+       светового примитива --subtle-rgb в base.css (TECH-DEBT TD-2 закрыт
+       19.11 — литерал 0,255,255 жил прямо в этих пяти строках) */
+    --surface-subtle: rgba(var(--subtle-rgb), 0.04);
+    --surface-subtle-hover: rgba(var(--subtle-rgb), 0.08);
+    --surface-tag-bg: rgba(var(--subtle-rgb), 0.06);
+    --surface-tag-border: rgba(var(--subtle-rgb), 0.15);
+    --surface-tag-active: rgba(var(--subtle-rgb), 0.15);
 }
 
 /* стекломорфизм выключен: размытий нет, стекло становится почти глухим
