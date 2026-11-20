@@ -57,3 +57,17 @@
 - ✅ Дефолт главной — неон (указание владельца 20.11): атрибут ашенваля снят с разметки index, theme-color разметки #0b0e14; info всегда была неоновой в разметке — зелёное открывание у владельца даёт сохранённый выбор «Ашенваль» в панели; прототип остаётся только на lore, theme-check переадресован на lore
 - ✅ Дефолт лора — неон (указание владельца 20.11): атрибут ашенваля снят и с lore.html, theme-color разметки #0b0e14; в разметке не осталось атрибутов тем — неон-дефолт на всех страницах, значения ашенваля в theme-check проверяются выбором пилюли на items
 - ✅ Перекраска «Ашенваля» (указание владельца 20.11 «другой оттенок, приятнее»): акцент — изумрудная мята 110,231,183 вместо кислотного спринга, окружение — дуотон ель/мох, theme-color #0a120f; статусы, геометрия и HTML не тронуты, theme-check 46 зелёный, значения в DESIGN §11 и docs/themes/ashenvale.md
+
+## Этап 6 — реорганизация корня (указание владельца 21.11)
+
+Грабли: аудиты сканили только css/ и js/ и не видели корень — TD-16 «мёртвые классы» и подключение search.js ловились вслепую. Решение: не охота на мёртвый код, а разовая уборка корня и карты, по которым дальше работают все инструменты. Ничего не удаляется и не переименовывается — только перенос и правка путей; отключённое по 2.13 переносится как есть.
+
+Поверхностный аудит 21.11 (`scripts/audit-root-refs.sh`, два прохода rg): в корне 23 js и 3 css при 116 страницах (33 корень + 77 heroes + 6 guides, формы src="X" и src="../X"). Нестандартные точки: search.js сам строит пути к search-index.js и items-db.js (строки 22 и 29, префикс '../' на подкаталогах); site-counters.js страницами не подключается вовсе — источник чисел для гейта check-counters.py; пути корневых js прописаны в гейтах (gen-js-map.py — все, check-counters.py, check-heroes.mjs, check-items.mjs) и живых пробах tmp (effects-probe, orbs-check, search-wiring-probe, p404-probe); sitemap.xml js/css не упоминает; бандл собирается по явному @import-списку repo-archive/style.css — корневые css в него не входят, перенос безопасен.
+
+Чанки:
+- ☐ R2 — стили в css/: aibot.css, info-auto-level.css, map.css (4 html-ссылки: aibot, manifesto+info, map); гейт check-links
+- ☐ R3 — базы данных в js/data/: 14 файлов (abilities-db, ability-stats, bot-builds, creeps-db, game-constants, hero-builds, hero-data, hero-lore, items-db, jass-data, map-data, mechanics-db, search-index, storage-db) + site-counters.js; правка динамических путей search.js, гейтов и gen-js-map.py; гейты links + heroes + items + counters
+- ☐ R4 — сервисы и калькуляторы в js/: ui-effects.js, search.js, icon-loader.js, analytics.js, tilt-cards.js, build-constructor.js, calculator.js, item-bonus-parser.js; правка живых проб tmp; гейты links + пробы
+- ☐ R5 — карты по факту: ARCHITECTURE §3 и счётчики, JS-MAP.md регенерация, CSS-INVENTORY регенерация, css/INDEX.md, README если упоминает корень; полный набор гейтов
+- ☐ R6 — порядок подключений: сверка @import-порядка бандла и defer-последовательности (данные → парсер → контроллер), находки в css/INDEX.md и ARCHITECTURE
+- ☐ После R6 — перепроверка TD-16 по полной карте файлов (доверие к аудиту восстанавливаем фактами, не удалением)
