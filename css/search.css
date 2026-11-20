@@ -208,7 +208,7 @@
 .ripple {
     position: absolute;
     border-radius: 50%;
-    background: rgba(var(--cyan-rgb), 0.2);
+    background: rgba(var(--cyan-rgb), 0.12);
     transform: scale(0);
     animation: rippleExpand 0.5s ease-out forwards;
     pointer-events: none;
@@ -249,16 +249,22 @@ body.page-leaving {
 }
 
 /* ===== Scroll progress bar ===== */
+/* оживлена 20.11 (указание владельца — включить мёртвые эффекты, TD-16):
+   элемент и скрипт создаёт js/site-settings.js; масштаб через transform:
+   scaleX — перерасчёта раскладки нет (TD-19), умеренные значения */
 .scroll-progress {
     position: fixed;
     top: 0;
     left: 0;
-    height: 3px;
+    right: 0;
+    height: 2px;
     background: linear-gradient(90deg, var(--accent-cyan), rgb(var(--info-rgb)));
-    box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.6);
+    box-shadow: 0 0 6px rgba(var(--cyan-rgb), 0.3);
     z-index: 9999;
-    transition: width 0.1s ease-out;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
     border-radius: 0 2px 2px 0;
+    pointer-events: none;
 }
 
 /* ===== Nav-link hover underline ===== */

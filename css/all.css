@@ -384,7 +384,7 @@ h1 {
 /* ===== Настройки сайта (js/site-settings.js) =====
    Флаги пользователя ставятся атрибутами на <html>: data-anim, data-glass,
    data-fx, data-sound (звук — только флаг, css его не читает), data-text,
-   data-decor. Дефолт «on» ни на один байт рендера не влияет: все блоки ниже срабатывают только
+   data-decor, data-progress. Дефолт «on» ни на один байт рендера не влияет: все блоки ниже срабатывают только
    при явном «off». Правило data-glass живёт в css/glass.css — рядом с
    материалом стекла, который оно глушит. */
 
@@ -424,6 +424,12 @@ html[data-text="on"] {
    .hero-banner-bg абсолютный — раскладка не сдвигается. Кнопки и прочее
    содержимое шапки главной остаются на месте */
 html[data-decor="off"] .hero-banner-bg {
+    display: none !important;
+}
+
+/* полоса прогресса выключена (оживлена 20.11, TD-16): тонкий индикатор чтения
+   у верха страницы убирается целиком; элемент и скрипт — js/site-settings.js */
+html[data-progress="off"] .scroll-progress {
     display: none !important;
 }
 
@@ -8090,7 +8096,7 @@ body.page-map-changes::after {
 .ripple {
     position: absolute;
     border-radius: 50%;
-    background: rgba(var(--cyan-rgb), 0.2);
+    background: rgba(var(--cyan-rgb), 0.12);
     transform: scale(0);
     animation: rippleExpand 0.5s ease-out forwards;
     pointer-events: none;
@@ -8131,16 +8137,22 @@ body.page-leaving {
 }
 
 /* ===== Scroll progress bar ===== */
+/* оживлена 20.11 (указание владельца — включить мёртвые эффекты, TD-16):
+   элемент и скрипт создаёт js/site-settings.js; масштаб через transform:
+   scaleX — перерасчёта раскладки нет (TD-19), умеренные значения */
 .scroll-progress {
     position: fixed;
     top: 0;
     left: 0;
-    height: 3px;
+    right: 0;
+    height: 2px;
     background: linear-gradient(90deg, var(--accent-cyan), rgb(var(--info-rgb)));
-    box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.6);
+    box-shadow: 0 0 6px rgba(var(--cyan-rgb), 0.3);
     z-index: 9999;
-    transition: width 0.1s ease-out;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
     border-radius: 0 2px 2px 0;
+    pointer-events: none;
 }
 
 /* ===== Nav-link hover underline ===== */

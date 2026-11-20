@@ -1,6 +1,8 @@
 /**
- * site-settings.js — настройки сайта: тема, звук, анимации, стекломорфизм,
- * тяжёлые эффекты.
+ * site-settings.js — настройки сайта и эффекты интерфейса: тема, звук,
+ * анимации, стекломорфизм, тяжёлые эффекты; в конце файла — секция оживших
+ * эффектов CSS (свечение курсора, волны при клике, полоса прогресса,
+ * переход страниц — TD-16, 20.11).
  *
  * Флаги лежат в localStorage (ключ site-settings-v1), хранятся только
  * выключенные — дефолт «всё включено». Флаги ставятся атрибутами на <html>:
@@ -37,7 +39,8 @@
             fx: s.fx !== false,
             text: s.text === true,
             decor: s.decor !== false,
-            theme: s.theme || ''
+            theme: s.theme || '',
+            progress: s.progress !== false
         };
     }
 
@@ -58,6 +61,7 @@
         h.setAttribute('data-sound', f.sound ? 'on' : 'off');
         h.setAttribute('data-text', f.text ? 'on' : 'off');
         h.setAttribute('data-decor', f.decor ? 'on' : 'off');
+        h.setAttribute('data-progress', f.progress ? 'on' : 'off');
         // тема: пусто — возврат к дефолту разметки, явный выбор перекрывает
         // разметку на всех страницах
         if (f.theme === 'ashenvale') h.setAttribute('data-theme', 'ashenvale');
@@ -101,9 +105,10 @@
 
     var ROWS = [
         ['sound', 'Звук', 'Звуковое сопровождение (контент звука появится позже)'],
-        ['anim', 'Анимации', 'Пульсации, счётчики, плавные появления'],
+        ['anim', 'Анимации', 'Пульсации, счётчики, волны при клике, плавные появления'],
         ['glass', 'Стекломорфизм', 'Размытие фона под шапкой и панелями'],
         ['fx', 'Тяжёлые эффекты', 'Декоративные орбы, свечение курсора, неоновые тени текста'],
+        ['progress', 'Полоса прогресса', 'Тонкая полоса чтения у верха страницы'],
         ['text', 'Яркий текст', 'Светлее шкала текста — под яркое солнце и слабое зрение'],
         ['decor', 'Фон главной', 'Картинка арены в шапке главной — можно убрать для читаемости']
     ];
@@ -262,4 +267,117 @@
     } else {
         buildPanel();
     }
+
+    // ── эффекты интерфейса (оживление мёртвых блоков CSS, TD-16, 20.11) ──
+    // Четыре вещи жили в CSS без элементов и скриптов: .cursor-glow (search.css),
+    // .ripple (search.css), .scroll-progress (search.css) и анимация pageOut
+    // (body.page-leaving) без запуска. Здесь они получают элементы и слушателей.
+    // Тумблеры: fx — свечение курсора, anim — волны и переход страниц,
+    // progress — полоса (css прячет своим правилом data-progress).
+    // Цвета только из токенов — темы перекрашивают автоматически. Гварды:
+    // prefers-reduced-motion глушит движение, pointer: fine — тач без свечения.
+
+    var reducedMotion = false;
+    try { reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { /* старые браузеры — как есть */ }
+
+    // свечение курсора: мягкий ореол 180px догоняет мышь с плавным лерпом;
+    // z-index -1 держит его под содержимым, мобильный прячет медиазапросом
+    var glow = null, glowRaf = 0, glowX = -300, glowY = -300, curX = -300, curY = -300, glowSeen = false;
+
+    function glowMove(e) {
+        glowX = e.clientX; glowY = e.clientY;
+        if (!glowSeen) { curX = glowX; curY = glowY; glowSeen = true; }
+    }
+
+    function glowStep() {
+        curX += (glowX - curX) * 0.14;
+        curY += (glowY - curY) * 0.14;
+        if (glow) glow.style.transform = 'translate3d(' + Math.round(curX - 90) + 'px,' + Math.round(curY - 90) + 'px,0)';
+        glowRaf = requestAnimationFrame(glowStep);
+    }
+
+    function glowOn() {
+        if (glow || reducedMotion) return;
+        try { if (!window.matchMedia('(pointer: fine)').matches) return; } catch (e) { /* нет matchMedia — без свечения */ }
+        glow = document.createElement('div');
+        glow.className = 'cursor-glow';
+        document.body.appendChild(glow);
+        document.addEventListener('mousemove', glowMove, { passive: true });
+        glowRaf = requestAnimationFrame(glowStep);
+    }
+
+    function glowOff() {
+        if (!glow) return;
+        cancelAnimationFrame(glowRaf);
+        document.removeEventListener('mousemove', glowMove);
+        if (glow.parentNode) glow.parentNode.removeChild(glow);
+        glow = null; glowSeen = false;
+    }
+
+    // волны при клике: спаны .ripple в кнопках и пунктах навигации; без anim —
+    // не рождаются вовсе (урок §7: animationend без гварда залипает)
+    document.addEventListener('pointerdown', function (e) {
+        if (!flags().anim || reducedMotion) return;
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        var el = e.target.closest ? e.target.closest('.btn, .btn-primary, .btn-secondary, .btn-outline, .nav-link') : null;
+        if (!el) return;
+        var rect = el.getBoundingClientRect();
+        if (!rect.width && !rect.height) return;
+        var size = Math.max(rect.width, rect.height);
+        var span = document.createElement('span');
+        span.className = 'ripple';
+        span.style.width = span.style.height = size + 'px';
+        span.style.left = (e.clientX - rect.left - size / 2) + 'px';
+        span.style.top = (e.clientY - rect.top - size / 2) + 'px';
+        el.classList.add('ripple-container');
+        el.appendChild(span);
+        var done = function () { if (span.parentNode) span.parentNode.removeChild(span); };
+        span.addEventListener('animationend', done);
+        setTimeout(done, 700);
+    }, true);
+
+    // полоса прогресса чтения: один элемент, обновление раз в кадр по scroll;
+    // off гвардится css-правилом data-progress в base.css
+    var bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    document.body.appendChild(bar);
+    var barRaf = 0;
+
+    function barStep() {
+        barRaf = 0;
+        var doc = document.documentElement;
+        var max = doc.scrollHeight - doc.clientHeight;
+        var top = window.pageYOffset || doc.scrollTop || 0;
+        var p = max > 0 ? Math.min(1, Math.max(0, top / max)) : 0;
+        bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+    }
+
+    function barQueue() { if (!barRaf) barRaf = requestAnimationFrame(barStep); }
+    window.addEventListener('scroll', barQueue, { passive: true });
+    window.addEventListener('resize', barQueue);
+    barStep();
+
+    // переход страниц: короткое затухание перед уходом по внутренним ссылкам;
+    // слушатель без capture — чужой preventDefault (табы, спойлеры) уважается
+    document.addEventListener('click', function (e) {
+        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        if (!flags().anim || reducedMotion) return;
+        var a = e.target.closest ? e.target.closest('a[href]') : null;
+        if (!a || a.target || a.hasAttribute('download')) return;
+        var href = a.getAttribute('href') || '';
+        if (!href || href.charAt(0) === '#' || href.indexOf('javascript:') === 0 || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) return;
+        if (/^https?:/i.test(href) && a.host && a.host !== location.host) return;
+        var path = href.split('#')[0].split('?')[0];
+        if (path && !/\.html$/i.test(path)) return; // файлы и картинки — обычное поведение (скачивание без затухания)
+        e.preventDefault();
+        document.body.classList.add('page-leaving');
+        setTimeout(function () { location.href = href; }, 120);
+    });
+
+    // тумблер fx включает и выключает свечение на лету
+    function applyEffects() {
+        if (flags().fx) glowOn(); else glowOff();
+    }
+    applyEffects();
+    document.addEventListener('site-settings:change', applyEffects);
 })();
