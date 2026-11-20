@@ -22,24 +22,24 @@ def fail(msg):
 
 
 # --- константы из site-counters.js ---
-sc = (REPO / "site-counters.js").read_text(encoding="utf-8")
+sc = (REPO / "js" / "data" / "site-counters.js").read_text(encoding="utf-8")
 C = {k: int(v) for k, v in re.findall(r"(\w+):\s*(\d+)", sc.split("var SITE_COUNTERS")[1])}
 
 # --- фактика ---
-hd = (REPO / "hero-data.js").read_text(encoding="utf-8")
+hd = (REPO / "js" / "data" / "hero-data.js").read_text(encoding="utf-8")
 wip = len(re.findall(r"\bwip:\s*true\b", hd))
 alt = len(re.findall(r"\bisAltForm:\s*true\b", hd))
 total_heroes = len(re.findall(r"heroId:\s*'", hd))
 fact_heroes = total_heroes - wip - alt
 
 hero_pages = len(list((REPO / "heroes").glob("*.html")))
-lore_keys = len(re.findall(r"^\s{2}'[a-z0-9-]+':\s*\{", (REPO / "hero-lore.js").read_text(encoding="utf-8"), re.M))
+lore_keys = len(re.findall(r"^\s{2}'[a-z0-9-]+':\s*\{", (REPO / "js" / "data" / "hero-lore.js").read_text(encoding="utf-8"), re.M))
 
-items = (REPO / "items-db.js").read_text(encoding="utf-8")
+items = (REPO / "js" / "data" / "items-db.js").read_text(encoding="utf-8")
 fact_items_total = len(re.findall(r"\bid:\s*'", items))
 fact_items_runes = len(re.findall(r"type:\s*'rune'", items))
 
-creeps = (REPO / "creeps-db.js").read_text(encoding="utf-8")
+creeps = (REPO / "js" / "data" / "creeps-db.js").read_text(encoding="utf-8")
 m = re.search(r"(?:var|const)\s+CREEPS\w*\s*=\s*\[(.*?)\n\];", creeps, re.S)
 fact_creeps = len(re.findall(r"\btier:\s*\d", m.group(1))) if m else -1
 
