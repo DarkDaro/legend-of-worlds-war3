@@ -1082,7 +1082,7 @@ body.item-sheet-open {
     background: rgba(var(--container-rgb), 0.8);
     border: 1px solid var(--steel-blue);
     border-radius: 8px;
-    color: #e3e9f5;
+    color: var(--text-primary);
     font-size: 0.84rem;
     font-family: inherit;
 }
@@ -1106,7 +1106,7 @@ body.item-sheet-open {
     background: rgba(var(--container-rgb), 0.8);
     border: 1px solid var(--steel-blue);
     border-radius: 8px;
-    color: #e3e9f5;
+    color: var(--text-primary);
     font-size: 0.82rem;
     font-family: inherit;
     cursor: pointer;

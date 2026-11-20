@@ -42,8 +42,11 @@
     --text-strong: #d0e0ff;
     --text-soft: #c0d0e8;
     --text-secondary: #8aa0c0;
-    --text-muted: #6b7c99;
-    --text-dim: #5a7a9a;
+    /* muted и dim подняты 20.11 (TD-21): старые ступени давали 4.10–4.44:1
+       на фоне пяти тем против AA 4.5; новые — минимум 4.60:1 (dim) и 4.86:1
+       (muted) на худшем фоне шести тем, иерархия и тон шкалы сохранены */
+    --text-muted: #7484a0;
+    --text-dim: #66829f;
     --text-ink: rgb(var(--bg-rgb));
 
     /* Семантика подложек и рамок поверх примитивов §6 */
@@ -312,7 +315,9 @@ html[data-theme="winter"] {
 body {
     background: var(--bg-base);
     background-image: radial-gradient(circle at 30% 10%, var(--bg-glow) 0%, var(--bg-deep) 100%);
-    color: #e3e9f5;
+    /* цвет тела за шкалой §7 (TD-21): реагирует на тему и «Яркий текст»,
+       визуальная дельта от #e3e9f5 до #e0f0ff неотличима */
+    color: var(--text-primary);
     padding: 24px 32px;
     line-height: 1.5;
     -webkit-overflow-scrolling: touch;

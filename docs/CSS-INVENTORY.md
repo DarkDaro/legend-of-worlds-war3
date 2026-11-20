@@ -6,8 +6,8 @@
 | Показатель | Значение |
 |---|---|
 | css-файлов | 34 |
-| уникальных цветов | 371 |
-| вхождений цветов | 1260 |
+| уникальных цветов | 370 |
+| вхождений цветов | 1257 |
 | кастомных свойств объявлено | 81 |
 | из них в :root | 81 |
 | backdrop-filter: blur() | 155 |
@@ -27,13 +27,13 @@
 | --accent-cyan | `rgb(var(--cyan-rgb))` | 315 | 1 | :root css/base.css |
 | --surface-border | `rgba(var(--cyan-rgb), 0.12)` | 178 | 1 | :root css/glass.css |
 | --text-secondary | `#8aa0c0` | 155 | 1 | :root css/base.css |
-| --text-primary | `#e0f0ff` | 150 | 1 | :root css/base.css |
+| --text-primary | `#e0f0ff` | 153 | 1 | :root css/base.css |
 | --surface-blur | `12px` | 129 | 1 | :root css/glass.css |
 | --surface-bg | `rgba(var(--surface-rgb), 0.5)` | 122 | 1 | :root css/glass.css |
 | --red-rgb | `255, 85, 85` | 59 | 1 | :root css/base.css |
-| --text-muted | `#6b7c99` | 44 | 1 | :root css/base.css |
+| --text-muted | `#7484a0` | 44 | 1 | :root css/base.css |
 | --surface-border-hover | `rgba(var(--cyan-rgb), 0.35)` | 44 | 1 | :root css/glass.css |
-| --text-dim | `#5a7a9a` | 38 | 1 | :root css/base.css |
+| --text-dim | `#66829f` | 38 | 1 | :root css/base.css |
 | --danger-soft | `rgb(var(--red-soft-rgb))` | 37 | 1 | :root css/base.css |
 | --danger | `rgb(var(--red-rgb))` | 36 | 1 | :root css/base.css |
 | --violet-rgb | `191, 127, 255` | 35 | 1 | :root css/base.css |
@@ -183,8 +183,8 @@
 | `#d0e0ff` | 1 | 1 | base.css |
 | `#c0d0e8` | 1 | 1 | base.css |
 | `#8aa0c0` | 1 | 1 | base.css |
-| `#6b7c99` | 1 | 1 | base.css |
-| `#5a7a9a` | 1 | 1 | base.css |
+| `#7484a0` | 1 | 1 | base.css |
+| `#66829f` | 1 | 1 | base.css |
 | `#a8bcdc` | 1 | 1 | base.css |
 | `#8ea3c0` | 1 | 1 | base.css |
 | `#7e9ab8` | 1 | 1 | base.css |
@@ -464,14 +464,13 @@
 | `rgba(0,230,118,0.25)` | 1 | 1 | runes.css |
 | `#81c784` | 1 | 1 | info-auto-level.css |
 
-### белый/светлый — 20 значений, 67 вхождений
+### белый/светлый — 19 значений, 64 вхождений
 
 | Значение | Вхождений | Файлов | Где |
 |---|---|---|---|
 | `#fff` | 20 | 9 | base.css, hero-grid.css, home.css, items.css, lore.css, mechanics.css, monsters.css, storage.css, map.css |
 | `#ffffff` | 14 | 7 | base.css, bot-builds.css, header-mobile.css, items.css, lore.css, mechanics.css, map.css |
 | `rgba(255,255,255,0.04)` | 9 | 6 | aibot.css, balance-dashboard.css, balance.css, creeps.css, events.css, guides.css |
-| `#e3e9f5` | 3 | 2 | base.css, items.css |
 | `#e0e8f0` | 3 | 1 | map.css |
 | `rgba(255,255,255,0.06)` | 2 | 2 | balance-dashboard.css, bot-builds.css |
 | `rgba(255,255,255,0.03)` | 2 | 1 | info.css |
@@ -574,13 +573,13 @@ abilityIconPulse, auroraBanner, auroraShift, bannerFadeIn, crownFloat, ctaBorder
 
 | Файл | Цветовых литералов |
 |---|---|
-| css/items.css | 158 |
+| css/items.css | 156 |
 | css/hero-page.css | 97 |
 | map.css | 93 |
 | css/search.css | 80 |
 | css/mechanics.css | 76 |
-| css/base.css | 66 |
 | css/calc.css | 66 |
+| css/base.css | 65 |
 | css/guides.css | 55 |
 | css/lore.css | 50 |
 | css/info.css | 47 |
