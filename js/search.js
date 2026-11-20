@@ -19,14 +19,14 @@
         if (typeof SEARCH_INDEX === 'undefined') {
             pending++;
             var s1 = document.createElement('script');
-            s1.src = (isOnHeroesDir() ? '../js/data/' : 'js/data/') + 'search-index.js';
+            s1.src = (isOnSubdir() ? '../js/data/' : 'js/data/') + 'search-index.js';
             s1.onload = done; s1.onerror = done;
             document.head.appendChild(s1);
         }
         if (typeof itemsDB === 'undefined') {
             pending++;
             var s2 = document.createElement('script');
-            s2.src = (isOnHeroesDir() ? '../js/data/' : 'js/data/') + 'items-db.js';
+            s2.src = (isOnSubdir() ? '../js/data/' : 'js/data/') + 'items-db.js';
             s2.onload = done; s2.onerror = done;
             document.head.appendChild(s2);
         }
@@ -39,6 +39,12 @@
 
     function isOnHeroesDir() {
         return location.pathname.indexOf('/heroes/') !== -1;
+    }
+
+    // Любой подкаталог сайта (heroes/, guides/) — пути к корню через ../
+    // Явные имена, не глубина пути: на GitHub Pages репозиторий лежит под /legend-of-worlds-war3/
+    function isOnSubdir() {
+        return isOnHeroesDir() || location.pathname.indexOf('/guides/') !== -1;
     }
 
     // ── Построение индекса (при первом запросе) ──
@@ -193,7 +199,7 @@
         }
 
         resultsContainer.innerHTML = '';
-        var prefix = isOnHeroesDir() ? '../' : '';
+        var prefix = isOnSubdir() ? '../' : '';
 
         // Герои
         if (results.heroes.length > 0) {
@@ -213,7 +219,7 @@
                 row.addEventListener('click', (function(heroId) {
                     return function() {
                         closeSearch();
-                        var p = isOnHeroesDir() ? '' : 'heroes/';
+                        var p = isOnHeroesDir() ? '' : (isOnSubdir() ? '../heroes/' : 'heroes/');
                         location.href = p + heroId + '.html';
                     };
                 })(h.heroId));
@@ -236,7 +242,7 @@
                 row.addEventListener('click', (function(heroId) {
                     return function() {
                         closeSearch();
-                        var p = isOnHeroesDir() ? '' : 'heroes/';
+                        var p = isOnHeroesDir() ? '' : (isOnSubdir() ? '../heroes/' : 'heroes/');
                         location.href = p + heroId + '.html';
                     };
                 })(a.heroId));
