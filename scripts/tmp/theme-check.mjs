@@ -3,7 +3,8 @@
  * Проверка темы «Ашенваль» и переключателя тем в панели настроек.
  * 1) дефолт разметки: главная — неон (ашенваль снят указанием владельца 20.11:
  *    accent rgb(0,230,255), фон rgb(11,14,20), theme-color #0b0e14);
- *    lore открывается ашенвалем без JS-выбора (accent rgb(128,255,178), фон rgb(9,16,12));
+ *    lore открывается ашенвалем без JS-выбора (accent rgb(110,231,183), фон rgb(10,18,15),
+ *    theme-color #0a120f — перекраска 20.11: изумрудная мята, дуотон ель/мох);
  * 2) неон не тронут: items без атрибута остаётся циановым;
  * 3) панель: пилюли Неон/Ашенваль/Тёмная/По странице перекрывают разметку на любой
  *    странице, meta theme-color следует за выбором;
@@ -82,7 +83,7 @@ await page.screenshot({ path: path.join(OUTDIR, 'index-neon-default-1280.png') }
 await page.goto('http://localhost:8141/lore.html', { waitUntil: 'load', timeout: 15000 });
 await page.waitForTimeout(300);
 s = await snap();
-ok(s.theme === 'ashenvale' && s.accent === 'rgb(128, 255, 178)', 'lore: дефолт разметки ашенваль', s.accent);
+ok(s.theme === 'ashenvale' && s.accent === 'rgb(110, 231, 183)', 'lore: дефолт разметки ашенваль (перекраска 20.11)', s.accent);
 ok(s.overflow <= 0, 'lore 1280: горизонтального скролла нет', String(s.overflow));
 await page.screenshot({ path: path.join(OUTDIR, 'lore-ashenvale-1280.png') });
 
@@ -119,7 +120,7 @@ await page.waitForTimeout(200);
 await page.click('.settings-theme-btn[data-theme-id="ashenvale"]');
 await page.waitForTimeout(200);
 s = await snap();
-ok(s.theme === 'ashenvale' && s.accent === 'rgb(128, 255, 178)' && s.tc === '#09100c', 'items: ашенваль включён выбором, theme-color темы', s.accent);
+ok(s.theme === 'ashenvale' && s.accent === 'rgb(110, 231, 183)' && s.tc === '#0a120f', 'items: ашенваль включён выбором, theme-color темы', s.accent);
 
 // 6. «по странице»: на items разметка неон, на lore разметка ашенваль
 await page.click('.settings-theme-btn[data-theme-id=""]');
@@ -129,7 +130,7 @@ ok(s.theme === null && s.accent === 'rgb(0, 230, 255)', 'items: «по стра�
 await page.goto('http://localhost:8141/lore.html', { waitUntil: 'load', timeout: 15000 });
 await page.waitForTimeout(300);
 s = await snap();
-ok(s.theme === 'ashenvale' && s.accent === 'rgb(128, 255, 178)', 'lore: «по странице» вернул разметку (ашенваль)', s.accent);
+ok(s.theme === 'ashenvale' && s.accent === 'rgb(110, 231, 183)', 'lore: «по странице» вернул разметку (ашенваль)', s.accent);
 
 // 7. сброс профиля: чистый localStorage снова разметка
 await page.evaluate(() => localStorage.clear());
@@ -334,7 +335,7 @@ await page.evaluate(() => localStorage.clear());
 await page.goto('http://localhost:8141/heroes.html', { waitUntil: 'load', timeout: 15000 });
 await page.waitForTimeout(300);
 const THEME_LIST = [
-    ['ashenvale', 'rgb(128, 255, 178)', '#09100c'],
+    ['ashenvale', 'rgb(110, 231, 183)', '#0a120f'],
     ['dark', 'rgb(0, 210, 235)', '#0d0d0f'],
     ['contrast', 'rgb(0, 255, 255)', '#040406'],
     ['astral', 'rgb(178, 102, 255)', '#0d0a14'],
