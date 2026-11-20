@@ -377,7 +377,7 @@ h1 {
 
 /* ===== Настройки сайта (js/site-settings.js) =====
    Флаги пользователя ставятся атрибутами на <html>: data-anim, data-glass,
-   data-fx, data-sound (звук — только флаг, css его не читает), data-text,
+   data-fx, data-orbs, data-sound (звук — только флаг, css его не читает), data-text,
    data-decor, data-progress. Дефолт «on» ни на один байт рендера не влияет: все блоки ниже срабатывают только
    при явном «off». Правило data-glass живёт в css/glass.css — рядом с
    материалом стекла, который оно глушит. */
@@ -391,14 +391,25 @@ html[data-anim="off"] *::after {
     scroll-behavior: auto !important;
 }
 
-/* тяжёлые эффекты выключены: декоративный орб и свечение курсора убираются
-   целиком, неоновые тени текста гасятся (box-shadow глоу остаётся — он дёшев) */
-html[data-fx="off"] .home-orb-secondary,
+/* тяжёлые эффекты выключены: свечение курсора убирается целиком, неоновые
+   тени текста гасятся (box-shadow глоу остаётся — он дёшев); декоративные
+   орбы 20.11 вынесены из-под fx в отдельный тумблер data-orbs ниже */
 html[data-fx="off"] .cursor-glow {
     display: none !important;
 }
 html[data-fx="off"] * {
     text-shadow: none !important;
+}
+
+/* орбы выключены: все пятна — это body::after (кроме двух элементов на
+   главной и info), одного правила хватает на весь сайт; body::after больше
+   нигде не занят — проверено grep по css кроме бандла (20.11) */
+html[data-orbs="off"] body::after {
+    content: none !important;
+}
+html[data-orbs="off"] .home-orb-secondary,
+html[data-orbs="off"] .info-orb {
+    display: none !important;
 }
 
 /* яркий текст включён (примерная настройка 19.11, значения приближённые —

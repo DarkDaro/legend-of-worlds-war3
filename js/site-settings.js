@@ -6,7 +6,8 @@
  *
  * Флаги лежат в localStorage (ключ site-settings-v1), хранятся только
  * выключенные — дефолт «всё включено». Флаги ставятся атрибутами на <html>:
- *   data-anim="on|off", data-glass="on|off", data-fx="on|off", data-sound="on|off".
+ *   data-anim="on|off", data-glass="on|off", data-fx="on|off",
+ *   data-orbs="on|off", data-sound="on|off".
  * Тема — строка: SiteSettings.get('theme') даёт '' (по странице) или id темы
  * из THEMES ниже ('neon', 'ashenvale', 'dark', 'contrast', 'astral', 'winter');
  * пустое значение оставляет разметку в покое, явный выбор перекрывает
@@ -37,6 +38,7 @@
             anim: s.anim !== false,
             glass: s.glass !== false,
             fx: s.fx !== false,
+            orbs: s.orbs !== false,
             text: s.text === true,
             decor: s.decor !== false,
             theme: s.theme || '',
@@ -58,6 +60,7 @@
         h.setAttribute('data-anim', f.anim ? 'on' : 'off');
         h.setAttribute('data-glass', f.glass ? 'on' : 'off');
         h.setAttribute('data-fx', f.fx ? 'on' : 'off');
+        h.setAttribute('data-orbs', f.orbs ? 'on' : 'off');
         h.setAttribute('data-sound', f.sound ? 'on' : 'off');
         h.setAttribute('data-text', f.text ? 'on' : 'off');
         h.setAttribute('data-decor', f.decor ? 'on' : 'off');
@@ -107,7 +110,8 @@
         ['sound', 'Звук', 'Звуковое сопровождение (контент звука появится позже)'],
         ['anim', 'Анимации', 'Пульсации, счётчики, волны при клике, плавные появления'],
         ['glass', 'Стекломорфизм', 'Размытие фона под шапкой и панелями'],
-        ['fx', 'Тяжёлые эффекты', 'Декоративные орбы, свечение курсора, неоновые тени текста'],
+        ['fx', 'Тяжёлые эффекты', 'Свечение курсора, неоновые тени текста'],
+        ['orbs', 'Декоративные орбы', 'Плавающие световые пятна в фоне страниц'],
         ['progress', 'Полоса прогресса', 'Тонкая полоса чтения у верха страницы'],
         ['text', 'Яркий текст', 'Светлее шкала текста — под яркое солнце и слабое зрение'],
         ['decor', 'Фон главной', 'Картинка арены в шапке главной — можно убрать для читаемости']

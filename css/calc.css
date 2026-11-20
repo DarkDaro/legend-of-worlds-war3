@@ -7,149 +7,15 @@ body.page-hero-guide {
 body.page-hero-guide .wiki-container {
     max-width: 1300px;
 }
-/* Orb для главной — два пятна */
-body.page-home::after {
-    content: '';
-    position: fixed;
-    top: 10%;
-    right: 10%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-    box-shadow: -200px 300px 0 -100px rgba(var(--info-rgb), 0.04);
-    animation: homeOrbPulse 5s ease-in-out infinite;
-}
-@keyframes homeOrbPulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.15); }
-}
-.home-orb-secondary {
-    position: fixed;
-    bottom: 5%;
-    left: 8%;
-    width: 350px;
-    height: 350px;
-    background: radial-gradient(circle, rgba(var(--info-rgb), 0.05) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-    animation: homeOrb2Pulse 7s ease-in-out infinite 1s;
-}
-@keyframes homeOrb2Pulse {
-    0%, 100% { opacity: 0.8; transform: scale(1) translate(0, 0); }
-    33% { opacity: 0.4; transform: scale(1.1) translate(20px, -15px); }
-    66% { opacity: 0.9; transform: scale(0.95) translate(-10px, 10px); }
-}
-
-/* Orb для калькулятора/конструктора/бот-сборок — правый нижний */
-body.page-calculator::after,
-body.page-build-constructor::after,
-body.page-bot-builds::after {
-    content: '';
-    position: fixed;
-    bottom: -10%;
-    right: -5%;
-    width: 450px;
-    height: 450px;
-    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Orb для сравнения — левый нижний */
-body.page-compare::after {
-    content: '';
-    position: fixed;
-    bottom: -10%;
-    left: -5%;
-    width: 450px;
-    height: 450px;
-    background: radial-gradient(circle, rgba(var(--info-rgb), 0.05) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
+/* орбы главной, калькуляторов, compare, armor/formulas, modes, faq, guides,
+   map-changes перенесены в единую секцию «Декоративные орбы» в effects.css
+   (20.11) — стили живут в одном месте, позиции/цвета сохранены */
 
 body.page-armor-calc,
 body.page-formulas-calc {
     background-image:
         radial-gradient(ellipse at 70% 20%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
         radial-gradient(circle at 50% 80%, var(--bg-glow) 0%, var(--bg-deep) 100%);
-}
-
-/* Orb для калькуляторов брони/формул — правый верхний */
-body.page-armor-calc::after,
-body.page-formulas-calc::after {
-    content: '';
-    position: fixed;
-    top: -5%;
-    right: -5%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Orb для режимов — центр-правый */
-body.page-modes::after {
-    content: '';
-    position: fixed;
-    top: 20%;
-    right: -8%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Orb для FAQ — левый верхний */
-body.page-faq::after {
-    content: '';
-    position: fixed;
-    top: -5%;
-    left: -5%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(var(--info-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Orb для гайдов — правый нижний */
-body.page-guides::after {
-    content: '';
-    position: fixed;
-    bottom: -10%;
-    right: -5%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Orb для изменений карты — левый нижний */
-body.page-map-changes::after {
-    content: '';
-    position: fixed;
-    bottom: -10%;
-    left: -5%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
 }
 
 /* ===== Калькулятор сборок ===== */
