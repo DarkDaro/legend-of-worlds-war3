@@ -19,14 +19,14 @@
         if (typeof SEARCH_INDEX === 'undefined') {
             pending++;
             var s1 = document.createElement('script');
-            s1.src = (isOnHeroesDir() ? '../' : '') + 'search-index.js';
+            s1.src = (isOnHeroesDir() ? '../js/data/' : 'js/data/') + 'search-index.js';
             s1.onload = done; s1.onerror = done;
             document.head.appendChild(s1);
         }
         if (typeof itemsDB === 'undefined') {
             pending++;
             var s2 = document.createElement('script');
-            s2.src = (isOnHeroesDir() ? '../' : '') + 'items-db.js';
+            s2.src = (isOnHeroesDir() ? '../js/data/' : 'js/data/') + 'items-db.js';
             s2.onload = done; s2.onerror = done;
             document.head.appendChild(s2);
         }

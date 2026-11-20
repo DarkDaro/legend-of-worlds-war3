@@ -23,8 +23,8 @@ ctx.document = { getElementById: () => null, querySelector: () => null, querySel
   head: { appendChild: () => {} }, body: { appendChild: () => {} } };
 ctx.matchMedia = () => ({ matches: false, addEventListener: () => {} });
 vm.createContext(ctx);
-for (const f of ['hero-data.js', 'hero-lore.js', 'hero-builds.js', 'jass-data.js',
-                 'js/hero-slugs.js', 'items-db.js']) {
+for (const f of ['js/data/hero-data.js', 'js/data/hero-lore.js', 'js/data/hero-builds.js', 'js/data/jass-data.js',
+                 'js/hero-slugs.js', 'js/data/items-db.js']) {
   vm.runInContext(read(f), ctx, { filename: f });
 }
 const grab = n => vm.runInContext(`typeof ${n} !== 'undefined' ? ${n} : undefined`, ctx);

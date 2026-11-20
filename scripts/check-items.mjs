@@ -24,8 +24,8 @@ ctx.document = { getElementById: () => null, querySelector: () => null, querySel
   head: { appendChild: () => {} }, body: { appendChild: () => {} } };
 ctx.matchMedia = () => ({ matches: false, addEventListener: () => {} });
 vm.createContext(ctx);
-for (const f of ['items-db.js', 'js/item-slugs.js', 'bot-builds.js', 'hero-builds.js',
-                 'jass-data.js', 'item-bonus-parser.js']) {
+for (const f of ['js/data/items-db.js', 'js/item-slugs.js', 'js/data/bot-builds.js', 'js/data/hero-builds.js',
+                 'js/data/jass-data.js', 'item-bonus-parser.js']) {
   vm.runInContext(read(f), ctx, { filename: f });
 }
 const grab = n => vm.runInContext(`typeof ${n} !== 'undefined' ? ${n} : undefined`, ctx);
