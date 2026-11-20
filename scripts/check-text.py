@@ -29,6 +29,7 @@ SKIP_DIRS = {".git", "node_modules", "repo-archive"}
 EXCLUDES: list[str] = [
     "vendor/*",
     "repo-archive/*",
+    "scripts/tmp/legacy/*",       # историческая копилка скриптов сессий (16165f6) — архив дословно, не живой код
     "scripts/check-text.py",     # сам содержит шаблоны-паттерны
     "site-validator.html",       # служебная страница-валидатор, сама ищет заглушки (решение владельца 07.11 — остаётся)
 ]
