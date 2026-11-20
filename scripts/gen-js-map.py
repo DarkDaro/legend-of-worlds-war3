@@ -42,6 +42,7 @@ DESCRIPTION = {
     "js/icon-loader.js": "Загрузчик иконок с каскадом PNG → JPG → Font Awesome fallback, навигация по шапке, подсветка параметров. Общий для всех страниц.",
     "js/item-bonus-parser.js": "Парсер бонусов предметов: превращает описания items-db в числовые бонусы (сила, ловкость, урон…) для сравнения и калькуляторов.",
     "js/search.js": "Глобальный поиск по сайту (Ctrl+K / лупа в шапке): оверлей, фильтрация по search-index, переходы. Общий для всех страниц.",
+    "js/site-settings.js": "Панель настроек сайта (темы, звук, анимации, стекломорфизм, тяжёлые эффекты, орбы): инъекция шестерёнки в шапку, localStorage site-settings-v1, data-атрибуты на <html>.",
     "js/tilt-cards.js": "3D-наклон карточек героев при наведении (на десктопе, на мобильных отключён).",
     "js/ui-effects.js": "Общие визуальные эффекты: scroll-reveal, анимации появления блоков. Функция revealElements() используется постраничными скриптами.",
 
@@ -85,7 +86,7 @@ CATS = [
       "js/data/hero-builds.js", "js/data/hero-data.js", "js/data/hero-lore.js", "js/data/items-db.js", "js/data/jass-data.js",
       "js/data/map-data.js", "js/data/mechanics-db.js", "js/data/search-index.js", "js/data/storage-db.js", "js/data/site-counters.js"]),
     ("Общая логика (js/, на всех или многих страницах)",
-     ["js/analytics.js", "js/icon-loader.js", "js/item-bonus-parser.js", "js/search.js", "js/tilt-cards.js", "js/ui-effects.js"]),
+     ["js/analytics.js", "js/icon-loader.js", "js/item-bonus-parser.js", "js/search.js", "js/site-settings.js", "js/tilt-cards.js", "js/ui-effects.js"]),
     ("Постраничные скрипты (js/)",
      ["js/armor-calc-page.js", "js/balance-dashboard-page.js", "js/balance-page.js", "js/bonus-filter.js",
       "js/bot-builds-page.js", "js/compare-page.js", "js/creeps-page.js", "js/events-page.js",
@@ -156,8 +157,9 @@ lines.append("Что это: одна страница, чтобы понима�
              "откуда берёт данные и где подключён. Описания рукописные, карта подключений "
              "и веса — автоматические. После добавления/переименования скрипта — перегенерировать.")
 lines.append("")
-lines.append("**Общий паттерн:** базы данных лежат в корне (`*-db.js`, `*-data.js`), постраничная логика — "
-             "в `js/` (`*-page.js`); подключение через `<script defer>` — сначала базы, потом логика страницы. "
+lines.append("**Общий паттерн:** базы данных лежат в `js/data/` (`*-db.js`, `*-data.js`, перенесены из корня чанком R3 этапа 6, 21.11), "
+             "общие сервисы, калькуляторы и постраничная логика — в `js/`; подключение через `<script defer>` — "
+             "сначала базы, потом сервисы и логика страницы. "
              f"Инлайн-`<script>` есть на {inline_pages} страницах (в основном heroes/* — рендер лора, и шапка-меню).")
 lines.append("")
 
@@ -185,15 +187,15 @@ lines.append("")
 lines.append("1. **Автогенерируемые файлы:** `search-index.js`, `bot-builds.js`, `abilities-db.js`, `hero-builds.js` — "
              "продукты внешних парсеров/генераторов. Сами генераторы лежат в `tools/`, которая под `.gitignore`, "
              "то есть в репозитории их нет. Регенерация возможна только у владельца исходников.")
-lines.append("2. **Ни одного подключённого файла-сироты нет.** Не подключаются намеренно: `site-counters.js` "
+lines.append("2. **Ни одного подключённого файла-сироты нет.** Не подключаются намеренно: `js/data/site-counters.js` "
              "(его читает CI-чекер чисел) и два CI-гейта в `scripts/`. Единственный спорный — "
              "`js/build-constructor-page.js`: подключений нет, похоже на остаток рефакторинга.")
 lines.append("3. **`vendor/` содержит только Font Awesome (CSS + webfonts)** — внешних JS-библиотек на сайте нет, "
              "весь JS собственный.")
-lines.append("4. **Тяжёлые файлы:** `abilities-db.js` ~303 КБ и `items-db.js` ~152 КБ подключаются только на страницах, "
-             "где нужны; на все страницы грузятся лишь `hero-data.js` (49 КБ) и `search-index.js` (57 КБ) — "
+lines.append("4. **Тяжёлые файлы:** `js/data/abilities-db.js` ~303 КБ и `js/data/items-db.js` ~152 КБ подключаются только на страницах, "
+             "где нужны; на все страницы грузятся лишь `js/data/hero-data.js` (49 КБ) и `js/data/search-index.js` (57 КБ) — "
              "для поиска по всему сайту. Это осознанно.")
-lines.append("5. **Синтаксис:** все 47 JS проходят `node --check` (гейт `audit_integrity.py`). "
+lines.append("5. **Синтаксис:** все JS проходят `node --check` (гейт `audit_integrity.py`). "
              "Глобальные имена (`HEROES_DATA`, `itemsDB`, `HERO_LORE`…) объявляются базами и читаются логикой страниц — "
              "порядок подключения критичен и держится на `defer` в порядке следования тегов.")
 lines.append("6. **Проверено вживую (браузер):** каталог героев (вкладки и счётчик «Показано: N из 74»), "
