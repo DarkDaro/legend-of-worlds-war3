@@ -131,11 +131,15 @@
 | `rgba(0,150,255,0.12)` | 1 | 1 | creeps.css |
 | `#5cb8ff` | 1 | 1 | creeps.css |
 | `#4ecdc4` | 1 | 1 | guides.css |
+| `#64b5f6` | 1 | 1 | info-auto-level.css |
+| `rgba(33,150,243,0.12)` | 1 | 1 | info-auto-level.css |
+| `rgba(33,150,243,0.3)` | 1 | 1 | info-auto-level.css |
 | `#6a9ec0` | 1 | 1 | items.css |
 | `rgba(64,160,255,0.12)` | 1 | 1 | items.css |
 | `rgba(106,205,255,0.8)` | 1 | 1 | items.css |
 | `#d2f3ff` | 1 | 1 | items.css |
 | `rgba(64,160,255,0.22)` | 1 | 1 | items.css |
+| `#66f0ff` | 1 | 1 | map.css |
 | `#55ccff44` | 1 | 1 | mechanics.css |
 | `#55ccff` | 1 | 1 | mechanics.css |
 | `#5a8aa0` | 1 | 1 | mechanics.css |
@@ -147,20 +151,16 @@
 | `#78909c` | 1 | 1 | runes.css |
 | `rgba(0,180,255,0.4)` | 1 | 1 | runes.css |
 | `rgba(0,180,255,0.3)` | 1 | 1 | runes.css |
-| `#64b5f6` | 1 | 1 | info-auto-level.css |
-| `rgba(33,150,243,0.12)` | 1 | 1 | info-auto-level.css |
-| `rgba(33,150,243,0.3)` | 1 | 1 | info-auto-level.css |
-| `#66f0ff` | 1 | 1 | map.css |
 
 ### синий — 69 значений, 119 вхождений
 
 | Значение | Вхождений | Файлов | Где |
 |---|---|---|---|
 | `#8e97aa` | 7 | 1 | search.css |
-| `#5a6a7a` | 5 | 1 | search.css |
 | `#4488ff` | 5 | 1 | map.css |
 | `#88aacc` | 5 | 1 | map.css |
 | `#0a1628` | 5 | 1 | map.css |
+| `#5a6a7a` | 5 | 1 | search.css |
 | `#111e30` | 4 | 1 | compare.css |
 | `#b0c8f0` | 4 | 3 | hero-grid.css, items.css, lore.css |
 | `#c0d4ff` | 4 | 2 | hero-page.css, lore.css |
@@ -177,9 +177,9 @@
 | `#1e3a5a` | 2 | 1 | hero-page.css |
 | `#0e1a2b` | 2 | 1 | hero-page.css |
 | `#7a8faa` | 2 | 1 | items.css |
+| `#1a3a5c` | 2 | 1 | map.css |
 | `#c8d8f0` | 2 | 1 | storage.css |
 | `#9ab` | 2 | 1 | storage.css |
-| `#1a3a5c` | 2 | 1 | map.css |
 | `#d0e0ff` | 1 | 1 | base.css |
 | `#c0d0e8` | 1 | 1 | base.css |
 | `#8aa0c0` | 1 | 1 | base.css |
@@ -215,16 +215,16 @@
 | `#a9c7ff` | 1 | 1 | items.css |
 | `#4a5f7a` | 1 | 1 | items.css |
 | `#aac8ff` | 1 | 1 | lore.css |
-| `#1a2540` | 1 | 1 | monsters.css |
-| `#5a6a80` | 1 | 1 | search.css |
-| `#060d14` | 1 | 1 | search.css |
-| `#a0c0e0` | 1 | 1 | search.css |
-| `#2a3a4a` | 1 | 1 | storage.css |
 | `#4488ff22` | 1 | 1 | map.css |
 | `#88aacc22` | 1 | 1 | map.css |
 | `#77aaff` | 1 | 1 | map.css |
 | `rgba(68,136,255,0.2)` | 1 | 1 | map.css |
 | `#aaccee` | 1 | 1 | map.css |
+| `#1a2540` | 1 | 1 | monsters.css |
+| `#5a6a80` | 1 | 1 | search.css |
+| `#060d14` | 1 | 1 | search.css |
+| `#a0c0e0` | 1 | 1 | search.css |
+| `#2a3a4a` | 1 | 1 | storage.css |
 
 ### фиолет/магента — 39 значений, 63 вхождений
 
@@ -232,22 +232,24 @@
 |---|---|---|---|
 | `#1a0a2a` | 5 | 3 | hero-page.css, lore.css, mechanics.css |
 | `#aa44ff` | 5 | 1 | map.css |
-| `#9c27b0` | 4 | 2 | runes.css, info-auto-level.css |
+| `#9c27b0` | 4 | 2 | info-auto-level.css, runes.css |
 | `#ab47bc` | 3 | 3 | aibot.css, balance.css, creeps.css |
 | `#1a0a1a` | 3 | 3 | info.css, lore.css, mechanics.css |
 | `rgba(171,71,188,0.15)` | 2 | 2 | aibot.css, creeps.css |
 | `#cc44ff` | 2 | 1 | effects.css |
 | `#2a1a3a` | 2 | 2 | hero-page.css, monsters.css |
+| `rgba(156,39,176,0.12)` | 2 | 2 | info-auto-level.css, runes.css |
 | `#aa44aa44` | 2 | 2 | lore.css, mechanics.css |
 | `#aa44aa` | 2 | 2 | lore.css, mechanics.css |
 | `rgba(170,68,170,0.3)` | 2 | 1 | mechanics.css |
-| `rgba(156,39,176,0.12)` | 2 | 2 | runes.css, info-auto-level.css |
 | `rgba(170,120,255,0.4)` | 2 | 1 | storage.css |
 | `#c9a6ff` | 2 | 1 | storage.css |
 | `rgba(156,39,176,0.15)` | 1 | 1 | balance.css |
 | `#aa55ff` | 1 | 1 | formulas-calc.css |
 | `#a78bfa` | 1 | 1 | guides.css |
 | `#e0b0ff` | 1 | 1 | hero-page.css |
+| `#ce93d8` | 1 | 1 | info-auto-level.css |
+| `rgba(156,39,176,0.3)` | 1 | 1 | info-auto-level.css |
 | `#ff66c4` | 1 | 1 | items.css |
 | `#ff66c488` | 1 | 1 | items.css |
 | `#1a1020` | 1 | 1 | items.css |
@@ -255,6 +257,9 @@
 | `#e040fb44` | 1 | 1 | items.css |
 | `#e040fb88` | 1 | 1 | items.css |
 | `#f0a0ff` | 1 | 1 | items.css |
+| `#aa44ff22` | 1 | 1 | map.css |
+| `#cc77ff` | 1 | 1 | map.css |
+| `rgba(170,68,255,0.2)` | 1 | 1 | map.css |
 | `#2a1a2a` | 1 | 1 | mechanics.css |
 | `rgba(40,0,40,0.4)` | 1 | 1 | mechanics.css |
 | `rgba(170,68,170,0.25)` | 1 | 1 | mechanics.css |
@@ -264,11 +269,6 @@
 | `rgba(124,77,255,0.35)` | 1 | 1 | runes.css |
 | `rgba(156,39,176,0.55)` | 1 | 1 | runes.css |
 | `rgba(170,120,255,0.07)` | 1 | 1 | storage.css |
-| `#ce93d8` | 1 | 1 | info-auto-level.css |
-| `rgba(156,39,176,0.3)` | 1 | 1 | info-auto-level.css |
-| `#aa44ff22` | 1 | 1 | map.css |
-| `#cc77ff` | 1 | 1 | map.css |
-| `rgba(170,68,255,0.2)` | 1 | 1 | map.css |
 
 ### красный — 51 значений, 83 вхождений
 
@@ -280,10 +280,10 @@
 | `#ff7043` | 3 | 3 | aibot.css, balance.css, creeps.css |
 | `#ef5350` | 3 | 3 | aibot.css, balance.css, info-auto-level.css |
 | `rgba(255,60,60,0.15)` | 3 | 1 | bot-builds.css |
+| `#f44336` | 3 | 1 | info-auto-level.css |
 | `#ff8888` | 3 | 2 | items.css, monsters.css |
 | `#2a0a1a` | 3 | 2 | lore.css, mechanics.css |
 | `#e74c3c` | 3 | 2 | sitemap-page.css, tierlist.css |
-| `#f44336` | 3 | 1 | info-auto-level.css |
 | `rgba(255,87,34,0.15)` | 2 | 2 | aibot.css, balance.css |
 | `rgba(244,67,54,0.15)` | 2 | 2 | aibot.css, balance.css |
 | `rgba(255,60,60,0.4)` | 2 | 1 | bot-builds.css |
@@ -301,12 +301,17 @@
 | `#ef4444` | 1 | 1 | events.css |
 | `rgba(220,38,38,0.3)` | 1 | 1 | events.css |
 | `#ff55aa` | 1 | 1 | formulas-calc.css |
+| `rgba(244,67,54,0.12)` | 1 | 1 | info-auto-level.css |
+| `rgba(244,67,54,0.3)` | 1 | 1 | info-auto-level.css |
 | `#3a1a1a` | 1 | 1 | items.css |
 | `#ff6b3522` | 1 | 1 | items.css |
 | `#ff6b3544` | 1 | 1 | items.css |
 | `#ff6b3588` | 1 | 1 | items.css |
 | `rgba(255,120,120,0.4)` | 1 | 1 | items.css |
 | `rgba(255,120,120,0.12)` | 1 | 1 | items.css |
+| `#ff66aa22` | 1 | 1 | map.css |
+| `#ff99cc` | 1 | 1 | map.css |
+| `rgba(255,102,170,0.3)` | 1 | 1 | map.css |
 | `#ff664444` | 1 | 1 | mechanics.css |
 | `#ff6644` | 1 | 1 | mechanics.css |
 | `rgba(255,102,68,0.2)` | 1 | 1 | mechanics.css |
@@ -320,18 +325,13 @@
 | `rgba(204,0,0,0.45)` | 1 | 1 | runes.css |
 | `rgba(233,30,99,0.4)` | 1 | 1 | runes.css |
 | `#ff5050` | 1 | 1 | search.css |
-| `rgba(244,67,54,0.12)` | 1 | 1 | info-auto-level.css |
-| `rgba(244,67,54,0.3)` | 1 | 1 | info-auto-level.css |
-| `#ff66aa22` | 1 | 1 | map.css |
-| `#ff99cc` | 1 | 1 | map.css |
-| `rgba(255,102,170,0.3)` | 1 | 1 | map.css |
 
 ### оранж — 35 значений, 70 вхождений
 
 | Значение | Вхождений | Файлов | Где |
 |---|---|---|---|
 | `#ffa500` | 7 | 4 | balance-dashboard.css, events.css, search.css, tierlist.css |
-| `#ff9800` | 6 | 3 | aibot.css, runes.css, info-auto-level.css |
+| `#ff9800` | 6 | 3 | aibot.css, info-auto-level.css, runes.css |
 | `#2a1a0a` | 6 | 5 | hero-page.css, items.css, lore.css, mechanics.css, monsters.css |
 | `#ffaa44` | 5 | 1 | map.css |
 | `#ff8844` | 4 | 2 | effects.css, hero-grid.css |
@@ -341,10 +341,10 @@
 | `rgba(255,165,0,0.15)` | 2 | 2 | events.css, search.css |
 | `#ff8844aa` | 2 | 1 | hero-grid.css |
 | `#ffb347` | 2 | 2 | hero-page.css, items.css |
+| `rgba(255,152,0,0.12)` | 2 | 2 | info-auto-level.css, runes.css |
 | `#ffaa33` | 2 | 1 | items.css |
 | `#ffaa33aa` | 2 | 1 | items.css |
 | `#ffaa3344` | 2 | 1 | items.css |
-| `rgba(255,152,0,0.12)` | 2 | 2 | runes.css, info-auto-level.css |
 | `rgba(255,165,0,0.06)` | 1 | 1 | balance-dashboard.css |
 | `rgba(255,165,0,0.08)` | 1 | 1 | balance-dashboard.css |
 | `rgba(255,165,0,0.2)` | 1 | 1 | balance-dashboard.css |
@@ -354,17 +354,17 @@
 | `#ffcc66` | 1 | 1 | hero-page.css |
 | `#3a1a0a` | 1 | 1 | hero-page.css |
 | `#ffcc44` | 1 | 1 | hero-page.css |
+| `#ffb74d` | 1 | 1 | info-auto-level.css |
+| `rgba(255,152,0,0.3)` | 1 | 1 | info-auto-level.css |
 | `#ffbb66` | 1 | 1 | items.css |
 | `#ffcc4455` | 1 | 1 | items.css |
 | `#ffb088` | 1 | 1 | items.css |
 | `#ffaa3355` | 1 | 1 | items.css |
-| `rgba(255,165,0,0.05)` | 1 | 1 | search.css |
-| `#f39c12` | 1 | 1 | tierlist.css |
-| `#ffb74d` | 1 | 1 | info-auto-level.css |
-| `rgba(255,152,0,0.3)` | 1 | 1 | info-auto-level.css |
 | `#ffaa4422` | 1 | 1 | map.css |
 | `#ffcc77` | 1 | 1 | map.css |
 | `rgba(255,170,68,0.2)` | 1 | 1 | map.css |
+| `rgba(255,165,0,0.05)` | 1 | 1 | search.css |
+| `#f39c12` | 1 | 1 | tierlist.css |
 
 ### золото/янтарь — 4 значений, 10 вхождений
 
@@ -379,22 +379,22 @@
 
 | Значение | Вхождений | Файлов | Где |
 |---|---|---|---|
-| `rgba(var(--cyan-rgb)` | 329 | 29 | aibot.css, balance-dashboard.css, balance.css, base.css, bot-builds.css, calc.css, compare.css, creeps.css, effects.css, events.css, faq.css, formulas-calc.css, gallery.css, glass.css, guides.css, header-mobile.css, hero-grid.css, hero-page.css, home.css, info.css, items.css, lore.css, manifesto-support.css, mechanics.css, monsters.css, search.css, storage.css, tierlist.css, map.css |
+| `rgba(var(--cyan-rgb)` | 329 | 29 | aibot.css, balance-dashboard.css, balance.css, base.css, bot-builds.css, calc.css, compare.css, creeps.css, effects.css, events.css, faq.css, formulas-calc.css, gallery.css, glass.css, guides.css, header-mobile.css, hero-grid.css, hero-page.css, home.css, info.css, items.css, lore.css, manifesto-support.css, map.css, mechanics.css, monsters.css, search.css, storage.css, tierlist.css |
 | `rgba(var(--red-rgb)` | 58 | 14 | calc.css, creeps.css, effects.css, guides.css, hero-grid.css, home.css, info.css, items.css, lore.css, mechanics.css, monsters.css, runes.css, search.css, storage.css |
 | `rgba(var(--violet-rgb)` | 34 | 7 | calc.css, hero-page.css, home.css, items.css, lore.css, mechanics.css, monsters.css |
 | `rgba(var(--info-rgb)` | 26 | 7 | calc.css, effects.css, hero-grid.css, home.css, items.css, lore.css, mechanics.css |
 | `rgba(var(--orange-rgb)` | 22 | 3 | calc.css, hero-page.css, items.css |
 | `rgba(var(--gold-rgb)` | 15 | 5 | bot-builds.css, calc.css, creeps.css, info.css, search.css |
-| `rgba(var(--red-deep-rgb)` | 15 | 5 | items.css, lore.css, mechanics.css, search.css, map.css |
+| `rgba(var(--red-deep-rgb)` | 15 | 5 | items.css, lore.css, map.css, mechanics.css, search.css |
 | `rgba(var(--surface-rgb)` | 14 | 9 | base.css, calc.css, gallery.css, glass.css, hero-page.css, items.css, lore.css, manifesto-support.css, search.css |
-| `rgba(var(--backdrop-rgb)` | 10 | 7 | aibot.css, balance-dashboard.css, balance.css, creeps.css, items.css, storage.css, map.css |
+| `rgba(var(--backdrop-rgb)` | 10 | 7 | aibot.css, balance-dashboard.css, balance.css, creeps.css, items.css, map.css, storage.css |
 | `rgba(var(--agility-rgb)` | 10 | 3 | calc.css, hero-grid.css, items.css |
 | `#44ff88` | 10 | 1 | map.css |
 | `rgba(var(--gold-bright-rgb)` | 9 | 2 | runes.css, storage.css |
 | `rgba(var(--orange-soft-rgb)` | 8 | 5 | hero-page.css, items.css, lore.css, mechanics.css, monsters.css |
 | `rgba(var(--mint-rgb)` | 7 | 3 | home.css, lore.css, mechanics.css |
 | `rgba(var(--green-rgb)` | 7 | 3 | lore.css, mechanics.css, monsters.css |
-| `rgba(var(--green-muted-rgb)` | 6 | 5 | aibot.css, balance.css, creeps.css, runes.css, info-auto-level.css |
+| `rgba(var(--green-muted-rgb)` | 6 | 5 | aibot.css, balance.css, creeps.css, info-auto-level.css, runes.css |
 | `rgba(var(--red-soft-rgb)` | 6 | 5 | balance-dashboard.css, balance.css, guides.css, info.css, monsters.css |
 | `rgba(var(--container-rgb)` | 6 | 3 | base.css, info.css, items.css |
 | `rgba(var(--amber-rgb)` | 5 | 4 | aibot.css, balance.css, creeps.css, runes.css |
@@ -413,10 +413,10 @@
 | `#0a2a1a` | 2 | 2 | lore.css, mechanics.css |
 | `#55ffcc44` | 2 | 2 | lore.css, mechanics.css |
 | `#55ffcc` | 2 | 2 | lore.css, mechanics.css |
-| `rgba(85,255,204,0.15)` | 2 | 1 | mechanics.css |
-| `#2ecc71` | 2 | 2 | sitemap-page.css, tierlist.css |
 | `#44ff8822` | 2 | 1 | map.css |
 | `rgba(68,255,136,0.2)` | 2 | 1 | map.css |
+| `rgba(85,255,204,0.15)` | 2 | 1 | mechanics.css |
+| `#2ecc71` | 2 | 2 | sitemap-page.css, tierlist.css |
 | `rgba(81,207,102,0.1)` | 1 | 1 | balance.css |
 | `rgb(var(--bg-deep-rgb)` | 1 | 1 | base.css |
 | `rgb(var(--bg-glow-rgb)` | 1 | 1 | base.css |
@@ -451,6 +451,7 @@
 | `rgba(var(--bg-rgb)` | 1 | 1 | hero-grid.css |
 | `rgba(var(--mint-deep-rgb)` | 1 | 1 | hero-page.css |
 | `#66ffaa` | 1 | 1 | hero-page.css |
+| `#81c784` | 1 | 1 | info-auto-level.css |
 | `rgba(var(--spring-rgb)` | 1 | 1 | items.css |
 | `rgba(var(--abyss-rgb)` | 1 | 1 | items.css |
 | `#1a2a0a` | 1 | 1 | mechanics.css |
@@ -458,31 +459,30 @@
 | `rgba(0,230,118,0.12)` | 1 | 1 | runes.css |
 | `#00e676` | 1 | 1 | runes.css |
 | `rgba(0,230,118,0.25)` | 1 | 1 | runes.css |
-| `#81c784` | 1 | 1 | info-auto-level.css |
 
 ### белый/светлый — 19 значений, 64 вхождений
 
 | Значение | Вхождений | Файлов | Где |
 |---|---|---|---|
-| `#fff` | 20 | 9 | base.css, hero-grid.css, home.css, items.css, lore.css, mechanics.css, monsters.css, storage.css, map.css |
-| `#ffffff` | 14 | 7 | base.css, bot-builds.css, header-mobile.css, items.css, lore.css, mechanics.css, map.css |
+| `#fff` | 20 | 9 | base.css, hero-grid.css, home.css, items.css, lore.css, map.css, mechanics.css, monsters.css, storage.css |
+| `#ffffff` | 14 | 7 | base.css, bot-builds.css, header-mobile.css, items.css, lore.css, map.css, mechanics.css |
 | `rgba(255,255,255,0.04)` | 9 | 6 | aibot.css, balance-dashboard.css, balance.css, creeps.css, events.css, guides.css |
 | `#e0e8f0` | 3 | 1 | map.css |
 | `rgba(255,255,255,0.06)` | 2 | 2 | balance-dashboard.css, bot-builds.css |
+| `rgba(255,255,255,0.1)` | 2 | 2 | info-auto-level.css, runes.css |
 | `rgba(255,255,255,0.03)` | 2 | 1 | info.css |
-| `rgba(255,255,255,0.1)` | 2 | 2 | runes.css, info-auto-level.css |
 | `#f2f8ff` | 1 | 1 | base.css |
 | `#e4eefc` | 1 | 1 | base.css |
 | `rgba(255,255,255,0.25)` | 1 | 1 | bot-builds.css |
 | `rgba(255,255,255,0.2)` | 1 | 1 | bot-builds.css |
 | `rgba(255,255,255,0.12)` | 1 | 1 | hero-grid.css |
+| `rgba(255,255,255,0.05)` | 1 | 1 | info-auto-level.css |
 | `#f0f5ff` | 1 | 1 | items.css |
 | `#e2e8f0` | 1 | 1 | items.css |
 | `#ffffff44` | 1 | 1 | mechanics.css |
 | `rgba(255,255,255,0.35)` | 1 | 1 | mechanics.css |
 | `rgba(255,255,255,0.5)` | 1 | 1 | runes.css |
 | `rgba(255,255,255,0.08)` | 1 | 1 | storage.css |
-| `rgba(255,255,255,0.05)` | 1 | 1 | info-auto-level.css |
 
 ### нейтральный — 13 значений, 16 вхождений
 
@@ -554,12 +554,12 @@
 | 0 8px 8px 0 | 2 |
 | 11px | 1 |
 | 9px | 1 |
+| 14px 14px 0 0 | 1 |
 | 20px 20px 0 0 | 1 |
 | 18px 18px 0 0 | 1 |
 | 32px | 1 |
 | 0 2px 2px 0 | 1 |
 | 1px | 1 |
-| 14px 14px 0 0 | 1 |
 
 ## Keyframes
 
@@ -570,7 +570,7 @@ abilityIconPulse, auroraBanner, auroraShift, bannerFadeIn, crownFloat, ctaBorder
 | Файл | Цветовых литералов |
 |---|---|
 | css/items.css | 151 |
-| map.css | 93 |
+| css/map.css | 93 |
 | css/hero-page.css | 85 |
 | css/mechanics.css | 76 |
 | css/search.css | 76 |
@@ -584,8 +584,8 @@ abilityIconPulse, auroraBanner, auroraShift, bannerFadeIn, crownFloat, ctaBorder
 | css/runes.css | 36 |
 | css/hero-grid.css | 34 |
 | css/effects.css | 33 |
-| aibot.css | 31 |
+| css/aibot.css | 31 |
 | css/balance.css | 30 |
-| info-auto-level.css | 29 |
+| css/info-auto-level.css | 29 |
 | css/creeps.css | 28 |
 | css/monsters.css | 26 |
