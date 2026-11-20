@@ -107,9 +107,12 @@
         .balance-table td:has(.role-cell) { white-space: normal; }
 
         /* Парящая иконка */
+        /* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .balance-page-icon — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+        /*
         .balance-page-icon {
             animation: float 3s ease-in-out infinite;
         }
+        */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-14px); }

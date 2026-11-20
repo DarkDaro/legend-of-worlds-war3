@@ -282,11 +282,14 @@ body.item-sheet-open {
 }
 
 /* Рекомендуется героям */
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .hero-reco-list — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .hero-reco-list {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
+*/
 
 .hero-reco-chip {
   display: inline-flex;
@@ -566,7 +569,10 @@ body.item-sheet-open {
   display: block;
   color: var(--text-strong);
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .item-card.consumable — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .item-card.consumable    { border-bottom: 4px solid var(--spring); box-shadow: 0 0 15px rgba(var(--spring-rgb), 0.35); }
+*/
 .item-card.neutral       { border-bottom: 4px solid var(--magic); box-shadow: 0 0 15px rgba(var(--violet-rgb), 0.35); }
 .item-card.boost         { border-bottom: 4px solid #ffaa33; box-shadow: 0 0 15px #ffaa3355; }
 .item-card.strength      { border-bottom: 4px solid var(--danger); box-shadow: 0 0 15px rgba(var(--red-rgb), 0.35); }
@@ -585,7 +591,10 @@ body.item-sheet-open {
 .item-card.weapon:hover      { border-color: var(--warning); box-shadow: 0 0 20px rgba(var(--orange-rgb), 0.6), 0 0 40px rgba(var(--orange-rgb), 0.2); }
 .item-card.boost:hover      { border-color: #ffaa33; box-shadow: 0 0 20px #ffaa33aa, 0 0 40px #ffaa3344; }
 .item-card.neutral:hover    { border-color: var(--magic); box-shadow: 0 0 20px rgba(var(--violet-rgb), 0.6), 0 0 40px rgba(var(--violet-rgb), 0.2); }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .item-card.consumable:hover — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .item-card.consumable:hover { border-color: var(--spring); box-shadow: 0 0 20px rgba(var(--spring-rgb), 0.6), 0 0 40px rgba(var(--spring-rgb), 0.2); }
+*/
 /* Редкость предметов по стоимости */
 .item-card.rarity-cheap  { opacity: 0.85; }
 .item-card.rarity-mid    { opacity: 0.92; }
@@ -640,7 +649,10 @@ body.item-sheet-open {
 .item-card.weapon .item-icon img     { border-color: rgba(var(--orange-rgb), 0.6); box-shadow: 0 0 10px rgba(var(--orange-rgb), 0.2); }
 .item-card.boost .item-icon img      { border-color: #ffaa33aa; box-shadow: 0 0 10px #ffaa3344; }
 .item-card.neutral .item-icon img    { border-color: rgba(var(--violet-rgb), 0.6); box-shadow: 0 0 10px rgba(var(--violet-rgb), 0.2); }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .item-card.consumable .item-icon img — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .item-card.consumable .item-icon img { border-color: rgba(var(--spring-rgb), 0.6); box-shadow: 0 0 10px rgba(var(--spring-rgb), 0.2); }
+*/
 .item-name {
   font-size: 0.9rem;
   font-weight: 600;

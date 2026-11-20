@@ -4,10 +4,13 @@
     margin: 0 auto;
     text-align: center;
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .support-hero — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .support-hero {
     font-size: 4rem;
     margin-bottom: 16px;
 }
+*/
 .support-desc {
     color: var(--text-secondary);
     font-size: 1.05rem;
@@ -303,6 +306,8 @@
     color: var(--text-primary);
     flex: 1;
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .monster-code — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .monster-code {
     font-family: 'Consolas', monospace;
     font-size: 0.75rem;
@@ -311,6 +316,7 @@
     padding: 2px 8px;
     border-radius: 6px;
 }
+*/
 .monster-toggle {
     color: var(--text-dim);
     font-size: 0.8rem;
@@ -444,11 +450,14 @@
 }
 
 /* Вступительный текст на странице монстров */
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .monsters-intro — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .monsters-intro {
     color: var(--text-secondary);
     margin-bottom: 24px;
     font-size: 1.05rem;
 }
+*/
 
 /* Иконка заголовка "Боссы" */
 .boss-heading-icon {
@@ -493,9 +502,12 @@
 }
 
 /* Стадии босса */
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .boss-stages — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .boss-stages {
     margin-top: 12px;
 }
+*/
 .boss-stage {
     display: flex;
     align-items: baseline;
@@ -506,6 +518,8 @@
     border-radius: 8px;
     margin-bottom: 4px;
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (2 шт.): .boss-stage-threshold; .boss-stage-desc — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .boss-stage-threshold {
     font-weight: 700;
     color: var(--magic);
@@ -518,6 +532,7 @@
     font-size: 0.85rem;
     line-height: 1.4;
 }
+*/
 
 /* Награда за босса */
 .monster-reward {
@@ -590,8 +605,11 @@
     border-bottom-color: var(--danger-soft);
     text-shadow: 0 0 8px rgba(var(--red-soft-rgb), 0.6);
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .drop-bonus — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .drop-bonus {
     color: var(--magic);
     font-size: 0.8rem;
     margin-left: 4px;
 }
+*/

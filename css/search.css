@@ -733,6 +733,8 @@ body.page-leaving {
     margin-bottom: 0;
 }
 
+/* [off 20.11 TD-16] отключены мёртвые правила (2 шт.): .bc-paste-stage-btn; .bc-paste-stage-btn:hover — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .bc-paste-stage-btn {
     display: inline-flex;
     align-items: center;
@@ -753,6 +755,7 @@ body.page-leaving {
     background: rgba(var(--cyan-rgb), 0.12);
     border-color: rgba(var(--cyan-rgb), 0.35);
 }
+*/
 
 .bc-clear-btn {
     display: inline-flex;

@@ -66,6 +66,8 @@
             font-size: 0.85rem;
             white-space: nowrap;
         }
+/* [off 20.11 TD-16] отключены мёртвые правила (6 шт.): .formula-sources; .formula-source-chip; .formula-source-chip:hover; .formula-source-chip.selected; .formula-source-chip .chip-value; .formula-source-chip.selected .chip-value — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .formula-sources {
             display: flex;
             flex-wrap: wrap;
@@ -100,6 +102,7 @@
 .formula-source-chip.selected .chip-value {
             color: var(--accent-cyan);
         }
+*/
         .formula-results {
             background: var(--surface-bg);
             backdrop-filter: blur(var(--surface-blur));
@@ -303,11 +306,14 @@
             min-width: 16px;
             text-align: center;
         }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .luck-item-card .luck-item-total — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .luck-item-card .luck-item-total {
             color: var(--text-muted);
             font-size: 0.78rem;
             margin-left: 4px;
         }
+*/
         .luck-items-total-row {
             display: flex;
             justify-content: space-between;
