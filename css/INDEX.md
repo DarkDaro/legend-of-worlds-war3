@@ -5,7 +5,7 @@
 ## Как грузится CSS — два слоя
 
 1. **Ядро-бандл `css/all.css`** — конкатенация 15 файлов по порядку `@import` из `repo-archive/style.css`. Генератор: `python3 scripts/build-css-bundle.py` (после правки любого css/*.css из ядра — перезапустить). Подключён на всех 116 продуктовых страницах.
-2. **Постраничные файлы** — своей ссылкой после бандла: armor-calc, balance, balance-dashboard, bot-builds, compare, creeps, events, faq, formulas-calc, gallery, guides (×7 guide-*.html), manifesto-support (manifesto + support), runes, sitemap-page, storage, tierlist. Плюс корневые: `aibot.css`, `map.css`, `info-auto-level.css` (info + manifesto).
+2. **Постраничные файлы** — своей ссылкой после бандла: armor-calc, balance, balance-dashboard, bot-builds, compare, creeps, events, faq, formulas-calc, gallery, guides (×7 guide-*.html), manifesto-support (manifesto + support), runes, sitemap-page, storage, tierlist, aibot (aibot.html), map (map.html), info-auto-level (info + manifesto). До 21.11 aibot.css, map.css и info-auto-level.css лежали в корне — перенесены в css/ чанком R2 этапа 6.
 
 Правка постраничного файла в бандл не попадает — бандл пересобирать не нужно. Правка файла ядра без пересборки на сайт не уедет.
 
