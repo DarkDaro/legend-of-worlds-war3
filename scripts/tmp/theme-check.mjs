@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 /**
  * Проверка темы «Ашенваль» и переключателя тем в панели настроек.
- * 1) прототип в разметке: index и lore открываются в ашенвале без JS-выбора
- *    (accent rgb(128,255,178), фон rgb(9,16,12), theme-color #09100c);
+ * 1) дефолт разметки: главная — неон (ашенваль снят указанием владельца 20.11:
+ *    accent rgb(0,230,255), фон rgb(11,14,20), theme-color #0b0e14);
+ *    lore открывается ашенвалем без JS-выбора (accent rgb(128,255,178), фон rgb(9,16,12));
  * 2) неон не тронут: items без атрибута остаётся циановым;
  * 3) панель: пилюли Неон/Ашенваль/Тёмная/По странице перекрывают разметку на любой
  *    странице, meta theme-color следует за выбором;
  * 4) персистентность: перезагрузка держит выбор, «По странице» возвращает разметку;
  * 5) мобильный 390: панель с темой из бургера, скролла нет;
- * 6) тёмная тема: выбор на items, персистентность, перекрытие разметки ашенваля на index;
+ * 6) тёмная тема: выбор на items, персистентность, перекрытие разметки главной;
  * 7) высокий контраст: выбор на items, персистентность, перекрытие разметки, theme-color;
  * 7b) астральная: выбор на items, персистентность, перекрытие разметки, theme-color;
  * 7c) зимняя морозная: выбор на items, персистентность, перекрытие разметки, theme-color;
@@ -68,15 +69,15 @@ const snap = () => page.evaluate(() => ({
     overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth
 }));
 
-// 1. прототип в разметке
+// 1. дефолт разметки: главная — неон (ашенваль снят 20.11), lore — ашенваль
 await page.goto('http://localhost:8141/index.html', { waitUntil: 'load', timeout: 15000 });
 await page.addStyleTag({ content: '*, *::before, *::after { animation: none !important; }' });
 await page.waitForTimeout(400);
 let s = await snap();
-ok(s.theme === 'ashenvale' && s.accent === 'rgb(128, 255, 178)', 'index: дефолт разметки ашенваль, акцент лунно-зелёный', s.accent);
-ok(s.bg === 'rgb(9, 16, 12)' && s.tc === '#09100c', 'index: фон ночного леса и theme-color темы', s.bg + ' | ' + s.tc);
+ok(s.theme === null && s.accent === 'rgb(0, 230, 255)', 'index: дефолт разметки неон (ашенваль снят 20.11)', s.accent);
+ok(s.bg === 'rgb(11, 14, 20)' && s.tc === '#0b0e14', 'index: фон неона и theme-color разметки', s.bg + ' | ' + s.tc);
 ok(s.overflow <= 0, 'index 1280: горизонтального скролла нет', String(s.overflow));
-await page.screenshot({ path: path.join(OUTDIR, 'index-ashenvale-1280.png') });
+await page.screenshot({ path: path.join(OUTDIR, 'index-neon-default-1280.png') });
 
 await page.goto('http://localhost:8141/lore.html', { waitUntil: 'load', timeout: 15000 });
 await page.waitForTimeout(300);
@@ -91,8 +92,8 @@ await page.waitForTimeout(300);
 s = await snap();
 ok(s.theme === null && s.accent === 'rgb(0, 230, 255)' && s.tc === '#0b0e14', 'items: без атрибута неон и theme-color неона', s.accent + ' | ' + s.tc);
 
-// 3. переключатель: неон поверх разметки ашенваля на index
-await page.goto('http://localhost:8141/index.html', { waitUntil: 'load', timeout: 15000 });
+// 3. переключатель: неон поверх разметки ашенваля на lore
+await page.goto('http://localhost:8141/lore.html', { waitUntil: 'load', timeout: 15000 });
 await page.waitForTimeout(300);
 await page.click('.settings-btn');
 await page.waitForTimeout(200);
@@ -101,8 +102,8 @@ ok(!!pillNeon, 'панель: строка темы с пилюлями есть
 await pillNeon.click();
 await page.waitForTimeout(200);
 s = await snap();
-ok(s.theme === null && s.accent === 'rgb(0, 230, 255)' && s.tc === '#0b0e14', 'index: неон перекрыл разметку, theme-color сменился', s.accent + ' | ' + s.tc);
-await page.screenshot({ path: path.join(OUTDIR, 'index-neon-1280.png') });
+ok(s.theme === null && s.accent === 'rgb(0, 230, 255)' && s.tc === '#0b0e14', 'lore: неон перекрыл разметку ашенваля, theme-color сменился', s.accent + ' | ' + s.tc);
+await page.screenshot({ path: path.join(OUTDIR, 'lore-neon-1280.png') });
 
 // 4. персистентность неона перезагрузкой
 await page.reload({ waitUntil: 'load' });
@@ -120,22 +121,22 @@ await page.waitForTimeout(200);
 s = await snap();
 ok(s.theme === 'ashenvale' && s.accent === 'rgb(128, 255, 178)' && s.tc === '#09100c', 'items: ашенваль включён выбором, theme-color темы', s.accent);
 
-// 6. «по странице»: на items разметка неон, на index разметка ашенваль
+// 6. «по странице»: на items разметка неон, на lore разметка ашенваль
 await page.click('.settings-theme-btn[data-theme-id=""]');
 await page.waitForTimeout(200);
 s = await snap();
 ok(s.theme === null && s.accent === 'rgb(0, 230, 255)', 'items: «по странице» вернул разметку (неон)', s.accent);
-await page.goto('http://localhost:8141/index.html', { waitUntil: 'load', timeout: 15000 });
+await page.goto('http://localhost:8141/lore.html', { waitUntil: 'load', timeout: 15000 });
 await page.waitForTimeout(300);
 s = await snap();
-ok(s.theme === 'ashenvale' && s.accent === 'rgb(128, 255, 178)', 'index: «по странице» вернул разметку (ашенваль)', s.accent);
+ok(s.theme === 'ashenvale' && s.accent === 'rgb(128, 255, 178)', 'lore: «по странице» вернул разметку (ашенваль)', s.accent);
 
 // 7. сброс профиля: чистый localStorage снова разметка
 await page.evaluate(() => localStorage.clear());
 await page.reload({ waitUntil: 'load' });
 await page.waitForTimeout(300);
 s = await snap();
-ok(s.theme === 'ashenvale', 'сброс localStorage: index снова ашенваль из разметки', s.theme);
+ok(s.theme === 'ashenvale', 'сброс localStorage: lore снова ашенваль из разметки', s.theme);
 
 // 8. мобильный 390: панель с темой из бургера
 await page.setViewportSize({ width: 390, height: 844 });
@@ -181,7 +182,7 @@ await page.setViewportSize({ width: 390, height: 844 });
 await page.goto('http://localhost:8141/index.html', { waitUntil: 'load', timeout: 15000 });
 await page.waitForTimeout(300);
 s = await snap();
-ok(s.theme === 'dark' && s.overflow <= 0, 'index 390 тёмная: выбор перекрыл ашенваль разметки, скролла нет', String(s.overflow));
+ok(s.theme === 'dark' && s.overflow <= 0, 'index 390 тёмная: выбор перекрыл разметку главной (неон), скролла нет', String(s.overflow));
 await page.screenshot({ path: path.join(OUTDIR, 'index-dark-390.png') });
 await page.evaluate(() => localStorage.clear());
 
@@ -208,7 +209,7 @@ await page.setViewportSize({ width: 390, height: 844 });
 await page.goto('http://localhost:8141/index.html', { waitUntil: 'load', timeout: 15000 });
 await page.waitForTimeout(300);
 s = await snap();
-ok(s.theme === 'contrast' && s.overflow <= 0, 'index 390 контраст: выбор перекрыл ашенваль разметки, скролла нет', String(s.overflow));
+ok(s.theme === 'contrast' && s.overflow <= 0, 'index 390 контраст: выбор перекрыл разметку главной (неон), скролла нет', String(s.overflow));
 await page.screenshot({ path: path.join(OUTDIR, 'index-contrast-390.png') });
 await page.evaluate(() => localStorage.clear());
 
@@ -235,7 +236,7 @@ await page.setViewportSize({ width: 390, height: 844 });
 await page.goto('http://localhost:8141/index.html', { waitUntil: 'load', timeout: 15000 });
 await page.waitForTimeout(300);
 s = await snap();
-ok(s.theme === 'astral' && s.overflow <= 0, 'index 390 астральная: выбор перекрыл ашенваль разметки, скролла нет', String(s.overflow));
+ok(s.theme === 'astral' && s.overflow <= 0, 'index 390 астральная: выбор перекрыл разметку главной (неон), скролла нет', String(s.overflow));
 await page.screenshot({ path: path.join(OUTDIR, 'index-astral-390.png') });
 await page.evaluate(() => localStorage.clear());
 
@@ -262,7 +263,7 @@ await page.setViewportSize({ width: 390, height: 844 });
 await page.goto('http://localhost:8141/index.html', { waitUntil: 'load', timeout: 15000 });
 await page.waitForTimeout(300);
 s = await snap();
-ok(s.theme === 'winter' && s.overflow <= 0, 'index 390 зимняя: выбор перекрыл ашенваль разметки, скролла нет', String(s.overflow));
+ok(s.theme === 'winter' && s.overflow <= 0, 'index 390 зимняя: выбор перекрыл разметку главной (неон), скролла нет', String(s.overflow));
 await page.screenshot({ path: path.join(OUTDIR, 'index-winter-390.png') });
 await page.evaluate(() => localStorage.clear());
 
