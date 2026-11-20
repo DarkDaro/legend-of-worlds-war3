@@ -229,6 +229,8 @@
         }
 
         /* Способности */
+/* [off 20.11 TD-16] отключены мёртвые правила (4 шт.): .ability-cell; .ability-cell .ability-name; .ability-cell .ability-desc; .ability-cell .ability-passive — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .ability-cell {
             text-align: left !important;
             padding: 7px 10px !important;
@@ -252,6 +254,7 @@
             border-radius: 3px;
             margin-left: 3px;
         }
+*/
 
         /* Пустое состояние */
         .compare-empty {
@@ -302,12 +305,15 @@
             font-size: 0.72rem;
             margin-top: 2px;
         }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .compare-card-build — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .compare-card-build {
             display: flex;
             flex-wrap: wrap;
             gap: 4px;
             margin-top: 6px;
         }
+*/
         .compare-card-body {
             padding: 4px 0;
         }
@@ -389,8 +395,11 @@
             .hero-col-name { font-size: 0.8rem; }
             .hero-col-attr { font-size: 0.6rem; }
             .stat-bar { flex: 0 0 28px; }
+/* [off 20.11 TD-16] отключены мёртвые правила (2 шт.): .ability-cell .ability-desc; .ability-cell .ability-name — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .ability-cell .ability-desc { display: none; }
 .ability-cell .ability-name { font-size: 0.75rem; }
+*/
             .compare-table tbody td { padding: 5px 5px; }
             .compare-table thead th { padding: 8px 5px; }
         }
@@ -419,8 +428,11 @@
             .hero-col-attr { display: none; }
             .compare-table tbody td { padding: 4px 4px; }
             .compare-table thead th { padding: 6px 4px; }
+/* [off 20.11 TD-16] отключены мёртвые правила (2 шт.): .ability-cell; .ability-cell .ability-passive — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .ability-cell { padding: 6px 4px !important; }
 .ability-cell .ability-passive { font-size: 0.56rem; }
+*/
             h1 { font-size: 1.3rem; }
         }
         @supports not (backdrop-filter: blur(1px)) {

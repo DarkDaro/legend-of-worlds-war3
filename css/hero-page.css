@@ -250,6 +250,8 @@
 }
 
 /* === Тактика и советы === */
+/* [off 20.11 TD-16] отключены мёртвые правила (5 шт.): .hero-tips; .hero-tips h4; .hero-tips ul; .hero-tips li; .hero-tips li::before — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .hero-tips {
     background: var(--abyss);
     border: 1px solid var(--steel-deep);
@@ -282,6 +284,7 @@
     color: var(--accent-cyan);
     font-weight: 700;
 }
+*/
 .abilities-grid {
     display: flex;
     flex-direction: column;
@@ -324,6 +327,8 @@
     box-shadow: 0 0 18px rgba(var(--orange-rgb), 0.6);
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (2 шт.): .ability-card.innate:hover; .ability-card.innate:hover .ability-icon — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .ability-card.innate:hover {
     box-shadow: inset 0 0 10px #00000055, 0 0 15px rgba(var(--mint-rgb), 0.2);
 }
@@ -331,6 +336,7 @@
     box-shadow: 0 0 18px rgba(var(--mint-rgb), 0.6);
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
+*/
 @keyframes abilityIconPulse {
     0%, 100% { filter: brightness(1); }
     50% { filter: brightness(1.3); }
@@ -343,10 +349,13 @@
     border-left-color: var(--warning);
     box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--orange-rgb), 0.12);
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .ability-card.innate — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .ability-card.innate {
     border-left-color: var(--mint);
     box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--mint-rgb), 0.12);
 }
+*/
 .ability-header {
     display: flex;
     align-items: center;
@@ -448,11 +457,14 @@
     color: var(--warning);
     border-color: rgba(var(--orange-rgb), 0.35);
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .ability-card.innate .ability-type-badge — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .ability-card.innate .ability-type-badge {
     background: #0a2a1a;
     color: var(--mint);
     border-color: rgba(var(--mint-rgb), 0.35);
 }
+*/
 .ability-tag {
     display: inline-block;
     font-size: 0.65rem;
@@ -506,7 +518,10 @@
     margin-bottom: 10px;
 }
 /* Удача: зелёный «шанс» в описаниях способностей (из цветокода |c00FF5555) */
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .luck-chance — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .luck-chance { color: var(--agility); font-weight: 600; }
+*/
 .ability-params {
     display: flex;
     flex-wrap: wrap;
@@ -648,6 +663,8 @@
     display: block;
 }
 /* === Цикличные способности (Q с вариантами) === */
+/* [off 20.11 TD-16] отключены мёртвые правила (9 шт.): .ability-cycle-group; .cycle-label; .cycle-label .cycle-key; .cycle-label .cycle-hint; .ability-cycle-group .ability-card; .ability-cycle-group .ability-card:nth-child(1); .ability-cycle-group .ability-card:nth-child(2); .ability-cycle-group .ability-card:nth-child(3); .ability-cycle-group .ability-card:nth-child(4) — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .ability-cycle-group {
     margin-bottom: 12px;
 }
@@ -685,6 +702,7 @@
 .ability-cycle-group .ability-card:nth-child(2) { border-left-color: var(--danger); }
 .ability-cycle-group .ability-card:nth-child(3) { border-left-color: var(--info-blue); }
 .ability-cycle-group .ability-card:nth-child(4) { border-left-color: #8800ff; }
+*/
 .back-button, .back-link {
     display: inline-block;
     margin-top: 20px;

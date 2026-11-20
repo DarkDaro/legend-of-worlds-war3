@@ -1120,6 +1120,8 @@ html[data-glass="off"] * {
 }
 
 /* === Тактика и советы === */
+/* [off 20.11 TD-16] отключены мёртвые правила (5 шт.): .hero-tips; .hero-tips h4; .hero-tips ul; .hero-tips li; .hero-tips li::before — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .hero-tips {
     background: var(--abyss);
     border: 1px solid var(--steel-deep);
@@ -1152,6 +1154,7 @@ html[data-glass="off"] * {
     color: var(--accent-cyan);
     font-weight: 700;
 }
+*/
 .abilities-grid {
     display: flex;
     flex-direction: column;
@@ -1194,6 +1197,8 @@ html[data-glass="off"] * {
     box-shadow: 0 0 18px rgba(var(--orange-rgb), 0.6);
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (2 шт.): .ability-card.innate:hover; .ability-card.innate:hover .ability-icon — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .ability-card.innate:hover {
     box-shadow: inset 0 0 10px #00000055, 0 0 15px rgba(var(--mint-rgb), 0.2);
 }
@@ -1201,6 +1206,7 @@ html[data-glass="off"] * {
     box-shadow: 0 0 18px rgba(var(--mint-rgb), 0.6);
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
+*/
 @keyframes abilityIconPulse {
     0%, 100% { filter: brightness(1); }
     50% { filter: brightness(1.3); }
@@ -1213,10 +1219,13 @@ html[data-glass="off"] * {
     border-left-color: var(--warning);
     box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--orange-rgb), 0.12);
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .ability-card.innate — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .ability-card.innate {
     border-left-color: var(--mint);
     box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--mint-rgb), 0.12);
 }
+*/
 .ability-header {
     display: flex;
     align-items: center;
@@ -1318,11 +1327,14 @@ html[data-glass="off"] * {
     color: var(--warning);
     border-color: rgba(var(--orange-rgb), 0.35);
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .ability-card.innate .ability-type-badge — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .ability-card.innate .ability-type-badge {
     background: #0a2a1a;
     color: var(--mint);
     border-color: rgba(var(--mint-rgb), 0.35);
 }
+*/
 .ability-tag {
     display: inline-block;
     font-size: 0.65rem;
@@ -1376,7 +1388,10 @@ html[data-glass="off"] * {
     margin-bottom: 10px;
 }
 /* Удача: зелёный «шанс» в описаниях способностей (из цветокода |c00FF5555) */
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .luck-chance — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .luck-chance { color: var(--agility); font-weight: 600; }
+*/
 .ability-params {
     display: flex;
     flex-wrap: wrap;
@@ -1518,6 +1533,8 @@ html[data-glass="off"] * {
     display: block;
 }
 /* === Цикличные способности (Q с вариантами) === */
+/* [off 20.11 TD-16] отключены мёртвые правила (9 шт.): .ability-cycle-group; .cycle-label; .cycle-label .cycle-key; .cycle-label .cycle-hint; .ability-cycle-group .ability-card; .ability-cycle-group .ability-card:nth-child(1); .ability-cycle-group .ability-card:nth-child(2); .ability-cycle-group .ability-card:nth-child(3); .ability-cycle-group .ability-card:nth-child(4) — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .ability-cycle-group {
     margin-bottom: 12px;
 }
@@ -1555,6 +1572,7 @@ html[data-glass="off"] * {
 .ability-cycle-group .ability-card:nth-child(2) { border-left-color: var(--danger); }
 .ability-cycle-group .ability-card:nth-child(3) { border-left-color: var(--info-blue); }
 .ability-cycle-group .ability-card:nth-child(4) { border-left-color: #8800ff; }
+*/
 .back-button, .back-link {
     display: inline-block;
     margin-top: 20px;
@@ -2049,6 +2067,8 @@ html[data-glass="off"] * {
 .logo:hover {
     text-shadow: 0 0 15px var(--accent-cyan);
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .logo-icon — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .logo-icon {
     width: 48px;
     height: 48px;
@@ -2062,6 +2082,7 @@ html[data-glass="off"] * {
     font-size: 28px;
     color: var(--accent-cyan);
 }
+*/
 .logo-text {
     font-size: clamp(1.15rem, 1.4vw, 1.6rem);
     font-weight: 700;
@@ -3233,10 +3254,13 @@ html[data-glass="off"] * {
     margin: 0 auto;
     text-align: center;
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .support-hero — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .support-hero {
     font-size: 4rem;
     margin-bottom: 16px;
 }
+*/
 .support-desc {
     color: var(--text-secondary);
     font-size: 1.05rem;
@@ -3532,6 +3556,8 @@ html[data-glass="off"] * {
     color: var(--text-primary);
     flex: 1;
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .monster-code — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .monster-code {
     font-family: 'Consolas', monospace;
     font-size: 0.75rem;
@@ -3540,6 +3566,7 @@ html[data-glass="off"] * {
     padding: 2px 8px;
     border-radius: 6px;
 }
+*/
 .monster-toggle {
     color: var(--text-dim);
     font-size: 0.8rem;
@@ -3673,11 +3700,14 @@ html[data-glass="off"] * {
 }
 
 /* Вступительный текст на странице монстров */
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .monsters-intro — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .monsters-intro {
     color: var(--text-secondary);
     margin-bottom: 24px;
     font-size: 1.05rem;
 }
+*/
 
 /* Иконка заголовка "Боссы" */
 .boss-heading-icon {
@@ -3722,9 +3752,12 @@ html[data-glass="off"] * {
 }
 
 /* Стадии босса */
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .boss-stages — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .boss-stages {
     margin-top: 12px;
 }
+*/
 .boss-stage {
     display: flex;
     align-items: baseline;
@@ -3735,6 +3768,8 @@ html[data-glass="off"] * {
     border-radius: 8px;
     margin-bottom: 4px;
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (2 шт.): .boss-stage-threshold; .boss-stage-desc — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .boss-stage-threshold {
     font-weight: 700;
     color: var(--magic);
@@ -3747,6 +3782,7 @@ html[data-glass="off"] * {
     font-size: 0.85rem;
     line-height: 1.4;
 }
+*/
 
 /* Награда за босса */
 .monster-reward {
@@ -3819,11 +3855,14 @@ html[data-glass="off"] * {
     border-bottom-color: var(--danger-soft);
     text-shadow: 0 0 8px rgba(var(--red-soft-rgb), 0.6);
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .drop-bonus — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .drop-bonus {
     color: var(--magic);
     font-size: 0.8rem;
     margin-left: 4px;
 }
+*/
 
 /* === css/home.css === */
 
@@ -4301,6 +4340,8 @@ html[data-glass="off"] * {
     font-size: 0.85rem;
     margin-top: 4px;
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (6 шт.): .footer-links; .footer-links a; .footer-links a:hover; .footer-social; .footer-social a; .footer-social a:hover — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .footer-links {
     display: flex;
     flex-wrap: wrap;
@@ -4329,6 +4370,7 @@ html[data-glass="off"] * {
     color: var(--accent-cyan);
     text-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.35);
 }
+*/
 .footer-bottom {
     text-align: center;
     padding-top: 20px;
@@ -4959,7 +5001,10 @@ html[data-glass="off"] * {
 .mc-tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; margin-left: 6px; }
 .mc-tag-balance { background: rgba(var(--gold-rgb), 0.12); border: 1px solid rgba(var(--gold-rgb), 0.35); color: var(--gold); }
 .mc-tag-rework { background: rgba(var(--cyan-rgb), 0.1); border: 1px solid rgba(var(--cyan-rgb), 0.3); color: var(--accent-cyan); }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .mc-tag-fix — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .mc-tag-fix { background: rgba(var(--agility-rgb), 0.1); border: 1px solid rgba(var(--agility-rgb), 0.3); color: var(--agility); }
+*/
 .mc-note { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; padding-left: 10px; border-left: 2px solid var(--surface-border); }
 .mc-pie-wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
 .mc-pie-svg { width: 160px; height: 160px; flex-shrink: 0; }
@@ -5589,11 +5634,14 @@ body.item-sheet-open {
 }
 
 /* Рекомендуется героям */
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .hero-reco-list — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .hero-reco-list {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
+*/
 
 .hero-reco-chip {
   display: inline-flex;
@@ -5873,7 +5921,10 @@ body.item-sheet-open {
   display: block;
   color: var(--text-strong);
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .item-card.consumable — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .item-card.consumable    { border-bottom: 4px solid var(--spring); box-shadow: 0 0 15px rgba(var(--spring-rgb), 0.35); }
+*/
 .item-card.neutral       { border-bottom: 4px solid var(--magic); box-shadow: 0 0 15px rgba(var(--violet-rgb), 0.35); }
 .item-card.boost         { border-bottom: 4px solid #ffaa33; box-shadow: 0 0 15px #ffaa3355; }
 .item-card.strength      { border-bottom: 4px solid var(--danger); box-shadow: 0 0 15px rgba(var(--red-rgb), 0.35); }
@@ -5892,7 +5943,10 @@ body.item-sheet-open {
 .item-card.weapon:hover      { border-color: var(--warning); box-shadow: 0 0 20px rgba(var(--orange-rgb), 0.6), 0 0 40px rgba(var(--orange-rgb), 0.2); }
 .item-card.boost:hover      { border-color: #ffaa33; box-shadow: 0 0 20px #ffaa33aa, 0 0 40px #ffaa3344; }
 .item-card.neutral:hover    { border-color: var(--magic); box-shadow: 0 0 20px rgba(var(--violet-rgb), 0.6), 0 0 40px rgba(var(--violet-rgb), 0.2); }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .item-card.consumable:hover — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .item-card.consumable:hover { border-color: var(--spring); box-shadow: 0 0 20px rgba(var(--spring-rgb), 0.6), 0 0 40px rgba(var(--spring-rgb), 0.2); }
+*/
 /* Редкость предметов по стоимости */
 .item-card.rarity-cheap  { opacity: 0.85; }
 .item-card.rarity-mid    { opacity: 0.92; }
@@ -5947,7 +6001,10 @@ body.item-sheet-open {
 .item-card.weapon .item-icon img     { border-color: rgba(var(--orange-rgb), 0.6); box-shadow: 0 0 10px rgba(var(--orange-rgb), 0.2); }
 .item-card.boost .item-icon img      { border-color: #ffaa33aa; box-shadow: 0 0 10px #ffaa3344; }
 .item-card.neutral .item-icon img    { border-color: rgba(var(--violet-rgb), 0.6); box-shadow: 0 0 10px rgba(var(--violet-rgb), 0.2); }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .item-card.consumable .item-icon img — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .item-card.consumable .item-icon img { border-color: rgba(var(--spring-rgb), 0.6); box-shadow: 0 0 10px rgba(var(--spring-rgb), 0.2); }
+*/
 .item-name {
   font-size: 0.9rem;
   font-weight: 600;
@@ -6554,10 +6611,13 @@ body.item-sheet-open {
 .hero-stats-table tr:last-child td {
     border-bottom: none;
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .stat-primary — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .stat-primary {
     color: var(--gold-soft);
     font-weight: bold;
 }
+*/
 .stat-strength { color: var(--danger); }
 .stat-agility { color: var(--agility); }
 .stat-intelligence { color: var(--info-blue); }
@@ -6723,6 +6783,8 @@ body.page-404 {
 }
 /* 24.10: соц-иконки футера были 18-26x31 (padding: 0), крошки 15px по высоте.
    Мобильный минимум для тап-цели — 28px. */
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .footer-social a — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .footer-social a {
     display: inline-flex;
     align-items: center;
@@ -6731,6 +6793,7 @@ body.page-404 {
     min-height: 28px;
     padding: 6px 6px;
 }
+*/
 .breadcrumbs a,
 .breadcrumbs .current {
     display: inline-block;
@@ -7090,9 +7153,12 @@ body.page-formulas-calc {
 .compare-clear-btn {
     align-self: flex-end;
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .compare-back-link — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .compare-back-link {
     margin-top: 32px;
 }
+*/
 .compare-attr-strength {
     color: var(--danger);
 }
@@ -8517,6 +8583,8 @@ body.page-leaving {
     margin-bottom: 0;
 }
 
+/* [off 20.11 TD-16] отключены мёртвые правила (2 шт.): .bc-paste-stage-btn; .bc-paste-stage-btn:hover — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .bc-paste-stage-btn {
     display: inline-flex;
     align-items: center;
@@ -8537,6 +8605,7 @@ body.page-leaving {
     background: rgba(var(--cyan-rgb), 0.12);
     border-color: rgba(var(--cyan-rgb), 0.35);
 }
+*/
 
 .bc-clear-btn {
     display: inline-flex;

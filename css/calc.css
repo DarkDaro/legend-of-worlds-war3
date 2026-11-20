@@ -252,9 +252,12 @@ body.page-formulas-calc {
 .compare-clear-btn {
     align-self: flex-end;
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .compare-back-link — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .compare-back-link {
     margin-top: 32px;
 }
+*/
 .compare-attr-strength {
     color: var(--danger);
 }

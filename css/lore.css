@@ -255,6 +255,8 @@
 .logo:hover {
     text-shadow: 0 0 15px var(--accent-cyan);
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .logo-icon — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .logo-icon {
     width: 48px;
     height: 48px;
@@ -268,6 +270,7 @@
     font-size: 28px;
     color: var(--accent-cyan);
 }
+*/
 .logo-text {
     font-size: clamp(1.15rem, 1.4vw, 1.6rem);
     font-weight: 700;

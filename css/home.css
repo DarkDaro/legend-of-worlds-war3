@@ -472,6 +472,8 @@
     font-size: 0.85rem;
     margin-top: 4px;
 }
+/* [off 20.11 TD-16] отключены мёртвые правила (6 шт.): .footer-links; .footer-links a; .footer-links a:hover; .footer-social; .footer-social a; .footer-social a:hover — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
+/*
 .footer-links {
     display: flex;
     flex-wrap: wrap;
@@ -500,6 +502,7 @@
     color: var(--accent-cyan);
     text-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.35);
 }
+*/
 .footer-bottom {
     text-align: center;
     padding-top: 20px;
