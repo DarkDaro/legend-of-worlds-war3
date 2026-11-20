@@ -383,7 +383,7 @@ h1 {
 
 /* ===== Настройки сайта (js/site-settings.js) =====
    Флаги пользователя ставятся атрибутами на <html>: data-anim, data-glass,
-   data-fx, data-sound (звук — только флаг, css его не читает), data-text,
+   data-fx, data-orbs, data-sound (звук — только флаг, css его не читает), data-text,
    data-decor, data-progress. Дефолт «on» ни на один байт рендера не влияет: все блоки ниже срабатывают только
    при явном «off». Правило data-glass живёт в css/glass.css — рядом с
    материалом стекла, который оно глушит. */
@@ -397,14 +397,25 @@ html[data-anim="off"] *::after {
     scroll-behavior: auto !important;
 }
 
-/* тяжёлые эффекты выключены: декоративный орб и свечение курсора убираются
-   целиком, неоновые тени текста гасятся (box-shadow глоу остаётся — он дёшев) */
-html[data-fx="off"] .home-orb-secondary,
+/* тяжёлые эффекты выключены: свечение курсора убирается целиком, неоновые
+   тени текста гасятся (box-shadow глоу остаётся — он дёшев); декоративные
+   орбы 20.11 вынесены из-под fx в отдельный тумблер data-orbs ниже */
 html[data-fx="off"] .cursor-glow {
     display: none !important;
 }
 html[data-fx="off"] * {
     text-shadow: none !important;
+}
+
+/* орбы выключены: все пятна — это body::after (кроме двух элементов на
+   главной и info), одного правила хватает на весь сайт; body::after больше
+   нигде не занят — проверено grep по css кроме бандла (20.11) */
+html[data-orbs="off"] body::after {
+    content: none !important;
+}
+html[data-orbs="off"] .home-orb-secondary,
+html[data-orbs="off"] .info-orb {
+    display: none !important;
 }
 
 /* яркий текст включён (примерная настройка 19.11, значения приближённые —
@@ -6638,58 +6649,12 @@ body.page-heroes {
         radial-gradient(ellipse at 70% 80%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
         radial-gradient(circle at 30% 10%, var(--bg-glow) 0%, var(--bg-deep) 100%);
 }
-/* Orb для стекла — правый нижний */
-body.page-heroes::after {
-    content: '';
-    position: fixed;
-    bottom: -10%;
-    right: -5%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
-
 /* Предметы — cyan отсвет ниже + лёгкий teal тон */
 body.page-items {
     background-image:
         radial-gradient(ellipse at 50% 90%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
         radial-gradient(circle at 30% 10%, var(--bg-glow) 0%, var(--bg-deep) 100%);
 }
-/* Orb для стекла — левый верхний */
-body.page-items::after {
-    content: '';
-    position: fixed;
-    top: -5%;
-    left: -5%;
-    width: 450px;
-    height: 450px;
-    background: radial-gradient(circle, rgba(0, 128, 255, 0.05) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Info — orb пульсация */
-.info-orb {
-    position: fixed;
-    bottom: 10%;
-    right: 5%;
-    width: 350px;
-    height: 350px;
-    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-    animation: infoOrbPulse 6s ease-in-out infinite;
-}
-@keyframes infoOrbPulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.2); }
-}
-
 /* Механики — cyan отсвет левее + лёгкий фиолетовый тон */
 body.page-mechanics {
     background-image:
@@ -6703,40 +6668,12 @@ body.page-monsters {
         radial-gradient(ellipse at 60% 20%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
         radial-gradient(circle at 30% 10%, var(--bg-glow) 0%, var(--bg-deep) 100%);
 }
-/* Orb для стекла — левый нижний */
-body.page-monsters::after {
-    content: '';
-    position: fixed;
-    bottom: -10%;
-    left: -5%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(var(--red-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
-
 /* Лор — cyan отсвет шире + глубокий синий тон */
 body.page-lore {
     background-image:
         radial-gradient(ellipse at 40% 60%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
         radial-gradient(circle at 30% 10%, var(--bg-glow) 0%, var(--bg-deep) 100%);
 }
-/* Orb для стекла — правый верхний */
-body.page-lore::after {
-    content: '';
-    position: fixed;
-    top: -5%;
-    right: -5%;
-    width: 450px;
-    height: 450px;
-    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
-
 body.page-calculator,
 body.page-build-constructor,
 body.page-bot-builds {
@@ -6804,6 +6741,94 @@ body.page-404 {
     }
 }
 
+/* ===== Декоративные орбы — единый компонент (20.11) =====
+   Плавающие световые пятна в фоне страниц. Раньше их правила были
+   разбросаны по effects.css и calc.css, у большинства движения не было
+   вовсе, у items цвет стоял хардкодом вне токенов. Собраны в одну
+   секцию: общая база + позиция/размер/цвет страницы, единая умеренная
+   анимация orbFloat с расфазировкой (дыхание 0.85-1, scale 1.06,
+   дрейф ±12px, 9-13s). Сюда перенесены орбы главной, info и
+   калькуляторов из calc.css без смены значений позиций.
+   Тумблер «Декоративные орбы» в панели (data-orbs, base.css) прячет
+   все одним правилом; data-anim="off" глушит движение глобально,
+   prefers-reduced-motion — общим гардом доступности (base.css).
+   Позиции/цвета: чередование углов, cyan/info, у монстров красный. */
+body.page-home::after,
+body.page-heroes::after,
+body.page-items::after,
+body.page-monsters::after,
+body.page-lore::after,
+body.page-calculator::after,
+body.page-build-constructor::after,
+body.page-bot-builds::after,
+body.page-compare::after,
+body.page-armor-calc::after,
+body.page-formulas-calc::after,
+body.page-modes::after,
+body.page-faq::after,
+body.page-guides::after,
+body.page-map-changes::after,
+body.page-mechanics::after,
+body.page-events::after,
+body.page-map::after,
+body.page-support::after,
+body.page-updates::after {
+    content: '';
+    position: fixed;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: orbFloat 11s ease-in-out infinite;
+}
+.home-orb-secondary,
+.info-orb {
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(var(--info-rgb), 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: orbFloat 9s ease-in-out infinite -5s;
+}
+
+/* позиция/размер/цвет страницы поверх общей базы */
+body.page-home::after {
+    top: 10%; right: 10%;
+    width: 400px; height: 400px;
+    box-shadow: -200px 300px 0 -100px rgba(var(--info-rgb), 0.04);
+    animation-duration: 11s; animation-delay: -2s;
+}
+.home-orb-secondary { bottom: 5%; left: 8%; }
+body.page-heroes::after { bottom: -10%; right: -5%; width: 500px; height: 500px; animation-duration: 13s; animation-delay: -3s; }
+body.page-items::after { top: -5%; left: -5%; background: radial-gradient(circle, rgba(var(--info-rgb), 0.05) 0%, transparent 70%); animation-duration: 10s; animation-delay: -7s; }
+.info-orb { bottom: 10%; right: 5%; background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%); animation-duration: 12s; animation-delay: -4s; }
+body.page-monsters::after { bottom: -10%; left: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(var(--red-rgb), 0.04) 0%, transparent 70%); animation-duration: 13s; animation-delay: -6s; }
+body.page-lore::after { top: -5%; right: -5%; width: 450px; height: 450px; animation-duration: 10s; animation-delay: -2s; }
+body.page-calculator::after,
+body.page-build-constructor::after,
+body.page-bot-builds::after { bottom: -10%; right: -5%; animation-delay: -3s; }
+body.page-compare::after { bottom: -10%; left: -5%; background: radial-gradient(circle, rgba(var(--info-rgb), 0.05) 0%, transparent 70%); animation-duration: 12s; animation-delay: -8s; }
+body.page-armor-calc::after,
+body.page-formulas-calc::after { top: -5%; right: -5%; width: 400px; height: 400px; animation-duration: 9s; animation-delay: -6s; }
+body.page-modes::after { top: 20%; right: -8%; width: 400px; height: 400px; animation-duration: 10s; animation-delay: -4s; }
+body.page-faq::after { top: -5%; left: -5%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(var(--info-rgb), 0.04) 0%, transparent 70%); animation-duration: 12s; animation-delay: -9s; }
+body.page-guides::after { bottom: -10%; right: -5%; width: 400px; height: 400px; animation-duration: 9s; animation-delay: -2s; }
+body.page-map-changes::after { bottom: -10%; left: -5%; width: 400px; height: 400px; animation-duration: 11s; animation-delay: -7s; }
+body.page-mechanics::after { top: -5%; right: -5%; animation-duration: 10s; animation-delay: -3s; }
+body.page-events::after { bottom: -10%; left: -5%; animation-duration: 12s; animation-delay: -5s; }
+body.page-map::after { bottom: -10%; right: -5%; animation-duration: 9s; animation-delay: -8s; }
+body.page-support::after { top: -5%; left: -5%; background: radial-gradient(circle, rgba(var(--info-rgb), 0.04) 0%, transparent 70%); animation-duration: 11s; animation-delay: -4s; }
+body.page-updates::after { top: -5%; right: -5%; animation-duration: 13s; animation-delay: -6s; }
+
+@keyframes orbFloat {
+    0%, 100% { opacity: 0.85; transform: scale(1) translate(0, 0); }
+    50% { opacity: 1; transform: scale(1.06) translate(10px, -12px); }
+}
+
 /* === css/calc.css === */
 
 /* === Гайды на героев: контейнер шире по решению владельца (07.11, было 1100) === */
@@ -6815,149 +6840,15 @@ body.page-hero-guide {
 body.page-hero-guide .wiki-container {
     max-width: 1300px;
 }
-/* Orb для главной — два пятна */
-body.page-home::after {
-    content: '';
-    position: fixed;
-    top: 10%;
-    right: 10%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-    box-shadow: -200px 300px 0 -100px rgba(var(--info-rgb), 0.04);
-    animation: homeOrbPulse 5s ease-in-out infinite;
-}
-@keyframes homeOrbPulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.15); }
-}
-.home-orb-secondary {
-    position: fixed;
-    bottom: 5%;
-    left: 8%;
-    width: 350px;
-    height: 350px;
-    background: radial-gradient(circle, rgba(var(--info-rgb), 0.05) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-    animation: homeOrb2Pulse 7s ease-in-out infinite 1s;
-}
-@keyframes homeOrb2Pulse {
-    0%, 100% { opacity: 0.8; transform: scale(1) translate(0, 0); }
-    33% { opacity: 0.4; transform: scale(1.1) translate(20px, -15px); }
-    66% { opacity: 0.9; transform: scale(0.95) translate(-10px, 10px); }
-}
-
-/* Orb для калькулятора/конструктора/бот-сборок — правый нижний */
-body.page-calculator::after,
-body.page-build-constructor::after,
-body.page-bot-builds::after {
-    content: '';
-    position: fixed;
-    bottom: -10%;
-    right: -5%;
-    width: 450px;
-    height: 450px;
-    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Orb для сравнения — левый нижний */
-body.page-compare::after {
-    content: '';
-    position: fixed;
-    bottom: -10%;
-    left: -5%;
-    width: 450px;
-    height: 450px;
-    background: radial-gradient(circle, rgba(var(--info-rgb), 0.05) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
+/* орбы главной, калькуляторов, compare, armor/formulas, modes, faq, guides,
+   map-changes перенесены в единую секцию «Декоративные орбы» в effects.css
+   (20.11) — стили живут в одном месте, позиции/цвета сохранены */
 
 body.page-armor-calc,
 body.page-formulas-calc {
     background-image:
         radial-gradient(ellipse at 70% 20%, rgba(var(--cyan-rgb), 0.04) 0%, transparent 50%),
         radial-gradient(circle at 50% 80%, var(--bg-glow) 0%, var(--bg-deep) 100%);
-}
-
-/* Orb для калькуляторов брони/формул — правый верхний */
-body.page-armor-calc::after,
-body.page-formulas-calc::after {
-    content: '';
-    position: fixed;
-    top: -5%;
-    right: -5%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Orb для режимов — центр-правый */
-body.page-modes::after {
-    content: '';
-    position: fixed;
-    top: 20%;
-    right: -8%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Orb для FAQ — левый верхний */
-body.page-faq::after {
-    content: '';
-    position: fixed;
-    top: -5%;
-    left: -5%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(var(--info-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Orb для гайдов — правый нижний */
-body.page-guides::after {
-    content: '';
-    position: fixed;
-    bottom: -10%;
-    right: -5%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Orb для изменений карты — левый нижний */
-body.page-map-changes::after {
-    content: '';
-    position: fixed;
-    bottom: -10%;
-    left: -5%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.04) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
 }
 
 /* ===== Калькулятор сборок ===== */
