@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 html += '<div class="stat-row">'
                     + '<span class="stat-label">' + AXIS_LABELS[axis] + '</span>'
                     + '<span class="stat-right">'
-                    + '<span class="stat-pct-bar"><span class="stat-pct-fill" style="width:' + pct + '%;background:' + color + '"></span></span>'
+                    + '<span class="stat-pct-bar"><span class="stat-pct-fill" style="transform:scaleX(' + pct / 100 + ');background:' + color + '"></span></span>' /* TD-19: scaleX вместо width */
                     + '<span class="stat-pct-num ' + cls + '">' + pct + '</span>'
                     + '<span class="stat-raw">' + formatRaw(axis, raw) + '</span>'
                     + '</span></div>';

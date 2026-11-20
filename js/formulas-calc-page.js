@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const gain = result - base;
             document.getElementById('luckResult').textContent = result.toFixed(1) + '%';
             document.getElementById('luckGain').textContent = '+' + gain.toFixed(1) + '%';
-            document.getElementById('luckBar').style.width = result + '%';
+            document.getElementById('luckBar').style.transform = 'scaleX(' + result / 100 + ')'; /* TD-19: scaleX вместо width */
             document.getElementById('luckBarLabel').textContent = result.toFixed(1) + '%';
         }
         document.getElementById('luckBase').addEventListener('input', calcLuck);
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('luckItemsTotal').textContent = totalLuck;
             document.getElementById('luckItemsResult').textContent = result.toFixed(1) + '%';
             document.getElementById('luckItemsGain').textContent = '+' + gain.toFixed(1) + '%';
-            document.getElementById('luckItemsBar').style.width = result + '%';
+            document.getElementById('luckItemsBar').style.transform = 'scaleX(' + result / 100 + ')'; /* TD-19: scaleX вместо width */
             document.getElementById('luckItemsBarLabel').textContent = result.toFixed(1) + '%';
         }
         document.getElementById('luckBase2').addEventListener('input', calcLuckItems);
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var loss = sum - result;
             document.getElementById('dimResult').textContent = result.toFixed(1) + '%';
             document.getElementById('dimLoss').textContent = '−' + loss.toFixed(1) + '%';
-            document.getElementById('dimBar').style.width = result + '%';
+            document.getElementById('dimBar').style.transform = 'scaleX(' + result / 100 + ')'; /* TD-19: scaleX вместо width */
             document.getElementById('dimBarLabel').textContent = result.toFixed(1) + '%';
 
             // Обновить реальные вклады в списке

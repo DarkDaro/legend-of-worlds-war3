@@ -34,7 +34,7 @@
 .stat-label { color: var(--text-secondary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
 .stat-right { display: flex; align-items: center; gap: 8px; }
 .stat-pct-bar { width: 60px; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
-.stat-pct-fill { height: 100%; border-radius: 3px; transition: width 0.3s ease; }
+.stat-pct-fill { height: 100%; width: 100%; border-radius: 3px; transform: scaleX(0); transform-origin: 0 50%; transition: transform 0.3s ease; } /* TD-19 погашено: ширина через scaleX — без перерасчёта раскладки */
 .stat-pct-num { font-weight: 600; min-width: 28px; text-align: right; }
 .stat-raw { color: var(--text-muted); font-size: 0.7rem; }
 /* [off 20.11 TD-16] отключены мёртвые правила (4 шт.): .pct-low; .pct-mid; .pct-high; .pct-best — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
