@@ -38,12 +38,12 @@ DESCRIPTION = {
     "js/data/site-counters.js": "Единственный источник витринных чисел (герои 74, страницы 77, артефакты 222…). На страницах НЕ подключается — читается чекером scripts/check-counters.py, который и держит числа честными.",
 
     # ===== Общая логика (js/, перенесены из корня чанком R4 этапа 6) =====
-    "analytics.js": "Счётчик Яндекс.Метрики на всех страницах.",
-    "icon-loader.js": "Загрузчик иконок с каскадом PNG → JPG → Font Awesome fallback, навигация по шапке, подсветка параметров. Общий для всех страниц.",
-    "item-bonus-parser.js": "Парсер бонусов предметов: превращает описания items-db в числовые бонусы (сила, ловкость, урон…) для сравнения и калькуляторов.",
-    "search.js": "Глобальный поиск по сайту (Ctrl+K / лупа в шапке): оверлей, фильтрация по search-index, переходы. Общий для всех страниц.",
-    "tilt-cards.js": "3D-наклон карточек героев при наведении (на десктопе, на мобильных отключён).",
-    "ui-effects.js": "Общие визуальные эффекты: scroll-reveal, анимации появления блоков. Функция revealElements() используется постраничными скриптами.",
+    "js/analytics.js": "Счётчик Яндекс.Метрики на всех страницах.",
+    "js/icon-loader.js": "Загрузчик иконок с каскадом PNG → JPG → Font Awesome fallback, навигация по шапке, подсветка параметров. Общий для всех страниц.",
+    "js/item-bonus-parser.js": "Парсер бонусов предметов: превращает описания items-db в числовые бонусы (сила, ловкость, урон…) для сравнения и калькуляторов.",
+    "js/search.js": "Глобальный поиск по сайту (Ctrl+K / лупа в шапке): оверлей, фильтрация по search-index, переходы. Общий для всех страниц.",
+    "js/tilt-cards.js": "3D-наклон карточек героев при наведении (на десктопе, на мобильных отключён).",
+    "js/ui-effects.js": "Общие визуальные эффекты: scroll-reveal, анимации появления блоков. Функция revealElements() используется постраничными скриптами.",
 
     # ===== Постраничные скрипты (js/) =====
     "js/armor-calc-page.js": "Логика калькулятора брони: снижение урона и эффективное здоровье.",
@@ -51,7 +51,7 @@ DESCRIPTION = {
     "js/balance-page.js": "Таблица всех героев: статы, приросты, сортировка и фильтры.",
     "js/bonus-filter.js": "Фильтр предметов по бонусам и золоту + сортировка на items.html; работает хуком в рендер items-db.",
     "js/bot-builds-page.js": "Рендер стадий автосборки ботов: группы, предметы, переходы на предметы.",
-    "js/build-constructor-page.js": "НЕ подключён напрямую (см. build-constructor.js в корне).",
+    "js/build-constructor-page.js": "НЕ подключён напрямую (см. js/build-constructor.js).",
     "js/compare-page.js": "Сравнение двух героев рядом: статы по уровням, предметы из сборок.",
     "js/creeps-page.js": "Таблица крипов: рендер из creeps-db, сортировка по колонкам.",
     "js/events-page.js": "Анимация появления карточек ивентов (scroll-reveal).",
@@ -75,17 +75,17 @@ DESCRIPTION = {
     # ===== Инструменты репозитория (не подключаются на сайт) =====
     "scripts/check-links.mjs": "CI-гейт: проверяет все внутренние ссылки и src во всех HTML (0 битых = зелено).",
     "scripts/check-header-sync.mjs": "CI-гейт: шапка/подвал всех страниц должны совпадать с каноническим вариантом.",
-    "build-constructor.js": "Логика конструктора сборок: выбор предметов, стадии, читаемая раскладка, выгрузка JASS-кода.",
-    "calculator.js": "Калькулятор сборки: 6 слотов, стоимость, дерево компонентов, лист покупок.",
+    "js/build-constructor.js": "Логика конструктора сборок: выбор предметов, стадии, читаемая раскладка, выгрузка JASS-кода.",
+    "js/calculator.js": "Калькулятор сборки: 6 слотов, стоимость, дерево компонентов, лист покупок.",
 }
 
 CATS = [
-    ("Корневые базы данных (данные карты)",
-     ["abilities-db.js", "ability-stats.js", "bot-builds.js", "creeps-db.js", "game-constants.js",
-      "hero-builds.js", "hero-data.js", "hero-lore.js", "items-db.js", "jass-data.js",
-      "map-data.js", "mechanics-db.js", "search-index.js", "storage-db.js", "site-counters.js"]),
-    ("Общая логика (на всех или многих страницах)",
-     ["analytics.js", "icon-loader.js", "item-bonus-parser.js", "search.js", "tilt-cards.js", "ui-effects.js"]),
+    ("Базы данных (js/data/)",
+     ["js/data/abilities-db.js", "js/data/ability-stats.js", "js/data/bot-builds.js", "js/data/creeps-db.js", "js/data/game-constants.js",
+      "js/data/hero-builds.js", "js/data/hero-data.js", "js/data/hero-lore.js", "js/data/items-db.js", "js/data/jass-data.js",
+      "js/data/map-data.js", "js/data/mechanics-db.js", "js/data/search-index.js", "js/data/storage-db.js", "js/data/site-counters.js"]),
+    ("Общая логика (js/, на всех или многих страницах)",
+     ["js/analytics.js", "js/icon-loader.js", "js/item-bonus-parser.js", "js/search.js", "js/tilt-cards.js", "js/ui-effects.js"]),
     ("Постраничные скрипты (js/)",
      ["js/armor-calc-page.js", "js/balance-dashboard-page.js", "js/balance-page.js", "js/bonus-filter.js",
       "js/bot-builds-page.js", "js/compare-page.js", "js/creeps-page.js", "js/events-page.js",
@@ -93,14 +93,14 @@ CATS = [
       "js/hero-slugs.js", "js/hero-stats-page.js", "js/heroes-page.js", "js/index-page.js",
       "js/info-page.js", "js/item-slugs.js", "js/items-page.js", "js/monsters-page.js",
       "js/runes-page.js", "js/sitemap-page.js", "js/storage-page.js", "js/tierlist-page.js"]),
-    ("Корневая логика отдельных инструментов",
-     ["build-constructor.js", "calculator.js"]),
+    ("Логика отдельных инструментов (js/)",
+     ["js/build-constructor.js", "js/calculator.js"]),
     ("Инструменты репозитория (CI, на сайт не попадают)",
      ["scripts/check-links.mjs", "scripts/check-header-sync.mjs"]),
 ]
 
 NOTE_JS_EXTRA = {
-    "js/build-constructor-page.js": "Файл существует, но нигде не подключён — конструктор использует корневой build-constructor.js. Кандидат на удаление после проверки.",
+    "js/build-constructor-page.js": "Файл существует, но нигде не подключён — конструктор использует js/build-constructor.js. Кандидат на удаление после проверки.",
 }
 
 # --- сканирование ---

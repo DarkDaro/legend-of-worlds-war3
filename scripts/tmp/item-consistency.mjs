@@ -4,7 +4,7 @@
 import { readFileSync } from 'fs';
 import vm from 'vm';
 
-const root = '/home/z/my-project/_local/loww';
+const root = '/home/z/my-project/loww';
 const ctx = { console, module: undefined, window: {}, localStorage: { getItem: () => null, setItem: () => {} } };
 ctx.window = ctx; ctx.globalThis = ctx;
 const stubEl = { style: {}, appendChild: () => {}, addEventListener: () => {}, classList: { add: () => {}, remove: () => {}, toggle: () => {} } };
@@ -17,13 +17,13 @@ vm.createContext(ctx);
 const load = f => vm.runInContext(readFileSync(`${root}/${f}`, 'utf8'), ctx, { filename: f });
 const grab = name => vm.runInContext(`typeof ${name} !== 'undefined' ? ${name} : undefined`, ctx);
 
-load('game-constants.js');
-load('items-db.js');
+load('js/data/game-constants.js');
+load('js/data/items-db.js');
 load('js/item-slugs.js');
-load('bot-builds.js');
-load('hero-builds.js');
-load('jass-data.js');
-load('item-bonus-parser.js');
+load('js/data/bot-builds.js');
+load('js/data/hero-builds.js');
+load('js/data/jass-data.js');
+load('js/item-bonus-parser.js');
 
 const items = grab('itemsDB'), slugs = grab('ITEM_SLUGS'),
       bots = grab('botBuildGroups'), heroBuilds = grab('HERO_BUILD_DATA'),
