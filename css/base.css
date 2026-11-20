@@ -378,7 +378,7 @@ h1 {
 /* ===== Настройки сайта (js/site-settings.js) =====
    Флаги пользователя ставятся атрибутами на <html>: data-anim, data-glass,
    data-fx, data-sound (звук — только флаг, css его не читает), data-text,
-   data-decor. Дефолт «on» ни на один байт рендера не влияет: все блоки ниже срабатывают только
+   data-decor, data-progress. Дефолт «on» ни на один байт рендера не влияет: все блоки ниже срабатывают только
    при явном «off». Правило data-glass живёт в css/glass.css — рядом с
    материалом стекла, который оно глушит. */
 
@@ -418,6 +418,12 @@ html[data-text="on"] {
    .hero-banner-bg абсолютный — раскладка не сдвигается. Кнопки и прочее
    содержимое шапки главной остаются на месте */
 html[data-decor="off"] .hero-banner-bg {
+    display: none !important;
+}
+
+/* полоса прогресса выключена (оживлена 20.11, TD-16): тонкий индикатор чтения
+   у верха страницы убирается целиком; элемент и скрипт — js/site-settings.js */
+html[data-progress="off"] .scroll-progress {
     display: none !important;
 }
 
