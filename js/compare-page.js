@@ -100,7 +100,8 @@ function getCompareAttrClass(attr) {
 
 function applyCompareBarWidths(container) {
     container.querySelectorAll('[data-bar-width]').forEach(function(el) {
-        el.style.width = el.dataset.barWidth;
+        // TD-19 погашено: scaleX вместо width — без перерасчёта раскладки каждый кадр
+        el.style.transform = 'scaleX(' + (parseFloat(el.dataset.barWidth) / 100) + ')';
     });
 }
 

@@ -210,9 +210,12 @@
         }
         .stat-bar-fill {
             height: 100%;
+            width: 100%;
             border-radius: 3px;
             background: #1a5a7a;
-            transition: width 0.3s ease;
+            transform: scaleX(0);
+            transform-origin: 0 50%;
+            transition: transform 0.3s ease; /* TD-19: scaleX вместо width */
         }
         .stat-best .stat-bar-fill { background: var(--accent-cyan); }
         .stat-worst .stat-bar-fill { background: #2a2a3a; }
@@ -355,9 +358,12 @@
         }
         .compare-card-bar-fill {
             height: 100%;
+            width: 100%;
             border-radius: 2px;
             background: #1a5a7a;
-            transition: width 0.3s ease;
+            transform: scaleX(0);
+            transform-origin: 0 50%;
+            transition: transform 0.3s ease; /* TD-19: scaleX вместо width */
         }
         .compare-card-row.card-best .compare-card-value { color: var(--accent-cyan); font-weight: 600; }
         .compare-card-row.card-best .compare-card-bar-fill { background: var(--accent-cyan); }

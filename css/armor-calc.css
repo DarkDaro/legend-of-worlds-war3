@@ -106,9 +106,12 @@
         }
         .armor-bar-fill {
             height: 100%;
+            width: 100%;
             border-radius: 6px;
             background: linear-gradient(90deg, var(--accent-cyan), var(--spring));
-            transition: width 0.3s ease;
+            transform: scaleX(0);
+            transform-origin: 0 50%;
+            transition: transform 0.3s ease; /* TD-19: scaleX вместо width */
         }
         .armor-formula {
             margin-top: 24px;

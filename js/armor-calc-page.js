@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const barPct = reduction >= 0
                 ? Math.min(reduction * 100 / 80 * 100, 100)
                 : Math.min(Math.abs(reduction * 100) / 80 * 100, 100);
-            document.getElementById('reductionBar').style.width = barPct + '%';
+            document.getElementById('reductionBar').style.transform = 'scaleX(' + barPct / 100 + ')'; /* TD-19: scaleX вместо width */
             document.getElementById('reductionBar').style.background = reduction >= 0
                 ? 'linear-gradient(90deg, var(--accent-cyan), var(--spring))'
                 : 'linear-gradient(90deg, var(--danger), var(--warning-soft))';
