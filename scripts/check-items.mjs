@@ -25,7 +25,7 @@ ctx.document = { getElementById: () => null, querySelector: () => null, querySel
 ctx.matchMedia = () => ({ matches: false, addEventListener: () => {} });
 vm.createContext(ctx);
 for (const f of ['js/data/items-db.js', 'js/item-slugs.js', 'js/data/bot-builds.js', 'js/data/hero-builds.js',
-                 'js/data/jass-data.js', 'item-bonus-parser.js']) {
+                 'js/data/jass-data.js', 'js/item-bonus-parser.js']) {
   vm.runInContext(read(f), ctx, { filename: f });
 }
 const grab = n => vm.runInContext(`typeof ${n} !== 'undefined' ? ${n} : undefined`, ctx);
