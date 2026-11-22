@@ -1,15 +1,30 @@
 #!/usr/bin/env node
 /* TD-16 верификатор: мёртв ли класс по факту — ищем использование
-   во всех HTML (class=, classList, querySelector, конкатенации) и
-   во ВСЕХ js (корень + js/ + vendor-исключение). Ничего не правит. */
+   во ВСЕХ HTML (117 страниц: корень + heroes/ + guides/, включая inline-скрипты)
+   и во ВСЕХ js (js/ + js/data/ — базы генерируют разметку с классами).
+   Обновлено после реорганизации этапа 6 (R3/R4): раньше сканировал только
+   корневые html и js/ без js/data/ — та же ловушка, что у аудита 08.11.
+   Ничего не правит. */
 import { readdirSync, readFileSync } from 'fs';
-import { join } from 'path';
+import { join, relative } from 'path';
 
 const ROOT = process.cwd();
+const SKIP = new Set(['.git', 'node_modules', 'repo-archive', 'vendor', 'images', 'docs']);
+
+function walk(dir, exts, out = []) {
+  for (const name of readdirSync(dir, { withFileTypes: true })) {
+    const p = join(dir, name.name);
+    if (name.isDirectory()) {
+      if (SKIP.has(name.name)) continue;
+      walk(p, exts, out);
+    } else if (exts.some(e => name.name.endsWith(e))) out.push(p);
+  }
+  return out;
+}
+
 const CLASSES = [
   // hero-page.css
   'ability-cycle-group','cycle-hint','cycle-key','cycle-label','innate','luck-chance','hero-tips',
-  // hero-mobile.css
   // compare.css
   'ability-cell','ability-passive','compare-card-build',
   // monsters.css
@@ -28,20 +43,17 @@ const CLASSES = [
   'pct-best','pct-high','pct-low','pct-mid',
 ];
 
-const htmlFiles = readdirSync(ROOT).filter(f => f.endsWith('.html'));
-const jsDirs = [ROOT, join(ROOT, 'js')];
-const jsFiles = jsDirs.flatMap(d =>
-  readdirSync(d).filter(f => f.endsWith('.js')).map(f => join(d, f)));
+const htmlFiles = walk(ROOT, ['.html']);                       // 117: корень + heroes/ + guides/
+const jsFiles = walk(join(ROOT, 'js'), ['.js']);               // js/ + js/data/
 
-const htmlBlobs = htmlFiles.map(f => ({ f, s: readFileSync(join(ROOT, f), 'utf8') }));
-const jsBlobs = jsFiles.map(f => ({ f: f.replace(ROOT + '/', ''), s: readFileSync(f, 'utf8') }));
+const htmlBlobs = htmlFiles.map(f => ({ f: relative(ROOT, f), s: readFileSync(f, 'utf8') }));
+const jsBlobs = jsFiles.map(f => ({ f: relative(ROOT, f), s: readFileSync(f, 'utf8') }));
 
 function usage(name) {
   const hits = [];
   const re = new RegExp('\\b' + name + '\\b');
   for (const { f, s } of htmlBlobs) {
     if (re.test(s)) {
-      // грубая отсечка: слово в другом контексте (id-другой класс) — берём все строки
       const lines = s.split('\n').map((l, i) => [i + 1, l]).filter(([, l]) => re.test(l));
       hits.push({ file: f, lines });
     }
@@ -62,3 +74,4 @@ for (const c of CLASSES) {
   else { aliveCount++; console.log(`ЖИВОЙ ${c} -> ${hits.map(h => h.file + ':' + h.lines.slice(0, 3).map(l => l[0]).join(',')).join(' ')}`); }
 }
 console.log(`\nитог: ${deadCount} мёртвых, ${aliveCount} живых из ${CLASSES.length}`);
+console.log(`карта: html ${htmlBlobs.length}, js ${jsBlobs.length}`);
