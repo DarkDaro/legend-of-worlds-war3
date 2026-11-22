@@ -265,11 +265,14 @@
             .event-flow li {
                 font-size: 0.84rem;
             }
+            /* [off 21.11 TD-24] отключено мёртвое правило (1 шт.): .boss-table-wrap — обёртки таблицы в разметке events.html нет (там живой .boss-table), класс не встречается ни в HTML, ни в JS; чем доказано: scripts/tmp/dead-scan.mjs + td16-verify-dead.mjs, 0 попаданий по полной карте (117 html + 48 js); как откатить: снять обёртку */
+            /*
             .boss-table-wrap {
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
                 margin: 0 -8px;
             }
+            */
             .boss-table th,
             .boss-table td {
                 padding: 8px;

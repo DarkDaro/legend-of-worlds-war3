@@ -1741,9 +1741,12 @@ html[data-glass="off"] * {
         grid-template-columns: repeat(2, 1fr);
         gap: 6px;
     }
+/* [off 21.11 TD-24] отключено мёртвое правило (1 шт.): .hero-tips — мобильный дубль отключённого блока hero-page.css (TD-16), класс не встречается ни в HTML, ни в JS; чем доказано: td16-verify-dead.mjs по полной карте, 0 попаданий; как откатить: снять обёртку */
+/*
 .hero-tips {
         padding: 14px 16px;
     }
+*/
     .ability-icon {
         width: 40px;
         height: 40px;
@@ -8235,7 +8238,8 @@ body.page-leaving {
     .item-search,
     .calc-search,
     .form-tab,
-    .cycle-label,
+    /* [off 21.11 TD-24] мёртвый селектор группы: .cycle-label — класс не встречается ни в HTML, ни в JS; правило общее с живыми селекторами (.hero-search и др.), трогается только строка селектора; чем доказано: scripts/tmp/dead-scan.mjs + td16-verify-dead.mjs, 0 попаданий; как откатить: раскомментировать строку ниже */
+    /* .cycle-label, */
     .calc-back-link,
     .calc-hero-select,
     .calc-slots-counter,

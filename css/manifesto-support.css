@@ -78,6 +78,8 @@
 .mf-section .section-title { font-size: 1.5rem; }
 
 /* крупная ночная статистика */
+/* [off 21.11 TD-24] отключены мёртвые правила (5 шт.): .mf-night; .mf-night-item; .mf-night-num; .mf-night-item--quiet .mf-night-num; .mf-night-cap — ночной блок статистики в разметке manifesto/support отсутствует, классы не встречаются ни в HTML, ни в JS; чем доказано: scripts/tmp/dead-scan.mjs, 0 попаданий по полной карте (117 html + 48 js); как откатить: снять обёртку */
+/*
 .mf-night {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -107,6 +109,7 @@
     font-size: 0.95rem;
     line-height: 1.45;
 }
+*/
 
 /* акцентная строка внутри текста */
 .mf-accent {
