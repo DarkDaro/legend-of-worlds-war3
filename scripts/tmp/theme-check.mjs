@@ -150,10 +150,10 @@ if (gearMobile) {
     await page.waitForTimeout(200);
     themeMobile = await page.evaluate(() => {
         const p = document.getElementById('site-settings-root');
-        return p && !p.hidden && p.querySelectorAll('.settings-theme-btn').length === 7;
+        return p && !p.hidden && p.querySelectorAll('.settings-theme-btn').length === 8;
     });
 }
-ok(themeMobile, 'мобильный 390: панель с семью пилюлями темы открылась из бургера');
+ok(themeMobile, 'мобильный 390: панель с восемью пилюлями темы открылась из бургера');
 s = await snap();
 ok(s.overflow <= 0, 'мобильный 390: горизонтального скролла нет', String(s.overflow));
 await page.screenshot({ path: path.join(OUTDIR, 'panel-theme-mobile-390.png') });
@@ -337,13 +337,15 @@ const THEME_LIST = [
     ['dark', 'rgb(0, 210, 235)', '#0d0d0f'],
     ['contrast', 'rgb(0, 255, 255)', '#040406'],
     ['astral', 'rgb(178, 102, 255)', '#0d0a14'],
-    ['winter', 'rgb(175, 220, 255)', '#0e1218']
+    ['winter', 'rgb(175, 220, 255)', '#0e1218'],
+    ['coffee', 'rgb(222, 184, 136)', '#130d09']
 ];
 for (const [id, accent, tc] of THEME_LIST) {
     await page.evaluate(t => window.SiteSettings.set('theme', t), id);
     await page.waitForTimeout(200);
     s = await snap();
     ok(s.theme === id && s.accent === accent && s.tc === tc && s.overflow <= 0, 'heroes: тема ' + id + ' — акцент, theme-color, без скролла', s.accent + ' | ' + s.tc);
+    await page.screenshot({ path: path.join(OUTDIR, 'heroes-' + id + '-1280.png') });
 }
 await page.evaluate(() => window.SiteSettings.set('theme', 'neon'));
 await page.waitForTimeout(200);
