@@ -313,6 +313,12 @@
 }
 .nav-link i {
     margin-right: 5px;
+    /* ширина иконки резервируется заранее, пока шрифт FontAwesome грузится
+       по сети (font-display: block рисует фолбэк с другими метриками),
+       иначе кнопка сначала узкая и вся навигация при переходах дёргается */
+    display: inline-block;
+    width: 1em;
+    text-align: center;
 }
 .nav-link:hover {
     background: var(--steel-deep);
