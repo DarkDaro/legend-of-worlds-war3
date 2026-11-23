@@ -169,13 +169,13 @@ ok(!!pillDark, 'панель: пилюля «Тёмная» есть');
 await pillDark.click();
 await page.waitForTimeout(200);
 s = await snap();
-ok(s.theme === 'dark' && s.accent === 'rgb(0, 210, 235)' && s.bg === 'rgb(13, 13, 15)' && s.tc === '#0d0d0f', 'items: тёмная включена выбором, фон графит, theme-color темы', s.accent + ' | ' + s.bg + ' | ' + s.tc);
+ok(s.theme === 'dark' && s.accent === 'rgb(112, 168, 196)' && s.bg === 'rgb(13, 13, 15)' && s.tc === '#0d0d0f', 'items: тёмная включена выбором, фон графит, неон погашен, theme-color темы', s.accent + ' | ' + s.bg + ' | ' + s.tc);
 ok(s.overflow <= 0, 'items 1280 тёмная: горизонтального скролла нет', String(s.overflow));
 await page.screenshot({ path: path.join(OUTDIR, 'items-dark-1280.png') });
 await page.reload({ waitUntil: 'load' });
 await page.waitForTimeout(300);
 s = await snap();
-ok(s.theme === 'dark' && s.accent === 'rgb(0, 210, 235)', 'перезагрузка держит тёмную', s.accent);
+ok(s.theme === 'dark' && s.accent === 'rgb(112, 168, 196)', 'перезагрузка держит тёмную', s.accent);
 // мобильный 390: главная в тёмной — выбор перекрывает неон-разметку
 await page.setViewportSize({ width: 390, height: 844 });
 await page.goto('http://localhost:8141/index.html', { waitUntil: 'load', timeout: 15000 });
@@ -334,7 +334,7 @@ await page.goto('http://localhost:8141/heroes.html', { waitUntil: 'load', timeou
 await page.waitForTimeout(300);
 const THEME_LIST = [
     ['ashenvale', 'rgb(110, 231, 183)', '#0a120f'],
-    ['dark', 'rgb(0, 210, 235)', '#0d0d0f'],
+    ['dark', 'rgb(112, 168, 196)', '#0d0d0f'],
     ['contrast', 'rgb(0, 255, 255)', '#040406'],
     ['astral', 'rgb(178, 102, 255)', '#0d0a14'],
     ['winter', 'rgb(175, 220, 255)', '#0e1218'],
