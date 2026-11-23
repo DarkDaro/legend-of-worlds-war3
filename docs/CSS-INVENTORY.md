@@ -7,37 +7,37 @@
 |---|---|
 | css-файлов | 34 |
 | уникальных цветов | 366 |
-| вхождений цветов | 1224 |
+| вхождений цветов | 1243 |
 | кастомных свойств объявлено | 81 |
 | из них в :root | 81 |
 | backdrop-filter: blur() | 153 |
 | box-shadow | 198 |
-| text-shadow | 44 |
+| text-shadow | 42 |
 | linear-gradient() | 52 |
-| radial-gradient() | 51 |
+| radial-gradient() | 63 |
 | transition: | 200 |
-| animation: | 115 |
-| @keyframes | 85 |
+| animation: | 116 |
+| @keyframes | 87 |
 
 ## Токены (кастомные свойства)
 
 | Токен | Значение | var() использований | Файлов | Где объявлен |
 |---|---|---|---|---|
-| --cyan-rgb | `0, 230, 255` | 332 | 1 | :root css/base.css |
-| --accent-cyan | `rgb(var(--cyan-rgb))` | 303 | 1 | :root css/base.css |
-| --surface-border | `rgba(var(--cyan-rgb), 0.12)` | 176 | 1 | :root css/glass.css |
-| --text-primary | `#e0f0ff` | 151 | 1 | :root css/base.css |
-| --text-secondary | `#8aa0c0` | 150 | 1 | :root css/base.css |
+| --cyan-rgb | `0, 230, 255` | 339 | 1 | :root css/base.css |
+| --accent-cyan | `rgb(var(--cyan-rgb))` | 302 | 1 | :root css/base.css |
+| --surface-border | `rgba(var(--cyan-rgb), 0.12)` | 175 | 1 | :root css/glass.css |
+| --text-primary | `#e0f0ff` | 150 | 1 | :root css/base.css |
+| --text-secondary | `#8aa0c0` | 149 | 1 | :root css/base.css |
 | --surface-blur | `12px` | 127 | 1 | :root css/glass.css |
-| --surface-bg | `rgba(var(--surface-rgb), 0.5)` | 120 | 1 | :root css/glass.css |
-| --red-rgb | `255, 85, 85` | 59 | 1 | :root css/base.css |
+| --surface-bg | `rgba(var(--surface-rgb), 0.5)` | 119 | 1 | :root css/glass.css |
+| --red-rgb | `255, 85, 85` | 64 | 1 | :root css/base.css |
 | --surface-border-hover | `rgba(var(--cyan-rgb), 0.35)` | 44 | 1 | :root css/glass.css |
 | --text-muted | `#7484a0` | 43 | 1 | :root css/base.css |
+| --info-rgb | `85, 170, 255` | 37 | 1 | :root css/base.css |
 | --danger-soft | `rgb(var(--red-soft-rgb))` | 36 | 1 | :root css/base.css |
-| --text-dim | `#66829f` | 35 | 1 | :root css/base.css |
+| --text-dim | `#6e8aa8` | 35 | 1 | :root css/base.css |
 | --violet-rgb | `191, 127, 255` | 35 | 1 | :root css/base.css |
 | --danger | `rgb(var(--red-rgb))` | 35 | 1 | :root css/base.css |
-| --info-rgb | `85, 170, 255` | 30 | 1 | :root css/base.css |
 | --surface-blur-soft | `8px` | 28 | 1 | :root css/glass.css |
 | --surface-bg-hover | `rgba(var(--surface-rgb), 0.65)` | 24 | 1 | :root css/glass.css |
 | --steel-blue | `rgb(var(--steel-blue-rgb))` | 23 | 1 | :root css/base.css |
@@ -184,7 +184,7 @@
 | `#c0d0e8` | 1 | 1 | base.css |
 | `#8aa0c0` | 1 | 1 | base.css |
 | `#7484a0` | 1 | 1 | base.css |
-| `#66829f` | 1 | 1 | base.css |
+| `#6e8aa8` | 1 | 1 | base.css |
 | `#a8bcdc` | 1 | 1 | base.css |
 | `#8ea3c0` | 1 | 1 | base.css |
 | `#7e9ab8` | 1 | 1 | base.css |
@@ -375,14 +375,14 @@
 | `#ffd700` | 2 | 1 | tierlist.css |
 | `rgba(255,212,59,0.08)` | 1 | 1 | balance-dashboard.css |
 
-### зелёный — 80 значений, 691 вхождений
+### зелёный — 80 значений, 710 вхождений
 
 | Значение | Вхождений | Файлов | Где |
 |---|---|---|---|
-| `rgba(var(--cyan-rgb)` | 329 | 29 | aibot.css, balance-dashboard.css, balance.css, base.css, bot-builds.css, calc.css, compare.css, creeps.css, effects.css, events.css, faq.css, formulas-calc.css, gallery.css, glass.css, guides.css, header-mobile.css, hero-grid.css, hero-page.css, home.css, info.css, items.css, lore.css, manifesto-support.css, map.css, mechanics.css, monsters.css, search.css, storage.css, tierlist.css |
-| `rgba(var(--red-rgb)` | 58 | 14 | calc.css, creeps.css, effects.css, guides.css, hero-grid.css, home.css, info.css, items.css, lore.css, mechanics.css, monsters.css, runes.css, search.css, storage.css |
+| `rgba(var(--cyan-rgb)` | 336 | 29 | aibot.css, balance-dashboard.css, balance.css, base.css, bot-builds.css, calc.css, compare.css, creeps.css, effects.css, events.css, faq.css, formulas-calc.css, gallery.css, glass.css, guides.css, header-mobile.css, hero-grid.css, hero-page.css, home.css, info.css, items.css, lore.css, manifesto-support.css, map.css, mechanics.css, monsters.css, search.css, storage.css, tierlist.css |
+| `rgba(var(--red-rgb)` | 63 | 14 | calc.css, creeps.css, effects.css, guides.css, hero-grid.css, home.css, info.css, items.css, lore.css, mechanics.css, monsters.css, runes.css, search.css, storage.css |
 | `rgba(var(--violet-rgb)` | 34 | 7 | calc.css, hero-page.css, home.css, items.css, lore.css, mechanics.css, monsters.css |
-| `rgba(var(--info-rgb)` | 26 | 7 | calc.css, effects.css, hero-grid.css, home.css, items.css, lore.css, mechanics.css |
+| `rgba(var(--info-rgb)` | 33 | 7 | calc.css, effects.css, hero-grid.css, home.css, items.css, lore.css, mechanics.css |
 | `rgba(var(--orange-rgb)` | 22 | 3 | calc.css, hero-page.css, items.css |
 | `rgba(var(--gold-rgb)` | 15 | 5 | bot-builds.css, calc.css, creeps.css, info.css, search.css |
 | `rgba(var(--red-deep-rgb)` | 15 | 5 | items.css, lore.css, map.css, mechanics.css, search.css |
@@ -547,7 +547,7 @@
 | 20px | 12 |
 | 2px | 10 |
 | 5px | 5 |
-| 18px | 5 |
+| 18px | 4 |
 | 24px | 4 |
 | 40px | 3 |
 | 50px | 3 |
@@ -563,7 +563,7 @@
 
 ## Keyframes
 
-abilityIconPulse, auroraBanner, auroraShift, bannerFadeIn, crownFloat, ctaBorderPulse, fadeSlideUp, float, galleryFadeIn, infoListIconPop, infoStatBounce, logoBorderPulse, loreBorderShimmer, markerPulseCyan, markerPulseRed, mechBarrierRing, mechBlockShake, mechClickPress, mechClockSlowSpin, mechCorruptSpread, mechDiceRoll, mechDrainPulse, mechDrainRing, mechFireDim, mechFireEscalate, mechFireGlow, mechFlashFade, mechHeartGlow, mechHeartbeat, mechLightningFlash, mechPrismatic, mechPrismaticRing, mechPureFlash, mechRadiance, mechReflectBounce, mechSheenSweep, mechSuppressDim, mechSuppressOverlay, mechWindSway, modeBanSlam, modeBossAppear, modeGoldShake, modeNoBooksSlash, modeRandomSpin, modeSlashAppear, modeSoloFade, modeSpellShrink, modeTeamBounce, modeTurboPulse, modesPromoPulse, orbFloat, pageIn, pageOut, qlIconPop, rippleExpand, runeArmorSheen, runeBarrierRing, runeCoinShake, runeCrystalSparkle, runeCrystalSpin, runeDash, runeDrain, runeDrainIn, runeDrop, runeFade, runeFlame, runeGauge, runeGoldSheen, runeHealRing, runeHeartbeat, runeLevelGlow, runeLevelUp, runeManaPool, runeRefreshSpin, runeSpeedSweep, runeSplit, runeSplitGhost, runeStatSteps, runeWealthGlow, runeWealthWave, sparkleSweep, statIconBounce, timelinePulse, titleShimmer, ytPulse
+abilityIconPulse, auroraBanner, auroraShift, bannerFadeIn, crownFloat, ctaBorderPulse, fadeSlideUp, float, galleryFadeIn, infoListIconPop, infoStatBounce, logoBorderPulse, loreBorderShimmer, markerPulseCyan, markerPulseRed, mechBarrierRing, mechBlockShake, mechClickPress, mechClockSlowSpin, mechCorruptSpread, mechDiceRoll, mechDrainPulse, mechDrainRing, mechFireDim, mechFireEscalate, mechFireGlow, mechFlashFade, mechHeartGlow, mechHeartbeat, mechLightningFlash, mechPrismatic, mechPrismaticRing, mechPureFlash, mechRadiance, mechReflectBounce, mechSheenSweep, mechSuppressDim, mechSuppressOverlay, mechWindSway, modeBanSlam, modeBossAppear, modeGoldShake, modeNoBooksSlash, modeRandomSpin, modeSlashAppear, modeSoloFade, modeSpellShrink, modeTeamBounce, modeTurboPulse, modesPromoPulse, orbFloat, orbSpecks, orbTwinkle, pageIn, pageOut, qlIconPop, rippleExpand, runeArmorSheen, runeBarrierRing, runeCoinShake, runeCrystalSparkle, runeCrystalSpin, runeDash, runeDrain, runeDrainIn, runeDrop, runeFade, runeFlame, runeGauge, runeGoldSheen, runeHealRing, runeHeartbeat, runeLevelGlow, runeLevelUp, runeManaPool, runeRefreshSpin, runeSpeedSweep, runeSplit, runeSplitGhost, runeStatSteps, runeWealthGlow, runeWealthWave, sparkleSweep, statIconBounce, timelinePulse, titleShimmer, ytPulse
 
 ## Цветов на файл (top 20)
 
@@ -577,13 +577,13 @@ abilityIconPulse, auroraBanner, auroraShift, bannerFadeIn, crownFloat, ctaBorder
 | css/calc.css | 66 |
 | css/base.css | 65 |
 | css/guides.css | 55 |
+| css/effects.css | 53 |
 | css/storage.css | 47 |
 | css/lore.css | 46 |
 | css/info.css | 45 |
 | css/home.css | 39 |
 | css/runes.css | 36 |
 | css/hero-grid.css | 34 |
-| css/effects.css | 33 |
 | css/aibot.css | 31 |
 | css/balance.css | 30 |
 | css/info-auto-level.css | 29 |
