@@ -286,7 +286,16 @@ body.page-mechanics::after,
 body.page-events::after,
 body.page-map::after,
 body.page-support::after,
-body.page-updates::after {
+body.page-updates::after,
+body.page-aibot::after,
+body.page-balance::after,
+body.page-changelog::after,
+body.page-creeps::after,
+body.page-gallery::after,
+body.page-runes::after,
+body.page-storage::after,
+body.page-tierlist::after,
+body.page-404::after {
     content: '';
     position: fixed;
     width: 450px;
@@ -341,6 +350,16 @@ body.page-events::after { bottom: -10%; left: -5%; animation-duration: 12s; anim
 body.page-map::after { bottom: -10%; right: -5%; animation-duration: 9s; animation-delay: -8s; }
 body.page-support::after { top: -5%; left: -5%; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: 11s; animation-delay: -4s; }
 body.page-updates::after { top: -5%; right: -5%; animation-duration: 13s; animation-delay: -6s; }
+/* 24.11: раскатка на остальные страницы без орбов — чередование углов */
+body.page-aibot::after { top: 20%; right: -8%; width: 400px; height: 400px; animation-duration: 10s; animation-delay: -4s; }
+body.page-balance::after { bottom: -10%; right: -5%; width: 500px; height: 500px; animation-duration: 13s; animation-delay: -2s; }
+body.page-changelog::after { top: -5%; left: -5%; width: 400px; height: 400px; animation-duration: 11s; animation-delay: -7s; }
+body.page-creeps::after { bottom: -10%; left: -5%; width: 400px; height: 400px; animation-duration: 12s; animation-delay: -5s; }
+body.page-gallery::after { top: -5%; right: -5%; width: 500px; height: 500px; animation-duration: 12s; animation-delay: -3s; }
+body.page-runes::after { bottom: -10%; right: -5%; width: 400px; height: 400px; animation-duration: 10s; animation-delay: -8s; }
+body.page-storage::after { top: -5%; left: -5%; width: 400px; height: 400px; animation-duration: 11s; animation-delay: -2s; }
+body.page-tierlist::after { bottom: -10%; left: -5%; width: 500px; height: 500px; animation-duration: 13s; animation-delay: -6s; }
+body.page-404::after { bottom: 10%; right: 10%; width: 450px; height: 450px; animation-duration: 11s; animation-delay: -4s; }
 
 @keyframes orbFloat {
     0%, 100% { opacity: 0.7; transform: scale(1) translate(0, 0); }
@@ -367,7 +386,16 @@ body.page-mechanics::before,
 body.page-events::before,
 body.page-map::before,
 body.page-support::before,
-body.page-updates::before {
+body.page-updates::before,
+body.page-aibot::before,
+body.page-balance::before,
+body.page-changelog::before,
+body.page-creeps::before,
+body.page-gallery::before,
+body.page-runes::before,
+body.page-storage::before,
+body.page-tierlist::before,
+body.page-404::before {
     content: '';
     position: fixed;
     inset: 0;

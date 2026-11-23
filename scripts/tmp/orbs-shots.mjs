@@ -30,6 +30,8 @@ await shot(desktop, 'index.html', 'index-d');
 await shot(desktop, 'heroes.html', 'heroes-d');
 await shot(desktop, 'info.html', 'info-d');
 await shot(desktop, 'mechanics.html', 'mechanics-d');
+await shot(desktop, 'gallery.html', 'gallery-d');
+await shot(desktop, '404.html', '404-d');
 const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } });
 await shot(mobile, 'index.html', 'index-m');
 await shot(mobile, 'heroes.html', 'heroes-m');

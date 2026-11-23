@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 /**
- * Проба орбов и тумблера «Декоративные орбы» (20.11).
- * 1) перенос: index (элемент + ::after), heroes, info, monsters (красный),
- *    новые mechanics/updates — орб жив, анимация orbFloat, длительности;
- * 2) тумблер: строка в панели, orbs off — content none / display none,
+ * Проба орбов и тумблера «Декоративные орбы» (20.11; 24.11 — россыпь и раскатка).
+ * 1) перенос: index (элемент + ::after + ::before-россыпь), heroes, info, monsters (красный),
+ *    раскатка 20.11 (mechanics/updates/...) и 24.11 (aibot/.../404) — орб жив, orbFloat;
+ * 2) россыпь 24.11: ::before на всей раскатке — z-index 1, orbTwinkle+orbSpecks,
+ *    у monsters красная, orbs off снимает её вместе с орбами;
+ * 3) тумблер: строка в панели, orbs off — content none / display none,
  *    fx off орбы больше НЕ прячет (cursor-glow при этом умирает);
- * 3) anim off глушит движение, орб остаётся статичным пятном.
+ * 4) anim off глушит движение, пятна остаются статичными.
  * Ошибки консоли: внешние https-ресурсы в песочнице дают ERR_CERT_* — не считаются.
  * Запуск из корня: node scripts/tmp/orbs-check.mjs
  */
@@ -72,19 +74,38 @@ check('heroes: 500px (как было)', e && e.w === '500px', e && e.w);
 await go('info.html');
 e = await cs('.info-orb');
 check('info: орб анимируется 12s', e && e.anim === 'orbFloat' && e.dur === '12s', e && e.anim + ' ' + e.dur);
-check('info: цвет cyan 0.04 как было', e && (e.bg || '').includes('0, 230, 255') && (e.bg || '').includes('0.04'), (e && e.bg || '').slice(0, 80));
+check('info: цвет cyan 0.12 (24.11 альфа)', e && (e.bg || '').includes('0, 230, 255') && (e.bg || '').includes('0.12'), (e && e.bg || '').slice(0, 80));
 
 // 4. monsters: красный цвет сохранён
 await go('monsters.html');
 e = await cs('body', '::after');
 check('monsters: красный 255,85,85', e && (e.bg || '').includes('255, 85, 85'), (e && e.bg || '').slice(0, 80));
 
-// 5. новые страницы
+// 5. раскатка 20.11
 for (const [f, sel] of [['mechanics.html', 'body.page-mechanics'], ['events.html', 'body.page-events'], ['map.html', 'body.page-map'], ['support.html', 'body.page-support'], ['updates.html', 'body.page-updates']]) {
     await go(f);
     e = await cs('body', '::after');
     check(f.split('.')[0] + ': орб появился', e && e.content === '""' && e.anim === 'orbFloat', e && (e.anim + ' ' + e.dur));
 }
+
+// 5b. раскатка 24.11 — орб + россыпь на каждой
+for (const f of ['aibot.html', 'balance.html', 'changelog.html', 'creeps.html', 'gallery.html', 'runes.html', 'storage.html', 'tierlist.html', '404.html']) {
+    await go(f);
+    const a = await cs('body', '::after');
+    const b = await cs('body', '::before');
+    check(f.split('.')[0] + ': орб + россыпь', a && a.content === '""' && a.anim === 'orbFloat' && b && b.content === '""' && (b.anim || '').includes('orbTwinkle'));
+}
+
+// 5c. россыпь 24.11: слои, z-index, у монстров красная
+await go('index.html');
+let b = await cs('body', '::before');
+check('index: ::before россыпь жива', b && b.content === '""' && (b.anim || '').includes('orbTwinkle') && (b.anim || '').includes('orbSpecks'), b && b.anim);
+check('index: россыпь — 6 слоёв градиента', b && (b.bg.match(/radial-gradient/g) || []).length === 6, b && (b.bg.match(/radial-gradient/g) || []).length);
+const z = await page.evaluate(() => getComputedStyle(document.body, '::before').zIndex);
+check('index: россыпь z-index 1 (поверх стекла)', z === '1', z);
+await go('monsters.html');
+b = await cs('body', '::before');
+check('monsters: россыпь красная 255,85,85', b && (b.bg || '').includes('255, 85, 85'), (b && b.bg || '').slice(0, 60));
 
 // 6. панель: строка и тумблер
 await go('index.html');
@@ -102,6 +123,8 @@ check('панель: по умолчанию включён', orbRow && orbRow.c
 await page.evaluate(() => SiteSettings.set('orbs', false));
 e = await cs('body', '::after');
 check('orbs off: ::after снят (content none)', e && e.content === 'none', e && e.content);
+b = await cs('body', '::before');
+check('orbs off: россыпь снята тем же тумблером', b && b.content === 'none', b && b.content);
 e = await cs('.home-orb-secondary');
 check('orbs off: элемент скрыт', e && e.display === 'none', e && e.display);
 const attr = await page.evaluate(() => document.documentElement.getAttribute('data-orbs'));
@@ -118,10 +141,12 @@ const glowGone = await page.evaluate(() => !document.querySelector('.cursor-glow
 check('fx off: свечение курсора умерло', glowGone);
 await page.evaluate(() => SiteSettings.set('fx', true));
 
-// 9. anim off: движение глушится, пятно остаётся
+// 9. anim off: движение глушится, пятна остаются
 await page.evaluate(() => SiteSettings.set('anim', false));
 e = await cs('body', '::after');
 check('anim off: анимация none, пятно живо', e && e.anim === 'none' && e.content === '""', e && e.anim);
+b = await cs('body', '::before');
+check('anim off: россыпь статична, но жива', b && b.anim === 'none' && b.content === '""', b && b.anim);
 await page.evaluate(() => SiteSettings.set('anim', true));
 
 // 10. перезагрузка: флаг держится в localStorage
