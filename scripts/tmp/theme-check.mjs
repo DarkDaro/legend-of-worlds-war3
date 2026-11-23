@@ -250,7 +250,7 @@ ok(!!pillWinter, 'панель: пилюля «Зимняя морозная» �
 await pillWinter.click();
 await page.waitForTimeout(200);
 s = await snap();
-ok(s.theme === 'winter' && s.accent === 'rgb(175, 220, 255)' && s.bg === 'rgb(14, 18, 24)' && s.tc === '#0e1218', 'items: зимняя включена выбором, фон ледяной, theme-color темы', s.accent + ' | ' + s.bg + ' | ' + s.tc);
+ok(s.theme === 'winter' && s.accent === 'rgb(175, 220, 255)' && s.bg === 'rgb(18, 25, 33)' && s.tc === '#121921', 'items: зимняя включена выбором, светлое морозное окружение, theme-color темы', s.accent + ' | ' + s.bg + ' | ' + s.tc);
 ok(s.overflow <= 0, 'items 1280 зимняя: горизонтального скролла нет', String(s.overflow));
 await page.screenshot({ path: path.join(OUTDIR, 'items-winter-1280.png') });
 await page.reload({ waitUntil: 'load' });
@@ -337,7 +337,7 @@ const THEME_LIST = [
     ['dark', 'rgb(112, 168, 196)', '#0d0d0f'],
     ['contrast', 'rgb(0, 255, 255)', '#040406'],
     ['astral', 'rgb(184, 160, 240)', '#100c1a'],
-    ['winter', 'rgb(175, 220, 255)', '#0e1218'],
+    ['winter', 'rgb(175, 220, 255)', '#121921'],
     ['coffee', 'rgb(222, 184, 136)', '#130d09'],
     ['gasoline', 'rgb(255, 122, 214)', '#0b1112']
 ];
