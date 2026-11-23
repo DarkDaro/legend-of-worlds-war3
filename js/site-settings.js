@@ -54,7 +54,7 @@
 
     // фон темы для meta theme-color (TD-7): неон, «Ашенваль», «Тёмная»,
     // «Высокий контраст», «Астральная», «Зимняя морозная», «Кофе», «Бензин»
-    var THEME_COLORS = { neon: '#0b0e14', ashenvale: '#0a120f', dark: '#0d0d0f', contrast: '#040406', astral: '#0d0a14', winter: '#0e1218', coffee: '#130d09', gasoline: '#0b1112' };
+    var THEME_COLORS = { neon: '#0b0e14', ashenvale: '#0a120f', dark: '#0d0d0f', contrast: '#040406', astral: '#100c1a', winter: '#0e1218', coffee: '#130d09', gasoline: '#0b1112' };
 
     function apply(f) {
         var h = document.documentElement;

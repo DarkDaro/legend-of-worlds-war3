@@ -223,13 +223,13 @@ ok(!!pillAstral, 'панель: пилюля «Астральная» есть')
 await pillAstral.click();
 await page.waitForTimeout(200);
 s = await snap();
-ok(s.theme === 'astral' && s.accent === 'rgb(178, 102, 255)' && s.bg === 'rgb(13, 10, 20)' && s.tc === '#0d0a14', 'items: астральная включена выбором, фон фиолетовый, theme-color темы', s.accent + ' | ' + s.bg + ' | ' + s.tc);
+ok(s.theme === 'astral' && s.accent === 'rgb(184, 160, 240)' && s.bg === 'rgb(16, 12, 26)' && s.tc === '#100c1a', 'items: астральная включена выбором, лаванда, theme-color темы', s.accent + ' | ' + s.bg + ' | ' + s.tc);
 ok(s.overflow <= 0, 'items 1280 астральная: горизонтального скролла нет', String(s.overflow));
 await page.screenshot({ path: path.join(OUTDIR, 'items-astral-1280.png') });
 await page.reload({ waitUntil: 'load' });
 await page.waitForTimeout(300);
 s = await snap();
-ok(s.theme === 'astral' && s.accent === 'rgb(178, 102, 255)', 'перезагрузка держит астральную', s.accent);
+ok(s.theme === 'astral' && s.accent === 'rgb(184, 160, 240)', 'перезагрузка держит астральную', s.accent);
 // мобильный 390: главная в астральной — выбор перекрывает неон-разметку
 await page.setViewportSize({ width: 390, height: 844 });
 await page.goto('http://localhost:8141/index.html', { waitUntil: 'load', timeout: 15000 });
@@ -336,7 +336,7 @@ const THEME_LIST = [
     ['ashenvale', 'rgb(110, 231, 183)', '#0a120f'],
     ['dark', 'rgb(112, 168, 196)', '#0d0d0f'],
     ['contrast', 'rgb(0, 255, 255)', '#040406'],
-    ['astral', 'rgb(178, 102, 255)', '#0d0a14'],
+    ['astral', 'rgb(184, 160, 240)', '#100c1a'],
     ['winter', 'rgb(175, 220, 255)', '#0e1218'],
     ['coffee', 'rgb(222, 184, 136)', '#130d09'],
     ['gasoline', 'rgb(255, 122, 214)', '#0b1112']
