@@ -150,10 +150,10 @@ if (gearMobile) {
     await page.waitForTimeout(200);
     themeMobile = await page.evaluate(() => {
         const p = document.getElementById('site-settings-root');
-        return p && !p.hidden && p.querySelectorAll('.settings-theme-btn').length === 8;
+        return p && !p.hidden && p.querySelectorAll('.settings-theme-btn').length === 9;
     });
 }
-ok(themeMobile, 'мобильный 390: панель с восемью пилюлями темы открылась из бургера');
+ok(themeMobile, 'мобильный 390: панель с девятью пилюлями темы открылась из бургера');
 s = await snap();
 ok(s.overflow <= 0, 'мобильный 390: горизонтального скролла нет', String(s.overflow));
 await page.screenshot({ path: path.join(OUTDIR, 'panel-theme-mobile-390.png') });
@@ -338,7 +338,8 @@ const THEME_LIST = [
     ['contrast', 'rgb(0, 255, 255)', '#040406'],
     ['astral', 'rgb(178, 102, 255)', '#0d0a14'],
     ['winter', 'rgb(175, 220, 255)', '#0e1218'],
-    ['coffee', 'rgb(222, 184, 136)', '#130d09']
+    ['coffee', 'rgb(222, 184, 136)', '#130d09'],
+    ['gasoline', 'rgb(255, 122, 214)', '#0b1112']
 ];
 for (const [id, accent, tc] of THEME_LIST) {
     await page.evaluate(t => window.SiteSettings.set('theme', t), id);

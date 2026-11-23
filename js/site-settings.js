@@ -10,7 +10,7 @@
  *   data-orbs="on|off", data-sound="on|off".
  * Тема — строка: SiteSettings.get('theme') даёт '' (по странице) или id темы
  * из THEMES ниже ('neon', 'ashenvale', 'dark', 'contrast', 'astral', 'winter',
- * 'coffee');
+ * 'coffee', 'gasoline');
  * пустое значение оставляет разметку в покое, явный выбор перекрывает
  * разметку на всех страницах; meta theme-color следует за темой (TD-7).
  * Атрибутов тем в разметке больше нет — сняты с главной и лора 20.11,
@@ -53,8 +53,8 @@
     var MARKUP_TC = (document.querySelector('meta[name="theme-color"]') || {}).content || null;
 
     // фон темы для meta theme-color (TD-7): неон, «Ашенваль», «Тёмная»,
-    // «Высокий контраст», «Астральная», «Зимняя морозная», «Кофе»
-    var THEME_COLORS = { neon: '#0b0e14', ashenvale: '#0a120f', dark: '#0d0d0f', contrast: '#040406', astral: '#0d0a14', winter: '#0e1218', coffee: '#130d09' };
+    // «Высокий контраст», «Астральная», «Зимняя морозная», «Кофе», «Бензин»
+    var THEME_COLORS = { neon: '#0b0e14', ashenvale: '#0a120f', dark: '#0d0d0f', contrast: '#040406', astral: '#0d0a14', winter: '#0e1218', coffee: '#130d09', gasoline: '#0b1112' };
 
     function apply(f) {
         var h = document.documentElement;
@@ -74,6 +74,7 @@
         else if (f.theme === 'astral') h.setAttribute('data-theme', 'astral');
         else if (f.theme === 'winter') h.setAttribute('data-theme', 'winter');
         else if (f.theme === 'coffee') h.setAttribute('data-theme', 'coffee');
+        else if (f.theme === 'gasoline') h.setAttribute('data-theme', 'gasoline');
         else if (f.theme === 'neon') h.removeAttribute('data-theme');
         else if (PAGE_THEME) h.setAttribute('data-theme', PAGE_THEME);
         else h.removeAttribute('data-theme');
@@ -128,7 +129,8 @@
         ['contrast', 'Высокий контраст'],
         ['astral', 'Астральная'],
         ['winter', 'Зимняя морозная'],
-        ['coffee', 'Кофе']
+        ['coffee', 'Кофе'],
+        ['gasoline', 'Бензин']
     ];
 
     function buildPanel() {
