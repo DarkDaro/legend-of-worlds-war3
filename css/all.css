@@ -488,10 +488,11 @@ html[data-fx="off"] * {
     text-shadow: none !important;
 }
 
-/* орбы выключены: все пятна — это body::after (кроме двух элементов на
-   главной и info), одного правила хватает на весь сайт; body::after больше
-   нигде не занят — проверено grep по css кроме бандла (20.11) */
-html[data-orbs="off"] body::after {
+/* орбы выключены: пятна — это body::after плюс россыпь «мелких переливов»
+   на body::before (24.11), одного правила хватает на весь сайт; body::after
+   и body::before больше нигде не заняты — проверено grep по css кроме бандла */
+html[data-orbs="off"] body::after,
+html[data-orbs="off"] body::before {
     content: none !important;
 }
 html[data-orbs="off"] .home-orb-secondary,
@@ -6888,14 +6889,20 @@ body.page-404 {
     }
 }
 
-/* ===== Декоративные орбы — единый компонент (20.11) =====
+/* ===== Декоративные орбы — единый компонент (20.11; 24.11 видимость) =====
    Плавающие световые пятна в фоне страниц. Раньше их правила были
    разбросаны по effects.css и calc.css, у большинства движения не было
    вовсе, у items цвет стоял хардкодом вне токенов. Собраны в одну
    секцию: общая база + позиция/размер/цвет страницы, единая умеренная
-   анимация orbFloat с расфазировкой (дыхание 0.85-1, scale 1.06,
-   дрейф ±12px, 9-13s). Сюда перенесены орбы главной, info и
+   анимация orbFloat с расфазировкой (дыхание 0.7-1, scale 1.1,
+   дрейф ±16px, 9-13s). Сюда перенесены орбы главной, info и
    калькуляторов из calc.css без смены значений позиций.
+   24.11: альфы 0.04/0.05 глазом не читались (владелец видел «один орб») —
+   центр 0.10-0.12 с мягким хвостом 0.05 на 45%.
+   24.11: мелкие переливы — мерцающая россыпь на body::before (свободен,
+   body::after занят только орбами): фиксированное поле на весь экран,
+   шесть крошечных точек на тех же примитивах, пульс orbTwinkle +
+   медленный дрейф orbSpecks; глушится тем же тумблером data-orbs.
    Тумблер «Декоративные орбы» в панели (data-orbs, base.css) прячет
    все одним правилом; data-anim="off" глушит движение глобально,
    prefers-reduced-motion — общим гардом доступности (base.css).
@@ -6978,6 +6985,66 @@ body.page-updates::after { top: -5%; right: -5%; animation-duration: 13s; animat
 @keyframes orbFloat {
     0%, 100% { opacity: 0.7; transform: scale(1) translate(0, 0); }
     50% { opacity: 1; transform: scale(1.1) translate(14px, -16px); }
+}
+
+/* мелкие переливы (24.11): россыпь крошечных точек поверх орбов */
+body.page-home::before,
+body.page-heroes::before,
+body.page-items::before,
+body.page-monsters::before,
+body.page-lore::before,
+body.page-calculator::before,
+body.page-build-constructor::before,
+body.page-bot-builds::before,
+body.page-compare::before,
+body.page-armor-calc::before,
+body.page-formulas-calc::before,
+body.page-modes::before,
+body.page-faq::before,
+body.page-guides::before,
+body.page-map-changes::before,
+body.page-mechanics::before,
+body.page-events::before,
+body.page-map::before,
+body.page-support::before,
+body.page-updates::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    /* z-index 1, а не 0: у wiki-container backdrop-filter создаёт stacking
+       context — при 0 точки прятались бы под стеклянными панелями; 1 кладёт
+       россыпь поверх стекла как звёздную пыль (шапка и панель настроек выше) */
+    z-index: 1;
+    background-image:
+        radial-gradient(3px 3px at 12% 24%, rgba(var(--cyan-rgb), 0.5) 30%, transparent 100%),
+        radial-gradient(2px 2px at 32% 68%, rgba(var(--info-rgb), 0.45) 30%, transparent 100%),
+        radial-gradient(2px 2px at 48% 14%, rgba(var(--cyan-rgb), 0.4) 30%, transparent 100%),
+        radial-gradient(3px 3px at 63% 46%, rgba(var(--cyan-rgb), 0.35) 30%, transparent 100%),
+        radial-gradient(2px 2px at 78% 76%, rgba(var(--info-rgb), 0.4) 30%, transparent 100%),
+        radial-gradient(2px 2px at 89% 22%, rgba(var(--cyan-rgb), 0.45) 30%, transparent 100%);
+    animation: orbTwinkle 6s ease-in-out infinite, orbSpecks 16s ease-in-out infinite;
+}
+
+/* у монстров россыпь в тон их красному орбу */
+body.page-monsters::before {
+    background-image:
+        radial-gradient(3px 3px at 12% 24%, rgba(var(--red-rgb), 0.45) 30%, transparent 100%),
+        radial-gradient(2px 2px at 32% 68%, rgba(var(--cyan-rgb), 0.35) 30%, transparent 100%),
+        radial-gradient(2px 2px at 48% 14%, rgba(var(--red-rgb), 0.4) 30%, transparent 100%),
+        radial-gradient(3px 3px at 63% 46%, rgba(var(--red-rgb), 0.3) 30%, transparent 100%),
+        radial-gradient(2px 2px at 78% 76%, rgba(var(--cyan-rgb), 0.35) 30%, transparent 100%),
+        radial-gradient(2px 2px at 89% 22%, rgba(var(--red-rgb), 0.4) 30%, transparent 100%);
+}
+
+@keyframes orbTwinkle {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 0.9; }
+}
+@keyframes orbSpecks {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(8px, -6px); }
+    66% { transform: translate(-6px, 8px); }
 }
 
 /* === css/calc.css === */

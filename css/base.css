@@ -482,10 +482,11 @@ html[data-fx="off"] * {
     text-shadow: none !important;
 }
 
-/* орбы выключены: все пятна — это body::after (кроме двух элементов на
-   главной и info), одного правила хватает на весь сайт; body::after больше
-   нигде не занят — проверено grep по css кроме бандла (20.11) */
-html[data-orbs="off"] body::after {
+/* орбы выключены: пятна — это body::after плюс россыпь «мелких переливов»
+   на body::before (24.11), одного правила хватает на весь сайт; body::after
+   и body::before больше нигде не заняты — проверено grep по css кроме бандла */
+html[data-orbs="off"] body::after,
+html[data-orbs="off"] body::before {
     content: none !important;
 }
 html[data-orbs="off"] .home-orb-secondary,
