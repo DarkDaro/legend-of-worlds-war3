@@ -339,7 +339,7 @@ const THEME_LIST = [
     ['astral', 'rgb(184, 160, 240)', '#100c1a'],
     ['winter', 'rgb(175, 220, 255)', '#121921'],
     ['coffee', 'rgb(222, 184, 136)', '#130d09'],
-    ['gasoline', 'rgb(255, 122, 214)', '#0b1112']
+    ['gasoline', 'rgb(120, 195, 205)', '#0b1112']
 ];
 for (const [id, accent, tc] of THEME_LIST) {
     await page.evaluate(t => window.SiteSettings.set('theme', t), id);
