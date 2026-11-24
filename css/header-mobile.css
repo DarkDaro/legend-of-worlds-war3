@@ -26,11 +26,27 @@
         display: none;
         flex-direction: column;
         gap: 4px;
-        padding: 12px 0;
+        padding: 12px 10px;
         border-top: 1px solid var(--steel-deep);
     }
     .header-nav.hamburger-open {
         display: flex;
+        /* меню открывается панелью поверх контента, а не раздвигает шапку:
+           иначе шапка растёт и гамбургер (top: 50% её высоты) при каждом
+           открытии уезжает в середину выросшего блока, при закрытии назад */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 1500;
+        background: rgba(var(--surface-rgb), 0.95);
+        backdrop-filter: blur(var(--surface-blur-soft));
+        -webkit-backdrop-filter: blur(var(--surface-blur-soft));
+        border: 1px solid var(--steel-deep);
+        border-radius: 18px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        max-height: calc(100vh - 110px);
+        overflow-y: auto;
     }
     .header-nav .nav-link {
         width: 100%;
