@@ -1,0 +1,15 @@
+import { chromium } from 'playwright';
+import http from 'http'; import fs from 'fs'; import path from 'path';
+const MIME = { '.html':'text/html','.css':'text/css','.js':'text/javascript','.json':'application/json','.png':'image/png','.woff2':'font/woff2' };
+const server = http.createServer(async (req,res)=>{ let rel=decodeURIComponent(req.url.split('?')[0]).replace(/^\//,'')||'index.html'; if(!path.extname(rel))rel+='.html'; try{const d=await fs.promises.readFile(path.join(process.cwd(),rel));res.writeHead(200,{'content-type':MIME[path.extname(rel)]||'application/octet-stream'});res.end(d);}catch{res.writeHead(404);res.end();}});
+await new Promise(r=>server.listen(8955,r));
+const b = await chromium.launch();
+const p = await b.newPage();
+const errs = [];
+p.on('console', m => { if (m.type() === 'error') errs.push(m.location() ? m.location().url : ''); });
+p.on('requestfailed', r => errs.push(r.url()));
+await p.goto('http://localhost:8955/index.html', { waitUntil: 'networkidle' });
+await p.waitForTimeout(600);
+const ext = errs.filter(u => u && !u.includes('localhost'));
+console.log('внешние отказы:', [...new Set(ext)].join('\n') || 'нет');
+await b.close(); server.close();
