@@ -20,6 +20,15 @@
        примитива. Тема контраста берёт этот же оттенок акцентом (§11) */
     --subtle-rgb: 0, 255, 255;
 
+    /* Нейтральные примитивы (TD-15 закрыт 24.11): белый и чёрный — один источник
+       для светлых текстов, рамок активного состояния и затемнений-оверлеев;
+       раньше жили 90 литералами в 24 файлах, темы и будущие светлые палитры
+       управляют ими через эти тройки. Определение --white через тройку, чтобы
+       в файлах не оставалось ни одного литерала */
+    --white-rgb: 255, 255, 255;
+    --black-rgb: 0, 0, 0;
+    --white: rgb(var(--white-rgb));
+
     /* Примитивы окружения (DESIGN.md §6, чанк 3): тёмные подложки, панели, рамки,
        информационный синий. Тема перекрашивает окружение этими триплетами (§11) */
     --bg-rgb: 11, 14, 20;
@@ -492,11 +501,11 @@ h1 {
     border-bottom: 2px solid var(--accent-cyan);
     padding-bottom: 12px;
     margin-bottom: 24px;
-    color: #ffffff;
+    color: var(--white);
     text-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.6), 0 0 25px rgba(var(--cyan-rgb), 0.2);
     letter-spacing: 1px;
     /* Shimmer-перелив на заголовках */
-    background: linear-gradient(90deg, #fff 0%, var(--accent-cyan) 45%, #fff 55%, var(--accent-cyan) 100%);
+    background: linear-gradient(90deg, var(--white) 0%, var(--accent-cyan) 45%, var(--white) 55%, var(--accent-cyan) 100%);
     background-size: 200% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -568,7 +577,7 @@ html[data-orbs="off"] .info-orb {
    геометрия; текстовые токены темы не перекрашивают, конфликта с темой нет.
    Дефолт «off» держит шкалу §7 как есть */
 html[data-text="on"] {
-    --text-primary: #ffffff;
+    --text-primary: var(--white);
     --text-strong: #f2f8ff;
     --text-soft: #e4eefc;
     --text-secondary: #a8bcdc;
@@ -603,7 +612,7 @@ html[data-progress="off"] .scroll-progress {
     -webkit-backdrop-filter: blur(var(--surface-blur));
     border: 1px solid var(--surface-border);
     border-radius: 14px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 32px rgba(var(--black-rgb), 0.4);
 }
 .settings-title {
     color: var(--text-primary);
@@ -860,7 +869,7 @@ html[data-glass="off"] * {
     border-radius: 12px;
     padding: 1px;
     background: linear-gradient(135deg, var(--accent-cyan), rgb(var(--info-rgb)), var(--accent-cyan));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(var(--white) 0 0) content-box, linear-gradient(var(--white) 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     opacity: 0;
@@ -884,7 +893,7 @@ html[data-glass="off"] * {
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s;
-    background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255,255,255,0.12) 0%, transparent 60%);
+    background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(var(--white-rgb), 0.12) 0%, transparent 60%);
     z-index: 3;
 }
 .hero-card:hover .tilt-glare {
@@ -1309,11 +1318,11 @@ html[data-glass="off"] * {
     border-left: 4px solid var(--accent-cyan);
     padding: 16px;
     border-radius: 8px;
-    box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--cyan-rgb), 0.12);
+    box-shadow: inset 0 0 10px rgba(var(--black-rgb), 0.333), 0 0 10px rgba(var(--cyan-rgb), 0.12);
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.25s ease, background 0.2s;
 }
 .ability-card:hover {
-    box-shadow: inset 0 0 10px #00000055, 0 0 15px rgba(var(--cyan-rgb), 0.2);
+    box-shadow: inset 0 0 10px rgba(var(--black-rgb), 0.333), 0 0 15px rgba(var(--cyan-rgb), 0.2);
     background: #132030;
 }
 .ability-card:hover .ability-icon {
@@ -1324,14 +1333,14 @@ html[data-glass="off"] * {
     background: rgba(var(--cyan-rgb), 0.04);
 }
 .ability-card.passive:hover {
-    box-shadow: inset 0 0 10px #00000055, 0 0 15px rgba(var(--violet-rgb), 0.2);
+    box-shadow: inset 0 0 10px rgba(var(--black-rgb), 0.333), 0 0 15px rgba(var(--violet-rgb), 0.2);
 }
 .ability-card.passive:hover .ability-icon {
     box-shadow: 0 0 18px rgba(var(--violet-rgb), 0.6);
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
 .ability-card.ultimate:hover {
-    box-shadow: inset 0 0 10px #00000055, 0 0 15px rgba(var(--orange-rgb), 0.2);
+    box-shadow: inset 0 0 10px rgba(var(--black-rgb), 0.333), 0 0 15px rgba(var(--orange-rgb), 0.2);
 }
 .ability-card.ultimate:hover .ability-icon {
     box-shadow: 0 0 18px rgba(var(--orange-rgb), 0.6);
@@ -1353,11 +1362,11 @@ html[data-glass="off"] * {
 }
 .ability-card.passive {
     border-left-color: var(--magic);
-    box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--violet-rgb), 0.12);
+    box-shadow: inset 0 0 10px rgba(var(--black-rgb), 0.333), 0 0 10px rgba(var(--violet-rgb), 0.12);
 }
 .ability-card.ultimate {
     border-left-color: var(--warning);
-    box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--orange-rgb), 0.12);
+    box-shadow: inset 0 0 10px rgba(var(--black-rgb), 0.333), 0 0 10px rgba(var(--orange-rgb), 0.12);
 }
 /* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .ability-card.innate — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
 /*
@@ -1995,14 +2004,14 @@ html[data-glass="off"] * {
     padding: 20px 25px;
     border-radius: 16px;
     border: 1px solid var(--surface-border);
-    box-shadow: inset 0 0 15px #00000055, 0 0 15px rgba(var(--cyan-rgb), 0.12);
+    box-shadow: inset 0 0 15px rgba(var(--black-rgb), 0.333), 0 0 15px rgba(var(--cyan-rgb), 0.12);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
 }
 .lore-text:hover {
     border-color: var(--surface-border-hover);
-    box-shadow: inset 0 0 15px #00000055, 0 0 25px rgba(var(--cyan-rgb), 0.2);
+    box-shadow: inset 0 0 15px rgba(var(--black-rgb), 0.333), 0 0 25px rgba(var(--cyan-rgb), 0.2);
 }
 /* Блик-свип при hover */
 .lore-text::after {
@@ -2073,7 +2082,7 @@ html[data-glass="off"] * {
     padding: 20px;
     text-align: center;
     transition: 0.25s ease;
-    box-shadow: inset 0 0 15px #00000055, 0 0 15px rgba(var(--cyan-rgb), 0.12);
+    box-shadow: inset 0 0 15px rgba(var(--black-rgb), 0.333), 0 0 15px rgba(var(--cyan-rgb), 0.12);
 }
 .mode-card:hover {
     background: var(--surface-bg-hover);
@@ -2192,7 +2201,7 @@ html[data-glass="off"] * {
     border: 1px solid var(--steel);
     border-radius: 24px;
     background: rgba(var(--surface-rgb), 0.86);
-    box-shadow: 0 0 30px #00000055, 0 0 20px rgba(var(--cyan-rgb), 0.12);
+    box-shadow: 0 0 30px rgba(var(--black-rgb), 0.333), 0 0 20px rgba(var(--cyan-rgb), 0.12);
     backdrop-filter: blur(var(--surface-blur-soft));
     min-height: 68px;
 }
@@ -2202,7 +2211,7 @@ html[data-glass="off"] * {
     align-items: center;
     gap: 12px;
     text-decoration: none;
-    color: #fff;
+    color: var(--white);
     transition: 0.2s;
     flex-shrink: 0;
     min-width: 0;
@@ -2230,7 +2239,7 @@ html[data-glass="off"] * {
     font-size: clamp(1.15rem, 1.4vw, 1.6rem);
     font-weight: 700;
     letter-spacing: 1px;
-    color: #ffffff;
+    color: var(--white);
     text-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.6);
     line-height: 1.1;
 }
@@ -2376,7 +2385,7 @@ html[data-glass="off"] * {
 }
 .version-badge.hot {
     background: var(--danger);
-    color: #fff;
+    color: var(--white);
 }
 .version-date {
     color: var(--text-dim);
@@ -2601,8 +2610,8 @@ html[data-glass="off"] * {
 }
 .mech-pure-dmg .mechanic-icon {
     background: #1a1a1a;
-    border: 1px solid #ffffff44;
-    color: #ffffff;
+    border: 1px solid rgba(var(--white-rgb), 0.2667);
+    color: var(--white);
 }
 .mech-motivation .mechanic-icon {
     background: #2a1a2a;
@@ -3136,7 +3145,7 @@ html[data-glass="off"] * {
     position: absolute;
     inset: 0;
     border-radius: 12px;
-    background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--white-rgb), 0.35) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
     pointer-events: none;
 }
@@ -3991,7 +4000,7 @@ html[data-glass="off"] * {
     transition: 0.15s;
 }
 .item-link:hover {
-    color: #fff;
+    color: var(--white);
     border-bottom-color: var(--accent-cyan);
     text-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.6);
 }
@@ -4100,7 +4109,7 @@ html[data-glass="off"] * {
     margin-bottom: 12px;
     line-height: 1.1;
     /* Shimmer-эффект на заголовке */
-    background: linear-gradient(90deg, #fff 0%, var(--accent-cyan) 40%, #fff 60%, var(--accent-cyan) 100%);
+    background: linear-gradient(90deg, var(--white) 0%, var(--accent-cyan) 40%, var(--white) 60%, var(--accent-cyan) 100%);
     background-size: 200% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -4142,7 +4151,7 @@ html[data-glass="off"] * {
     font-size: 1.1rem;
     border-radius: 50px;
     text-decoration: none;
-    box-shadow: 0 0 25px rgba(var(--mint-rgb), 0.35), 0 4px 15px #00000055;
+    box-shadow: 0 0 25px rgba(var(--mint-rgb), 0.35), 0 4px 15px rgba(var(--black-rgb), 0.333);
     transition: 0.2s;
     letter-spacing: 0.5px;
 }
@@ -5162,7 +5171,7 @@ html[data-glass="off"] * {
 .mc-pie-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 .mc-pie-pct { color: var(--text-secondary); font-size: 0.78rem; }
 .mc-role-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-.mc-role-chip { padding: 3px 10px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; border: 1px solid; background: rgba(255,255,255,0.03); }
+.mc-role-chip { padding: 3px 10px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; border: 1px solid; background: rgba(var(--white-rgb), 0.03); }
 .mc-gain-range { color: var(--text-secondary); font-size: 0.75rem; }
 @media (max-width: 600px) {
     .mc-card { padding: 10px 12px; }
@@ -5243,7 +5252,7 @@ html[data-glass="off"] * {
         .mc-pie-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
         .mc-pie-pct { color: var(--text-secondary); font-size: 0.78rem; }
         .mc-role-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-        .mc-role-chip { padding: 3px 10px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; border: 1px solid; background: rgba(255,255,255,0.03); }
+        .mc-role-chip { padding: 3px 10px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; border: 1px solid; background: rgba(var(--white-rgb), 0.03); }
         .mc-gain-range { color: var(--text-secondary); font-size: 0.75rem; }
         .mc-note { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; padding-left: 10px; border-left: 2px solid var(--surface-border); }
         @media (max-width: 600px) {
@@ -5428,7 +5437,7 @@ html[data-glass="off"] * {
         -webkit-backdrop-filter: blur(var(--surface-blur-soft));
         border: 1px solid var(--steel-deep);
         border-radius: 18px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 8px 32px rgba(var(--black-rgb), 0.4);
         max-height: calc(100vh - 110px);
         overflow-y: auto;
     }
@@ -5503,7 +5512,7 @@ html[data-glass="off"] * {
 /* Улучшение для логотипа-картинки при наведении */
 .logo:hover .logo-img {
     box-shadow: 0 0 20px var(--accent-cyan), 0 0 30px rgba(var(--cyan-rgb), 0.6);
-    border-color: #ffffff;
+    border-color: var(--white);
 }
 
 /* Уменьшаем отступы на мобильных */
@@ -5572,7 +5581,7 @@ html[data-glass="off"] * {
 .item-sheet-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.62);
+  background: rgba(var(--black-rgb), 0.62);
   z-index: 1900;
   opacity: 0;
   visibility: hidden;
@@ -5729,7 +5738,7 @@ body.item-sheet-open {
   padding: 16px;
   margin: 16px 0;
   border: 1px solid rgba(var(--cyan-rgb), 0.35);
-  box-shadow: inset 0 0 20px #00000055, 0 0 15px rgba(var(--cyan-rgb), 0.12);
+  box-shadow: inset 0 0 20px rgba(var(--black-rgb), 0.333), 0 0 15px rgba(var(--cyan-rgb), 0.12);
 }
 /* .ability-name и .ability-stats уже определены выше в блоке героев */
 .ability-box .ability-stats {
@@ -5770,7 +5779,7 @@ body.item-sheet-open {
 }
 .used-in-chip:hover {
   background: var(--accent-cyan);
-  border-color: #ffffff;
+  border-color: var(--white);
   color: var(--text-ink);
   box-shadow: 0 0 20px var(--accent-cyan);
 }
@@ -5793,7 +5802,7 @@ body.item-sheet-open {
 
 .boss-drop-link:hover {
   background: var(--warning);
-  border-color: #ffffff;
+  border-color: var(--white);
   color: var(--text-ink);
   box-shadow: 0 0 15px rgba(var(--orange-rgb), 0.35);
 }
@@ -5825,7 +5834,7 @@ body.item-sheet-open {
 
 .hero-reco-chip:hover {
   background: var(--accent-cyan);
-  border-color: #ffffff;
+  border-color: var(--white);
   color: var(--text-ink);
   box-shadow: 0 0 20px var(--accent-cyan);
 }
@@ -5849,7 +5858,7 @@ body.item-sheet-open {
 
 .hero-reco-toggle:hover {
   background: var(--accent-cyan);
-  border-color: #ffffff;
+  border-color: var(--white);
   color: var(--text-ink);
   box-shadow: 0 0 20px var(--accent-cyan);
 }
@@ -5884,7 +5893,7 @@ body.item-sheet-open {
 }
 .upgrade-btn:hover {
   background: var(--accent-cyan);
-  border-color: #ffffff;
+  border-color: var(--white);
   color: var(--text-ink);
   box-shadow: 0 0 25px var(--accent-cyan);
   transform: scale(1.02);
@@ -6128,7 +6137,7 @@ body.item-sheet-open {
   border-radius: 16px;
   padding: 1px;
   background: linear-gradient(135deg, var(--accent-cyan), rgb(var(--info-rgb)), var(--accent-cyan));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(var(--white) 0 0) content-box, linear-gradient(var(--white) 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
@@ -6287,13 +6296,13 @@ body.item-sheet-open {
 }
 .tab-btn:hover {
   background: var(--steel-deep);
-  color: #ffffff;
+  color: var(--white);
   box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.6);
   border-color: var(--accent-cyan);
 }
 .tab-btn.active {
   background: var(--accent-cyan);
-  border-color: #ffffff;
+  border-color: var(--white);
   color: var(--text-ink);
   box-shadow: 0 0 20px var(--accent-cyan), 0 0 0 2px rgba(var(--cyan-rgb), 0.2) inset;
 }
@@ -6522,12 +6531,12 @@ body.item-sheet-open {
     pointer-events: none;
     backdrop-filter: blur(var(--surface-blur-soft));
     -webkit-backdrop-filter: blur(var(--surface-blur-soft));
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 12px rgba(var(--black-rgb), 0.5);
     display: none;
 }
 .item-slug-tooltip .ist-name {
     font-weight: 600;
-    color: #fff;
+    color: var(--white);
 }
 .item-slug-tooltip .ist-slug {
     font-family: Consolas, monospace;
@@ -6587,12 +6596,12 @@ body.item-sheet-open {
 .bonus-chip:hover {
     background: var(--steel-deep);
     border-color: var(--accent-cyan);
-    color: #fff;
+    color: var(--white);
     box-shadow: 0 0 10px var(--surface-border-hover);
 }
 .bonus-chip.active {
     background: var(--accent-cyan);
-    border-color: #fff;
+    border-color: var(--white);
     color: var(--text-ink);
     box-shadow: 0 0 16px rgba(var(--cyan-rgb), 0.6);
 }
@@ -6758,7 +6767,7 @@ body.item-sheet-open {
     -webkit-backdrop-filter: blur(var(--surface-blur));
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--cyan-rgb), 0.12);
+    box-shadow: inset 0 0 10px rgba(var(--black-rgb), 0.333), 0 0 10px rgba(var(--cyan-rgb), 0.12);
 }
 .hero-stats-table th {
     background: var(--surface-subtle-hover);
@@ -8150,7 +8159,7 @@ body.page-formulas-calc {
     position: fixed;
     inset: 0;
     z-index: 5000;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(var(--black-rgb), 0.7);
     backdrop-filter: blur(var(--surface-blur-soft));
     display: flex;
     align-items: flex-start;
@@ -8444,7 +8453,7 @@ body.page-leaving {
     .mode-card,
     .quick-link-card,
     .stat-box {
-        box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+        box-shadow: 0 2px 8px rgba(var(--black-rgb), 0.3) !important;
     }
     /* Убираем text-shadow glow */
     h1, .hero-name, .detail-title, .ability-name {
@@ -8738,7 +8747,7 @@ body.page-leaving {
     position: absolute;
     top: 2px;
     right: 2px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(var(--black-rgb), 0.5);
     border: none;
     color: #5a3a3a;
     cursor: pointer;
@@ -8762,7 +8771,7 @@ body.page-leaving {
     position: absolute;
     top: 2px;
     left: 2px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(var(--black-rgb), 0.5);
     border: none;
     color: #8e97aa;
     font-size: 0.6rem;

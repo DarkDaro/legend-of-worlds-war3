@@ -6,18 +6,18 @@
 | Показатель | Значение |
 |---|---|
 | css-файлов | 34 |
-| уникальных цветов | 366 |
-| вхождений цветов | 1243 |
-| кастомных свойств объявлено | 81 |
-| из них в :root | 81 |
-| backdrop-filter: blur() | 153 |
-| box-shadow | 198 |
+| уникальных цветов | 358 |
+| вхождений цветов | 1239 |
+| кастомных свойств объявлено | 84 |
+| из них в :root | 84 |
+| backdrop-filter: blur() | 155 |
+| box-shadow | 201 |
 | text-shadow | 42 |
-| linear-gradient() | 52 |
+| linear-gradient() | 56 |
 | radial-gradient() | 63 |
 | transition: | 200 |
 | animation: | 116 |
-| @keyframes | 87 |
+| @keyframes | 88 |
 
 ## Токены (кастомные свойства)
 
@@ -38,7 +38,10 @@
 | --text-dim | `#6e8aa8` | 35 | 1 | :root css/base.css |
 | --violet-rgb | `191, 127, 255` | 35 | 1 | :root css/base.css |
 | --danger | `rgb(var(--red-rgb))` | 35 | 1 | :root css/base.css |
-| --surface-blur-soft | `8px` | 28 | 1 | :root css/glass.css |
+| --white | `rgb(var(--white-rgb))` | 34 | 1 | :root css/base.css |
+| --black-rgb | `0, 0, 0` | 33 | 1 | :root css/base.css |
+| --surface-blur-soft | `8px` | 30 | 1 | :root css/glass.css |
+| --white-rgb | `255, 255, 255` | 24 | 1 | :root css/base.css |
 | --surface-bg-hover | `rgba(var(--surface-rgb), 0.65)` | 24 | 1 | :root css/glass.css |
 | --steel-blue | `rgb(var(--steel-blue-rgb))` | 23 | 1 | :root css/base.css |
 | --orange-rgb | `255, 136, 0` | 23 | 1 | :root css/base.css |
@@ -46,9 +49,9 @@
 | --text-ink | `rgb(var(--bg-rgb))` | 19 | 1 | :root css/base.css |
 | --abyss | `rgb(var(--abyss-rgb))` | 18 | 1 | :root css/base.css |
 | --neon-glow | `0 0 20px rgba(var(--cyan-rgb), 0.2), 0 0 60px rgba(var(--cyan-rgb), 0.08)` | 18 | 1 | :root css/base.css |
+| --surface-rgb | `15, 23, 42` | 16 | 1 | :root css/base.css |
 | --red-deep-rgb | `255, 68, 68` | 16 | 1 | :root css/base.css |
 | --gold-rgb | `255, 200, 0` | 16 | 1 | :root css/base.css |
-| --surface-rgb | `15, 23, 42` | 15 | 1 | :root css/base.css |
 | --text-strong | `#d0e0ff` | 15 | 1 | :root css/base.css |
 | --steel | `rgb(var(--steel-rgb))` | 15 | 1 | :root css/base.css |
 | --text-soft | `#c0d0e8` | 14 | 1 | :root css/base.css |
@@ -57,12 +60,12 @@
 | --bg-deep | `rgb(var(--bg-deep-rgb))` | 12 | 1 | :root css/base.css |
 | --danger-deep | `rgb(var(--red-deep-rgb))` | 12 | 1 | :root css/base.css |
 | --backdrop-rgb | `13, 27, 42` | 11 | 1 | :root css/base.css |
+| --steel-deep | `rgb(var(--steel-deep-rgb))` | 11 | 1 | :root css/base.css |
 | --panel-raised | `rgb(var(--panel-raised-rgb))` | 11 | 1 | :root css/base.css |
 | --info-blue | `rgb(var(--info-rgb))` | 11 | 1 | :root css/base.css |
 | --agility-rgb | `85, 255, 85` | 11 | 1 | :root css/base.css |
 | --warning | `rgb(var(--orange-rgb))` | 11 | 1 | :root css/base.css |
 | --gold-soft | `rgb(var(--gold-soft-rgb))` | 11 | 1 | :root css/base.css |
-| --steel-deep | `rgb(var(--steel-deep-rgb))` | 10 | 1 | :root css/base.css |
 | --gold-bright-rgb | `255, 215, 0` | 10 | 1 | :root css/base.css |
 | --warning-soft | `rgb(var(--orange-soft-rgb))` | 10 | 1 | :root css/base.css |
 | --gold | `rgb(var(--gold-rgb))` | 10 | 1 | :root css/base.css |
@@ -107,12 +110,13 @@
 
 ## Цвета по семействам
 
-### циан — 40 значений, 63 вхождений
+### циан — 42 значений, 68 вхождений
 
 | Значение | Вхождений | Файлов | Где |
 |---|---|---|---|
 | `#74c0fc` | 6 | 3 | balance.css, calc.css, guides.css |
 | `#2196f3` | 5 | 2 | aibot.css, info-auto-level.css |
+| `rgb(159,212,240)` | 4 | 1 | base.css |
 | `rgba(33,150,243,0.15)` | 3 | 3 | aibot.css, balance.css, creeps.css |
 | `#42a5f5` | 3 | 3 | aibot.css, balance.css, creeps.css |
 | `#0f2535` | 3 | 2 | calc.css, tierlist.css |
@@ -126,6 +130,7 @@
 | `#607d8b` | 1 | 1 | aibot.css |
 | `rgba(116,192,252,0.1)` | 1 | 1 | balance.css |
 | `#e0f0ff` | 1 | 1 | base.css |
+| `rgba(159,212,240,0.45)` | 1 | 1 | base.css |
 | `#26a5e4` | 1 | 1 | calc.css |
 | `#3a8aa0` | 1 | 1 | compare.css |
 | `rgba(0,150,255,0.12)` | 1 | 1 | creeps.css |
@@ -152,7 +157,7 @@
 | `rgba(0,180,255,0.4)` | 1 | 1 | runes.css |
 | `rgba(0,180,255,0.3)` | 1 | 1 | runes.css |
 
-### синий — 69 значений, 119 вхождений
+### синий — 72 значений, 125 вхождений
 
 | Значение | Вхождений | Файлов | Где |
 |---|---|---|---|
@@ -161,6 +166,7 @@
 | `#88aacc` | 5 | 1 | map.css |
 | `#0a1628` | 5 | 1 | map.css |
 | `#5a6a7a` | 5 | 1 | search.css |
+| `rgb(184,166,240)` | 4 | 1 | base.css |
 | `#111e30` | 4 | 1 | compare.css |
 | `#b0c8f0` | 4 | 3 | hero-grid.css, items.css, lore.css |
 | `#c0d4ff` | 4 | 2 | hero-page.css, lore.css |
@@ -185,6 +191,8 @@
 | `#8aa0c0` | 1 | 1 | base.css |
 | `#7484a0` | 1 | 1 | base.css |
 | `#6e8aa8` | 1 | 1 | base.css |
+| `rgba(184,166,240,0.1)` | 1 | 1 | base.css |
+| `rgba(184,166,240,0.2)` | 1 | 1 | base.css |
 | `#a8bcdc` | 1 | 1 | base.css |
 | `#8ea3c0` | 1 | 1 | base.css |
 | `#7e9ab8` | 1 | 1 | base.css |
@@ -326,7 +334,7 @@
 | `rgba(233,30,99,0.4)` | 1 | 1 | runes.css |
 | `#ff5050` | 1 | 1 | search.css |
 
-### оранж — 35 значений, 70 вхождений
+### оранж — 38 значений, 75 вхождений
 
 | Значение | Вхождений | Файлов | Где |
 |---|---|---|---|
@@ -335,6 +343,7 @@
 | `#2a1a0a` | 6 | 5 | hero-page.css, items.css, lore.css, mechanics.css, monsters.css |
 | `#ffaa44` | 5 | 1 | map.css |
 | `#ff8844` | 4 | 2 | effects.css, hero-grid.css |
+| `rgb(242,216,168)` | 3 | 1 | base.css |
 | `#ff922b` | 3 | 2 | calc.css, guides.css |
 | `rgba(255,165,0,0.3)` | 3 | 2 | events.css, search.css |
 | `#ffaa66` | 2 | 1 | effects.css |
@@ -348,6 +357,8 @@
 | `rgba(255,165,0,0.06)` | 1 | 1 | balance-dashboard.css |
 | `rgba(255,165,0,0.08)` | 1 | 1 | balance-dashboard.css |
 | `rgba(255,165,0,0.2)` | 1 | 1 | balance-dashboard.css |
+| `rgba(242,216,168,0.08)` | 1 | 1 | base.css |
+| `rgba(242,216,168,0.18)` | 1 | 1 | base.css |
 | `rgba(255,136,68,0.15)` | 1 | 1 | hero-grid.css |
 | `#ff884466` | 1 | 1 | hero-grid.css |
 | `rgba(255,136,68,0.1)` | 1 | 1 | hero-grid.css |
@@ -375,18 +386,20 @@
 | `#ffd700` | 2 | 1 | tierlist.css |
 | `rgba(255,212,59,0.08)` | 1 | 1 | balance-dashboard.css |
 
-### зелёный — 80 значений, 710 вхождений
+### зелёный — 86 значений, 774 вхождений
 
 | Значение | Вхождений | Файлов | Где |
 |---|---|---|---|
 | `rgba(var(--cyan-rgb)` | 336 | 29 | aibot.css, balance-dashboard.css, balance.css, base.css, bot-builds.css, calc.css, compare.css, creeps.css, effects.css, events.css, faq.css, formulas-calc.css, gallery.css, glass.css, guides.css, header-mobile.css, hero-grid.css, hero-page.css, home.css, info.css, items.css, lore.css, manifesto-support.css, map.css, mechanics.css, monsters.css, search.css, storage.css, tierlist.css |
 | `rgba(var(--red-rgb)` | 63 | 14 | calc.css, creeps.css, effects.css, guides.css, hero-grid.css, home.css, info.css, items.css, lore.css, mechanics.css, monsters.css, runes.css, search.css, storage.css |
 | `rgba(var(--violet-rgb)` | 34 | 7 | calc.css, hero-page.css, home.css, items.css, lore.css, mechanics.css, monsters.css |
+| `rgba(var(--black-rgb)` | 33 | 13 | aibot.css, base.css, effects.css, guides.css, header-mobile.css, hero-page.css, home.css, items.css, lore.css, map.css, search.css, storage.css, tierlist.css |
 | `rgba(var(--info-rgb)` | 33 | 7 | calc.css, effects.css, hero-grid.css, home.css, items.css, lore.css, mechanics.css |
+| `rgba(var(--white-rgb)` | 23 | 13 | aibot.css, balance-dashboard.css, balance.css, bot-builds.css, creeps.css, events.css, guides.css, hero-grid.css, info-auto-level.css, info.css, mechanics.css, runes.css, storage.css |
 | `rgba(var(--orange-rgb)` | 22 | 3 | calc.css, hero-page.css, items.css |
+| `rgba(var(--surface-rgb)` | 15 | 10 | base.css, calc.css, gallery.css, glass.css, header-mobile.css, hero-page.css, items.css, lore.css, manifesto-support.css, search.css |
 | `rgba(var(--gold-rgb)` | 15 | 5 | bot-builds.css, calc.css, creeps.css, info.css, search.css |
 | `rgba(var(--red-deep-rgb)` | 15 | 5 | items.css, lore.css, map.css, mechanics.css, search.css |
-| `rgba(var(--surface-rgb)` | 14 | 9 | base.css, calc.css, gallery.css, glass.css, hero-page.css, items.css, lore.css, manifesto-support.css, search.css |
 | `rgba(var(--backdrop-rgb)` | 10 | 7 | aibot.css, balance-dashboard.css, balance.css, creeps.css, items.css, map.css, storage.css |
 | `rgba(var(--agility-rgb)` | 10 | 3 | calc.css, hero-grid.css, items.css |
 | `#44ff88` | 10 | 1 | map.css |
@@ -401,6 +414,7 @@
 | `rgba(var(--subtle-rgb)` | 5 | 1 | glass.css |
 | `#51cf66` | 4 | 2 | balance.css, calc.css |
 | `rgb(var(--info-rgb)` | 4 | 4 | base.css, hero-grid.css, items.css, search.css |
+| `rgb(140,236,200)` | 4 | 1 | base.css |
 | `rgba(var(--gold-dim-rgb)` | 4 | 2 | lore.css, mechanics.css |
 | `rgb(var(--cyan-rgb)` | 3 | 3 | base.css, home.css, lore.css |
 | `rgba(var(--gold-soft-rgb)` | 3 | 2 | effects.css, hero-grid.css |
@@ -418,6 +432,7 @@
 | `rgba(85,255,204,0.15)` | 2 | 1 | mechanics.css |
 | `#2ecc71` | 2 | 2 | sitemap-page.css, tierlist.css |
 | `rgba(81,207,102,0.1)` | 1 | 1 | balance.css |
+| `rgb(var(--white-rgb)` | 1 | 1 | base.css |
 | `rgb(var(--bg-deep-rgb)` | 1 | 1 | base.css |
 | `rgb(var(--bg-glow-rgb)` | 1 | 1 | base.css |
 | `rgb(var(--backdrop-rgb)` | 1 | 1 | base.css |
@@ -443,6 +458,8 @@
 | `rgb(var(--spring-rgb)` | 1 | 1 | base.css |
 | `rgb(var(--agility-rgb)` | 1 | 1 | base.css |
 | `rgb(var(--green-muted-rgb)` | 1 | 1 | base.css |
+| `rgba(140,236,200,0.14)` | 1 | 1 | base.css |
+| `rgba(140,236,200,0.3)` | 1 | 1 | base.css |
 | `#4ade80` | 1 | 1 | calc.css |
 | `rgba(139,195,74,0.15)` | 1 | 1 | creeps.css |
 | `#8bc34a` | 1 | 1 | creeps.css |
@@ -460,29 +477,16 @@
 | `#00e676` | 1 | 1 | runes.css |
 | `rgba(0,230,118,0.25)` | 1 | 1 | runes.css |
 
-### белый/светлый — 19 значений, 64 вхождений
+### белый/светлый — 6 значений, 12 вхождений
 
 | Значение | Вхождений | Файлов | Где |
 |---|---|---|---|
-| `#fff` | 20 | 9 | base.css, hero-grid.css, home.css, items.css, lore.css, map.css, mechanics.css, monsters.css, storage.css |
-| `#ffffff` | 14 | 7 | base.css, bot-builds.css, header-mobile.css, items.css, lore.css, map.css, mechanics.css |
-| `rgba(255,255,255,0.04)` | 9 | 6 | aibot.css, balance-dashboard.css, balance.css, creeps.css, events.css, guides.css |
+| `#f2f7f6` | 5 | 1 | base.css |
 | `#e0e8f0` | 3 | 1 | map.css |
-| `rgba(255,255,255,0.06)` | 2 | 2 | balance-dashboard.css, bot-builds.css |
-| `rgba(255,255,255,0.1)` | 2 | 2 | info-auto-level.css, runes.css |
-| `rgba(255,255,255,0.03)` | 2 | 1 | info.css |
 | `#f2f8ff` | 1 | 1 | base.css |
 | `#e4eefc` | 1 | 1 | base.css |
-| `rgba(255,255,255,0.25)` | 1 | 1 | bot-builds.css |
-| `rgba(255,255,255,0.2)` | 1 | 1 | bot-builds.css |
-| `rgba(255,255,255,0.12)` | 1 | 1 | hero-grid.css |
-| `rgba(255,255,255,0.05)` | 1 | 1 | info-auto-level.css |
 | `#f0f5ff` | 1 | 1 | items.css |
 | `#e2e8f0` | 1 | 1 | items.css |
-| `#ffffff44` | 1 | 1 | mechanics.css |
-| `rgba(255,255,255,0.35)` | 1 | 1 | mechanics.css |
-| `rgba(255,255,255,0.5)` | 1 | 1 | runes.css |
-| `rgba(255,255,255,0.08)` | 1 | 1 | storage.css |
 
 ### нейтральный — 13 значений, 16 вхождений
 
@@ -502,33 +506,24 @@
 | `#3a3a3a` | 1 | 1 | tierlist.css |
 | `#777` | 1 | 1 | tierlist.css |
 
-### почти чёрный — 16 значений, 45 вхождений
+### почти чёрный — 7 значений, 13 вхождений
 
 | Значение | Вхождений | Файлов | Где |
 |---|---|---|---|
-| `#00000055` | 13 | 5 | effects.css, hero-page.css, home.css, items.css, lore.css |
-| `rgba(0,0,0,0.15)` | 7 | 2 | aibot.css, guides.css |
 | `#00000080` | 6 | 5 | gallery.css, hero-grid.css, hero-page.css, items.css, storage.css |
-| `rgba(0,0,0,0.5)` | 3 | 2 | items.css, search.css |
-| `rgba(0,0,0,0.4)` | 2 | 2 | base.css, map.css |
 | `#1a1a1a` | 2 | 2 | mechanics.css, tierlist.css |
-| `rgba(0,0,0,0.3)` | 2 | 2 | search.css, tierlist.css |
-| `rgba(0,0,0,0.25)` | 2 | 2 | storage.css, tierlist.css |
 | `#00000066` | 1 | 1 | calc.css |
 | `#000` | 1 | 1 | hero-grid.css |
 | `#00000077` | 1 | 1 | home.css |
-| `rgba(0,0,0,0.62)` | 1 | 1 | items.css |
 | `#000000cc` | 1 | 1 | items.css |
-| `rgba(0,0,0,0.7)` | 1 | 1 | search.css |
 | `#000000aa` | 1 | 1 | search.css |
-| `rgba(0,0,0,0.35)` | 1 | 1 | storage.css |
 
 ## Стекломорфизм и эффекты
 
 | Значение blur | Вхождений |
 |---|---|
 | --surface-blur | 125 |
-| --surface-blur-soft | 28 |
+| --surface-blur-soft | 30 |
 
 ## border-radius
 
@@ -547,7 +542,7 @@
 | 20px | 12 |
 | 2px | 10 |
 | 5px | 5 |
-| 18px | 4 |
+| 18px | 5 |
 | 24px | 4 |
 | 40px | 3 |
 | 50px | 3 |
@@ -563,29 +558,29 @@
 
 ## Keyframes
 
-abilityIconPulse, auroraBanner, auroraShift, bannerFadeIn, crownFloat, ctaBorderPulse, fadeSlideUp, float, galleryFadeIn, infoListIconPop, infoStatBounce, logoBorderPulse, loreBorderShimmer, markerPulseCyan, markerPulseRed, mechBarrierRing, mechBlockShake, mechClickPress, mechClockSlowSpin, mechCorruptSpread, mechDiceRoll, mechDrainPulse, mechDrainRing, mechFireDim, mechFireEscalate, mechFireGlow, mechFlashFade, mechHeartGlow, mechHeartbeat, mechLightningFlash, mechPrismatic, mechPrismaticRing, mechPureFlash, mechRadiance, mechReflectBounce, mechSheenSweep, mechSuppressDim, mechSuppressOverlay, mechWindSway, modeBanSlam, modeBossAppear, modeGoldShake, modeNoBooksSlash, modeRandomSpin, modeSlashAppear, modeSoloFade, modeSpellShrink, modeTeamBounce, modeTurboPulse, modesPromoPulse, orbFloat, orbSpecks, orbTwinkle, pageIn, pageOut, qlIconPop, rippleExpand, runeArmorSheen, runeBarrierRing, runeCoinShake, runeCrystalSparkle, runeCrystalSpin, runeDash, runeDrain, runeDrainIn, runeDrop, runeFade, runeFlame, runeGauge, runeGoldSheen, runeHealRing, runeHeartbeat, runeLevelGlow, runeLevelUp, runeManaPool, runeRefreshSpin, runeSpeedSweep, runeSplit, runeSplitGhost, runeStatSteps, runeWealthGlow, runeWealthWave, sparkleSweep, statIconBounce, timelinePulse, titleShimmer, ytPulse
+abilityIconPulse, auroraBanner, auroraShift, bannerFadeIn, crownFloat, ctaBorderPulse, fadeSlideUp, float, galleryFadeIn, infoListIconPop, infoStatBounce, logoBorderPulse, logoBorderPulseGasoline, loreBorderShimmer, markerPulseCyan, markerPulseRed, mechBarrierRing, mechBlockShake, mechClickPress, mechClockSlowSpin, mechCorruptSpread, mechDiceRoll, mechDrainPulse, mechDrainRing, mechFireDim, mechFireEscalate, mechFireGlow, mechFlashFade, mechHeartGlow, mechHeartbeat, mechLightningFlash, mechPrismatic, mechPrismaticRing, mechPureFlash, mechRadiance, mechReflectBounce, mechSheenSweep, mechSuppressDim, mechSuppressOverlay, mechWindSway, modeBanSlam, modeBossAppear, modeGoldShake, modeNoBooksSlash, modeRandomSpin, modeSlashAppear, modeSoloFade, modeSpellShrink, modeTeamBounce, modeTurboPulse, modesPromoPulse, orbFloat, orbSpecks, orbTwinkle, pageIn, pageOut, qlIconPop, rippleExpand, runeArmorSheen, runeBarrierRing, runeCoinShake, runeCrystalSparkle, runeCrystalSpin, runeDash, runeDrain, runeDrainIn, runeDrop, runeFade, runeFlame, runeGauge, runeGoldSheen, runeHealRing, runeHeartbeat, runeLevelGlow, runeLevelUp, runeManaPool, runeRefreshSpin, runeSpeedSweep, runeSplit, runeSplitGhost, runeStatSteps, runeWealthGlow, runeWealthWave, sparkleSweep, statIconBounce, timelinePulse, titleShimmer, ytPulse
 
 ## Цветов на файл (top 20)
 
 | Файл | Цветовых литералов |
 |---|---|
-| css/items.css | 151 |
-| css/map.css | 93 |
+| css/items.css | 139 |
+| css/base.css | 89 |
+| css/map.css | 89 |
 | css/hero-page.css | 85 |
-| css/mechanics.css | 76 |
 | css/search.css | 76 |
+| css/mechanics.css | 74 |
 | css/calc.css | 66 |
-| css/base.css | 65 |
 | css/guides.css | 55 |
 | css/effects.css | 53 |
-| css/storage.css | 47 |
-| css/lore.css | 46 |
 | css/info.css | 45 |
-| css/home.css | 39 |
+| css/lore.css | 44 |
+| css/storage.css | 44 |
+| css/home.css | 37 |
 | css/runes.css | 36 |
-| css/hero-grid.css | 34 |
+| css/hero-grid.css | 32 |
 | css/aibot.css | 31 |
 | css/balance.css | 30 |
 | css/info-auto-level.css | 29 |
 | css/creeps.css | 28 |
-| css/monsters.css | 26 |
+| css/monsters.css | 25 |

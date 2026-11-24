@@ -44,7 +44,7 @@ h3 { color: var(--text-primary); font-size: 1rem; margin: 20px 0 8px; }
     padding: 10px 14px;
     border-radius: 8px;
     border-left: 3px solid var(--surface-border);
-    background: rgba(0,0,0,0.15);
+    background: rgba(var(--black-rgb), 0.15);
     position: relative;
     transition: background 0.2s;
 }
@@ -86,7 +86,7 @@ h3 { color: var(--text-primary); font-size: 1rem; margin: 20px 0 8px; }
 }
 .state-table td {
     padding: 8px 14px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(var(--white-rgb), 0.04);
     color: var(--text-secondary);
 }
 .state-table tr:hover td { background: rgba(var(--cyan-rgb), 0.04); }
@@ -122,7 +122,7 @@ h3 { color: var(--text-primary); font-size: 1rem; margin: 20px 0 8px; }
 .ai-compare-table th:first-child { width: 35%; }
 .ai-compare-table td {
     padding: 8px 14px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(var(--white-rgb), 0.04);
     color: var(--text-secondary);
 }
 .ai-compare-table tr:hover td { background: rgba(var(--cyan-rgb), 0.04); }

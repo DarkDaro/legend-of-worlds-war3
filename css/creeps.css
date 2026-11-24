@@ -70,7 +70,7 @@
         .creep-table th.sorted .sort-arrow { opacity: 1; color: var(--accent-cyan); }
         .creep-table td {
             padding: 10px 14px;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
+            border-bottom: 1px solid rgba(var(--white-rgb), 0.04);
             color: var(--text-secondary);
             white-space: nowrap;
         }
@@ -242,7 +242,7 @@
             background: rgba(var(--backdrop-rgb), 0.9);
         }
         .bonus-table td {
-            padding: 7px 12px; border-bottom: 1px solid rgba(255,255,255,0.04);
+            padding: 7px 12px; border-bottom: 1px solid rgba(var(--white-rgb), 0.04);
             color: var(--text-secondary);
         }
         .bonus-table tr:last-child td { border-bottom: none; }

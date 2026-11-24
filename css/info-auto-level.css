@@ -85,8 +85,8 @@
     border-radius: 50%;
     font-size: 0.82rem;
     font-weight: 700;
-    background: rgba(255,255,255,0.05);
-    border: 1.5px solid rgba(255,255,255,0.1);
+    background: rgba(var(--white-rgb), 0.05);
+    border: 1.5px solid rgba(var(--white-rgb), 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 

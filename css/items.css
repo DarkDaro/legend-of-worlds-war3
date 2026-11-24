@@ -55,7 +55,7 @@
 .item-sheet-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.62);
+  background: rgba(var(--black-rgb), 0.62);
   z-index: 1900;
   opacity: 0;
   visibility: hidden;
@@ -212,7 +212,7 @@ body.item-sheet-open {
   padding: 16px;
   margin: 16px 0;
   border: 1px solid rgba(var(--cyan-rgb), 0.35);
-  box-shadow: inset 0 0 20px #00000055, 0 0 15px rgba(var(--cyan-rgb), 0.12);
+  box-shadow: inset 0 0 20px rgba(var(--black-rgb), 0.333), 0 0 15px rgba(var(--cyan-rgb), 0.12);
 }
 /* .ability-name и .ability-stats уже определены выше в блоке героев */
 .ability-box .ability-stats {
@@ -253,7 +253,7 @@ body.item-sheet-open {
 }
 .used-in-chip:hover {
   background: var(--accent-cyan);
-  border-color: #ffffff;
+  border-color: var(--white);
   color: var(--text-ink);
   box-shadow: 0 0 20px var(--accent-cyan);
 }
@@ -276,7 +276,7 @@ body.item-sheet-open {
 
 .boss-drop-link:hover {
   background: var(--warning);
-  border-color: #ffffff;
+  border-color: var(--white);
   color: var(--text-ink);
   box-shadow: 0 0 15px rgba(var(--orange-rgb), 0.35);
 }
@@ -308,7 +308,7 @@ body.item-sheet-open {
 
 .hero-reco-chip:hover {
   background: var(--accent-cyan);
-  border-color: #ffffff;
+  border-color: var(--white);
   color: var(--text-ink);
   box-shadow: 0 0 20px var(--accent-cyan);
 }
@@ -332,7 +332,7 @@ body.item-sheet-open {
 
 .hero-reco-toggle:hover {
   background: var(--accent-cyan);
-  border-color: #ffffff;
+  border-color: var(--white);
   color: var(--text-ink);
   box-shadow: 0 0 20px var(--accent-cyan);
 }
@@ -367,7 +367,7 @@ body.item-sheet-open {
 }
 .upgrade-btn:hover {
   background: var(--accent-cyan);
-  border-color: #ffffff;
+  border-color: var(--white);
   color: var(--text-ink);
   box-shadow: 0 0 25px var(--accent-cyan);
   transform: scale(1.02);
@@ -611,7 +611,7 @@ body.item-sheet-open {
   border-radius: 16px;
   padding: 1px;
   background: linear-gradient(135deg, var(--accent-cyan), rgb(var(--info-rgb)), var(--accent-cyan));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(var(--white) 0 0) content-box, linear-gradient(var(--white) 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
@@ -770,13 +770,13 @@ body.item-sheet-open {
 }
 .tab-btn:hover {
   background: var(--steel-deep);
-  color: #ffffff;
+  color: var(--white);
   box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.6);
   border-color: var(--accent-cyan);
 }
 .tab-btn.active {
   background: var(--accent-cyan);
-  border-color: #ffffff;
+  border-color: var(--white);
   color: var(--text-ink);
   box-shadow: 0 0 20px var(--accent-cyan), 0 0 0 2px rgba(var(--cyan-rgb), 0.2) inset;
 }
@@ -1005,12 +1005,12 @@ body.item-sheet-open {
     pointer-events: none;
     backdrop-filter: blur(var(--surface-blur-soft));
     -webkit-backdrop-filter: blur(var(--surface-blur-soft));
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 12px rgba(var(--black-rgb), 0.5);
     display: none;
 }
 .item-slug-tooltip .ist-name {
     font-weight: 600;
-    color: #fff;
+    color: var(--white);
 }
 .item-slug-tooltip .ist-slug {
     font-family: Consolas, monospace;
@@ -1070,12 +1070,12 @@ body.item-sheet-open {
 .bonus-chip:hover {
     background: var(--steel-deep);
     border-color: var(--accent-cyan);
-    color: #fff;
+    color: var(--white);
     box-shadow: 0 0 10px var(--surface-border-hover);
 }
 .bonus-chip.active {
     background: var(--accent-cyan);
-    border-color: #fff;
+    border-color: var(--white);
     color: var(--text-ink);
     box-shadow: 0 0 16px rgba(var(--cyan-rgb), 0.6);
 }

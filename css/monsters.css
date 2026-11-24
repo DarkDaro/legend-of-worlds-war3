@@ -592,7 +592,7 @@
     transition: 0.15s;
 }
 .item-link:hover {
-    color: #fff;
+    color: var(--white);
     border-bottom-color: var(--accent-cyan);
     text-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.6);
 }

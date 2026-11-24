@@ -536,7 +536,7 @@
 .mc-pie-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 .mc-pie-pct { color: var(--text-secondary); font-size: 0.78rem; }
 .mc-role-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-.mc-role-chip { padding: 3px 10px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; border: 1px solid; background: rgba(255,255,255,0.03); }
+.mc-role-chip { padding: 3px 10px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; border: 1px solid; background: rgba(var(--white-rgb), 0.03); }
 .mc-gain-range { color: var(--text-secondary); font-size: 0.75rem; }
 @media (max-width: 600px) {
     .mc-card { padding: 10px 12px; }
@@ -617,7 +617,7 @@
         .mc-pie-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
         .mc-pie-pct { color: var(--text-secondary); font-size: 0.78rem; }
         .mc-role-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-        .mc-role-chip { padding: 3px 10px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; border: 1px solid; background: rgba(255,255,255,0.03); }
+        .mc-role-chip { padding: 3px 10px; border-radius: 4px; font-size: 0.78rem; font-weight: 600; border: 1px solid; background: rgba(var(--white-rgb), 0.03); }
         .mc-gain-range { color: var(--text-secondary); font-size: 0.75rem; }
         .mc-note { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; padding-left: 10px; border-left: 2px solid var(--surface-border); }
         @media (max-width: 600px) {

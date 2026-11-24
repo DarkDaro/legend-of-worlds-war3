@@ -37,7 +37,7 @@
     position: fixed;
     inset: 0;
     z-index: 5000;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(var(--black-rgb), 0.7);
     backdrop-filter: blur(var(--surface-blur-soft));
     display: flex;
     align-items: flex-start;
@@ -331,7 +331,7 @@ body.page-leaving {
     .mode-card,
     .quick-link-card,
     .stat-box {
-        box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+        box-shadow: 0 2px 8px rgba(var(--black-rgb), 0.3) !important;
     }
     /* Убираем text-shadow glow */
     h1, .hero-name, .detail-title, .ability-name {
@@ -625,7 +625,7 @@ body.page-leaving {
     position: absolute;
     top: 2px;
     right: 2px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(var(--black-rgb), 0.5);
     border: none;
     color: #5a3a3a;
     cursor: pointer;
@@ -649,7 +649,7 @@ body.page-leaving {
     position: absolute;
     top: 2px;
     left: 2px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(var(--black-rgb), 0.5);
     border: none;
     color: #8e97aa;
     font-size: 0.6rem;

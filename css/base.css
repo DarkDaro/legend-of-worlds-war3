@@ -14,6 +14,15 @@
        примитива. Тема контраста берёт этот же оттенок акцентом (§11) */
     --subtle-rgb: 0, 255, 255;
 
+    /* Нейтральные примитивы (TD-15 закрыт 24.11): белый и чёрный — один источник
+       для светлых текстов, рамок активного состояния и затемнений-оверлеев;
+       раньше жили 90 литералами в 24 файлах, темы и будущие светлые палитры
+       управляют ими через эти тройки. Определение --white через тройку, чтобы
+       в файлах не оставалось ни одного литерала */
+    --white-rgb: 255, 255, 255;
+    --black-rgb: 0, 0, 0;
+    --white: rgb(var(--white-rgb));
+
     /* Примитивы окружения (DESIGN.md §6, чанк 3): тёмные подложки, панели, рамки,
        информационный синий. Тема перекрашивает окружение этими триплетами (§11) */
     --bg-rgb: 11, 14, 20;
@@ -486,11 +495,11 @@ h1 {
     border-bottom: 2px solid var(--accent-cyan);
     padding-bottom: 12px;
     margin-bottom: 24px;
-    color: #ffffff;
+    color: var(--white);
     text-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.6), 0 0 25px rgba(var(--cyan-rgb), 0.2);
     letter-spacing: 1px;
     /* Shimmer-перелив на заголовках */
-    background: linear-gradient(90deg, #fff 0%, var(--accent-cyan) 45%, #fff 55%, var(--accent-cyan) 100%);
+    background: linear-gradient(90deg, var(--white) 0%, var(--accent-cyan) 45%, var(--white) 55%, var(--accent-cyan) 100%);
     background-size: 200% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -562,7 +571,7 @@ html[data-orbs="off"] .info-orb {
    геометрия; текстовые токены темы не перекрашивают, конфликта с темой нет.
    Дефолт «off» держит шкалу §7 как есть */
 html[data-text="on"] {
-    --text-primary: #ffffff;
+    --text-primary: var(--white);
     --text-strong: #f2f8ff;
     --text-soft: #e4eefc;
     --text-secondary: #a8bcdc;
@@ -597,7 +606,7 @@ html[data-progress="off"] .scroll-progress {
     -webkit-backdrop-filter: blur(var(--surface-blur));
     border: 1px solid var(--surface-border);
     border-radius: 14px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 32px rgba(var(--black-rgb), 0.4);
 }
 .settings-title {
     color: var(--text-primary);

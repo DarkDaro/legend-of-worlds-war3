@@ -299,11 +299,11 @@
     border-left: 4px solid var(--accent-cyan);
     padding: 16px;
     border-radius: 8px;
-    box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--cyan-rgb), 0.12);
+    box-shadow: inset 0 0 10px rgba(var(--black-rgb), 0.333), 0 0 10px rgba(var(--cyan-rgb), 0.12);
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.25s ease, background 0.2s;
 }
 .ability-card:hover {
-    box-shadow: inset 0 0 10px #00000055, 0 0 15px rgba(var(--cyan-rgb), 0.2);
+    box-shadow: inset 0 0 10px rgba(var(--black-rgb), 0.333), 0 0 15px rgba(var(--cyan-rgb), 0.2);
     background: #132030;
 }
 .ability-card:hover .ability-icon {
@@ -314,14 +314,14 @@
     background: rgba(var(--cyan-rgb), 0.04);
 }
 .ability-card.passive:hover {
-    box-shadow: inset 0 0 10px #00000055, 0 0 15px rgba(var(--violet-rgb), 0.2);
+    box-shadow: inset 0 0 10px rgba(var(--black-rgb), 0.333), 0 0 15px rgba(var(--violet-rgb), 0.2);
 }
 .ability-card.passive:hover .ability-icon {
     box-shadow: 0 0 18px rgba(var(--violet-rgb), 0.6);
     animation: abilityIconPulse 1.2s ease-in-out infinite;
 }
 .ability-card.ultimate:hover {
-    box-shadow: inset 0 0 10px #00000055, 0 0 15px rgba(var(--orange-rgb), 0.2);
+    box-shadow: inset 0 0 10px rgba(var(--black-rgb), 0.333), 0 0 15px rgba(var(--orange-rgb), 0.2);
 }
 .ability-card.ultimate:hover .ability-icon {
     box-shadow: 0 0 18px rgba(var(--orange-rgb), 0.6);
@@ -343,11 +343,11 @@
 }
 .ability-card.passive {
     border-left-color: var(--magic);
-    box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--violet-rgb), 0.12);
+    box-shadow: inset 0 0 10px rgba(var(--black-rgb), 0.333), 0 0 10px rgba(var(--violet-rgb), 0.12);
 }
 .ability-card.ultimate {
     border-left-color: var(--warning);
-    box-shadow: inset 0 0 10px #00000055, 0 0 10px rgba(var(--orange-rgb), 0.12);
+    box-shadow: inset 0 0 10px rgba(var(--black-rgb), 0.333), 0 0 10px rgba(var(--orange-rgb), 0.12);
 }
 /* [off 20.11 TD-16] отключены мёртвые правила (1 шт.): .ability-card.innate — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
 /*

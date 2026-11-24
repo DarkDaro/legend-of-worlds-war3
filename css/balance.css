@@ -73,7 +73,7 @@
         .balance-table th.sorted .sort-arrow { opacity: 1; color: var(--accent-cyan); }
         .balance-table td {
             padding: 10px 14px;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
+            border-bottom: 1px solid rgba(var(--white-rgb), 0.04);
             color: var(--text-secondary);
         }
         .balance-table tr:hover td { background: rgba(var(--cyan-rgb), 0.04); }

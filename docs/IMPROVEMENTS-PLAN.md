@@ -164,6 +164,7 @@ js/index-page.js; проба scripts/tmp/reduced-motion-probe.mjs, 5 пункт�
 - Проверки варианта A: computed байт в байт, пиксельный дифф, theme-check,
   гейты.
 - Точка решения: вариант A или B.
+- Выполнено 24.11 (вариант A): примитивы --white-rgb/--black-rgb/--white в :root base.css, 90 живых замен в 24 файлах (scripts/tmp/p11-convert.py, комментарии по 2.13 не тронуты), computed байт-в-байт на 20 страниц-тем, theme-check и гейты зелёные; TD-15 закрыт.
 
 ## Часть 2 — доработки
 

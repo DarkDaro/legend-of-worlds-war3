@@ -23,7 +23,7 @@
         }
         .bb-legend-dot.normal { background: var(--surface-tag-active); border: 1px solid var(--surface-border-hover); }
         .bb-legend-dot.boss { background: rgba(255, 60, 60, 0.15); border: 1px solid rgba(255, 60, 60, 0.4); }
-        .bb-legend-dot.temp { background: rgba(255, 255, 255, 0.06); border: 1px dashed rgba(255, 255, 255, 0.25); opacity: 0.5; }
+        .bb-legend-dot.temp { background: rgba(var(--white-rgb), 0.06); border: 1px dashed rgba(var(--white-rgb), 0.25); opacity: 0.5; }
 
         /* === Герои в группе === */
         .bb-heroes {
@@ -48,7 +48,7 @@
         }
         .bb-hero-chip:hover {
             background: var(--accent-cyan);
-            border-color: #ffffff;
+            border-color: var(--white);
             color: var(--text-ink);
             box-shadow: 0 0 20px var(--accent-cyan);
         }
@@ -218,7 +218,7 @@
         .bb-slot-name.temp-name {
             opacity: 0.5;
             text-decoration: line-through;
-            text-decoration-color: rgba(255, 255, 255, 0.2);
+            text-decoration-color: rgba(var(--white-rgb), 0.2);
         }
 
         /* === Итого === */

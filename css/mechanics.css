@@ -35,7 +35,7 @@
 }
 .version-badge.hot {
     background: var(--danger);
-    color: #fff;
+    color: var(--white);
 }
 .version-date {
     color: var(--text-dim);
@@ -260,8 +260,8 @@
 }
 .mech-pure-dmg .mechanic-icon {
     background: #1a1a1a;
-    border: 1px solid #ffffff44;
-    color: #ffffff;
+    border: 1px solid rgba(var(--white-rgb), 0.2667);
+    color: var(--white);
 }
 .mech-motivation .mechanic-icon {
     background: #2a1a2a;
@@ -795,7 +795,7 @@
     position: absolute;
     inset: 0;
     border-radius: 12px;
-    background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--white-rgb), 0.35) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
     pointer-events: none;
 }

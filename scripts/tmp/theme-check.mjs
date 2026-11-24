@@ -310,7 +310,7 @@ const textOn = await page.evaluate(() => ({
     primary: getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim(),
     body: getComputedStyle(document.body).color
 }));
-ok(textOff === '#e0f0ff' && textOn.primary === '#ffffff', 'яркий текст: шкала светлеет с #e0f0ff до #ffffff', textOff + ' | ' + textOn.primary);
+ok(textOff === '#e0f0ff' && (textOn.primary === '#ffffff' || textOn.primary === 'rgb(255, 255, 255)'), 'яркий текст: шкала светлеет с #e0f0ff до #ffffff (TD-15: литерал стал var(--white), computed тот же белый)', textOff + ' | ' + textOn.primary);
 await page.evaluate(() => window.SiteSettings.set('text', false));
 await page.waitForTimeout(200);
 await page.goto('http://localhost:8141/index.html', { waitUntil: 'load', timeout: 15000 });
