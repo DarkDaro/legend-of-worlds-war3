@@ -11,6 +11,7 @@
     padding: 24px;
     margin-bottom: 16px;
     transition: 0.25s ease;
+    transition-duration: calc(var(--anim-speed, 1) * 0.25s);
     position: relative;
 }
 .version-card:hover {
@@ -153,6 +154,7 @@
     border-radius: 16px;
     padding: 24px;
     transition: 0.25s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.25s);
 }
 .mechanic-card:hover {
     background: var(--surface-bg-hover);
@@ -307,6 +309,7 @@
     margin-top: 8px;
     text-decoration: none;
     transition: border-color 0.2s, color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 .mech-calc-link:hover {
     border-color: var(--accent-cyan);
@@ -325,9 +328,11 @@
 .mech-luck .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-luck:hover .mechanic-icon i {
     animation: mechDiceRoll 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .mech-luck .mechanic-icon::after {
     content: '';
@@ -342,6 +347,7 @@
 .mech-luck:hover .mechanic-icon::after {
     opacity: 1;
     animation: sparkleSweep 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 
 /* --- Магический крит — вспышка молнии --- */
@@ -355,9 +361,11 @@
 .mech-magic-crit .mechanic-icon i {
     display: inline-block;
     transition: transform 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .mech-magic-crit:hover .mechanic-icon i {
     animation: mechLightningFlash 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 .mech-magic-crit:hover .mechanic-icon::after {
     content: '';
@@ -366,6 +374,7 @@
     border-radius: 12px;
     background: radial-gradient(circle, rgba(var(--red-rgb), 0.35) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
     pointer-events: none;
 }
 @keyframes mechFlashFade {
@@ -384,9 +393,11 @@
 .mech-magic-vamp .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-magic-vamp:hover .mechanic-icon i {
     animation: mechDrainPulse 0.8s ease-in-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.8s);
 }
 .mech-magic-vamp .mechanic-icon::after {
     content: '';
@@ -400,6 +411,7 @@
 .mech-magic-vamp:hover .mechanic-icon::after {
     opacity: 1;
     animation: mechDrainRing 0.8s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.8s);
 }
 @keyframes mechDrainRing {
     0%   { inset: 0; opacity: 0.8; }
@@ -426,10 +438,12 @@
 }
 .mech-armor:hover .mechanic-icon::after {
     animation: mechSheenSweep 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 .mech-armor .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-armor:hover .mechanic-icon i {
     transform: scale(1.08);
@@ -448,9 +462,11 @@
 .mech-block .mechanic-icon i {
     display: inline-block;
     transition: transform 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .mech-block:hover .mechanic-icon i {
     animation: mechBlockShake 0.4s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
 }
 .mech-block:hover .mechanic-icon::after {
     content: '';
@@ -459,6 +475,7 @@
     border-radius: 12px;
     background: radial-gradient(circle, rgba(var(--info-rgb), 0.2) 0%, transparent 70%);
     animation: mechFlashFade 0.4s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
     pointer-events: none;
 }
 
@@ -473,9 +490,11 @@
 .mech-stun-resist .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-stun-resist:hover .mechanic-icon i {
     animation: mechClockSlowSpin 1s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 1s);
 }
 
 /* --- Физический вампиризм — ритм пульса --- */
@@ -490,9 +509,11 @@
 .mech-phys-vamp .mechanic-icon i {
     display: inline-block;
     transition: transform 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .mech-phys-vamp:hover .mechanic-icon i {
     animation: mechHeartbeat 0.8s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.8s);
 }
 .mech-phys-vamp:hover .mechanic-icon::after {
     content: '';
@@ -501,6 +522,7 @@
     border-radius: 14px;
     box-shadow: 0 0 12px rgba(var(--red-deep-rgb), 0.35);
     animation: mechHeartGlow 0.8s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.8s);
     pointer-events: none;
 }
 @keyframes mechHeartGlow {
@@ -522,9 +544,11 @@
 .mech-heal-reduce .mechanic-icon i {
     display: inline-block;
     transition: all 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-heal-reduce:hover .mechanic-icon i {
     animation: mechSuppressDim 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .mech-heal-reduce:hover .mechanic-icon::after {
     content: '';
@@ -533,6 +557,7 @@
     border-radius: 12px;
     background: rgba(var(--gold-dim-rgb), 0.12);
     animation: mechSuppressOverlay 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
     pointer-events: none;
 }
 @keyframes mechSuppressOverlay {
@@ -552,9 +577,11 @@
 .mech-scepter .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-scepter:hover .mechanic-icon i {
     animation: mechPrismatic 1s ease-in-out;
+animation-duration: calc(var(--anim-speed, 1) * 1s);
 }
 .mech-scepter .mechanic-icon::after {
     content: '';
@@ -568,6 +595,7 @@
 .mech-scepter:hover .mechanic-icon::after {
     opacity: 1;
     animation: mechPrismaticRing 1s linear;
+animation-duration: calc(var(--anim-speed, 1) * 1s);
 }
 @keyframes mechPrismaticRing {
     0%   { transform: rotate(0deg); }
@@ -584,9 +612,11 @@
 .mech-spell-dmg .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-spell-dmg:hover .mechanic-icon i {
     animation: mechFireEscalate 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .mech-spell-dmg:hover .mechanic-icon::after {
     content: '';
@@ -595,6 +625,7 @@
     border-radius: 12px;
     background: radial-gradient(circle, rgba(var(--red-rgb), 0.2) 0%, transparent 70%);
     animation: mechFireGlow 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
     pointer-events: none;
 }
 @keyframes mechFireGlow {
@@ -611,9 +642,11 @@
 }
 .mech-heal-amp .mechanic-icon {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+ transition-duration: calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-heal-amp:hover .mechanic-icon {
     animation: mechRadiance 0.8s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.8s);
 }
 .mech-heal-amp .mechanic-icon i {
     display: inline-block;
@@ -636,10 +669,12 @@
 }
 .mech-magic-resist:hover .mechanic-icon::after {
     animation: mechBarrierRing 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .mech-magic-resist .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+    transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-magic-resist:hover .mechanic-icon i {
     transform: scale(1.05);
@@ -656,9 +691,11 @@
 .mech-auto-build .mechanic-icon i {
     display: inline-block;
     transition: transform 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .mech-auto-build:hover .mechanic-icon i {
     animation: mechClickPress 0.4s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
 }
 .mech-auto-build:hover .mechanic-icon::after {
     content: '';
@@ -667,6 +704,7 @@
     border-radius: 12px;
     background: radial-gradient(circle, rgba(var(--orange-soft-rgb), 0.2) 0%, transparent 70%);
     animation: mechFlashFade 0.4s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
     pointer-events: none;
 }
 
@@ -688,10 +726,12 @@
 }
 .mech-corruption:hover .mechanic-icon::after {
     animation: mechCorruptSpread 0.8s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.8s);
 }
 .mech-corruption .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease, filter 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-corruption:hover .mechanic-icon i {
     transform: scale(1.1);
@@ -710,9 +750,11 @@
 .mech-dmg-return .mechanic-icon i {
     display: inline-block;
     transition: transform 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .mech-dmg-return:hover .mechanic-icon i {
     animation: mechReflectBounce 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 .mech-dmg-return:hover .mechanic-icon::after {
     content: '';
@@ -721,6 +763,7 @@
     border-radius: 12px;
     background: radial-gradient(circle at 30% 50%, rgba(255,102,68,0.2) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
     pointer-events: none;
 }
 
@@ -736,9 +779,11 @@
 .mech-dispel .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-dispel:hover .mechanic-icon i {
     animation: mechWindSway 0.7s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.7s);
 }
 .mech-dispel:hover .mechanic-icon::after {
     content: '';
@@ -748,6 +793,7 @@
     background: linear-gradient(90deg, transparent, rgba(85,204,255,0.15), transparent);
     background-size: 200% 100%;
     animation: sparkleSweep 0.7s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.7s);
     pointer-events: none;
 }
 
@@ -761,9 +807,11 @@
 .mech-mana-burn-resist .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-mana-burn-resist:hover .mechanic-icon i {
     animation: mechFireDim 0.7s ease-out;
+  animation-duration: calc(var(--anim-speed, 1) * 0.7s);
 }
 .mech-mana-burn-resist:hover .mechanic-icon::after {
     content: '';
@@ -772,6 +820,7 @@
     border-radius: 12px;
     background: radial-gradient(circle, rgba(85,255,204,0.15) 0%, transparent 70%);
     animation: mechFlashFade 0.7s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.7s);
     pointer-events: none;
 }
 
@@ -786,9 +835,11 @@
 .mech-pure-dmg .mechanic-icon i {
     display: inline-block;
     transition: transform 0.2s ease;
+  transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .mech-pure-dmg:hover .mechanic-icon i {
     animation: mechPureFlash 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 .mech-pure-dmg:hover .mechanic-icon::after {
     content: '';
@@ -797,6 +848,7 @@
     border-radius: 12px;
     background: radial-gradient(circle, rgba(var(--white-rgb), 0.35) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
     pointer-events: none;
 }
 
@@ -818,9 +870,11 @@
 .mode-spell-half .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+  transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-spell-half:hover .mechanic-icon i {
     animation: modeSpellShrink 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .mode-spell-half:hover .mechanic-icon::after {
     content: '';
@@ -829,6 +883,7 @@
     border-radius: 12px;
     background: radial-gradient(circle, rgba(var(--red-rgb), 0.2) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
     pointer-events: none;
 }
 
@@ -842,9 +897,11 @@
 .mode-bosses .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-bosses:hover .mechanic-icon i {
     animation: modeBossAppear 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .mode-bosses:hover .mechanic-icon::after {
     content: '';
@@ -853,6 +910,7 @@
     border-radius: 16px;
     border: 2px solid rgba(var(--violet-rgb), 0.35);
     animation: mechDrainRing 0.7s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.7s);
     pointer-events: none;
 }
 
@@ -868,9 +926,11 @@
 .mode-gold-loss .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-gold-loss:hover .mechanic-icon i {
     animation: modeGoldShake 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 .mode-gold-loss:hover .mechanic-icon::after {
     content: '';
@@ -880,6 +940,7 @@
     background: linear-gradient(120deg, transparent 30%, rgba(var(--orange-soft-rgb), 0.12) 50%, transparent 70%);
     background-size: 200% 100%;
     animation: sparkleSweep 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
     pointer-events: none;
 }
 
@@ -894,9 +955,11 @@
 .mode-turbo .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-turbo:hover .mechanic-icon i {
     animation: modeTurboPulse 0.4s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
 }
 .mode-turbo:hover .mechanic-icon::after {
     content: '';
@@ -906,6 +969,7 @@
     background: linear-gradient(90deg, transparent, rgba(var(--green-rgb), 0.12), transparent);
     background-size: 200% 100%;
     animation: sparkleSweep 0.4s ease-out;
+   animation-duration: calc(var(--anim-speed, 1) * 0.4s);
     pointer-events: none;
 }
 
@@ -919,9 +983,11 @@
 .mode-no-books .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-no-books:hover .mechanic-icon i {
     animation: modeNoBooksSlash 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 .mode-no-books:hover .mechanic-icon::after {
     content: '';
@@ -933,6 +999,7 @@
     background: rgba(var(--info-rgb), 0.6);
     border-radius: 2px;
     animation: modeSlashAppear 0.4s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
     pointer-events: none;
 }
 @keyframes modeSlashAppear {
@@ -952,9 +1019,11 @@
 .mode-team-rewards .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-team-rewards:hover .mechanic-icon i {
     animation: modeTeamBounce 0.5s ease-out;
+ animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 .mode-team-rewards:hover .mechanic-icon::after {
     content: '';
@@ -964,6 +1033,7 @@
     background: linear-gradient(120deg, transparent 30%, rgba(var(--gold-dim-rgb), 0.12) 50%, transparent 70%);
     background-size: 200% 100%;
     animation: sparkleSweep 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
     pointer-events: none;
 }
 
@@ -978,9 +1048,11 @@
 .mode-solo .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-solo:hover .mechanic-icon i {
     animation: modeSoloFade 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .mode-solo:hover .mechanic-icon::after {
     content: '';
@@ -989,6 +1061,7 @@
     border-radius: 12px;
     background: radial-gradient(circle, rgba(var(--red-deep-rgb), 0.12) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
     pointer-events: none;
 }
 
@@ -1003,9 +1076,11 @@
 .mode-hero-ban .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-hero-ban:hover .mechanic-icon i {
     animation: modeBanSlam 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 .mode-hero-ban:hover .mechanic-icon::after {
     content: '';
@@ -1014,6 +1089,7 @@
     border-radius: 12px;
     background: radial-gradient(circle, rgba(170,68,170,0.25) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
     pointer-events: none;
 }
 
@@ -1028,9 +1104,11 @@
 .mode-random-hero .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-random-hero:hover .mechanic-icon i {
     animation: modeRandomSpin 0.6s ease-out;
+ animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .mode-random-hero:hover .mechanic-icon::after {
     content: '';
@@ -1040,6 +1118,7 @@
     background: linear-gradient(120deg, transparent 20%, rgba(85,255,204,0.15) 50%, transparent 80%);
     background-size: 200% 100%;
     animation: sparkleSweep 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
     pointer-events: none;
 }
 

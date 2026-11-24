@@ -47,6 +47,7 @@ body.page-formulas-calc {
     padding: 4px 10px;
     border-radius: 6px;
     transition: border-color 0.2s, color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 
 .calc-back-link:hover {
@@ -97,6 +98,7 @@ body.page-formulas-calc {
     cursor: pointer;
     font-size: 0.75rem;
     transition: border-color 0.2s, color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
     white-space: nowrap;
 }
 
@@ -121,6 +123,7 @@ body.page-formulas-calc {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s, transform 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
     z-index: 1000;
     box-shadow: 0 4px 16px #00000066;
 }
@@ -144,6 +147,7 @@ body.page-formulas-calc {
     font-weight: 600;
     margin-bottom: 10px;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .calc-link-btn:hover {
@@ -315,6 +319,7 @@ body.page-formulas-calc {
     min-height: 78px;
     cursor: pointer;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.15s);
     position: relative;
 }
 
@@ -407,6 +412,7 @@ body.page-formulas-calc {
     justify-content: center;
     opacity: 0;
     transition: opacity 0.15s, background 0.15s;
+    transition-duration: calc(var(--anim-speed, 1) * 0.15s), calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .calc-slot-filled:hover .calc-slot-remove {
@@ -435,6 +441,7 @@ body.page-formulas-calc {
     justify-content: center;
     opacity: 0;
     transition: opacity 0.15s, background 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s), calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .calc-slot-filled:hover .calc-slot-keep-toggle {
@@ -509,6 +516,7 @@ body.page-formulas-calc {
     cursor: pointer;
     font-size: 0.75rem;
     transition: border-color 0.2s, color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 
 .calc-clear-btn:hover {
@@ -687,6 +695,7 @@ body.page-formulas-calc {
     padding: 3px;
     margin: -3px;
     transition: background 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .calc-tree-expandable:hover {
@@ -699,6 +708,7 @@ body.page-formulas-calc {
     width: 12px;
     flex-shrink: 0;
     transition: transform 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .calc-tree-icon img {
@@ -781,6 +791,7 @@ body.page-formulas-calc {
     text-align: center;
     cursor: pointer;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .calc-catalog-item:hover {

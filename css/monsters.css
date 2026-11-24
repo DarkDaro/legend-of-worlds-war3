@@ -31,6 +31,7 @@
     border-radius: 16px;
     padding: 24px;
     transition: 0.25s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.25s);
     position: relative;
 }
 .support-card:hover {
@@ -63,6 +64,7 @@
     font-weight: 600;
     font-size: 0.85rem;
     transition: 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .support-card .method-link:hover {
     background: var(--accent-cyan);
@@ -127,6 +129,7 @@
     text-decoration: none;
     color: var(--text-strong);
     transition: 0.15s;
+ transition-duration: calc(var(--anim-speed, 1) * 0.15s);
     cursor: pointer;
 }
 .boss-drop-row:hover {
@@ -254,6 +257,7 @@
     margin-bottom: 8px;
     overflow: hidden;
     transition: 0.25s ease;
+ transition-duration: calc(var(--anim-speed, 1) * 0.25s);
     position: relative;
 }
 .monster-card:hover {
@@ -276,6 +280,7 @@
     cursor: pointer;
     user-select: none;
     transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 .monster-header:hover {
     background: #1a2540;
@@ -321,6 +326,7 @@
     color: var(--text-dim);
     font-size: 0.8rem;
     transition: 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
     display: flex;
     align-items: center;
 }
@@ -331,6 +337,7 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .monster-card.open .monster-body {
     max-height: 2000px;
@@ -590,6 +597,7 @@
     text-decoration: none;
     border-bottom: 1px dashed rgba(var(--cyan-rgb), 0.35);
     transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 .item-link:hover {
     color: var(--white);

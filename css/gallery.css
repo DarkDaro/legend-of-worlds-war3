@@ -40,6 +40,7 @@
     box-shadow: 0 0 15px #00000080, 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset;
     cursor: pointer;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s);
     color: var(--text-strong);
     text-decoration: none;
     display: block;
@@ -110,6 +111,7 @@
     justify-content: center;
     padding: 24px;
     animation: galleryFadeIn 0.2s ease-out;
+ animation-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 @keyframes galleryFadeIn {
     from { opacity: 0; }
@@ -151,6 +153,7 @@
     font-size: 1.1rem;
     cursor: pointer;
     transition: 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
     display: flex;
     align-items: center;
     justify-content: center;

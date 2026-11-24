@@ -183,12 +183,21 @@ js/index-page.js; проба scripts/tmp/reduced-motion-probe.mjs, 5 пункт�
 - Пилюля «Авто» в строке темы: data-theme="auto" резолвится при apply по
   prefers-color-scheme, слушатель matchMedia меняет тему живьём; «По
   странице» остаётся. Неон — дневной дефолт, тёмная — ночной.
+- Выполнено 24.11: пилюля «Авто» (первая в ряду), apply резолвит auto в
+  неон/тёмную по matchMedia, слушатель перекрашивает живьём; meta theme-color
+  следует за resolved.
 
 ### F2 — шкала скорости анимаций (S)
 
 - data-anim-speed="slow/normal/fast" умножает длительности через переменную,
   data-anim="off" приоритетнее. Меняет движение §9 — без владельца не
   заводится.
+- Выполнено 24.11 (запущено владельцем вместе с F1): --anim-speed 1.5/1/0.5 в
+  base.css, 75 standalone -duration/-delay на calc, 316 шорткатов получили
+  longhand-добавку -duration/-delay; ловушка: calc в шорткатах
+  animation/transition Chromium отбрасывает — только longhand. Первая версия
+  свипа мутировала строку внутри finditer и портила соседние декларации —
+  откат css и перепис на однопроходный re.sub.
 
 ### F3 — звук
 

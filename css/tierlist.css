@@ -15,6 +15,7 @@
             font-size: 0.85rem;
             cursor: pointer;
             transition: border-color 0.2s, color 0.2s;
+    transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -109,6 +110,7 @@
             border-radius: 8px;
             cursor: grab;
             transition: border-color 0.2s, transform 0.15s, box-shadow 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.15s), calc(var(--anim-speed, 1) * 0.15s);
             user-select: none;
             -webkit-user-select: none;
         }
@@ -190,6 +192,7 @@
             font-size: 0.9rem;
             opacity: 0;
             transition: opacity 0.3s, transform 0.3s;
+ transition-duration: calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s);
             pointer-events: none;
             z-index: 1000;
         }

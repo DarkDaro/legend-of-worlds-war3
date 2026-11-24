@@ -15,6 +15,7 @@
             align-items: flex-start;
             gap: 12px;
             transition: 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
         }
         .rune-card:hover {
             border-color: var(--surface-border-hover);
@@ -86,7 +87,8 @@
 
         /* --- Антимагия — кольцо-барьер расходится --- */
         .rune-antimagic .rune-icon { position: relative; }
-        .rune-antimagic .rune-icon i { display: inline-block; transition: transform 0.3s ease; }
+        .rune-antimagic .rune-icon i { display: inline-block; transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s); }
         .rune-antimagic:hover .rune-icon i { transform: scale(1.1); }
         .rune-antimagic .rune-icon::after {
             content: '';
@@ -100,6 +102,7 @@
         .rune-antimagic:hover .rune-icon::after {
             opacity: 1;
             animation: runeBarrierRing 0.7s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.7s);
         }
         @keyframes runeBarrierRing {
             0%   { inset: 0; opacity: 0.9; }
@@ -107,9 +110,11 @@
         }
 
         /* --- Перемещение — рывок вправо со шлейфом --- */
-        .rune-movement .rune-icon i { display: inline-block; transition: transform 0.25s ease; }
+        .rune-movement .rune-icon i { display: inline-block; transition: transform 0.25s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.25s); }
         .rune-movement:hover .rune-icon i {
             animation: runeDash 0.5s ease-out;
+ animation-duration: calc(var(--anim-speed, 1) * 0.5s);
         }
         @keyframes runeDash {
             0%   { transform: translateX(0); }
@@ -131,6 +136,7 @@
         .rune-movement:hover .rune-icon::after {
             opacity: 1;
             animation: runeSpeedSweep 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
         }
         @keyframes runeSpeedSweep {
             0%   { background-position: 100% 0; }
@@ -141,6 +147,7 @@
         .rune-heal .rune-icon i { display: inline-block; transform-origin: center; }
         .rune-heal:hover .rune-icon i {
             animation: runeHeartbeat 0.8s ease-in-out;
+           animation-duration: calc(var(--anim-speed, 1) * 0.8s);
         }
         @keyframes runeHeartbeat {
             0%   { transform: scale(1); }
@@ -162,6 +169,7 @@
         .rune-heal:hover .rune-icon::after {
             opacity: 1;
             animation: runeHealRing 0.8s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.8s);
         }
         @keyframes runeHealRing {
             0%   { inset: 0; opacity: 0.8; }
@@ -172,6 +180,7 @@
         .rune-mana .rune-icon i { display: inline-block; transform-origin: top center; }
         .rune-mana:hover .rune-icon i {
             animation: runeDrop 0.9s cubic-bezier(0.4, 0, 0.6, 1);
+ animation-duration: calc(var(--anim-speed, 1) * 0.9s), calc(var(--anim-speed, 1) * 0s), calc(var(--anim-speed, 1) * 0s), calc(var(--anim-speed, 1) * 0s);
         }
         @keyframes runeDrop {
             0%   { transform: scaleY(1) translateY(0); }
@@ -193,6 +202,7 @@
         .rune-mana:hover .rune-icon::after {
             opacity: 1;
             animation: runeManaPool 0.9s ease-out;
+     animation-duration: calc(var(--anim-speed, 1) * 0.9s);
         }
         @keyframes runeManaPool {
             0%   { transform: scale(0.6); opacity: 0; }
@@ -204,6 +214,7 @@
         .rune-level .rune-icon i { display: inline-block; }
         .rune-level:hover .rune-icon i {
             animation: runeLevelUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+animation-duration: calc(var(--anim-speed, 1) * 0.7s), calc(var(--anim-speed, 1) * 0s), calc(var(--anim-speed, 1) * 0s), calc(var(--anim-speed, 1) * 0s);
         }
         @keyframes runeLevelUp {
             0%   { transform: translateY(0); }
@@ -224,6 +235,7 @@
         .rune-level:hover .rune-icon::after {
             opacity: 1;
             animation: runeLevelGlow 0.7s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.7s);
         }
         @keyframes runeLevelGlow {
             0%   { transform: translateY(6px); opacity: 0; }
@@ -235,6 +247,7 @@
         .rune-stealth .rune-icon i { display: inline-block; }
         .rune-stealth:hover .rune-icon i {
             animation: runeFade 1.1s ease-in-out;
+animation-duration: calc(var(--anim-speed, 1) * 1.1s);
         }
         @keyframes runeFade {
             0%   { opacity: 1; transform: scale(1); }
@@ -244,12 +257,14 @@
         }
         .rune-stealth:hover .rune-icon i {
             animation: runeFade 1.1s ease-in-out;
+animation-duration: calc(var(--anim-speed, 1) * 1.1s);
         }
 
         /* --- Двойной урон — вспышка пламени с дрожью --- */
         .rune-damage .rune-icon i { display: inline-block; transform-origin: bottom center; }
         .rune-damage:hover .rune-icon i {
             animation: runeFlame 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
         }
         @keyframes runeFlame {
             0%   { transform: scale(1) translateY(0); filter: brightness(1); }
@@ -264,6 +279,7 @@
         .rune-vamp .rune-icon i { display: inline-block; }
         .rune-vamp:hover .rune-icon i {
             animation: runeDrain 0.8s ease-in-out;
+ animation-duration: calc(var(--anim-speed, 1) * 0.8s);
         }
         @keyframes runeDrain {
             0%   { transform: scale(1); }
@@ -283,6 +299,7 @@
         .rune-vamp:hover .rune-icon::after {
             opacity: 1;
             animation: runeDrainIn 0.8s ease-in;
+animation-duration: calc(var(--anim-speed, 1) * 0.8s);
         }
         @keyframes runeDrainIn {
             0%   { inset: -12px; opacity: 0.9; }
@@ -294,6 +311,7 @@
         .rune-gold .rune-icon i { display: inline-block; }
         .rune-gold:hover .rune-icon i {
             animation: runeCoinShake 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
         }
         @keyframes runeCoinShake {
             0%   { transform: rotate(0); }
@@ -315,6 +333,7 @@
         }
         .rune-gold:hover .rune-icon::after {
             animation: runeGoldSheen 0.6s ease-out;
+            animation-duration: calc(var(--anim-speed, 1) * 0.6s);
         }
         @keyframes runeGoldSheen {
             0%   { left: -100%; }
@@ -325,6 +344,7 @@
         .rune-stats .rune-icon i { display: inline-block; }
         .rune-stats:hover .rune-icon i {
             animation: runeStatSteps 0.8s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.8s);
         }
         @keyframes runeStatSteps {
             0%   { transform: translateY(0); }
@@ -339,6 +359,7 @@
         .rune-illusion .rune-icon i { display: inline-block; }
         .rune-illusion:hover .rune-icon i {
             animation: runeSplit 0.7s ease-in-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.7s);
         }
         @keyframes runeSplit {
             0%   { transform: translateX(0); }
@@ -361,6 +382,7 @@
         .rune-illusion:hover .rune-icon::after {
             opacity: 1;
             animation: runeSplitGhost 0.7s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.7s);
         }
         @keyframes runeSplitGhost {
             0%   { transform: translate(-50%, -50%) translateX(0); opacity: 0.7; }
@@ -371,6 +393,7 @@
         .rune-speed .rune-icon i { display: inline-block; transform-origin: bottom left; }
         .rune-speed:hover .rune-icon i {
             animation: runeGauge 0.7s ease-out;
+           animation-duration: calc(var(--anim-speed, 1) * 0.7s);
         }
         @keyframes runeGauge {
             0%   { transform: rotate(0); }
@@ -394,12 +417,14 @@
         }
         .rune-armor:hover .rune-icon::after {
             animation: runeArmorSheen 0.55s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.55s);
         }
         @keyframes runeArmorSheen {
             0%   { left: -100%; }
             100% { left: 200%; }
         }
-        .rune-armor .rune-icon i { display: inline-block; transition: transform 0.3s ease; }
+        .rune-armor .rune-icon i { display: inline-block; transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s); }
         .rune-armor:hover .rune-icon i { transform: scale(1.08); }
 
         /* --- Кристаллы — поворот + искры --- */
@@ -407,6 +432,7 @@
         .rune-crystal .rune-icon i { display: inline-block; }
         .rune-crystal:hover .rune-icon i {
             animation: runeCrystalSpin 0.7s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.7s);
         }
         @keyframes runeCrystalSpin {
             0%   { transform: rotateY(0) scale(1); }
@@ -426,6 +452,7 @@
         .rune-crystal:hover .rune-icon::after {
             opacity: 1;
             animation: runeCrystalSparkle 0.7s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.7s);
         }
         @keyframes runeCrystalSparkle {
             0%   { transform: scale(0.5); opacity: 0; }
@@ -437,6 +464,7 @@
         .rune-refresh .rune-icon i { display: inline-block; }
         .rune-refresh:hover .rune-icon i {
             animation: runeRefreshSpin 0.6s ease-in-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
         }
         @keyframes runeRefreshSpin {
             0%   { transform: rotate(0); }
@@ -448,6 +476,7 @@
         .rune-wealth .rune-icon i { display: inline-block; transform-origin: bottom center; }
         .rune-wealth:hover .rune-icon i {
             animation: runeWealthWave 0.8s ease-in-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.8s);
         }
         @keyframes runeWealthWave {
             0%   { transform: rotate(0) scale(1); }
@@ -468,6 +497,7 @@
         .rune-wealth:hover .rune-icon::after {
             opacity: 1;
             animation: runeWealthGlow 0.8s ease-out;
+   animation-duration: calc(var(--anim-speed, 1) * 0.8s);
         }
         @keyframes runeWealthGlow {
             0%   { opacity: 0; }

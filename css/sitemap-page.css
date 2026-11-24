@@ -36,6 +36,7 @@
             text-decoration: none;
             font-size: 0.9rem;
             transition: color 0.2s;
+        transition-duration: calc(var(--anim-speed, 1) * 0.2s);
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -60,6 +61,7 @@
             padding: 4px 8px;
             border-radius: 6px;
             transition: background 0.2s, color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;

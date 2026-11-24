@@ -8,7 +8,8 @@
  * выключенные — дефолт «всё включено». Флаги ставятся атрибутами на <html>:
  *   data-anim="on|off", data-glass="on|off", data-fx="on|off",
  *   data-orbs="on|off", data-sound="on|off".
- * Тема — строка: SiteSettings.get('theme') даёт '' (по странице) или id темы
+ * Тема — строка: SiteSettings.get('theme') даёт '' (по странице), 'auto'
+ * (авто по prefers-color-scheme: неон днём, тёмная ночью) или id темы
  * из THEMES ниже ('neon', 'ashenvale', 'dark', 'contrast', 'astral', 'winter',
  * 'coffee', 'gasoline');
  * пустое значение оставляет разметку в покое, явный выбор перекрывает
@@ -43,6 +44,7 @@
             text: s.text === true,
             decor: s.decor !== false,
             theme: s.theme || '',
+            animSpeed: s.animSpeed || 'normal',
             progress: s.progress !== false
         };
     }
@@ -66,21 +68,30 @@
         h.setAttribute('data-text', f.text ? 'on' : 'off');
         h.setAttribute('data-decor', f.decor ? 'on' : 'off');
         h.setAttribute('data-progress', f.progress ? 'on' : 'off');
-        // тема: пусто — возврат к дефолту разметки, явный выбор перекрывает
+        // скорость анимаций (F2): множитель --anim-speed в css — slow 1.5,
+        // normal 1, fast 0.5; data-anim="off" приглушает всё движение сильнее
+        h.setAttribute('data-anim-speed', f.animSpeed);
+        // тема: 'auto' резолвится по системной светлости (неон днём, тёмная
+        // ночью), пусто — возврат к дефолту разметки, явный выбор перекрывает
         // разметку на всех страницах
-        if (f.theme === 'ashenvale') h.setAttribute('data-theme', 'ashenvale');
-        else if (f.theme === 'dark') h.setAttribute('data-theme', 'dark');
-        else if (f.theme === 'contrast') h.setAttribute('data-theme', 'contrast');
-        else if (f.theme === 'astral') h.setAttribute('data-theme', 'astral');
-        else if (f.theme === 'winter') h.setAttribute('data-theme', 'winter');
-        else if (f.theme === 'coffee') h.setAttribute('data-theme', 'coffee');
-        else if (f.theme === 'gasoline') h.setAttribute('data-theme', 'gasoline');
-        else if (f.theme === 'neon') h.removeAttribute('data-theme');
+        var resolved = f.theme;
+        if (resolved === 'auto') {
+            resolved = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'neon';
+        }
+        if (resolved === 'ashenvale') h.setAttribute('data-theme', 'ashenvale');
+        else if (resolved === 'dark') h.setAttribute('data-theme', 'dark');
+        else if (resolved === 'contrast') h.setAttribute('data-theme', 'contrast');
+        else if (resolved === 'astral') h.setAttribute('data-theme', 'astral');
+        else if (resolved === 'winter') h.setAttribute('data-theme', 'winter');
+        else if (resolved === 'coffee') h.setAttribute('data-theme', 'coffee');
+        else if (resolved === 'gasoline') h.setAttribute('data-theme', 'gasoline');
+        else if (resolved === 'neon') h.removeAttribute('data-theme');
         else if (PAGE_THEME) h.setAttribute('data-theme', PAGE_THEME);
         else h.removeAttribute('data-theme');
+        var metaTC = THEME_COLORS[resolved];
         var meta = document.querySelector('meta[name="theme-color"]');
         if (meta) {
-            if (THEME_COLORS[f.theme]) meta.setAttribute('content', THEME_COLORS[f.theme]);
+            if (metaTC) meta.setAttribute('content', metaTC);
             else if (MARKUP_TC) meta.setAttribute('content', MARKUP_TC);
         }
     }
@@ -90,6 +101,7 @@
         set: function (k, v) {
             var s = read();
             if (k === 'theme') s.theme = v || '';
+            else if (k === 'animSpeed') s.animSpeed = (v === 'slow' || v === 'fast') ? v : 'normal';
             else s[k] = !!v;
             try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) { /* приватный режим — работаем без хранения */ }
             apply(flags());
@@ -100,6 +112,14 @@
     };
     window.SiteSettings = api;
     apply(flags());
+
+    // авто-тема живёт: системная смена светлости перекрашивает страницу без
+    // перезагрузки, пока в настройках выбрано «Авто» (F1)
+    if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+            if (flags().theme === 'auto') apply(flags());
+        });
+    }
 
     // ── панель настроек ──
     // шестерёнка живёт в шапке сразу после навигации: на десктопе пилюля в
@@ -120,8 +140,9 @@
         ['decor', 'Фон главной', 'Картинка арены в шапке главной — можно убрать для читаемости']
     ];
 
-    // темы: пустой id — «по странице», в разметке атрибутов тем нет (сняты 20.11)
+    // темы: 'auto' — по системной светлости, пустой id — «по странице»
     var THEMES = [
+        ['auto', 'Авто'],
         ['', 'По странице'],
         ['neon', 'Неон'],
         ['ashenvale', 'Ашенваль'],
@@ -225,6 +246,38 @@
         trow.appendChild(seg);
         panel.appendChild(trow);
 
+        // строка скорости анимаций (F2): три пилюли, дефолт «Обычно»
+        var SPEEDS = [['slow', 'Медленно'], ['normal', 'Обычно'], ['fast', 'Быстро']];
+        var srow = document.createElement('div');
+        srow.className = 'settings-row settings-row-theme';
+        var sbox = document.createElement('div');
+        var slabel = document.createElement('div');
+        slabel.className = 'settings-name';
+        slabel.textContent = 'Скорость анимаций';
+        var shint = document.createElement('div');
+        shint.className = 'settings-hint';
+        shint.textContent = 'Множитель длительностей движения; тумблер «Анимации» выключает всё целиком';
+        sbox.appendChild(slabel);
+        sbox.appendChild(shint);
+        var sseg = document.createElement('div');
+        sseg.className = 'settings-themes';
+        sseg.setAttribute('role', 'group');
+        sseg.setAttribute('aria-label', 'Скорость анимаций');
+        SPEEDS.forEach(function (sp) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'settings-theme-btn';
+            b.setAttribute('data-speed', sp[0]);
+            b.textContent = sp[1];
+            b.addEventListener('click', function () {
+                api.set('animSpeed', sp[0]);
+            });
+            sseg.appendChild(b);
+        });
+        srow.appendChild(sbox);
+        srow.appendChild(sseg);
+        panel.appendChild(srow);
+
         document.body.appendChild(panel);
 
         function syncThemeButtons() {
@@ -234,6 +287,13 @@
                 var active = btns[i].getAttribute('data-theme-id') === cur;
                 btns[i].classList.toggle('active', active);
                 btns[i].setAttribute('aria-pressed', String(active));
+            }
+            var spd = api.get('animSpeed') || 'normal';
+            var sbtns = panel.querySelectorAll('[data-speed]');
+            for (var j = 0; j < sbtns.length; j++) {
+                var sact = sbtns[j].getAttribute('data-speed') === spd;
+                sbtns[j].classList.toggle('active', sact);
+                sbtns[j].setAttribute('aria-pressed', String(sact));
             }
         }
         syncThemeButtons();

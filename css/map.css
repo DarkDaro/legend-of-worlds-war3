@@ -54,6 +54,7 @@
     font-size: 0.82rem;
     cursor: pointer;
     transition: all 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .map-edit-btn:hover { background: var(--steel-blue); color: #e0e8f0; }
 .map-edit-btn.active {
@@ -95,6 +96,7 @@
     background: #1a3a5c;
     color: var(--text-secondary);
     transition: all 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .map-type-btn:hover { background: var(--steel-blue); color: #e0e8f0; }
 .map-type-btn.active { border-color: var(--accent-cyan); color: var(--accent-cyan); background: rgba(var(--cyan-rgb), 0.12); }
@@ -165,6 +167,7 @@
     font-size: 0.72rem;
     font-weight: 700;
     transition: transform 0.2s, box-shadow 0.2s;
+   transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
     z-index: 10;
     user-select: none;
 }
@@ -181,6 +184,7 @@
     background: var(--danger-deep); color: var(--white); border: 2px solid var(--danger-soft);
     box-shadow: 0 0 6px rgba(var(--red-deep-rgb), 0.35);
     animation: markerPulseRed 3s ease-in-out infinite;
+    animation-duration: calc(var(--anim-speed, 1) * 3s);
 }
 .map-marker.shop { background: #44ff88; color: #0a1628; border: 2px solid #77ffaa; box-shadow: 0 0 4px rgba(68, 255, 136, 0.2); }
 .map-marker.duel { background: #ffaa44; color: #0a1628; border: 2px solid #ffcc77; box-shadow: 0 0 4px rgba(255, 170, 68, 0.2); }
@@ -191,6 +195,7 @@
     background: var(--accent-cyan); color: #0a1628; border: 2px solid #66f0ff;
     box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.35);
     animation: markerPulseCyan 2.5s ease-in-out infinite;
+ animation-duration: calc(var(--anim-speed, 1) * 2.5s);
     width: 28px; height: 28px; font-size: 0.6rem;
 }
 .map-marker.teleport-out { background: transparent; color: #44ff88; border: 2px dashed #77ffaa; box-shadow: 0 0 5px rgba(68, 255, 136, 0.2); width: 22px; height: 22px; font-size: 0.6rem; }
@@ -284,6 +289,7 @@
     border-bottom: 1px solid rgba(var(--cyan-rgb), 0.35);
     padding-bottom: 1px;
     transition: color 0.15s, border-color 0.15s, text-shadow 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s), calc(var(--anim-speed, 1) * 0.15s), calc(var(--anim-speed, 1) * 0.15s);
 }
 .detail-description a:hover {
     color: var(--white);

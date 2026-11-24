@@ -8,6 +8,7 @@
     border-radius: 12px;
     padding: 24px 28px;
     transition: background 0.2s, border-color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 .info-section:hover {
     background: var(--surface-bg-hover);
@@ -32,12 +33,14 @@
     align-items: center;
     gap: 12px;
     transition: padding-left 0.25s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.25s);
 }
 .info-list li:hover {
     padding-left: 6px;
 }
 .info-list li:hover i {
     animation: infoListIconPop 0.3s ease-out;
+    animation-duration: calc(var(--anim-speed, 1) * 0.3s);
     color: var(--accent-cyan);
 }
 .info-list li i {
@@ -46,6 +49,7 @@
     text-align: center;
     flex-shrink: 0;
     transition: color 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 @keyframes infoListIconPop {
     0%   { transform: scale(1); }
@@ -67,6 +71,7 @@
     padding: 16px 12px;
     text-align: center;
     transition: 0.25s ease;
+ transition-duration: calc(var(--anim-speed, 1) * 0.25s);
     position: relative;
 }
 .info-stat-card:hover {
@@ -77,6 +82,7 @@
 }
 .info-stat-card:hover .info-stat-icon {
     animation: infoStatBounce 0.35s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.35s);
 }
 .info-stat-card:hover .info-stat-value {
     color: var(--accent-cyan);
@@ -150,6 +156,7 @@
     color: var(--text-soft);
     text-decoration: none;
     transition: 0.25s ease;
+ transition-duration: calc(var(--anim-speed, 1) * 0.25s);
     position: relative;
 }
 .info-guide-card:hover {
@@ -160,6 +167,7 @@
 }
 .info-guide-card:hover .guide-icon {
     animation: ytPulse 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 @keyframes ytPulse {
     0%   { transform: scale(1); }
@@ -188,6 +196,7 @@
     padding: 16px 20px;
     margin-top: 12px;
     transition: 0.25s ease;
+    transition-duration: calc(var(--anim-speed, 1) * 0.25s);
 }
 .info-author-card:hover {
     border-color: var(--surface-border-hover);
@@ -199,6 +208,7 @@
 }
 .info-author-card:hover .author-avatar i {
     animation: crownFloat 1.5s ease-in-out infinite;
+ animation-duration: calc(var(--anim-speed, 1) * 1.5s);
 }
 .author-avatar {
     width: 48px;
@@ -213,6 +223,7 @@
     color: var(--accent-cyan);
     flex-shrink: 0;
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
+ transition-duration: calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s);
 }
 @keyframes crownFloat {
     0%, 100% { transform: translateY(0); }
@@ -247,6 +258,7 @@
     font-size: 0.9rem;
     font-weight: 500;
     transition: 0.25s ease;
+ transition-duration: calc(var(--anim-speed, 1) * 0.25s);
     position: relative;
     overflow: hidden;
 }
@@ -254,6 +266,7 @@
     color: var(--accent-cyan);
     font-size: 1rem;
     transition: transform 0.25s ease, color 0.25s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.25s), calc(var(--anim-speed, 1) * 0.25s);
 }
 .info-link-card:hover {
     background: linear-gradient(135deg, rgba(var(--cyan-rgb), 0.2) 0%, rgba(var(--cyan-rgb), 0.04) 100%);
@@ -276,10 +289,12 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
+ transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .info-link-card:hover::after {
     opacity: 1;
     animation: sparkleSweep 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 @media (max-width: 800px) {
     .info-stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -331,6 +346,7 @@
     background: var(--accent-cyan);
     box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.6);
     animation: timelinePulse 2.5s ease-in-out infinite;
+   animation-duration: calc(var(--anim-speed, 1) * 2.5s);
 }
 @keyframes timelinePulse {
     0%, 100% { box-shadow: 0 0 6px rgba(var(--cyan-rgb), 0.35); transform: scale(1); }
@@ -421,6 +437,7 @@
     box-shadow: 0 0 30px rgba(var(--red-rgb), 0.2), 0 0 60px rgba(var(--red-rgb), 0.12);
     margin-bottom: 16px;
     animation: float 3s ease-in-out infinite;
+animation-duration: calc(var(--anim-speed, 1) * 3s);
     object-fit: cover;
 }
 .support-banner-title {
@@ -513,6 +530,7 @@
     background: var(--surface-bg); backdrop-filter: blur(var(--surface-blur)); -webkit-backdrop-filter: blur(var(--surface-blur));
     border: 1px solid var(--surface-border); border-radius: 8px;
     padding: 12px 16px; margin: 8px 0; transition: background 0.2s, border-color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 .mc-card:hover { background: var(--surface-bg-hover); border-color: var(--surface-border-hover); }
 .mc-card-title { font-weight: 600; font-size: 0.95rem; color: var(--text-primary); margin-bottom: 6px; }
@@ -565,6 +583,7 @@
             color: var(--accent-cyan);
             text-decoration: none;
             transition: all 0.3s ease;
+    transition-duration: calc(var(--anim-speed, 1) * 0.3s);
             max-width: 400px;
         }
         .modes-promo-btn:hover {
@@ -574,6 +593,7 @@
         }
         .modes-promo-btn {
             animation: modesPromoPulse 3s ease-in-out infinite;
+     animation-duration: calc(var(--anim-speed, 1) * 3s);
         }
         @keyframes modesPromoPulse {
             0%, 100% { box-shadow: 0 0 0 rgba(var(--cyan-rgb), 0); }
@@ -604,6 +624,7 @@
             background: var(--surface-bg); backdrop-filter: blur(var(--surface-blur)); -webkit-backdrop-filter: blur(var(--surface-blur));
             border: 1px solid var(--surface-border); border-radius: 8px;
             padding: 12px 16px; margin: 8px 0; transition: background 0.2s, border-color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
         }
         .mc-card:hover { background: var(--surface-bg-hover); border-color: var(--surface-border-hover); }
         .mc-card-title { font-weight: 600; font-size: 0.95rem; color: var(--text-primary); margin-bottom: 6px; }
@@ -674,6 +695,7 @@
     border: 1px solid rgba(var(--cyan-rgb), 0.12);
     border-radius: 10px;
     transition: border-color 0.15s, background 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s), calc(var(--anim-speed, 1) * 0.15s);
 }
 .info-key:hover {
     background: rgba(var(--container-rgb), 0.8);
@@ -730,6 +752,7 @@
     border-bottom: 1px solid var(--surface-border-hover);
     padding-bottom: 1px;
     transition: color 0.15s, border-color 0.15s, text-shadow 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s), calc(var(--anim-speed, 1) * 0.15s), calc(var(--anim-speed, 1) * 0.15s);
 }
 .info-text a:hover,
 .info-section p a:hover,

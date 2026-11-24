@@ -16,6 +16,7 @@
             backdrop-filter: blur(var(--surface-blur));
             -webkit-backdrop-filter: blur(var(--surface-blur));
             transition: background 0.2s, border-color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
         }
         .faq-item:hover {
             background: var(--surface-bg-hover);
@@ -38,6 +39,7 @@
             color: var(--text-dim);
             font-size: 0.7rem;
             transition: transform 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
             flex-shrink: 0;
         }
         .faq-item.open .faq-question i {
@@ -48,6 +50,7 @@
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
+          transition-duration: calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s);
             padding: 0 16px;
             color: var(--text-secondary);
             font-size: 0.88rem;

@@ -215,7 +215,8 @@
             background: #1a5a7a;
             transform: scaleX(0);
             transform-origin: 0 50%;
-            transition: transform 0.3s ease; /* TD-19: scaleX вместо width */
+            transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s); /* TD-19: scaleX вместо width */
         }
         .stat-best .stat-bar-fill { background: var(--accent-cyan); }
         .stat-worst .stat-bar-fill { background: #2a2a3a; }
@@ -287,6 +288,7 @@
             border-radius: 10px;
             overflow: hidden;
             transition: background 0.2s, border-color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
         }
         .compare-card:hover {
             background: var(--surface-bg-hover);
@@ -363,7 +365,8 @@
             background: #1a5a7a;
             transform: scaleX(0);
             transform-origin: 0 50%;
-            transition: transform 0.3s ease; /* TD-19: scaleX вместо width */
+            transition: transform 0.3s ease;
+        transition-duration: calc(var(--anim-speed, 1) * 0.3s); /* TD-19: scaleX вместо width */
         }
         .compare-card-row.card-best .compare-card-value { color: var(--accent-cyan); font-weight: 600; }
         .compare-card-row.card-best .compare-card-bar-fill { background: var(--accent-cyan); }

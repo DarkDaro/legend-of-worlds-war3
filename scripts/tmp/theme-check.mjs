@@ -150,10 +150,10 @@ if (gearMobile) {
     await page.waitForTimeout(200);
     themeMobile = await page.evaluate(() => {
         const p = document.getElementById('site-settings-root');
-        return p && !p.hidden && p.querySelectorAll('.settings-theme-btn').length === 9;
+        return p && !p.hidden && p.querySelectorAll('.settings-theme-btn[data-theme-id]').length === 10;
     });
 }
-ok(themeMobile, 'мобильный 390: панель с девятью пилюлями темы открылась из бургера');
+ok(themeMobile, 'мобильный 390: панель с десятью пилюлями темы (добавилась «Авто») открылась из бургера');
 s = await snap();
 ok(s.overflow <= 0, 'мобильный 390: горизонтального скролла нет', String(s.overflow));
 await page.screenshot({ path: path.join(OUTDIR, 'panel-theme-mobile-390.png') });

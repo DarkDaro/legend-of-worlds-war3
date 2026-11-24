@@ -47,6 +47,7 @@ h3 { color: var(--text-primary); font-size: 1rem; margin: 20px 0 8px; }
     background: rgba(var(--black-rgb), 0.15);
     position: relative;
     transition: background 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .priority-step:hover { background: rgba(var(--cyan-rgb), 0.04); }
 .priority-step:first-child { border-left-color: var(--danger-soft); }
@@ -135,13 +136,16 @@ h3 { color: var(--text-primary); font-size: 1rem; margin: 20px 0 8px; }
     border: 1px solid var(--surface-border);
     background: var(--surface-bg); color: var(--text-secondary);
     cursor: pointer; font-size: 0.85rem; transition: all 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
     margin-bottom: 8px;
 }
 .spoiler-toggle:hover { border-color: var(--accent-cyan); color: var(--text-primary); }
-.spoiler-toggle .fa-chevron-down { transition: transform 0.2s; font-size: 0.7rem; }
+.spoiler-toggle .fa-chevron-down { transition: transform 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s); font-size: 0.7rem; }
 .spoiler-toggle.open .fa-chevron-down { transform: rotate(180deg); }
 .spoiler-content {
     max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .spoiler-content.open { max-height: 2000px; }
 

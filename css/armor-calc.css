@@ -26,6 +26,7 @@
             font-size: 1rem;
             outline: none;
             transition: border-color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
         }
         .armor-input-row input:focus {
             border-color: var(--accent-cyan);
@@ -111,7 +112,8 @@
             background: linear-gradient(90deg, var(--accent-cyan), var(--spring));
             transform: scaleX(0);
             transform-origin: 0 50%;
-            transition: transform 0.3s ease; /* TD-19: scaleX вместо width */
+            transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s); /* TD-19: scaleX вместо width */
         }
         .armor-formula {
             margin-top: 24px;

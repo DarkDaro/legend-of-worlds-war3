@@ -71,6 +71,7 @@
     align-items: center;
     justify-content: center;
     transition: 0.2s;
+    transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .hamburger-btn span {
     display: block;
@@ -79,6 +80,7 @@
     background: var(--accent-cyan);
     border-radius: 2px;
     transition: 0.3s;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .hamburger-btn:hover {
     border-color: var(--accent-cyan);

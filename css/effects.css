@@ -75,40 +75,44 @@
 /* Появление карточек при загрузке */
 .hero-card {
     animation: fadeSlideUp 0.4s ease-out both;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
 }
 .item-card {
     animation: fadeSlideUp 0.4s ease-out both;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
 }
 .stat-box {
     animation: fadeSlideUp 0.4s ease-out both;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
 }
 .quick-link-card {
     animation: fadeSlideUp 0.4s ease-out both;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
 }
 
 /* Staggered delay — первые 6 карточек появляются с задержкой */
-.hero-card:nth-child(1) { animation-delay: 0.05s; }
-.hero-card:nth-child(2) { animation-delay: 0.1s; }
-.hero-card:nth-child(3) { animation-delay: 0.15s; }
-.hero-card:nth-child(4) { animation-delay: 0.2s; }
-.hero-card:nth-child(5) { animation-delay: 0.25s; }
-.hero-card:nth-child(6) { animation-delay: 0.3s; }
+.hero-card:nth-child(1) { animation-delay: calc(var(--anim-speed, 1) * 0.05s); }
+.hero-card:nth-child(2) { animation-delay: calc(var(--anim-speed, 1) * 0.1s); }
+.hero-card:nth-child(3) { animation-delay: calc(var(--anim-speed, 1) * 0.15s); }
+.hero-card:nth-child(4) { animation-delay: calc(var(--anim-speed, 1) * 0.2s); }
+.hero-card:nth-child(5) { animation-delay: calc(var(--anim-speed, 1) * 0.25s); }
+.hero-card:nth-child(6) { animation-delay: calc(var(--anim-speed, 1) * 0.3s); }
 
-.item-card:nth-child(1) { animation-delay: 0.05s; }
-.item-card:nth-child(2) { animation-delay: 0.1s; }
-.item-card:nth-child(3) { animation-delay: 0.15s; }
-.item-card:nth-child(4) { animation-delay: 0.2s; }
-.item-card:nth-child(5) { animation-delay: 0.25s; }
-.item-card:nth-child(6) { animation-delay: 0.3s; }
+.item-card:nth-child(1) { animation-delay: calc(var(--anim-speed, 1) * 0.05s); }
+.item-card:nth-child(2) { animation-delay: calc(var(--anim-speed, 1) * 0.1s); }
+.item-card:nth-child(3) { animation-delay: calc(var(--anim-speed, 1) * 0.15s); }
+.item-card:nth-child(4) { animation-delay: calc(var(--anim-speed, 1) * 0.2s); }
+.item-card:nth-child(5) { animation-delay: calc(var(--anim-speed, 1) * 0.25s); }
+.item-card:nth-child(6) { animation-delay: calc(var(--anim-speed, 1) * 0.3s); }
 
-.stat-box:nth-child(1) { animation-delay: 0.05s; }
-.stat-box:nth-child(2) { animation-delay: 0.1s; }
-.stat-box:nth-child(3) { animation-delay: 0.15s; }
-.stat-box:nth-child(4) { animation-delay: 0.2s; }
+.stat-box:nth-child(1) { animation-delay: calc(var(--anim-speed, 1) * 0.05s); }
+.stat-box:nth-child(2) { animation-delay: calc(var(--anim-speed, 1) * 0.1s); }
+.stat-box:nth-child(3) { animation-delay: calc(var(--anim-speed, 1) * 0.15s); }
+.stat-box:nth-child(4) { animation-delay: calc(var(--anim-speed, 1) * 0.2s); }
 
-.quick-link-card:nth-child(1) { animation-delay: 0.05s; }
-.quick-link-card:nth-child(2) { animation-delay: 0.1s; }
-.quick-link-card:nth-child(3) { animation-delay: 0.15s; }
+.quick-link-card:nth-child(1) { animation-delay: calc(var(--anim-speed, 1) * 0.05s); }
+.quick-link-card:nth-child(2) { animation-delay: calc(var(--anim-speed, 1) * 0.1s); }
+.quick-link-card:nth-child(3) { animation-delay: calc(var(--anim-speed, 1) * 0.15s); }
 
 /* Нажатие кнопки — эффект вдавливания */
 .btn-primary:active,
@@ -309,6 +313,7 @@ body.page-404::after {
     pointer-events: none;
     z-index: 0;
     animation: orbFloat 11s ease-in-out infinite;
+animation-duration: calc(var(--anim-speed, 1) * 11s);
 }
 .home-orb-secondary,
 .info-orb {
@@ -320,6 +325,8 @@ body.page-404::after {
     pointer-events: none;
     z-index: 0;
     animation: orbFloat 9s ease-in-out infinite -5s;
+animation-duration: calc(var(--anim-speed, 1) * 9s);
+animation-delay: calc(var(--anim-speed, 1) * 5s);
 }
 
 /* позиция/размер/цвет страницы поверх общей базы */
@@ -327,39 +334,39 @@ body.page-home::after {
     top: 10%; right: 10%;
     width: 400px; height: 400px;
     box-shadow: -200px 300px 0 -100px rgba(var(--info-rgb), 0.08);
-    animation-duration: 11s; animation-delay: -2s;
+    animation-duration: calc(var(--anim-speed, 1) * 11s); animation-delay: -calc(var(--anim-speed, 1) * 2s);
 }
 .home-orb-secondary { bottom: 5%; left: 8%; }
-body.page-heroes::after { bottom: -10%; right: -5%; width: 500px; height: 500px; animation-duration: 13s; animation-delay: -3s; }
-body.page-items::after { top: -5%; left: -5%; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: 10s; animation-delay: -7s; }
-.info-orb { bottom: 10%; right: 5%; background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.12) 0%, rgba(var(--cyan-rgb), 0.05) 45%, transparent 72%); animation-duration: 12s; animation-delay: -4s; }
-body.page-monsters::after { bottom: -10%; left: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(var(--red-rgb), 0.1) 0%, rgba(var(--red-rgb), 0.04) 45%, transparent 72%); animation-duration: 13s; animation-delay: -6s; }
-body.page-lore::after { top: -5%; right: -5%; width: 450px; height: 450px; animation-duration: 10s; animation-delay: -2s; }
+body.page-heroes::after { bottom: -10%; right: -5%; width: 500px; height: 500px; animation-duration: calc(var(--anim-speed, 1) * 13s); animation-delay: -calc(var(--anim-speed, 1) * 3s); }
+body.page-items::after { top: -5%; left: -5%; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: calc(var(--anim-speed, 1) * 10s); animation-delay: -calc(var(--anim-speed, 1) * 7s); }
+.info-orb { bottom: 10%; right: 5%; background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.12) 0%, rgba(var(--cyan-rgb), 0.05) 45%, transparent 72%); animation-duration: calc(var(--anim-speed, 1) * 12s); animation-delay: -calc(var(--anim-speed, 1) * 4s); }
+body.page-monsters::after { bottom: -10%; left: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(var(--red-rgb), 0.1) 0%, rgba(var(--red-rgb), 0.04) 45%, transparent 72%); animation-duration: calc(var(--anim-speed, 1) * 13s); animation-delay: -calc(var(--anim-speed, 1) * 6s); }
+body.page-lore::after { top: -5%; right: -5%; width: 450px; height: 450px; animation-duration: calc(var(--anim-speed, 1) * 10s); animation-delay: -calc(var(--anim-speed, 1) * 2s); }
 body.page-calculator::after,
 body.page-build-constructor::after,
-body.page-bot-builds::after { bottom: -10%; right: -5%; animation-delay: -3s; }
-body.page-compare::after { bottom: -10%; left: -5%; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: 12s; animation-delay: -8s; }
+body.page-bot-builds::after { bottom: -10%; right: -5%; animation-delay: -calc(var(--anim-speed, 1) * 3s); }
+body.page-compare::after { bottom: -10%; left: -5%; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: calc(var(--anim-speed, 1) * 12s); animation-delay: -calc(var(--anim-speed, 1) * 8s); }
 body.page-armor-calc::after,
-body.page-formulas-calc::after { top: -5%; right: -5%; width: 400px; height: 400px; animation-duration: 9s; animation-delay: -6s; }
-body.page-modes::after { top: 20%; right: -8%; width: 400px; height: 400px; animation-duration: 10s; animation-delay: -4s; }
-body.page-faq::after { top: -5%; left: -5%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: 12s; animation-delay: -9s; }
-body.page-guides::after { bottom: -10%; right: -5%; width: 400px; height: 400px; animation-duration: 9s; animation-delay: -2s; }
-body.page-map-changes::after { bottom: -10%; left: -5%; width: 400px; height: 400px; animation-duration: 11s; animation-delay: -7s; }
-body.page-mechanics::after { top: -5%; right: -5%; animation-duration: 10s; animation-delay: -3s; }
-body.page-events::after { bottom: -10%; left: -5%; animation-duration: 12s; animation-delay: -5s; }
-body.page-map::after { bottom: -10%; right: -5%; animation-duration: 9s; animation-delay: -8s; }
-body.page-support::after { top: -5%; left: -5%; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: 11s; animation-delay: -4s; }
-body.page-updates::after { top: -5%; right: -5%; animation-duration: 13s; animation-delay: -6s; }
+body.page-formulas-calc::after { top: -5%; right: -5%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 9s); animation-delay: -calc(var(--anim-speed, 1) * 6s); }
+body.page-modes::after { top: 20%; right: -8%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 10s); animation-delay: -calc(var(--anim-speed, 1) * 4s); }
+body.page-faq::after { top: -5%; left: -5%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: calc(var(--anim-speed, 1) * 12s); animation-delay: -calc(var(--anim-speed, 1) * 9s); }
+body.page-guides::after { bottom: -10%; right: -5%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 9s); animation-delay: -calc(var(--anim-speed, 1) * 2s); }
+body.page-map-changes::after { bottom: -10%; left: -5%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 11s); animation-delay: -calc(var(--anim-speed, 1) * 7s); }
+body.page-mechanics::after { top: -5%; right: -5%; animation-duration: calc(var(--anim-speed, 1) * 10s); animation-delay: -calc(var(--anim-speed, 1) * 3s); }
+body.page-events::after { bottom: -10%; left: -5%; animation-duration: calc(var(--anim-speed, 1) * 12s); animation-delay: -calc(var(--anim-speed, 1) * 5s); }
+body.page-map::after { bottom: -10%; right: -5%; animation-duration: calc(var(--anim-speed, 1) * 9s); animation-delay: -calc(var(--anim-speed, 1) * 8s); }
+body.page-support::after { top: -5%; left: -5%; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: calc(var(--anim-speed, 1) * 11s); animation-delay: -calc(var(--anim-speed, 1) * 4s); }
+body.page-updates::after { top: -5%; right: -5%; animation-duration: calc(var(--anim-speed, 1) * 13s); animation-delay: -calc(var(--anim-speed, 1) * 6s); }
 /* 24.11: раскатка на остальные страницы без орбов — чередование углов */
-body.page-aibot::after { top: 20%; right: -8%; width: 400px; height: 400px; animation-duration: 10s; animation-delay: -4s; }
-body.page-balance::after { bottom: -10%; right: -5%; width: 500px; height: 500px; animation-duration: 13s; animation-delay: -2s; }
-body.page-changelog::after { top: -5%; left: -5%; width: 400px; height: 400px; animation-duration: 11s; animation-delay: -7s; }
-body.page-creeps::after { bottom: -10%; left: -5%; width: 400px; height: 400px; animation-duration: 12s; animation-delay: -5s; }
-body.page-gallery::after { top: -5%; right: -5%; width: 500px; height: 500px; animation-duration: 12s; animation-delay: -3s; }
-body.page-runes::after { bottom: -10%; right: -5%; width: 400px; height: 400px; animation-duration: 10s; animation-delay: -8s; }
-body.page-storage::after { top: -5%; left: -5%; width: 400px; height: 400px; animation-duration: 11s; animation-delay: -2s; }
-body.page-tierlist::after { bottom: -10%; left: -5%; width: 500px; height: 500px; animation-duration: 13s; animation-delay: -6s; }
-body.page-404::after { bottom: 10%; right: 10%; width: 450px; height: 450px; animation-duration: 11s; animation-delay: -4s; }
+body.page-aibot::after { top: 20%; right: -8%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 10s); animation-delay: -calc(var(--anim-speed, 1) * 4s); }
+body.page-balance::after { bottom: -10%; right: -5%; width: 500px; height: 500px; animation-duration: calc(var(--anim-speed, 1) * 13s); animation-delay: -calc(var(--anim-speed, 1) * 2s); }
+body.page-changelog::after { top: -5%; left: -5%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 11s); animation-delay: -calc(var(--anim-speed, 1) * 7s); }
+body.page-creeps::after { bottom: -10%; left: -5%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 12s); animation-delay: -calc(var(--anim-speed, 1) * 5s); }
+body.page-gallery::after { top: -5%; right: -5%; width: 500px; height: 500px; animation-duration: calc(var(--anim-speed, 1) * 12s); animation-delay: -calc(var(--anim-speed, 1) * 3s); }
+body.page-runes::after { bottom: -10%; right: -5%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 10s); animation-delay: -calc(var(--anim-speed, 1) * 8s); }
+body.page-storage::after { top: -5%; left: -5%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 11s); animation-delay: -calc(var(--anim-speed, 1) * 2s); }
+body.page-tierlist::after { bottom: -10%; left: -5%; width: 500px; height: 500px; animation-duration: calc(var(--anim-speed, 1) * 13s); animation-delay: -calc(var(--anim-speed, 1) * 6s); }
+body.page-404::after { bottom: 10%; right: 10%; width: 450px; height: 450px; animation-duration: calc(var(--anim-speed, 1) * 11s); animation-delay: -calc(var(--anim-speed, 1) * 4s); }
 
 @keyframes orbFloat {
     0%, 100% { opacity: 0.7; transform: scale(1) translate(0, 0); }
@@ -412,6 +419,7 @@ body.page-404::before {
         radial-gradient(2px 2px at 78% 76%, rgba(var(--info-rgb), 0.4) 30%, transparent 100%),
         radial-gradient(2px 2px at 89% 22%, rgba(var(--cyan-rgb), 0.45) 30%, transparent 100%);
     animation: orbTwinkle 6s ease-in-out infinite, orbSpecks 16s ease-in-out infinite;
+animation-duration: calc(var(--anim-speed, 1) * 6s), calc(var(--anim-speed, 1) * 16s);
 }
 
 /* у монстров россыпь в тон их красному орбу */

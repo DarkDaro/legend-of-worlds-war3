@@ -1,0 +1,12 @@
+import { chromium } from 'playwright';
+import http from 'http'; import fs from 'fs'; import path from 'path';
+const MIME = { '.html':'text/html','.css':'text/css','.js':'text/javascript','.png':'image/png','.woff2':'font/woff2' };
+const server = http.createServer(async (req,res)=>{ let rel=decodeURIComponent(req.url.split('?')[0]).replace(/^\//,'')||'index.html'; if(!path.extname(rel))rel+='.html'; try{const d=await fs.promises.readFile(path.join(process.cwd(),rel));res.writeHead(200,{'content-type':MIME[path.extname(rel)]||'application/octet-stream'});res.end(d);}catch{res.writeHead(404);res.end();}});
+await new Promise(r=>server.listen(8952,r));
+const b = await chromium.launch();
+const p = await b.newPage({ viewport:{ width:1280, height:900 } });
+await p.goto('http://localhost:8952/index.html', { waitUntil:'networkidle' });
+await p.click('.settings-btn'); await p.waitForTimeout(300);
+const box = await p.evaluate(() => { const r = document.getElementById('site-settings-root').getBoundingClientRect(); return { x: Math.max(0, r.x - 10), y: Math.max(0, r.y - 10), width: Math.min(1280, r.width + 20), height: Math.min(900, r.height + 20) }; });
+await p.screenshot({ path: '/tmp/render/panel.png', clip: box });
+await b.close(); server.close();

@@ -13,6 +13,7 @@
     align-items: center;
     gap: 6px;
     transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
     white-space: nowrap;
     line-height: 1.35;
 }
@@ -47,6 +48,7 @@
     visibility: hidden;
     pointer-events: none;
     transition: opacity 0.2s, visibility 0.2s;
+   transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 .gs-overlay.active {
     opacity: 1;
@@ -67,6 +69,7 @@
     overflow: hidden;
     transform: translateY(-10px);
     transition: transform 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .gs-overlay.active .gs-modal {
     transform: translateY(0);
@@ -109,6 +112,7 @@
     justify-content: center;
     cursor: pointer;
     transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
     flex-shrink: 0;
 }
 .gs-close:hover {
@@ -151,6 +155,7 @@
     text-decoration: none;
     color: var(--text-strong);
     transition: 0.1s;
+    transition-duration: calc(var(--anim-speed, 1) * 0.1s);
 }
 .gs-result:hover {
     background: var(--surface-subtle-hover);
@@ -211,6 +216,7 @@
     background: rgba(var(--cyan-rgb), 0.12);
     transform: scale(0);
     animation: rippleExpand 0.5s ease-out forwards;
+ animation-duration: calc(var(--anim-speed, 1) * 0.5s);
     pointer-events: none;
     z-index: 10;
 }
@@ -221,9 +227,11 @@
 /* ===== Page transition ===== */
 body {
     animation: pageIn 0.25s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.25s);
 }
 body.page-leaving {
     animation: pageOut 0.15s ease-in forwards;
+    animation-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 @keyframes pageIn {
     from { opacity: 0; }
@@ -283,6 +291,7 @@ body.page-leaving {
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.25s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.25s);
 }
 .nav-link:hover::after {
     transform: scaleX(1);
@@ -342,10 +351,10 @@ body.page-leaving {
     .tilt-glare { display: none !important; }
     .hero-card:hover { transform: translateY(-3px); }
     /* Ripple быстрее */
-    .ripple { animation-duration: 0.3s !important; }
+    .ripple { animation-duration: calc(var(--anim-speed, 1) * 0.3s) !important; }
     /* Page transition быстрее */
-    body { animation-duration: 0.1s !important; }
-    body.page-leaving { animation-duration: 0.08s !important; }
+    body { animation-duration: calc(var(--anim-speed, 1) * 0.1s) !important; }
+    body.page-leaving { animation-duration: calc(var(--anim-speed, 1) * 0.08s) !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -494,6 +503,7 @@ body.page-leaving {
     font-size: 0.7rem;
     margin-right: 4px;
     transition: transform 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .bc-stage-level {
@@ -529,6 +539,7 @@ body.page-leaving {
     padding: 4px 6px;
     border-radius: 4px;
     transition: color 0.2s, background 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 
 .bc-stage-remove:hover {
@@ -556,6 +567,7 @@ body.page-leaving {
     backdrop-filter: blur(var(--surface-blur));
     -webkit-backdrop-filter: blur(var(--surface-blur));
     transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
     position: relative;
     padding: 4px 2px;
 }
@@ -634,6 +646,7 @@ body.page-leaving {
     font-size: 0.65rem;
     opacity: 0;
     transition: opacity 0.2s, color 0.2s;
+ transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 
 .bc-slot:hover .bc-slot-remove {
@@ -658,6 +671,7 @@ body.page-leaving {
     border-radius: 3px;
     opacity: 0;
     transition: opacity 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
     z-index: 2;
 }
 
@@ -715,6 +729,7 @@ body.page-leaving {
     font-size: 0.85rem;
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
+ transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
     margin-bottom: 16px;
 }
 
@@ -749,6 +764,7 @@ body.page-leaving {
     font-size: 0.85rem;
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
     white-space: nowrap;
 }
 
@@ -771,6 +787,7 @@ body.page-leaving {
     font-size: 0.85rem;
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
     white-space: nowrap;
 }
 
@@ -787,6 +804,7 @@ body.page-leaving {
     padding: 4px 6px;
     font-size: 0.8rem;
     transition: color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 
 .bc-stage-copy:hover {
@@ -801,6 +819,7 @@ body.page-leaving {
     padding: 4px 6px;
     font-size: 0.8rem;
     transition: color 0.2s;
+  transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 
 .bc-stage-paste:hover {
@@ -923,6 +942,7 @@ body.page-leaving {
     margin-left: 6px;
     font-size: 0.8rem;
     transition: transform 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 
 .bc-jass-content {
@@ -946,6 +966,7 @@ body.page-leaving {
     cursor: pointer;
     font-size: 0.75rem;
     transition: background 0.2s;
+   transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 
 .bc-copy-btn:hover {

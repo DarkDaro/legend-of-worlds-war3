@@ -45,6 +45,7 @@
             text-decoration: none;
             cursor: pointer;
             transition: 0.15s;
+   transition-duration: calc(var(--anim-speed, 1) * 0.15s);
         }
         .bb-hero-chip:hover {
             background: var(--accent-cyan);
@@ -73,6 +74,7 @@
             backdrop-filter: blur(var(--surface-blur));
             -webkit-backdrop-filter: blur(var(--surface-blur));
             transition: border-color 0.2s, box-shadow 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
         }
         .bb-stage.boss-stage {
             border-color: rgba(255, 60, 60, 0.3);
@@ -87,6 +89,7 @@
             user-select: none;
             background: var(--surface-subtle);
             transition: background 0.2s;
+ transition-duration: calc(var(--anim-speed, 1) * 0.2s);
         }
         .bb-stage.boss-stage .bb-stage-header {
             background: rgba(255, 40, 40, 0.06);
@@ -132,6 +135,7 @@
         .bb-chevron {
             color: var(--text-secondary);
             transition: transform 0.2s;
+           transition-duration: calc(var(--anim-speed, 1) * 0.2s);
             font-size: 0.8rem;
         }
         .bb-stage.collapsed .bb-chevron {
@@ -166,6 +170,7 @@
             overflow: hidden;
             position: relative;
             transition: border-color 0.2s, box-shadow 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
         }
         .bb-slot-img:hover {
             border-color: var(--surface-border-hover);
@@ -263,6 +268,7 @@
             cursor: pointer;
             font-size: 0.82rem;
             transition: all 0.2s;
+      transition-duration: calc(var(--anim-speed, 1) * 0.2s);
         }
         .bb-group-btn:hover {
             background: var(--surface-tag-border);
@@ -288,6 +294,7 @@
             font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
         }
         .bb-copy-btn:hover {
             background: rgba(var(--cyan-rgb), 0.12);

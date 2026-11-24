@@ -28,6 +28,7 @@
             -webkit-backdrop-filter: blur(var(--surface-blur));
             padding: 20px;
             transition: background 0.2s, border-color 0.2s, transform 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
         }
         .event-card:hover {
             background: var(--surface-bg-hover);

@@ -61,6 +61,7 @@
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.2s ease, visibility 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 .item-sheet-overlay.visible {
   opacity: 1;
@@ -84,6 +85,7 @@
   padding: 16px 16px 20px;
   transform: translateY(110%);
   transition: transform 0.28s ease, opacity 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.28s), calc(var(--anim-speed, 1) * 0.2s);
   visibility: hidden;
   pointer-events: none;
   opacity: 0;
@@ -109,6 +111,7 @@
   justify-content: center;
   cursor: pointer;
   transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
   z-index: 2;
 }
 .item-sheet-close:hover {
@@ -144,6 +147,7 @@ body.item-sheet-open {
   font-size: 12px;
   flex-shrink: 0;
   transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 .tree-toggle:hover {
   background: #1a2e44;
@@ -166,6 +170,7 @@ body.item-sheet-open {
   box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.2);
   cursor: pointer;
   transition: 0.15s;
+  transition-duration: calc(var(--anim-speed, 1) * 0.15s);
   color: var(--text-strong);
 }
 .component-item:hover {
@@ -245,6 +250,7 @@ body.item-sheet-open {
   font-size: 0.9rem;
   cursor: pointer;
   transition: 0.1s;
+transition-duration: calc(var(--anim-speed, 1) * 0.1s);
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -272,6 +278,7 @@ body.item-sheet-open {
   text-decoration: none;
   cursor: pointer;
   transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .boss-drop-link:hover {
@@ -304,6 +311,7 @@ body.item-sheet-open {
   text-decoration: none;
   cursor: pointer;
   transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .hero-reco-chip:hover {
@@ -328,6 +336,7 @@ body.item-sheet-open {
   color: var(--accent-cyan);
   cursor: pointer;
   transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .hero-reco-toggle:hover {
@@ -363,6 +372,7 @@ body.item-sheet-open {
   cursor: pointer;
   font-weight: 500;
   transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
   box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.2);
 }
 .upgrade-btn:hover {
@@ -455,6 +465,7 @@ body.item-sheet-open {
   overflow: hidden;
   padding-top: 24px;
   transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.35s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.35s), calc(var(--anim-speed, 1) * 0.25s), calc(var(--anim-speed, 1) * 0.35s);
 }
 .items-grid.collapsed {
   max-height: 0 !important;
@@ -491,6 +502,7 @@ body.item-sheet-open {
   cursor: pointer;
   box-shadow: 0 0 12px rgba(64, 160, 255, 0.12);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 .category-section h2 .collapse-toggle:hover {
   border-color: rgba(106, 205, 255, 0.8);
@@ -502,6 +514,7 @@ body.item-sheet-open {
   font-size: 0.85em;
   color: inherit;
   transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .category-section h2.collapsed-header .collapse-toggle .collapse-chevron {
   transform: rotate(-90deg);
@@ -563,6 +576,7 @@ body.item-sheet-open {
   padding: 12px 8px 8px;
   text-align: center;
   transition: all 0.25s ease;
+  transition-duration: calc(var(--anim-speed, 1) * 0.25s);
   border: 1px solid var(--surface-border);
   box-shadow: 0 0 10px #00000080, 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset;
   cursor: pointer;
@@ -616,6 +630,7 @@ body.item-sheet-open {
   mask-composite: exclude;
   opacity: 0;
   transition: opacity 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
   pointer-events: none;
 }
 .item-card:hover::before {
@@ -711,6 +726,7 @@ body.item-sheet-open {
   font-size: 14px;
   color: var(--text-muted);
   transition: 0.15s;
+ transition-duration: calc(var(--anim-speed, 1) * 0.15s);
   z-index: 2;
 }
 .hero-fav-btn .fas {
@@ -767,6 +783,7 @@ body.item-sheet-open {
   cursor: pointer;
   box-shadow: 0 0 6px rgba(var(--cyan-rgb), 0.12);
   transition: 0.1s;
+transition-duration: calc(var(--anim-speed, 1) * 0.1s);
 }
 .tab-btn:hover {
   background: var(--steel-deep);
@@ -1065,6 +1082,7 @@ body.item-sheet-open {
     font-weight: 500;
     cursor: pointer;
     transition: background 0.12s, border-color 0.12s, color 0.12s, box-shadow 0.12s;
+transition-duration: calc(var(--anim-speed, 1) * 0.12s), calc(var(--anim-speed, 1) * 0.12s), calc(var(--anim-speed, 1) * 0.12s), calc(var(--anim-speed, 1) * 0.12s);
 }
 .bonus-chip i { font-size: 0.72rem; opacity: 0.8; }
 .bonus-chip:hover {
@@ -1138,6 +1156,7 @@ body.item-sheet-open {
     font-size: 0.8rem;
     cursor: pointer;
     transition: background 0.12s, border-color 0.12s;
+ transition-duration: calc(var(--anim-speed, 1) * 0.12s), calc(var(--anim-speed, 1) * 0.12s);
 }
 .bonus-reset:hover {
     background: rgba(255, 120, 120, 0.12);

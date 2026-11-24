@@ -13,6 +13,7 @@
             border-radius: 12px;
             padding: 20px;
             transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
         }
         .guide-card:hover {
             border-color: var(--surface-border-hover);
@@ -56,6 +57,7 @@
             border-radius: 12px;
             padding: 16px;
             transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+ transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
             text-decoration: none;
             color: inherit;
         }
@@ -90,6 +92,7 @@
             flex-shrink: 0;
             opacity: 0.5;
             transition: opacity 0.2s, transform 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
         }
         .hero-guide-card:hover .hero-guide-arrow {
             opacity: 1;

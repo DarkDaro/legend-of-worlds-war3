@@ -20,6 +20,13 @@
        примитива. Тема контраста берёт этот же оттенок акцентом (§11) */
     --subtle-rgb: 0, 255, 255;
 
+    /* множитель скорости движения (F2): slow 1.5, normal 1, fast 0.5;
+       longhand -duration/-delay читают var(--anim-speed, 1) через calc;
+       calc в шорткатах animation/transition Chromium отбрасывает,
+       поэтому f2-longhand.py выносит множитель в отдельные longhand-строки;
+       data-anim="off" глушит движение сильнее и приоритетнее */
+    --anim-speed: 1;
+
     /* Нейтральные примитивы (TD-15 закрыт 24.11): белый и чёрный — один источник
        для светлых текстов, рамок активного состояния и затемнений-оверлеев;
        раньше жили 90 литералами в 24 файлах, темы и будущие светлые палитры
@@ -511,6 +518,7 @@ h1 {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: titleShimmer 6s ease-in-out infinite;
+animation-duration: calc(var(--anim-speed, 1) * 6s);
 }
 
 @keyframes titleShimmer {
@@ -606,6 +614,9 @@ html[data-progress="off"] .scroll-progress {
     z-index: 3000;
     width: 300px;
     max-width: calc(100vw - 24px);
+    /* строка скорости (F2) вытянула панель выше экрана телефона — прокрутка */
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
     padding: 14px 16px 10px;
     background: var(--surface-bg);
     backdrop-filter: blur(var(--surface-blur));
@@ -649,6 +660,7 @@ html[data-progress="off"] .scroll-progress {
     cursor: pointer;
     padding: 0;
     transition: 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .settings-switch::after {
     content: '';
@@ -661,6 +673,7 @@ html[data-progress="off"] .scroll-progress {
     background: var(--accent-cyan);
     box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.4);
     transition: 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .settings-switch.off {
     background: rgba(var(--surface-rgb), 0.6);
@@ -699,6 +712,7 @@ html[data-progress="off"] .scroll-progress {
     padding: 4px 9px;
     cursor: pointer;
     transition: 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .settings-theme-btn.active {
     color: var(--text-primary);
@@ -721,6 +735,10 @@ html[data-progress="off"] .scroll-progress {
         font-size: 1.05rem;
     }
 }
+
+/* скорость анимаций (F2, 24.11): атрибут ставит js/site-settings.js */
+html[data-anim-speed="slow"] { --anim-speed: 1.5; }
+html[data-anim-speed="fast"] { --anim-speed: 0.5; }
 
 /* === css/glass.css === */
 
@@ -788,6 +806,7 @@ html[data-glass="off"] * {
     cursor: pointer;
     box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.2);
     transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
     text-transform: uppercase;
 }
 .filter-btn i { margin-right: 8px; }
@@ -849,6 +868,7 @@ html[data-glass="off"] * {
     box-shadow: 0 0 15px #00000080, 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset;
     cursor: pointer;
     transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s);
     color: var(--text-strong);
     text-decoration: none;
     display: block;
@@ -874,6 +894,7 @@ html[data-glass="off"] * {
     mask-composite: exclude;
     opacity: 0;
     transition: opacity 0.3s ease;
+ transition-duration: calc(var(--anim-speed, 1) * 0.3s);
     pointer-events: none;
 }
 .hero-card:hover::before {
@@ -893,6 +914,7 @@ html[data-glass="off"] * {
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
     background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(var(--white-rgb), 0.12) 0%, transparent 60%);
     z-index: 3;
 }
@@ -902,6 +924,7 @@ html[data-glass="off"] * {
 .hero-card.tilt-active {
     transform: perspective(600px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(-5px);
     transition: transform 0.15s ease-out, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s), calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s);
 }
 .hero-image {
     width: 100%;
@@ -1048,6 +1071,7 @@ html[data-glass="off"] * {
     text-decoration: none;
     box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.12);
     transition: 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
     flex: 0 0 auto;
 }
 .hero-nav-btn:hover {
@@ -1155,12 +1179,14 @@ html[data-glass="off"] * {
     font-size: 0.95em;
     user-select: none;
     transition: background 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .lore-toggle:hover {
     background: #152030;
 }
 .lore-toggle .lore-arrow {
     transition: transform 0.3s;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
     font-size: 0.8em;
 }
 .lore-accordion.open .lore-arrow {
@@ -1170,6 +1196,7 @@ html[data-glass="off"] * {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease, padding 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.4s), calc(var(--anim-speed, 1) * 0.3s);
     padding: 0 20px;
     color: #9bb8d8;
     line-height: 1.7;
@@ -1224,6 +1251,7 @@ html[data-glass="off"] * {
     text-align: center;
     text-decoration: none;
     transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1320,6 +1348,7 @@ html[data-glass="off"] * {
     border-radius: 8px;
     box-shadow: inset 0 0 10px rgba(var(--black-rgb), 0.333), 0 0 10px rgba(var(--cyan-rgb), 0.12);
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.25s ease, background 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.25s), calc(var(--anim-speed, 1) * 0.2s);
 }
 .ability-card:hover {
     box-shadow: inset 0 0 10px rgba(var(--black-rgb), 0.333), 0 0 15px rgba(var(--cyan-rgb), 0.2);
@@ -1328,6 +1357,7 @@ html[data-glass="off"] * {
 .ability-card:hover .ability-icon {
     box-shadow: 0 0 18px rgba(var(--cyan-rgb), 0.6);
     animation: abilityIconPulse 1.2s ease-in-out infinite;
+ animation-duration: calc(var(--anim-speed, 1) * 1.2s);
 }
 .ability-card:hover .param-row {
     background: rgba(var(--cyan-rgb), 0.04);
@@ -1338,6 +1368,7 @@ html[data-glass="off"] * {
 .ability-card.passive:hover .ability-icon {
     box-shadow: 0 0 18px rgba(var(--violet-rgb), 0.6);
     animation: abilityIconPulse 1.2s ease-in-out infinite;
+animation-duration: calc(var(--anim-speed, 1) * 1.2s);
 }
 .ability-card.ultimate:hover {
     box-shadow: inset 0 0 10px rgba(var(--black-rgb), 0.333), 0 0 15px rgba(var(--orange-rgb), 0.2);
@@ -1345,6 +1376,7 @@ html[data-glass="off"] * {
 .ability-card.ultimate:hover .ability-icon {
     box-shadow: 0 0 18px rgba(var(--orange-rgb), 0.6);
     animation: abilityIconPulse 1.2s ease-in-out infinite;
+    animation-duration: calc(var(--anim-speed, 1) * 1.2s);
 }
 /* [off 20.11 TD-16] отключены мёртвые правила (2 шт.): .ability-card.innate:hover; .ability-card.innate:hover .ability-icon — класс(ы) не встречаются ни в HTML, ни в JS (включая корневые скрипты); чем доказано: scripts/tmp/td16-verify-dead.mjs, 0 попаданий; как откатить: убрать эту строку, служебную строку-открыватель ниже и служебную строку-закрыватель после правил */
 /*
@@ -1354,6 +1386,7 @@ html[data-glass="off"] * {
 .ability-card.innate:hover .ability-icon {
     box-shadow: 0 0 18px rgba(var(--mint-rgb), 0.6);
     animation: abilityIconPulse 1.2s ease-in-out infinite;
+animation-duration: calc(var(--anim-speed, 1) * 1.2s);
 }
 */
 @keyframes abilityIconPulse {
@@ -1554,6 +1587,7 @@ html[data-glass="off"] * {
     gap: 6px;
     font-size: 0.82rem;
     transition: background 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .param-label {
     color: #7a8fa8;
@@ -1630,6 +1664,7 @@ html[data-glass="off"] * {
     cursor: pointer;
     text-align: center;
     transition: all 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .form-tab:hover {
     border-color: var(--accent-cyan);
@@ -1736,6 +1771,7 @@ html[data-glass="off"] * {
     text-align: center;
     box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.2);
     transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 .back-button:hover, .back-link:hover {
     background: var(--accent-cyan);
@@ -1988,6 +2024,7 @@ html[data-glass="off"] * {
     background: linear-gradient(180deg, transparent, rgb(var(--cyan-rgb)), transparent);
     background-size: 100% 200%;
     animation: loreBorderShimmer 3s ease-in-out infinite;
+animation-duration: calc(var(--anim-speed, 1) * 3s);
     border-radius: 2px;
 }
 @keyframes loreBorderShimmer {
@@ -2006,6 +2043,7 @@ html[data-glass="off"] * {
     border: 1px solid var(--surface-border);
     box-shadow: inset 0 0 15px rgba(var(--black-rgb), 0.333), 0 0 15px rgba(var(--cyan-rgb), 0.12);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s);
     position: relative;
     overflow: hidden;
 }
@@ -2024,10 +2062,12 @@ html[data-glass="off"] * {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
+ transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .lore-text:hover::after {
     opacity: 1;
     animation: sparkleSweep 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .lore-highlight {
     color: var(--gold-soft);
@@ -2060,6 +2100,7 @@ html[data-glass="off"] * {
         transparent 45%
     );
     animation: auroraShift 8s ease-in-out infinite;
+ animation-duration: calc(var(--anim-speed, 1) * 8s);
     pointer-events: none;
 }
 .cta-title {
@@ -2082,6 +2123,7 @@ html[data-glass="off"] * {
     padding: 20px;
     text-align: center;
     transition: 0.25s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.25s);
     box-shadow: inset 0 0 15px rgba(var(--black-rgb), 0.333), 0 0 15px rgba(var(--cyan-rgb), 0.12);
 }
 .mode-card:hover {
@@ -2172,6 +2214,7 @@ html[data-glass="off"] * {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.3s, transform 0.3s, background 0.15s, box-shadow 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.15s), calc(var(--anim-speed, 1) * 0.15s);
     box-shadow: 0 0 12px rgba(var(--cyan-rgb), 0.2);
     pointer-events: none;
     display: flex;
@@ -2213,6 +2256,7 @@ html[data-glass="off"] * {
     text-decoration: none;
     color: var(--white);
     transition: 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
     flex-shrink: 0;
     min-width: 0;
 }
@@ -2269,6 +2313,7 @@ html[data-glass="off"] * {
     border-radius: 30px;
     border: 1px solid transparent;
     transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
     background: var(--surface-bg);
     box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.2);
     font-size: 0.84rem;
@@ -2304,6 +2349,7 @@ html[data-glass="off"] * {
     border-radius: 30px;
     border: 1px solid var(--mint);
     transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
     background: linear-gradient(135deg, var(--mint-deep), var(--mint));
     box-shadow: 0 0 12px rgba(var(--mint-rgb), 0.35);
     font-size: 0.84rem;
@@ -2361,6 +2407,7 @@ html[data-glass="off"] * {
     padding: 24px;
     margin-bottom: 16px;
     transition: 0.25s ease;
+    transition-duration: calc(var(--anim-speed, 1) * 0.25s);
     position: relative;
 }
 .version-card:hover {
@@ -2503,6 +2550,7 @@ html[data-glass="off"] * {
     border-radius: 16px;
     padding: 24px;
     transition: 0.25s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.25s);
 }
 .mechanic-card:hover {
     background: var(--surface-bg-hover);
@@ -2657,6 +2705,7 @@ html[data-glass="off"] * {
     margin-top: 8px;
     text-decoration: none;
     transition: border-color 0.2s, color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 .mech-calc-link:hover {
     border-color: var(--accent-cyan);
@@ -2675,9 +2724,11 @@ html[data-glass="off"] * {
 .mech-luck .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-luck:hover .mechanic-icon i {
     animation: mechDiceRoll 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .mech-luck .mechanic-icon::after {
     content: '';
@@ -2692,6 +2743,7 @@ html[data-glass="off"] * {
 .mech-luck:hover .mechanic-icon::after {
     opacity: 1;
     animation: sparkleSweep 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 
 /* --- Магический крит — вспышка молнии --- */
@@ -2705,9 +2757,11 @@ html[data-glass="off"] * {
 .mech-magic-crit .mechanic-icon i {
     display: inline-block;
     transition: transform 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .mech-magic-crit:hover .mechanic-icon i {
     animation: mechLightningFlash 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 .mech-magic-crit:hover .mechanic-icon::after {
     content: '';
@@ -2716,6 +2770,7 @@ html[data-glass="off"] * {
     border-radius: 12px;
     background: radial-gradient(circle, rgba(var(--red-rgb), 0.35) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
     pointer-events: none;
 }
 @keyframes mechFlashFade {
@@ -2734,9 +2789,11 @@ html[data-glass="off"] * {
 .mech-magic-vamp .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-magic-vamp:hover .mechanic-icon i {
     animation: mechDrainPulse 0.8s ease-in-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.8s);
 }
 .mech-magic-vamp .mechanic-icon::after {
     content: '';
@@ -2750,6 +2807,7 @@ html[data-glass="off"] * {
 .mech-magic-vamp:hover .mechanic-icon::after {
     opacity: 1;
     animation: mechDrainRing 0.8s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.8s);
 }
 @keyframes mechDrainRing {
     0%   { inset: 0; opacity: 0.8; }
@@ -2776,10 +2834,12 @@ html[data-glass="off"] * {
 }
 .mech-armor:hover .mechanic-icon::after {
     animation: mechSheenSweep 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 .mech-armor .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-armor:hover .mechanic-icon i {
     transform: scale(1.08);
@@ -2798,9 +2858,11 @@ html[data-glass="off"] * {
 .mech-block .mechanic-icon i {
     display: inline-block;
     transition: transform 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .mech-block:hover .mechanic-icon i {
     animation: mechBlockShake 0.4s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
 }
 .mech-block:hover .mechanic-icon::after {
     content: '';
@@ -2809,6 +2871,7 @@ html[data-glass="off"] * {
     border-radius: 12px;
     background: radial-gradient(circle, rgba(var(--info-rgb), 0.2) 0%, transparent 70%);
     animation: mechFlashFade 0.4s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
     pointer-events: none;
 }
 
@@ -2823,9 +2886,11 @@ html[data-glass="off"] * {
 .mech-stun-resist .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-stun-resist:hover .mechanic-icon i {
     animation: mechClockSlowSpin 1s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 1s);
 }
 
 /* --- Физический вампиризм — ритм пульса --- */
@@ -2840,9 +2905,11 @@ html[data-glass="off"] * {
 .mech-phys-vamp .mechanic-icon i {
     display: inline-block;
     transition: transform 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .mech-phys-vamp:hover .mechanic-icon i {
     animation: mechHeartbeat 0.8s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.8s);
 }
 .mech-phys-vamp:hover .mechanic-icon::after {
     content: '';
@@ -2851,6 +2918,7 @@ html[data-glass="off"] * {
     border-radius: 14px;
     box-shadow: 0 0 12px rgba(var(--red-deep-rgb), 0.35);
     animation: mechHeartGlow 0.8s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.8s);
     pointer-events: none;
 }
 @keyframes mechHeartGlow {
@@ -2872,9 +2940,11 @@ html[data-glass="off"] * {
 .mech-heal-reduce .mechanic-icon i {
     display: inline-block;
     transition: all 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-heal-reduce:hover .mechanic-icon i {
     animation: mechSuppressDim 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .mech-heal-reduce:hover .mechanic-icon::after {
     content: '';
@@ -2883,6 +2953,7 @@ html[data-glass="off"] * {
     border-radius: 12px;
     background: rgba(var(--gold-dim-rgb), 0.12);
     animation: mechSuppressOverlay 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
     pointer-events: none;
 }
 @keyframes mechSuppressOverlay {
@@ -2902,9 +2973,11 @@ html[data-glass="off"] * {
 .mech-scepter .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-scepter:hover .mechanic-icon i {
     animation: mechPrismatic 1s ease-in-out;
+animation-duration: calc(var(--anim-speed, 1) * 1s);
 }
 .mech-scepter .mechanic-icon::after {
     content: '';
@@ -2918,6 +2991,7 @@ html[data-glass="off"] * {
 .mech-scepter:hover .mechanic-icon::after {
     opacity: 1;
     animation: mechPrismaticRing 1s linear;
+animation-duration: calc(var(--anim-speed, 1) * 1s);
 }
 @keyframes mechPrismaticRing {
     0%   { transform: rotate(0deg); }
@@ -2934,9 +3008,11 @@ html[data-glass="off"] * {
 .mech-spell-dmg .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-spell-dmg:hover .mechanic-icon i {
     animation: mechFireEscalate 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .mech-spell-dmg:hover .mechanic-icon::after {
     content: '';
@@ -2945,6 +3021,7 @@ html[data-glass="off"] * {
     border-radius: 12px;
     background: radial-gradient(circle, rgba(var(--red-rgb), 0.2) 0%, transparent 70%);
     animation: mechFireGlow 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
     pointer-events: none;
 }
 @keyframes mechFireGlow {
@@ -2961,9 +3038,11 @@ html[data-glass="off"] * {
 }
 .mech-heal-amp .mechanic-icon {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+ transition-duration: calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-heal-amp:hover .mechanic-icon {
     animation: mechRadiance 0.8s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.8s);
 }
 .mech-heal-amp .mechanic-icon i {
     display: inline-block;
@@ -2986,10 +3065,12 @@ html[data-glass="off"] * {
 }
 .mech-magic-resist:hover .mechanic-icon::after {
     animation: mechBarrierRing 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .mech-magic-resist .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+    transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-magic-resist:hover .mechanic-icon i {
     transform: scale(1.05);
@@ -3006,9 +3087,11 @@ html[data-glass="off"] * {
 .mech-auto-build .mechanic-icon i {
     display: inline-block;
     transition: transform 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .mech-auto-build:hover .mechanic-icon i {
     animation: mechClickPress 0.4s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
 }
 .mech-auto-build:hover .mechanic-icon::after {
     content: '';
@@ -3017,6 +3100,7 @@ html[data-glass="off"] * {
     border-radius: 12px;
     background: radial-gradient(circle, rgba(var(--orange-soft-rgb), 0.2) 0%, transparent 70%);
     animation: mechFlashFade 0.4s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
     pointer-events: none;
 }
 
@@ -3038,10 +3122,12 @@ html[data-glass="off"] * {
 }
 .mech-corruption:hover .mechanic-icon::after {
     animation: mechCorruptSpread 0.8s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.8s);
 }
 .mech-corruption .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease, filter 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-corruption:hover .mechanic-icon i {
     transform: scale(1.1);
@@ -3060,9 +3146,11 @@ html[data-glass="off"] * {
 .mech-dmg-return .mechanic-icon i {
     display: inline-block;
     transition: transform 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .mech-dmg-return:hover .mechanic-icon i {
     animation: mechReflectBounce 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 .mech-dmg-return:hover .mechanic-icon::after {
     content: '';
@@ -3071,6 +3159,7 @@ html[data-glass="off"] * {
     border-radius: 12px;
     background: radial-gradient(circle at 30% 50%, rgba(255,102,68,0.2) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
     pointer-events: none;
 }
 
@@ -3086,9 +3175,11 @@ html[data-glass="off"] * {
 .mech-dispel .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-dispel:hover .mechanic-icon i {
     animation: mechWindSway 0.7s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.7s);
 }
 .mech-dispel:hover .mechanic-icon::after {
     content: '';
@@ -3098,6 +3189,7 @@ html[data-glass="off"] * {
     background: linear-gradient(90deg, transparent, rgba(85,204,255,0.15), transparent);
     background-size: 200% 100%;
     animation: sparkleSweep 0.7s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.7s);
     pointer-events: none;
 }
 
@@ -3111,9 +3203,11 @@ html[data-glass="off"] * {
 .mech-mana-burn-resist .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mech-mana-burn-resist:hover .mechanic-icon i {
     animation: mechFireDim 0.7s ease-out;
+  animation-duration: calc(var(--anim-speed, 1) * 0.7s);
 }
 .mech-mana-burn-resist:hover .mechanic-icon::after {
     content: '';
@@ -3122,6 +3216,7 @@ html[data-glass="off"] * {
     border-radius: 12px;
     background: radial-gradient(circle, rgba(85,255,204,0.15) 0%, transparent 70%);
     animation: mechFlashFade 0.7s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.7s);
     pointer-events: none;
 }
 
@@ -3136,9 +3231,11 @@ html[data-glass="off"] * {
 .mech-pure-dmg .mechanic-icon i {
     display: inline-block;
     transition: transform 0.2s ease;
+  transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .mech-pure-dmg:hover .mechanic-icon i {
     animation: mechPureFlash 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 .mech-pure-dmg:hover .mechanic-icon::after {
     content: '';
@@ -3147,6 +3244,7 @@ html[data-glass="off"] * {
     border-radius: 12px;
     background: radial-gradient(circle, rgba(var(--white-rgb), 0.35) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
     pointer-events: none;
 }
 
@@ -3168,9 +3266,11 @@ html[data-glass="off"] * {
 .mode-spell-half .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+  transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-spell-half:hover .mechanic-icon i {
     animation: modeSpellShrink 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .mode-spell-half:hover .mechanic-icon::after {
     content: '';
@@ -3179,6 +3279,7 @@ html[data-glass="off"] * {
     border-radius: 12px;
     background: radial-gradient(circle, rgba(var(--red-rgb), 0.2) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
     pointer-events: none;
 }
 
@@ -3192,9 +3293,11 @@ html[data-glass="off"] * {
 .mode-bosses .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-bosses:hover .mechanic-icon i {
     animation: modeBossAppear 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .mode-bosses:hover .mechanic-icon::after {
     content: '';
@@ -3203,6 +3306,7 @@ html[data-glass="off"] * {
     border-radius: 16px;
     border: 2px solid rgba(var(--violet-rgb), 0.35);
     animation: mechDrainRing 0.7s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.7s);
     pointer-events: none;
 }
 
@@ -3218,9 +3322,11 @@ html[data-glass="off"] * {
 .mode-gold-loss .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-gold-loss:hover .mechanic-icon i {
     animation: modeGoldShake 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 .mode-gold-loss:hover .mechanic-icon::after {
     content: '';
@@ -3230,6 +3336,7 @@ html[data-glass="off"] * {
     background: linear-gradient(120deg, transparent 30%, rgba(var(--orange-soft-rgb), 0.12) 50%, transparent 70%);
     background-size: 200% 100%;
     animation: sparkleSweep 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
     pointer-events: none;
 }
 
@@ -3244,9 +3351,11 @@ html[data-glass="off"] * {
 .mode-turbo .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-turbo:hover .mechanic-icon i {
     animation: modeTurboPulse 0.4s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
 }
 .mode-turbo:hover .mechanic-icon::after {
     content: '';
@@ -3256,6 +3365,7 @@ html[data-glass="off"] * {
     background: linear-gradient(90deg, transparent, rgba(var(--green-rgb), 0.12), transparent);
     background-size: 200% 100%;
     animation: sparkleSweep 0.4s ease-out;
+   animation-duration: calc(var(--anim-speed, 1) * 0.4s);
     pointer-events: none;
 }
 
@@ -3269,9 +3379,11 @@ html[data-glass="off"] * {
 .mode-no-books .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-no-books:hover .mechanic-icon i {
     animation: modeNoBooksSlash 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 .mode-no-books:hover .mechanic-icon::after {
     content: '';
@@ -3283,6 +3395,7 @@ html[data-glass="off"] * {
     background: rgba(var(--info-rgb), 0.6);
     border-radius: 2px;
     animation: modeSlashAppear 0.4s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
     pointer-events: none;
 }
 @keyframes modeSlashAppear {
@@ -3302,9 +3415,11 @@ html[data-glass="off"] * {
 .mode-team-rewards .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-team-rewards:hover .mechanic-icon i {
     animation: modeTeamBounce 0.5s ease-out;
+ animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 .mode-team-rewards:hover .mechanic-icon::after {
     content: '';
@@ -3314,6 +3429,7 @@ html[data-glass="off"] * {
     background: linear-gradient(120deg, transparent 30%, rgba(var(--gold-dim-rgb), 0.12) 50%, transparent 70%);
     background-size: 200% 100%;
     animation: sparkleSweep 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
     pointer-events: none;
 }
 
@@ -3328,9 +3444,11 @@ html[data-glass="off"] * {
 .mode-solo .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-solo:hover .mechanic-icon i {
     animation: modeSoloFade 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .mode-solo:hover .mechanic-icon::after {
     content: '';
@@ -3339,6 +3457,7 @@ html[data-glass="off"] * {
     border-radius: 12px;
     background: radial-gradient(circle, rgba(var(--red-deep-rgb), 0.12) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
     pointer-events: none;
 }
 
@@ -3353,9 +3472,11 @@ html[data-glass="off"] * {
 .mode-hero-ban .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-hero-ban:hover .mechanic-icon i {
     animation: modeBanSlam 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 .mode-hero-ban:hover .mechanic-icon::after {
     content: '';
@@ -3364,6 +3485,7 @@ html[data-glass="off"] * {
     border-radius: 12px;
     background: radial-gradient(circle, rgba(170,68,170,0.25) 0%, transparent 70%);
     animation: mechFlashFade 0.5s ease-out forwards;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
     pointer-events: none;
 }
 
@@ -3378,9 +3500,11 @@ html[data-glass="off"] * {
 .mode-random-hero .mechanic-icon i {
     display: inline-block;
     transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .mode-random-hero:hover .mechanic-icon i {
     animation: modeRandomSpin 0.6s ease-out;
+ animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .mode-random-hero:hover .mechanic-icon::after {
     content: '';
@@ -3390,6 +3514,7 @@ html[data-glass="off"] * {
     background: linear-gradient(120deg, transparent 20%, rgba(85,255,204,0.15) 50%, transparent 80%);
     background-size: 200% 100%;
     animation: sparkleSweep 0.6s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.6s);
     pointer-events: none;
 }
 
@@ -3439,6 +3564,7 @@ html[data-glass="off"] * {
     border-radius: 16px;
     padding: 24px;
     transition: 0.25s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.25s);
     position: relative;
 }
 .support-card:hover {
@@ -3471,6 +3597,7 @@ html[data-glass="off"] * {
     font-weight: 600;
     font-size: 0.85rem;
     transition: 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .support-card .method-link:hover {
     background: var(--accent-cyan);
@@ -3535,6 +3662,7 @@ html[data-glass="off"] * {
     text-decoration: none;
     color: var(--text-strong);
     transition: 0.15s;
+ transition-duration: calc(var(--anim-speed, 1) * 0.15s);
     cursor: pointer;
 }
 .boss-drop-row:hover {
@@ -3662,6 +3790,7 @@ html[data-glass="off"] * {
     margin-bottom: 8px;
     overflow: hidden;
     transition: 0.25s ease;
+ transition-duration: calc(var(--anim-speed, 1) * 0.25s);
     position: relative;
 }
 .monster-card:hover {
@@ -3684,6 +3813,7 @@ html[data-glass="off"] * {
     cursor: pointer;
     user-select: none;
     transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 .monster-header:hover {
     background: #1a2540;
@@ -3729,6 +3859,7 @@ html[data-glass="off"] * {
     color: var(--text-dim);
     font-size: 0.8rem;
     transition: 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
     display: flex;
     align-items: center;
 }
@@ -3739,6 +3870,7 @@ html[data-glass="off"] * {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .monster-card.open .monster-body {
     max-height: 2000px;
@@ -3998,6 +4130,7 @@ html[data-glass="off"] * {
     text-decoration: none;
     border-bottom: 1px dashed rgba(var(--cyan-rgb), 0.35);
     transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 .item-link:hover {
     color: var(--white);
@@ -4059,6 +4192,7 @@ html[data-glass="off"] * {
                 radial-gradient(ellipse at 80% 70%, rgba(var(--violet-rgb), 0.08) 0%, transparent 50%);
     z-index: 1;
     animation: auroraBanner 8s ease-in-out infinite;
+animation-duration: calc(var(--anim-speed, 1) * 8s);
 }
 @keyframes auroraBanner {
     0%, 100% { opacity: 1; transform: translateX(0) scale(1); }
@@ -4076,6 +4210,7 @@ html[data-glass="off"] * {
     z-index: 3;
     max-width: 800px;
     animation: bannerFadeIn 1s ease forwards;
+animation-duration: calc(var(--anim-speed, 1) * 1s);
 }
 @keyframes bannerFadeIn {
     from { opacity: 0; transform: translateY(30px); }
@@ -4089,6 +4224,7 @@ html[data-glass="off"] * {
     box-shadow: 0 0 30px rgba(var(--cyan-rgb), 0.35), 0 0 60px rgba(var(--cyan-rgb), 0.2);
     margin-bottom: 24px;
     animation: float 3s ease-in-out infinite, logoBorderPulse 2.5s ease-in-out infinite;
+animation-duration: calc(var(--anim-speed, 1) * 3s), calc(var(--anim-speed, 1) * 2.5s);
     object-fit: cover;
 }
 @keyframes float {
@@ -4115,6 +4251,7 @@ html[data-glass="off"] * {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: titleShimmer 4s ease-in-out infinite;
+  animation-duration: calc(var(--anim-speed, 1) * 4s);
 }
 @keyframes titleShimmer {
     0%, 100% { background-position: 200% center; }
@@ -4153,6 +4290,7 @@ html[data-glass="off"] * {
     text-decoration: none;
     box-shadow: 0 0 25px rgba(var(--mint-rgb), 0.35), 0 4px 15px rgba(var(--black-rgb), 0.333);
     transition: 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
     letter-spacing: 0.5px;
 }
 .btn-primary:hover {
@@ -4173,6 +4311,7 @@ html[data-glass="off"] * {
     text-decoration: none;
     box-shadow: 0 0 15px rgba(var(--cyan-rgb), 0.2);
     transition: 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .btn-secondary:hover {
     background: rgba(var(--cyan-rgb), 0.08);
@@ -4196,6 +4335,7 @@ html[data-glass="off"] * {
     padding: 24px 16px;
     text-align: center;
     transition: 0.25s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.25s);
     text-decoration: none;
     display: block;
     color: inherit;
@@ -4210,6 +4350,7 @@ html[data-glass="off"] * {
 }
 .stat-box:hover .stat-icon {
     animation: statIconBounce 0.4s ease-out;
+  animation-duration: calc(var(--anim-speed, 1) * 0.4s);
 }
 .stat-box:hover .stat-number {
     transform: scale(1.12);
@@ -4232,6 +4373,7 @@ html[data-glass="off"] * {
     color: var(--text-primary);
     text-shadow: 0 0 15px rgba(var(--cyan-rgb), 0.2);
     transition: transform 0.25s ease, text-shadow 0.25s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.25s), calc(var(--anim-speed, 1) * 0.25s);
 }
 .stat-label {
     font-size: 0.85rem;
@@ -4270,6 +4412,7 @@ html[data-glass="off"] * {
     padding: 24px;
     text-decoration: none;
     transition: 0.25s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.25s);
     display: block;
     position: relative;
 }
@@ -4281,6 +4424,7 @@ html[data-glass="off"] * {
 }
 .quick-link-card:hover .quick-link-icon {
     animation: qlIconPop 0.35s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.35s);
     background: rgba(var(--cyan-rgb), 0.12);
     border-color: rgba(var(--cyan-rgb), 0.6);
 }
@@ -4304,10 +4448,12 @@ html[data-glass="off"] * {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .quick-link-card:hover::after {
     opacity: 1;
     animation: sparkleSweep 0.6s ease-out;
+ animation-duration: calc(var(--anim-speed, 1) * 0.6s);
 }
 .quick-link-icon {
     width: 48px;
@@ -4322,6 +4468,7 @@ html[data-glass="off"] * {
     color: var(--accent-cyan);
     margin-bottom: 12px;
     transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.25s), calc(var(--anim-speed, 1) * 0.25s), calc(var(--anim-speed, 1) * 0.25s);
 }
 .quick-link-title {
     font-size: 1.1rem;
@@ -4376,6 +4523,7 @@ html[data-glass="off"] * {
     font-size: 0.9rem;
     font-weight: 600;
     transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 .updates-link:hover {
     text-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.6);
@@ -4394,6 +4542,7 @@ html[data-glass="off"] * {
     position: relative;
     overflow: hidden;
     animation: ctaBorderPulse 3s ease-in-out infinite;
+animation-duration: calc(var(--anim-speed, 1) * 3s);
 }
 .cta-section::before {
     content: '';
@@ -4410,6 +4559,7 @@ html[data-glass="off"] * {
         transparent 50%
     );
     animation: auroraShift 6s ease-in-out infinite;
+ animation-duration: calc(var(--anim-speed, 1) * 6s);
     pointer-events: none;
 }
 @keyframes ctaBorderPulse {
@@ -4455,6 +4605,7 @@ html[data-glass="off"] * {
     border: 2px solid var(--magic);
     text-decoration: none;
     transition: 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .btn-outline:hover {
     background: rgba(var(--violet-rgb), 0.08);
@@ -4511,6 +4662,7 @@ html[data-glass="off"] * {
     text-decoration: none;
     font-size: 0.9rem;
     transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 .footer-links a:hover {
     color: var(--accent-cyan);
@@ -4523,6 +4675,7 @@ html[data-glass="off"] * {
     color: var(--text-dim);
     font-size: 1.3rem;
     transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 .footer-social a:hover {
     color: var(--accent-cyan);
@@ -4643,6 +4796,7 @@ html[data-glass="off"] * {
     border-radius: 12px;
     padding: 24px 28px;
     transition: background 0.2s, border-color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 .info-section:hover {
     background: var(--surface-bg-hover);
@@ -4667,12 +4821,14 @@ html[data-glass="off"] * {
     align-items: center;
     gap: 12px;
     transition: padding-left 0.25s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.25s);
 }
 .info-list li:hover {
     padding-left: 6px;
 }
 .info-list li:hover i {
     animation: infoListIconPop 0.3s ease-out;
+    animation-duration: calc(var(--anim-speed, 1) * 0.3s);
     color: var(--accent-cyan);
 }
 .info-list li i {
@@ -4681,6 +4837,7 @@ html[data-glass="off"] * {
     text-align: center;
     flex-shrink: 0;
     transition: color 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 @keyframes infoListIconPop {
     0%   { transform: scale(1); }
@@ -4702,6 +4859,7 @@ html[data-glass="off"] * {
     padding: 16px 12px;
     text-align: center;
     transition: 0.25s ease;
+ transition-duration: calc(var(--anim-speed, 1) * 0.25s);
     position: relative;
 }
 .info-stat-card:hover {
@@ -4712,6 +4870,7 @@ html[data-glass="off"] * {
 }
 .info-stat-card:hover .info-stat-icon {
     animation: infoStatBounce 0.35s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.35s);
 }
 .info-stat-card:hover .info-stat-value {
     color: var(--accent-cyan);
@@ -4785,6 +4944,7 @@ html[data-glass="off"] * {
     color: var(--text-soft);
     text-decoration: none;
     transition: 0.25s ease;
+ transition-duration: calc(var(--anim-speed, 1) * 0.25s);
     position: relative;
 }
 .info-guide-card:hover {
@@ -4795,6 +4955,7 @@ html[data-glass="off"] * {
 }
 .info-guide-card:hover .guide-icon {
     animation: ytPulse 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 @keyframes ytPulse {
     0%   { transform: scale(1); }
@@ -4823,6 +4984,7 @@ html[data-glass="off"] * {
     padding: 16px 20px;
     margin-top: 12px;
     transition: 0.25s ease;
+    transition-duration: calc(var(--anim-speed, 1) * 0.25s);
 }
 .info-author-card:hover {
     border-color: var(--surface-border-hover);
@@ -4834,6 +4996,7 @@ html[data-glass="off"] * {
 }
 .info-author-card:hover .author-avatar i {
     animation: crownFloat 1.5s ease-in-out infinite;
+ animation-duration: calc(var(--anim-speed, 1) * 1.5s);
 }
 .author-avatar {
     width: 48px;
@@ -4848,6 +5011,7 @@ html[data-glass="off"] * {
     color: var(--accent-cyan);
     flex-shrink: 0;
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
+ transition-duration: calc(var(--anim-speed, 1) * 0.3s), calc(var(--anim-speed, 1) * 0.3s);
 }
 @keyframes crownFloat {
     0%, 100% { transform: translateY(0); }
@@ -4882,6 +5046,7 @@ html[data-glass="off"] * {
     font-size: 0.9rem;
     font-weight: 500;
     transition: 0.25s ease;
+ transition-duration: calc(var(--anim-speed, 1) * 0.25s);
     position: relative;
     overflow: hidden;
 }
@@ -4889,6 +5054,7 @@ html[data-glass="off"] * {
     color: var(--accent-cyan);
     font-size: 1rem;
     transition: transform 0.25s ease, color 0.25s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.25s), calc(var(--anim-speed, 1) * 0.25s);
 }
 .info-link-card:hover {
     background: linear-gradient(135deg, rgba(var(--cyan-rgb), 0.2) 0%, rgba(var(--cyan-rgb), 0.04) 100%);
@@ -4911,10 +5077,12 @@ html[data-glass="off"] * {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
+ transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .info-link-card:hover::after {
     opacity: 1;
     animation: sparkleSweep 0.5s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.5s);
 }
 @media (max-width: 800px) {
     .info-stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -4966,6 +5134,7 @@ html[data-glass="off"] * {
     background: var(--accent-cyan);
     box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.6);
     animation: timelinePulse 2.5s ease-in-out infinite;
+   animation-duration: calc(var(--anim-speed, 1) * 2.5s);
 }
 @keyframes timelinePulse {
     0%, 100% { box-shadow: 0 0 6px rgba(var(--cyan-rgb), 0.35); transform: scale(1); }
@@ -5056,6 +5225,7 @@ html[data-glass="off"] * {
     box-shadow: 0 0 30px rgba(var(--red-rgb), 0.2), 0 0 60px rgba(var(--red-rgb), 0.12);
     margin-bottom: 16px;
     animation: float 3s ease-in-out infinite;
+animation-duration: calc(var(--anim-speed, 1) * 3s);
     object-fit: cover;
 }
 .support-banner-title {
@@ -5148,6 +5318,7 @@ html[data-glass="off"] * {
     background: var(--surface-bg); backdrop-filter: blur(var(--surface-blur)); -webkit-backdrop-filter: blur(var(--surface-blur));
     border: 1px solid var(--surface-border); border-radius: 8px;
     padding: 12px 16px; margin: 8px 0; transition: background 0.2s, border-color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 .mc-card:hover { background: var(--surface-bg-hover); border-color: var(--surface-border-hover); }
 .mc-card-title { font-weight: 600; font-size: 0.95rem; color: var(--text-primary); margin-bottom: 6px; }
@@ -5200,6 +5371,7 @@ html[data-glass="off"] * {
             color: var(--accent-cyan);
             text-decoration: none;
             transition: all 0.3s ease;
+    transition-duration: calc(var(--anim-speed, 1) * 0.3s);
             max-width: 400px;
         }
         .modes-promo-btn:hover {
@@ -5209,6 +5381,7 @@ html[data-glass="off"] * {
         }
         .modes-promo-btn {
             animation: modesPromoPulse 3s ease-in-out infinite;
+     animation-duration: calc(var(--anim-speed, 1) * 3s);
         }
         @keyframes modesPromoPulse {
             0%, 100% { box-shadow: 0 0 0 rgba(var(--cyan-rgb), 0); }
@@ -5239,6 +5412,7 @@ html[data-glass="off"] * {
             background: var(--surface-bg); backdrop-filter: blur(var(--surface-blur)); -webkit-backdrop-filter: blur(var(--surface-blur));
             border: 1px solid var(--surface-border); border-radius: 8px;
             padding: 12px 16px; margin: 8px 0; transition: background 0.2s, border-color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
         }
         .mc-card:hover { background: var(--surface-bg-hover); border-color: var(--surface-border-hover); }
         .mc-card-title { font-weight: 600; font-size: 0.95rem; color: var(--text-primary); margin-bottom: 6px; }
@@ -5309,6 +5483,7 @@ html[data-glass="off"] * {
     border: 1px solid rgba(var(--cyan-rgb), 0.12);
     border-radius: 10px;
     transition: border-color 0.15s, background 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s), calc(var(--anim-speed, 1) * 0.15s);
 }
 .info-key:hover {
     background: rgba(var(--container-rgb), 0.8);
@@ -5365,6 +5540,7 @@ html[data-glass="off"] * {
     border-bottom: 1px solid var(--surface-border-hover);
     padding-bottom: 1px;
     transition: color 0.15s, border-color 0.15s, text-shadow 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s), calc(var(--anim-speed, 1) * 0.15s), calc(var(--anim-speed, 1) * 0.15s);
 }
 .info-text a:hover,
 .info-section p a:hover,
@@ -5464,6 +5640,7 @@ html[data-glass="off"] * {
     align-items: center;
     justify-content: center;
     transition: 0.2s;
+    transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .hamburger-btn span {
     display: block;
@@ -5472,6 +5649,7 @@ html[data-glass="off"] * {
     background: var(--accent-cyan);
     border-radius: 2px;
     transition: 0.3s;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .hamburger-btn:hover {
     border-color: var(--accent-cyan);
@@ -5587,6 +5765,7 @@ html[data-glass="off"] * {
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.2s ease, visibility 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 .item-sheet-overlay.visible {
   opacity: 1;
@@ -5610,6 +5789,7 @@ html[data-glass="off"] * {
   padding: 16px 16px 20px;
   transform: translateY(110%);
   transition: transform 0.28s ease, opacity 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.28s), calc(var(--anim-speed, 1) * 0.2s);
   visibility: hidden;
   pointer-events: none;
   opacity: 0;
@@ -5635,6 +5815,7 @@ html[data-glass="off"] * {
   justify-content: center;
   cursor: pointer;
   transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
   z-index: 2;
 }
 .item-sheet-close:hover {
@@ -5670,6 +5851,7 @@ body.item-sheet-open {
   font-size: 12px;
   flex-shrink: 0;
   transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 .tree-toggle:hover {
   background: #1a2e44;
@@ -5692,6 +5874,7 @@ body.item-sheet-open {
   box-shadow: 0 0 8px rgba(var(--cyan-rgb), 0.2);
   cursor: pointer;
   transition: 0.15s;
+  transition-duration: calc(var(--anim-speed, 1) * 0.15s);
   color: var(--text-strong);
 }
 .component-item:hover {
@@ -5771,6 +5954,7 @@ body.item-sheet-open {
   font-size: 0.9rem;
   cursor: pointer;
   transition: 0.1s;
+transition-duration: calc(var(--anim-speed, 1) * 0.1s);
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -5798,6 +5982,7 @@ body.item-sheet-open {
   text-decoration: none;
   cursor: pointer;
   transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .boss-drop-link:hover {
@@ -5830,6 +6015,7 @@ body.item-sheet-open {
   text-decoration: none;
   cursor: pointer;
   transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .hero-reco-chip:hover {
@@ -5854,6 +6040,7 @@ body.item-sheet-open {
   color: var(--accent-cyan);
   cursor: pointer;
   transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .hero-reco-toggle:hover {
@@ -5889,6 +6076,7 @@ body.item-sheet-open {
   cursor: pointer;
   font-weight: 500;
   transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
   box-shadow: 0 0 10px rgba(var(--cyan-rgb), 0.2);
 }
 .upgrade-btn:hover {
@@ -5981,6 +6169,7 @@ body.item-sheet-open {
   overflow: hidden;
   padding-top: 24px;
   transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.35s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.35s), calc(var(--anim-speed, 1) * 0.25s), calc(var(--anim-speed, 1) * 0.35s);
 }
 .items-grid.collapsed {
   max-height: 0 !important;
@@ -6017,6 +6206,7 @@ body.item-sheet-open {
   cursor: pointer;
   box-shadow: 0 0 12px rgba(64, 160, 255, 0.12);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 .category-section h2 .collapse-toggle:hover {
   border-color: rgba(106, 205, 255, 0.8);
@@ -6028,6 +6218,7 @@ body.item-sheet-open {
   font-size: 0.85em;
   color: inherit;
   transition: transform 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
 }
 .category-section h2.collapsed-header .collapse-toggle .collapse-chevron {
   transform: rotate(-90deg);
@@ -6089,6 +6280,7 @@ body.item-sheet-open {
   padding: 12px 8px 8px;
   text-align: center;
   transition: all 0.25s ease;
+  transition-duration: calc(var(--anim-speed, 1) * 0.25s);
   border: 1px solid var(--surface-border);
   box-shadow: 0 0 10px #00000080, 0 0 0 1px rgba(var(--cyan-rgb), 0.12) inset;
   cursor: pointer;
@@ -6142,6 +6334,7 @@ body.item-sheet-open {
   mask-composite: exclude;
   opacity: 0;
   transition: opacity 0.3s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.3s);
   pointer-events: none;
 }
 .item-card:hover::before {
@@ -6237,6 +6430,7 @@ body.item-sheet-open {
   font-size: 14px;
   color: var(--text-muted);
   transition: 0.15s;
+ transition-duration: calc(var(--anim-speed, 1) * 0.15s);
   z-index: 2;
 }
 .hero-fav-btn .fas {
@@ -6293,6 +6487,7 @@ body.item-sheet-open {
   cursor: pointer;
   box-shadow: 0 0 6px rgba(var(--cyan-rgb), 0.12);
   transition: 0.1s;
+transition-duration: calc(var(--anim-speed, 1) * 0.1s);
 }
 .tab-btn:hover {
   background: var(--steel-deep);
@@ -6591,6 +6786,7 @@ body.item-sheet-open {
     font-weight: 500;
     cursor: pointer;
     transition: background 0.12s, border-color 0.12s, color 0.12s, box-shadow 0.12s;
+transition-duration: calc(var(--anim-speed, 1) * 0.12s), calc(var(--anim-speed, 1) * 0.12s), calc(var(--anim-speed, 1) * 0.12s), calc(var(--anim-speed, 1) * 0.12s);
 }
 .bonus-chip i { font-size: 0.72rem; opacity: 0.8; }
 .bonus-chip:hover {
@@ -6664,6 +6860,7 @@ body.item-sheet-open {
     font-size: 0.8rem;
     cursor: pointer;
     transition: background 0.12s, border-color 0.12s;
+ transition-duration: calc(var(--anim-speed, 1) * 0.12s), calc(var(--anim-speed, 1) * 0.12s);
 }
 .bonus-reset:hover {
     background: rgba(255, 120, 120, 0.12);
@@ -6809,40 +7006,44 @@ body.item-sheet-open {
 /* Появление карточек при загрузке */
 .hero-card {
     animation: fadeSlideUp 0.4s ease-out both;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
 }
 .item-card {
     animation: fadeSlideUp 0.4s ease-out both;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
 }
 .stat-box {
     animation: fadeSlideUp 0.4s ease-out both;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
 }
 .quick-link-card {
     animation: fadeSlideUp 0.4s ease-out both;
+animation-duration: calc(var(--anim-speed, 1) * 0.4s);
 }
 
 /* Staggered delay — первые 6 карточек появляются с задержкой */
-.hero-card:nth-child(1) { animation-delay: 0.05s; }
-.hero-card:nth-child(2) { animation-delay: 0.1s; }
-.hero-card:nth-child(3) { animation-delay: 0.15s; }
-.hero-card:nth-child(4) { animation-delay: 0.2s; }
-.hero-card:nth-child(5) { animation-delay: 0.25s; }
-.hero-card:nth-child(6) { animation-delay: 0.3s; }
+.hero-card:nth-child(1) { animation-delay: calc(var(--anim-speed, 1) * 0.05s); }
+.hero-card:nth-child(2) { animation-delay: calc(var(--anim-speed, 1) * 0.1s); }
+.hero-card:nth-child(3) { animation-delay: calc(var(--anim-speed, 1) * 0.15s); }
+.hero-card:nth-child(4) { animation-delay: calc(var(--anim-speed, 1) * 0.2s); }
+.hero-card:nth-child(5) { animation-delay: calc(var(--anim-speed, 1) * 0.25s); }
+.hero-card:nth-child(6) { animation-delay: calc(var(--anim-speed, 1) * 0.3s); }
 
-.item-card:nth-child(1) { animation-delay: 0.05s; }
-.item-card:nth-child(2) { animation-delay: 0.1s; }
-.item-card:nth-child(3) { animation-delay: 0.15s; }
-.item-card:nth-child(4) { animation-delay: 0.2s; }
-.item-card:nth-child(5) { animation-delay: 0.25s; }
-.item-card:nth-child(6) { animation-delay: 0.3s; }
+.item-card:nth-child(1) { animation-delay: calc(var(--anim-speed, 1) * 0.05s); }
+.item-card:nth-child(2) { animation-delay: calc(var(--anim-speed, 1) * 0.1s); }
+.item-card:nth-child(3) { animation-delay: calc(var(--anim-speed, 1) * 0.15s); }
+.item-card:nth-child(4) { animation-delay: calc(var(--anim-speed, 1) * 0.2s); }
+.item-card:nth-child(5) { animation-delay: calc(var(--anim-speed, 1) * 0.25s); }
+.item-card:nth-child(6) { animation-delay: calc(var(--anim-speed, 1) * 0.3s); }
 
-.stat-box:nth-child(1) { animation-delay: 0.05s; }
-.stat-box:nth-child(2) { animation-delay: 0.1s; }
-.stat-box:nth-child(3) { animation-delay: 0.15s; }
-.stat-box:nth-child(4) { animation-delay: 0.2s; }
+.stat-box:nth-child(1) { animation-delay: calc(var(--anim-speed, 1) * 0.05s); }
+.stat-box:nth-child(2) { animation-delay: calc(var(--anim-speed, 1) * 0.1s); }
+.stat-box:nth-child(3) { animation-delay: calc(var(--anim-speed, 1) * 0.15s); }
+.stat-box:nth-child(4) { animation-delay: calc(var(--anim-speed, 1) * 0.2s); }
 
-.quick-link-card:nth-child(1) { animation-delay: 0.05s; }
-.quick-link-card:nth-child(2) { animation-delay: 0.1s; }
-.quick-link-card:nth-child(3) { animation-delay: 0.15s; }
+.quick-link-card:nth-child(1) { animation-delay: calc(var(--anim-speed, 1) * 0.05s); }
+.quick-link-card:nth-child(2) { animation-delay: calc(var(--anim-speed, 1) * 0.1s); }
+.quick-link-card:nth-child(3) { animation-delay: calc(var(--anim-speed, 1) * 0.15s); }
 
 /* Нажатие кнопки — эффект вдавливания */
 .btn-primary:active,
@@ -7043,6 +7244,7 @@ body.page-404::after {
     pointer-events: none;
     z-index: 0;
     animation: orbFloat 11s ease-in-out infinite;
+animation-duration: calc(var(--anim-speed, 1) * 11s);
 }
 .home-orb-secondary,
 .info-orb {
@@ -7054,6 +7256,8 @@ body.page-404::after {
     pointer-events: none;
     z-index: 0;
     animation: orbFloat 9s ease-in-out infinite -5s;
+animation-duration: calc(var(--anim-speed, 1) * 9s);
+animation-delay: calc(var(--anim-speed, 1) * 5s);
 }
 
 /* позиция/размер/цвет страницы поверх общей базы */
@@ -7061,39 +7265,39 @@ body.page-home::after {
     top: 10%; right: 10%;
     width: 400px; height: 400px;
     box-shadow: -200px 300px 0 -100px rgba(var(--info-rgb), 0.08);
-    animation-duration: 11s; animation-delay: -2s;
+    animation-duration: calc(var(--anim-speed, 1) * 11s); animation-delay: -calc(var(--anim-speed, 1) * 2s);
 }
 .home-orb-secondary { bottom: 5%; left: 8%; }
-body.page-heroes::after { bottom: -10%; right: -5%; width: 500px; height: 500px; animation-duration: 13s; animation-delay: -3s; }
-body.page-items::after { top: -5%; left: -5%; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: 10s; animation-delay: -7s; }
-.info-orb { bottom: 10%; right: 5%; background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.12) 0%, rgba(var(--cyan-rgb), 0.05) 45%, transparent 72%); animation-duration: 12s; animation-delay: -4s; }
-body.page-monsters::after { bottom: -10%; left: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(var(--red-rgb), 0.1) 0%, rgba(var(--red-rgb), 0.04) 45%, transparent 72%); animation-duration: 13s; animation-delay: -6s; }
-body.page-lore::after { top: -5%; right: -5%; width: 450px; height: 450px; animation-duration: 10s; animation-delay: -2s; }
+body.page-heroes::after { bottom: -10%; right: -5%; width: 500px; height: 500px; animation-duration: calc(var(--anim-speed, 1) * 13s); animation-delay: -calc(var(--anim-speed, 1) * 3s); }
+body.page-items::after { top: -5%; left: -5%; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: calc(var(--anim-speed, 1) * 10s); animation-delay: -calc(var(--anim-speed, 1) * 7s); }
+.info-orb { bottom: 10%; right: 5%; background: radial-gradient(circle, rgba(var(--cyan-rgb), 0.12) 0%, rgba(var(--cyan-rgb), 0.05) 45%, transparent 72%); animation-duration: calc(var(--anim-speed, 1) * 12s); animation-delay: -calc(var(--anim-speed, 1) * 4s); }
+body.page-monsters::after { bottom: -10%; left: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(var(--red-rgb), 0.1) 0%, rgba(var(--red-rgb), 0.04) 45%, transparent 72%); animation-duration: calc(var(--anim-speed, 1) * 13s); animation-delay: -calc(var(--anim-speed, 1) * 6s); }
+body.page-lore::after { top: -5%; right: -5%; width: 450px; height: 450px; animation-duration: calc(var(--anim-speed, 1) * 10s); animation-delay: -calc(var(--anim-speed, 1) * 2s); }
 body.page-calculator::after,
 body.page-build-constructor::after,
-body.page-bot-builds::after { bottom: -10%; right: -5%; animation-delay: -3s; }
-body.page-compare::after { bottom: -10%; left: -5%; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: 12s; animation-delay: -8s; }
+body.page-bot-builds::after { bottom: -10%; right: -5%; animation-delay: -calc(var(--anim-speed, 1) * 3s); }
+body.page-compare::after { bottom: -10%; left: -5%; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: calc(var(--anim-speed, 1) * 12s); animation-delay: -calc(var(--anim-speed, 1) * 8s); }
 body.page-armor-calc::after,
-body.page-formulas-calc::after { top: -5%; right: -5%; width: 400px; height: 400px; animation-duration: 9s; animation-delay: -6s; }
-body.page-modes::after { top: 20%; right: -8%; width: 400px; height: 400px; animation-duration: 10s; animation-delay: -4s; }
-body.page-faq::after { top: -5%; left: -5%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: 12s; animation-delay: -9s; }
-body.page-guides::after { bottom: -10%; right: -5%; width: 400px; height: 400px; animation-duration: 9s; animation-delay: -2s; }
-body.page-map-changes::after { bottom: -10%; left: -5%; width: 400px; height: 400px; animation-duration: 11s; animation-delay: -7s; }
-body.page-mechanics::after { top: -5%; right: -5%; animation-duration: 10s; animation-delay: -3s; }
-body.page-events::after { bottom: -10%; left: -5%; animation-duration: 12s; animation-delay: -5s; }
-body.page-map::after { bottom: -10%; right: -5%; animation-duration: 9s; animation-delay: -8s; }
-body.page-support::after { top: -5%; left: -5%; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: 11s; animation-delay: -4s; }
-body.page-updates::after { top: -5%; right: -5%; animation-duration: 13s; animation-delay: -6s; }
+body.page-formulas-calc::after { top: -5%; right: -5%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 9s); animation-delay: -calc(var(--anim-speed, 1) * 6s); }
+body.page-modes::after { top: 20%; right: -8%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 10s); animation-delay: -calc(var(--anim-speed, 1) * 4s); }
+body.page-faq::after { top: -5%; left: -5%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: calc(var(--anim-speed, 1) * 12s); animation-delay: -calc(var(--anim-speed, 1) * 9s); }
+body.page-guides::after { bottom: -10%; right: -5%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 9s); animation-delay: -calc(var(--anim-speed, 1) * 2s); }
+body.page-map-changes::after { bottom: -10%; left: -5%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 11s); animation-delay: -calc(var(--anim-speed, 1) * 7s); }
+body.page-mechanics::after { top: -5%; right: -5%; animation-duration: calc(var(--anim-speed, 1) * 10s); animation-delay: -calc(var(--anim-speed, 1) * 3s); }
+body.page-events::after { bottom: -10%; left: -5%; animation-duration: calc(var(--anim-speed, 1) * 12s); animation-delay: -calc(var(--anim-speed, 1) * 5s); }
+body.page-map::after { bottom: -10%; right: -5%; animation-duration: calc(var(--anim-speed, 1) * 9s); animation-delay: -calc(var(--anim-speed, 1) * 8s); }
+body.page-support::after { top: -5%; left: -5%; background: radial-gradient(circle, rgba(var(--info-rgb), 0.11) 0%, rgba(var(--info-rgb), 0.045) 45%, transparent 72%); animation-duration: calc(var(--anim-speed, 1) * 11s); animation-delay: -calc(var(--anim-speed, 1) * 4s); }
+body.page-updates::after { top: -5%; right: -5%; animation-duration: calc(var(--anim-speed, 1) * 13s); animation-delay: -calc(var(--anim-speed, 1) * 6s); }
 /* 24.11: раскатка на остальные страницы без орбов — чередование углов */
-body.page-aibot::after { top: 20%; right: -8%; width: 400px; height: 400px; animation-duration: 10s; animation-delay: -4s; }
-body.page-balance::after { bottom: -10%; right: -5%; width: 500px; height: 500px; animation-duration: 13s; animation-delay: -2s; }
-body.page-changelog::after { top: -5%; left: -5%; width: 400px; height: 400px; animation-duration: 11s; animation-delay: -7s; }
-body.page-creeps::after { bottom: -10%; left: -5%; width: 400px; height: 400px; animation-duration: 12s; animation-delay: -5s; }
-body.page-gallery::after { top: -5%; right: -5%; width: 500px; height: 500px; animation-duration: 12s; animation-delay: -3s; }
-body.page-runes::after { bottom: -10%; right: -5%; width: 400px; height: 400px; animation-duration: 10s; animation-delay: -8s; }
-body.page-storage::after { top: -5%; left: -5%; width: 400px; height: 400px; animation-duration: 11s; animation-delay: -2s; }
-body.page-tierlist::after { bottom: -10%; left: -5%; width: 500px; height: 500px; animation-duration: 13s; animation-delay: -6s; }
-body.page-404::after { bottom: 10%; right: 10%; width: 450px; height: 450px; animation-duration: 11s; animation-delay: -4s; }
+body.page-aibot::after { top: 20%; right: -8%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 10s); animation-delay: -calc(var(--anim-speed, 1) * 4s); }
+body.page-balance::after { bottom: -10%; right: -5%; width: 500px; height: 500px; animation-duration: calc(var(--anim-speed, 1) * 13s); animation-delay: -calc(var(--anim-speed, 1) * 2s); }
+body.page-changelog::after { top: -5%; left: -5%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 11s); animation-delay: -calc(var(--anim-speed, 1) * 7s); }
+body.page-creeps::after { bottom: -10%; left: -5%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 12s); animation-delay: -calc(var(--anim-speed, 1) * 5s); }
+body.page-gallery::after { top: -5%; right: -5%; width: 500px; height: 500px; animation-duration: calc(var(--anim-speed, 1) * 12s); animation-delay: -calc(var(--anim-speed, 1) * 3s); }
+body.page-runes::after { bottom: -10%; right: -5%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 10s); animation-delay: -calc(var(--anim-speed, 1) * 8s); }
+body.page-storage::after { top: -5%; left: -5%; width: 400px; height: 400px; animation-duration: calc(var(--anim-speed, 1) * 11s); animation-delay: -calc(var(--anim-speed, 1) * 2s); }
+body.page-tierlist::after { bottom: -10%; left: -5%; width: 500px; height: 500px; animation-duration: calc(var(--anim-speed, 1) * 13s); animation-delay: -calc(var(--anim-speed, 1) * 6s); }
+body.page-404::after { bottom: 10%; right: 10%; width: 450px; height: 450px; animation-duration: calc(var(--anim-speed, 1) * 11s); animation-delay: -calc(var(--anim-speed, 1) * 4s); }
 
 @keyframes orbFloat {
     0%, 100% { opacity: 0.7; transform: scale(1) translate(0, 0); }
@@ -7146,6 +7350,7 @@ body.page-404::before {
         radial-gradient(2px 2px at 78% 76%, rgba(var(--info-rgb), 0.4) 30%, transparent 100%),
         radial-gradient(2px 2px at 89% 22%, rgba(var(--cyan-rgb), 0.45) 30%, transparent 100%);
     animation: orbTwinkle 6s ease-in-out infinite, orbSpecks 16s ease-in-out infinite;
+animation-duration: calc(var(--anim-speed, 1) * 6s), calc(var(--anim-speed, 1) * 16s);
 }
 
 /* у монстров россыпь в тон их красному орбу */
@@ -7220,6 +7425,7 @@ body.page-formulas-calc {
     padding: 4px 10px;
     border-radius: 6px;
     transition: border-color 0.2s, color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 
 .calc-back-link:hover {
@@ -7270,6 +7476,7 @@ body.page-formulas-calc {
     cursor: pointer;
     font-size: 0.75rem;
     transition: border-color 0.2s, color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
     white-space: nowrap;
 }
 
@@ -7294,6 +7501,7 @@ body.page-formulas-calc {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s, transform 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
     z-index: 1000;
     box-shadow: 0 4px 16px #00000066;
 }
@@ -7317,6 +7525,7 @@ body.page-formulas-calc {
     font-weight: 600;
     margin-bottom: 10px;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .calc-link-btn:hover {
@@ -7488,6 +7697,7 @@ body.page-formulas-calc {
     min-height: 78px;
     cursor: pointer;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.15s);
     position: relative;
 }
 
@@ -7580,6 +7790,7 @@ body.page-formulas-calc {
     justify-content: center;
     opacity: 0;
     transition: opacity 0.15s, background 0.15s;
+    transition-duration: calc(var(--anim-speed, 1) * 0.15s), calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .calc-slot-filled:hover .calc-slot-remove {
@@ -7608,6 +7819,7 @@ body.page-formulas-calc {
     justify-content: center;
     opacity: 0;
     transition: opacity 0.15s, background 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s), calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .calc-slot-filled:hover .calc-slot-keep-toggle {
@@ -7682,6 +7894,7 @@ body.page-formulas-calc {
     cursor: pointer;
     font-size: 0.75rem;
     transition: border-color 0.2s, color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 
 .calc-clear-btn:hover {
@@ -7860,6 +8073,7 @@ body.page-formulas-calc {
     padding: 3px;
     margin: -3px;
     transition: background 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .calc-tree-expandable:hover {
@@ -7872,6 +8086,7 @@ body.page-formulas-calc {
     width: 12px;
     flex-shrink: 0;
     transition: transform 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .calc-tree-icon img {
@@ -7954,6 +8169,7 @@ body.page-formulas-calc {
     text-align: center;
     cursor: pointer;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .calc-catalog-item:hover {
@@ -8135,6 +8351,7 @@ body.page-formulas-calc {
     align-items: center;
     gap: 6px;
     transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
     white-space: nowrap;
     line-height: 1.35;
 }
@@ -8169,6 +8386,7 @@ body.page-formulas-calc {
     visibility: hidden;
     pointer-events: none;
     transition: opacity 0.2s, visibility 0.2s;
+   transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 .gs-overlay.active {
     opacity: 1;
@@ -8189,6 +8407,7 @@ body.page-formulas-calc {
     overflow: hidden;
     transform: translateY(-10px);
     transition: transform 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 .gs-overlay.active .gs-modal {
     transform: translateY(0);
@@ -8231,6 +8450,7 @@ body.page-formulas-calc {
     justify-content: center;
     cursor: pointer;
     transition: 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
     flex-shrink: 0;
 }
 .gs-close:hover {
@@ -8273,6 +8493,7 @@ body.page-formulas-calc {
     text-decoration: none;
     color: var(--text-strong);
     transition: 0.1s;
+    transition-duration: calc(var(--anim-speed, 1) * 0.1s);
 }
 .gs-result:hover {
     background: var(--surface-subtle-hover);
@@ -8333,6 +8554,7 @@ body.page-formulas-calc {
     background: rgba(var(--cyan-rgb), 0.12);
     transform: scale(0);
     animation: rippleExpand 0.5s ease-out forwards;
+ animation-duration: calc(var(--anim-speed, 1) * 0.5s);
     pointer-events: none;
     z-index: 10;
 }
@@ -8343,9 +8565,11 @@ body.page-formulas-calc {
 /* ===== Page transition ===== */
 body {
     animation: pageIn 0.25s ease-out;
+animation-duration: calc(var(--anim-speed, 1) * 0.25s);
 }
 body.page-leaving {
     animation: pageOut 0.15s ease-in forwards;
+    animation-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 @keyframes pageIn {
     from { opacity: 0; }
@@ -8405,6 +8629,7 @@ body.page-leaving {
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.25s ease;
+transition-duration: calc(var(--anim-speed, 1) * 0.25s);
 }
 .nav-link:hover::after {
     transform: scaleX(1);
@@ -8464,10 +8689,10 @@ body.page-leaving {
     .tilt-glare { display: none !important; }
     .hero-card:hover { transform: translateY(-3px); }
     /* Ripple быстрее */
-    .ripple { animation-duration: 0.3s !important; }
+    .ripple { animation-duration: calc(var(--anim-speed, 1) * 0.3s) !important; }
     /* Page transition быстрее */
-    body { animation-duration: 0.1s !important; }
-    body.page-leaving { animation-duration: 0.08s !important; }
+    body { animation-duration: calc(var(--anim-speed, 1) * 0.1s) !important; }
+    body.page-leaving { animation-duration: calc(var(--anim-speed, 1) * 0.08s) !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -8616,6 +8841,7 @@ body.page-leaving {
     font-size: 0.7rem;
     margin-right: 4px;
     transition: transform 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
 }
 
 .bc-stage-level {
@@ -8651,6 +8877,7 @@ body.page-leaving {
     padding: 4px 6px;
     border-radius: 4px;
     transition: color 0.2s, background 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 
 .bc-stage-remove:hover {
@@ -8678,6 +8905,7 @@ body.page-leaving {
     backdrop-filter: blur(var(--surface-blur));
     -webkit-backdrop-filter: blur(var(--surface-blur));
     transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
     position: relative;
     padding: 4px 2px;
 }
@@ -8756,6 +8984,7 @@ body.page-leaving {
     font-size: 0.65rem;
     opacity: 0;
     transition: opacity 0.2s, color 0.2s;
+ transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
 }
 
 .bc-slot:hover .bc-slot-remove {
@@ -8780,6 +9009,7 @@ body.page-leaving {
     border-radius: 3px;
     opacity: 0;
     transition: opacity 0.15s;
+transition-duration: calc(var(--anim-speed, 1) * 0.15s);
     z-index: 2;
 }
 
@@ -8837,6 +9067,7 @@ body.page-leaving {
     font-size: 0.85rem;
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
+ transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
     margin-bottom: 16px;
 }
 
@@ -8871,6 +9102,7 @@ body.page-leaving {
     font-size: 0.85rem;
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
     white-space: nowrap;
 }
 
@@ -8893,6 +9125,7 @@ body.page-leaving {
     font-size: 0.85rem;
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s), calc(var(--anim-speed, 1) * 0.2s);
     white-space: nowrap;
 }
 
@@ -8909,6 +9142,7 @@ body.page-leaving {
     padding: 4px 6px;
     font-size: 0.8rem;
     transition: color 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 
 .bc-stage-copy:hover {
@@ -8923,6 +9157,7 @@ body.page-leaving {
     padding: 4px 6px;
     font-size: 0.8rem;
     transition: color 0.2s;
+  transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 
 .bc-stage-paste:hover {
@@ -9045,6 +9280,7 @@ body.page-leaving {
     margin-left: 6px;
     font-size: 0.8rem;
     transition: transform 0.2s;
+transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 
 .bc-jass-content {
@@ -9068,6 +9304,7 @@ body.page-leaving {
     cursor: pointer;
     font-size: 0.75rem;
     transition: background 0.2s;
+   transition-duration: calc(var(--anim-speed, 1) * 0.2s);
 }
 
 .bc-copy-btn:hover {
